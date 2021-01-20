@@ -7,6 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatOptionModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   exports: [
@@ -18,6 +19,7 @@ import {MatOptionModule} from '@angular/material/core';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatOptionModule,
+    MatListModule,
   ],
   imports: [],
   providers: []
