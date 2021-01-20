@@ -1,18 +1,53 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppMaterialModule} from './modules/app-material/app-material.module';
+import {DiscountsComponent} from './pages/discounts/discounts.component';
+import {FavoritesComponent} from './pages/favorites/favorites.component';
+import {UserProfileComponent} from './pages/user-profile/user-profile.component';
+import {ModeratorComponent} from './pages/moderator/moderator.component';
+import {AdminComponent} from './pages/admin/admin.component';
+import {UsersComponent} from './pages/admin/users/users.component';
+import {EventHistoryComponent} from './pages/admin/event-history/event-history.component';
+import {StatisticsComponent} from './pages/admin/statistics/statistics.component';
+import {VendorsComponent} from './pages/moderator/vendors/vendors.component';
+import {CategoriesTagsComponent} from './pages/moderator/categories-tags/categories-tags.component';
+import {LoginComponent} from './pages/login/login.component';
+import {NotFoundComponent} from './pages/not-found/not-found.component';
+import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DiscountsComponent,
+    FavoritesComponent,
+    UserProfileComponent,
+    ModeratorComponent,
+    AdminComponent,
+    UsersComponent,
+    EventHistoryComponent,
+    StatisticsComponent,
+    VendorsComponent,
+    CategoriesTagsComponent,
+    LoginComponent,
+    NotFoundComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
