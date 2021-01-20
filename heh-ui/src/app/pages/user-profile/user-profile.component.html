@@ -1,1 +1,92 @@
-<p>user-profile works!</p>
+<h2 class="profile-header">Profile</h2>
+
+<div class="profile-wrapper">
+
+  <div class="profile-photo">
+    <img src='../../../assets/img/profile-picture.jpg' alt='Profile photo' title='Profile photo'/>
+  </div>
+
+  <div class="profile-content">
+    <div class="profile-info">
+      <h2>{{user.username}}</h2>
+      <div class="profile-location">
+        <h3>{{user.location}}</h3>
+        <h3>{{user.address}}</h3>
+      </div>
+    </div>
+
+    <!--    <div class="profile-checkbox">
+          <mat-checkbox labelPosition="before">Receive a newsletter</mat-checkbox>
+          <br>
+          <mat-checkbox labelPosition="before">New service</mat-checkbox>
+          <br>
+          <mat-checkbox labelPosition="before">New vendor</mat-checkbox>
+          <br>
+          <mat-checkbox labelPosition="before">On city</mat-checkbox>
+          <br>
+          <mat-checkbox labelPosition="before">Hot sales</mat-checkbox>
+          <br>
+        </div>-->
+
+    <table>
+      <tr>
+        <td class="label-header">Receive a newsletter</td>
+        <td>
+          <mat-checkbox [color]="'primary'"></mat-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-item">New service</td>
+        <td>
+          <mat-checkbox [color]="'primary'"></mat-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-item">New vendor</td>
+        <td>
+          <mat-checkbox [color]="'primary'"></mat-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-item">On city</td>
+        <td>
+          <mat-checkbox [color]="'primary'"></mat-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-item">Hot sales</td>
+        <td>
+          <mat-checkbox [color]="'primary'"></mat-checkbox>
+        </td>
+      </tr>
+    </table>
+
+    <mat-form-field class="profile-input">
+      <mat-label>Subscriptions</mat-label>
+      <mat-chip-list #chipList aria-label="Tag selection">
+        <mat-chip
+          *ngFor="let tag of tags"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(tag)">
+          {{tag}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="New tag..."
+          #tagInput
+          [formControl]="tagCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+          {{tag}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  </div>
+</div>

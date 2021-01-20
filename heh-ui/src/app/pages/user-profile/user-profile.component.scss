@@ -1,0 +1,52 @@
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.profile-header {
+  margin-top: 5rem;
+  margin-left: 2.5rem;
+}
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  .profile-photo {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profile-content {
+    margin-top: 5rem;
+    margin-left: 2rem;
+
+    .profile-info {
+      margin-bottom: 0.5rem;
+    }
+
+    /*    mat-checkbox:not(:first-child) {
+          padding-left: 1rem;
+        }*/
+  }
+
+  .label-item {
+    padding-left: 1rem;
+  }
+
+  .profile-input {
+    margin-top: 1rem;
+    width: 30rem;
+  }
+}
+
+
