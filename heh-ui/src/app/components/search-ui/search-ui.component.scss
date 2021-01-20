@@ -1,0 +1,34 @@
+
+
+.search{
+    width: 74%;
+    position: relative;
+    background: #cccccc;
+}
+.search_input{
+    width: 100%;
+    padding-left:2rem;
+    line-height: 3rem;
+    box-shadow: 0 0 1rem rgba(144, 108, 230, 0.5);
+    border: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    color: rgba(17, 17, 17, 0.48);
+    border-radius: 4%;
+}
+.search_img{
+    position: absolute;
+    top: 0.4rem;
+    left: 0.3rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+// @import '~@angular/material/theming';
+// $custom-typography: mat-typography-config(
+//     $body-1: mat-typography-level(10%)
+// );
+
+// @include angular-material-typography($custom-typography);
