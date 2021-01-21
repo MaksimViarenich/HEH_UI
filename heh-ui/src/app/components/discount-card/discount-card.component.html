@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">
+      {{discountVendorName}}
+    </div>
+    <div class="btn-favorite" (click)="isFavorite = !isFavorite">
+      <span class="material-icons">
+        {{isFavorite ? 'favorite': 'favorite_border'}}
+      </span>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="category-and-tags">
+      <div class="category">
+        <img src="../../../assets/images/svg-icons/categories.svg" alt="">
+        {{discountCategory}}
+      </div>
+      <div class="tag">
+        {{discountTag}}
+      </div>
+    </div>
+    <div class="card-content-description">
+      {{discountName}}
+    </div>
+  </div>
+</div>
