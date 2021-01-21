@@ -30,8 +30,8 @@ export class UserProfileComponent implements OnInit {
   tags: string[] = ['Food'];
   allTags: string[] = ['Food', 'Beauty', 'Domino\'s Pizza', 'Sushi', 'Sport', 'H&M'];
 
-  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement> | undefined;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
   constructor() {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
@@ -66,6 +66,7 @@ export class UserProfileComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
+    // @ts-ignore
     this.tagInput.nativeElement.value = '';
     this.tagCtrl.setValue(null);
   }

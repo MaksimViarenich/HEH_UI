@@ -20,6 +20,7 @@ import {NotFoundComponent} from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,13 @@ import { HeaderComponent } from './components/header/header.component';
     LoginLayoutComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AppMaterialModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
