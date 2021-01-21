@@ -1,26 +1,26 @@
 <div class="card">
-    <div class="header">
-        <div class="card-title">
-            <p>{{discountVendorName}}</p>
-        </div>
-        <div class="btn-favorite">
-            <span class="material-icons">
-                favorite_border
-            </span>
-        </div>
+  <div class="card-header">
+    <div class="card-title">
+      {{discountVendorName}}
     </div>
-    <div class="card-content">
-      <div class="category-and-tags">
-        <div class="category">
-          <img src="../../../assets/images/svg-icons/categories.svg" alt="">
-          <p>{{discountCategory}}</p>
-        </div>
-        <div class="tag">
-          <p>{{discountTag}}</p>
-        </div>
+    <div class="btn-favorite" (click)="isFavorite = !isFavorite">
+      <span class="material-icons">
+        {{isFavorite ? 'favorite': 'favorite_border'}}
+      </span>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="category-and-tags">
+      <div class="category">
+        <img src="../../../assets/images/svg-icons/categories.svg" alt="">
+        <p>{{discountCategory}}</p>
       </div>
-      <div class="card-content-description">
-       {{discountName}}
+      <div class="tag">
+        <p>{{discountTag}}</p>
       </div>
     </div>
+    <div class="card-content-description">
+      {{discountName}}
+    </div>
+  </div>
 </div>

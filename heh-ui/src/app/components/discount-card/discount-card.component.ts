@@ -13,6 +13,7 @@ export class DiscountCardComponent implements OnInit {
 
   //Mught be an array
   discountTag: string = `Pizza`;
+  isFavorite = false;
 
   constructor() { }
 
