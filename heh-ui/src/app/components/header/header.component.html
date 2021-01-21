@@ -18,9 +18,9 @@
           <img class='profileIcon' src="../../../assets/img/header_profile.svg" alt="" mat-button
             [matMenuTriggerFor]="beforeMenuProfil">
           <mat-menu #beforeMenuProfil="matMenu" xPosition="before">
-            <a routerLink="/profile"><button mat-menu-item><img src="../../../assets/img/header_menu_profile.svg" alt="">Profile</button></a>
+            <button class="btnPerson btn-primary" (click)="goToPerson()" mat-menu-item ><img src="../../../assets/img/header_menu_profile.svg" alt="">Profile</button>
             <div class="line"></div>
-            <button mat-menu-item><img src="../../../assets/img/header_menu_logout.svg" alt="">Logout</button>
+            <button class="btnLogout btn-primary" (click)="goToLogout()" mat-menu-item><img src="../../../assets/img/header_menu_logout.svg" alt="">Logout</button>
           </mat-menu>
         </div>
       </div>
