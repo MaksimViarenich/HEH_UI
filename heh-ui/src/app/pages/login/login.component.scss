@@ -1,0 +1,85 @@
+$width-field: 41vh;
+$height-field: 7vh;
+$border-radius-field: 50px;
+$button-color: #0082CA;
+
+@mixin login-div-input {
+  background-color: white;
+  text-align: left;
+  font-weight: bold;
+  width: $width-field;
+  height: $height-field;
+  margin: 0 auto 2rem auto;
+  border-radius: $border-radius-field;
+  outline: none;
+  border: 1px solid #D2D2D2;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  &::placeholder {
+    color: #BCBCBC;
+  }
+}
+
+@mixin login-input-field {
+  padding: 0 5px;
+  margin: 0;
+  font-size: 2.3vh;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  width: calc(41vh - 65px);
+}
+
+.login-wrapper {
+  height: 100vh;
+  background: linear-gradient(107.56deg, #E7E5FD 0%, #D7E9F2 100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .login-logo {
+    padding: 5vh 0 5vh 10vh;
+  }
+
+  .login-picture {
+    img {
+      height: 80vh;
+    }
+  }
+
+  .login-form {
+    .login-heading {
+      padding: 35vh 0 6vh 0;
+      font-size: 4vh;
+      font-weight: bold;
+      margin: 0 auto;
+    }
+
+    .login-field, .login-password {
+      @include login-div-input;
+
+      input {
+        @include login-input-field;
+      }
+
+      svg {
+        padding: 1vh 0 0 1vh;
+        width: 8vh;
+        height: 8vh;
+      }
+    }
+
+    .login-button {
+      button {
+        width: $width-field;
+        margin: 0 auto 2rem auto;
+        height: $height-field;
+        background-color: $button-color;
+        border-radius: $border-radius-field;
+        font-weight: bold;
+        font-size: 2.3vh;
+      }
+    }
+  }
+}
