@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './modules/app-material/app-material.module';
 import { DiscountsComponent } from './pages/discounts/discounts.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
@@ -21,7 +19,6 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
-import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,13 +40,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     DiscountCardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        AppMaterialModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AppMaterialModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
