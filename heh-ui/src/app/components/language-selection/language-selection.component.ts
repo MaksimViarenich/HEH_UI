@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 interface Language {
   lang: string;
@@ -9,14 +9,19 @@ interface Language {
 @Component({
   selector: 'app-language-selection',
   templateUrl: './language-selection.component.html',
-  styleUrls: ['./language-selection.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./language-selection.component.scss']
 })
 export class LanguageSelectionComponent {
 
+  imagePath = '../assets/images/uk-flag.png';
+
   languages: Language[] = [
-    {lang: 'English', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_the_United_Kingdom_%282-3%29.svg/1200px-Flag_of_the_United_Kingdom_%282-3%29.svg.png', langId: 0},
-    {lang: 'Russian', path: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_the_United_Kingdom_%282-3%29.svg/1200px-Flag_of_the_United_Kingdom_%282-3%29.svg.png', langId: 1}
+    {lang: 'English', path: '../assets/images/uk-flag.png', langId: 0},
+    {lang: 'Русский', path: '../assets/images/ru-flag.png', langId: 1}
   ];
 
+  selectLang(e: any): void {
+    this.imagePath = e.target.src;
+    console.log(e.target.src);
+  }
 }

@@ -1,4 +1,4 @@
-<button mat-button [matMenuTriggerFor]="menu" class="lang-select-button">Language</button>
-<mat-menu class="lang-selection-menu" #menu="matMenu">
-  <button mat-menu-item mat-menu-itemClass="lang-item" class="lang-select-option" *ngFor="let item of languages">{{item.lang}}</button>
+<div mat-button [matMenuTriggerFor]="beforeMenu" class="lang-select-button"> <img src={{imagePath}} alt=""> </div>
+<mat-menu class="menu-items" panelClass="lang-selection-menu" #beforeMenu="matMenu" xPosition="before">
+  <div mat-menu-item (click)="selectLang($event)" class="lang-select-option lang-item" *ngFor="let item of languages"> <img src={{item.path}} alt="">  {{item.lang}}</div>
 </mat-menu>

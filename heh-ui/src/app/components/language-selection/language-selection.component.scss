@@ -1,2 +1,50 @@
+::ng-deep .lang-select-button {
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 1.125rem;
+  img {
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 1.125rem;
+  }
+  .mat-ripple .mat-button-ripple {
+    padding: 0;
+  }
+}
 
+::ng-deep .menu-items {
+  .lang-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    img {
+      height: 2.25rem;
+      width: 2.25rem;
+      border-radius: 1.125rem;
+      margin-right: 0.5rem;
+    }
+  }
+}
 
+::ng-deep .cdk-overlay-container .cdk-overlay-pane {
+  margin-top: 1rem;
+  transition: 0.2s;
+  .mat-menu-panel .mat-menu-content {
+    width: 9.375rem;
+    padding: 0;
+    .lang-select-option {
+      padding: 0 1rem;
+    }
+  }
+}
+
+::ng-deep .cdk-overlay-container .cdk-overlay-pane::before {
+  content: '';
+  border: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid white;
+  position: absolute;
+  margin-left: 7.6rem;
+  top: 0.1rem;
+  width: 0;
+}
