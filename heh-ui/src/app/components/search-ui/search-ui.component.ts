@@ -11,5 +11,4 @@ export class SearchUIComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

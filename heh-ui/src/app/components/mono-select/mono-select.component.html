@@ -1,0 +1,7 @@
+<mat-form-field class="no-padding change_bottom" appearance="fill">
+  <mat-label>{{labelForUserLoc}}</mat-label>
+  <mat-select>
+    <mat-option>{{baseUserLoc}}</mat-option>
+    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+  </mat-select>
+</mat-form-field>

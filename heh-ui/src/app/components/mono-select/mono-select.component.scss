@@ -1,0 +1,12 @@
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+   mat-form-field{
+    width: 100%;
+  }
+  ::ng-deep
+  .mat-form-field-type-mat-select:not(.mat-form-field-disabled)
+  .mat-form-field-flex {
+  background-color: transparent;
+}  

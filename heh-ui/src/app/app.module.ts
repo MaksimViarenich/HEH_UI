@@ -21,6 +21,9 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchUIComponent } from './components/search-ui/search-ui.component';
+import { MultySelectComponent } from './components/multy-select/multy-select.component';
+import { FieldsSearchComponent } from './components/fields-search/fields-search.component';
+import { MonoSelectComponent } from './components/mono-select/mono-select.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SearchUIComponent } from './components/search-ui/search-ui.component';
     HomeLayoutComponent,
     LoginLayoutComponent,
     HeaderComponent,
-    SearchUIComponent
+    SearchUIComponent,
+    MultySelectComponent,
+    FieldsSearchComponent,
+    MonoSelectComponent
   ],
   imports: [
     BrowserModule,
