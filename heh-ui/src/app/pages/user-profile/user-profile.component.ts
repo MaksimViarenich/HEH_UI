@@ -21,7 +21,6 @@ export class UserProfileComponent implements OnInit {
   };
 
   typesOfSubscription: string[] = ['Receive a newsletter', 'New service', 'New vendor', 'On city', 'Hot sales'];
-
   visible = true;
   selectable = true;
   removable = true;
