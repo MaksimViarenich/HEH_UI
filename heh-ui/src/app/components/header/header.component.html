@@ -1,28 +1,29 @@
 <header class='header'>
   <div class="container">
-  <div class='header-title'>happy exadel hours</div>
-  <nav class="navigation">
-    <mat-tab-group animationDuration="0">
-      <mat-tab label="Discounts"></mat-tab>
-      <mat-tab label="Favorites"></mat-tab>
-      <mat-tab label="Moderator"></mat-tab>
-      <mat-tab label="Admin"></mat-tab>
-    </mat-tab-group>
+    <div class='header-title'>happy exadel hours</div>
+    <nav class="navigation">
+      <mat-tab-group animationDuration="0">
+        <mat-tab label="Discounts"></mat-tab>
+        <mat-tab label="Favorites"></mat-tab>
+        <mat-tab label="Moderator"></mat-tab>
+        <mat-tab label="Admin"></mat-tab>
+      </mat-tab-group>
 
-    <div class="person">
-      <div class='personInfo'>
-        <a class='personName' href="#">Michael Browk</a>
-        <a class='personPlace' href="#">Belarus, Minsk</a>
+      <div class="person">
+        <div class='personInfo'>
+          <a class='personName' href="#">Michael Browk</a>
+          <a class='personPlace' href="#">Belarus, Minsk</a>
+        </div>
+        <div class="personPic">
+          <img class='profileIcon' src="../../../assets/img/header_profile.svg" alt="" mat-button
+            [matMenuTriggerFor]="beforeMenuProfil">
+          <mat-menu #beforeMenuProfil="matMenu" xPosition="before">
+            <a routerLink="/profile"><button mat-menu-item><img src="../../../assets/img/header_menu_profile.svg" alt="">Profile</button></a>
+            <div class="line"></div>
+            <button mat-menu-item><img src="../../../assets/img/header_menu_logout.svg" alt="">Logout</button>
+          </mat-menu>
+        </div>
       </div>
-      <div class="personPic">
-        <img class='profileIcon' src="../../../assets/img/header_profile.svg" alt="" mat-button
-          [matMenuTriggerFor]="beforeMenuProfil">
-        <mat-menu #beforeMenuProfil="matMenu" xPosition="before">
-          <button mat-menu-item><img src="../../../assets/img/header_menu_profile.svg" alt="">Profile</button>
-          <button mat-menu-item><img src="../../../assets/img/header_menu_logout.svg" alt="">Logout</button>
-        </mat-menu>
-      </div>
-    </div>
-  </nav>
-</div>
+    </nav>
+  </div>
 </header>
