@@ -2,14 +2,14 @@ import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   exports: [
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule,
+    MatMenuModule,
   ],
   imports: [],
   providers: []
