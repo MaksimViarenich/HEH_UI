@@ -1,104 +1,108 @@
 .card {
-    position: absolute;
-    overflow: hidden;
-    width: 18.3125rem;
-    height: 15.8125rem;
-    background: #fff;
-    box-shadow: 0px 4px 30px rgba(34, 35, 38, 0.15);
-    border-radius: 5px;
-  }
+  position: absolute;
+  overflow: hidden;
+  width: 18.3125rem;
+  height: 15.8125rem;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
+  border-radius: 5px;
+}
+
 .header {
-    height: 8.375rem;
-    background-image:  url('../../../assets/images/card-backgrounds/bg-vendor-green.PNG');
-    background-size: cover;
+  height: 8.375rem;
+  background-image: url('../../../assets/images/card-backgrounds/bg-vendor-green.PNG');
+  background-size: cover;
 }
 
-.card-title {
-    max-height: fit-content;
-    color: #fff;
-    position: absolute;
-    height: 1.5rem;
-    margin: 3.4375rem 0 0 0.9375rem;
-    font-size: 1.5rem;
-    font-weight: bold;
+.card .card-content {
+  padding: 0 0.625rem 0.625rem 0.625rem;
 }
 
-.card-title p {
-    margin: 0;
+.card .card-content .category-and-tags {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.625rem;
+}
+
+.card .card-content .card-content-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .card-title {
+  max-height: fit-content;
+  color: #fff;
+  position: absolute;
+  height: 1.5rem;
+  margin: 3.4375rem 0 0 0.9375rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .btn-favorite {
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    left: 16.125rem;
-    right: 0.4375rem;
-    top: 0.4375rem;
-    bottom: 6.5rem;
-    color: #fff;
-    background-color: none;
-    border: 0;
-}
-
-.categories-and-tags {
-    display: flex;
-    justify-content: flex-start;
-    padding: 0 0.9375rem;
-    margin-bottom: 0.625rem;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 16.125rem;
+  right: 0.4375rem;
+  top: 0.4375rem;
+  bottom: 6.5rem;
+  color: #fff;
+  background-color: none;
+  border: 0;
 }
 
 .category {
-    max-width: fit-content;
-    display: flex;
-    align-items: center;
-    margin: 0.625rem 0.625rem 0 0;
-    height: 1.625rem;
-    border-radius: 0.3125rem;
-    border: 1px solid #333;
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 0.625rem 0.625rem 0 0;
+  height: 1.625rem;
+  border-radius: 0.3125rem;
+  border: 1px solid #333;
 }
 
 .category p {
-    padding: 0 0.3125rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 0 0.3125rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .category img {
-    margin-left: 0.3125rem;
-    max-width: 80%;
-    max-height: 80%;
+  margin-left: 0.3125rem;
+  max-width: 80%;
+  max-height: 80%;
 }
 
 .tag {
-    max-width: fit-content;
-    display: flex;
-    align-items: center;
-    margin: 0.625rem 0.625rem 0 0;
-    height: 1.75rem;
-    border-radius: 0.3125rem;
-    background-color: #B0B4B6;
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 0.625rem 0.625rem 0 0;
+  height: 1.75rem;
+  border-radius: 0.3125rem;
+  background-color: #B0B4B6;
 }
 
 .tag p {
-    margin: 0;
-    padding: 0 0.3125rem;
+  margin: 0;
+  padding: 0 0.3125rem;
 }
 
 .content {
-    max-width: fit-content;
-    overflow: hidden;
-    margin: 0 0.9375rem;
-    height: 4.5rem;
+  max-width: fit-content;
+  overflow: hidden;
+  margin: 0 0.9375rem;
+  height: 4.5rem;
 }
 
 .content p {
-    margin: 0;
-    max-width: 80%;
-    max-height: 80%;
+  margin: 0;
+  max-width: 80%;
+  max-height: 80%;
 }
-//   .header-image {
-//     background-image: url('../../../assets/card-backgrounds/bg-vendor-green.PNG');
-//     background-size: cover;
-//   }
