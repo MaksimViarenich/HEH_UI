@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discount-card.component.scss']
 })
 export class DiscountCardComponent implements OnInit {
-  discountVendorName: string = `Domino's pizza`;
-  discountName: string = `Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f`;
+  discountVendorName: string = 'Domino\'s pizza';
+  discountName: string = 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f';
   bgVendor: string = '../../../assets/images/card-backgrounds/bg-vendor-green.PNG';
-  discountCategory: string = `Food`;
+  discountCategory: string = 'Food';
 
   //Mught be an array
-  discountTag: string = `Pizza`;
+  discountTag: string = 'Pizza';
   isFavorite = false;
 
   constructor() { }
