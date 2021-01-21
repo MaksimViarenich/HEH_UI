@@ -1,0 +1,55 @@
+Index: heh-ui/src/app/components/header/header.component.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- heh-ui/src/app/components/header/header.component.scss	(revision cc1d3028dc19993336f6c6b460b1086493dcf435)
++++ heh-ui/src/app/components/header/header.component.scss	(date 1611228467000)
+@@ -7,9 +7,11 @@
+   opacity: .82;
+   text-decoration: none;
+ 
+-  .headerTitle {
++  .header-title {
+     text-transform: uppercase;
++    font-size: 1.3rem;
+     color: #F3F3F3;
++    font-weight: bold;
+   }
+ 
+   // @include personNameMixin;
+@@ -58,4 +60,15 @@
+ }
+ mat-tab{
+   width: 1rem;
+-}
+\ No newline at end of file
++
++  .mat-tab-label {
++    min-width: 120px;
++    padding: 0 10px;
++  }
++}
++
++:host ::ng-deep .mat-tab-label {
++  min-width: 100px;
++  padding: 0 15px;
++}
++
+Index: heh-ui/src/app/components/header/header.component.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- heh-ui/src/app/components/header/header.component.html	(revision cc1d3028dc19993336f6c6b460b1086493dcf435)
++++ heh-ui/src/app/components/header/header.component.html	(date 1611228338000)
+@@ -1,7 +1,7 @@
+ <header class='header'>
+-  <div class='headerTitle' style="font-weight: bold">happy exadel hours</div>
++  <div class='header-title'>happy exadel hours</div>
+ 
+-  <mat-tab-group>
++  <mat-tab-group animationDuration="0">
+     <mat-tab label="Discounts"></mat-tab>
+     <mat-tab label="Favorites"></mat-tab>
+     <mat-tab label="Moderator"></mat-tab>

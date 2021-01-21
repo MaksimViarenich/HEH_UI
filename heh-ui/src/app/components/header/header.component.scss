@@ -1,15 +1,22 @@
 .header {
-  display: flex;
-  margin: auto;
-  align-items: center;
-  justify-content: space-around;
+
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: .82;
   text-decoration: none;
 
-  .headerTitle {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  .header-title {
+    grid-area: 1;
     text-transform: uppercase;
+    font-size: 1.3rem;
     color: #F3F3F3;
+    font-weight: bold;
   }
 
   // @include personNameMixin;
@@ -17,6 +24,8 @@
 
 .person {
   display: flex;
+  align-items: center;
+  margin-left: 2rem;
 
   .personInfo a {
     display: flex;
@@ -37,9 +46,10 @@
   }
 
   .personPic img {
+    align-items: center;
     margin-left: 0.3rem;
-    width: 2rem;
-    height: 2rem;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   .profileIcon:hover {
@@ -52,10 +62,19 @@
     cursor: pointer;
   }
 }
-.mat-menu-item{
+
+.mat-menu-item {
   display: flex;
   align-items: center;
 }
-mat-tab{
-  width: 1rem;
+
+:host ::ng-deep .mat-tab-label {
+  min-width: 100px;
+  padding: 0 1rem;
+  color: #808080;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
 }
