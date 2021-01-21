@@ -21,6 +21,7 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,12 +43,13 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
     HeaderComponent,
     DiscountCardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AppMaterialModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
