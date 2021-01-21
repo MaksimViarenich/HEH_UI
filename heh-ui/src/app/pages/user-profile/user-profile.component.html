@@ -3,23 +3,24 @@
 <div class="profile-wrapper">
 
   <div class="profile-photo">
-    <img src='../../../assets/img/profile-picture.jpg' alt='Profile photo' title='Profile photo'/>
+    <img src='{{user.userphoto}}' alt='Profile photo' title='Profile photo'/>
   </div>
 
   <div class="profile-content">
     <div class="profile-info">
       <h2>{{user.username}}</h2>
       <div class="profile-location">
-        <h3>{{user.location}}</h3>
-        <h3>{{user.address}}</h3>
+        <div>{{user.location}}</div>
+        <div>{{user.address}}</div>
       </div>
     </div>
 
-    <mat-selection-list>
+    <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'" *ngFor="let subscription of typesOfSubscription">
         {{subscription}}
       </mat-list-option>
     </mat-selection-list>
+
     <mat-form-field>
       <mat-label>Subscriptions</mat-label>
       <mat-chip-list #chipList aria-label="Tag selection">

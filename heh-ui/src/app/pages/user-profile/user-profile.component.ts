@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit {
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
+    userphoto: '../../../assets/img/profile-picture.jpg',
     location: 'Belarus, Minsk',
     address: 'Naturalistov 3',
   };
