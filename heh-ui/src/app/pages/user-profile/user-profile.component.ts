@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NotificationPreferences} from 'src/app/models/notification-preferences';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
@@ -10,7 +10,8 @@ import {map, startWith} from 'rxjs/operators';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent implements OnInit {
 
