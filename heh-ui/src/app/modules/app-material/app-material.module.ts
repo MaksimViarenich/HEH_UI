@@ -31,4 +31,5 @@ import { MatMenuModule } from '@angular/material/menu';
   providers: []
 })
 export class AppMaterialModule {
+
 }
