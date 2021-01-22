@@ -1,68 +1,63 @@
 .header {
-
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: .82;
-  text-decoration: none;
 
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 1rem;
-  }
 
-  .header-title {
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    color: #F3F3F3;
-    font-weight: bold;
+    .header-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #F3F3F3;
+      text-transform: uppercase;
+    }
+
+    .header-title:hover {
+      cursor: pointer;
+    }
   }
-  .header-title:hover {
-    cursor: pointer;
-  }
-  // @include personNameMixin;
 }
 
-.person {
+.navigation {
   display: flex;
-  align-items: center;
-  margin-left: 2rem;
 
-  .personInfo a {
+  .person {
     display: flex;
-    flex-direction: column;
-    text-decoration: none;
-
-    .personName a {
-      color: let(--headerProfileColor);
-      font-weight: normal;
-      font-size: 1.6rem;
-    }
-
-    .personPic img {
-      margin-left: 0.3rem;
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-
-  .personPic img {
     align-items: center;
-    margin-left: 0.3rem;
-    width: 2.4rem;
-    height: 2.4rem;
-  }
+    margin-left: 2rem;
 
-  .profileIcon:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
+    .person-info a {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
 
-  .switchLang:hover {
-    transform: scale(1.2);
-    cursor: pointer;
+      .person-name a {
+        font-size: 1.6rem;
+        font-weight: normal;
+        color: #303030;
+      }
+    }
+
+    .person-pic img {
+      width: 2.5rem;
+      height: 2.5rem;
+      align-items: center;
+    }
+
+    .profile-icon {
+      margin-left: 1.5rem;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
   }
 }
+
 
 .mat-menu-item {
   display: flex;
@@ -70,25 +65,19 @@
 }
 
 .mat-tab-label {
-  min-width: 6.3rem;
+  max-width: 5rem;
   padding: 0 1rem;
-  color: #202020;
-}
-
-.navigation {
-  display: flex;
+  color: #101010;
 }
 
 // profile menu
 
 .mat-menu-content {
   display: flex;
-  align-items: center;
-  width: 16rem;
   flex-direction: column;
   align-items: center;
+  width: 16rem;
   color: #333333;
-
 }
 
 .mat-menu-content::before {
@@ -98,7 +87,6 @@
   top: -.8rem;
   border: .8rem solid transparent;
   border-bottom: .8rem solid #ffffff;
-
 }
 
 .mat-menu-panel {
@@ -123,7 +111,7 @@ button.mat-menu-item {
 }
 
 .mat-menu-item img {
-  height: 2rem;
   width: 2rem;
+  height: 2rem;
   margin-right: .8rem;
 }
