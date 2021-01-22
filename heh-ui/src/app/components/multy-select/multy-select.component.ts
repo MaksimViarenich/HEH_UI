@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
@@ -11,6 +11,7 @@ import {map, startWith} from 'rxjs/operators';
   selector: 'app-multy-select',
   templateUrl: './multy-select.component.html',
   styleUrls: ['./multy-select.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MultySelectComponent implements OnInit {
   @ViewChild('fruitInput') public valueInput: ElementRef<HTMLInputElement> | any;

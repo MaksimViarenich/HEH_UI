@@ -5,10 +5,3 @@ $custom-typography: mat-typography-config(
   $font-family: 'Montserrat',
 );
 @include mat-core($custom-typography);
-
-mat-form-field.no-padding .mat-form-field-wrapper {
-  padding: 0;
-}
-mat-form-field.change_bottom .mat-form-field-underline{
-  bottom: 0.2rem;
-}
