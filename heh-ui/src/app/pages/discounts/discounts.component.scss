@@ -1,0 +1,145 @@
+$margin: 2.5rem;
+
+.service-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.service-container-content {
+  margin-top: 5rem;
+}
+
+mat-sidenav {
+  width: 52rem;
+  background-image: url("../../../assets/img/Girl_with_truck.svg");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-attachment: fixed;
+
+  .sidenav-background {
+    height: 8.5rem;
+    background: url("../../../assets/img/background/2.png") no-repeat center;
+    background-size: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .sidenav-title {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 8.5rem;
+      margin-left: $margin;
+    }
+
+    .btn-favorite {
+      user-select: none; /* standard syntax */
+      -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+      -moz-user-select: none; /* mozilla browsers */
+      -khtml-user-select: none; /* webkit (konqueror) browsers */
+      -ms-user-select: none; /* IE10+ */
+      span {
+        font-size: 4rem;
+        color: #ffffff;
+        line-height: 8.5rem;
+        margin-right: $margin;
+      }
+
+      span:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .sidenav-info {
+    .sidenav-service {
+      font-size: 2.3rem;
+      font-weight: bold;
+      margin: $margin;
+    }
+
+    .sidenav-description {
+      margin: 0 $margin;
+      font-size: 1rem;
+    }
+
+    mat-form-field {
+      margin: 1.5rem $margin 1rem $margin;
+      width: 34rem;
+    }
+
+    .sidenav-contacts {
+      margin: 0 $margin;
+
+      div {
+        height: 2.5rem;
+
+        span {
+          vertical-align: middle;
+          padding-right: 0.5rem;
+          font-size: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+/*начало дублирования, взято из компоненты discount-card */
+.category-and-tags {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 1.5rem $margin;
+
+
+  .category {
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 0.625rem 0.625rem 0 0;
+    height: 1.625rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #333;
+    padding: 0 0.5rem;
+
+    img {
+      max-width: 80%;
+      max-height: 80%;
+      padding-right: 0.3rem;
+    }
+  }
+
+  .category:hover {
+    background: #9A90FE;
+    color: #fff;
+    border-color: #9A90FE;
+    cursor: pointer;
+
+    img {
+      filter: invert(1);
+    }
+  }
+
+  .tag {
+    max-width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 0.625rem 0.625rem 0 0;
+    height: 1.75rem;
+    border-radius: 0.3125rem;
+    background-color: #B0B4B6;
+    padding: 0 0.5rem;
+  }
+
+  .tag:hover {
+    background-color: #9A90FE;
+    cursor: pointer;
+  }
+}
+
+/*конец дублирования, взято из компоненты discount-card */
