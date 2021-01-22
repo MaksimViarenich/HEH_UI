@@ -1,10 +1,10 @@
 $width-field: 41vh;
 $height-field: 7vh;
-$border-radius-field: 50px;
+$border-radius-field: 0.4rem;
 $button-color: #0082CA;
 
 @mixin login-div-input {
-  background-color: white;
+  background-color: #FFFFFF;
   text-align: left;
   font-weight: bold;
   width: $width-field;
@@ -22,13 +22,13 @@ $button-color: #0082CA;
 }
 
 @mixin login-input-field {
-  padding: 0 5px;
+  padding: 0;
   margin: 0;
   font-size: 2.3vh;
   font-weight: bold;
   outline: none;
   border: none;
-  width: calc(41vh - 65px);
+  width: calc(41vh - 55px);
 }
 
 .login-wrapper {
@@ -62,21 +62,15 @@ $button-color: #0082CA;
       input {
         @include login-input-field;
       }
-
-      svg {
-        padding: 1vh 0 0 1vh;
-        width: 8vh;
-        height: 8vh;
-      }
     }
 
     .login-button {
       button {
         width: $width-field;
-        margin: 0 auto 2rem auto;
         height: $height-field;
         background-color: $button-color;
         border-radius: $border-radius-field;
+        margin: 0 0.5rem;
         font-weight: bold;
         font-size: 2.3vh;
       }
