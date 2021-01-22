@@ -1,0 +1,36 @@
+<div class="favorite-card">
+    <div class="favorite-vendor">
+        <div class="card-title">
+            {{ discountVendorName }}
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="discount-info">
+            <div class="category-and-tags">
+                <div class="category">
+                    <img src="../../../assets/images/svg-icons/categories.svg" alt="">
+                    {{ discountCategory }}
+                </div>
+                <div class="tag">
+                    {{ discountTag }}
+                </div>
+            </div>
+            <div class="card-content-description">
+                <div class="discount-name line-clamp">
+                    {{ discountName }}
+                </div>
+                <div class="discount-note line-clamp">
+                    {{ discountNote }}
+                </div>
+            </div>
+        </div>
+        <div class="card-actions">
+            <i class="material-icons">
+                edit
+            </i>
+            <i class="material-icons warn-color">
+                delete
+            </i>
+        </div>
+    </div>
+</div>

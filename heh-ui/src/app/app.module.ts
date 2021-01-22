@@ -19,6 +19,7 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
     HomeLayoutComponent,
     LoginLayoutComponent,
     HeaderComponent,
-    DiscountCardComponent
+    DiscountCardComponent,
+    FavoriteCardComponent
   ],
   imports: [
     BrowserModule,
