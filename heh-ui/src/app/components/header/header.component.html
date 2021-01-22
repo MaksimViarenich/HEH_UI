@@ -1,6 +1,6 @@
 <header class='header'>
   <div class="container">
-    <div class='header-title'>happy exadel hours</div>
+    <div class='header-title' (click)="goTodiscounts()">happy exadel hours</div>
     <nav class="navigation">
       <mat-tab-group animationDuration="0">
         <mat-tab label="Discounts"></mat-tab>
@@ -11,13 +11,13 @@
 
       <div class="person">
         <div class='personInfo'>
-          <a class='personName' href="#">Michael Browk</a>
+          <a class='personName' href="/profile" (click)="goToPerson()">Michael Browk</a>
           <a class='personPlace' href="#">Belarus, Minsk</a>
         </div>
         <div class="personPic">
           <img class='profileIcon' src="../../../assets/img/header_profile.svg" alt="" mat-button
             [matMenuTriggerFor]="beforeMenuProfil">
-          <mat-menu #beforeMenuProfil="matMenu" xPosition="before">
+          <mat-menu class="profileMenu" #beforeMenuProfil="matMenu" xPosition="before">
             <button class="btnPerson btn-primary" (click)="goToPerson()" mat-menu-item ><img src="../../../assets/img/header_menu_profile.svg" alt="">Profile</button>
             <div class="line"></div>
             <button class="btnLogout btn-primary" (click)="goToLogout()" mat-menu-item><img src="../../../assets/img/header_menu_logout.svg" alt="">Logout</button>
