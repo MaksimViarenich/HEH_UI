@@ -18,6 +18,10 @@
     color: rgba(17, 17, 17, 0.48);
     border-radius: 2%;
 }
+.search_input:active, .search_input:hover, .search_input:focus {
+    outline: 0;
+    outline-offset: 0;
+}
 .search_img{
     position: absolute;
     top: 1.1rem;
