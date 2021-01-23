@@ -1,6 +1,12 @@
+.background-image {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-attachment: fixed;
+}
+
 .container {
   width: 65.625%;
   margin: auto;
   margin-top: 4.375rem;
-  height: 100%;
 }
