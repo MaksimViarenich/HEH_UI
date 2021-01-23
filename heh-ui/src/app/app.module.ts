@@ -19,6 +19,14 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 
 @NgModule({
   declarations: [
@@ -44,9 +52,18 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+
+export class AppModule { }
