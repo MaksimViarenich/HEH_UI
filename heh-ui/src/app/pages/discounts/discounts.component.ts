@@ -10,7 +10,6 @@ import { Service } from 'src/app/models/service';
 })
 export class DiscountsComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  isFavorite = false;
   address = new FormControl();
 
   service: Service = {

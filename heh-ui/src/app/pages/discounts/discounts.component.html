@@ -2,11 +2,7 @@
   <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose position="end">
     <div class="sidenav-background">
       <div class="sidenav-title">{{service.vendor}}</div>
-      <div class="btn-favorite" (click)="isFavorite = !isFavorite">
-              <span class="material-icons">
-        {{isFavorite ? 'favorite' : 'favorite_border'}}
-      </span>
-      </div>
+      <app-btn-favorite class="sidenav-favorite"></app-btn-favorite>
     </div>
     <div class="sidenav-info">
       <div class="sidenav-service">
@@ -14,12 +10,11 @@
       </div>
 
       <div class="category-and-tags">
-        <div class="category">
-          <img src="../../../assets/images/svg-icons/categories.svg" alt="">
-          {{service.category}}
+        <div>
+          <app-category></app-category>
         </div>
-        <div class="tag">
-          {{service.tags}}
+        <div>
+          <app-tag></app-tag>
         </div>
       </div>
 
@@ -42,7 +37,9 @@
 
       <div class="sidenav-contacts">
         <div class="sidenav-website">
-          <span class="material-icons">language</span><span>{{service.website}}</span>
+          <a href="{{service.website}}" target="_blank">
+            <span class="material-icons">language</span><span>{{service.website}}</span>
+          </a>
         </div>
         <div class="sidenav-phone">
           <span class="material-icons">phone</span><span>{{service.phones}}</span>
@@ -53,21 +50,32 @@
         <div class="sidenav-validity">
           <span class="material-icons">calendar_today</span><span>Available till {{service.validity}}</span>
         </div>
-        <div class="sidenav-social-network">
-          <span><a href="{{service.instagram}}" target="_blank"><img src="assets/img/icons/instagram-icon.svg"></a></span>
-          <span><a href="{{service.facebook}}" target="_blank"><img src="assets/img/icons/facebook-icon.svg"></a></span>
-          <span><a href="{{service.vk}}" target="_blank"><img src="assets/img/icons/vk-icon.svg"></a></span>
-        </div>
       </div>
-
+      <div class="social-network">
+            <span>
+              <a href="{{service.instagram}}" target="_blank">
+                <img src="assets/img/icons/instagram-icon.svg">
+              </a>
+            </span>
+        <span>
+            <a href="{{service.facebook}}" target="_blank">
+              <img src="assets/img/icons/facebook-icon.svg">
+            </a>
+          </span>
+        <span>
+            <a href="{{service.vk}}" target="_blank">
+              <img src="assets/img/icons/vk-icon.svg">
+            </a>
+          </span>
+      </div>
     </div>
+
   </mat-sidenav>
 
   <mat-sidenav-content class="service-container-content">
-    <p>
-      <button mat-button (click)="sidenav.open()">Open</button>
-    </p>
+    <app-header></app-header>
+    <button mat-button (click)="sidenav.open()">Open</button>
+    <app-category></app-category>
+    <app-tag></app-tag>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
