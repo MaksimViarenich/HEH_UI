@@ -18,11 +18,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
-<<<<<<< HEAD
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
-=======
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
->>>>>>> develop
 
 @NgModule({
   declarations: [
@@ -42,11 +39,8 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
     HomeLayoutComponent,
     LoginLayoutComponent,
     HeaderComponent,
-<<<<<<< HEAD
-    LanguageSelectionComponent
-=======
+    LanguageSelectionComponent,
     DiscountCardComponent
->>>>>>> develop
   ],
   imports: [
     BrowserModule,

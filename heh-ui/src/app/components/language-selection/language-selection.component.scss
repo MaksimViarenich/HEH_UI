@@ -1,4 +1,4 @@
-::ng-deep .lang-select-button {
+.lang-select-button {
   height: 2.25rem;
   width: 2.25rem;
   border-radius: 1.125rem;
@@ -12,7 +12,7 @@
   }
 }
 
-::ng-deep .menu-items {
+.menu-items {
   .lang-item {
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@
   }
 }
 
-::ng-deep .cdk-overlay-container .cdk-overlay-pane {
+.cdk-overlay-container .cdk-overlay-pane {
   margin-top: 1rem;
   transition: 0.2s;
   .mat-menu-panel .mat-menu-content {
@@ -39,7 +39,7 @@
   }
 }
 
-::ng-deep .cdk-overlay-container .cdk-overlay-pane::before {
+.cdk-overlay-container .cdk-overlay-pane::before {
   content: '';
   border: 0.5rem solid transparent;
   border-bottom: 0.5rem solid white;

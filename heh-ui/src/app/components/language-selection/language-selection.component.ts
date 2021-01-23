@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 interface Language {
   lang: string;
@@ -9,7 +9,8 @@ interface Language {
 @Component({
   selector: 'app-language-selection',
   templateUrl: './language-selection.component.html',
-  styleUrls: ['./language-selection.component.scss']
+  styleUrls: ['./language-selection.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LanguageSelectionComponent {
 
