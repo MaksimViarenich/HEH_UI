@@ -1,0 +1,12 @@
+.btn-favorite {
+  user-select: none;
+
+  span {
+    font-size: 2rem;
+    color: #ffffff;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+}
