@@ -1,15 +1,16 @@
-$width-field: 41vh;
-$height-field: 7vh;
+$width-field: 35vh;
+$height-field: 5vh;
+$height-button: calc(5vh + 2px); // 2px для одинаковой высоты кнопки с input(заданы border)
 $border-radius-field: 0.4rem;
 $button-color: #0082CA;
+$font-field: 500 2vh Montserrat;
+$margin-bottom-form: 1.8vh;
 
 @mixin login-div-input {
   background-color: #FFFFFF;
-  text-align: left;
-  font-weight: bold;
   width: $width-field;
   height: $height-field;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto $margin-bottom-form auto;
   border-radius: $border-radius-field;
   outline: none;
   border: 1px solid #D2D2D2;
@@ -24,11 +25,10 @@ $button-color: #0082CA;
 @mixin login-input-field {
   padding: 0;
   margin: 0;
-  font-size: 2.3vh;
-  font-weight: bold;
   outline: none;
   border: none;
-  width: calc(41vh - 55px);
+  font: $font-field;
+  width: 30vh;
 }
 
 .login-wrapper {
@@ -38,41 +38,66 @@ $button-color: #0082CA;
   flex-direction: row;
   justify-content: center;
 
+  .login-main {
+    display: flex;
+
+    .login-main-content {
+      margin: auto;
+    }
+  }
+
   .login-logo {
-    padding: 5vh 0 5vh 10vh;
+    max-width: 50%;
+    margin-bottom: 8vh;
   }
 
   .login-picture {
-    img {
-      height: 80vh;
-    }
+    height: 70vh;
+    width: 70vh;
+  }
+
+  .login-main, .login-form {
+    margin: 0 5vh;
   }
 
   .login-form {
-    .login-heading {
-      padding: 35vh 0 6vh 0;
-      font-size: 4vh;
-      font-weight: bold;
-      margin: 0 auto;
-    }
+    display: flex;
 
-    .login-field, .login-password {
-      @include login-div-input;
+    .login-form-content {
+      margin: auto;
 
-      input {
-        @include login-input-field;
-      }
-    }
-
-    .login-button {
-      button {
-        width: $width-field;
-        height: $height-field;
-        background-color: $button-color;
-        border-radius: $border-radius-field;
-        margin: 0 0.5rem;
+      .login-title {
+        margin-bottom: $margin-bottom-form;
+        font-size: 2.9vh;
         font-weight: bold;
-        font-size: 2.3vh;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .login-field, .login-password {
+        @include login-div-input;
+
+        img {
+          width: $height-field;
+          height: $height-field;
+        }
+
+        input {
+          @include login-input-field;
+        }
+      }
+
+      .login-button {
+        display: flex;
+
+        button {
+          margin: 0 auto;
+          width: $width-field;
+          height: calc(5vh + 2px);
+          background-color: $button-color;
+          border-radius: $border-radius-field;
+          font: $font-field;
+        }
       }
     }
   }
