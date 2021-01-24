@@ -7,6 +7,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -19,6 +20,7 @@ export class UserProfileComponent implements OnInit {
     username: 'Michael Browk',
     userphoto: '../../../assets/img/header_profile.svg',
     location: 'Belarus, Minsk',
+    // address: 'Kosmonavtov, 3';
   };
 
   typesOfSubscription: string[] = ['Receive a newsletter', 'New service', 'New vendor', 'On city', 'Hot sales'];

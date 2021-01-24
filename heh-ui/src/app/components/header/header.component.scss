@@ -1,3 +1,6 @@
+$headerTabColor: #303030;
+$headerProfilTextColor: background-color#333333;
+
 .header {
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: .82;
@@ -58,19 +61,10 @@
   }
 }
 
-
-.mat-menu-item {
-  display: flex;
-  align-items: center;
+.mat-tab-links .tab {
+  min-width: 1.5rem ;
+  color: $headerTabColor;
 }
-
-.mat-tab-label {
-  max-width: 5rem;
-  padding: 0 1rem;
-  color: #101010;
-}
-
-// profile menu
 
 .mat-menu-content {
   display: flex;
