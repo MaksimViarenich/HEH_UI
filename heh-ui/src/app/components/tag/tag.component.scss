@@ -5,10 +5,13 @@
   border-radius: 0.3rem;
   background-color: #B0B4B6;
   padding: 0 0.5rem;
-  color: #FFFFFF;
+  color: #333333;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  display: inline-block;
 }
 
 .tag:hover {
   background-color: #9A90FE;
   cursor: pointer;
+  color: #ffffff;
 }

@@ -1,11 +1,4 @@
 $width-sidenav: 33rem;
-$height-background-triangle: 3.8rem;
-$font-vendor: 1.5rem;
-$font-title: 1.3rem;
-$font-content: 0.9rem;
-$margin-left: 1rem;
-$margin-bottom: 0.5rem;
-$margin-small: 0.35rem;
 
 .service-container {
   position: absolute;
@@ -18,88 +11,8 @@ $margin-small: 0.35rem;
 mat-sidenav {
   width: $width-sidenav;
   background-image: url("../../../assets/img/Girl_with_truck.svg");
-  background-size: 255px 183px;
+  background-size: 25%;
   background-repeat: no-repeat;
   background-position: 97% 97%;
   background-attachment: fixed;
-
-  .sidenav-background {
-    height: $height-background-triangle;
-    background: url("../../../assets/img/background/2.png") no-repeat center;
-    background-size: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 $margin-left;
-
-    .sidenav-title {
-      color: #ffffff;
-      font-size: $font-vendor;
-      font-weight: bold;
-      line-height: $height-background-triangle;
-    }
-
-    .sidenav-favorite {
-      line-height: $height-background-triangle;
-      font-size: $font-vendor*2;
-    }
-  }
-
-  .sidenav-service {
-    font-size: $font-title;
-    font-weight: bold;
-    margin: $margin-left;
-  }
-
-  .category-and-tags {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: $margin-bottom $margin-left;
-
-    div:first-child {
-      margin-right: $margin-bottom;
-    }
-  }
-
-  .sidenav-description {
-    margin: $margin-bottom $margin-left;
-    font-size: $font-content;
-  }
-
-  mat-form-field {
-    margin: 0 $margin-left;
-    width: 24rem;
-  }
-
-  .sidenav-contacts {
-    margin: $margin-small $margin-left;
-
-    a {
-      color: #333333;
-      text-decoration: none;
-    }
-
-    div {
-      height: 1.9rem;
-      line-height: 1.9rem;
-
-      span {
-        vertical-align: middle;
-      }
-
-      span:last-child {
-        padding: 0 $margin-small;
-        font-size: $font-content;
-      }
-    }
-  }
-
-  .social-network {
-    margin: $margin-small $margin-left;
-
-    span {
-      margin-right: $margin-small;
-    }
-  }
 }
