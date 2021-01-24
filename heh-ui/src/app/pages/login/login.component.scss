@@ -1,0 +1,104 @@
+$width-field: 35vh;
+$height-field: 5vh;
+$height-button: calc(5vh + 2px); // 2px для одинаковой высоты кнопки с input(заданы border)
+$border-radius-field: 0.4rem;
+$button-color: #0082CA;
+$font-field: 500 2vh Montserrat;
+$margin-bottom-form: 1.8vh;
+
+@mixin login-div-input {
+  background-color: #FFFFFF;
+  width: $width-field;
+  height: $height-field;
+  margin: 0 auto $margin-bottom-form auto;
+  border-radius: $border-radius-field;
+  outline: none;
+  border: 1px solid #D2D2D2;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  &::placeholder {
+    color: #BCBCBC;
+  }
+}
+
+@mixin login-input-field {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  border: none;
+  font: $font-field;
+  width: 30vh;
+}
+
+.login-wrapper {
+  height: 100vh;
+  background: linear-gradient(107.56deg, #E7E5FD 0%, #D7E9F2 100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .login-main {
+    display: flex;
+
+    .login-main-content {
+      margin: auto;
+    }
+  }
+
+  .login-logo {
+    max-width: 50%;
+    margin-bottom: 8vh;
+  }
+
+  .login-picture {
+    height: 70vh;
+    width: 70vh;
+  }
+
+  .login-main, .login-form {
+    margin: 0 5vh;
+  }
+
+  .login-form {
+    display: flex;
+
+    .login-form-content {
+      margin: auto;
+
+      .login-title {
+        margin-bottom: $margin-bottom-form;
+        font-size: 2.9vh;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .login-field, .login-password {
+        @include login-div-input;
+
+        img {
+          width: $height-field;
+          height: $height-field;
+        }
+
+        input {
+          @include login-input-field;
+        }
+      }
+
+      .login-button {
+        display: flex;
+
+        button {
+          margin: 0 auto;
+          width: $width-field;
+          height: calc(5vh + 2px);
+          background-color: $button-color;
+          border-radius: $border-radius-field;
+          font: $font-field;
+        }
+      }
+    }
+  }
+}
