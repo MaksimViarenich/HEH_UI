@@ -14,3 +14,6 @@ mat-form-field{
 .mat-form-field-appearance-fill .mat-form-field-flex{
   background-color: transparent;
 }
+.mat-form-field-appearance-fill .mat-form-field-underline::before{
+  background-color: #ffffff;
+}

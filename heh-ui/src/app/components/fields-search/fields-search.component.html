@@ -1,6 +1,6 @@
 <div class="field_container">
     <div class="search_and_mono">
-        <div class="search">
+        <div class="search div_box_shadow">
             <app-search-ui></app-search-ui>
         </div>
         <div class="mono_select div_box_shadow">
@@ -8,14 +8,14 @@
         </div>
     </div>
     <div class="multyple_selects">
-        <div class="multyple_selects_inner div_box_shadow">
-            <app-multy-select></app-multy-select>
-        </div>
-        <div class="multyple_selects_inner div_box_shadow">
-            <app-multy-select></app-multy-select>
-        </div>
-        <div class="multyple_selects_inner div_box_shadow">
-            <app-multy-select></app-multy-select>
+        <div class="multyple_selects_inner div_box_shadow" 
+        *ngFor="let data of recieveData"
+        >
+            <app-multy-select 
+                [labelFromServer]="data.label"
+                [valuesFromBack]="data.firstViewData"
+                [allParsedValues]="data.allDataForSelect"
+            ></app-multy-select>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
-<mat-form-field class="no-padding change_bottom" appearance="fill">
-  <mat-label>{{labelForUserLoc}}</mat-label>
-  <mat-select>
-    <mat-option>{{baseUserLoc}}</mat-option>
-    <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+<mat-form-field appearance="fill">
+  <mat-label>Location</mat-label>
+  <mat-select [(value)]="selectedLocation">
+    <mat-option></mat-option>
+    <mat-option [value]="option.value" *ngFor="let option of userLocations">{{ option.viewValue }}, {{option.value}}</mat-option>
   </mat-select>
 </mat-form-field>
