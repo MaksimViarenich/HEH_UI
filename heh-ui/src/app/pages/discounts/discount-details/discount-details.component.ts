@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {Discount} from '../../models/discount';
+import {Component, OnInit} from '@angular/core';
+import {Discount} from '../../../models/discount';
+import {FormControl} from '@angular/forms';
 
 @Component({
-  selector: 'app-discount-card',
-  templateUrl: './discount-card.component.html',
-  styleUrls: ['./discount-card.component.scss']
+  selector: 'app-discount-details',
+  templateUrl: './discount-details.component.html',
+  styleUrls: ['./discount-details.component.scss']
 })
-export class DiscountCardComponent implements OnInit {
+export class DiscountDetailsComponent implements OnInit {
+  address = new FormControl();
+
   discount: Discount = {
     vendor: 'Domino\'s Pizza',
     title: 'Buy our tasty pizza with 10% discount',
@@ -28,7 +31,8 @@ export class DiscountCardComponent implements OnInit {
     vk: 'https://vk.com/',
   };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
