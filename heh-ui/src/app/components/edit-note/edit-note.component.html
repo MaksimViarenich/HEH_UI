@@ -1,0 +1,41 @@
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="over" position="end">
+        <div class="drawer-header" [ngStyle]="{'background-image': 'url('+bgVendor+')'}">
+            {{ discountVendorName }}
+        </div>
+        <div class="edit-field">
+            <div class="discount-name">
+                {{discountName}}
+            </div>
+            <div class="edit-label">
+                Edit your note:
+            </div>
+            <mat-form-field>
+                <textarea matInput type="text" [(ngModel)]="discountNote"></textarea>
+                <!-- <button mat-button *ngIf="discountNote" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="discountNote=''">
+                    <mat-icon>close</mat-icon>
+                </button> -->
+            </mat-form-field>
+            <button mat-raised-button (click)="drawer.toggle()">Confirm</button>
+        </div>
+    </mat-drawer>
+
+    <div class="sidenav-content">
+        <app-favorite-card (toggleSidenav)="parent()"></app-favorite-card>
+        <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+        </button>
+    </div>
+
+</mat-drawer-container>
+<!-- <div [ngClass]="{invisible:isInputVisible}">
+    <mat-form-field class="form-field">
+        <textarea matInput (change)="changeInput($event)" type="text"
+            [(ngModel)]="discountNote"></textarea>
+        <button mat-button *ngIf="discountNote" matSuffix mat-icon-button aria-label="Clear"
+            (click)="discountNote=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div> -->

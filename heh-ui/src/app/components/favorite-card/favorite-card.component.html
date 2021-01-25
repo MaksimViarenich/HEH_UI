@@ -1,5 +1,5 @@
 <div class="favorite-card">
-    <div class="favorite-vendor">
+    <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+bgVendor+')'}">
         <div class="card-title">
             {{ discountVendorName }}
         </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="card-actions">
-            <i class="material-icons">
+            <i class="material-icons" (click)="editNote($event)">
                 edit
             </i>
             <i class="material-icons warn-color">

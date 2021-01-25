@@ -20,6 +20,7 @@ import { LoginLayoutComponent } from './components/layouts/login-layout/login-la
 import { HeaderComponent } from './components/header/header.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
+import { EditNoteComponent } from './components/edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FavoriteCardComponent } from './components/favorite-card/favorite-card.
     LoginLayoutComponent,
     HeaderComponent,
     DiscountCardComponent,
-    FavoriteCardComponent
+    FavoriteCardComponent,
+    EditNoteComponent
   ],
   imports: [
     BrowserModule,

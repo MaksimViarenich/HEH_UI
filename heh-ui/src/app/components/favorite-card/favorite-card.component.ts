@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, ViewEncapsulation, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-favorite-card',
@@ -8,7 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class FavoriteCardComponent implements OnInit {
 
-  bgVendor: string = '../../../assets/images/card-backgrounds/bg-vendor-green.PNG';
+  @Output() openSidenav = new EventEmitter();
+
+  bgVendor: string = '../../../assets/images/card-backgrounds/bg-vendor-green.png';
   discountVendorName: string = 'Domino\'s pizza';
   discountName: string = 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f';
   discountNote: string = 'Pepperoni pizza  is tastier with double cheese';
@@ -16,6 +18,12 @@ export class FavoriteCardComponent implements OnInit {
 
   //Mught be an array
   discountTag: string = 'Pizza';
+
+  isShowed = false;
+
+  editNote(event: any): void {
+    this.openSidenav.emit(event);
+  }
 
   constructor() { }
 
