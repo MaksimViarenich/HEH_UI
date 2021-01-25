@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-discounts',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discounts.component.scss']
 })
 export class DiscountsComponent implements OnInit {
+  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

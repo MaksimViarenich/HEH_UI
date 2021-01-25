@@ -1,1 +1,15 @@
-<p>discounts works!</p>
+<<<<<<< HEAD
+=======
+<mat-sidenav-container class="service-container"
+                       (backdropClick)="discountDetails.close()">
+  <mat-sidenav #discountDetails (keydown.escape)="discountDetails.close()"
+               disableClose position="end">
+    <app-discount-details></app-discount-details>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="service-container-content">
+    <app-header></app-header>
+    <app-discount-card (click)="discountDetails.open()"></app-discount-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+>>>>>>> da5760ec70ee5e68f6e6662c0d7413469ef50bc2

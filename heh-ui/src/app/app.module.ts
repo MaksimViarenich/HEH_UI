@@ -18,9 +18,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { EditNoteComponent } from './components/edit-note/edit-note.component';
+import { CategoryComponent } from './components/category/category.component';
+import { TagComponent } from './components/tag/tag.component';
+import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
+import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,12 @@ import { EditNoteComponent } from './components/edit-note/edit-note.component';
     DiscountCardComponent,
     FavoriteCardComponent,
     EditNoteComponent
+    LanguageSelectionComponent,
+    DiscountCardComponent,
+    CategoryComponent,
+    TagComponent,
+    BtnFavoriteComponent,
+    DiscountDetailsComponent
   ],
   imports: [
     BrowserModule,
