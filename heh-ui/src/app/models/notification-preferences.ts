@@ -4,6 +4,3 @@ export interface NotificationPreferences {
   location: string;
   address: string;
 }
-
-
-
