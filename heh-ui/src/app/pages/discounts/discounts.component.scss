@@ -1,18 +1,1 @@
-$width-sidenav: 33rem;
 
-.service-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-mat-sidenav {
-  width: $width-sidenav;
-  background-image: url("../../../assets/img/Girl_with_truck.svg");
-  background-size: 25%;
-  background-repeat: no-repeat;
-  background-position: 97% 97%;
-  background-attachment: fixed;
-}

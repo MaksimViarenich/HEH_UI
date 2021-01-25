@@ -24,11 +24,14 @@ import { FieldsSearchComponent } from './components/fields-search/fields-search.
 import { MonoSelectComponent } from './components/mono-select/mono-select.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
 import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
 import { BtnSearchComponent } from './components/btn-search/btn-search.component';
+import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
+import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,8 @@ import { BtnSearchComponent } from './components/btn-search/btn-search.component
     MultySelectComponent,
     FieldsSearchComponent,
     MonoSelectComponent,
+    DiscountCardComponent,
+    FavoriteCardComponent,
     LanguageSelectionComponent,
     DiscountCardComponent,
     CategoryComponent,
@@ -59,6 +64,8 @@ import { BtnSearchComponent } from './components/btn-search/btn-search.component
     BtnFavoriteComponent,
     DiscountDetailsComponent,
     BtnSearchComponent
+    EditNoteModalComponent,
+    DiscountDetailsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,5 +75,6 @@ import { BtnSearchComponent } from './components/btn-search/btn-search.component
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

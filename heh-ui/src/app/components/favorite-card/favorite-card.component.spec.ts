@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiscountDetailsComponent } from './discount-details.component';
+import { FavoriteCardComponent } from './favorite-card.component';
 
-describe('DiscountDetailsComponent', () => {
-  let component: DiscountDetailsComponent;
-  let fixture: ComponentFixture<DiscountDetailsComponent>;
+describe('FavoriteCardComponent', () => {
+  let component: FavoriteCardComponent;
+  let fixture: ComponentFixture<FavoriteCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiscountDetailsComponent ]
+      declarations: [ FavoriteCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiscountDetailsComponent);
+    fixture = TestBed.createComponent(FavoriteCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

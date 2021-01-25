@@ -5,9 +5,4 @@
                disableClose position="end">
     <app-discount-details></app-discount-details>
   </mat-sidenav>
-
-  <mat-sidenav-content class="service-container-content">
-    <app-header></app-header>
-    <app-discount-card (click)="discountDetails.open()"></app-discount-card>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-discount-card (click)="openDiscountDetails()"></app-discount-card>
