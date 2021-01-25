@@ -8,7 +8,7 @@ import { Component, OnInit, Output, ViewEncapsulation, EventEmitter } from '@ang
 })
 export class FavoriteCardComponent implements OnInit {
 
-  @Output() openSidenav = new EventEmitter();
+  @Output() openSidenav: EventEmitter<any> = new EventEmitter<any>();
 
   bgVendor: string = '../../../assets/images/card-backgrounds/bg-vendor-green.png';
   discountVendorName: string = 'Domino\'s pizza';

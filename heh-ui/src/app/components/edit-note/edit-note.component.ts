@@ -15,11 +15,6 @@ export class EditNoteComponent implements AfterViewInit {
   discountVendorName: string = '';
   discountName: string = '';
   discountNote: string = '';
-  toggleSidenav: any;
-
-  parent() {
-    console.log('child calls parent')
-  }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -29,7 +24,7 @@ export class EditNoteComponent implements AfterViewInit {
       this.discountNote = this.child.discountNote;
     }, 0);
   }
-  // isVisible: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
