@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NavigationTabs} from '../../models/navigation-tabs';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  tabsAdmin: NavigationTabs[] = [
+    {
+      name: 'Users',
+      path: '/admin/users'
+    },
+    {
+      name: 'Event History',
+      path: '/admin/history'
+    },
+    {
+      name: 'Statistics',
+      path: '/admin/statistics'
+    },
+  ];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
