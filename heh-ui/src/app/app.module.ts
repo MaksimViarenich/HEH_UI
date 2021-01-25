@@ -20,6 +20,10 @@ import { LoginLayoutComponent } from './components/layouts/login-layout/login-la
 import { HeaderComponent } from './components/header/header.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { CategoryComponent } from './components/category/category.component';
+import { TagComponent } from './components/tag/tag.component';
+import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
+import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
     LoginLayoutComponent,
     HeaderComponent,
     LanguageSelectionComponent,
-    DiscountCardComponent
+    DiscountCardComponent,
+    CategoryComponent,
+    TagComponent,
+    BtnFavoriteComponent,
+    DiscountDetailsComponent
   ],
   imports: [
     BrowserModule,

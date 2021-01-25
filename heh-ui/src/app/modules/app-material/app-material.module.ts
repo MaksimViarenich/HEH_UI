@@ -11,6 +11,8 @@ import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -26,6 +28,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatMenuModule
   ],
   imports: [],
   providers: []
