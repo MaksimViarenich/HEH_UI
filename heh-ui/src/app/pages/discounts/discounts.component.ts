@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from '@angular/material/sidenav';
 
 interface InterfaceForMultySelComponent {
   label: string;
@@ -11,6 +12,8 @@ interface InterfaceForMultySelComponent {
   styleUrls: ['./discounts.component.scss']
 })
 export class DiscountsComponent implements OnInit {
+  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
+  
   InterfaceForMultySelComponent: InterfaceForMultySelComponent[];
 
   constructor() {
@@ -19,7 +22,6 @@ export class DiscountsComponent implements OnInit {
       {label: 'Tag', firstViewData: ['Pizza', 'Sushi'], allDataForSelect: ['Pizza', 'Sushi', 'Barbershop', 'Swimm pool']},
       {label: 'Vendor', firstViewData: ['Garage'], allDataForSelect: ['Garage', 'Best Beauty Center', 'GYM24']},
     ];
-  }
 
   ngOnInit(): void {
   }

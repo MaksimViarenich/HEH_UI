@@ -1,0 +1,48 @@
+.card {
+  overflow: hidden;
+  width: 18.3125rem;
+  height: 15.8125rem;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
+  border-radius: 5px;
+
+  .card-header {
+    height: 8.375rem;
+    background-image: url('../../../assets/images/card-backgrounds/bg-vendor-green.PNG');
+    background-size: cover;
+
+    .card-title {
+      position: relative;
+      max-height: fit-content;
+      max-width: 80%;
+      color: #fff;
+      height: 1.5rem;
+      top: 3.4375rem;
+      left: 0.625rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    app-btn-favorite {
+      position: relative;
+      top: -1rem;
+      left: 16rem;
+    }
+  }
+
+  .card-content {
+    padding: 0 0.625rem 0.625rem 0.625rem;
+
+    .card-content-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .category-and-tags {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}
