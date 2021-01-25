@@ -8,7 +8,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./discount-details-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DiscountDetailsModuleComponent implements OnInit {
+export class DiscountDetailsModalComponent implements OnInit {
   address = new FormControl();
 
   discount: Discount = {

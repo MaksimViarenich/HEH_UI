@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DiscountDetailsModuleComponent } from './discount-details-modal.component';
+import { DiscountDetailsModalComponent } from './discount-details-modal.component';
 
 describe('DiscountDetailsComponent', () => {
-  let component: DiscountDetailsModuleComponent;
-  let fixture: ComponentFixture<DiscountDetailsModuleComponent>;
+  let component: DiscountDetailsModalComponent;
+  let fixture: ComponentFixture<DiscountDetailsModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiscountDetailsModuleComponent ]
+      declarations: [ DiscountDetailsModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiscountDetailsModuleComponent);
+    fixture = TestBed.createComponent(DiscountDetailsModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
