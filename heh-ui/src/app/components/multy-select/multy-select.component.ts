@@ -1,12 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation, Input} from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-
-
 @Component({
   selector: 'app-multy-select',
   templateUrl: './multy-select.component.html',
@@ -15,12 +8,17 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class MultySelectComponent implements OnInit {
   multiSelectControl = new FormControl([]);
-  @Input() label: string | undefined;
-  @Input() options: string[] | undefined;
+  @Input() label: string;
+  @Input() options: string[];
 
+  constructor(){
+    this.label = '';
+    this.options = [];
+  }
   onOptionRemoved(option: string): void {
     const options = this.multiSelectControl.value as string[];
     this.removeFirst(options, option);
+    this.multiSelectControl.setValue(['']);
     this.multiSelectControl.setValue(options); // To trigger change detection
   }
 
@@ -30,7 +28,6 @@ export class MultySelectComponent implements OnInit {
       array.splice(index, 1);
     }
   }
-
   ngOnInit(): void {
   }
 

@@ -1,40 +1,28 @@
 .multi-select-container {
   box-shadow: 0 4px 15px rgba(34, 35, 38, 0.15);
   border-radius: 5px;
-  padding: 0.3rem;
+  padding: 0.4rem;
 
   mat-form-field {
     width: 100%;
   }
+  
+  .mat-form-field-label-wrapper{
+    top: -1rem;
+  }
 
-  //.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-  //  padding-bottom: 0;
-  //}
+  .mat-select-arrow-wrapper{
+    vertical-align: top;
+  }
+  
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+   padding-bottom: 0;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    bottom: 0.2rem;
+    background-color: #ffffff;
+   }
 }
 
-//.example-chip-list {
-//  width: 100%;
-//
-//}
-//
-//.mat-form-field-appearance-legacy .mat-form-field-underline {
-//  bottom: 0.2rem;
-//  height: 0;
-//  background-color: #ffffff;
-//}
-//
-//.mat-form-field-appearance-legacy .mat-form-field-wrapper {
-//  padding-bottom: 0;
-//}
-//
-//.mat-chip {
-//  font-size: 0.8rem;
-//}
-//
-//.mat-input-element {
-//  caret-color: #ffffff;
-//}
-//
-//.input.mat-chip-input {
-//  height: 0.1rem;
-//}
+
