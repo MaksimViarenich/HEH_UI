@@ -51,12 +51,13 @@ import { DiscountDetailsComponent } from './pages/discounts/discount-details/dis
     DiscountDetailsComponent
   ],
   imports: [
+    BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
-    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}

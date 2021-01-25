@@ -7,7 +7,6 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
