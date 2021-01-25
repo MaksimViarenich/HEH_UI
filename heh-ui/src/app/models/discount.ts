@@ -13,4 +13,5 @@ export interface Discount {
   instagram?: string;
   facebook?: string;
   vk?: string;
+  feedback?: string;
 }

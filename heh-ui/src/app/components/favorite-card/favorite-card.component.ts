@@ -14,15 +14,17 @@ export class FavoriteCardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   discountInfo = {
-    bgVendor: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
-    discountVendorName: 'Domino\'s pizza',
-    discountName: 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
-    discountNote: 'Pepperoni pizza  is tastier with double cheese',
-    discountCategory: 'Food',
-    discountTag: 'Pizza',
-  }
+    bgVendor: '../../../assets/images/card-backgrounds/bg-vendor-green.PNG',
+    discount: {
+      vendor: 'Domino\'s pizza',
+      title: 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
+      feedback: 'Pepperoni pizza  is tastier with double cheese',
+      category: 'Food',
+      tags: ['Pizza'],
+    }
+  };
 
-  editNote() {
+  editNote(): void {
     const dialogRef = this.dialog.open(EditNoteModalComponent, {data: this.discountInfo});
 
     dialogRef.afterClosed().subscribe(result => {
