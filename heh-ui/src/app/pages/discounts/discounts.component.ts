@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { DiscountDetailsModuleComponent } from './discount-details-modal/discount-details-modal.component';
 
 @Component({
   selector: 'app-discounts',
@@ -7,9 +8,15 @@ import {MatSidenav} from '@angular/material/sidenav';
   styleUrls: ['./discounts.component.scss']
 })
 export class DiscountsComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {}
+
+  openDiscountDetails(): void {
+    const dialogRef = this.dialog.open(DiscountDetailsModuleComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   ngOnInit(): void {

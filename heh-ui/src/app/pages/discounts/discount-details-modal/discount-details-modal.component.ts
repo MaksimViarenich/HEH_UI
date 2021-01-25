@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Discount} from '../../../models/discount';
 import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-discount-details',
-  templateUrl: './discount-details.component.html',
-  styleUrls: ['./discount-details.component.scss']
+  templateUrl: './discount-details-modal.component.html',
+  styleUrls: ['./discount-details-modal.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class DiscountDetailsComponent implements OnInit {
+export class DiscountDetailsModuleComponent implements OnInit {
   address = new FormControl();
 
   discount: Discount = {

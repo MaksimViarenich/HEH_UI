@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -28,6 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatSelectModule,
+    MatDialogModule,
   ],
   imports: [],
   providers: []

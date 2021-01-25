@@ -22,7 +22,7 @@ import { DiscountCardComponent } from './components/discount-card/discount-card.
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
-import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
+import { DiscountDetailsModuleComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { DiscountDetailsComponent } from './pages/discounts/discount-details/dis
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    DiscountDetailsComponent
+    DiscountDetailsModuleComponent
   ],
   imports: [
     BrowserModule,
