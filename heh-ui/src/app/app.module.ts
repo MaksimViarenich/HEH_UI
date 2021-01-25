@@ -58,5 +58,6 @@ import { DiscountDetailsComponent } from './pages/discounts/discount-details/dis
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
