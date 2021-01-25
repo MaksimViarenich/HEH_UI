@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -20,6 +21,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
+    MatTabsModule,
     MatMenuModule,
     MatChipsModule,
     MatIconModule,
