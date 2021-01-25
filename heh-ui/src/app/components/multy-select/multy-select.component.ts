@@ -14,62 +14,21 @@ import {map, startWith} from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None
 })
 export class MultySelectComponent implements OnInit {
-  @ViewChild('fruitInput') public valueInput: ElementRef<HTMLInputElement> | any;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
-  @Input() labelFromServer: string;
-  @Input() valuesFromBack: string[];
-  @Input() allParsedValues: string[];
-  visible = true;
-  selectable = true;
-  removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  valueCtrl = new FormControl();
-  filteredValues: Observable<string[]>;
+  multiSelectControl = new FormControl([]);
+  @Input() label: string | undefined;
+  @Input() options: string[] | undefined;
 
-  constructor() {
-    this.filteredValues = this.valueCtrl.valueChanges.pipe(
-    startWith(null),
-    map((value: string | null) => value ? this._filter(value) : this.allParsedValues.slice()));
-    this.labelFromServer = '';
-    this.valuesFromBack = [];
-    this.allParsedValues = [];
+  onOptionRemoved(option: string): void {
+    const options = this.multiSelectControl.value as string[];
+    this.removeFirst(options, option);
+    this.multiSelectControl.setValue(options); // To trigger change detection
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    // const value = event.value;
-
-    // Add our fruit
-    // if ((value || '').trim()) {
-    //   this.valuesFromBack.push(value.trim());
-    // }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
+  private removeFirst<T>(array: T[], toRemove: T): void {
+    const index = array.indexOf(toRemove);
+    if (index !== -1) {
+      array.splice(index, 1);
     }
-
-    this.valueCtrl.setValue(null);
-  }
-
-  remove(item: string): void {
-    const index = this.valuesFromBack.indexOf(item);
-
-    if (index >= 0) {
-      this.valuesFromBack.splice(index, 1);
-    }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.valuesFromBack.push(event.option.viewValue);
-    // this.valueInput.nativeElement.value = '';
-    this.valueCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allParsedValues.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
   }
 
   ngOnInit(): void {

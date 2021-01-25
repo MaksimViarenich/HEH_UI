@@ -1,11 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 
-interface InterfaceForMultySelComponent {
-  label: string;
-  firstViewData: string[];
-  allDataForSelect: string[];
-}
 @Component({
   selector: 'app-discounts',
   templateUrl: './discounts.component.html',
@@ -13,15 +8,16 @@ interface InterfaceForMultySelComponent {
 })
 export class DiscountsComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  
-  InterfaceForMultySelComponent: InterfaceForMultySelComponent[];
+
+  searchFieldsOptions: any[];
 
   constructor() {
-    this.InterfaceForMultySelComponent = [
-      {label: 'Category', firstViewData: ['Food'], allDataForSelect: ['Food', 'Sport', 'Beauty']},
-      {label: 'Tag', firstViewData: ['Pizza', 'Sushi'], allDataForSelect: ['Pizza', 'Sushi', 'Barbershop', 'Swimm pool']},
-      {label: 'Vendor', firstViewData: ['Garage'], allDataForSelect: ['Garage', 'Best Beauty Center', 'GYM24']},
+    this.searchFieldsOptions = [
+      {label: 'Category', options: ['Food', 'Sport', 'Beauty']},
+      {label: 'Tag', options: ['Pizza', 'Sushi', 'Barbershop', 'Swimm pool']},
+      {label: 'Vendor', options: ['Garage', 'Best Beauty Center', 'GYM24']},
     ];
+  }
 
   ngOnInit(): void {
   }

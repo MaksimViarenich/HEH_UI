@@ -1,19 +1,28 @@
-.example-additional-selection {
-    opacity: 0.75;
-    font-size: 0.75em;
-  }
-mat-form-field{
+.select-container {
+  box-shadow: 0 4px 15px rgba(34, 35, 38, 0.15);
+  border-radius: 5px;
+
+  mat-form-field {
     width: 100%;
   }
-.mat-form-field-wrapper{
-  padding-bottom: 0;
-}
-.mat-form-field-underline{
-  bottom: 0.2rem;
-}
-.mat-form-field-appearance-fill .mat-form-field-flex{
-  background-color: transparent;
-}
-.mat-form-field-appearance-fill .mat-form-field-underline::before{
-  background-color: #ffffff;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-form-field-underline {
+    bottom: 0.2rem;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: #ffffff;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex:hover .mat-form-field-ripple {
+    background-color: #ffffff;
+  }
 }

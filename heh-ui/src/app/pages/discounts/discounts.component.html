@@ -1,13 +1,1 @@
-<mat-sidenav-container class="service-container"
-                       (backdropClick)="discountDetails.close()">
-  <mat-sidenav #discountDetails (keydown.escape)="discountDetails.close()"
-               disableClose position="end">
-    <app-discount-details></app-discount-details>
-  </mat-sidenav>
-
-  <mat-sidenav-content class="service-container-content">
-    <app-header></app-header>
-    <app-fields-search [recieveData]="InterfaceForMultySelComponent"></app-fields-search>
-    <app-discount-card (click)="discountDetails.open()"></app-discount-card>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-fields-search [data]="searchFieldsOptions"></app-fields-search>

@@ -50,7 +50,7 @@ import { DiscountDetailsComponent } from './pages/discounts/discount-details/dis
     SearchUIComponent,
     MultySelectComponent,
     FieldsSearchComponent,
-    MonoSelectComponent
+    MonoSelectComponent,
     LanguageSelectionComponent,
     DiscountCardComponent,
     CategoryComponent,

@@ -1,7 +1,13 @@
-<mat-form-field appearance="fill">
-  <mat-label>Location</mat-label>
-  <mat-select [(value)]="selectedLocation">
-    <mat-option></mat-option>
-    <mat-option [value]="option.value" *ngFor="let option of userLocations">{{ option.viewValue }}, {{option.value}}</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="select-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Location</mat-label>
+
+    <mat-select [(value)]="selectedLocation">
+      <mat-option></mat-option>
+      <mat-option [value]="option.value"
+                  *ngFor="let option of userLocations">
+        {{ option.viewValue }}, {{option.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

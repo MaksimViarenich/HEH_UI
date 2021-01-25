@@ -1,21 +1,20 @@
-<div class="field_container">
-    <div class="search_and_mono">
-        <div class="search div_box_shadow">
-            <app-search-ui></app-search-ui>
-        </div>
-        <div class="mono_select div_box_shadow">
-            <app-mono-select></app-mono-select>
-        </div>
+<div class="search-container">
+  <div class="main-search-container">
+    <div class="search-wrapper">
+      <app-search-ui></app-search-ui>
     </div>
-    <div class="multyple_selects">
-        <div class="multyple_selects_inner div_box_shadow" 
-        *ngFor="let data of recieveData"
-        >
-            <app-multy-select 
-                [labelFromServer]="data.label"
-                [valuesFromBack]="data.firstViewData"
-                [allParsedValues]="data.allDataForSelect"
-            ></app-multy-select>
-        </div>
+
+    <div class="select-wrapper">
+      <app-mono-select></app-mono-select>
     </div>
+  </div>
+
+  <div class="filters-container">
+    <div class="filter-wrapper"
+         *ngFor="let multiSelectData of data">
+      <app-multy-select [label]="multiSelectData.label"
+                        [options]="multiSelectData.options">
+      </app-multy-select>
+    </div>
+  </div>
 </div>

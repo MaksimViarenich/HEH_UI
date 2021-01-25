@@ -5,5 +5,5 @@ import { Component, Input} from '@angular/core';
   styleUrls: ['./fields-search.component.scss']
 })
 export class FieldsSearchComponent {
-  @Input() recieveData?: any[];
+  @Input() data?: any[];
 }
