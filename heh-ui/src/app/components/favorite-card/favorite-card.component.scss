@@ -1,0 +1,145 @@
+.favorite-card {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    height: 7rem;
+    background: #fff;
+    box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
+    border-radius: 5px;
+
+    .favorite-vendor {
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        min-width: 14rem;
+
+        .card-title {
+            max-width: fit-content;
+            margin: 0 0.625rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+
+    .card-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 82%;
+        padding: 0.5rem;
+
+        .discount-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 95%;
+
+            .category-and-tags {
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: 0.625rem;
+          
+                .category {
+                  max-width: fit-content;
+                  display: flex;
+                  align-items: center;
+                  margin: 0.625rem 0.625rem 0 0;
+                  height: 1.625rem;
+                  border-radius: 0.3125rem;
+                  border: 1px solid #333;
+                  padding: 0 0.5rem;
+                  color: #333;
+          
+                  img {
+                    max-width: 80%;
+                    max-height: 80%;
+                    padding-right: 0.3rem;
+                  }
+                }
+          
+                .category:hover {
+                  background: #9A90FE;
+                  color:#fff;
+                  border-color: #9A90FE;
+                  cursor: pointer;
+          
+                  img {
+                    filter: invert(1);
+                  }
+                }
+          
+                .tag {
+                  max-width: fit-content;
+                  display: flex;
+                  align-items: center;
+                  margin: 0.625rem 0.625rem 0 0;
+                  height: 1.75rem;
+                  border-radius: 0.3125rem;
+                  background-color: #B0B4B6;
+                  padding: 0 0.5rem;
+                  color: #fff;
+                }
+          
+                .tag:hover {
+                  background-color: #9A90FE;
+                  cursor: pointer;
+                }
+            }
+    
+            .card-content-description {
+                box-sizing: border-box;
+                max-width: 95%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: #333;
+    
+                .discount-name {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                    line-height: 1.5rem;
+                }
+                
+                .discount-note {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: 0.875rem;
+                }
+
+                .discount-note::before {
+                    content: 'Note:';
+                    margin-right: 0.2rem;
+                }
+                
+                .line-clamp {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            i {
+                color: #333;
+                padding: 0 0.3rem;
+                user-select: none;
+            }
+
+            i:hover {
+                cursor: pointer;
+                color: #9A90FE;
+            }
+
+            .warn-color {
+                color: #DB0404;
+            }
+        }
+    }
+}

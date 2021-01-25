@@ -20,9 +20,11 @@ import { LoginLayoutComponent } from './components/layouts/login-layout/login-la
 import { HeaderComponent } from './components/header/header.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
+import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 
 @NgModule({
@@ -43,11 +45,14 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     HomeLayoutComponent,
     LoginLayoutComponent,
     HeaderComponent,
+    DiscountCardComponent,
+    FavoriteCardComponent,
     LanguageSelectionComponent,
     DiscountCardComponent,
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
+    EditNoteModalComponent
     DiscountDetailsModalComponent
   ],
   imports: [
