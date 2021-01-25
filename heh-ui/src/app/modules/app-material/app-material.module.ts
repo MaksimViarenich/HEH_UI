@@ -11,6 +11,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
@@ -31,6 +32,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatListModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatSidenavModule,
     MatSelectModule,
     MatMenuModule,

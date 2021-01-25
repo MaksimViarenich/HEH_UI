@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <div class="header"
+       [ngStyle]="{'background-image': 'url('+data.bgVendor+')'}">
+    {{ data.discount.vendor }}
+  </div>
+
+  <div class="edit-field">
+    <div class="discount-name">
+      {{ data.discount.title }}
+    </div>
+
+    <mat-form-field>
+      <mat-label>Note</mat-label>
+      <textarea matInput
+                type="text"
+                [(ngModel)]="data.discount.feedback"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button
+            mat-dialog-close>Confirm</button>
+  </div>
+</div>
