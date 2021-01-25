@@ -24,8 +24,8 @@ import { FavoriteCardComponent } from './components/favorite-card/favorite-card.
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
-import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
+import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +52,8 @@ import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-n
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    DiscountDetailsComponent,
     EditNoteModalComponent
+    DiscountDetailsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -63,5 +63,6 @@ import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-n
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
