@@ -1,26 +1,22 @@
 <div class="favorite-card">
     <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+discountInfo.bgVendor+')'}">
         <div class="card-title">
-            {{ discountInfo.discountVendorName}}
+            {{ discountInfo.discount.vendor}}
         </div>
     </div>
     <div class="card-content">
         <div class="discount-info">
             <div class="category-and-tags">
-                <div class="category">
-                    <img src="../../../assets/images/svg-icons/categories.svg">
-                    {{ discountInfo.discountCategory }}
-                </div>
-                <div class="tag">
-                    {{ discountInfo.discountTag }}
-                </div>
+                <app-category [discountCategory]="discountInfo.discount.category"></app-category>
+              <app-tag *ngFor="let tag of discountInfo.discount.tags"
+                       [discountTag]="tag"></app-tag>
             </div>
             <div class="card-content-description">
                 <div class="discount-name line-clamp">
-                    {{ discountInfo.discountName }}
+                    {{ discountInfo.discount.title }}
                 </div>
                 <div class="discount-note line-clamp">
-                    {{ discountInfo.discountNote }}
+                    {{ discountInfo.discount.feedback }}
                 </div>
             </div>
         </div>
