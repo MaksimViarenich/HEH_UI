@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationPreferences } from 'src/app/models/notification-preferences';
-import { HeaderTab } from 'src/app/models/header-tab';
-// import { ThemePalette } from '@angular/material/core';
+import { HEADER_TABS } from 'src/app/models/header-tab';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +10,8 @@ import { HeaderTab } from 'src/app/models/header-tab';
   encapsulation: ViewEncapsulation.None
 })
 
-
 export class HeaderComponent implements OnInit {
+  tabs = HEADER_TABS;
 
   ngOnInit() {
   }
@@ -20,38 +19,21 @@ export class HeaderComponent implements OnInit {
   user: NotificationPreferences = {
     username: 'Michael Browk',
     userphoto: '../../../assets/img/header_profile.svg',
-    location: 'Belarus, Minsk'
+    location: 'Belarus, Minsk',
+    address: 'Naturalistov 3',
   };
-
-
-  tabs: HeaderTab[] = [
-    {
-      name:'Discounts',
-      path: 'discounts'
-    },
-    {
-      name:'Favorites',
-      path: 'favorites'
-    },
-    {
-      name:'Moderator',
-      path: 'moderator/vendors'
-    },
-    {
-      name:'Admin',
-      path: 'admin/users'
-    },
-  ];
 
   constructor(private router: Router) { }
 
-  goToPerson():void {
+  goToPerson(): void {
     this.router.navigate(['/profile']);
   }
-  goTodiscounts():void {
-    this.router.navigate(['/discounts']);
-  }
-  goToLogout():void {
+
+  logout(): void {
     this.router.navigate(['/login']);
+  }
+
+  goToMain(): void {
+    this.router.navigate(['/discounts']);
   }
 }

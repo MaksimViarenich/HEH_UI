@@ -62,7 +62,7 @@ $headerProfilTextColor: background-color#333333;
 }
 
 .mat-tab-links .tab {
-  min-width: 1.5rem ;
+  min-width: 1.5rem;
   color: $headerTabColor;
 }
 
@@ -85,12 +85,13 @@ $headerProfilTextColor: background-color#333333;
 
 .mat-menu-panel {
   margin-top: .5rem;
-}
 
-.line {
-  width: 90%;
-  height: .5px;
-  background-color: #333333;
+  .line {
+    width: 90%;
+    height: .5px;
+    background-color: #333333;
+  }
+
 }
 
 button.mat-menu-item {
@@ -102,10 +103,10 @@ button.mat-menu-item {
   display: flex;
   align-items: center;
   font-size: .8rem;
-}
 
-.mat-menu-item img {
-  width: 2rem;
-  height: 2rem;
-  margin-right: .8rem;
+  img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: .8rem;
+  }
 }

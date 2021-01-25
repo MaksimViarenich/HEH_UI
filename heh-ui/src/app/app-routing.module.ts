@@ -19,6 +19,7 @@ const routes: Routes = [
     component: HomeLayoutComponent,
     children: [
       {path: '', redirectTo: '/discounts', pathMatch: 'full'},
+      {path: 'login', component: DiscountsComponent},
       {path: 'discounts', component: DiscountsComponent},
       {path: 'favorites', component: FavoritesComponent},
       {path: 'profile', component: UserProfileComponent},
