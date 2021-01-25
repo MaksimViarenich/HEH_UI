@@ -12,6 +12,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -20,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCheckboxModule,
     MatTabsModule,
     MatMenuModule,
+    MatChipsModule,
     MatIconModule,
     MatChipsModule,
     MatAutocompleteModule,
@@ -28,9 +31,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatMenuModule
   ],
   imports: [],
   providers: []
 })
 export class AppMaterialModule {
+
 }

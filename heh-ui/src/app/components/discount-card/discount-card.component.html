@@ -1,28 +1,18 @@
 <div class="card">
   <div class="card-header">
-    <div class="card-title">
-      {{discountVendorName}}
-    </div>
-    <div class="btn-favorite" (click)="isFavorite = !isFavorite">
-      <span class="material-icons">
-        {{isFavorite ? 'favorite': 'favorite_border'}}
-      </span>
-    </div>
+    <div class="card-title">{{discount.vendor}}</div>
+    <app-btn-favorite [isFavorite]="discount.isFavorite"></app-btn-favorite>
   </div>
+
   <div class="card-content">
     <div class="category-and-tags">
-      <div class="category">
-        <img src="../../../assets/images/svg-icons/categories.svg" alt="">
-        {{discountCategory}}
-      </div>
-      <div class="tag">
-        {{discountTag}}
-      </div>
+      <app-category [discountCategory]="discount.category"></app-category>
+      <app-tag *ngFor="let tag of discount.tags"
+               [discountTag]="tag"></app-tag>
     </div>
+
     <div class="card-content-description">
-      {{discountName}}
+      {{discount.title}}
     </div>
   </div>
 </div>
-
-<router-outlet></router-outlet>
