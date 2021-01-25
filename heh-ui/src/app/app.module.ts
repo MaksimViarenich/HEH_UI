@@ -52,7 +52,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    EditNoteModalComponent
+    EditNoteModalComponent,
     DiscountDetailsModalComponent
   ],
   imports: [
