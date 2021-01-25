@@ -6,6 +6,11 @@ interface BgImages {
   pagePath: string;
 }
 
+interface PageTitles {
+  title: string;
+  pagePath: string;
+}
+
 @Component({
   selector: 'app-home-layout',
   templateUrl: './home-layout.component.html',
@@ -15,6 +20,7 @@ export class HomeLayoutComponent implements OnInit {
 
   route: string;
   imagePath: string;
+  pageTitle: string;
 
   bgImages: BgImages[] = [
     {imagePath: '../../../../assets/images/background-image/Sales_girl.png', pagePath: '/favorites'},
@@ -24,11 +30,25 @@ export class HomeLayoutComponent implements OnInit {
     {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/history'}
   ];
 
+  pageTitles: PageTitles[] = [
+    {title: 'Discounts', pagePath: '/discounts'},
+    {title: 'Favorites', pagePath: '/favorites'},
+    {title: 'Profile', pagePath: '/profile'},
+    {title: 'Moderator', pagePath: '/moderator/vendors'},
+    {title: 'Moderator', pagePath: '/moderator/categories_tags'},
+    {title: 'Admin', pagePath: '/admin/users'},
+    {title: 'Admin', pagePath: '/admin/statistics'},
+    {title: 'Admin', pagePath: '/admin/history'}
+  ];
+
   constructor(private router: Router) {
     this.route = this.router.url;
+
     const imgOption = this.bgImages.find(item => item.pagePath === this.route);
     this.imagePath = (imgOption) ? `url(${imgOption?.imagePath})` : 'default';
-    console.log(this.imagePath);
+
+    const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
+    this.pageTitle = (titleOption) ? titleOption?.title : 'Unknown Page';
   }
 
   ngOnInit(): void {
