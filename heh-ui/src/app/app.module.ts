@@ -21,11 +21,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
-import { EditNoteComponent } from './components/edit-note/edit-note.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
 import { DiscountDetailsComponent } from './pages/discounts/discount-details/discount-details.component';
+import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +47,13 @@ import { DiscountDetailsComponent } from './pages/discounts/discount-details/dis
     HeaderComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
-    EditNoteComponent
     LanguageSelectionComponent,
     DiscountCardComponent,
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    DiscountDetailsComponent
+    DiscountDetailsComponent,
+    EditNoteModalComponent
   ],
   imports: [
     BrowserModule,

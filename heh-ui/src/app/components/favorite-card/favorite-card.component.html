@@ -1,7 +1,7 @@
 <div class="favorite-card">
-    <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+bgVendor+')'}">
+    <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+discountInfo.bgVendor+')'}">
         <div class="card-title">
-            {{ discountVendorName }}
+            {{ discountInfo.discountVendorName}}
         </div>
     </div>
     <div class="card-content">
@@ -9,23 +9,23 @@
             <div class="category-and-tags">
                 <div class="category">
                     <img src="../../../assets/images/svg-icons/categories.svg">
-                    {{ discountCategory }}
+                    {{ discountInfo.discountCategory }}
                 </div>
                 <div class="tag">
-                    {{ discountTag }}
+                    {{ discountInfo.discountTag }}
                 </div>
             </div>
             <div class="card-content-description">
                 <div class="discount-name line-clamp">
-                    {{ discountName }}
+                    {{ discountInfo.discountName }}
                 </div>
                 <div class="discount-note line-clamp">
-                    {{ discountNote }}
+                    {{ discountInfo.discountNote }}
                 </div>
             </div>
         </div>
         <div class="card-actions">
-            <i class="material-icons" (click)="editNote($event)">
+            <i class="material-icons" (click)="editNote()">
                 edit
             </i>
             <i class="material-icons warn-color">

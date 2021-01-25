@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -32,7 +33,8 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     MatSidenavModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule,
   ],
   imports: [],
   providers: []
