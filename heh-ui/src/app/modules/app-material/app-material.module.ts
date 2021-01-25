@@ -10,6 +10,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -18,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
+    MatMenuModule,
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
@@ -28,9 +30,11 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatSelectModule,
+    MatMenuModule
   ],
   imports: [],
   providers: []
 })
 export class AppMaterialModule {
+
 }
