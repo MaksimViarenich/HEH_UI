@@ -2,7 +2,7 @@
   height: 2.25rem;
   width: 2.25rem;
   border-radius: 1.125rem;
-  
+
   img {
     height: 2.25rem;
     width: 2.25rem;
@@ -12,6 +12,10 @@
   .mat-ripple .mat-button-ripple {
     padding: 0;
   }
+}
+
+.lang-select-button:hover {
+  cursor: pointer;
 }
 
 .menu-items {
@@ -35,7 +39,7 @@
 }
 
 .cdk-overlay-container .cdk-overlay-pane {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   transition: 0.2s;
 
   .mat-menu-panel .mat-menu-content {
@@ -46,14 +50,4 @@
       padding: 0 1rem;
     }
   }
-}
-
-.cdk-overlay-container .cdk-overlay-pane::before {
-  content: '';
-  border: 0.5rem solid transparent;
-  border-bottom: 0.5rem solid white;
-  position: absolute;
-  margin-left: 7.6rem;
-  top: 0.1rem;
-  width: 0;
 }

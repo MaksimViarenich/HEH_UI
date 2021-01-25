@@ -21,8 +21,7 @@ export class LanguageSelectionComponent {
     {lang: 'Русский', path: '../assets/images/ru-flag.png', langId: 1}
   ];
 
-  selectLang(e: any): void {
-    this.imagePath = e.target.src;
-    console.log(e.target.src);
+  selectLang(path: string): void {
+    this.imagePath = path;
   }
 }
