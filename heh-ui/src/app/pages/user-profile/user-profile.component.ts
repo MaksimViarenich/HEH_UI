@@ -17,9 +17,9 @@ export class UserProfileComponent implements OnInit {
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
-    userphoto: '../../../assets/img/profile-picture.jpg',
+    userphoto: '../../../assets/img/header_profile.svg',
     location: 'Belarus, Minsk',
-    address: 'Naturalistov 3',
+    address: 'Kosmonavtov, 3',
   };
 
   typesOfSubscription: string[] = ['Receive a newsletter', 'New service', 'New vendor', 'On city', 'Hot sales'];
