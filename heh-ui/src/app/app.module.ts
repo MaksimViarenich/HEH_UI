@@ -27,6 +27,7 @@ import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.com
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
     DiscountDetailsModalComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
