@@ -1,5 +1,3 @@
-@import "../../../styles.scss";
-
 .header {
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: .82;
@@ -11,8 +9,9 @@
     margin: 0 1rem;
 
     .header-title {
-      @include font-bold-vendor;
-      color: $color-white-dim;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #F3F3F3;
       text-transform: uppercase;
     }
 
@@ -36,24 +35,28 @@
       text-decoration: none;
 
       .person-name a {
-        font-size: $font-vendor;
+        font-size: 1.6rem;
         font-weight: normal;
-        color: $color-black;
+        color: #303030;
       }
     }
-
+.person-pic{
+  display: flex;
+}
     .person-pic img {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-right: 0.5rem;
       align-items: center;
     }
 
     .profile-icon {
       margin-left: 1.5rem;
+ 
     }
 
     .profile-icon:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       cursor: pointer;
     }
   }
@@ -61,7 +64,7 @@
 
 .mat-tab-links .tab {
   min-width: 1.5rem;
-  color: $color-black;
+  color: #303030;
 }
 
 .mat-menu-content {
@@ -69,26 +72,20 @@
   flex-direction: column;
   align-items: center;
   width: 16rem;
-  color: $color-black;
+  color: #333333;
 }
 
-.mat-menu-content::before {
+.mat-menu-trigger .profile-icon::before {
   content: '';
   position: absolute;
-  right: .67rem;
+  right: .5rem;
   top: -.8rem;
   border: .8rem solid transparent;
-  border-bottom: .8rem solid $color-white;
+  border-bottom: .8rem solid #ffffff;
 }
 
 .mat-menu-panel {
   margin-top: .5rem;
-
-  .line {
-    width: 90%;
-    height: .5px;
-    background-color: $color-black;
-  }
 }
 
 button.mat-menu-item {
@@ -102,8 +99,8 @@ button.mat-menu-item {
   font-size: .8rem;
 
   img {
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     margin-right: .8rem;
   }
 }

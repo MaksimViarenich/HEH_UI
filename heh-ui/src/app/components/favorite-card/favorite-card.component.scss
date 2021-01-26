@@ -1,12 +1,10 @@
-@import "../../../styles.scss";
-
 .favorite-card {
   overflow: hidden;
   display: flex;
   justify-content: space-between;
   height: 7rem;
-  background: $color-white;
-  box-shadow: $box-shadow;
+  background: #fff;
+  box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
   border-radius: 5px;
 
   .favorite-vendor {
@@ -17,8 +15,10 @@
 
     .card-title {
       max-width: fit-content;
-      margin: 0 0.6rem;
-      @include font-bold-vendor;
+      margin: 0 0.625rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
     }
   }
 
@@ -45,10 +45,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        color: $color-black;
+        color: #333;
 
         .discount-name {
-          @include font-bold-discount;
+          font-size: 1.25rem;
+          font-weight: bold;
           margin-bottom: 0.5rem;
           line-height: 1.5rem;
         }
@@ -56,7 +57,7 @@
         .discount-note {
           display: flex;
           flex-direction: row;
-          font-size: $font-content;
+          font-size: 0.875rem;
         }
 
         .discount-note::before {
@@ -80,18 +81,18 @@
       align-items: center;
 
       i {
-        color: $color-black;
+        color: #333;
         padding: 0 0.3rem;
         user-select: none;
       }
 
       i:hover {
         cursor: pointer;
-        color: $color-violet;
+        color: #9A90FE;
       }
 
       .warn-color {
-        color: $color-red;
+        color: #DB0404;
       }
     }
   }

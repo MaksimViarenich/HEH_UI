@@ -1,14 +1,12 @@
-@import "../../../styles.scss";
-
 .category {
   max-width: max-content;
   display: flex;
   align-items: center;
   height: 1.625rem;
   border-radius: 0.3125rem;
-  border: 1px solid $color-black;
-  padding: $padding-category-tag;
-  margin: $margin-category-tag;
+  border: 1px solid #333;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 
   img {
     max-width: 80%;
@@ -18,9 +16,9 @@
 }
 
 .category:hover {
-  background: $color-violet;
-  color:$color-white;
-  border-color: $color-violet;
+  background: #9A90FE;
+  color:#fff;
+  border-color: #9A90FE;
   cursor: pointer;
 
   img {

@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {MODERATOR_TABS} from '../../models/tab';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-moderator',
@@ -8,10 +7,7 @@ import {MODERATOR_TABS} from '../../models/tab';
 })
 export class ModeratorComponent implements OnInit {
 
-  tabsModerator = MODERATOR_TABS;
-
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }

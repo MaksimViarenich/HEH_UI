@@ -1,11 +1,11 @@
 <div class="background-image"
-  [ngStyle]="{'background-image': getBackgroundImage() }">
+  [ngStyle]="{'background-image': imagePath }">
   <app-header></app-header>
     <div class="container">
       <div class="title">
-        {{ getTitle() }}
+        {{ pageTitle }}
+      </div>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
-  </div>
 </div>
 

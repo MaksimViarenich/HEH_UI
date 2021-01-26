@@ -12,8 +12,6 @@ import {VendorsComponent} from './pages/moderator/vendors/vendors.component';
 import {CategoriesTagsComponent} from './pages/moderator/categories-tags/categories-tags.component';
 import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.component';
 import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
-import {AdminComponent} from './pages/admin/admin.component';
-import {ModeratorComponent} from './pages/moderator/moderator.component';
 
 const routes: Routes = [
   {
@@ -24,25 +22,11 @@ const routes: Routes = [
       {path: 'discounts', component: DiscountsComponent},
       {path: 'favorites', component: FavoritesComponent},
       {path: 'profile', component: UserProfileComponent},
-      {
-        path: 'moderator',
-        component: ModeratorComponent,
-        children: [
-          {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
-          {path: 'vendors', component: VendorsComponent},
-          {path: 'categories_tags', component: CategoriesTagsComponent}
-        ]
-      },
-      {
-        path: 'admin',
-        component: AdminComponent,
-        children: [
-          {path: '', redirectTo: '/admin/users', pathMatch: 'full'},
-          {path: 'users', component: UsersComponent},
-          {path: 'statistics', component: StatisticsComponent},
-          {path: 'history', component: EventHistoryComponent},
-        ]
-      }
+      {path: 'admin/users', component: UsersComponent},
+      {path: 'admin/statistics', component: StatisticsComponent},
+      {path: 'admin/history', component: EventHistoryComponent},
+      {path: 'moderator/vendors', component: VendorsComponent},
+      {path: 'moderator/categories_tags', component: CategoriesTagsComponent},
     ]
   },
   {
