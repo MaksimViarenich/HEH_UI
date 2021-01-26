@@ -1,10 +1,12 @@
+@import "../../../styles.scss";
+
 .card {
   overflow: hidden;
   width: 18.3125rem;
   height: 15.8125rem;
-  background: #fff;
-  box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
-  border-radius: 5px;
+  background: $color-white;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
   display: inline-block;
 
   .card-header {
@@ -16,12 +18,10 @@
       position: relative;
       max-height: fit-content;
       max-width: 80%;
-      color: #fff;
       height: 1.5rem;
       top: 3.4375rem;
       left: 0.625rem;
-      font-size: 1.5rem;
-      font-weight: bold;
+      @include font-bold-vendor;
     }
     app-btn-favorite {
       position: relative;
@@ -39,6 +39,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      @include font-bold-discount;
     }
 
     .category-and-tags {

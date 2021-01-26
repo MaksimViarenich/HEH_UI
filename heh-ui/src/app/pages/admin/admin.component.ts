@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ADMIN_TABS} from '../../models/tab';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  tabsAdmin = ADMIN_TABS;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
