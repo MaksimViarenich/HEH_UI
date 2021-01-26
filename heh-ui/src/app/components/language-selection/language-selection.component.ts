@@ -14,11 +14,11 @@ interface Language {
 })
 export class LanguageSelectionComponent {
 
-  imagePath = '../../../assets/img/header_menu_uk.svg';
+  imagePath = '../assets/images/uk-flag.png';
 
   languages: Language[] = [
-    {lang: 'English', path: '../../../assets/img/header_menu_uk.svg', langId: 0},
-    {lang: 'Русский', path: '../../../assets/img/header_menu_ru.svg', langId: 1}
+    {lang: 'English', path: '../assets/images/uk-flag.png', langId: 0},
+    {lang: 'Русский', path: '../assets/images/ru-flag.png', langId: 1}
   ];
 
   selectLang(path: string): void {
