@@ -1,10 +1,4 @@
-$height-background-triangle: 3.8rem;
-$font-vendor: 1.5rem;
-$font-title: 1.3rem;
-$font-content: 0.9rem;
-$margin-1: 1rem;
-$margin-half: 0.5rem;
-$margin-small: 0.35rem;
+@import "../../../../styles.scss";
 
 .cdk-overlay-dark-backdrop {
   background: rgba(0, 0, 0, 0.5);
@@ -39,9 +33,7 @@ $margin-small: 0.35rem;
           padding: 0 $margin-1;
 
           .discount-detail-title {
-            color: #ffffff;
-            font-size: $font-vendor;
-            font-weight: bold;
+            @include font-bold-vendor;
             line-height: $height-background-triangle;
           }
 
@@ -52,8 +44,8 @@ $margin-small: 0.35rem;
         }
 
         .discount-detail-info {
-          padding: 1rem;
-          height: calc(100% - 5.8rem);
+          padding: $margin-1;
+          height: calc(100% - 5.8rem); //might be a scss variable
           background-image: url("../../../../assets/img/Girl_with_truck.svg");
           background-size: 25%;
           background-repeat: no-repeat;
@@ -61,8 +53,7 @@ $margin-small: 0.35rem;
           background-attachment: fixed;
 
           .discount-detail-service {
-            font-size: $font-title;
-            font-weight: bold;
+            @include font-bold-discount;
             margin-bottom: $margin-half;
           }
 
@@ -86,7 +77,7 @@ $margin-small: 0.35rem;
             margin-bottom: $margin-1;
 
             a {
-              color: #333333;
+              color: $color-black;
               text-decoration: none;
             }
 
@@ -114,7 +105,6 @@ $margin-small: 0.35rem;
           }
         }
       }
-
     }
   }
 }

@@ -55,6 +55,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     NavModeratorAdminComponent,
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
+    DiscountDetailsModalComponent,
   ],
   imports: [
     BrowserModule,
