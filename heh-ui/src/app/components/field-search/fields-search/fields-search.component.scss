@@ -10,11 +10,11 @@
     margin-bottom: 1.7rem;
 
     .search-wrapper {
-      width: 70%;
+      width: 74.5%;
     }
 
     .select-wrapper {
-      width: 25%;
+      width: 24%;
     }
   }
 
@@ -23,10 +23,8 @@
     display: flex;
     justify-content: space-between;
 
-    .filter-wrapper {
-      width: 24%;
-    }
-    .btn-container{
+  .filter-wrapper,
+  .btn-container {
       width: 24%;
     }
   }

@@ -1,8 +1,2 @@
 <app-fields-search [data]="searchFieldsOptions"></app-fields-search>
-<mat-sidenav-container class="service-container"
-                       (backdropClick)="discountDetails.close()">
-  <mat-sidenav #discountDetails (keydown.escape)="discountDetails.close()"
-               disableClose position="end">
-    <app-discount-details></app-discount-details>
-  </mat-sidenav>
 <app-discount-card (click)="openDiscountDetails()"></app-discount-card>

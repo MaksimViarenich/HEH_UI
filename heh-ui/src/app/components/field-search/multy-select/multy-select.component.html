@@ -1,0 +1,7 @@
+  <div class="multi-select-container">
+    <mat-form-field>
+      <mat-select [placeholder]="label" [formControl]="optionsFormControl" multiple>
+        <mat-option *ngFor="let option of options" [value]="label">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>

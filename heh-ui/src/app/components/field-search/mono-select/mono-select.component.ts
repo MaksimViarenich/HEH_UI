@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 
-interface Loc {
+interface Location {
   value: string;
   viewValue: string;
 }
@@ -11,7 +11,7 @@ interface Loc {
   encapsulation: ViewEncapsulation.None
 })
 export class MonoSelectComponent implements OnInit{
-  userLocations: Loc[] = [
+  userLocations: Location[] = [
     {value: 'Minsk', viewValue: 'Belarus'},
     {value: 'Grodno', viewValue: 'Belarus'},
     {value: 'Vinnitsa', viewValue: 'Ukraine'}

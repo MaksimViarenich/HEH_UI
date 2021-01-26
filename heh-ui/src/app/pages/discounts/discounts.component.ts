@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
-
+import {SearchFields} from './searchOptions';
 @Component({
   selector: 'app-discounts',
   templateUrl: './discounts.component.html',
@@ -9,8 +9,8 @@ import { DiscountDetailsModalComponent } from './discount-details-modal/discount
 })
 export class DiscountsComponent implements OnInit {
 
-  searchFieldsOptions: any[];
-    
+  searchFieldsOptions: SearchFields[];
+
   constructor(public dialog: MatDialog) {
     this.searchFieldsOptions = [
       {label: 'Category', options: ['Food', 'Sport', 'Beauty']},

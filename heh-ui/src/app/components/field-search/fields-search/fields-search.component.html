@@ -1,0 +1,22 @@
+<div class="search-container">
+  <div class="main-search-container">
+    <div class="search-wrapper">
+      <app-search-ui></app-search-ui>
+    </div>
+    <div class="select-wrapper">
+      <app-mono-select></app-mono-select>
+    </div>
+  </div>
+  <div class="filters-container">
+    <div class="filter-wrapper"
+          *ngFor="let multiSelectData of data">
+      <app-multy-select [label]="multiSelectData.label"
+                        [options]="multiSelectData.options">
+      </app-multy-select>
+    </div>
+    <div class="btn-container">
+      <app-btn-search></app-btn-search>
+    </div>
+  </div>
+</div>
+  
