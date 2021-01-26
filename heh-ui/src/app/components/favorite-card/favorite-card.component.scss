@@ -4,7 +4,7 @@
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  height: 6rem;
+  height: 5.7rem;
   background: $color-white;
   box-shadow: $box-shadow;
   border-radius: 5px;
@@ -13,14 +13,21 @@
   .favorite-vendor {
     background-size: cover;
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: stretch;
     min-width: 14rem;
+    padding: 0.3rem;
 
     .card-title {
       max-width: fit-content;
       line-height: 1;
-      margin: 0 0.6rem;
+/*      margin: 0 0.6rem;*/
       @include font-bold-vendor;
+      align-self: center;
+    }
+    app-btn-favorite{
+align-self: flex-start;
     }
   }
 
@@ -28,7 +35,7 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
-    padding: 0.5rem;
+    padding: 0.5rem 0.2rem 0.5rem 0.5rem;
 
     .discount-info {
       display: flex;
@@ -40,59 +47,54 @@
         justify-content: flex-start;
       }
 
-      .card-content-description {
-        box-sizing: border-box;
+      .discount-name {
+        @include font-bold-discount;
+        line-height: 1.5rem;
+      }
+
+      .discount-note {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: $color-black;
-
-        .discount-name {
-          @include font-bold-discount;
-          margin-bottom: 0.2rem;
-          line-height: 1.5rem;
+        flex-direction: row;
+        font-size: $font-content;
+        i{
+          font-size: $font-title;
+          vertical-align: text-bottom;
         }
+      }
 
-        .discount-note {
-          display: flex;
-          flex-direction: row;
-          font-size: $font-content;
-        }
+      .discount-note::before {
+        content: 'Note:';
+        margin-right: 0.2rem;
+      }
 
-        .discount-note::before {
-          content: 'Note:';
-          margin-right: 0.2rem;
-        }
-
-        .line-clamp {
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+      .line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
 
   .card-actions {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 0.5rem;
+/*
+        i {
+          color: $color-black;
+          user-select: none;
+        }
 
-    i {
-      color: $color-black;
-      padding: 0 0.3rem;
-      user-select: none;
-    }
+        i:hover {
+          cursor: pointer;
+          color: $color-violet;
+        }
 
-    i:hover {
-      cursor: pointer;
-      color: $color-violet;
-    }
-
-    .warn-color {
-      color: $color-red;
-    }
+        .warn-color {
+          color: $color-black;
+        }*/
   }
 }
