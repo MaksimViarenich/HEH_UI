@@ -1,11 +1,10 @@
 <div class="favorite-card">
   <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+favoriteInfo.background+')'}">
-
     <div class="card-title">
       {{ favoriteInfo.discount.vendor}}
     </div>
-    <app-btn-favorite></app-btn-favorite>
   </div>
+
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
@@ -18,19 +17,16 @@
       </div>
       <div class="discount-note line-clamp">
         {{ favoriteInfo.discount.feedback }}
-        <i class="material-icons" (click)="editNote()">
-          edit
-        </i>
       </div>
     </div>
   </div>
 
   <div class="card-actions">
-<!--    <i class="material-icons" (click)="editNote()">
+    <i class="material-icons" (click)="editNote()">
       edit
-    </i>-->
-    <!--    <i class="material-icons warn-color">
-          clear
-        </i>-->
+    </i>
+    <i class="material-icons warn-color">
+      delete_outline
+    </i>
   </div>
 </div>
