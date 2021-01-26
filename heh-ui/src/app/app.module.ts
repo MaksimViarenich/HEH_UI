@@ -53,7 +53,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     TagComponent,
     BtnFavoriteComponent,
     EditNoteModalComponent,
-    DiscountDetailsModalComponent
+    DiscountDetailsModalComponent,
   ],
   imports: [
     BrowserModule,
