@@ -40,19 +40,23 @@
         color: #303030;
       }
     }
-
+.person-pic{
+  display: flex;
+}
     .person-pic img {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-right: 0.5rem;
       align-items: center;
     }
 
     .profile-icon {
       margin-left: 1.5rem;
+ 
     }
 
     .profile-icon:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       cursor: pointer;
     }
   }
@@ -71,10 +75,10 @@
   color: #333333;
 }
 
-.mat-menu-content::before {
+.mat-menu-trigger .profile-icon::before {
   content: '';
   position: absolute;
-  right: .67rem;
+  right: .5rem;
   top: -.8rem;
   border: .8rem solid transparent;
   border-bottom: .8rem solid #ffffff;
@@ -82,12 +86,6 @@
 
 .mat-menu-panel {
   margin-top: .5rem;
-
-  .line {
-    width: 90%;
-    height: .5px;
-    background-color: #333333;
-  }
 }
 
 button.mat-menu-item {
@@ -101,8 +99,8 @@ button.mat-menu-item {
   font-size: .8rem;
 
   img {
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     margin-right: .8rem;
   }
 }
