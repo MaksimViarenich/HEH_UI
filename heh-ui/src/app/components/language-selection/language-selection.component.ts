@@ -21,7 +21,7 @@ export class LanguageSelectionComponent {
     {lang: 'Русский', path: '../../../assets/img/header_menu_ru.svg', langId: 1}
   ];
 
-  selectLang(path: string): void {
+  selectLang(path: string) {
     this.imagePath = path;
   }
 }
