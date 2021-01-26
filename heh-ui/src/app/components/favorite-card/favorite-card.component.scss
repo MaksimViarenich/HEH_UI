@@ -4,10 +4,11 @@
   overflow: hidden;
   display: flex;
   justify-content: space-between;
-  height: 7rem;
+  height: 6rem;
   background: $color-white;
   box-shadow: $box-shadow;
   border-radius: 5px;
+  margin-bottom: 1rem;
 
   .favorite-vendor {
     background-size: cover;
@@ -17,6 +18,7 @@
 
     .card-title {
       max-width: fit-content;
+      line-height: 1;
       margin: 0 0.6rem;
       @include font-bold-vendor;
     }
@@ -24,15 +26,14 @@
 
   .card-content {
     display: flex;
+    flex-grow: 1;
     justify-content: space-between;
-    max-width: 82%;
-    padding: 0.5rem 0.5rem 1rem 1rem;
+    padding: 0.5rem;
 
     .discount-info {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      max-width: 95%;
 
       .category-and-tags {
         display: flex;
@@ -41,7 +42,6 @@
 
       .card-content-description {
         box-sizing: border-box;
-        max-width: 95%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -49,7 +49,7 @@
 
         .discount-name {
           @include font-bold-discount;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.2rem;
           line-height: 1.5rem;
         }
 
@@ -73,26 +73,26 @@
         }
       }
     }
+  }
 
-    .card-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      i {
-        color: $color-black;
-        padding: 0 0.3rem;
-        user-select: none;
-      }
+    i {
+      color: $color-black;
+      padding: 0 0.3rem;
+      user-select: none;
+    }
 
-      i:hover {
-        cursor: pointer;
-        color: $color-violet;
-      }
+    i:hover {
+      cursor: pointer;
+      color: $color-violet;
+    }
 
-      .warn-color {
-        color: $color-red;
-      }
+    .warn-color {
+      color: $color-red;
     }
   }
 }
