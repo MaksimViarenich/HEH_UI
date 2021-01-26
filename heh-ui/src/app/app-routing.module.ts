@@ -12,6 +12,8 @@ import {VendorsComponent} from './pages/moderator/vendors/vendors.component';
 import {CategoriesTagsComponent} from './pages/moderator/categories-tags/categories-tags.component';
 import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.component';
 import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
+import {AdminComponent} from './pages/admin/admin.component';
+import {ModeratorComponent} from './pages/moderator/moderator.component';
 
 const routes: Routes = [
   {
