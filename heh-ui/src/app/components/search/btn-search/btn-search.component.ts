@@ -8,8 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class BtnSearchComponent {
   @Output() submitData = new EventEmitter<string>();
 
-  // tslint:disable-next-line: typedef
-  submitClick(){
+  submitClick(): void {
     this.submitData.emit();
   }
 

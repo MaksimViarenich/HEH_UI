@@ -1,7 +1,10 @@
 <div class="multi-select-container">
-  <mat-form-field>
-    <mat-select [placeholder]="label" [formControl]="optionsFormControl" multiple>
-      <mat-option *ngFor="let option of options" [value]="option">{{option}} {{index}}</mat-option>
+  <mat-form-field appearance="fill">
+    <mat-label>{{label}}</mat-label>
+
+    <mat-select [formControl]="optionsFormControl" multiple>
+      <mat-option *ngFor="let option of options"
+                  [value]="option.value">{{option.viewValue}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

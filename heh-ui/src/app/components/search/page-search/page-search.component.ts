@@ -6,18 +6,15 @@ import { Component, Input} from '@angular/core';
   styleUrls: ['./page-search.component.scss']
 })
 export class PageSearchComponent {
-  @Input() data?: any[];
+  @Input() searchOptions: any;
 
   array: string[] = [];
 
-  // tslint:disable-next-line: typedef
-  onFieldsChangeValue(value: string, idx: number, label: string){
+  onFieldsChangeValue(value: string, idx: number, label: string): void {
     this.array.push(`${idx} ${value} ${label}`);
   }
 
-  // tslint:disable-next-line: typedef
-  onPausedClick(){
-    // console.log(this.array);
+  onPausedClick(): void {
     this.array = [];
  }
 }

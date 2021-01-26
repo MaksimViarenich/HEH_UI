@@ -3,8 +3,8 @@
 .search-container {
   position: relative;
   width: 100%;
-  box-shadow: 0 4px 15px rgba(34, 35, 38, 0.15);
-  border-radius: 5px;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
 
   .search-input {
     padding-left: 2rem;
@@ -13,7 +13,6 @@
     background: transparent;
     line-height: 3.2rem;
     color: rgba(17, 17, 17, 0.48);
-    border-radius: 2%;
     width: calc(100% - 30px);
   }
 

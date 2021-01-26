@@ -3,26 +3,28 @@
 .multi-select-container {
   box-shadow: $box-shadow;
   border-radius: $border-radius-small;
-  padding: 0.4rem;
 
   mat-form-field {
     width: 100%;
   }
-    
-  .mat-form-field-label-wrapper{
-    top: -1rem;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
   }
 
-  .mat-select-arrow-wrapper{
-    vertical-align: top;
-  }
-  
-  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
-   padding-bottom: 0;
-  }
-
-  .mat-form-field-appearance-legacy .mat-form-field-underline {
+  .mat-form-field-underline {
     bottom: 0.2rem;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: $color-white;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex:hover .mat-form-field-ripple {
     background-color: $color-white;
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
-import { SearchOptions } from '../../models/searchOptions';
+import { SearchOptions } from '../../models/search-options';
 
 @Component({
   selector: 'app-discounts',
@@ -10,14 +10,46 @@ import { SearchOptions } from '../../models/searchOptions';
 })
 export class DiscountsComponent implements OnInit {
 
-  searchFieldsOptions: SearchOptions[];
+  searchFieldsOptions: SearchOptions;
 
   constructor(public dialog: MatDialog) {
-    this.searchFieldsOptions = [
-      {label: 'Category', options: ['Food', 'Sport', 'Beauty']},
-      {label: 'Tag', options: ['Pizza', 'Sushi', 'Barbershop', 'Swimm pool']},
-      {label: 'Vendor', options: ['Garage', 'Best Beauty Center', 'GYM24']},
-    ];
+    this.searchFieldsOptions = {
+      selectOptions: {
+        label: 'Location',
+        options: [
+          {value: '1', viewValue: 'Belarus, Minsk'},
+          {value: '2', viewValue: 'Belarus, Grodno'},
+          {value: '3', viewValue: 'Ukraine, Vinnitsa'}
+        ]
+      },
+      multiSelectOptions: [
+        {
+          label: 'Category',
+          options: [
+            {value: '4', viewValue: 'Food'},
+            {value: '5', viewValue: 'Sport'},
+            {value: '6', viewValue: 'Beauty'}
+          ]
+        },
+        {
+          label: 'Tag',
+          options: [
+            {value: '7', viewValue: 'Pizza'},
+            {value: '8', viewValue: 'Sushi'},
+            {value: '9', viewValue: 'Barbershop'},
+            {value: '10', viewValue: 'Swimming pool'},
+          ]
+        },
+        {
+          label: 'Vendor',
+          options: [
+            {value: '11', viewValue: 'Garage'},
+            {value: '12', viewValue: 'Best Beauty Center'},
+            {value: '13', viewValue: 'GYM24'}
+          ]
+        },
+      ]
+    };
   }
 
   openDiscountDetails(): void {

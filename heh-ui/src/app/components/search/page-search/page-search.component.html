@@ -4,16 +4,16 @@
       <app-input-search></app-input-search>
     </div>
     <div class="select-wrapper">
-      <app-select></app-select>
+      <app-select [label]="searchOptions.selectOptions.label"
+                  [options]="searchOptions.selectOptions.options"></app-select>
     </div>
   </div>
   <div class="filters-container">
     <div class="filter-wrapper"
-          *ngFor="let multiSelectData of data; let idx = index">
-      <app-multi-select [label]="multiSelectData.label"
-                        [options]="multiSelectData.options"
-                        [index]="idx"
-                        (changeValue)="onFieldsChangeValue($event, idx, multiSelectData.label)">
+          *ngFor="let multiSelectOption of searchOptions.multiSelectOptions; let idx = index">
+      <app-multi-select [label]="multiSelectOption.label"
+                        [options]="multiSelectOption.options"
+                        [index]="idx">
       </app-multi-select>
     </div>
     <div class="btn-container">

@@ -1,12 +1,12 @@
 <div class="select-container">
   <mat-form-field appearance="fill">
-    <mat-label>Location</mat-label>
+    <mat-label>{{label}}</mat-label>
 
-    <mat-select [(value)]="selectedLocation">
+    <mat-select [(value)]="selectedOption">
       <mat-option></mat-option>
       <mat-option [value]="option.value"
-                  *ngFor="let option of userLocations">
-        {{ option.viewValue }}, {{option.value}}
+                  *ngFor="let option of options">
+        {{ option.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
