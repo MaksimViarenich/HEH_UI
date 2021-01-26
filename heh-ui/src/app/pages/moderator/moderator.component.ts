@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationTabs} from '../../models/navigation-tabs';
+import {MODERATOR_TABS} from '../../models/tabs';
 
 @Component({
   selector: 'app-moderator',
@@ -8,16 +8,7 @@ import {NavigationTabs} from '../../models/navigation-tabs';
 })
 export class ModeratorComponent implements OnInit {
 
-  tabsModerator: NavigationTabs[] = [
-    {
-      name: 'Vendors',
-      path: '/moderator/vendors'
-    },
-    {
-      name: 'Categories & Tabs',
-      path: '/moderator/categories_tags'
-    },
-  ];
+  tabsModerator = MODERATOR_TABS;
 
   constructor() {
   }

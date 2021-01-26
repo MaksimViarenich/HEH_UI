@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {NavigationTabs} from '../../models/navigation-tabs';
+import {Tabs} from '../../models/tabs';
 
 @Component({
   selector: 'app-nav-moderator-admin',
@@ -8,7 +8,7 @@ import {NavigationTabs} from '../../models/navigation-tabs';
   encapsulation: ViewEncapsulation.None
 })
 export class NavModeratorAdminComponent implements OnInit {
-  @Input() tabs: Array<NavigationTabs> | undefined;
+  @Input() tabs: Array<Tabs> | undefined;
 
   constructor() {
   }
