@@ -43,15 +43,27 @@ export class HomeLayoutComponent implements OnInit {
 
   constructor(private router: Router) {
     this.route = this.router.url;
+    this.imagePath = '';
+    this.pageTitle = '';
 
-    const imgOption = this.bgImages.find(item => item.pagePath === this.route);
-    this.imagePath = (imgOption) ? `url(${imgOption?.imagePath})` : 'default';
+    this.getBackgroundImage();
 
-    const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
-    this.pageTitle = (titleOption) ? titleOption?.title : 'Unknown Page';
+    this.getTitle();
   }
 
   ngOnInit(): void {
 
+  }
+
+  getBackgroundImage(): any {
+    this.route = this.router.url;
+    const imgOption = this.bgImages.find(item => item.pagePath === this.route);
+    return (imgOption) ? `url(${imgOption?.imagePath})` : 'none';
+  }
+
+  getTitle(): any {
+    this.route = this.router.url;
+    const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
+    return (titleOption) ? titleOption?.title : 'Unknown Page';
   }
 }
