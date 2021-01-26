@@ -41,16 +41,14 @@
       }
     }
 
-<<<<<<< HEAD
 .person-pic{
   display: flex;
 }
 
-=======
->>>>>>> parent of 017bcc7... HEH-UI-20: Add localization selection to header
     .person-pic img {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin-right: 0.5rem;
       align-items: center;
     }
 
@@ -59,7 +57,7 @@
     }
 
     .profile-icon:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       cursor: pointer;
     }
   }
@@ -77,27 +75,8 @@
   color: #333333;
 }
 
-<<<<<<< HEAD
 .profile-menu {
-=======
-.mat-menu-content::before {
-  content: '';
-  position: absolute;
-  right: .67rem;
-  top: -.8rem;
-  border: .8rem solid transparent;
-  border-bottom: .8rem solid #ffffff;
-}
-
-.mat-menu-panel {
->>>>>>> parent of 017bcc7... HEH-UI-20: Add localization selection to header
   margin-top: .5rem;
-
-  .line {
-    width: 90%;
-    height: .5px;
-    background-color: #333333;
-  }
 }
 
 button.mat-menu-item {
@@ -111,8 +90,8 @@ button.mat-menu-item {
   font-size: .8rem;
 
   img {
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     margin-right: .8rem;
   }
 }
