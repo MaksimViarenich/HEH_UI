@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   exports: [
@@ -37,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatMenuModule,
     MatDialogModule,
+    MatSlideToggleModule,
   ],
   imports: [],
   providers: []

@@ -1,0 +1,107 @@
+<div mat-dialog-content class="mat-dialog-content">
+  <div class="add-discount-background">
+    <div class="add-discount-title">Add discount</div>
+  </div>
+
+  <div class="add-discount-info">
+    <mat-form-field appearance="outline" class="add-discount-vendor">
+      <mat-label>Vendor</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let vendor of vendors" [value]="vendor">{{vendor}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="add-discount-address">
+      <mat-label>Address</mat-label>
+
+      <mat-select [formControl]="address" multiple>
+        <mat-select-trigger>
+          {{address.value ? address.value[0] : ''}}
+          <span *ngIf="address.value?.length > 1"
+                class="example-additional-selection">
+          (+{{address.value.length - 1}}
+            {{address.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let address of discount.addressList"
+                    [value]="address">{{address}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="add-discount-phone">
+      <mat-label>Telephone</mat-label>
+      <mat-select [formControl]="phone" multiple>
+        <mat-select-trigger>
+          {{phone.value ? phone.value[0] : ''}}
+          <span *ngIf="phone.value?.length > 1"
+                class="example-additional-selection">
+          (+{{phone.value.length - 1}}
+            {{phone.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let phone of discount.phones"
+                    [value]="phone">{{phone}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="add-discount-name" appearance="outline">
+      <mat-label>Discount name</mat-label>
+      <input matInput placeholder="Discount name">
+    </mat-form-field>
+
+    <mat-form-field class="add-discount-description" appearance="outline">
+      <mat-label>Discount description</mat-label>
+      <input matInput placeholder="Discount description">
+    </mat-form-field>
+
+    <mat-form-field class="add-discount-date" appearance="outline">
+      <mat-label>Expiration date</mat-label>
+      <input matInput placeholder="Expiration date">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="add-discount-category">
+      <mat-label>Category</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tag</mat-label>
+      <mat-chip-list #chipList aria-label="Tag selection">
+        <mat-chip
+          *ngFor="let tag of tags"
+          [selectable]="selectable"
+          [removable]="removable"
+          (removed)="remove(tag)">
+          {{tag}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="New tag..."
+          #tagInput
+          [formControl]="tagCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+          {{tag}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-slide-toggle color="primary" [(ngModel)]="isActive">{{isActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+
+    <div class="add-discount-button">
+      <button mat-button>Cancel</button>
+      <button mat-raised-button color="primary">Submit</button>
+    </div>
+
+  </div>
+</div>
