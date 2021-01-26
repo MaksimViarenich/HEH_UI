@@ -29,6 +29,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
 import { BtnSearchComponent } from './components/field-search/btn-search/btn-search.component';
+import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 
@@ -57,13 +58,14 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     DiscountCardComponent,
     FavoriteCardComponent,
     LanguageSelectionComponent,
-    DiscountCardComponent,
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
     BtnSearchComponent,
+    NavModeratorAdminComponent,
+    DiscountDetailsModalComponent,
     EditNoteModalComponent,
-    DiscountDetailsModalComponent
+    DiscountDetailsModalComponent,
   ],
   imports: [
     BrowserModule,

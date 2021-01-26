@@ -5,7 +5,7 @@ import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/ed
 @Component({
   selector: 'app-favorite-card',
   templateUrl: './favorite-card.component.html',
-  styleUrls: ['./favorite-card.component.scss'],
+  styleUrls: ['./favorite-card.component.scss',],
   encapsulation: ViewEncapsulation.None,
 })
 

@@ -1,9 +1,11 @@
+@import "../../../styles.scss";
+
 .btn-favorite {
   user-select: none;
 
   span {
     font-size: 2rem;
-    color: #ffffff;
+    color: $color-white;
   }
 
   span:hover {
