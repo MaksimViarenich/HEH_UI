@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ADMIN_TABS} from '../../models/tabs';
+import {ADMIN_TABS} from '../../models/tab';
 
 @Component({
   selector: 'app-admin',

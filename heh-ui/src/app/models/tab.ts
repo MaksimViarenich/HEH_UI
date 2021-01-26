@@ -1,9 +1,9 @@
-export interface Tabs {
+export interface Tab {
   name: string;
   path: string;
 }
 
-export const HEADER_TABS: Tabs[] = [
+export const HEADER_TABS: Tab[] = [
   {
     name: 'Discounts',
     path: 'discounts'
@@ -22,7 +22,7 @@ export const HEADER_TABS: Tabs[] = [
   },
 ];
 
-export const MODERATOR_TABS: Tabs[] = [
+export const MODERATOR_TABS: Tab[] = [
   {
     name: 'Vendors',
     path: '/moderator/vendors'
@@ -33,7 +33,7 @@ export const MODERATOR_TABS: Tabs[] = [
   },
 ];
 
-export const ADMIN_TABS: Tabs[] = [
+export const ADMIN_TABS: Tab[] = [
   {
     name: 'Users',
     path: '/admin/users'

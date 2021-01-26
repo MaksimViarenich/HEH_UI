@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MODERATOR_TABS} from '../../models/tabs';
+import {MODERATOR_TABS} from '../../models/tab';
 
 @Component({
   selector: 'app-moderator',
