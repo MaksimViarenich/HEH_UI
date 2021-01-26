@@ -1,2 +1,3 @@
-<app-discount-card (click)="openDiscountDetails()"></app-discount-card>
-
+<div class="container">
+    <app-discount-card *ngFor="let discount of discounts" [discountInfo]="discount" (click)="openDiscountDetails(discount)"></app-discount-card>
+</div>
