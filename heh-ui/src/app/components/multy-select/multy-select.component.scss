@@ -1,6 +1,7 @@
+@import "../../../styles.scss";
 .multi-select-container {
-  box-shadow: 0 4px 15px rgba(34, 35, 38, 0.15);
-  border-radius: 5px;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
   padding: 0.4rem;
 
   mat-form-field {
@@ -21,7 +22,7 @@
 
   .mat-form-field-appearance-legacy .mat-form-field-underline {
     bottom: 0.2rem;
-    background-color: #ffffff;
+    background-color: $color-white;
    }
 }
 

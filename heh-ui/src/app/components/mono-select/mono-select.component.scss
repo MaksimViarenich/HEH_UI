@@ -1,6 +1,7 @@
+@import "../../../styles.scss";
 .select-container {
-  box-shadow: 0 4px 15px rgba(34, 35, 38, 0.15);
-  border-radius: 5px;
+  box-shadow: $box-shadow;
+  border-radius: $box-shadow;
 
   mat-form-field {
     width: 100%;
@@ -19,10 +20,10 @@
   }
 
   .mat-form-field-appearance-fill .mat-form-field-underline::before {
-    background-color: #ffffff;
+    background-color:$color-white;
   }
 
   .mat-form-field-appearance-fill .mat-form-field-flex:hover .mat-form-field-ripple {
-    background-color: #ffffff;
+    background-color: $color-white;
   }
 }
