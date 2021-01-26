@@ -55,15 +55,17 @@ export class HomeLayoutComponent implements OnInit {
 
   }
 
-  getBackgroundImage(): any {
+  getBackgroundImage(): string {
     this.route = this.router.url;
     const imgOption = this.bgImages.find(item => item.pagePath === this.route);
+
     return (imgOption) ? `url(${imgOption?.imagePath})` : 'none';
   }
 
-  getTitle(): any {
+  getTitle(): string {
     this.route = this.router.url;
     const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
+
     return (titleOption) ? titleOption?.title : 'Unknown Page';
   }
 }
