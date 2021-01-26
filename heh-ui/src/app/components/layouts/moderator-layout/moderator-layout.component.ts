@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 interface BgImages {
   imagePath: string;
@@ -12,11 +12,11 @@ interface PageTitles {
 }
 
 @Component({
-  selector: 'app-home-layout',
-  templateUrl: './home-layout.component.html',
-  styleUrls: ['./home-layout.component.scss']
+  selector: 'app-moderator-layout',
+  templateUrl: './moderator-layout.component.html',
+  styleUrls: ['./moderator-layout.component.scss']
 })
-export class HomeLayoutComponent implements OnInit {
+export class ModeratorLayoutComponent implements OnInit {
 
   route: string;
   imagePath: string;
@@ -25,18 +25,18 @@ export class HomeLayoutComponent implements OnInit {
   bgImages: BgImages[] = [
     {imagePath: '../../../../assets/images/background-image/Sales_girl.png', pagePath: '/favorites'},
     {imagePath: '../../../../assets/images/background-image/boy_with_nout.png', pagePath: '/profile'},
-/*    {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/users'},
+    {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/users'},
     {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/statistics'},
-    {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/history'}*/
+    {imagePath: '../../../../assets/images/background-image/Man_with_pc.png', pagePath: '/admin/history'}
   ];
 
   pageTitles: PageTitles[] = [
-    {title: 'Discounts', pagePath: '/discounts'},
+/*    {title: 'Discounts', pagePath: '/discounts'},
     {title: 'Favorites', pagePath: '/favorites'},
-    {title: 'Profile', pagePath: '/profile'},
-/*    {title: 'Moderator', pagePath: '/moderator/vendors'},
+    {title: 'Profile', pagePath: '/profile'},*/
+    {title: 'Moderator', pagePath: '/moderator/vendors'},
     {title: 'Moderator', pagePath: '/moderator/categories_tags'},
-    {title: 'Admin', pagePath: '/admin/users'},
+/*    {title: 'Admin', pagePath: '/admin/users'},
     {title: 'Admin', pagePath: '/admin/statistics'},
     {title: 'Admin', pagePath: '/admin/history'}*/
   ];

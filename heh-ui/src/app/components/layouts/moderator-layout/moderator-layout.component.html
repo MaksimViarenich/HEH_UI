@@ -1,0 +1,14 @@
+<div class="background-image"
+     [ngStyle]="{'background-image': imagePath }">
+  <app-header></app-header>
+  <div class="container">
+    <div class="title">
+      {{ pageTitle }}
+    </div>
+    <app-moderator></app-moderator>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
