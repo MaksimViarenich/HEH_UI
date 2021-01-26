@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .header {
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: .82;
@@ -9,9 +11,8 @@
     margin: 0 1rem;
 
     .header-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #F3F3F3;
+      @include font-bold-vendor;
+      color: $color-white-dim;
       text-transform: uppercase;
     }
 
@@ -35,9 +36,9 @@
       text-decoration: none;
 
       .person-name a {
-        font-size: 1.6rem;
+        font-size: $font-vendor;
         font-weight: normal;
-        color: #303030;
+        color: $color-black;
       }
     }
 
@@ -60,7 +61,7 @@
 
 .mat-tab-links .tab {
   min-width: 1.5rem;
-  color: #303030;
+  color: $color-black;
 }
 
 .mat-menu-content {
@@ -68,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   width: 16rem;
-  color: #333333;
+  color: $color-black;
 }
 
 .mat-menu-content::before {
@@ -77,7 +78,7 @@
   right: .67rem;
   top: -.8rem;
   border: .8rem solid transparent;
-  border-bottom: .8rem solid #ffffff;
+  border-bottom: .8rem solid $color-white;
 }
 
 .mat-menu-panel {
@@ -86,7 +87,7 @@
   .line {
     width: 90%;
     height: .5px;
-    background-color: #333333;
+    background-color: $color-black;
   }
 }
 

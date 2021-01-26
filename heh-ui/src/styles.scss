@@ -1,6 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+$height-background-triangle: 3.8rem;
+$font-vendor: 1.5rem;
+$font-title: 1.3rem;
+$font-content: 0.9rem;
+$margin-1: 1rem;
+$margin-half: 0.5rem;
+$margin-small: 0.35rem;
+
+$box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
+$border-radius-small: .33rem;
+
+$color-violet: #9A90FE;
+$color-red: #DB0404;
+$color-black: #333;
+$color-white: #fff;
+$color-white-dim: #f3f3f3;
+$color-grey: #B0B4B6;
+
+$margin-category-tag: 0.5rem 0.5rem 0.5rem 0;
+
+$padding-category-tag: 0 0.5rem;
+
+@mixin font-bold-vendor {
+    font-size: $font-vendor;
+    font-weight: bold;
+    color: $color-white;
+}
+
+@mixin font-bold-discount {
+    font-size: $font-title;
+    font-weight: bold;
+}
+
 body {
     margin: 0;
     height: 100vh;
+    color: $color-black;
  }
-

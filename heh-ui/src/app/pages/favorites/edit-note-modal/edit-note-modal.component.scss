@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 .cdk-global-overlay-wrapper {
   justify-content: flex-end !important;
   margin: 0;
@@ -22,9 +24,7 @@
           align-items: center;
           height: 7rem;
           padding-left: .5rem;
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #fff;
+          @include font-bold-vendor;
         }
 
         .edit-field {
@@ -35,14 +35,13 @@
           padding: 1rem;
 
           .discount-name {
-            font-size: 1.25rem;
-            font-weight: bold;
+            @include font-bold-discount;
             margin-bottom: 1rem;
           }
 
           button {
-            background-color: #9A90FE;
-            color: #fff;
+            background-color: $color-violet;
+            color: $color-white;
           }
         }
       }

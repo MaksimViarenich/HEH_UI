@@ -52,8 +52,8 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    EditNoteModalComponent
-    DiscountDetailsModalComponent
+    EditNoteModalComponent,
+    DiscountDetailsModalComponent,
   ],
   imports: [
     BrowserModule,
