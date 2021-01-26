@@ -1,0 +1,19 @@
+{
+  "header": {
+    "profile": "Profile",
+    "logout": "Logout",
+    "discounts": "Discounts",
+    "favorites": "Favorites",
+    "moderator": "Moderator",
+    "admin": "Admin"
+  },
+  "moderator": {
+    "vendors": "Vendors",
+    "categories": "Categories and tags"
+  },
+  "admin": {
+    "users": "Users",
+    "history": "History",
+    "statistics": "Statistics"
+  }
+}

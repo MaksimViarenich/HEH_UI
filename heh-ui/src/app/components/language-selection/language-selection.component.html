@@ -10,6 +10,7 @@
   xPosition="before">
   <div mat-menu-item
     (click)="selectLang(item.path)"
+    (click)="translate.use(item.langCode)"
     class="lang-select-option lang-item"
     *ngFor="let item of languages">
       <img src={{item.path}} alt="">  {{item.lang}}

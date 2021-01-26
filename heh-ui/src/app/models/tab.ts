@@ -1,49 +1,59 @@
 export interface Tab {
   name: string;
   path: string;
+  key: string;
 }
 
 export const HEADER_TABS: Tab[] = [
   {
     name: 'Discounts',
-    path: 'discounts'
+    path: 'discounts',
+    key: 'header.discounts'
   },
   {
     name: 'Favorites',
-    path: 'favorites'
+    path: 'favorites',
+    key: 'header.favorites'
   },
   {
     name: 'Moderator',
-    path: 'moderator'
+    path: 'moderator',
+    key: 'header.moderator'
   },
   {
     name: 'Admin',
-    path: 'admin'
+    path: 'admin',
+    key: 'header.admin'
   },
 ];
 
 export const MODERATOR_TABS: Tab[] = [
   {
     name: 'Vendors',
-    path: '/moderator/vendors'
+    path: '/moderator/vendors',
+    key: 'moderator.vendors'
   },
   {
     name: 'Categories & Tabs',
-    path: '/moderator/categories_tags'
+    path: '/moderator/categories_tags',
+    key: 'moderator.categories'
   },
 ];
 
 export const ADMIN_TABS: Tab[] = [
   {
     name: 'Users',
-    path: '/admin/users'
+    path: '/admin/users',
+    key: 'admin.users'
   },
   {
     name: 'Event History',
-    path: '/admin/history'
+    path: '/admin/history',
+    key: 'admin.history'
   },
   {
     name: 'Statistics',
-    path: '/admin/statistics'
+    path: '/admin/statistics',
+    key: 'admin.statistics'
   },
 ];

@@ -1,0 +1,19 @@
+{
+  "header": {
+    "profile": "Профиль",
+    "logout": "Выйти",
+    "discounts": "Скидки",
+    "favorites": "Избранное",
+    "moderator": "Модератор",
+    "admin": "Администратор"
+  },
+  "moderator": {
+    "vendors": "Вендоры",
+    "categories": "Категории и теги"
+  },
+  "admin": {
+    "users": "Пользователи",
+    "history": "История",
+    "statistics": "Статистика"
+  }
+}

@@ -24,8 +24,7 @@ export class HeaderComponent implements OnInit {
     address: 'Naturalistov 3',
   };
 
-  ngOnInit() {
-
+  ngOnInit(): void {
   }
 
   goToPerson(): void {
