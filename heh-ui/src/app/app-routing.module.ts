@@ -24,11 +24,25 @@ const routes: Routes = [
       {path: 'discounts', component: DiscountsComponent},
       {path: 'favorites', component: FavoritesComponent},
       {path: 'profile', component: UserProfileComponent},
-      {path: 'admin/users', component: UsersComponent},
-      {path: 'admin/statistics', component: StatisticsComponent},
-      {path: 'admin/history', component: EventHistoryComponent},
-      {path: 'moderator/vendors', component: VendorsComponent},
-      {path: 'moderator/categories_tags', component: CategoriesTagsComponent},
+      {
+        path: 'moderator',
+        component: ModeratorComponent,
+        children: [
+          {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
+          {path: 'vendors', component: VendorsComponent},
+          {path: 'categories_tags', component: CategoriesTagsComponent}
+        ]
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+          {path: '', redirectTo: '/admin/users', pathMatch: 'full'},
+          {path: 'users', component: UsersComponent},
+          {path: 'statistics', component: StatisticsComponent},
+          {path: 'history', component: EventHistoryComponent},
+        ]
+      }
     ]
   },
   {

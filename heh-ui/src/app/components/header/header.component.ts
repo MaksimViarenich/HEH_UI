@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationPreferences } from '../../models/notification-preferences';
-import { HEADER_TABS } from '../../models/header-tab';
+import { HEADER_TABS } from '../../models/tab';
 
 @Component({
   selector: 'app-header',
