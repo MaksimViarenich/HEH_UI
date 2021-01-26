@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header" [ngStyle]="{'background-image': 'url('+discountInfo.background+')'}">
-    <div class="card-title">{{discountInfo.vendor}}</div>
+    <div class="card-title">{{discountInfo.discount.vendor}}</div>
     <app-btn-favorite [isFavorite]="discountInfo.isFavorite"></app-btn-favorite>
   </div>
 

@@ -8,7 +8,7 @@ import { DiscountCard } from '../../models/discount-card';
 })
 export class DiscountCardComponent implements OnInit {
 
-  @Input() discountInfo: DiscountCard | undefined;
+  @Input() discountInfo: any | undefined;
 
   constructor() { }
 
