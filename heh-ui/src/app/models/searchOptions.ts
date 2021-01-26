@@ -1,4 +1,4 @@
-export interface SearchFields {
+export interface SearchOptions {
     label: string;
     options: string[];
 }

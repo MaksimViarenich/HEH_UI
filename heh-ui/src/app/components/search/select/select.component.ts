@@ -5,17 +5,16 @@ interface Location {
   viewValue: string;
 }
 @Component({
-  selector: 'app-mono-select',
-  templateUrl: './mono-select.component.html',
-  styleUrls: ['./mono-select.component.scss'],
+  selector: 'app-select',
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MonoSelectComponent implements OnInit{
+export class SelectComponent {
   userLocations: Location[] = [
     {value: 'Minsk', viewValue: 'Belarus'},
     {value: 'Grodno', viewValue: 'Belarus'},
     {value: 'Vinnitsa', viewValue: 'Ukraine'}
   ];
     selectedLocation = this.userLocations[0].value;
-  ngOnInit(): void{}
 }

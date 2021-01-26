@@ -1,0 +1,24 @@
+<div class="search-container">
+  <div class="main-search-container">
+    <div class="search-wrapper">
+      <app-input-search></app-input-search>
+    </div>
+    <div class="select-wrapper">
+      <app-select></app-select>
+    </div>
+  </div>
+  <div class="filters-container">
+    <div class="filter-wrapper"
+          *ngFor="let multiSelectData of data; let idx = index">
+      <app-multi-select [label]="multiSelectData.label"
+                        [options]="multiSelectData.options"
+                        [index]="idx"
+                        (changeValue)="onFieldsChangeValue($event, idx, multiSelectData.label)">
+      </app-multi-select>
+    </div>
+    <div class="btn-container">
+      <app-btn-search (submitData)="onPausedClick()"></app-btn-search>
+    </div>
+  </div>
+</div>
+  

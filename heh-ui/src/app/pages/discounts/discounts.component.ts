@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
-import {SearchFields} from './searchOptions';
+import { SearchOptions } from '../../models/searchOptions';
+
 @Component({
   selector: 'app-discounts',
   templateUrl: './discounts.component.html',
@@ -9,7 +10,7 @@ import {SearchFields} from './searchOptions';
 })
 export class DiscountsComponent implements OnInit {
 
-  searchFieldsOptions: SearchFields[];
+  searchFieldsOptions: SearchOptions[];
 
   constructor(public dialog: MatDialog) {
     this.searchFieldsOptions = [

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchUIComponent } from './search-ui.component';
+import { InputSearchComponent } from './input-search.component';
 
 describe('SearchUIComponent', () => {
-  let component: SearchUIComponent;
-  let fixture: ComponentFixture<SearchUIComponent>;
+  let component: InputSearchComponent;
+  let fixture: ComponentFixture<InputSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchUIComponent ]
+      declarations: [ InputSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchUIComponent);
+    fixture = TestBed.createComponent(InputSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
