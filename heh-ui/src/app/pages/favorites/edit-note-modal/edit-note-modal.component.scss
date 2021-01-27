@@ -1,0 +1,50 @@
+@import "../../../../styles.scss";
+
+.cdk-global-overlay-wrapper {
+  justify-content: flex-end !important;
+  margin: 0;
+
+  .cdk-overlay-pane {
+    width: 30%;
+    height: 100%;
+    margin: 0;
+
+    .mat-dialog-container {
+      padding: 0;
+
+      .mat-dialog-content {
+        display: block;
+        margin: 0;
+        padding: 0;
+        max-height: 100vh;
+
+        .header {
+          background-size: cover;
+          display: flex;
+          align-items: center;
+          height: 7rem;
+          padding-left: .5rem;
+          @include font-bold-vendor;
+        }
+
+        .edit-field {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          justify-content: space-between;
+          padding: 1rem;
+
+          .discount-name {
+            @include font-bold-discount;
+            margin-bottom: 1rem;
+          }
+
+          button {
+            background-color: $color-violet;
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}

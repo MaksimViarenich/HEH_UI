@@ -1,0 +1,32 @@
+.lang-select-button img {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 1.125rem;
+}
+
+.lang-select-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.lang-item {
+  display: flex;
+
+  img {
+    height: 2.2rem;
+    width: 2.2rem;
+    border-radius: 1.125rem;
+  }
+}
+
+.mat-menu-content {
+  display: block;
+}
+
+.menu-items {
+  margin-top: .2rem;
+}
+
+.mat-menu-panel .mat-menu-content {
+  width: 9.375rem;
+}

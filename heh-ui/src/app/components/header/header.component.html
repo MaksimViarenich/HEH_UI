@@ -1,0 +1,37 @@
+<header class='header'>
+  <div class='container'>
+    <div class='header-title' 
+        (click)='goToMain()'> happy exadel hours </div>
+    <nav class='navigation'>
+      <nav mat-tab-nav-bar>
+        <a class='tab' mat-tab-link 
+        *ngFor="let tab of tabs" 
+        [routerLink]="tab.path" 
+        routerLinkActive
+        #rla="routerLinkActive" [active]="rla.isActive">
+        {{tab.name}}</a>
+      </nav>
+      <div class='person'>
+        <div class='person-info'>
+          <a class='person-name' href='/profile'
+            (click)='goToPerson()'>Michael Browk
+          </a>
+          <a class='person-place'
+          href='#'>Belarus, Minsk
+        </a>
+        </div>
+        <div class='person-pic'>
+          <img class='profile-icon' src='../../../assets/img/header_profile.svg' alt='profile-icon' mat-button
+            [matMenuTriggerFor]='beforeMenuProfil'>
+          <mat-menu class='profile-menu' #beforeMenuProfil='matMenu' xPosition='before'>
+            <button class='btn-person btn-primary' (click)='goToPerson()' mat-menu-item><img
+                src='../../../assets/img/header_menu_profile.svg' alt='btn-person'>Profile</button>
+            <button class='btn-person btn-primary' (click)='logout()' mat-menu-item><img
+                src='../../../assets/img/header_menu_logout.svg' alt='btn-person'>Logout</button>
+          </mat-menu>
+          <app-language-selection></app-language-selection>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+@import "../../../styles.scss";
+
+.btn-favorite {
+  user-select: none;
+
+  span {
+    font-size: 2rem;
+    color: $color-white;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+}
