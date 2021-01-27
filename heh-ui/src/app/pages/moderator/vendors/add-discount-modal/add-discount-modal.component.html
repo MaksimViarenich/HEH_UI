@@ -22,7 +22,7 @@
             {{address.value ? address.value[0] : ''}}
             <span *ngIf="address.value?.length > 1"
                   class="example-additional-selection">
-          (+{{address.value.length - 1}} {{address.value?.length === 2 ? 'other' : 'others'}})
+              (+{{address.value.length - 1}} {{address.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of discount.addressList"
@@ -38,7 +38,7 @@
             {{phone.value ? phone.value[0] : ''}}
             <span *ngIf="phone.value?.length > 1"
                   class="example-additional-selection">
-          (+{{phone.value.length - 1}} {{phone.value?.length === 2 ? 'other' : 'others'}})
+              (+{{phone.value.length - 1}} {{phone.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let phone of discount.phones"
@@ -87,7 +87,7 @@
             {{tag.value ? tag.value[0] : ''}}
             <span *ngIf="tag.value?.length > 1"
                   class="example-additional-selection">
-          (+{{tag.value.length - 1}} {{tag.value?.length === 2 ? 'other' : 'others'}})
+              (+{{tag.value.length - 1}} {{tag.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let tag of discount.tags"
