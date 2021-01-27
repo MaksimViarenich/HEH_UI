@@ -1,20 +1,20 @@
 <div mat-dialog-content class="mat-dialog-content">
-  <div class="discount-detail-background">
-    <div class="discount-detail-title">{{discount.vendor}}</div>
-    <app-btn-favorite [isFavorite]="discount.isFavorite"
+  <div class="discount-detail-background" [ngStyle]="{'background-image': 'url('+data.background+')'}">
+    <div class="discount-detail-title">{{data.discount.vendor}}</div>
+    <app-btn-favorite [isFavorite]="data.discount.isFavorite"
                       class="discount-detail-favorite"></app-btn-favorite>
   </div>
 
   <div class="discount-detail-info">
-    <div class="discount-detail-service">{{discount.title}}</div>
+    <div class="discount-detail-service">{{data.discount.title}}</div>
 
     <div class="category-and-tags">
-      <app-category [discountCategory]=discount.category></app-category>
-      <app-tag *ngFor="let tag of discount.tags"
+      <app-category [discountCategory]="data.discount.category"></app-category>
+      <app-tag *ngFor="let tag of data.discount.tags"
                [discountTag]="tag"></app-tag>
     </div>
 
-    <div class="discount-detail-description">{{discount.description}}</div>
+    <div class="discount-detail-description">{{data.discount.description}}</div>
 
     <mat-form-field appearance="fill">
       <mat-label>Address</mat-label>
@@ -28,47 +28,47 @@
             {{address.value?.length === 2 ? 'other' : 'others'}})
         </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let address of discount.addressList"
+        <mat-option *ngFor="let address of data.discount.addressList"
                     [value]="address">{{address}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="modal-contacts">
       <div class="sidenav-website">
-        <a href="{{discount.website}}" target="_blank">
+        <a href="{{data.discount.website}}" target="_blank">
           <span class="material-icons">language</span>
-          <span>{{discount.website}}</span>
+          <span>{{data.discount.website}}</span>
         </a>
       </div>
 
       <div class="sidenav-phone">
         <span class="material-icons">phone</span>
-        <span>{{discount.phones}}</span>
+        <span>{{data.discount.phones}}</span>
       </div>
 
       <div class="sidenav-time">
         <span class="material-icons">query_builder</span>
-        <span>Open: {{discount.workingHours}}</span>
+        <span>Open: {{data.discount.workingHours}}</span>
       </div>
 
       <div class="sidenav-validity">
         <span class="material-icons">calendar_today</span>
-        <span>Available till {{discount.validity  | date: 'dd/MM/yyyy'}}</span>
+        <span>Available till {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
       </div>
     </div>
 
     <div class="social-network">
-      <a href="{{discount.instagram}}"
+      <a href="{{data.discount.instagram}}"
          target="_blank">
         <img src="assets/img/icons/instagram-icon.svg">
       </a>
 
-      <a href="{{discount.facebook}}"
+      <a href="{{data.discount.facebook}}"
          target="_blank">
         <img src="assets/img/icons/facebook-icon.svg">
       </a>
 
-      <a href="{{discount.vk}}"
+      <a href="{{data.discount.vk}}"
          target="_blank">
         <img src="assets/img/icons/vk-icon.svg">
       </a>
