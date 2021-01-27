@@ -1,3 +1,4 @@
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   exports: [
@@ -38,6 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatMenuModule,
     MatDialogModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
   ],
   imports: [],
   providers: []

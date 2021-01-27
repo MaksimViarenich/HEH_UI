@@ -1,5 +1,50 @@
+@import '../../../styles.scss';
+
 .user-card {
   width: 25rem;
   height: 11rem;
-  border: 1px solid black
+  background-color: white;
+  margin-bottom: 2rem;
+  display: flex;
+  box-shadow: $box-shadow;
+
+  .user-card__avatar {
+    height: 100%;
+    width: 11rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 9.5rem;
+      width: 9.5rem;
+    }
+  }
+
+  .user-card__info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+      font-weight: bold;
+    }
+
+    .btn-toggle mat-button-toggle {
+      height: 1.5rem;
+      padding: 0;
+      margin: 0;
+
+      span {
+        padding: 0 0.6rem;
+        height: 1.5rem;
+        line-height: 0;
+      }
+    }
+
+    mat-slide-toggle {
+      margin-top: 0.5rem;
+    }
+  }
 }

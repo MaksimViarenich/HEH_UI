@@ -1,4 +1,7 @@
 .users-list {
-  height: 70rem;
-  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
 }
