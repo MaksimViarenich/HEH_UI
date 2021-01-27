@@ -9,8 +9,7 @@
     <div class="add-discount-fields">
       <mat-form-field appearance="outline" class="add-discount-vendor">
         <mat-label>Vendor</mat-label>
-        <mat-select>
-          <mat-option>None</mat-option>
+        <mat-select [formControl]="vendor" required>
           <mat-option *ngFor="let vendor of vendors"
                       [value]="vendor">{{vendor}}</mat-option>
         </mat-select>
@@ -18,8 +17,7 @@
 
       <mat-form-field appearance="outline" class="add-discount-address">
         <mat-label>Address</mat-label>
-
-        <mat-select [formControl]="address" multiple>
+        <mat-select [formControl]="address" multiple required>
           <mat-select-trigger>
             {{address.value ? address.value[0] : ''}}
             <span *ngIf="address.value?.length > 1"
@@ -35,7 +33,7 @@
 
       <mat-form-field appearance="outline" class="add-discount-phone">
         <mat-label>Telephone</mat-label>
-        <mat-select [formControl]="phone" multiple>
+        <mat-select [formControl]="phone" multiple required>
           <mat-select-trigger>
             {{phone.value ? phone.value[0] : ''}}
             <span *ngIf="phone.value?.length > 1"
@@ -51,23 +49,22 @@
 
       <mat-form-field class="add-discount-name" appearance="outline">
         <mat-label>Discount name</mat-label>
-        <input matInput placeholder="Discount name">
+        <input matInput placeholder="Discount name" [formControl]="name" required>
       </mat-form-field>
 
       <mat-form-field class="add-discount-description" appearance="outline">
         <mat-label>Discount description</mat-label>
-        <input matInput placeholder="Discount description">
+        <input matInput placeholder="Discount description" [formControl]="description" required>
       </mat-form-field>
 
       <mat-form-field class="add-discount-date" appearance="outline">
         <mat-label>Expiration date</mat-label>
-        <input matInput placeholder="Expiration date">
+        <input matInput placeholder="Expiration date" type="date" [formControl]="date" required>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-category">
         <mat-label>Category</mat-label>
-        <mat-select>
-          <mat-option>None</mat-option>
+        <mat-select [formControl]="category" required>
           <mat-option *ngFor="let category of categories"
                       [value]="category">{{category}}</mat-option>
         </mat-select>
@@ -88,7 +85,6 @@
                       [value]="tag">{{tag}}</mat-option>
         </mat-select>
       </mat-form-field>
-
 
       <mat-slide-toggle color="primary"
                         [(ngModel)]="isActive">{{isActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>

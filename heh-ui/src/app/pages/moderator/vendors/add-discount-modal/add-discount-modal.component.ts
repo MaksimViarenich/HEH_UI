@@ -9,9 +9,14 @@ import {Discount} from '../../../../models/discount';
   encapsulation: ViewEncapsulation.None
 })
 export class AddDiscountModalComponent implements OnInit {
+  vendor = new FormControl();
   address = new FormControl();
   phone = new FormControl();
+  name = new FormControl();
+  description = new FormControl();
+  date = new FormControl();
   tag = new FormControl();
+  category = new FormControl();
 
   isActive = false;
 
