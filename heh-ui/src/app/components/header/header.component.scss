@@ -45,11 +45,14 @@
       display: flex;
     }
 
-    .person-pic img {
-      width: 2.2rem;
-      height: 2.2rem;
-      margin-right: 0.5rem;
-      align-items: center;
+    .person-pic {
+
+      img {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: 0.5rem;
+        align-items: center;
+      }
     }
 
     .profile-icon {
