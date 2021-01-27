@@ -1,37 +1,43 @@
 @import "../../../styles.scss";
 
+.card:hover {
+  cursor: pointer;
+}
+
 .card {
   overflow: hidden;
-  width: 18.3125rem;
-  height: 15.8125rem;
+  width: 100%;
+  height: 100%;
   background: $color-white;
   box-shadow: $box-shadow;
   border-radius: $border-radius-small;
   display: inline-block;
 
   .card-header {
-    height: 8.375rem;
-    background-image: url('../../../assets/images/card-backgrounds/bg-vendor-green.PNG');
+    height: 40%;
     background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .4rem;
 
     .card-title {
       position: relative;
       max-height: fit-content;
+      align-self: center;
       max-width: 80%;
-      height: 1.5rem;
-      top: 3.4375rem;
-      left: 0.625rem;
       @include font-bold-vendor;
+      font-size: #{$font-vendor * 0.9};
     }
     app-btn-favorite {
       position: relative;
-      top: -1rem;
-      left: 16rem;
+      align-self: flex-start;
+      margin-left: .3rem;
     }
   }
 
   .card-content {
-    padding: 0 0.625rem 0.625rem 0.625rem;
+    padding: 0 .4rem .2rem .4rem;
 
     .card-content-description {
       display: -webkit-box;
@@ -40,11 +46,21 @@
       overflow: hidden;
       text-overflow: ellipsis;
       @include font-bold-discount;
+      font-size: #{$font-title * 0.9};
     }
 
     .category-and-tags {
       display: flex;
       justify-content: flex-start;
+      
+      .ngx-carousel__track {
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        transition: transform 300ms ease 0s;
+        transform: translate3d(-33.3333%, 0px, 0px);
+      }
     }
   }
 }

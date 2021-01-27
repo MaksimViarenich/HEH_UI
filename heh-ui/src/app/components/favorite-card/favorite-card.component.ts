@@ -5,7 +5,7 @@ import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/ed
 @Component({
   selector: 'app-favorite-card',
   templateUrl: './favorite-card.component.html',
-  styleUrls: ['./favorite-card.component.scss',],
+  styleUrls: ['./favorite-card.component.scss', ],
   encapsulation: ViewEncapsulation.None,
 })
 
@@ -14,7 +14,7 @@ export class FavoriteCardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   discountInfo = {
-    bgVendor: '../../../assets/images/card-backgrounds/bg-vendor-green.PNG',
+    bgVendor: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
     discount: {
       vendor: 'Domino\'s pizza',
       title: 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
