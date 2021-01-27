@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 $height-background-triangle: 3.8rem;
 $font-vendor: 1.5rem;
-$font-title: 1.3rem;
-$font-content: 0.9rem;
+$font-title: 1.1rem;
+$font-content: 0.85rem;
 $margin-1: 1rem;
 $margin-half: 0.5rem;
 $margin-small: 0.35rem;
@@ -17,9 +17,9 @@ $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-grey: #B0B4B6;
 
-$margin-category-tag: 0.5rem 0.5rem 0.5rem 0;
+$margin-category-tag: .3rem .3rem .3rem 0;
 
-$padding-category-tag: 0 0.5rem;
+$padding-category-tag: 0 0.3rem;
 
 @mixin font-bold-vendor {
     font-size: $font-vendor;
