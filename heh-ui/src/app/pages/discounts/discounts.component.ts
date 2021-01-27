@@ -10,8 +10,6 @@ import { SearchOptions } from '../../models/search-options';
   styleUrls: ['./discounts.component.scss']
 })
 export class DiscountsComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
-
   searchFieldsOptions: SearchOptions;
 
   constructor(public dialog: MatDialog) {
@@ -54,7 +52,7 @@ export class DiscountsComponent implements OnInit {
     };
   }
 
-  discounts: Array<object> = [
+  discounts: Array<DiscountCard> = [
     {
       background: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
       discount: {
@@ -82,7 +80,7 @@ export class DiscountsComponent implements OnInit {
       background: '../../../assets/images/card-backgrounds/bg-vendor-blue.png',
       discount: {
         vendor: 'Terra Marre',
-        title: 'Our restaurant gives you 15% discount',
+        title: 'Our restaurant gives you 15%',
         category: 'Food',
         tags: ['Pizza', 'Pasta', 'Focaccia' ],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
@@ -108,9 +106,9 @@ export class DiscountsComponent implements OnInit {
         title: 'Improve your look with our 20% discount',
         category: 'Beaty',
         tags: ['Barbershop', ],
-        description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
+        description: 'Use discount 20% 24/7, 25% on holidays',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
+          'Ukraine, Vinnytsia, Soborna street, 14',
           'Belarus, Minsk, Sverdlova street, 1a',
           'Belarus, Minsk, Skryganova street, 48',
           'Belarus, Minsk, Molodezhnaya street, 11',
@@ -265,7 +263,7 @@ export class DiscountsComponent implements OnInit {
   ];
 
 
-  openDiscountDetails(discount: object): void {
+  openDiscountDetails(discount: DiscountCard): void {
     const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {data: discount});
 
     dialogRef.afterClosed().subscribe(result => {

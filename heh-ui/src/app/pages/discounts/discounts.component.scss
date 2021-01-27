@@ -2,8 +2,6 @@
     display: grid;
     grid-template-rows: repeat(4, minmax(13rem, 1fr));
     grid-template-columns: repeat(4, minmax(13rem, 1fr));
-    // row-gap: 3vh;
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
+    column-gap: 1%;
+    row-gap: 1%;
 }

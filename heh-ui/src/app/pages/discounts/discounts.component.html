@@ -1,4 +1,6 @@
 <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
 <div class="container">
-    <app-discount-card *ngFor="let discount of discounts" [discountInfo]="discount" (click)="openDiscountDetails(discount)"></app-discount-card>
+    <app-discount-card *ngFor="let discount of discounts" 
+                        [discountInfo]="discount" 
+                        (click)="openDiscountDetails(discount)"></app-discount-card>
 </div>
