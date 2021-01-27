@@ -24,5 +24,9 @@
     "vendors": "New vendors",
     "city": "On city",
     "hot_sales": "Hot sales"
+  },
+  "search": {
+    "btn_search": "Search",
+    "input_search": "Search"
   }
 }
