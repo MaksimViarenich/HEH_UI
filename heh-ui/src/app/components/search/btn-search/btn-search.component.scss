@@ -1,0 +1,12 @@
+@import "../../../../styles.scss";
+
+.button-row {
+     height: 100%;
+    
+    .mat-raised-button.mat-primary{
+        width: 100%;
+        line-height: 3.25rem;
+        font-size: 1rem;
+        background-color: $color-violet;
+    }
+}
