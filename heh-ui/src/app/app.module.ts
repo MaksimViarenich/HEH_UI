@@ -32,6 +32,7 @@ import { BtnSearchComponent } from './components/search/btn-search/btn-search.co
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
+import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
     DiscountDetailsModalComponent,
+    AddDiscountModalComponent,
   ],
   imports: [
     BrowserModule,
