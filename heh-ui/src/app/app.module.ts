@@ -18,12 +18,17 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
+import { InputSearchComponent } from './components/search/input-search/input-search.component';
+import { MultiSelectComponent } from './components/search/multi-select/multi-select.component';
+import { PageSearchComponent } from './components/search/page-search/page-search.component';
+import { SelectComponent } from './components/search/select/select.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
+import { BtnSearchComponent } from './components/search/btn-search/btn-search.component';
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
@@ -47,12 +52,17 @@ import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discoun
     HomeLayoutComponent,
     LoginLayoutComponent,
     HeaderComponent,
+    InputSearchComponent,
+    MultiSelectComponent,
+    PageSearchComponent,
+    SelectComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
     LanguageSelectionComponent,
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
+    BtnSearchComponent,
     NavModeratorAdminComponent,
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
