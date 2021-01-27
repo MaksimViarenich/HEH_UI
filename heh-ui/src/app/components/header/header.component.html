@@ -13,8 +13,12 @@
       </nav>
       <div class='person'>
         <div class='person-info'>
-          <a class='person-name' href='/profile' (click)='goToPerson()'>Michael Browk</a>
-          <a class='person-place' href='#'>Belarus, Minsk</a>
+          <a class='person-name' href='/profile'
+            (click)='goToPerson()'>Michael Browk
+          </a>
+          <a class='person-place'
+          href='#'>Belarus, Minsk
+        </a>
         </div>
         <div class='person-pic'>
           <img class='profile-icon' src='../../../assets/img/header_profile.svg' alt='profile-icon' mat-button
@@ -22,10 +26,10 @@
           <mat-menu class='profile-menu' #beforeMenuProfil='matMenu' xPosition='before'>
             <button class='btn-person btn-primary' (click)='goToPerson()' mat-menu-item><img
                 src='../../../assets/img/header_menu_profile.svg' alt='btn-person'>{{ 'header.profile' | translate }}</button>
-            <div class='line'></div>
             <button class='btn-person btn-primary' (click)='logout()' mat-menu-item><img
                 src='../../../assets/img/header_menu_logout.svg' alt='btn-person'>{{ 'header.logout' | translate }}</button>
           </mat-menu>
+          <app-language-selection></app-language-selection>
         </div>
       </div>
     </nav>

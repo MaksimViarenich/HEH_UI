@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Router} from '@angular/router';
-import {NotificationPreferences} from '../../models/notification-preferences';
-import {HEADER_TABS} from '../../models/tab';
+import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotificationPreferences } from '../../models/notification-preferences';
+import { HEADER_TABS } from '../../models/tab';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,6 @@ import {HEADER_TABS} from '../../models/tab';
 })
 
 export class HeaderComponent implements OnInit {
-
-  constructor(private router: Router) {
-  }
-
   tabs = HEADER_TABS;
 
   user: NotificationPreferences = {
@@ -26,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  constructor(private router: Router) { }
 
   goToPerson(): void {
     this.router.navigate(['/profile']);

@@ -25,7 +25,6 @@
 
         .discount-detail-background {
           height: $height-background-triangle;
-          background: url("../../../../assets/img/background/2.png") no-repeat center;
           background-size: 100%;
           display: flex;
           flex-direction: row;
@@ -47,9 +46,9 @@
           padding: $margin-1;
           height: calc(100% - 5.8rem); //might be a scss variable
           background-image: url("../../../../assets/img/Girl_with_truck.svg");
-          background-size: 25%;
+          background-size: 23%;
           background-repeat: no-repeat;
-          background-position: 97% 97%;
+          background-position: 98% 98%;
           background-attachment: fixed;
 
           .discount-detail-service {
@@ -61,6 +60,7 @@
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
+            flex-wrap: wrap;
             margin-bottom: $margin-half;
           }
 
