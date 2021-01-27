@@ -1,5 +1,6 @@
 <div class="favorite-card">
-  <div class="favorite-vendor" [ngStyle]="{'background-image': 'url('+favoriteInfo.background+')'}">
+  <div class="favorite-vendor"
+       [ngStyle]="{'background-image': 'url('+favoriteInfo.background+')'}">
     <div class="card-title">
       {{ favoriteInfo.discount.vendor}}
     </div>
@@ -12,21 +13,13 @@
         <app-tag *ngFor="let tag of favoriteInfo.discount.tags"
                  [discountTag]="tag"></app-tag>
       </div>
-      <div class="discount-name line-clamp">
-        {{ favoriteInfo.discount.title }}
-      </div>
-      <div class="discount-note line-clamp">
-        {{ favoriteInfo.discount.feedback }}
-      </div>
+      <div class="discount-name line-clamp">{{ favoriteInfo.discount.title }}</div>
+      <div class="discount-note line-clamp">{{ favoriteInfo.discount.feedback }}</div>
     </div>
   </div>
 
   <div class="card-actions">
-    <i class="material-icons" (click)="editNote()">
-      edit
-    </i>
-    <i class="material-icons">
-      clear
-    </i>
+    <i class="material-icons" (click)="editNote()">edit</i>
+    <i class="material-icons">clear</i>
   </div>
 </div>

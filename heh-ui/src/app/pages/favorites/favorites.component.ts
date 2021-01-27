@@ -55,7 +55,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-green-yellow.png',
+      background: '../../../assets/images/card-backgrounds/bg-yellow-green.png',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-pink.png',
+      background: '../../../assets/images/card-backgrounds/bg-pink-purple.png',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
