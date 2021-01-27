@@ -84,12 +84,11 @@
       &:hover {
         cursor: pointer;
         color: $color-violet;
+
+        &:last-child:hover {
+          color: $color-red;
+        }
       }
-    }
-
-
-    .warn-color {
-      color: $color-black;
     }
   }
 }
