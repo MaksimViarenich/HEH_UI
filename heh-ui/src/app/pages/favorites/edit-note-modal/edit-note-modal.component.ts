@@ -1,11 +1,6 @@
 import {Component, OnInit, ViewEncapsulation, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Discount} from '../../../models/discount';
-
-export interface EditNoteModal {
-  bgVendor: string;
-  discount: Discount;
-}
+import {DiscountCard} from '../../../models/discount-card';
 
 @Component({
   selector: 'app-edit-note-modal',
@@ -16,7 +11,7 @@ export interface EditNoteModal {
 
 export class EditNoteModalComponent implements OnInit {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: EditNoteModal
+    @Inject(MAT_DIALOG_DATA) public data: DiscountCard
   ) {
   }
 

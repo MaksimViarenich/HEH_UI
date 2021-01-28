@@ -35,7 +35,9 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 
+// tslint:disable-next-line: typedef
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -73,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
     DiscountDetailsModalComponent,
+    AddDiscountModalComponent,
   ],
   imports: [
     BrowserModule,
