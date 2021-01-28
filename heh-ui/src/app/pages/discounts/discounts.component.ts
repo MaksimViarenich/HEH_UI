@@ -56,7 +56,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
       discount: {
-        vendor: 'Domino\'s Pizza TEST',
+        vendor: 'Domino\'s Pizza',
         title: 'Buy our tasty pizza with 10% discount',
         category: 'Food',
         tags: ['Pizza', ],
@@ -123,13 +123,13 @@ export class DiscountsComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-vendor-orange.png',
+      background: '../../../assets/images/card-backgrounds/bg-purple.png',
       discount: {
-        vendor: 'Contenintal Barbrshop',
-        title: 'Improve your look with our 20% discount',
-        category: 'Beaty',
-        tags: ['Barbershop', ],
-        description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
+        vendor: 'West Coast Customs',
+        title: 'We gonna pimp your ride for 7% cheaper bro',
+        category: 'Cars',
+        tags: ['Tuning', ],
+        description: 'Visit us at weekdays',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
           'Belarus, Minsk, Sverdlova street, 1a',
@@ -146,12 +146,12 @@ export class DiscountsComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-vendor-orange.png',
+      background: '../../../assets/images/card-backgrounds/bg-lightblue.png',
       discount: {
-        vendor: 'Contenintal Barbrshop',
-        title: 'Improve your look with our 20% discount',
-        category: 'Beaty',
-        tags: ['Barbershop', ],
+        vendor: 'Gamestop',
+        title: 'Play more, pay less with 10%',
+        category: 'Free time',
+        tags: ['Games', ],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',

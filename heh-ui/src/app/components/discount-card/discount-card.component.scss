@@ -41,6 +41,18 @@
         color: $color-red;
       }
     }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $color-white;
+
+      span {
+        font-size: 1rem;
+      }
+    }
   }
 
   .card-content {
