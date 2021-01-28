@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./state-event.component.scss']
 })
 export class StateEventComponent implements OnInit {
-  @Input() eventField: string | undefined;
+  @Input() type: string | undefined;
 
   constructor() {
   }

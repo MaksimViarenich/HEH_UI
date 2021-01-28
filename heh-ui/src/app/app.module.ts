@@ -33,7 +33,7 @@ import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
-import { StateEventComponent } from './components/state-event/state-event.component';
+import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
 
 @NgModule({
   declarations: [
