@@ -57,7 +57,7 @@ export class DiscountsComponent implements OnInit {
       background: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
       discount: {
         vendor: 'Domino\'s Pizza',
-        title: 'Buy our tasty pizza with 10% discount',
+        title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
         category: 'Food',
         tags: ['Pizza', ],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',

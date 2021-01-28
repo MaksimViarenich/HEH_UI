@@ -17,9 +17,12 @@ $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-grey: #B0B4B6;
 
-$margin-category-tag: .3rem .3rem .3rem 0;
+$margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
+
+$card-grid-row-small: repeat(4, minmax(8.82rem, 1fr));
+$card-grid-row-big: repeat(4, minmax(12.97rem, 1fr));
 
 @mixin cards-grid {
   display: grid;
