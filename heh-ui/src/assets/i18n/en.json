@@ -1,0 +1,32 @@
+{
+  "header": {
+    "profile": "Profile",
+    "logout": "Logout",
+    "discounts": "Discounts",
+    "favorites": "Favorites",
+    "moderator": "Moderator",
+    "admin": "Admin"
+  },
+  "moderator": {
+    "vendors": "Vendors",
+    "categories": "Categories and tags"
+  },
+  "admin": {
+    "users": "Users",
+    "history": "History",
+    "statistics": "Statistics"
+  },
+  "profile": {
+    "subscription": "Subscriptions",
+    "tag": "New tag...",
+    "newsletters": "Reseive a newsletters",
+    "service": "New services",
+    "vendors": "New vendors",
+    "city": "On city",
+    "hot_sales": "Hot sales"
+  },
+  "search": {
+    "btn_search": "Search",
+    "input_search": "Search"
+  }
+}

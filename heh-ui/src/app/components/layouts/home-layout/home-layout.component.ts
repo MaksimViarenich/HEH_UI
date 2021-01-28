@@ -7,7 +7,7 @@ interface BgImages {
 }
 
 interface PageTitles {
-  title: string;
+  localizationKey: string;
   pagePath: string;
 }
 
@@ -31,14 +31,14 @@ export class HomeLayoutComponent implements OnInit {
   ];
 
   pageTitles: PageTitles[] = [
-    {title: 'Discounts', pagePath: '/discounts'},
-    {title: 'Favorites', pagePath: '/favorites'},
-    {title: 'Profile', pagePath: '/profile'},
-    {title: 'Moderator', pagePath: '/moderator/vendors'},
-    {title: 'Moderator', pagePath: '/moderator/categories_tags'},
-    {title: 'Admin', pagePath: '/admin/users'},
-    {title: 'Admin', pagePath: '/admin/statistics'},
-    {title: 'Admin', pagePath: '/admin/history'}
+    {localizationKey: 'header.discounts', pagePath: '/discounts'},
+    {localizationKey: 'header.favorites', pagePath: '/favorites'},
+    {localizationKey: 'header.profile', pagePath: '/profile'},
+    {localizationKey: 'header.moderator', pagePath: '/moderator/vendors'},
+    {localizationKey: 'header.moderator', pagePath: '/moderator/categories_tags'},
+    {localizationKey: 'header.admin', pagePath: '/admin/users'},
+    {localizationKey: 'header.admin', pagePath: '/admin/statistics'},
+    {localizationKey: 'header.admin', pagePath: '/admin/history'}
   ];
 
   constructor(private router: Router) {
@@ -48,7 +48,7 @@ export class HomeLayoutComponent implements OnInit {
 
     this.getBackgroundImage();
 
-    this.getTitle();
+    this.getLocalizationKey();
   }
 
   ngOnInit(): void {
@@ -62,10 +62,10 @@ export class HomeLayoutComponent implements OnInit {
     return (imgOption) ? `url(${imgOption?.imagePath})` : 'none';
   }
 
-  getTitle(): string {
+  getLocalizationKey(): string {
     this.route = this.router.url;
     const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
 
-    return (titleOption) ? titleOption?.title : 'Unknown Page';
+    return (titleOption) ? titleOption?.localizationKey : 'Unknown Page';
   }
 }
