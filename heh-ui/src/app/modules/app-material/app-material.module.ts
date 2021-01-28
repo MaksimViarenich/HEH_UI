@@ -15,8 +15,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   exports: [
@@ -42,6 +45,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDialogModule,
     MatSlideToggleModule,
     MatDatepickerModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     MatNativeDateModule,
   ],
   imports: [],
