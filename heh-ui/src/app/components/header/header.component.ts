@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
-    userphoto: '../../../assets/img/header_profile.svg',
+    userphoto: '../../../assets/images/header/header_profile.svg',
     location: 'Belarus, Minsk',
     address: 'Naturalistov 3',
   };
