@@ -1,3 +1,4 @@
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,8 +16,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   exports: [
@@ -41,6 +43,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatMenuModule,
     MatDialogModule,
     MatSlideToggleModule,
+    MatButtonToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],
