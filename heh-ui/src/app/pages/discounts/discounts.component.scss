@@ -1,7 +1,6 @@
+@import "../../../styles.scss";
+
 .container {
-    display: grid;
-    grid-template-rows: repeat(4, minmax(13rem, 1fr));
-    grid-template-columns: repeat(4, minmax(13rem, 1fr));
-    column-gap: 1%;
-    row-gap: 1%;
+  @include cards-grid;
+  grid-template-rows: repeat(4, minmax(13rem, 1fr));
 }
