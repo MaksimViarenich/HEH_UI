@@ -34,11 +34,11 @@ import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-n
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-// tslint:disable-next-line: typedef
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -78,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountDetailsModalComponent,
     UserCardComponent,
     AddDiscountModalComponent,
+    StateEventComponent,
   ],
   imports: [
     BrowserModule,
