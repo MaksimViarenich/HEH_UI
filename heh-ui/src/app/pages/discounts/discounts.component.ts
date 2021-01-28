@@ -262,7 +262,6 @@ export class DiscountsComponent implements OnInit {
     },
   ];
 
-
   openDiscountDetails(discount: DiscountCard): void {
     const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {data: discount});
 
