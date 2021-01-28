@@ -2,5 +2,5 @@
  
 .container {
   @include cards-grid;
-  grid-template-rows: repeat(4, minmax(9rem, 1fr));
+  grid-template-rows: $card-grid-row-small;
 }
