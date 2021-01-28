@@ -32,7 +32,15 @@ import { BtnSearchComponent } from './components/search/btn-search/btn-search.co
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+
+// tslint:disable-next-line: typedef
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -73,6 +81,15 @@ import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discoun
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
