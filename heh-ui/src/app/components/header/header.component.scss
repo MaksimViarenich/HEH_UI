@@ -24,6 +24,10 @@
 .navigation {
   display: flex;
 
+  .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none;
+  }
+
   .person {
     display: flex;
     align-items: center;

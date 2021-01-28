@@ -1,7 +1,12 @@
-.users-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+.search-container {
   margin-top: 2rem;
+}
+
+.users-list {
+  display: grid;
+    grid-template-rows: repeat(3, minmax(13rem, 4fr));
+    grid-template-columns: repeat(3, minmax(11rem, 1fr));
+    column-gap: 2%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
