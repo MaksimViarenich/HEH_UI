@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NotificationPreferences} from 'src/app/models/notification-preferences';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -22,7 +23,7 @@ export class UserProfileComponent implements OnInit {
     address: 'Kosmonavtov, 3',
   };
 
-  typesOfSubscription: string[] = ['Receive a newsletter', 'New service', 'New vendor', 'On city', 'Hot sales'];
+  typesOfSubscription: string[] = ['profile.newsletters', 'profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
   visible = true;
   selectable = true;
   removable = true;
@@ -35,7 +36,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement> | undefined;
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
-  constructor() {
+  constructor(public translate: TranslateService) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));

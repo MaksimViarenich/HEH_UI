@@ -14,7 +14,6 @@
   display: inline-block;
 
   .card-header {
-    height: 40%;
     background-size: cover;
     display: flex;
     flex-direction: row;
@@ -29,10 +28,18 @@
       @include font-bold-vendor;
       font-size: #{$font-vendor * 0.9};
     }
-    app-btn-favorite {
+    .btn {
       position: relative;
       align-self: flex-start;
       margin-left: .3rem;
+    }
+
+    .btn-delete {
+      @include btn-icon;
+
+      span {
+        color: $color-red;
+      }
     }
   }
 

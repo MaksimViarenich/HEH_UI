@@ -21,6 +21,13 @@ $margin-category-tag: .3rem .3rem .3rem 0;
 
 $padding-category-tag: 0 0.3rem;
 
+@mixin cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(13rem, 1fr));
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+
 @mixin font-bold-vendor {
   font-size: $font-vendor;
   font-weight: bold;
@@ -30,6 +37,19 @@ $padding-category-tag: 0 0.3rem;
 @mixin font-bold-discount {
   font-size: $font-title;
   font-weight: bold;
+}
+
+@mixin btn-icon {
+  user-select: none;
+
+  span {
+    font-size: 2rem;
+    color: $color-white;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
 }
 
 body {
