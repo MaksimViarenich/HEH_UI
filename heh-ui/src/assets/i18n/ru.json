@@ -1,0 +1,32 @@
+{
+  "header": {
+    "profile": "Профиль",
+    "logout": "Выйти",
+    "discounts": "Скидки",
+    "favorites": "Избранное",
+    "moderator": "Модератор",
+    "admin": "Администратор"
+  },
+  "moderator": {
+    "vendors": "Вендоры",
+    "categories": "Категории и теги"
+  },
+  "admin": {
+    "users": "Пользователи",
+    "history": "История",
+    "statistics": "Статистика"
+  },
+  "profile": {
+    "subscription": "Подписки",
+    "tag": "Новый тэг...",
+    "newsletters": "Получать рассылку",
+    "service": "Новые сервисы",
+    "vendors": "Новые вендоры",
+    "city": "По городу",
+    "hot_sales": "Горячие скидки"
+  },
+  "search": {
+    "btn_search": "Поиск",
+    "input_search": "Поиск"
+  }
+}
