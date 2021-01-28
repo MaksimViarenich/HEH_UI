@@ -5,10 +5,20 @@
   <div class="user-card__info">
     <h3 class="name">{{ user?.name }}</h3>
     <p class="email">{{ user?.email }}</p>
-    <mat-button-toggle-group class="btn-toggle" name="userRole" aria-label="Role" value="{{ user?.role }}">
-      <mat-button-toggle value="user">user</mat-button-toggle>
-      <mat-button-toggle value="moderator">moderator</mat-button-toggle>
-      <mat-button-toggle value="admin">admin</mat-button-toggle>
+    <mat-button-toggle-group
+      class="btn-toggle"
+      name="userRole"
+      aria-label="Role"
+      value="{{ user?.role }}">
+      <mat-button-toggle value="user">
+        user
+      </mat-button-toggle>
+      <mat-button-toggle value="moderator">
+        moderator
+      </mat-button-toggle>
+      <mat-button-toggle value="admin">
+        admin
+      </mat-button-toggle>
     </mat-button-toggle-group>
     <mat-slide-toggle
           class="example-margin"
