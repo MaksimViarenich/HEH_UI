@@ -15,13 +15,14 @@ export class UserCardComponent implements OnInit {
 
   color: ThemePalette = 'primary';
   checked: boolean | undefined;
-  disabled: false;
+  disabled: boolean;
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.checked = this.user?.isAсtive;
+    this.disabled = false;
   }
 
 }
