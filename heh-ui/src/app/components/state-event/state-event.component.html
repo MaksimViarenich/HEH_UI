@@ -1,0 +1,12 @@
+<div class="state-event-field" *ngIf="eventField==='Add'" style="background-color: #CDFFCD; color: #007F00;">
+  <div class="state-event-dot" style="background-color: #007F00;"></div>
+  {{eventField}}
+</div>
+<div class="state-event-field" *ngIf="eventField==='Edit'" style="background-color: #FFECCC; color: #CE8500;">
+  <div class="state-event-dot" style="background-color: #CE8500;"></div>
+  {{eventField}}
+</div>
+<div class="state-event-field" *ngIf="eventField==='Delete'" style="background-color: #FFE0E0; color: #D30000;">
+  <div class="state-event-dot" style="background-color: #D30000;"></div>
+  {{eventField}}
+</div>
