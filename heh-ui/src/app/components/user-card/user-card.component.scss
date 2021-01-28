@@ -8,17 +8,16 @@
   display: flex;
   overflow: hidden;
   box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
 
   .user-card__avatar {
     height: 100%;
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 1rem 0 0 1rem;
 
     img {
-      height: 100%;
-      width: 90%;
+      align-self: center;
+      width: 92%;
     }
   }
 
@@ -34,6 +33,7 @@
 
     .btn-toggle {
       display: flex;
+      margin-right: 1%;
 
       mat-button-toggle {
         height: 1.5rem;
