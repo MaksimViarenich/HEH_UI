@@ -2,6 +2,6 @@
 <div class="container">
     <app-discount-card *ngFor="let discount of discounts" 
                        [discountInfo]="discount" 
-                       [isVendorView]="true"></app-discount-card>
+                       [isRemoveAvailable]="true"></app-discount-card>
 </div>
 <button (click)="openAddDiscount()">Open</button>
