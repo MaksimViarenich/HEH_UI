@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation, Inject} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
+import {Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {DiscountCard} from 'src/app/models/discount-card';
+import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 
 @Component({
   selector: 'app-favorite-card',
@@ -10,6 +11,7 @@ import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/ed
 })
 
 export class FavoriteCardComponent implements OnInit {
+  @Input() favoriteInfo: DiscountCard | undefined;
 
   constructor(public dialog: MatDialog) {}
 
@@ -25,7 +27,7 @@ export class FavoriteCardComponent implements OnInit {
   };
 
   editNote(): void {
-    const dialogRef = this.dialog.open(EditNoteModalComponent, {data: this.discountInfo});
+    const dialogRef = this.dialog.open(EditNoteModalComponent, {data: this.favoriteInfo});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
