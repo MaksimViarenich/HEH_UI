@@ -3,14 +3,13 @@
       [style.background-image]="'url(' + discountInfo.background + ')'"
       [ngStyle]="!isVendorView ? {'height': '40%'} : {'height': '60%'}">
     <div class="card-title">{{discountInfo.discount.vendor}}</div>
-    <app-btn-favorite class="btn" *ngIf="!isVendorView" 
-                      [isFavorite]="discountInfo.isFavorite"></app-btn-favorite>
-    <div class="btn btn-delete" 
-        (click)="$event.stopPropagation()"
-        *ngIf="isVendorView">
-      <span class="material-icons">
-        delete_outline
-      </span>
+    <app-btn-favorite *ngIf="!isVendorView" 
+                      [isFavorite]="discountInfo.isFavorite" 
+                      class="btn" ></app-btn-favorite>
+    <div *ngIf="isVendorView"
+          class="btn btn-delete" 
+          (click)="$event.stopPropagation()">
+      <span class="material-icons">delete_outline</span>
     </div>
   </div>
 
@@ -21,7 +20,7 @@
                [discountTag]="tag"></app-tag>
     </div>
 
-    <div class="card-content-description" *ngIf="!isVendorView">
+    <div *ngIf="!isVendorView" class="card-content-description">
       {{discountInfo.discount.title}}
     </div>
   </div>

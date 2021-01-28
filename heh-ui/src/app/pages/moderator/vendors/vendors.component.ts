@@ -52,8 +52,6 @@ export class VendorsComponent implements OnInit {
     };
   }
 
-  isVendorView = true;
-
   discounts: Array<DiscountCard> = [
     {
       background: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
