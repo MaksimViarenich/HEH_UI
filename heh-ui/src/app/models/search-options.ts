@@ -9,7 +9,7 @@ export interface SearchOptions {
         label: string;
         options: SelectOption[];
     }[];
-    dateOptions: {
+    dateOptions?: {
         label: string;
     };
 }
