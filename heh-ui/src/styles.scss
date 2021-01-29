@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 $height-background-triangle: 3.8rem;
 $font-vendor: 1.5rem;
-$font-title: 1.3rem;
-$font-content: 0.9rem;
+$font-title: 1.1rem;
+$font-content: 0.85rem;
 $margin-1: 1rem;
 $margin-half: 0.5rem;
 $margin-small: 0.35rem;
@@ -12,28 +12,73 @@ $border-radius-small: .33rem;
 
 $color-violet: #9A90FE;
 $color-red: #DB0404;
-$color-black: #333;
+$color-black: #333333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-grey: #B0B4B6;
 
-$margin-category-tag: 0.5rem 0.5rem 0.5rem 0;
+$margin-category-tag: .5rem .5rem .5rem 0;
 
-$padding-category-tag: 0 0.5rem;
+$padding-category-tag: 0 0.3rem;
+
+@mixin mat-grid-tile {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
+
+  app-discount-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
+}
 
 @mixin font-bold-vendor {
-    font-size: $font-vendor;
-    font-weight: bold;
-    color: $color-white;
+  font-size: $font-vendor;
+  font-weight: bold;
+  color: $color-white;
 }
 
 @mixin font-bold-discount {
-    font-size: $font-title;
-    font-weight: bold;
+  font-size: $font-title;
+  font-weight: bold;
+}
+
+@mixin btn-icon {
+  user-select: none;
+
+  span {
+    font-size: 2rem;
+    color: $color-white;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    color: $color-black;
- }
+  margin: 0;
+  height: 100vh;
+  color: $color-black;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 6.25rem;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+
+  background: rgba(51, 51, 51, 0.5);
+  -webkit-border-radius: 6.25rem;
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(51, 51, 51, 0.61);
+  -webkit-border-radius: 6.25rem;
+}

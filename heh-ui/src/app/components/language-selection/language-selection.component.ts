@@ -1,9 +1,11 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 interface Language {
   lang: string;
   path: string;
   langId: number;
+  langCode: string;
 }
 
 @Component({
@@ -14,12 +16,16 @@ interface Language {
 })
 export class LanguageSelectionComponent {
 
-  imagePath = '../assets/images/uk-flag.png';
+  imagePath = '../../../assets/images/header/header_menu_uk.svg';
 
   languages: Language[] = [
-    {lang: 'English', path: '../assets/images/uk-flag.png', langId: 0},
-    {lang: 'Русский', path: '../assets/images/ru-flag.png', langId: 1}
+    {lang: 'English', path: '../../../assets/images/header/header_menu_uk.svg', langId: 0, langCode: 'en'},
+    {lang: 'Русский', path: '../../../assets/images/header/header_menu_ru.svg', langId: 1, langCode: 'ru'}
   ];
+
+  constructor(public translate: TranslateService) {
+
+  }
 
   selectLang(path: string): void {
     this.imagePath = path;

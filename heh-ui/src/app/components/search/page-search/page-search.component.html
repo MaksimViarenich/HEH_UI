@@ -3,22 +3,28 @@
     <div class="search-wrapper">
       <app-input-search></app-input-search>
     </div>
+
     <div class="select-wrapper">
       <app-select [label]="searchOptions.selectOptions.label"
                   [options]="searchOptions.selectOptions.options"></app-select>
     </div>
   </div>
+
   <div class="filters-container">
     <div class="filter-wrapper"
-          *ngFor="let multiSelectOption of searchOptions.multiSelectOptions; let idx = index">
+         *ngFor="let multiSelectOption of searchOptions.multiSelectOptions; let idx = index">
       <app-multi-select [label]="multiSelectOption.label"
                         [options]="multiSelectOption.options"
                         [index]="idx">
       </app-multi-select>
     </div>
+
+    <app-date-search *ngIf="searchOptions.dateOptions"
+                     class="date-container"
+                     [label]="searchOptions.dateOptions.label"></app-date-search>
+
     <div class="btn-container">
       <app-btn-search [label]="searchOptions.btnLabel" (submitData)="onPausedClick()"></app-btn-search>
     </div>
   </div>
 </div>
-  
