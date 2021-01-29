@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {DiscountCard} from '../../models/discount-card';
+import { Component, OnInit } from '@angular/core';
+import { DiscountCard } from '../../models/discount-card';
+import { SearchOptions } from '../../models/search-options';
 
 @Component({
   selector: 'app-favorites',
@@ -7,6 +8,49 @@ import {DiscountCard} from '../../models/discount-card';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
+  searchFieldsOptions: SearchOptions;
+
+  constructor() {
+    this.searchFieldsOptions = {
+      selectOptions: {
+        label: 'Location',
+        options: [
+          {value: '1', viewValue: 'Belarus, Minsk'},
+          {value: '2', viewValue: 'Belarus, Grodno'},
+          {value: '3', viewValue: 'Ukraine, Vinnitsa'},
+          {value: '4', viewValue: 'Ukraine, Kiev'},
+        ]
+      },
+      multiSelectOptions: [
+        {
+          label: 'Category',
+          options: [
+            {value: '5', viewValue: 'Food'},
+            {value: '6', viewValue: 'Sport'},
+            {value: '7', viewValue: 'Beauty'},
+            {value: '8', viewValue: 'Clothes'}
+          ]
+        },
+        {
+          label: 'Tag',
+          options: [
+            {value: '9', viewValue: 'Pizza'},
+            {value: '10', viewValue: 'Sushi'},
+            {value: '11', viewValue: 'Barbershop'},
+            {value: '12', viewValue: 'Swimming pool'},
+          ]
+        },
+        {
+          label: 'Vendor',
+          options: [
+            {value: '13', viewValue: 'Garage'},
+            {value: '14', viewValue: 'Best Beauty Center'},
+            {value: '15', viewValue: 'GYM24'}
+          ]
+        },
+      ]
+    };
+  }
 
   favoriteCards: Array<DiscountCard> = [
     {
@@ -157,9 +201,6 @@ export class FavoritesComponent implements OnInit {
       }
     },
   ];
-
-  constructor() {
-  }
 
   ngOnInit(): void {
   }
