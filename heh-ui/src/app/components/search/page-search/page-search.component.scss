@@ -22,8 +22,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-  
+
   .filter-wrapper,
+  .date-container{
+    width: 24%;
+  }
   .btn-container {
       width: 24%;
     }

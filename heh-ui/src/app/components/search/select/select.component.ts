@@ -11,6 +11,7 @@ import { SelectOption } from 'src/app/models/select-option';
 export class SelectComponent {
   @Input() options: SelectOption[];
   @Input() label: string;
+  @Input() type?: string;
 
   selectedOption = '';
 
