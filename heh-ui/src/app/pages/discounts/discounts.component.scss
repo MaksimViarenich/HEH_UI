@@ -1,5 +1,9 @@
 @import "../../../styles.scss";
 
+mat-grid-list {
+  padding-bottom: $padding-last-grid;
+}
+
 mat-grid-tile {
   @include mat-grid-tile;
 }
