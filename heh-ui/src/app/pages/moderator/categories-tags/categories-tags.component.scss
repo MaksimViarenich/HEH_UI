@@ -1,5 +1,67 @@
-.cat-tags-container{
-    width: 30%;
-    height: 5rem;
-    background-color: red;
+@import "../../../../styles.scss";
+
+.cat-tags-container {
+     padding-top: 4rem;
+     
+     .select-wrapper{
+          width: 40%;
+          margin: 0 0 1rem 50%;
+     }
+
+     .select-inner-wrapper {
+          .tag-field {
+               .mat-form-field-wrapper {
+                    padding-bottom: 0;
+               }
+          }
+     }
+
+     .mat-form-field-appearance-outline .mat-form-field-wrapper {
+          margin: unset;
+     }
+
+     .mat-chip.mat-standard-chip {
+          margin: 0.2rem;
+     }
+
+     .mat-form-field {
+          width: 100%;
+     }
+
+     .create-btn-wrapper,
+     .inner-wrapper {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+     }
+
+     .inner-wrapper {
+          justify-content: unset;
+     }
+
+     .create-title {
+          position: absolute;
+          margin: -7rem 0 1rem 0;
+          line-height: 1.4rem;
+          font-size: $font-title;
+          font-weight: bold;
+     }
+
+     .inner-wrapper:first-child {
+          margin-top: -4rem;
+     }
+
+     .inner-wrapper:first-child .create-title{
+          margin-top: -3rem;
+     }
+
+     .inner-wrapper,
+     .create-wrapper {
+          width: 50%;
+     }
+
+     .btn-wrapper {
+          width: 30%;
+     }
 }

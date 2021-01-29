@@ -1,3 +1,28 @@
 <div class="cat-tags-container">
-    hello
+     <div class="select-wrapper">
+          <div class="select-inner-wrapper">
+               <mat-form-field appearance="outline" class="tag-field">
+                    <mat-label>{{catTegOptions.label}}</mat-label>
+                    <mat-select>
+                      <mat-option></mat-option>
+                      <mat-option [value]="option.value"
+                                  *ngFor="let option of catTegOptions.options">
+                        {{ option.viewValue }}
+                      </mat-option>
+                    </mat-select>
+               </mat-form-field>
+          </div>
+     </div>
+     <div class="create-btn-wrapper">
+          <div class="inner-wrapper" *ngFor="let item of items">
+               <span class="create-title">{{item.name}}</span>
+               <div class="create-wrapper">
+                    <app-create [title]="item.title"
+                                [options]="item.options"></app-create>
+               </div>
+               <div class="btn-wrapper">
+                    <app-btn-search [label]="btnLabel"></app-btn-search>
+               </div>
+          </div>
+     </div>
 </div>
