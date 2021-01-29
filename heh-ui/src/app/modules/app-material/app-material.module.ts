@@ -21,6 +21,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   exports: [
@@ -48,6 +49,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSortModule,
     MatPaginatorModule,
     MatNativeDateModule,
+    MatGridListModule,
   ],
   imports: [],
   providers: []

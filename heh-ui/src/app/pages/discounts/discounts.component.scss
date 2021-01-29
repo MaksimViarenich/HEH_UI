@@ -1,6 +1,5 @@
 @import "../../../styles.scss";
 
-.container {
-  @include cards-grid;
-  grid-template-rows: $card-grid-row-big;
+mat-grid-tile {
+  @include mat-grid-tile;
 }
