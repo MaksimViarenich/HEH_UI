@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {DiscountCard} from 'src/app/models/discount-card';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 
 @Component({
@@ -11,7 +10,7 @@ import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit
 })
 
 export class FavoriteCardComponent implements OnInit {
-  @Input() favoriteInfo: DiscountCard | undefined;
+  @Input() favoriteInfo: any;
 
   constructor(public dialog: MatDialog) {}
 

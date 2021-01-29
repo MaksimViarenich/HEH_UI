@@ -8,7 +8,8 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 })
 export class DiscountCardComponent implements OnInit {
   @Input() discountInfo: any | undefined;
-  // @Input() isVendorView: boolean
+  @Input() isRemoveAvailable: boolean | undefined;
+  @Input() isViewCountsVisible: boolean | undefined;
 
   constructor() { }
 

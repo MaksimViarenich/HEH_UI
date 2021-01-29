@@ -14,12 +14,11 @@
   display: inline-block;
 
   .card-header {
-    height: 40%;
     background-size: cover;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: .4rem;
+    padding: .5rem;
 
     .card-title {
       position: relative;
@@ -29,15 +28,36 @@
       @include font-bold-vendor;
       font-size: #{$font-vendor * 0.9};
     }
-    app-btn-favorite {
+    .btn {
       position: relative;
       align-self: flex-start;
       margin-left: .3rem;
     }
+
+    .btn-delete {
+      @include btn-icon;
+
+      span {
+        color: $color-red;
+      }
+    }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $color-white;
+
+      span {
+        font-size: 1rem;
+      }
+    }
   }
 
   .card-content {
-    padding: 0 .4rem .2rem .4rem;
+    margin-bottom: .5rem;
+    padding: 0 .5rem;
 
     .card-content-description {
       display: -webkit-box;
@@ -52,15 +72,6 @@
     .category-and-tags {
       display: flex;
       justify-content: flex-start;
-      
-      .ngx-carousel__track {
-        touch-action: pan-y;
-        user-select: none;
-        -webkit-user-drag: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        transition: transform 300ms ease 0s;
-        transform: translate3d(-33.3333%, 0px, 0px);
-      }
     }
   }
 }

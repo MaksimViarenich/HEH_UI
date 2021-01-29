@@ -24,6 +24,7 @@ import { PageSearchComponent } from './components/search/page-search/page-search
 import { SelectComponent } from './components/search/select/select.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { VendorCardComponent } from './components/add-vendor-card/add-vendor-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
@@ -32,7 +33,18 @@ import { BtnSearchComponent } from './components/search/btn-search/btn-search.co
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
-import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { AddDiscountModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-discount-modal/add-discount-modal.component';
+import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
+import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DateSearchComponent } from './components/search/date-search/date-search.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -58,6 +70,7 @@ import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discoun
     SelectComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
+    VendorCardComponent,
     LanguageSelectionComponent,
     CategoryComponent,
     TagComponent,
@@ -67,12 +80,25 @@ import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discoun
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
     DiscountDetailsModalComponent,
+    UserCardComponent,
     AddDiscountModalComponent,
+    AddVendorModalComponent,
+    StateEventComponent,
+    DateSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppMaterialModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

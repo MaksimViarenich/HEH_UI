@@ -1,0 +1,87 @@
+<div mat-dialog-content class="mat-dialog-content">
+
+  <div class="add-discount-background">
+    <div class="add-discount-title">Add discount</div>
+  </div>
+
+  <div class="add-discount-info">
+    <div class="add-discount-fields">
+      <mat-form-field appearance="outline" class="add-discount-vendor">
+        <mat-label>Vendor</mat-label>
+        <mat-select [formControl]="vendor" required>
+          <mat-option *ngFor="let vendor of vendors" [value]="vendor">{{vendor}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="add-discount-address">
+        <mat-label>Address</mat-label>
+        <mat-select [formControl]="address" multiple required>
+          <mat-select-trigger>
+            {{address.value ? address.value[0] : ''}}
+            <span *ngIf="address.value?.length > 1" class="example-additional-selection">
+              (+{{address.value.length - 1}} {{address.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let address of discount.addressList" [value]="address">{{address}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="add-discount-phone">
+        <mat-label>Telephone</mat-label>
+        <mat-select [formControl]="phone" multiple required>
+          <mat-select-trigger>
+            {{phone.value ? phone.value[0] : ''}}
+            <span *ngIf="phone.value?.length > 1" class="example-additional-selection">
+              (+{{phone.value.length - 1}} {{phone.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let phone of discount.phones" [value]="phone">{{phone}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="add-discount-name" appearance="outline">
+        <mat-label>Discount name</mat-label>
+        <input matInput [formControl]="name" required>
+      </mat-form-field>
+
+      <mat-form-field class="add-discount-description" appearance="outline">
+        <mat-label>Discount description</mat-label>
+        <input matInput [formControl]="description" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Expiration date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="add-discount-category">
+        <mat-label>Category</mat-label>
+        <mat-select [formControl]="category" required>
+          <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="add-discount-phone">
+        <mat-label>Tag</mat-label>
+        <mat-select [formControl]="tag" multiple>
+          <mat-select-trigger>
+            {{tag.value ? tag.value[0] : ''}}
+            <span *ngIf="tag.value?.length > 1" class="example-additional-selection">
+              (+{{tag.value.length - 1}} {{tag.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let tag of discount.tags" [value]="tag">{{tag}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-slide-toggle color="primary" [(ngModel)]="isActive">{{isActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
+    </div>
+
+    <div class="add-discount-button">
+      <button mat-button>Cancel</button>
+      <button mat-raised-button>Submit</button>
+    </div>
+  </div>
+</div>

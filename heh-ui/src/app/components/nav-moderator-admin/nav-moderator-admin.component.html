@@ -1,8 +1,8 @@
-<nav mat-tab-nav-bar>
+<nav mat-tab-nav-bar class="nav-moderator-admin">
   <a mat-tab-link
      *ngFor="let tab of tabs"
      [routerLink]="tab.path"
      routerLinkActive
      #rla="routerLinkActive" [active]="rla.isActive">
-    {{tab.name}}</a>
+    {{ tab.localizationKey | translate }}</a>
 </nav>

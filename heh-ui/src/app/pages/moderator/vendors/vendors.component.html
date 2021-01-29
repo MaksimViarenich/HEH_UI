@@ -1,2 +1,8 @@
-<p>vendors works!</p>
-<button (click)="openAddDiscount()">Open</button>
+<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+<mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
+  <mat-grid-tile *ngFor="let discount of discounts" >
+    <app-discount-card [discountInfo]="discount" 
+                       [isRemoveAvailable]="true"
+                       (click)="openAddVendor()"></app-discount-card>
+  </mat-grid-tile>
+</mat-grid-list>
