@@ -4,3 +4,11 @@
   @include cards-grid;
   grid-template-rows: $card-grid-row-big;
 }
+
+mat-grid-tile {
+
+  app-discount-card {
+    height: 100%;
+    width: 100%;
+  }
+}

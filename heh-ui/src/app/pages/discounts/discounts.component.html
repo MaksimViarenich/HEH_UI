@@ -4,3 +4,10 @@
                         [discountInfo]="discount" 
                         (click)="openDiscountDetails(discount)"></app-discount-card>
 </div>
+
+<mat-grid-list cols="4" rowHeight="13rem" gutterSize="1rem">
+  <mat-grid-tile *ngFor="let discount of discounts" >
+   <app-discount-card [discountInfo]="discount" 
+                      (click)="openDiscountDetails(discount)"></app-discount-card>
+  </mat-grid-tile>
+</mat-grid-list>
