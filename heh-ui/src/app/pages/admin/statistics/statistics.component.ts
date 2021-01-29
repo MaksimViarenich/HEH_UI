@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {DiscountCard} from '../../../models/discount-card';
-import {SearchOptions} from '../../../models/search-options';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DiscountCard } from '../../../models/discount-card';
+import { SearchOptions } from '../../../models/search-options';
 
 @Component({
   selector: 'app-statistics',
