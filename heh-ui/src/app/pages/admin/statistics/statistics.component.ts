@@ -39,17 +39,13 @@ export class StatisticsComponent implements OnInit {
             {value: '10', viewValue: 'Swimming pool'},
           ]
         },
-        {
-          label: 'Vendor',
-          options: [
-            {value: '11', viewValue: 'Garage'},
-            {value: '12', viewValue: 'Best Beauty Center'},
-            {value: '13', viewValue: 'GYM24'}
-          ]
-        },
-      ]
+      ],
+      dateOptions: {
+        label: 'Date range',
+      }
     };
   }
+
   discounts: Array<DiscountCard> = [
     {
       background: '../../../assets/images/card-backgrounds/bg-vendor-green.png',
@@ -81,7 +77,7 @@ export class StatisticsComponent implements OnInit {
         vendor: 'Terra Marre',
         title: 'Our restaurant gives you 15%',
         category: 'Food',
-        tags: ['Pizza', 'Pasta', 'Focaccia' ],
+        tags: ['Pizza', 'Pasta', 'Focaccia'],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
@@ -264,6 +260,7 @@ export class StatisticsComponent implements OnInit {
       }
     },
   ];
+
   ngOnInit(): void {
   }
 
