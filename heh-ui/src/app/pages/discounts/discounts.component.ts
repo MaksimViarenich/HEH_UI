@@ -14,7 +14,6 @@ export class DiscountsComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {
     this.searchFieldsOptions = {
-      btnLabel: 'Search',
       selectOptions: {
         label: 'Location',
         options: [

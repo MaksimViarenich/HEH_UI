@@ -1,7 +1,7 @@
 import { SelectOption } from './select-option';
 
 export interface SearchOptions {
-    btnLabel: string;
+    btnLabel?: string;
     selectOptions: {
         label: string;
         options: SelectOption[];
