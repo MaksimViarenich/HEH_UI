@@ -38,6 +38,7 @@ import { StateEventComponent } from './pages/admin/event-history/state-event/sta
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DateSearchComponent } from './components/search/date-search/date-search.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -79,6 +80,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserCardComponent,
     AddDiscountModalComponent,
     StateEventComponent,
+    DateSearchComponent,
   ],
   imports: [
     BrowserModule,
