@@ -61,11 +61,19 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Expiration date</mat-label>
+        <mat-label>Start date</mat-label>
         <input matInput
                [matDatepicker]="picker"
                [formControl]="date"
                required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Expiration date</mat-label>
+        <input matInput
+               [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -94,13 +102,10 @@
                       [value]="tag">{{tag}}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-slide-toggle color="primary"
-                        [(ngModel)]="isActive">{{isActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
     </div>
 
     <div class="add-discount-button">
-      <button mat-button>Cancel</button>
+      <button mat-button mat-dialog-close>Cancel</button>
       <button mat-raised-button>Submit</button>
     </div>
   </div>

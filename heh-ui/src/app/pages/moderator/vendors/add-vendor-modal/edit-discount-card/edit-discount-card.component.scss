@@ -1,0 +1,76 @@
+@import "../../../../../../styles";
+
+.edit-discount-card-container {
+  display: flex;
+  box-shadow: 0 4px 30px rgb(34 35 38 / 15%);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem 1rem;
+    width: 100%;
+
+    .discount-info {
+      display: flex;
+      flex-direction: column;
+      max-width: 90%;
+
+      .category-and-tags {
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .card-content-description {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: $color-black;
+
+        .discount-name {
+          @include font-bold-discount;
+          line-height: 1.5rem;
+        }
+
+        .discount-note {
+          display: flex;
+          flex-direction: row;
+          font-size: $font-content;
+        }
+
+        .discount-note::before {
+          content: 'Note:';
+          margin-right: 0.2rem;
+        }
+
+        .line-clamp {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+        background-color: $color-violet;
+      }
+
+      .mat-slide-toggle-thumb {
+        background: $color-black;
+      }
+
+      .warn-color {
+        color: $color-red;
+      }
+    }
+  }
+}

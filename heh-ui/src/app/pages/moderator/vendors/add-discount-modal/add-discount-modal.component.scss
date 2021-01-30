@@ -7,7 +7,7 @@
 .cdk-global-overlay-wrapper {
   justify-content: flex-end !important;
 
-  .cdk-overlay-pane {
+  .add-discount-modal.cdk-overlay-pane {
     width: 33rem;
     height: 100%;
     margin-top: 0;
@@ -47,6 +47,7 @@
 
             .mat-form-field-wrapper {
               padding-bottom: 0;
+              margin: 0 0 1rem 0;
             }
           }
 

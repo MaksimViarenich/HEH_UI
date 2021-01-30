@@ -24,6 +24,7 @@ import { PageSearchComponent } from './components/search/page-search/page-search
 import { SelectComponent } from './components/search/select/select.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
+import { EditDiscountCardComponent } from './pages/moderator/vendors/add-vendor-modal/edit-discount-card/edit-discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
@@ -35,6 +36,7 @@ import { DiscountDetailsModalComponent } from './pages/discounts/discount-detail
 import { ListInputComponent } from './pages/moderator/categories-tags/list-input/list-input.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -69,6 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SelectComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
+    EditDiscountCardComponent,
     LanguageSelectionComponent,
     CategoryComponent,
     TagComponent,
@@ -81,6 +84,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListInputComponent,
     UserCardComponent,
     AddDiscountModalComponent,
+    AddVendorModalComponent,
     StateEventComponent,
     DateSearchComponent,
   ],

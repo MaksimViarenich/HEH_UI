@@ -2,7 +2,7 @@
 <mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
   <mat-grid-tile *ngFor="let discount of discounts" >
     <app-discount-card [discountInfo]="discount" 
-                       [isRemoveAvailable]="true"></app-discount-card>
+                       [isRemoveAvailable]="true"
+                       (click)="openAddVendor()"></app-discount-card>
   </mat-grid-tile>
 </mat-grid-list>
-<button (click)="openAddDiscount()">Open</button>

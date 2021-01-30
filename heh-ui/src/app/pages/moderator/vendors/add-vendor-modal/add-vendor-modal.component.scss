@@ -1,0 +1,100 @@
+@import "../../../../../styles.scss";
+
+.mat-icon {
+  color: $color-violet;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.cdk-global-overlay-wrapper {
+  justify-content: flex-end !important;
+
+  .vendor-details-modal.cdk-overlay-pane {
+    width: 66rem;
+    height: 100%;
+    margin-top: 0;
+
+    .mat-dialog-container {
+      padding: 0;
+      border-radius: 0;
+
+      .mat-dialog-content {
+        margin: 0;
+        padding: 0;
+        max-height: 100%;
+
+        .add-vendor-content {
+          display: flex;
+          justify-content: space-between;
+          padding: $margin-1;
+
+          .add-vendor-info-title {
+            margin-bottom: $margin-1;
+            font-size: $font-title;
+            font-weight: bold;
+          }
+        }
+
+        .add-vendor-info {
+          width: calc(50% - 0.5rem);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          .mat-form-field-appearance-outline .mat-form-field-wrapper {
+            padding-bottom: 0;
+            margin: 0 0 $margin-1 0;
+          }
+
+          .mat-select-arrow {
+            border-top: 0;
+          }
+        }
+
+        .add-vendor-discounts {
+          width: calc(50% - 0.5rem);
+          display: flex;
+          flex-direction: column;
+          font-weight: bold;
+
+          .vendors-component {
+            margin-top: $margin-1;
+          }
+
+          .add-discount-button {
+            min-height: 3rem;
+            background: $color-violet;
+            color: $color-white;
+          }
+        }
+
+        .add-vendor-background {
+          height: $height-background-triangle;
+          background: url("../../../../../assets/images/card-backgrounds/bg-vendor-orange.png") no-repeat center;
+          background-size: 100%;
+          padding: 0 $margin-1;
+
+          .add-vendor-title {
+            @include font-bold-vendor;
+            line-height: $height-background-triangle;
+          }
+        }
+      }
+    }
+  }
+}
+
+.add-vendor-buttons {
+  text-align: right;
+  font-weight: bold;
+  margin: 0 $margin-1 0 0;
+  padding: 0;
+
+  button:last-child {
+    background: $color-violet;
+    color: $color-white;
+    margin-left: $margin-1;
+  }
+}

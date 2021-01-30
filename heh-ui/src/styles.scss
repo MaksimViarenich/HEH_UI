@@ -40,6 +40,17 @@ $padding-last-grid: 1.5rem;
   }
 }
 
+@mixin mat-grid-tile {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
+
+  app-discount-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
+}
+
 @mixin font-bold-vendor {
   font-size: $font-vendor;
   font-weight: bold;
@@ -81,7 +92,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-
   background: rgba(51, 51, 51, 0.5);
   -webkit-border-radius: 6.25rem;
 }
