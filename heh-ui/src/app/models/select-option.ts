@@ -1,4 +1,6 @@
+import {Option} from './option';
+
 export interface SelectOption {
-    value: string;
-    viewValue: string;
+  label: string;
+  options: Option[];
 }

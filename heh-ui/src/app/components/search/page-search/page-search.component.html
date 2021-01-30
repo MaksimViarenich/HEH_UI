@@ -24,7 +24,7 @@
                      [label]="searchOptions.dateOptions.label"></app-date-search>
 
     <div class="btn-container">
-      <app-btn-search (submitData)="onPausedClick()"></app-btn-search>
+      <app-btn-search [label]="searchOptions.btnLabel" (submitData)="onPausedClick()"></app-btn-search>
     </div>
   </div>
 </div>

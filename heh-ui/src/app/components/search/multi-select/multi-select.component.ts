@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SelectOption } from 'src/app/models/select-option';
+import { Option } from 'src/app/models/option';
 
 @Component({
   selector: 'app-multi-select',
@@ -11,7 +11,7 @@ import { SelectOption } from 'src/app/models/select-option';
 
 export class MultiSelectComponent implements OnInit {
   @Input() label: string;
-  @Input() options: SelectOption[];
+  @Input() options: Option[];
   @Input() index: number;
   @Output() changeValue = new EventEmitter<string>();
 

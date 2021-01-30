@@ -1,14 +1,9 @@
-import { SelectOption } from './select-option';
+import {SelectOption} from './select-option';
 
 export interface SearchOptions {
-    selectOptions: {
-        label: string;
-        options: SelectOption[];
-    };
-    multiSelectOptions: {
-        label: string;
-        options: SelectOption[];
-    }[];
+    btnLabel?: string;
+    selectOptions: SelectOption;
+    multiSelectOptions: SelectOption[];
     dateOptions?: {
         label: string;
     };
