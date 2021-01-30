@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Vendor } from '../../../../models/vendor';
 import { MatDialog } from '@angular/material/dialog';
-import { AddDiscountModalComponent } from '../../vendors/add-vendor-modal/add-discount-modal/add-discount-modal.component';
+import {AddDiscountModalComponent} from '../add-discount-modal/add-discount-modal.component';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -23,7 +23,7 @@ export class AddVendorModalComponent implements OnInit {
   isActive = false;
 
   discount: Vendor = {
-    vendor: "Domino's Pizza",
+    vendor: 'Domino\'s Pizza',
     title: 'Buy our tasty pizza with 10% discount',
     category: 'Food',
     tags: ['Pizza'],
