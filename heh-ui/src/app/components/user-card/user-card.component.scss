@@ -3,7 +3,6 @@
 .user-card {
   width: 100%;
   background-color: white;
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -23,7 +22,7 @@
   }
 
   .user-card__info {
-    height: 100%;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,15 +39,16 @@
       margin-right: 1%;
 
       mat-button-toggle {
-        height: 1.5rem;
+        font-size: 0.9rem;
+        height: 1.4rem;
         padding: 0;
         margin: 0;
       }
 
       span {
-        padding: 0 0.6rem;
-        height: 1.5rem;
-        line-height: 0;
+        padding: 0 0.2rem;
+        height: 1.4rem;
+        line-height: 1.4rem;
       }
     }
 
