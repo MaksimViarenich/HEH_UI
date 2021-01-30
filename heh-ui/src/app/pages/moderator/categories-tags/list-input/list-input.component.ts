@@ -1,27 +1,24 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component, Input} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
-
-export interface Option {
-  name: string;
-}
+import {Option} from '../../../../models/option';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  selector: 'app-list-input',
+  templateUrl: './list-input.component.html',
+  styleUrls: ['./list-input.component.scss']
 })
-export class CreateComponent {
-  @Input() title: string;
+
+export class ListInputComponent {
+  @Input() label: string;
   @Input() options: Option[];
-  visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor() {
-    this.title = '';
+    this.label = '';
     this.options = [];
   }
 
@@ -29,12 +26,13 @@ export class CreateComponent {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
-      this.options.push({name: value.trim()});
+      this.options.push({
+        viewValue: value.trim(),
+        value: value.trim(),
+      });
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }

@@ -1,28 +1,32 @@
-<div class="cat-tags-container">
-     <div class="select-wrapper">
-          <div class="select-inner-wrapper">
-               <mat-form-field appearance="outline" class="tag-field">
-                    <mat-label>{{catTegOptions.label}}</mat-label>
-                    <mat-select>
-                      <mat-option></mat-option>
-                      <mat-option [value]="option.value"
-                                  *ngFor="let option of catTegOptions.options">
-                        {{ option.viewValue }}
-                      </mat-option>
-                    </mat-select>
-               </mat-form-field>
-          </div>
-     </div>
-     <div class="create-btn-wrapper">
-          <div class="inner-wrapper" *ngFor="let item of items">
-               <span class="create-title">{{item.name}}</span>
-               <div class="create-wrapper">
-                    <app-create [title]="item.title"
-                                [options]="item.options"></app-create>
-               </div>
-               <div class="btn-wrapper">
-                    <app-btn-search [label]="btnLabel"></app-btn-search>
-               </div>
-          </div>
-     </div>
+<div class="category-and-tag-container">
+  <div class="category-and-tag-wrapper">
+    <div class="category-and-tag-title">Categories</div>
+
+    <div class="category-and-tag-content">
+      <app-list-input [label]="categoryOptions.label"
+                      [options]="categoryOptions.options"></app-list-input>
+    </div>
+  </div>
+
+  <div class="category-and-tag-wrapper">
+    <div class="category-and-tag-title">Tags</div>
+
+    <mat-form-field appearance="outline" class="select-category">
+      <mat-label>{{categoryOptions.label}}</mat-label>
+      <mat-select>
+        <mat-option></mat-option>
+        <mat-option [value]="option.value"
+                    *ngFor="let option of categoryOptions.options">
+          {{ option.viewValue }}
+        </mat-option>
+        <mat-option *ngFor="let option of categoryOptions.options"
+                    [value]="option.value">{{option.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="category-and-tag-content">
+      <app-list-input [label]="tagsOptions.label"
+                      [options]="tagsOptions.options"></app-list-input>
+    </div>
+  </div>
 </div>

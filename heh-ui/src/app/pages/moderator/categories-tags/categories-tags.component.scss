@@ -1,67 +1,43 @@
 @import "../../../../styles.scss";
 
-.cat-tags-container {
-     padding-top: 4rem;
-     
-     .select-wrapper{
-          width: 40%;
-          margin: 0 0 1rem 50%;
-     }
+.category-and-tag-container {
+  margin-top: 2rem;
 
-     .select-inner-wrapper {
-          .tag-field {
-               .mat-form-field-wrapper {
-                    padding-bottom: 0;
-               }
-          }
-     }
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: unset;
+  }
 
-     .mat-form-field-appearance-outline .mat-form-field-wrapper {
-          margin: unset;
-     }
+  .category-and-tag-wrapper {
+    width: calc(50% - 1rem);
+    display: inline-block;
+    vertical-align: top;
 
-     .mat-chip.mat-standard-chip {
-          margin: 0.2rem;
-     }
+    .select-category {
+      width: 100%;
+    }
 
-     .mat-form-field {
-          width: 100%;
-     }
+    .category-and-tag-title {
+      font-size: $font-title;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
 
-     .create-btn-wrapper,
-     .inner-wrapper {
-          position: relative;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-     }
+    .category-and-tag-content {
+      position: relative;
+      display: flex;
+      flex-direction: row;
 
-     .inner-wrapper {
-          justify-content: unset;
-     }
+      app-list-input {
+        width: 100%;
+      }
+    }
+  }
 
-     .create-title {
-          position: absolute;
-          margin: -7rem 0 1rem 0;
-          line-height: 1.4rem;
-          font-size: $font-title;
-          font-weight: bold;
-     }
+  .category-and-tag-wrapper:first-child {
+    margin-right: 1rem;
+  }
 
-     .inner-wrapper:first-child {
-          margin-top: -4rem;
-     }
-
-     .inner-wrapper:first-child .create-title{
-          margin-top: -3rem;
-     }
-
-     .inner-wrapper,
-     .create-wrapper {
-          width: 50%;
-     }
-
-     .btn-wrapper {
-          width: 30%;
-     }
+  .category-and-tag-wrapper:nth-child(2) {
+    margin-left: 1rem;
+  }
 }

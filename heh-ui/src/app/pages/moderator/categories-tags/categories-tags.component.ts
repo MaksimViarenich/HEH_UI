@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {SelectOption} from '../../../models/select-option';
 
 @Component({
   selector: 'app-categories-tags',
@@ -8,38 +9,29 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class CategoriesTagsComponent {
-  btnLabel = 'Add';
-  catTegOptions: any;
-  items: any = [];
+  categoryOptions: SelectOption;
+  tagsOptions: SelectOption;
 
   constructor() {
-    this.catTegOptions = {
+    this.categoryOptions = {
       label: 'Category',
       options: [
         {value: '1', viewValue: 'Food'},
         {value: '2', viewValue: 'Devices'},
-        {value: '3', viewValue: 'Medicine'}
+        {value: '3', viewValue: 'Medicine'},
+        {value: '4', viewValue: 'Beauty'},
+        {value: '5', viewValue: 'Sport'}
       ]
     };
-    this.items = [
-      {name: 'Categories',
-      title: 'Category',
+
+    this.tagsOptions = {
+      label: 'Tag',
       options: [
-        {name: 'Food'},
-        {name: 'Medicine'},
-        {name: 'Devices'},
-        {name: 'Beauty'},
-        {name: 'Sport'}
+        {value: '1', viewValue: 'Sushi'},
+        {value: '2', viewValue: 'Pizza'},
+        {value: '3', viewValue: 'Coffe'},
+        {value: '4', viewValue: 'China food'}
       ]
-    },
-      {name: 'Tags',
-      title: 'Tag',
-      options: [
-        {name: 'Sushi'},
-        {name: 'Pizza'},
-        {name: 'Coffe'},
-        {name: 'China food'}
-      ]}
-    ];
+    };
   }
 }
