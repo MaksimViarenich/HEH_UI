@@ -23,8 +23,12 @@
     display: flex;
     justify-content: space-between;
 
-  .filter-wrapper,
-  .btn-container {
+    .filter-wrapper,
+    .date-container {
+      width: 24%;
+    }
+
+    .btn-container {
       width: 24%;
     }
   }

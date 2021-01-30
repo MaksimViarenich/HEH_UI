@@ -1,15 +1,21 @@
 <div class="card">
   <div class="card-header" 
       [style.background-image]="'url(' + discountInfo.background + ')'"
-      [ngStyle]="!isVendorView ? {'height': '40%'} : {'height': '60%'}">
+      [ngStyle]="!isRemoveAvailable && !isViewCountsVisible ? {'height': '40%'} : {'height': '60%'}">
     <div class="card-title">{{discountInfo.discount.vendor}}</div>
-    <app-btn-favorite *ngIf="!isVendorView" 
+    <app-btn-favorite *ngIf="!isRemoveAvailable && !isViewCountsVisible" 
                       [isFavorite]="discountInfo.isFavorite" 
                       class="btn" ></app-btn-favorite>
-    <div *ngIf="isVendorView"
+    <div *ngIf="isRemoveAvailable"
           class="btn btn-delete" 
           (click)="$event.stopPropagation()">
       <span class="material-icons">delete_outline</span>
+    </div>
+    <div *ngIf="isViewCountsVisible"
+          class="btn btn-view" 
+          (click)="$event.stopPropagation()">
+      <span class="material-icons">visibility</span>
+      {{ discountInfo.discount.views }}
     </div>
   </div>
 
@@ -20,7 +26,7 @@
                [discountTag]="tag"></app-tag>
     </div>
 
-    <div *ngIf="!isVendorView" class="card-content-description">
+    <div *ngIf="!isRemoveAvailable && !isViewCountsVisible" class="card-content-description">
       {{discountInfo.discount.title}}
     </div>
   </div>

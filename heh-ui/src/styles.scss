@@ -12,20 +12,43 @@ $border-radius-small: .33rem;
 
 $color-violet: #9A90FE;
 $color-red: #DB0404;
-$color-black: #333;
+$color-black: #333333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-grey: #B0B4B6;
+$color-table-header: #F4F2FF;
 
-$margin-category-tag: .3rem .3rem .3rem 0;
+$margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
+$padding-last-grid: 1.5rem;
 
-@mixin cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(13rem, 1fr));
-  column-gap: 1rem;
-  row-gap: 1rem;
+@mixin img-profile-language {
+  height: 2.2rem;
+  width: 2.2rem;
+  align-self: center;
+}
+
+@mixin mat-grid-tile {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
+
+  app-discount-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@mixin mat-grid-tile {
+  box-shadow: $box-shadow;
+  border-radius: $border-radius-small;
+
+  app-discount-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 @mixin font-bold-vendor {
@@ -56,4 +79,24 @@ body {
   margin: 0;
   height: 100vh;
   color: $color-black;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 6.25rem;
+}
+
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background: rgba(51, 51, 51, 0.5);
+  -webkit-border-radius: 6.25rem;
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(51, 51, 51, 0.61);
+  -webkit-border-radius: 6.25rem;
 }

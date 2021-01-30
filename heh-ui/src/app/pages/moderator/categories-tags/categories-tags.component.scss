@@ -1,5 +1,43 @@
-.cat-tags-container{
-    width: 30%;
-    height: 5rem;
-    background-color: red;
+@import "../../../../styles.scss";
+
+.category-and-tag-container {
+  margin-top: 2rem;
+
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: unset;
+  }
+
+  .category-and-tag-wrapper {
+    width: calc(50% - 1rem);
+    display: inline-block;
+    vertical-align: top;
+
+    .select-category {
+      width: 100%;
+    }
+
+    .category-and-tag-title {
+      font-size: $font-title;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    .category-and-tag-content {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+
+      app-list-input {
+        width: 100%;
+      }
+    }
+  }
+
+  .category-and-tag-wrapper:first-child {
+    margin-right: 1rem;
+  }
+
+  .category-and-tag-wrapper:nth-child(2) {
+    margin-left: 1rem;
+  }
 }

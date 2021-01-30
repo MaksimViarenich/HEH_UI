@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .header {
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
   opacity: 1;
@@ -53,10 +55,8 @@
       display: flex;
 
       img {
-        width: 2.2rem;
-        height: 2.2rem;
+        @include img-profile-language;
         margin-right: 0.5rem;
-        align-items: center;
       }
     }
 

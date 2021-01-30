@@ -38,10 +38,19 @@
             @include font-bold-discount;
             margin-bottom: 1rem;
           }
+          .edit-btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
 
-          button {
-            background-color: $color-violet;
-            color: $color-white;
+            .btn-cancel {
+              color: $color-black;
+            }
+  
+            .btn-submit {
+              background-color: $color-violet;
+              color: $color-white;
+            }
           }
         }
       }

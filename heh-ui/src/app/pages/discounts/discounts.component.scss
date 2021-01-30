@@ -13,3 +13,11 @@
   z-index: 3;
   margin-bottom: 10rem;
 }
+
+mat-grid-list {
+  padding-bottom: $padding-last-grid;
+}
+
+mat-grid-tile {
+  @include mat-grid-tile;
+}

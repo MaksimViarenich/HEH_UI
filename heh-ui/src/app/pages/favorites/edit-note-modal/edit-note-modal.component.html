@@ -16,7 +16,12 @@
                 [(ngModel)]="data.discount.feedback"></textarea>
     </mat-form-field>
 
-    <button mat-raised-button
-            mat-dialog-close>Confirm</button>
+    <div class="edit-btn">
+      <button class="btn-cancel"
+              mat-button
+              mat-dialog-close>Cancel</button>
+      <button class="btn-submit"
+              mat-raised-button>Submit</button>
+    </div>
   </div>
 </div>
