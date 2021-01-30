@@ -1,21 +1,21 @@
-<div class="favorite-card">
+<div class="edit-discount-card-container">
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
         <app-category [discountCategory]="discountInfo.discount.category"></app-category>
-        <app-tag *ngFor="let tag of discountInfo.discount.tags" [discountTag]="tag"></app-tag>
+        <app-tag *ngFor="let tag of discountInfo.discount.tags"
+                 [discountTag]="tag"></app-tag>
       </div>
+
       <div class="card-content-description">
         <div class="discount-name line-clamp">
           {{ discountInfo.discount.title }}
         </div>
       </div>
     </div>
+
     <div class="card-actions">
-      <mat-slide-toggle color="primary" [(ngModel)]="isActive">{{isActive ? '' : ''}}</mat-slide-toggle>
-      <span class="material-icons warn-color">
-        delete
-      </span>
+      <span class="material-icons warn-color">delete</span>
     </div>
   </div>
 </div>

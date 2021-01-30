@@ -24,7 +24,7 @@ import { PageSearchComponent } from './components/search/page-search/page-search
 import { SelectComponent } from './components/search/select/select.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
-import { VendorCardComponent } from './components/add-vendor-card/add-vendor-card.component';
+import { EditDiscountCardComponent } from './pages/moderator/vendors/add-vendor-modal/edit-discount-card/edit-discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
@@ -70,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SelectComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
-    VendorCardComponent,
+    EditDiscountCardComponent,
     LanguageSelectionComponent,
     CategoryComponent,
     TagComponent,
