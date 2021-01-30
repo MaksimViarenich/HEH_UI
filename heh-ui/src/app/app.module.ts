@@ -42,8 +42,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DateSearchComponent } from './components/search/date-search/date-search.component';
-import {AddDiscountModalComponent} from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
-import {UserCardComponent} from './components/user-card/user-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
