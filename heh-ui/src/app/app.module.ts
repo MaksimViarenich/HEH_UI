@@ -33,6 +33,9 @@ import { BtnSearchComponent } from './components/search/btn-search/btn-search.co
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
 import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
+import { ListInputComponent } from './pages/moderator/categories-tags/list-input/list-input.component';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -80,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DiscountDetailsModalComponent,
     EditNoteModalComponent,
     DiscountDetailsModalComponent,
+    ListInputComponent,
     UserCardComponent,
     AddDiscountModalComponent,
     AddVendorModalComponent,

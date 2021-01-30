@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-btn-search',
@@ -7,11 +7,15 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class BtnSearchComponent {
   @Output() submitData = new EventEmitter<string>();
+  @Input() label: string;
 
   submitClick(): void {
     this.submitData.emit();
   }
 
-  constructor() { }
+  someMethod(): void {}
 
+  constructor() {
+    this.label = '';
+  }
 }

@@ -1,0 +1,24 @@
+@import '../../../../../styles.scss';
+
+.chips-container {
+  .mat-chip.mat-standard-chip {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+  }
+}
+
+.list-input-container {
+  width: 100%;
+
+  mat-form-field {
+    width: calc(100% - 8rem);
+  }
+
+  button {
+    line-height: 3.25rem;
+    font-size: 1rem;
+    background-color: $color-violet;
+    vertical-align: top;
+    float: right;
+    width: 7rem;
+  }
+}
