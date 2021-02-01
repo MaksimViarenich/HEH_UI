@@ -78,7 +78,12 @@
       margin-left: -.15rem;
       display: flex;
       align-items: center;
+      font-size: 1rem;
       color: $color-grey;
+
+      span {
+        font-size: 1rem;
+      }
     }
   }
 }
