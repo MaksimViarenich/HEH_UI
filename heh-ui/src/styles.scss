@@ -100,3 +100,7 @@ body {
   background: rgba(51, 51, 51, 0.61);
   -webkit-border-radius: 6.25rem;
 }
+
+.cdk-global-scrollblock {
+  overflow-y: hidden;
+}
