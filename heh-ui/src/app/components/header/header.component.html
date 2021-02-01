@@ -1,34 +1,50 @@
 <header class='header'>
   <div class='container'>
     <div class='header-title'
-        (click)='goToMain()'> happy exadel hours </div>
+         (click)='goToMain()'> happy exadel hours
+    </div>
+
     <nav class='navigation'>
       <nav mat-tab-nav-bar>
-        <a class='tab' mat-tab-link
-        *ngFor="let tab of tabs"
-        [routerLink]="tab.path"
-        routerLinkActive
-        #rla="routerLinkActive" [active]="rla.isActive">
-        {{ tab.localizationKey | translate }}</a>
+        <a class='tab'
+           mat-tab-link
+           *ngFor="let tab of tabs"
+           [routerLink]="tab.path"
+           routerLinkActive
+           #rla="routerLinkActive"
+           [active]="rla.isActive">{{ tab.localizationKey | translate }}</a>
       </nav>
+
       <div class='person'>
         <div class='person-info'>
-          <a class='person-name' href='/profile'
-            (click)='goToPerson()'>Michael Browk
-          </a>
+          <a class='person-name'
+             href='/profile'
+             (click)='goToPerson()'>Michael Browk</a>
           <a class='person-place'
-          href='#'>Belarus, Minsk
-        </a>
+             href='#'>Belarus, Minsk</a>
         </div>
+
         <div class='person-pic'>
-          <img class='profile-icon' src='../../../assets/images/header/header_profile.svg' alt='profile-icon' mat-button
-            [matMenuTriggerFor]='beforeMenuProfil'>
-          <mat-menu class='profile-menu' #beforeMenuProfil='matMenu' xPosition='before'>
-            <button class='btn-person btn-primary' (click)='goToPerson()' mat-menu-item><img
-                src='../../../assets/images/header/header_menu_profile.svg' alt='btn-person'>{{ 'header.profile' | translate }}</button>
-            <button class='btn-person btn-primary' (click)='logout()' mat-menu-item><img
-                src='../../../assets/images/header/header_menu_logout.svg' alt='btn-person'>{{ 'header.logout' | translate }}</button>
+          <img class='profile-icon'
+               src='../../../assets/images/header/header_profile.svg'
+               alt='profile-icon'
+               mat-button
+               [matMenuTriggerFor]='beforeMenuProfile'>
+          <mat-menu class='profile-menu'
+                    #beforeMenuProfile='matMenu'
+                    xPosition='before'>
+            <button class='btn-person btn-primary'
+                    (click)='goToPerson()'
+                    mat-menu-item>
+              <img src='../../../assets/images/header/header_menu_profile.svg'
+                   alt='btn-person'>{{ 'header.profile' | translate }}</button>
+            <button class='btn-person btn-primary'
+                    (click)='logout()'
+                    mat-menu-item>
+              <img src='../../../assets/images/header/header_menu_logout.svg'
+                   alt='btn-person'>{{ 'header.logout' | translate }}</button>
           </mat-menu>
+
           <app-language-selection></app-language-selection>
         </div>
       </div>
