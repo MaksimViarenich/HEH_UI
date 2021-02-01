@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { VendorCardComponent } from './add-vendor-card.component';
 
-import {DiscountCardComponent} from './discount-card.component';
-
-describe('DiscountCardComponent', () => {
-  let component: DiscountCardComponent;
-  let fixture: ComponentFixture<DiscountCardComponent>;
+describe('VendorCardComponent', () => {
+  let component: VendorCardComponent;
+  let fixture: ComponentFixture<VendorCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiscountCardComponent ]
+      declarations: [ VendorCardComponent ]
     })
     .compileComponents();
   });
+
   beforeEach(() => {
-    fixture = TestBed.createComponent(DiscountCardComponent);
+    fixture = TestBed.createComponent(VendorCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

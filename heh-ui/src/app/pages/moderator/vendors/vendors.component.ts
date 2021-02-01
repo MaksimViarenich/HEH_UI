@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddVendorModalComponent } from './add-vendor-modal/add-vendor-modal.component';
 import { DiscountCard } from '../../../models/discount-card';
 import { SearchOptions } from '../../../models/search-options';
+import { AddVendor } from '../../../models/add-vendor';
+import { DiscountDetailsModalComponent } from '../../discounts/discount-details-modal/discount-details-modal.component';
+
 
 @Component({
   selector: 'app-vendors',
   templateUrl: './vendors.component.html',
   styleUrls: ['./vendors.component.scss'],
 })
+
 export class VendorsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
@@ -52,8 +56,10 @@ export class VendorsComponent implements OnInit {
     };
   }
 
- 
-
+  addVendors: AddVendor = {
+    background: '../../../assets/images/card-backgrounds/bg-blue.png',
+    addButton: '+'
+  };
   discounts: Array<DiscountCard> = [
     {
       background: '../../../assets/images/card-backgrounds/bg-blue.png',
@@ -548,11 +554,18 @@ export class VendorsComponent implements OnInit {
   ];
 
   openAddVendor(): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent,{
+    const dialogRef = this.dialog.open(AddVendorModalComponent, {
       panelClass: 'vendor-details-modal'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openDiscountDetails(discount: DiscountCard): void {
+    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {data: discount});
+
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }

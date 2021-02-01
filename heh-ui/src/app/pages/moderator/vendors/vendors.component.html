@@ -1,8 +1,13 @@
 <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
 <mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let discount of discounts" >
-    <app-discount-card [discountInfo]="discount" 
-                       [isRemoveAvailable]="true"
-                       (click)="openAddVendor()"></app-discount-card>
+  <mat-grid-tile>
+    <app-add-vendor-card [addVendor]="addVendors"
+                         (click)="openAddVendor()"
+                         [isRemoveAvailable]="true"></app-add-vendor-card>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let discount of discounts">
+    <app-discount-card [discountInfo]="discount"
+                       (click)="openDiscountDetails(discount)"
+                       [isRemoveAvailable]="true"></app-discount-card>
   </mat-grid-tile>
 </mat-grid-list>

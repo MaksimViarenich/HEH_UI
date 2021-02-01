@@ -15,4 +15,3 @@ export interface Vendor {
     vk?: string;
     feedback?: string;
   }
-  

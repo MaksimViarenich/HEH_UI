@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {VendorCardComponent} from '../../components/add-vendor-card/add-vendor-card.component';
 
 @NgModule({
   exports: [
@@ -50,8 +51,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatPaginatorModule,
     MatNativeDateModule,
     MatGridListModule,
+    VendorCardComponent,
   ],
   imports: [],
+  declarations: [
+    VendorCardComponent
+  ],
   providers: []
 })
 export class AppMaterialModule {
