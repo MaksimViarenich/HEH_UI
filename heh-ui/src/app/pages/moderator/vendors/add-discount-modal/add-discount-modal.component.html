@@ -6,13 +6,6 @@
 
   <div class="add-discount-info">
     <div class="add-discount-fields">
-      <mat-form-field appearance="outline" class="add-discount-vendor">
-        <mat-label>Vendor</mat-label>
-        <mat-select [formControl]="vendor" required>
-          <mat-option *ngFor="let vendor of vendors"
-                      [value]="vendor">{{vendor}}</mat-option>
-        </mat-select>
-      </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-address">
         <mat-label>Address</mat-label>
@@ -63,19 +56,19 @@
       <mat-form-field appearance="outline">
         <mat-label>Start date</mat-label>
         <input matInput
-               [matDatepicker]="picker"
+               [matDatepicker]="pickerStart"
                [formControl]="date"
                required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Expiration date</mat-label>
         <input matInput
-               [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+               [matDatepicker]="pickerEnd">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-category">
