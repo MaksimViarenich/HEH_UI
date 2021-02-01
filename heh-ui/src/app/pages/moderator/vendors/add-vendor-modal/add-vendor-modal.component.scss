@@ -16,6 +16,11 @@
     height: 100%;
     margin-top: 0;
 
+
+    .mat-dialog{
+      overflow-y: hidden;
+    }
+
     .mat-dialog-container {
       padding: 0;
       border-radius: 0;
