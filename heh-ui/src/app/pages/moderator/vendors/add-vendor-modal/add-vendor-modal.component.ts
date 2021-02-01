@@ -13,13 +13,14 @@ import {DiscountCard} from '../../../../models/discount-card';
 })
 export class AddVendorModalComponent implements OnInit {
   vendor = new FormControl();
-  address = new FormControl();
   phone = new FormControl();
   site = new FormControl();
   hours = new FormControl();
   instagram = new FormControl();
   vkontakte = new FormControl();
   facebook = new FormControl();
+  addressTitle = 'Address';
+  phoneTitle = 'Phone';
 
   discounts: Array<DiscountCard> = [
     {
@@ -28,7 +29,7 @@ export class AddVendorModalComponent implements OnInit {
         vendor: 'West Coast Customs',
         title: 'We gonna pimp your ride for 7% cheaper bro',
         category: 'Cars',
-        tags: ['Tuning',],
+        tags: ['Tuning', ],
         description: 'Visit us at weekdays',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
@@ -51,7 +52,7 @@ export class AddVendorModalComponent implements OnInit {
         vendor: 'Gamestop',
         title: 'Play more, pay less with 10%',
         category: 'Free time',
-        tags: ['Games',],
+        tags: ['Games', ],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
@@ -74,7 +75,7 @@ export class AddVendorModalComponent implements OnInit {
         vendor: 'KFC',
         title: '15% discount for our crispy chicken',
         category: 'Food',
-        tags: ['KFC',],
+        tags: ['KFC', ],
         description: 'Discount available 24/7 for all orders.',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
@@ -140,8 +141,11 @@ export class AddVendorModalComponent implements OnInit {
     vk: 'https://vk.com/',
   };
 
-  constructor(public dialog: MatDialog) {
-  }
+  constructor(public dialog: MatDialog) {}
+
+  submitAddresses(date: any): void {}
+
+  submitPhones(date: any): void {}
 
   openAddDiscount(): void {
     const dialogRef = this.dialog.open(AddDiscountModalComponent, {

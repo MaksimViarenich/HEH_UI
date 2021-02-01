@@ -1,0 +1,13 @@
+<div class="model-list-input-container">
+    <div class="mff-wrapper">
+        <mat-form-field appearance="outline">
+            <mat-label>{{title}}</mat-label>
+            <input matInput (keydown.enter)="onKeypressEvent($event)" required>
+            <mat-icon matSuffix>add</mat-icon>
+        </mat-form-field> 
+    </div>
+    <div class="text-wrapper" *ngFor="let value of listData; let idx = index">
+        <div class="inner-text-wrapper">{{value}}</div>
+        <div class="submit-div" (click)="deleteData(idx)"><mat-icon matSuffix>clear</mat-icon></div>
+    </div> 
+</div>

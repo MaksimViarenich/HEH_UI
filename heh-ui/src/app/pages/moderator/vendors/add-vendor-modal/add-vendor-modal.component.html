@@ -7,23 +7,15 @@
   <div class="add-vendor-content">
     <div class="add-vendor-info">
       <span class="add-vendor-info-title">Vendor info:</span>
-
+      
       <mat-form-field appearance="outline">
         <mat-label>Vendor name</mat-label>
         <input matInput [formControl]="vendor" required>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Address</mat-label>
-        <input matInput [formControl]="address" required>
-        <mat-icon matSuffix>add</mat-icon>
-      </mat-form-field>
+      <app-model-list-input [title]="addressTitle" (DatePicked)="submitAddresses($event)"></app-model-list-input>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Phone</mat-label>
-        <input matInput [formControl]="phone" required>
-        <mat-icon matSuffix>add</mat-icon>
-      </mat-form-field>
+      <app-model-list-input [title]="phoneTitle" (DatePicked)="submitPhones($event)"></app-model-list-input>
 
       <mat-form-field appearance="outline">
         <mat-label>Web site</mat-label>
