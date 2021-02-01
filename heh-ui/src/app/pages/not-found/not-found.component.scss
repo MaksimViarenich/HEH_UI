@@ -1,0 +1,35 @@
+.not-found-wrapper {
+  height: 100vh;
+  background-image: url("../../../assets/images/ErrorPage404.svg");
+  background-repeat: no-repeat;
+  background-size: 78%;
+  background-position: 100% 100%;
+  display: flex;
+
+  .not-found-content {
+    margin-left: 5vh;
+    margin-top: -15vh;
+    align-self: center;
+    width: 50%;
+
+    .not-found-header {
+      font-size: 7rem;
+      line-height: 7rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+
+    .not-found-info {
+      font-size: 3rem;
+      line-height: 4rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    .not-found-error {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      font-weight: 300;
+    }
+  }
+}
