@@ -1,18 +1,18 @@
 <div class="card">
-  <div class="card-header" 
+  <div class="card-header"
       [style.background-image]="'url(' + discountInfo.background + ')'"
       [ngStyle]="!isRemoveAvailable && !isViewCountsVisible ? {'height': '40%'} : {'height': '60%'}">
     <div class="card-title">{{discountInfo.discount.vendor}}</div>
-    <app-btn-favorite *ngIf="!isRemoveAvailable && !isViewCountsVisible" 
-                      [isFavorite]="discountInfo.isFavorite" 
+    <app-btn-favorite *ngIf="!isRemoveAvailable && !isViewCountsVisible"
+                      [isFavorite]="discountInfo.isFavorite"
                       class="btn" ></app-btn-favorite>
     <div *ngIf="isRemoveAvailable"
-          class="btn btn-delete" 
+          class="btn btn-delete"
           (click)="$event.stopPropagation()">
       <span class="material-icons">delete_outline</span>
     </div>
     <div *ngIf="isViewCountsVisible"
-          class="btn btn-view" 
+          class="btn btn-view"
           (click)="$event.stopPropagation()">
       <span class="material-icons">visibility</span>
       {{ discountInfo.discount.views }}
@@ -22,8 +22,12 @@
   <div class="card-content">
     <div class="category-and-tags">
       <app-category [discountCategory]="discountInfo.discount.category"></app-category>
-      <app-tag *ngFor="let tag of discountInfo.discount.tags"
-               [discountTag]="tag"></app-tag>
+      <app-tag [discountTag]="discountInfo.discount.tags[0]"></app-tag>
+      <div *ngIf="(discountInfo.discount.tags.length - 1) > 0"
+           class="additional-tags">
+        <span class="material-icons">add_circle</span>
+        {{ discountInfo.discount.tags.length - 1 }}
+      </div>
     </div>
 
     <div *ngIf="!isRemoveAvailable && !isViewCountsVisible" class="card-content-description">

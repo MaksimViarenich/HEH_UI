@@ -73,5 +73,12 @@
       display: flex;
       justify-content: flex-start;
     }
+
+    .additional-tags {
+      margin-left: -.15rem;
+      display: flex;
+      align-items: center;
+      color: $color-grey;
+    }
   }
 }
