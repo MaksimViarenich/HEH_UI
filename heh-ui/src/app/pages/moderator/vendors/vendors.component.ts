@@ -52,7 +52,7 @@ export class VendorsComponent implements OnInit {
     };
   }
 
- 
+
 
   discounts: Array<DiscountCard> = [
     {
@@ -87,7 +87,7 @@ export class VendorsComponent implements OnInit {
         vendor: 'Terra Mare',
         title: 'Our restaurant gives you 15%',
         category: 'Food',
-        tags: ['Pizza', 'Pasta' ],
+        tags: ['Pizza', 'Pasta', 'Focaccia' ],
         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
@@ -548,7 +548,7 @@ export class VendorsComponent implements OnInit {
   ];
 
   openAddVendor(): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent,{
+    const dialogRef = this.dialog.open(AddVendorModalComponent, {
       panelClass: 'vendor-details-modal'
     });
 
