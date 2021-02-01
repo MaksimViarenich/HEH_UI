@@ -22,8 +22,8 @@
   <div class="card-content">
     <div class="category-and-tags">
       <app-category [discountCategory]="discountInfo.discount.category"></app-category>
-      <app-tag [discountTag]="discountInfo.discount.tags[0]"></app-tag>
-      <div *ngIf="(discountInfo.discount.tags.length - 1) > 0"
+      <app-tag *ngIf="discountInfo.discount.tags" [discountTag]="discountInfo.discount.tags[0]"></app-tag>
+      <div *ngIf="discountInfo.discount.tags.length - 1 > 0"
            class="additional-tags">
         <span class="material-icons">add_circle</span>
         {{ discountInfo.discount.tags.length - 1 }}
