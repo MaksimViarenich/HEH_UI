@@ -1,12 +1,10 @@
 @import "../../../../../styles.scss";
 
-.cdk-overlay-dark-backdrop {
+.add-discount-modal-backdrop.cdk-overlay-backdrop {
   width: calc(100% - 33rem);
 }
 
 .add-discount-modal.cdk-overlay-pane {
-  width: 33rem;
-
   .add-discount-background {
     height: $height-background-triangle;
     background: linear-gradient(90deg, #cfecd0, #ffc5ca);
@@ -34,8 +32,14 @@
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(10px);
         border-radius: 5px;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       }
+    }
+
+    .add-discount-fields {
+      padding: 1rem;
+      @include glass;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border-radius: $border-radius-small;
     }
 
     .add-discount-button {

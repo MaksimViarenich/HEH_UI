@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {AddVendorModalComponent} from './add-vendor-modal/add-vendor-modal.component';
-import {DiscountCard} from '../../../models/discount-card';
 import {SearchOptions} from '../../../models/search-options';
-import {DiscountDetailsModalComponent} from '../../discounts/discount-details-modal/discount-details-modal.component';
 import {VendorCard} from '../../../models/vendor-card';
+import {ModalService} from '../../../services/modal-service/modal.service';
 import {Discount} from '../../../models/discount';
+import {Vendor} from '../../../models/vendor';
 
 
 @Component({
@@ -17,7 +16,8 @@ import {Discount} from '../../../models/discount';
 export class VendorsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              private modalService: ModalService) {
     this.searchFieldsOptions = {
       selectOptions: {
         label: 'Location',
@@ -100,15 +100,7 @@ export class VendorsComponent implements OnInit {
   ];
 
   openVendorModal(data?: VendorCard): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent, {
-      panelClass: 'vendor-details-modal',
-      data: data ? data.vendor : {},
-      backdropClass: 'vendor-details-modal-backdrop',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.modalService.openVendorModal(data);
   }
 
   ngOnInit(): void {

@@ -1,12 +1,10 @@
 @import "../../../../styles.scss";
 
-.cdk-overlay-dark-backdrop {
-  width: 70%;
+.edit-note-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 20rem);
 }
 
 .cdk-overlay-pane {
-  width: 30%;
-
   .header {
     background-size: cover;
     display: flex;
@@ -31,9 +29,9 @@
     mat-form-field {
       padding: 0.5rem;
       margin: 1rem 0;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.7);
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
       border-radius: 5px;
     }
 

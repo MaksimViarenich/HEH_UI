@@ -9,43 +9,51 @@
       <div class="add-vendor-info">
         <span class="add-vendor-info-title">Vendor info:</span>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Vendor name</mat-label>
-          <input [(ngModel)]="vendor.name"
-                 [formControl]="vendorName"
-                 matInput required>
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Vendor name</mat-label>
+            <input [(ngModel)]="vendor.name"
+                   [formControl]="vendorName"
+                   matInput required>
+          </mat-form-field>
 
-        <app-model-list-input [label]="addressTitle"
-                              [listData]="vendor.addressList"></app-model-list-input>
+          <mat-form-field appearance="outline">
+            <mat-label>Open hours</mat-label>
+            <input [(ngModel)]="vendor.workingHours" matInput>
+          </mat-form-field>
+        </div>
 
-        <app-model-list-input [label]="phoneTitle"
-                              [listData]="vendor.phones"></app-model-list-input>
+        <div class="add-vendor-group">
+          <app-model-list-input [label]="addressTitle"
+                                [listData]="vendor.addressList"></app-model-list-input>
+        </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Web site</mat-label>
-          <input [(ngModel)]="vendor.website" matInput>
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <app-model-list-input [label]="phoneTitle"
+                                [listData]="vendor.phones"></app-model-list-input>
+        </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Open hours</mat-label>
-          <input [(ngModel)]="vendor.workingHours" matInput>
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Web site</mat-label>
+            <input [(ngModel)]="vendor.website" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Instagram</mat-label>
-          <input [(ngModel)]="vendor.instagram" matInput>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Instagram</mat-label>
+            <input [(ngModel)]="vendor.instagram" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Vkontakte</mat-label>
-          <input [(ngModel)]="vendor.vk" matInput>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Vkontakte</mat-label>
+            <input [(ngModel)]="vendor.vk" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Facebook</mat-label>
-          <input [(ngModel)]="vendor.facebook" matInput>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Facebook</mat-label>
+            <input [(ngModel)]="vendor.facebook" matInput>
+          </mat-form-field>
+        </div>
 
         <section>
           <mat-checkbox [color]="'primary'"
