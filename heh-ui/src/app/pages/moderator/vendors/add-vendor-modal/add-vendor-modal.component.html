@@ -14,17 +14,9 @@
           <input matInput [formControl]="vendor" required>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input matInput [formControl]="address" required>
-          <mat-icon matSuffix>add</mat-icon>
-        </mat-form-field>
+        <app-model-list-input [label]="addressTitle"></app-model-list-input>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Phone</mat-label>
-          <input matInput [formControl]="phone" required>
-          <mat-icon matSuffix>add</mat-icon>
-        </mat-form-field>
+        <app-model-list-input [label]="phoneTitle"></app-model-list-input>
 
         <mat-form-field appearance="outline">
           <mat-label>Web site</mat-label>
