@@ -12,16 +12,33 @@ $border-radius-small: .33rem;
 
 $color-violet: #9A90FE;
 $color-red: #DB0404;
-$color-black: #333333;
+$color-black: #333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-grey: #B0B4B6;
+$color-dark-grey: #747474;
+$color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
 
 $margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
 $padding-last: 1.5rem;
+
+@mixin header-glass {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+@mixin category-tags {
+  min-width: fit-content;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  padding: $padding-category-tag;
+  margin: $margin-category-tag;
+}
 
 @mixin img-profile-language {
   height: 2.2rem;
@@ -54,7 +71,7 @@ $padding-last: 1.5rem;
 @mixin font-bold-vendor {
   font-size: $font-vendor;
   font-weight: bold;
-  color: $color-white;
+  color: $color-black;
 }
 
 @mixin font-bold-discount {
