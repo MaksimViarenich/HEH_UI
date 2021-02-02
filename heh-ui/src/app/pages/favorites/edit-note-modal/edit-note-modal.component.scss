@@ -1,58 +1,54 @@
 @import "../../../../styles.scss";
 
-.cdk-global-overlay-wrapper {
-  justify-content: flex-end !important;
-  margin: 0;
+.cdk-overlay-dark-backdrop {
+  width: 70%;
+}
 
-  .cdk-overlay-pane {
-    width: 30%;
-    height: 100%;
-    margin: 0;
+.cdk-overlay-pane {
+  width: 30%;
 
-    .mat-dialog-container {
-      padding: 0;
+  .header {
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    padding-left: .5rem;
+    @include font-bold-vendor;
+  }
 
-      .mat-dialog-content {
-        display: block;
-        margin: 0;
-        padding: 0;
-        max-height: 100vh;
+  .edit-field {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    padding: 1rem;
 
-        .header {
-          background-size: cover;
-          display: flex;
-          align-items: center;
-          height: 7rem;
-          padding-left: .5rem;
-          @include font-bold-vendor;
-        }
+    .discount-name {
+      @include font-bold-discount;
+      margin-bottom: 1rem;
+    }
 
-        .edit-field {
-          display: flex;
-          flex-direction: column;
-          height: auto;
-          justify-content: space-between;
-          padding: 1rem;
+    mat-form-field {
+      padding: 0.5rem;
+      margin: 1rem 0;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border-radius: 5px;
+    }
 
-          .discount-name {
-            @include font-bold-discount;
-            margin-bottom: 1rem;
-          }
-          .edit-btn {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
+    .edit-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
 
-            .btn-cancel {
-              color: $color-black;
-            }
-  
-            .btn-submit {
-              background-color: $color-violet;
-              color: $color-white;
-            }
-          }
-        }
+      .btn-cancel {
+        color: $color-black;
+      }
+
+      .btn-submit {
+        background-color: $color-violet;
+        color: $color-white;
       }
     }
   }
