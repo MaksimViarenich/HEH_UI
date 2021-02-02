@@ -1,6 +1,4 @@
-.search {
-  margin-top: 2rem;
-}
+@import "../../../../styles.scss";
 
 .users-list {
   display: grid;
@@ -8,5 +6,9 @@
   grid-template-columns: repeat(3, minmax(10rem, 1fr));
   column-gap: 1rem;
   row-gap: 1rem;
-  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.search-container .search {
+  @include filters;
 }

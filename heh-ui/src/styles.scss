@@ -75,9 +75,30 @@ $padding-last-grid: 1.5rem;
   }
 }
 
+@mixin filters {
+  position: relative;
+  padding-top: 1rem;
+}
+
+@mixin attached-containers {
+  position: fixed;
+  z-index: 3;
+  background-color: white;
+  width: 100%;
+  top: 9.775rem;
+  right: 0;
+  height: 5%;
+  padding-top: 2rem;
+
+  .filters {
+    width: 65.625%;
+    margin: auto;
+  }
+}
+
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 75vh;
   color: $color-black;
 }
 

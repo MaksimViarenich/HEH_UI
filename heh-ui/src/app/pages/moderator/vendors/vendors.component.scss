@@ -3,7 +3,17 @@
 mat-grid-list {
   padding-bottom: $padding-last-grid;
 }
- 
+
 mat-grid-tile {
   @include mat-grid-tile;
+}
+
+.vendors-list {
+  position: relative;
+  margin-top: 0rem;
+  z-index: 0;
+}
+
+.filters {
+  @include filters;
 }

@@ -1,2 +1,7 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<app-favorite-card *ngFor="let card of favoriteCards" [favoriteInfo]="card"></app-favorite-card>
+<div class="filters">
+  <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+</div>
+
+<div class="favorites-container">
+  <app-favorite-card *ngFor="let card of favoriteCards" [favoriteInfo]="card"></app-favorite-card>
+</div>

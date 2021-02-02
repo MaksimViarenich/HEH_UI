@@ -1,7 +1,8 @@
 @import "../../../../styles.scss";
 
 .category-and-tag-container {
-  margin-top: 2rem;
+  position: relative;
+  padding-top: 2rem;
 
   .mat-form-field-appearance-outline .mat-form-field-wrapper {
     margin: unset;

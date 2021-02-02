@@ -52,8 +52,6 @@ export class VendorsComponent implements OnInit {
     };
   }
 
- 
-
   discounts: Array<DiscountCard> = [
     {
       background: '../../../assets/images/card-backgrounds/bg-blue.png',
@@ -548,7 +546,7 @@ export class VendorsComponent implements OnInit {
   ];
 
   openAddVendor(): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent,{
+    const dialogRef = this.dialog.open(AddVendorModalComponent, {
       panelClass: 'vendor-details-modal'
     });
 

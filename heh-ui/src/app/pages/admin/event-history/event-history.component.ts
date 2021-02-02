@@ -21,6 +21,14 @@ const EVENT_DATA: EventDataElement[] = [
   {date: new Date(2021, 3, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
   {date: new Date(2021, 3, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
   {date: new Date(2021, 4, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 2, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 2, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 3, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 3, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 3, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
+  {date: new Date(2021, 4, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'}
 ];
 
 @Component({

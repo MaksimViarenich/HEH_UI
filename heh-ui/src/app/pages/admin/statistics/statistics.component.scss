@@ -3,7 +3,15 @@
 mat-grid-list {
   padding-bottom: $padding-last-grid;
 }
- 
+
 mat-grid-tile {
   @include mat-grid-tile;
+}
+
+.statistics-container {
+  position: relative;
+}
+
+.filters {
+  @include filters;
 }

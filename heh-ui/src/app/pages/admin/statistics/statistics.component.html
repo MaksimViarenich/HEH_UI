@@ -1,7 +1,12 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let discount of discounts" >
-    <app-discount-card [discountInfo]="discount" 
-                       [isViewCountsVisible]="true"></app-discount-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="filters">
+  <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+</div>
+
+<div class="statistics-container">
+  <mat-grid-list class="stat-list" cols="4" rowHeight="8.82rem" gutterSize="1rem">
+    <mat-grid-tile *ngFor="let discount of discounts" >
+      <app-discount-card [discountInfo]="discount"
+                         [isViewCountsVisible]="true"></app-discount-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

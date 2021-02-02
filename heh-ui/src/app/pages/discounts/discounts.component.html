@@ -1,7 +1,12 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<mat-grid-list cols="4" rowHeight="12.8rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let discount of discounts" >
-   <app-discount-card [discountInfo]="discount"
-                      (click)="openDiscountDetails(discount)"></app-discount-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="filters">
+  <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+</div>
+
+<div class="discounts-container">
+  <mat-grid-list cols="4" rowHeight="12.8rem" gutterSize="1rem">
+    <mat-grid-tile *ngFor="let discount of discounts" >
+     <app-discount-card [discountInfo]="discount"
+                        (click)="openDiscountDetails(discount)"></app-discount-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
