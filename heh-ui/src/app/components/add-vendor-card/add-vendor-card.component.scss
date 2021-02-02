@@ -11,15 +11,12 @@
   justify-content: center;
   align-items: flex-start;
 
-  .add-vendor {
-    font-weight: bold;
-    font-size: 8rem;
+  .material-icons {
+    font-size: 6rem;
     color: $color-white;
-    box-shadow: $box-shadow;
   }
 }
-.add-vendor:hover {
+
+.mat-figure:hover {
   cursor: pointer;
-  transition: 1s;
-  transform: scale(1.2);
 }
