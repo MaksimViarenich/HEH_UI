@@ -1,5 +1,7 @@
+@import "../../../../styles.scss";
+
 .search {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .users-list {
@@ -8,5 +10,6 @@
   grid-template-columns: repeat(3, minmax(10rem, 1fr));
   column-gap: 1rem;
   row-gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  padding-bottom: $padding-last;
 }

@@ -1,13 +1,17 @@
 @import "../../../../styles.scss";
 
-table {
-  margin: 1.5rem 0;
-  width: 100%;
+.table-container {
+  padding-bottom: $padding-last;
 
-  th.mat-header-cell {
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: $color-table-header;
+  table {
+    margin: 1.5rem 0 0 0;
+    width: 100%;
+
+    th.mat-header-cell {
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: $color-table-header;
+    }
   }
 }
 

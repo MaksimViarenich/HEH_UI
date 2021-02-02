@@ -1,29 +1,12 @@
 @import "../../../styles.scss";
 
 .category {
-  min-width: max-content;
-  display: flex;
-  align-items: center;
-  height: 1.4rem;
-  border-radius: 0.3rem;
-  border: 1px solid $color-black;
-  padding: $padding-category-tag;
-  margin: $margin-category-tag;
-
-  img {
-    max-width: 80%;
-    max-height: 80%;
-    padding-right: 0.3rem;
-  }
+  @include category-tags;
+  background-color: $color-dark-grey;
+  color: $color-white;
 }
 
 .category:hover {
-  background: $color-violet;
-  color: $color-white;
-  border-color: $color-violet;
+  background-color: $color-violet;
   cursor: pointer;
-
-  img {
-    filter: invert(1);
-  }
 }

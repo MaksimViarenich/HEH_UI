@@ -13,13 +13,14 @@ import {DiscountCard} from '../../../../models/discount-card';
 })
 export class AddVendorModalComponent implements OnInit {
   vendor = new FormControl();
-  address = new FormControl();
   phone = new FormControl();
   site = new FormControl();
   hours = new FormControl();
   instagram = new FormControl();
   vkontakte = new FormControl();
   facebook = new FormControl();
+  addressTitle = 'Address';
+  phoneTitle = 'Phone';
 
   discounts: Array<DiscountCard> = [
     {
@@ -140,8 +141,7 @@ export class AddVendorModalComponent implements OnInit {
     vk: 'https://vk.com/',
   };
 
-  constructor(public dialog: MatDialog) {
-  }
+  constructor(public dialog: MatDialog) {}
 
   openAddDiscount(): void {
     const dialogRef = this.dialog.open(AddDiscountModalComponent, {
