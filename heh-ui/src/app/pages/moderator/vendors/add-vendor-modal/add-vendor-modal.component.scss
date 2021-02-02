@@ -3,7 +3,7 @@
 .mat-icon {
   color: $color-violet;
 }
-.cdk-overlay-dark-backdrop {
+.vendor-details-modal-backdrop.cdk-overlay-backdrop {
   width: calc(100% - 66rem);
 }
 
@@ -79,7 +79,7 @@
 
   .add-vendor-background {
     height: $height-background-triangle;
-    background: linear-gradient(90deg, #faf0cd, #fab397);
+    background: url("../../../../../assets/images/card-backgrounds/bg-orange.png");
     background-size: 100%;
     padding: 0 $margin-1;
 

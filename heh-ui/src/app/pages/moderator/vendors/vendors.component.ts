@@ -103,6 +103,7 @@ export class VendorsComponent implements OnInit {
     const dialogRef = this.dialog.open(AddVendorModalComponent, {
       panelClass: 'vendor-details-modal',
       data: data ? data.vendor : {},
+      backdropClass: 'vendor-details-modal-backdrop',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
