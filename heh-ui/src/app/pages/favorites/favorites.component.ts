@@ -54,7 +54,7 @@ export class FavoritesComponent implements OnInit {
 
   favoriteCards: Array<DiscountCard> = [
     {
-      background: '../../../assets/images/card-backgrounds/bg-yellow.png',
+      background: '.90deg, #f598a8, #f6edb2',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-violet.png',
+      background: '.90deg, #cfecd0, #a0cea7, #9ec0db',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -84,7 +84,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-red.png',
+      background: '90deg, #faf0cd, #fab397',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -99,7 +99,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-yellow-green.png',
+      background: '90deg, #cfecd0, #ffc5ca',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -113,7 +113,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-pink-purple.png',
+      background: '90deg, #aea4e3, #d3ffe8',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -128,7 +128,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-orange.png',
+      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -142,7 +142,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-red.png',
+      background: '90deg, #aea4e3, #d3ffe8',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -156,7 +156,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-violet.png',
+      background: '90deg, #cfecd0, #ffc5ca',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -171,7 +171,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-green.png',
+      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -186,7 +186,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '../../../assets/images/card-backgrounds/bg-blue.png',
+      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],

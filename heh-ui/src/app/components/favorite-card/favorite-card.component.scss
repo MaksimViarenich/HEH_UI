@@ -11,10 +11,10 @@
   margin-bottom: 1rem;
 
   .favorite-vendor {
-    background-size: cover;
     display: flex;
     min-width: 14rem;
     padding: 0.5rem;
+    @include header-glass;
 
     .card-title {
       max-width: fit-content;
@@ -29,6 +29,7 @@
     flex-grow: 1;
     justify-content: space-between;
     padding: 0.1rem 0.5rem 0.3rem 0.5rem;
+    background-color: $color-white;
 
     .discount-info {
       display: flex;
@@ -77,6 +78,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 0.5rem;
+    background-color: $color-white;
 
     i {
       color: $color-black;
