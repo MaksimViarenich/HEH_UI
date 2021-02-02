@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {DiscountCardComponent} from './discount-card.component';
+import { DiscountCardComponent } from './discount-card.component';
 
 describe('DiscountCardComponent', () => {
   let component: DiscountCardComponent;
@@ -12,6 +12,7 @@ describe('DiscountCardComponent', () => {
     })
     .compileComponents();
   });
+
   beforeEach(() => {
     fixture = TestBed.createComponent(DiscountCardComponent);
     component = fixture.componentInstance;

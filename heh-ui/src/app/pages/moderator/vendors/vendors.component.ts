@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddVendorModalComponent } from './add-vendor-modal/add-vendor-modal.component';
 import { DiscountCard } from '../../../models/discount-card';
