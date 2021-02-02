@@ -42,8 +42,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DateSearchComponent } from './components/search/date-search/date-search.component';
+import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
 }
 
@@ -87,6 +88,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddVendorModalComponent,
     StateEventComponent,
     DateSearchComponent,
+    ModelListInputComponent,
   ],
   imports: [
     BrowserModule,

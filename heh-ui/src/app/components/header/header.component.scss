@@ -43,11 +43,11 @@
       display: flex;
       flex-direction: column;
       text-decoration: none;
+      color: #303030;
 
-      .person-name a {
+      .person-name, .person-place {
         font-size: 1.6rem;
         font-weight: normal;
-        color: #303030;
       }
     }
 

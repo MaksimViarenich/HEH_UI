@@ -2,4 +2,13 @@
 
 .btn-favorite {
   @include btn-icon;
+  opacity: 50%;
+
+  span {
+    color: $color-dark-grey;
+  }
+
+  &:hover {
+    opacity: 100%;
+  }
 }

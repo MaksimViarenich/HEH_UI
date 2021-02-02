@@ -3,10 +3,11 @@
 </div>
 
 <div class="discounts-container">
-  <mat-grid-list cols="4" rowHeight="12.8rem" gutterSize="1rem">
+  <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
     <mat-grid-tile *ngFor="let discount of discounts" >
      <app-discount-card [discountInfo]="discount"
                         (click)="openDiscountDetails(discount)"></app-discount-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
