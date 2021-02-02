@@ -41,7 +41,7 @@ export class StatisticsComponent implements OnInit {
         },
       ],
       dateOptions: {
-        label: 'search.date-range',
+        label: 'search.date-range' || ' ',
       }
     };
   }

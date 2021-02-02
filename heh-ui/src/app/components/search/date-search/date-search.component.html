@@ -1,6 +1,6 @@
 <div class="date-container">
   <mat-form-field appearance="fill">
-    <mat-label>{{ label | translate }}</mat-label>
+    <mat-label>{{ label || 'search.date-range' | translate }}</mat-label>
 
     <mat-date-range-input [rangePicker]="picker">
       <input matStartDate
