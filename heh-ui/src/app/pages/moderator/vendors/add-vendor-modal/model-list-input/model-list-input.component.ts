@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-model-list-input',
@@ -8,20 +8,13 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
 })
 
 export class ModelListInputComponent {
-  @Input() title = '';
-  @Output() DatePicked = new EventEmitter<any>();
+  @Input() label = '';
   listData: string[] = [];
+  inputValue = '';
 
-  pickDate(date: any): void {
-    this.DatePicked.emit(date);
-  }
-
-  onKeypressEvent(event: any): void {
-    if (event.target.value) {
-      this.listData.push(event.target.value);
-      event.target.value = '';
-      this.pickDate(this.listData);
-    }
+  addData(data: string): void {
+    this.listData.push(data);
+    this.inputValue = '';
   }
 
   deleteData(idx: number): void {

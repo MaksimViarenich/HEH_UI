@@ -143,10 +143,6 @@ export class AddVendorModalComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  submitAddresses(date: any): void {}
-
-  submitPhones(date: any): void {}
-
   openAddDiscount(): void {
     const dialogRef = this.dialog.open(AddDiscountModalComponent, {
       panelClass: 'add-discount-modal'

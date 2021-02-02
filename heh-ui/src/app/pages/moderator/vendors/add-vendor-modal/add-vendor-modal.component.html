@@ -14,9 +14,9 @@
           <input matInput [formControl]="vendor" required>
         </mat-form-field>
 
-        <app-model-list-input [title]="addressTitle" (DatePicked)="submitAddresses($event)"></app-model-list-input>
+        <app-model-list-input [label]="addressTitle"></app-model-list-input>
 
-        <app-model-list-input [title]="phoneTitle" (DatePicked)="submitPhones($event)"></app-model-list-input>
+        <app-model-list-input [label]="phoneTitle"></app-model-list-input>
 
         <mat-form-field appearance="outline">
           <mat-label>Web site</mat-label>
