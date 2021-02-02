@@ -16,14 +16,15 @@
     height: 100%;
     margin-top: 0;
 
-
-    .mat-dialog{
+    .mat-dialog {
       overflow-y: hidden;
     }
 
     .mat-dialog-container {
       padding: 0;
       border-radius: 0;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
 
       .mat-dialog-content {
         margin: 0;
@@ -43,14 +44,22 @@
         }
 
         .add-vendor-info {
-          width: calc(50% - 0.5rem);
+          width: calc(50% - 2.5rem);
           display: flex;
           flex-direction: column;
           justify-content: space-around;
+          background: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(10px);
+          padding: 1rem;
+          border-radius: $border-radius-small;
 
           .mat-form-field-appearance-outline .mat-form-field-wrapper {
             padding-bottom: 0;
             margin: 0 0 $margin-1 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
           }
 
           .mat-select-arrow {
@@ -59,13 +68,24 @@
         }
 
         .add-vendor-discounts {
-          width: calc(50% - 0.5rem);
+          width: calc(50% - 2.5rem);
           display: flex;
           flex-direction: column;
           font-weight: bold;
+          background: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(10px);
+          padding: 1rem;
+          border-radius: $border-radius-small;
 
           .vendors-component {
             margin-top: $margin-1;
+
+            .edit-discount-card-container {
+              background: rgba(255, 255, 255, 0.7);
+              backdrop-filter: blur(10px);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              border-radius: 5px;
+            }
           }
 
           .add-discount-button {
