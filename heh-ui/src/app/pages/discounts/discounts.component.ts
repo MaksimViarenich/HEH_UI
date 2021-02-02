@@ -56,7 +56,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #f598a8, #f6edb2',
       discount: {
-        vendor: 'Domino\'s Pizza',
+        vendorName: 'Domino\'s Pizza',
         title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
         category: 'Food',
         tags: ['Pizza', ],
@@ -79,7 +79,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #cfecd0, #a0cea7, #9ec0db',
       discount: {
-        vendor: 'Terra Mare',
+        vendorName: 'Terra Mare',
         title: 'Our restaurant gives you 15%',
         category: 'Food',
         tags: ['Pizza', 'Pasta', 'Focaccia' ],
@@ -102,7 +102,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #faf0cd, #fab397',
       discount: {
-        vendor: 'Contenintal Barbrshop',
+        vendorName: 'Contenintal Barbrshop',
         title: 'Improve your look with our 20% discount',
         category: 'Beaty',
         tags: ['Barbershop', ],
@@ -125,7 +125,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #cfecd0, #ffc5ca',
       discount: {
-        vendor: 'West Coast Customs',
+        vendorName: 'West Coast Customs',
         title: 'We gonna pimp your ride for 7% cheaper bro',
         category: 'Cars',
         tags: ['Tuning', ],
@@ -148,7 +148,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #aea4e3, #d3ffe8',
       discount: {
-        vendor: 'Gamestop',
+        vendorName: 'Gamestop',
         title: 'Play more, pay less with 10%',
         category: 'Free time',
         tags: ['Games', ],
@@ -171,7 +171,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
       discount: {
-        vendor: 'KFC',
+        vendorName: 'KFC',
         title: '15% discount for our crispy chicken',
         category: 'Food',
         tags: ['KFC', 'Chicken'],
@@ -194,7 +194,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #cfecd0, #ffc5ca',
       discount: {
-        vendor: 'McDonald\'s',
+        vendorName: 'McDonald\'s',
         title: 'Improve your look with our 20% discount',
         category: 'Food',
         tags: ['McDonald\'s' ],
