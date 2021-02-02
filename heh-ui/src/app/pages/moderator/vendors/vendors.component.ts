@@ -12,7 +12,7 @@ import { SearchOptions } from '../../../models/search-options';
 export class VendorsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog ) {
     this.searchFieldsOptions = {
       selectOptions: {
         label: 'Location',
@@ -548,7 +548,7 @@ export class VendorsComponent implements OnInit {
   ];
 
   openAddVendor(): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent, {
+    const dialogRef = this.dialog.open(AddVendorModalComponent,  {
       panelClass: 'vendor-details-modal'
     });
 
