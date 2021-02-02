@@ -7,7 +7,7 @@
 .cdk-global-overlay-wrapper {
   justify-content: flex-end !important;
 
-  .cdk-overlay-pane {
+  .app-discount-details.cdk-overlay-pane {
     width: 33rem;
     height: 100%;
     margin-top: 0;
@@ -15,6 +15,9 @@
     .mat-dialog-container {
       padding: 0;
       border-radius: 0;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
       .mat-dialog-content {
         display: block;
@@ -24,6 +27,7 @@
         height: 100%;
 
         .discount-detail-background {
+          @include header-glass;
           height: $height-background-triangle;
           background-size: 100%;
           display: flex;
@@ -71,10 +75,18 @@
 
           mat-form-field {
             width: calc(100% - 2rem);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: $border-radius-small;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+            .mat-form-field-wrapper {
+              padding: 0;
+            }
           }
 
           .modal-contacts {
-            margin-bottom: $margin-1;
+            margin: $margin-1 0;
 
             a {
               color: $color-black;

@@ -217,7 +217,11 @@ export class DiscountsComponent implements OnInit {
   ];
 
   openDiscountDetails(discount: DiscountCard): void {
-    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {data: discount});
+    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
+      data: discount,
+      panelClass: 'app-discount-details'
+    });
+
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
