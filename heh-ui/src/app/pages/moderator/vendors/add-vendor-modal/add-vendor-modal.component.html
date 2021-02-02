@@ -1,52 +1,6 @@
 <div class="mat-dialog">
   <div mat-dialog-content class="mat-dialog-content">
 
-  <div class="add-vendor-background">
-    <div class="add-vendor-title">Add vendor</div>
-  </div>
-
-  <div class="add-vendor-content">
-    <div class="add-vendor-info">
-      <span class="add-vendor-info-title">Vendor info:</span>
-      
-      <mat-form-field appearance="outline">
-        <mat-label>Vendor name</mat-label>
-        <input matInput [formControl]="vendor" required>
-      </mat-form-field>
-
-      <app-model-list-input [title]="addressTitle" (DatePicked)="submitAddresses($event)"></app-model-list-input>
-
-      <app-model-list-input [title]="phoneTitle" (DatePicked)="submitPhones($event)"></app-model-list-input>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Web site</mat-label>
-        <input matInput [formControl]="site">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Open hours</mat-label>
-        <input matInput [formControl]="hours">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Instagram</mat-label>
-        <input matInput [formControl]="instagram">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Vkontakte</mat-label>
-        <input matInput [formControl]="vkontakte">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Facebook</mat-label>
-        <input matInput [formControl]="facebook">
-      </mat-form-field>
-
-      <section>
-        <mat-checkbox [color]="'primary'">Vendor gave permission to receive newsletters
-        </mat-checkbox>
-      </section>
     <div class="add-vendor-background">
       <div class="add-vendor-title">Add vendor</div>
     </div>
@@ -60,17 +14,9 @@
           <input matInput [formControl]="vendor" required>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input matInput [formControl]="address" required>
-          <mat-icon matSuffix>add</mat-icon>
-        </mat-form-field>
+        <app-model-list-input [title]="addressTitle" (DatePicked)="submitAddresses($event)"></app-model-list-input>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Phone</mat-label>
-          <input matInput [formControl]="phone" required>
-          <mat-icon matSuffix>add</mat-icon>
-        </mat-form-field>
+        <app-model-list-input [title]="phoneTitle" (DatePicked)="submitPhones($event)"></app-model-list-input>
 
         <mat-form-field appearance="outline">
           <mat-label>Web site</mat-label>
