@@ -17,3 +17,9 @@ mat-grid-tile {
 .filters {
   @include filters;
 }
+
+app-add-vendor-card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #aea4e3, #d3ffe8);
+}

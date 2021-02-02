@@ -61,7 +61,8 @@ $padding-last: 1.5rem;
   box-shadow: $box-shadow;
   border-radius: $border-radius-small;
 
-  app-discount-card {
+  app-discount-card,
+  app-vendor-card {
     user-select: none;
     height: 100%;
     width: 100%;

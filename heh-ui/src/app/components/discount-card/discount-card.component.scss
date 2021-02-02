@@ -34,18 +34,6 @@
       margin-left: .3rem;
     }
 
-    .btn-delete {
-      @include btn-icon;
-      opacity: 50%;
-
-      span {
-        color: $color-red;
-      }
-      &:hover {
-        opacity: 100%;
-      }
-    }
-
     .btn-view {
       @include btn-icon;
       display: flex;
