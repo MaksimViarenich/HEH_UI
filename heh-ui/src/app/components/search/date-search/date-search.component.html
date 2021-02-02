@@ -1,12 +1,12 @@
 <div class="date-container">
   <mat-form-field appearance="fill">
-    <mat-label>{{label}}</mat-label>
+    <mat-label>{{ label | translate }}</mat-label>
 
     <mat-date-range-input [rangePicker]="picker">
       <input matStartDate
-             placeholder="Start date">
+             placeholder="{{ 'search.date-search-start' | translate }}">
       <input matEndDate
-             placeholder="End date">
+             placeholder="{{ 'search.date-search-end' | translate }}">
     </mat-date-range-input>
 
     <mat-datepicker-toggle matSuffix

@@ -17,7 +17,7 @@
     <div class="discount-detail-description">{{data.discount.description}}</div>
 
     <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
+      <mat-label>{{ 'discounts.address' | translate }}</mat-label>
 
       <mat-select [formControl]="address" multiple>
         <mat-select-trigger>
@@ -48,12 +48,12 @@
 
       <div class="sidenav-time">
         <span class="material-icons">query_builder</span>
-        <span>Open: {{data.discount.workingHours}}</span>
+        <span>{{ 'discounts.open' | translate }}: {{data.discount.workingHours}}</span>
       </div>
 
       <div class="sidenav-validity">
         <span class="material-icons">calendar_today</span>
-        <span>Available till {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
+        <span>{{ 'discounts.availible' | translate }} {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
       </div>
     </div>
 
