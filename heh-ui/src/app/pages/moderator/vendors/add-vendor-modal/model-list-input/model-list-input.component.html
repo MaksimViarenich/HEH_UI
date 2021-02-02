@@ -2,7 +2,7 @@
   <mat-form-field appearance="outline">
     <mat-label>{{label}}</mat-label>
     <input matInput (keydown.enter)="addData(inputValue)"
-           [required]="listData.length === 0"
+           [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
     <mat-icon matSuffix (click)="addData(inputValue)">add</mat-icon>
   </mat-form-field>

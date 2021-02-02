@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddVendorModalComponent } from './add-vendor-modal/add-vendor-modal.component';
-import { DiscountCard } from '../../../models/discount-card';
-import { SearchOptions } from '../../../models/search-options';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {AddVendorModalComponent} from './add-vendor-modal/add-vendor-modal.component';
+import {DiscountCard} from '../../../models/discount-card';
+import {SearchOptions} from '../../../models/search-options';
+import {DiscountDetailsModalComponent} from '../../discounts/discount-details-modal/discount-details-modal.component';
+import {VendorCard} from '../../../models/vendor-card';
+import {Discount} from '../../../models/discount';
+
 
 @Component({
   selector: 'app-vendors',
   templateUrl: './vendors.component.html',
   styleUrls: ['./vendors.component.scss'],
 })
+
 export class VendorsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
-  constructor(public dialog: MatDialog ) {
+  constructor(public dialog: MatDialog) {
     this.searchFieldsOptions = {
       selectOptions: {
         label: 'Location',
@@ -52,17 +57,11 @@ export class VendorsComponent implements OnInit {
     };
   }
 
-
-
-  discounts: Array<DiscountCard> = [
+  list: Array<VendorCard> = [
     {
       background: '90deg, #f598a8, #f6edb2',
-      discount: {
-        vendor: 'Domino\'s Pizza',
-        title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
-        category: 'Food',
-        tags: ['Pizza', ],
-        description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
+      vendor: {
+        name: 'Dominos Pizza',
         addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
           'Belarus, Minsk, Lenina street, 25',
           'Belarus, Minsk, Sverdlova street, 1a',
@@ -72,161 +71,45 @@ export class VendorsComponent implements OnInit {
         website: 'https://www.dominos.by',
         phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
         workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
+        instagram: 'Inst',
+        facebook: 'Facebook',
+        vk: 'VK',
+        isReceiveNotificationsAllowed: true,
+        discounts: [
+          {
+            vendorName: 'Domino\'s Pizza',
+            title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
+            category: 'Food',
+            tags: ['Pizza'],
+            description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
+            addressList: [
+              'Belarus, Minsk, Komsomolskaya street, 3',
+              'Belarus, Minsk, Lenina street, 25'],
+            website: 'https://www.dominos.by',
+            phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
+            workingHours: '06:00 - 23:00',
+            validity: new Date(2021, 11, 31),
+            instagram: 'https://www.instagram.com/',
+            facebook: 'https://www.facebook.com/',
+            vk: 'https://vk.com/',
+            startDate: new Date(),
+          },
+        ]
       }
-    },
-    {
-      background: '90deg, #cfecd0, #a0cea7, #9ec0db',
-      discount: {
-        vendor: 'Terra Mare',
-        title: 'Our restaurant gives you 15%',
-        category: 'Food',
-        tags: ['Pizza', 'Pasta', 'Focaccia' ],
-        description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Ukraine, Vinnytsia, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://terramare.vn.ua',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
-    {
-      background: '90deg, #faf0cd, #fab397',
-      discount: {
-        vendor: 'Contenintal Barbrshop',
-        title: 'Improve your look with our 20% discount',
-        category: 'Beaty',
-        tags: ['Barbershop', ],
-        description: 'Use discount 20% 24/7, 25% on holidays',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Ukraine, Vinnytsia, Soborna street, 14',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://continental.vn.ua',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
-    {
-      background: '90deg, #cfecd0, #ffc5ca',
-      discount: {
-        vendor: 'West Coast Customs',
-        title: 'We gonna pimp your ride for 7% cheaper bro',
-        category: 'Cars',
-        tags: ['Tuning', ],
-        description: 'Visit us at weekdays',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.westcoastcustoms.com',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
-    {
-      background: '90deg, #aea4e3, #d3ffe8',
-      discount: {
-        vendor: 'Gamestop',
-        title: 'Play more, pay less with 10%',
-        category: 'Free time',
-        tags: ['Games', ],
-        description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'http://gamestop.ua',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
-    {
-      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
-      discount: {
-        vendor: 'KFC',
-        title: '15% discount for our crispy chicken',
-        category: 'Food',
-        tags: ['KFC', 'Chicken'],
-        description: 'Discount available 24/7 for all orders.',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.kfc.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
-    {
-      background: '90deg, #cfecd0, #ffc5ca',
-      discount: {
-        vendor: 'McDonald\'s',
-        title: 'Improve your look with our 20% discount',
-        category: 'Food',
-        tags: ['McDonald\'s' ],
-        description: 'Discount available 24/7 for all orders.',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.mcdonalds.com',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        validity: new Date(2021, 11, 31),
-        instagram: 'https://www.instagram.com/',
-        facebook: 'https://www.facebook.com/',
-        vk: 'https://vk.com/',
-      }
-    },
+    }
   ];
 
-  openAddVendor(): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent,  {
-      panelClass: 'vendor-details-modal'
+  openVendorModal(data?: VendorCard): void {
+    const dialogRef = this.dialog.open(AddVendorModalComponent, {
+      panelClass: 'vendor-details-modal',
+      data: data ? data.vendor : {},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
+
   ngOnInit(): void {
   }
 }
