@@ -66,6 +66,10 @@
 
           .vendors-component {
             margin-top: $margin-1;
+
+            app-edit-discout-card:hover {
+              cursor: pointer;
+            }
           }
 
           .add-discount-button {

@@ -7,9 +7,6 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class VendorCardComponent implements OnInit {
-  @Input() isRemoveAvailable: boolean | undefined;
-  @Input() isViewCountsVisible: boolean | undefined;
-
   constructor() { }
 
   ngOnInit(): void {

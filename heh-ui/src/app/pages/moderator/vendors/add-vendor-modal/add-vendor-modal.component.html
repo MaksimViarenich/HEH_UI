@@ -11,40 +11,46 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Vendor name</mat-label>
-          <input matInput [formControl]="vendor" required>
+          <input [(ngModel)]="vendor.name"
+                 [formControl]="vendorName"
+                 matInput required>
         </mat-form-field>
 
-        <app-model-list-input [label]="addressTitle"></app-model-list-input>
+        <app-model-list-input [label]="addressTitle"
+                              [listData]="vendor.addressList"></app-model-list-input>
 
-        <app-model-list-input [label]="phoneTitle"></app-model-list-input>
+        <app-model-list-input [label]="phoneTitle"
+                              [listData]="vendor.phones"></app-model-list-input>
 
         <mat-form-field appearance="outline">
           <mat-label>Web site</mat-label>
-          <input matInput [formControl]="site">
+          <input [(ngModel)]="vendor.website" matInput>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Open hours</mat-label>
-          <input matInput [formControl]="hours">
+          <input [(ngModel)]="vendor.workingHours" matInput>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Instagram</mat-label>
-          <input matInput [formControl]="instagram">
+          <input [(ngModel)]="vendor.instagram" matInput>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Vkontakte</mat-label>
-          <input matInput [formControl]="vkontakte">
+          <input [(ngModel)]="vendor.vk" matInput>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Facebook</mat-label>
-          <input matInput [formControl]="facebook">
+          <input [(ngModel)]="vendor.facebook" matInput>
         </mat-form-field>
 
         <section>
-          <mat-checkbox [color]="'primary'">Vendor gave permission to receive newsletters
+          <mat-checkbox [color]="'primary'"
+                        [(ngModel)]="vendor.isReceiveNotificationsAllowed">
+            Vendor gave permission to receive newsletters
           </mat-checkbox>
         </section>
       </div>
@@ -52,14 +58,15 @@
       <div class="add-vendor-discounts">
         <span class="add-vendor-info-title">Discounts:</span>
 
-        <button (click)="openAddDiscount()"
+        <button (click)="openDiscountModal()"
                 class="add-discount-button"
                 mat-raised-button>
           Add discount
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of discounts"
+          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
+                                 (click)="openDiscountModal(discount)"
                                  [discountInfo]="discount"></app-edit-discout-card>
         </div>
       </div>

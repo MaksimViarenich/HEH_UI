@@ -1,0 +1,23 @@
+@import "../../../../../styles";
+
+.add-card {
+  @include header-glass;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .material-icons {
+    font-size: 6rem;
+    color: $color-violet;
+    opacity: 0.7;
+  }
+}
+
+.add-card:hover {
+  cursor: pointer;
+
+  .material-icons {
+    opacity: 1;
+  }
+}
