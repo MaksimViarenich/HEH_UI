@@ -8,9 +8,15 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 })
 
 export class ModelListInputComponent {
-  @Input() label = '';
-  listData: string[] = [];
+  @Input() label: string;
+  @Input() listData: string[] = [];
   inputValue = '';
+
+  constructor() {
+    this.label = '';
+    this.listData = [];
+  }
+
 
   addData(data: string): void {
     this.listData.push(data);

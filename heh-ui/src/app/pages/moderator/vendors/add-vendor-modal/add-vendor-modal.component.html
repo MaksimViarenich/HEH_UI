@@ -2,64 +2,79 @@
   <div mat-dialog-content class="mat-dialog-content">
 
     <div class="add-vendor-background">
-      <div class="add-vendor-title">Add vendor</div>
+      <div class="add-vendor-title">{{ 'vendors.add' | translate }}</div>
     </div>
 
     <div class="add-vendor-content">
       <div class="add-vendor-info">
-        <span class="add-vendor-info-title">Vendor info:</span>
+        <span class="add-vendor-info-title">{{ 'vendors.add-vendor.info' | translate }}:</span>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Vendor name</mat-label>
-          <input matInput [formControl]="vendor" required>
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
+            <input [(ngModel)]="vendor.name"
+                   [formControl]="vendorName"
+                   matInput required>
+          </mat-form-field>
 
-        <app-model-list-input [label]="addressTitle"></app-model-list-input>
+          <mat-form-field appearance="outline">
+             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
+              <input [(ngModel)]="vendor.workingHours" matInput>
+          </mat-form-field>
+        </div>
 
-        <app-model-list-input [label]="phoneTitle"></app-model-list-input>
+        <div class="add-vendor-group">
+          <app-model-list-input [label]="addressTitle | translate"
+                                [listData]="vendor.addressList"></app-model-list-input>
+        </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Web site</mat-label>
-          <input matInput [formControl]="site">
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <app-model-list-input [label]="phoneTitle | translate"
+                                [listData]="vendor.phones"></app-model-list-input>
+        </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Open hours</mat-label>
-          <input matInput [formControl]="hours">
-        </mat-form-field>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
+              <input [(ngModel)]="vendor.website" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Instagram</mat-label>
-          <input matInput [formControl]="instagram">
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
+              <input [(ngModel)]="vendor.instagram" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Vkontakte</mat-label>
-          <input matInput [formControl]="vkontakte">
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
+              <input [(ngModel)]="vendor.vk" matInput>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Facebook</mat-label>
-          <input matInput [formControl]="facebook">
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
+             <input [(ngModel)]="vendor.facebook" matInput>
+          </mat-form-field>
+        </div>
 
         <section>
-          <mat-checkbox [color]="'primary'">Vendor gave permission to receive newsletters
+          <mat-checkbox [color]="'primary'"
+                        [(ngModel)]="vendor.isReceiveNotificationsAllowed">
+                        {{ 'vendors.add-vendor.permission' | translate }}
           </mat-checkbox>
         </section>
       </div>
 
       <div class="add-vendor-discounts">
-        <span class="add-vendor-info-title">Discounts:</span>
+        <span class="add-vendor-info-title">{{ 'vendors.add-vendor.dsk' | translate }}:</span>
 
-        <button (click)="openAddDiscount()"
+        <button (click)="openDiscountModal()"
                 class="add-discount-button"
                 mat-raised-button>
-          Add discount
+                {{ 'vendors.add-vendor.add-dsk' | translate }}
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of discounts"
+          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
+                                 (click)="openDiscountModal(discount)"
                                  [discountInfo]="discount"></app-edit-discout-card>
         </div>
       </div>
@@ -67,7 +82,7 @@
   </div>
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-raised-button>Submit</button>
+    <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
+    <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

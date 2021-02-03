@@ -26,7 +26,7 @@
 
         <div class='person-pic'>
           <img class='profile-icon'
-               src='../../../assets/images/header/header_profile.svg'
+               src='{{user.userphoto}}'
                alt='profile-icon'
                mat-button
                [matMenuTriggerFor]='beforeMenuProfile'>
@@ -47,6 +47,7 @@
 
           <app-language-selection></app-language-selection>
         </div>
+        <app-themes-toggle></app-themes-toggle>
       </div>
     </nav>
   </div>

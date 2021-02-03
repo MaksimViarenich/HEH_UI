@@ -7,13 +7,13 @@
 
       <!-- Date Column -->
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Date</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'event-history.date' | translate }}</th>
         <td mat-cell *matCellDef="let row"> {{row.date | date: 'dd MMMM yyyy hh:mm'}} </td>
       </ng-container>
 
       <!-- State Column -->
       <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef>State</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'event-history.state' | translate }}</th>
         <td mat-cell *matCellDef="let row">
           <app-state-event [type]="row.state"></app-state-event>
         </td>
@@ -21,13 +21,13 @@
 
       <!-- User Column -->
       <ng-container matColumnDef="user">
-        <th mat-header-cell *matHeaderCellDef>User</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'event-history.user' | translate }}</th>
         <td mat-cell *matCellDef="let row"> {{row.user}} </td>
       </ng-container>
 
       <!-- Description Column -->
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <th mat-header-cell *matHeaderCellDef>{{ 'event-history.description' | translate }}</th>
         <td mat-cell *matCellDef="let row" [style.description]="row.description"> {{row.description}} </td>
       </ng-container>
 

@@ -14,7 +14,7 @@
   display: inline-block;
 
   .card-header {
-    @include header-glass;
+    @include glass;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -32,18 +32,6 @@
       position: relative;
       align-self: flex-start;
       margin-left: .3rem;
-    }
-
-    .btn-delete {
-      @include btn-icon;
-      opacity: 50%;
-
-      span {
-        color: $color-red;
-      }
-      &:hover {
-        opacity: 100%;
-      }
     }
 
     .btn-view {
@@ -84,6 +72,7 @@
       display: flex;
       align-items: center;
       font-size: 1rem;
+      line-height: 1rem;
       color: $color-blue-green;
 
       span {
