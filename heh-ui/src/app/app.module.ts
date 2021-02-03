@@ -108,5 +108,4 @@ export function HttpLoaderFactory(http: HttpClient): any {
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-}
+export class AppModule {}
