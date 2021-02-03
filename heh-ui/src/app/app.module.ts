@@ -44,6 +44,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DateSearchComponent } from './components/search/date-search/date-search.component';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
+import { ThemesToggleComponent } from './components/themes-toggle/themes-toggle.component';
+import { AgmCoreModule } from '@agm/core';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -91,6 +93,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     DateSearchComponent,
     ModelListInputComponent,
     VendorCardComponent,
+    ThemesToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,9 @@ export function HttpLoaderFactory(http: HttpClient): any {
         deps: [HttpClient]
       },
       defaultLanguage: 'en'
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
   providers: [],
