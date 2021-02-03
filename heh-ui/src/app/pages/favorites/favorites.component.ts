@@ -13,7 +13,7 @@ export class FavoritesComponent implements OnInit {
   constructor() {
     this.searchFieldsOptions = {
       selectOptions: {
-        label: 'Location',
+        label: 'search.location',
         options: [
           {value: '1', viewValue: 'Belarus, Minsk'},
           {value: '2', viewValue: 'Belarus, Grodno'},
@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'Category',
+          label: 'search.category',
           options: [
             {value: '5', viewValue: 'Food'},
             {value: '6', viewValue: 'Sport'},
@@ -32,7 +32,7 @@ export class FavoritesComponent implements OnInit {
           ]
         },
         {
-          label: 'Tag',
+          label: 'search.tag',
           options: [
             {value: '9', viewValue: 'Pizza'},
             {value: '10', viewValue: 'Sushi'},
@@ -41,7 +41,7 @@ export class FavoritesComponent implements OnInit {
           ]
         },
         {
-          label: 'Vendor',
+          label: 'search.vendor',
           options: [
             {value: '13', viewValue: 'Garage'},
             {value: '14', viewValue: 'Best Beauty Center'},

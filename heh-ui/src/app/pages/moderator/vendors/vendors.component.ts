@@ -20,7 +20,7 @@ export class VendorsComponent implements OnInit {
               private modalService: ModalService) {
     this.searchFieldsOptions = {
       selectOptions: {
-        label: 'Location',
+        label: 'search.location',
         options: [
           {value: '1', viewValue: 'Belarus, Minsk'},
           {value: '2', viewValue: 'Belarus, Grodno'},
@@ -29,7 +29,7 @@ export class VendorsComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'Category',
+          label: 'search.category',
           options: [
             {value: '4', viewValue: 'Food'},
             {value: '5', viewValue: 'Sport'},
@@ -37,7 +37,7 @@ export class VendorsComponent implements OnInit {
           ]
         },
         {
-          label: 'Tag',
+          label: 'search.tag',
           options: [
             {value: '7', viewValue: 'Pizza'},
             {value: '8', viewValue: 'Sushi'},
@@ -46,7 +46,7 @@ export class VendorsComponent implements OnInit {
           ]
         },
         {
-          label: 'Vendor',
+          label: 'search.vendor',
           options: [
             {value: '11', viewValue: 'Garage'},
             {value: '12', viewValue: 'Best Beauty Center'},

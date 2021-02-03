@@ -11,16 +11,16 @@
       name="userRole"
       aria-label="Role"
       value="{{ user?.role }}">
-      <mat-button-toggle value="user">user</mat-button-toggle>
-      <mat-button-toggle value="moderator">moderator</mat-button-toggle>
-      <mat-button-toggle value="admin">admin</mat-button-toggle>
+      <mat-button-toggle value="user">{{ 'users.user' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="moderator">{{ 'users.moderator' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="admin">{{ 'users.admin' | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
 
     <mat-slide-toggle class="example-margin"
       [color]="color"
       [checked]="checked"
       [disabled]="false">
-        Active
+        {{ 'users.active' | translate }}
     </mat-slide-toggle>
   </div>
 </div>

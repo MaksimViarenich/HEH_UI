@@ -14,7 +14,7 @@ export class StatisticsComponent implements OnInit {
   constructor(public dialog: MatDialog) {
     this.searchFieldsOptions = {
       selectOptions: {
-        label: 'Location',
+        label: 'search.location',
         options: [
           {value: '1', viewValue: 'Belarus, Minsk'},
           {value: '2', viewValue: 'Belarus, Grodno'},
@@ -23,7 +23,7 @@ export class StatisticsComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'Category',
+          label: 'search.category',
           options: [
             {value: '4', viewValue: 'Food'},
             {value: '5', viewValue: 'Sport'},
@@ -31,7 +31,7 @@ export class StatisticsComponent implements OnInit {
           ]
         },
         {
-          label: 'Tag',
+          label: 'search.tag',
           options: [
             {value: '7', viewValue: 'Pizza'},
             {value: '8', viewValue: 'Sushi'},
@@ -41,7 +41,7 @@ export class StatisticsComponent implements OnInit {
         },
       ],
       dateOptions: {
-        label: 'Date range',
+        label: 'search.date-range' || ' ',
       }
     };
   }

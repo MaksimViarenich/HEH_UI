@@ -14,7 +14,7 @@ export class CategoriesTagsComponent {
 
   constructor() {
     this.categoryOptions = {
-      label: 'Category',
+      label: 'categories-and-tags.category',
       options: [
         {value: '1', viewValue: 'Food'},
         {value: '2', viewValue: 'Devices'},
@@ -25,7 +25,7 @@ export class CategoriesTagsComponent {
     };
 
     this.tagsOptions = {
-      label: 'Tag',
+      label: 'categories-and-tags.tag',
       options: [
         {value: '1', viewValue: 'Sushi'},
         {value: '2', viewValue: 'Pizza'},

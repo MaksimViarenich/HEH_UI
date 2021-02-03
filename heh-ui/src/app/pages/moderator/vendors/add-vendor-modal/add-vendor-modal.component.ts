@@ -21,8 +21,8 @@ export class AddVendorModalComponent implements OnInit {
 
   vendorName = new FormControl();
 
-  addressTitle = 'Address';
-  phoneTitle = 'Phone';
+  addressTitle = 'vendors.add-vendor.address';
+  phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount): void {
     this.modalService.openAddDiscountModal(discount, this.vendor);
