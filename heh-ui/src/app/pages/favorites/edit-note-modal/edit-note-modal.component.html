@@ -10,7 +10,7 @@
     </div>
 
     <mat-form-field>
-      <mat-label>Note</mat-label>
+      <mat-label>{{ 'favorites.notes' | translate }}</mat-label>
       <textarea matInput
                 type="text"
                 [(ngModel)]="data.discount.feedback"></textarea>
@@ -19,9 +19,9 @@
     <div class="edit-btn">
       <button class="btn-cancel"
               mat-button
-              mat-dialog-close>Cancel</button>
+              mat-dialog-close>{{ 'favorites.cancel' | translate }}</button>
       <button class="btn-submit"
-              mat-raised-button>Submit</button>
+              mat-raised-button>{{ 'favorites.subm' | translate }}</button>
     </div>
   </div>
 </div>
