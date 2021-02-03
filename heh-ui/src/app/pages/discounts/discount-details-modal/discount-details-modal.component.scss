@@ -98,8 +98,11 @@
     }
   }
 
-  agm-map {
-    height: 30rem;
-  }
+  .discount-details-map{
+    margin: $margin-1 0;
 
+    agm-map {
+      height: 30rem;
+    }
+  }
 }
