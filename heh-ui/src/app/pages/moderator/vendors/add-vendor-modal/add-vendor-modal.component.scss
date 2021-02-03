@@ -3,6 +3,7 @@
 .mat-icon {
   color: $color-violet;
 }
+
 .vendor-details-modal-backdrop.cdk-overlay-backdrop {
   width: calc(100% - 66rem);
 }
@@ -37,8 +38,7 @@
     .mat-form-field-appearance-outline .mat-form-field-wrapper {
       padding-bottom: 0;
       margin: 0 0 $margin-1 0;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
+      @include glass;
       border-radius: 5px;
     }
 
@@ -52,9 +52,8 @@
       margin-top: $margin-1;
 
       .edit-discount-card-container {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        @include glass;
+        box-shadow: $shadow-violet;
         border-radius: $border-radius-small;
       }
 
@@ -71,14 +70,12 @@
   }
 
   .add-vendor-background {
-    height: $height-background-triangle;
-    //background: url("../../../../../assets/images/card-backgrounds/bg-orange.png");
-    background-size: 100%;
+    height: $height-header;
     padding: 0 $margin-1;
 
     .add-vendor-title {
       @include font-bold-vendor;
-      line-height: $height-background-triangle;
+      line-height: $height-header;
     }
   }
 
@@ -87,7 +84,7 @@
     margin-bottom: $margin-1;
     @include glass;
     border-radius: $border-radius-small;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: $shadow-violet;
   }
 }
 
