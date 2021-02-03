@@ -54,7 +54,7 @@ export class FavoritesComponent implements OnInit {
 
   favoriteCards: Array<DiscountCard> = [
     {
-      background: '.90deg, #f598a8, #f6edb2',
+      background: '90deg, #f598a8, #f6edb2',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit {
       }
     },
     {
-      background: '.90deg, #cfecd0, #a0cea7, #9ec0db',
+      background: '90deg, #cfecd0, #a0cea7, #9ec0db',
       discount: {
         description: 'buy',
         addressList: ['blabla', 'blabla'],
