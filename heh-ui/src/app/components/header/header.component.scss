@@ -2,7 +2,11 @@
 
 .header {
   background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
-  opacity: .82;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 
   .container {
     display: flex;
