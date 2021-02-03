@@ -7,93 +7,94 @@
 .discount-details-modal.cdk-overlay-pane {
   width: 33rem;
 
-  .discount-detail-background {
-    @include glass;
-    height: $height-background-triangle;
-    background-size: 100%;
+  .discount-details-wrapper {
+    height: 100%;
+    margin: 0 $margin-1;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 $margin-1;
+    flex-direction: column;
 
-    .discount-detail-title {
-      @include font-bold-vendor;
-      line-height: $height-background-triangle;
-    }
-
-    .discount-detail-favorite {
-      line-height: $height-background-triangle;
-      font-size: $font-vendor*2;
-    }
-  }
-
-  .discount-detail-info {
-    padding: $margin-1;
-    height: calc(100% - 5.8rem); //might be a scss variable
-    background-image: url("../../../../assets/images/Girl_with_truck.svg");
-    background-size: 23%;
-    background-repeat: no-repeat;
-    background-position: 98% 98%;
-    background-attachment: fixed;
-
-    .discount-detail-service {
-      @include font-bold-discount;
-      margin-bottom: $margin-half;
-    }
-
-    .category-and-tags {
+    .discount-details-header {
+      height: $height-header;
       display: flex;
       flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      margin-bottom: $margin-half;
+      justify-content: space-between;
+
+      .discount-detail-title {
+        @include font-bold-vendor;
+        line-height: $height-header;
+      }
+
+      .discount-detail-favorite {
+        line-height: $height-header;
+        font-size: $font-vendor*2;
+      }
     }
 
-    .discount-detail-description {
-      margin-bottom: $margin-1;
-      font-size: $font-content;
-    }
-
-    mat-form-field {
-      width: calc(100% - 2rem);
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+    .discount-details-info {
+      padding: $margin-1;
+      @include glass;
+      box-shadow: $shadow-violet;
       border-radius: $border-radius-small;
 
-      .mat-form-field-wrapper {
-        padding: 0;
-      }
-    }
-
-    .modal-contacts {
-      margin: $margin-1 0;
-
-      a {
-        color: $color-black;
-        text-decoration: none;
+      .discount-detail-service {
+        @include font-bold-discount;
+        margin-bottom: $margin-half;
       }
 
-      div {
-        height: 1.9rem;
-        line-height: 1.9rem;
+      .category-and-tags {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: $margin-half;
+      }
 
-        span {
-          vertical-align: middle;
+      .discount-detail-description {
+        margin-bottom: $margin-1;
+        font-size: $font-content;
+      }
+
+      mat-form-field {
+        width: 100%;
+
+        .mat-form-field-wrapper {
+          padding: 0;
+          @include glass;
+          border-radius: $border-radius-small;
+        }
+      }
+
+      .modal-contacts {
+        margin: $margin-1 0;
+
+        a {
+          color: $color-black;
+          text-decoration: none;
         }
 
-        span:last-child {
-          padding: 0 $margin-small;
-          font-size: $font-content;
+        div {
+          height: 1.9rem;
+          line-height: 1.9rem;
+
+          span {
+            vertical-align: middle;
+          }
+
+          span:last-child {
+            padding: 0 $margin-small;
+            font-size: $font-content;
+          }
         }
       }
-    }
 
-    .social-network {
-      margin-bottom: $margin-1;
-
-      a {
+      .social-network a {
         margin-right: $margin-small;
       }
+    }
+
+    .discount-details-button {
+      text-align: right;
+      margin: auto 0 $margin-half 0;
     }
   }
 }

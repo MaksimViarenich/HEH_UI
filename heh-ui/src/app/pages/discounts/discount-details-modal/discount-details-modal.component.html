@@ -1,77 +1,83 @@
 <div mat-dialog-content class="mat-dialog-content">
-  <div class="discount-detail-background" [style.background]="'linear-gradient('+ data.background +')'">
-    <div class="discount-detail-title">{{data.discount.vendorName}}</div>
-    <app-btn-favorite [isFavorite]="data.discount.isFavorite"
-                      class="discount-detail-favorite"></app-btn-favorite>
-  </div>
-
-  <div class="discount-detail-info">
-    <div class="discount-detail-service">{{data.discount.title}}</div>
-
-    <div class="category-and-tags">
-      <app-category [discountCategory]="data.discount.category"></app-category>
-      <app-tag *ngFor="let tag of data.discount.tags"
-               [discountTag]="tag"></app-tag>
+  <div class="discount-details-wrapper">
+    <div class="discount-details-header">
+      <div class="discount-detail-title">{{data.discount.vendorName}}</div>
+      <app-btn-favorite [isFavorite]="data.discount.isFavorite"
+                        class="discount-detail-favorite"></app-btn-favorite>
     </div>
 
-    <div class="discount-detail-description">{{data.discount.description}}</div>
+    <div class="discount-details-info">
+      <div class="discount-detail-service">{{data.discount.title}}</div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'discounts.address' | translate }}</mat-label>
+      <div class="category-and-tags">
+        <app-category [discountCategory]="data.discount.category"></app-category>
+        <app-tag *ngFor="let tag of data.discount.tags"
+                 [discountTag]="tag"></app-tag>
+      </div>
 
-      <mat-select [formControl]="address" multiple>
-        <mat-select-trigger>
-          {{address.value ? address.value[0] : ''}}
-          <span *ngIf="address.value?.length > 1"
-                class="example-additional-selection">
+      <div class="discount-detail-description">{{data.discount.description}}</div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'discounts.address' | translate }}</mat-label>
+
+        <mat-select [formControl]="address" multiple>
+          <mat-select-trigger>
+            {{address.value ? address.value[0] : ''}}
+            <span *ngIf="address.value?.length > 1"
+                  class="example-additional-selection">
           (+{{address.value.length - 1}}
-            {{address.value?.length === 2 ? 'other' : 'others'}})
+              {{address.value?.length === 2 ? 'other' : 'others'}})
         </span>
-        </mat-select-trigger>
-        <mat-option *ngFor="let address of data.discount.addressList"
-                    [value]="address">{{address}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+          </mat-select-trigger>
+          <mat-option *ngFor="let address of data.discount.addressList"
+                      [value]="address">{{address}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <div class="modal-contacts">
-      <div class="sidenav-website">
-        <a href="{{data.discount.website}}" target="_blank">
-          <span class="material-icons">language</span>
-          <span>{{data.discount.website}}</span>
+      <div class="modal-contacts">
+        <div class="sidenav-website">
+          <a href="{{data.discount.website}}" target="_blank">
+            <span class="material-icons">language</span>
+            <span>{{data.discount.website}}</span>
+          </a>
+        </div>
+
+        <div class="sidenav-phone">
+          <span class="material-icons">phone</span>
+          <span>{{data.discount.phones}}</span>
+        </div>
+
+        <div class="sidenav-time">
+          <span class="material-icons">query_builder</span>
+          <span>{{ 'discounts.open' | translate }}: {{data.discount.workingHours}}</span>
+        </div>
+
+        <div class="sidenav-validity">
+          <span class="material-icons">calendar_today</span>
+          <span>{{ 'discounts.availible' | translate }} {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+
+      <div class="social-network">
+        <a href="{{data.discount.instagram}}"
+           target="_blank">
+          <img src="assets/images/icons/instagram-icon.svg">
+        </a>
+
+        <a href="{{data.discount.facebook}}"
+           target="_blank">
+          <img src="assets/images/icons/facebook-icon.svg">
+        </a>
+
+        <a href="{{data.discount.vk}}"
+           target="_blank">
+          <img src="assets/images/icons/vk-icon.svg">
         </a>
       </div>
-
-      <div class="sidenav-phone">
-        <span class="material-icons">phone</span>
-        <span>{{data.discount.phones}}</span>
-      </div>
-
-      <div class="sidenav-time">
-        <span class="material-icons">query_builder</span>
-        <span>{{ 'discounts.open' | translate }}: {{data.discount.workingHours}}</span>
-      </div>
-
-      <div class="sidenav-validity">
-        <span class="material-icons">calendar_today</span>
-        <span>{{ 'discounts.availible' | translate }} {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
-      </div>
     </div>
 
-    <div class="social-network">
-      <a href="{{data.discount.instagram}}"
-         target="_blank">
-        <img src="assets/images/icons/instagram-icon.svg">
-      </a>
-
-      <a href="{{data.discount.facebook}}"
-         target="_blank">
-        <img src="assets/images/icons/facebook-icon.svg">
-      </a>
-
-      <a href="{{data.discount.vk}}"
-         target="_blank">
-        <img src="assets/images/icons/vk-icon.svg">
-      </a>
+    <div class="discount-details-button">
+      <button mat-button mat-dialog-close>{{ 'discounts.cancel' | translate }}</button>
     </div>
   </div>
 </div>

@@ -5,14 +5,15 @@
 }
 
 .add-discount-modal.cdk-overlay-pane {
-  .add-discount-background {
-    height: $height-background-triangle;
-    background: linear-gradient(90deg, #cfecd0, #ffc5ca);
+  width: 33rem;
+
+  .add-discount-header {
+    height: $height-header;
     padding: 0 $margin-1;
 
     .add-discount-title {
       @include font-bold-vendor;
-      line-height: $height-background-triangle;
+      line-height: $height-header;
     }
   }
 
@@ -20,7 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: $margin-1;
+    padding: 0 $margin-1;
     height: calc(100% - 5.8rem); //might be a scss variable
 
     mat-form-field {
@@ -29,22 +30,22 @@
 
       .mat-form-field-wrapper {
         padding-bottom: 0;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border-radius: 5px;
+        @include glass;
+        border-radius: $border-radius-small;
       }
     }
 
     .add-discount-fields {
       padding: 1rem;
       @include glass;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      box-shadow: $shadow-violet;
       border-radius: $border-radius-small;
     }
 
     .add-discount-button {
       text-align: right;
       font-weight: bold;
+      margin-top: $margin-1;
 
       button:last-child {
         background: $color-violet;

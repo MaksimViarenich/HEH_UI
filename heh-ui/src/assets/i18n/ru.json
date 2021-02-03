@@ -94,6 +94,7 @@
   "discounts": {
     "address": "Адресс",
     "availible": "Доступно до",
-    "open": "Открыто"
+    "open": "Открыто",
+    "cancel": "Отмена"
   }
 }

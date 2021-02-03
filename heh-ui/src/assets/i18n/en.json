@@ -94,6 +94,7 @@
   "discounts": {
     "address": "Address",
     "availible": "Availible to",
-    "open": "Open"
+    "open": "Open",
+    "cancel": "Cancel"
   }
 }
