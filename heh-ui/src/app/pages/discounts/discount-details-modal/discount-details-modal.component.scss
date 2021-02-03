@@ -98,11 +98,15 @@
     }
   }
 
-  .discount-details-map{
+  .discount-details-map {
     margin: $margin-1 0;
+    padding: 1rem;
+    @include glass;
+    border-radius: $border-radius-small;
+    box-shadow: $shadow-violet;
 
     agm-map {
-      height: 30rem;
+      height: 20rem;
     }
   }
 }
