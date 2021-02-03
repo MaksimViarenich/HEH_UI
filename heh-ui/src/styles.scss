@@ -7,7 +7,7 @@ $margin-1: 1rem;
 $margin-half: 0.5rem;
 $margin-small: 0.35rem;
 
-$shadow-grey: 0 4px 30px rgba(34, 35, 38, 0.15);
+$shadow-gray: 0 4px 30px rgba(34, 35, 38, 0.15);
 $shadow-violet: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 $border-radius-small: .33rem;
 
@@ -16,8 +16,8 @@ $color-red: #DB0404;
 $color-black: #333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
-$color-grey: #B0B4B6;
-$color-dark-grey: #747474;
+$color-gray: #B0B4B6;
+$color-dark-gray: #747474;
 $color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
 
@@ -48,7 +48,7 @@ $padding-last: 1.5rem;
 }
 
 @mixin mat-grid-tile {
-  box-shadow: $shadow-grey;
+  box-shadow: $shadow-gray;
   border-radius: $border-radius-small;
 
   app-discount-card {
@@ -59,7 +59,7 @@ $padding-last: 1.5rem;
 }
 
 @mixin mat-grid-tile {
-  box-shadow: $shadow-grey;
+  box-shadow: $shadow-gray;
   border-radius: $border-radius-small;
 
   app-discount-card,
