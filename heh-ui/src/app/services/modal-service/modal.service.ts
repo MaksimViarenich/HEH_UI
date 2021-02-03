@@ -65,7 +65,8 @@ export class ModalService {
   openEditNoteModal(data: any): void {
     const dialogRef = this.dialog.open(EditNoteModalComponent, {
       data,
-      maxWidth: '20rem',
+      maxWidth: '25rem',
+      panelClass: 'edit-note-modal',
       backdropClass: 'edit-note-modal-backdrop',
     });
 
