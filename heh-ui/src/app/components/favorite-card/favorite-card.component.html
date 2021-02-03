@@ -1,9 +1,9 @@
-<div class="favorite-card"
-     [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
-  <div class="favorite-vendor"
-       [ngStyle]="{'background-image': 'url('+favoriteInfo.background+')'}">
-    <div class="card-title">
-      {{ favoriteInfo.discount.vendorName}}
+<div class="favorite-card">
+  <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
+    <div class="favorite-vendor">
+      <div class="card-title">
+        {{ favoriteInfo.discount.vendorName}}
+      </div>
     </div>
   </div>
 

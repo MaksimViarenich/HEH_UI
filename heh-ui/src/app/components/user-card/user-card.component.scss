@@ -18,11 +18,11 @@
 
     img {
       width: 40%;
+      border-radius: 50%;
     }
   }
 
   .user-card__info {
-    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
