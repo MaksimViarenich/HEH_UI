@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
-    userphoto: '../../../assets/images/header/header_profile.svg',
+    userphoto: '../../../assets/images/user.jpg',
     location: 'Belarus, Minsk',
-    address: 'Naturalistov 3',
+    address: 'Naturalistov, 3',
   };
 
   ngOnInit(): void {

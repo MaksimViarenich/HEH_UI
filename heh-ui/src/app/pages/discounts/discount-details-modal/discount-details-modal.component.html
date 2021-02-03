@@ -79,5 +79,11 @@
     <div class="discount-details-button">
       <button mat-button mat-dialog-close>{{ 'discounts.cancel' | translate }}</button>
     </div>
+
+    <div class="discount-details-map">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
+import {OnInit, Component, Inject, ViewEncapsulation} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DiscountCard } from '../../../models/discount-card';
@@ -15,6 +15,9 @@ export class DiscountDetailsModalComponent implements OnInit {
   ) {
   }
   address = new FormControl();
+
+  lat = 53.90731553965919;
+  lng = 27.552685142738643;
 
   ngOnInit(): void {
   }
