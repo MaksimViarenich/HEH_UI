@@ -14,7 +14,6 @@ export interface Discount {
   facebook?: string;
   vk?: string;
   feedback?: string;
-  views?: number;
   startDate?: Date;
   endDate?: Date;
 }
