@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class VendorCardComponent implements OnInit {
   @Input() data: any | undefined;
+  @Input() isViewCountsVisible: boolean | undefined;
 
   constructor() {
   }

@@ -30,6 +30,10 @@
       font-size: #{$font-vendor * 0.9};
     }
 
+    .btn {
+      align-self: flex-start;
+    }
+
     .btn-delete {
       @include btn-icon;
       opacity: 50%;
@@ -40,6 +44,19 @@
 
       &:hover {
         opacity: 100%;
+      }
+    }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $color-dark-grey;
+
+      span {
+        font-size: 1rem;
+        color: $color-dark-grey;
       }
     }
   }
