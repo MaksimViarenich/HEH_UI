@@ -1,7 +1,7 @@
 @import "../../../../../styles";
 
 .add-card {
-  @include header-glass;
+  @include glass;
   height: 100%;
   display: flex;
   align-items: center;

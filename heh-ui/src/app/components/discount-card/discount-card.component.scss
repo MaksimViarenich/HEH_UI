@@ -14,7 +14,7 @@
   display: inline-block;
 
   .card-header {
-    @include header-glass;
+    @include glass;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

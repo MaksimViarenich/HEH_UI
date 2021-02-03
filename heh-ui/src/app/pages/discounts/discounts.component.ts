@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
 import { DiscountCard } from '../../models/discount-card';
 import { SearchOptions } from '../../models/search-options';
+import {ModalService} from '../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-discounts',
@@ -12,7 +13,8 @@ import { SearchOptions } from '../../models/search-options';
 export class DiscountsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              private modalService: ModalService) {
     this.searchFieldsOptions = {
       selectOptions: {
         label: 'search.location',
@@ -217,11 +219,7 @@ export class DiscountsComponent implements OnInit {
   ];
 
   openDiscountDetails(discount: DiscountCard): void {
-    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {data: discount});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.modalService.openDiscountDetailsModal(discount);
   }
 
   ngOnInit(): void {

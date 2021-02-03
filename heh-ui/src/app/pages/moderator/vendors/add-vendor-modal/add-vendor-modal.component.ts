@@ -2,9 +2,8 @@ import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Vendor} from '../../../../models/vendor';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {AddDiscountModalComponent} from '../add-discount-modal/add-discount-modal.component';
-import {DiscountCard} from '../../../../models/discount-card';
 import {Discount} from '../../../../models/discount';
+import {ModalService} from '../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -15,6 +14,7 @@ import {Discount} from '../../../../models/discount';
 export class AddVendorModalComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
+    private modalService: ModalService,
     @Inject(MAT_DIALOG_DATA) public vendor: Vendor
   ) {
   }
@@ -25,18 +25,7 @@ export class AddVendorModalComponent implements OnInit {
   phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount): void {
-    const dialogRef = this.dialog.open(AddDiscountModalComponent, {
-      panelClass: 'add-discount-modal',
-      data: {
-        discount: discount || {},
-        addresses: this.vendor.addressList,
-        phones: this.vendor.phones,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.modalService.openAddDiscountModal(discount, this.vendor);
   }
 
   ngOnInit(): void {

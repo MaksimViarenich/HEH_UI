@@ -14,7 +14,7 @@
     display: flex;
     min-width: 14rem;
     padding: 0.5rem;
-    @include header-glass;
+    @include glass;
 
     .card-title {
       max-width: fit-content;

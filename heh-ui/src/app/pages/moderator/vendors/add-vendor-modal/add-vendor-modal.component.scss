@@ -3,95 +3,91 @@
 .mat-icon {
   color: $color-violet;
 }
-
-.cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, 0.5);
+.vendor-details-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 66rem);
 }
 
-.cdk-global-overlay-wrapper {
-  justify-content: flex-end !important;
+.vendor-details-modal.cdk-overlay-pane {
+  width: 66rem;
 
-  .vendor-details-modal.cdk-overlay-pane {
-    width: 66rem;
-    height: 100%;
-    margin-top: 0;
+  .add-vendor-content {
+    display: flex;
+    justify-content: space-between;
+    padding: $margin-1;
 
+    .add-vendor-info-title {
+      margin-bottom: $margin-1;
+      font-size: $font-title;
+      font-weight: bold;
+    }
+  }
 
-    .mat-dialog{
-      overflow-y: hidden;
+  .add-vendor-info,
+  .add-vendor-discounts {
+    width: calc(50% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+
+    .mat-form-field {
+      display: block;
+    }
+  }
+
+  .add-vendor-info {
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      padding-bottom: 0;
+      margin: 0 0 $margin-1 0;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 5px;
     }
 
-    .mat-dialog-container {
-      padding: 0;
-      border-radius: 0;
+    .mat-select-arrow {
+      border-top: 0;
+    }
+  }
 
-      .mat-dialog-content {
-        margin: 0;
-        padding: 0;
-        max-height: 100%;
+  .add-vendor-discounts {
+    .vendors-component {
+      margin-top: $margin-1;
 
-        .add-vendor-content {
-          display: flex;
-          justify-content: space-between;
-          padding: $margin-1;
+      .edit-discount-card-container {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        border-radius: $border-radius-small;
+      }
 
-          .add-vendor-info-title {
-            margin-bottom: $margin-1;
-            font-size: $font-title;
-            font-weight: bold;
-          }
-        }
-
-        .add-vendor-info {
-          width: calc(50% - 0.5rem);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-
-          .mat-form-field-appearance-outline .mat-form-field-wrapper {
-            padding-bottom: 0;
-            margin: 0 0 $margin-1 0;
-          }
-
-          .mat-select-arrow {
-            border-top: 0;
-          }
-        }
-
-        .add-vendor-discounts {
-          width: calc(50% - 0.5rem);
-          display: flex;
-          flex-direction: column;
-          font-weight: bold;
-
-          .vendors-component {
-            margin-top: $margin-1;
-
-            app-edit-discout-card:hover {
-              cursor: pointer;
-            }
-          }
-
-          .add-discount-button {
-            min-height: 3rem;
-            background: $color-violet;
-            color: $color-white;
-          }
-        }
-
-        .add-vendor-background {
-          height: $height-background-triangle;
-          background: url("../../../../../assets/images/card-backgrounds/bg-vendor-orange.png") no-repeat center;
-          background-size: 100%;
-          padding: 0 $margin-1;
-
-          .add-vendor-title {
-            @include font-bold-vendor;
-            line-height: $height-background-triangle;
-          }
-        }
+      app-edit-discout-card:hover {
+        cursor: pointer;
       }
     }
+
+    .add-discount-button {
+      min-height: 3rem;
+      background: $color-violet;
+      color: $color-white;
+    }
+  }
+
+  .add-vendor-background {
+    height: $height-background-triangle;
+    //background: url("../../../../../assets/images/card-backgrounds/bg-orange.png");
+    background-size: 100%;
+    padding: 0 $margin-1;
+
+    .add-vendor-title {
+      @include font-bold-vendor;
+      line-height: $height-background-triangle;
+    }
+  }
+
+  .add-vendor-group {
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: $margin-1;
+    @include glass;
+    border-radius: $border-radius-small;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   }
 }
 

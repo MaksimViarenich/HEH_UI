@@ -1,58 +1,52 @@
 @import "../../../../styles.scss";
 
-.cdk-global-overlay-wrapper {
-  justify-content: flex-end !important;
-  margin: 0;
+.edit-note-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 20rem);
+}
 
-  .cdk-overlay-pane {
-    width: 30%;
-    height: 100%;
-    margin: 0;
+.cdk-overlay-pane {
+  .header {
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    padding-left: .5rem;
+    @include font-bold-vendor;
+  }
 
-    .mat-dialog-container {
-      padding: 0;
+  .edit-field {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: space-between;
+    padding: 1rem;
 
-      .mat-dialog-content {
-        display: block;
-        margin: 0;
-        padding: 0;
-        max-height: 100vh;
+    .discount-name {
+      @include font-bold-discount;
+      margin-bottom: 1rem;
+    }
 
-        .header {
-          background-size: cover;
-          display: flex;
-          align-items: center;
-          height: 7rem;
-          padding-left: .5rem;
-          @include font-bold-vendor;
-        }
+    mat-form-field {
+      padding: 0.5rem;
+      margin: 1rem 0;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      border-radius: 5px;
+    }
 
-        .edit-field {
-          display: flex;
-          flex-direction: column;
-          height: auto;
-          justify-content: space-between;
-          padding: 1rem;
+    .edit-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
 
-          .discount-name {
-            @include font-bold-discount;
-            margin-bottom: 1rem;
-          }
-          .edit-btn {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
+      .btn-cancel {
+        color: $color-black;
+      }
 
-            .btn-cancel {
-              color: $color-black;
-            }
-  
-            .btn-submit {
-              background-color: $color-violet;
-              color: $color-white;
-            }
-          }
-        }
+      .btn-submit {
+        background-color: $color-violet;
+        color: $color-white;
       }
     }
   }
