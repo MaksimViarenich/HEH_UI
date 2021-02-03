@@ -1,21 +1,12 @@
 <div class="card"
      [style.background]="'linear-gradient('+ discountInfo.background +')'">
-  <div class="card-header"
-      [ngStyle]="!isViewCountsVisible ? {'height': '40%'} : {'height': '60%'}">
+  <div class="card-header">
     <div class="card-title">{{discountInfo.discount.vendorName}}</div>
-    <app-btn-favorite *ngIf="!isViewCountsVisible"
-                      [isFavorite]="discountInfo.isFavorite"
+    <app-btn-favorite [isFavorite]="discountInfo.isFavorite"
                       class="btn" ></app-btn-favorite>
-    <div *ngIf="isViewCountsVisible"
-          class="btn btn-view"
-          (click)="$event.stopPropagation()">
-      <span class="material-icons">visibility</span>
-      {{ discountInfo.discount.views }}
-    </div>
   </div>
 
-  <div class="card-content"
-       [ngStyle]="!isViewCountsVisible ? {'height': 'calc(60% - 1.5rem)'} : {'height': 'calc(40% - 1.5rem)'}">
+  <div class="card-content">
     <div class="category-and-tags">
       <app-category [discountCategory]="discountInfo.discount.category"></app-category>
       <app-tag *ngIf="discountInfo.discount.tags.length" [discountTag]="discountInfo.discount.tags[0]"></app-tag>
@@ -26,7 +17,7 @@
       </div>
     </div>
 
-    <div *ngIf="!isViewCountsVisible" class="card-content-description">
+    <div class="card-content-description">
       {{discountInfo.discount.title}}
     </div>
   </div>

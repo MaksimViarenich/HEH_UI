@@ -81,7 +81,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #cfecd0, #a0cea7, #9ec0db',
       discount: {
-        vendorName: 'Terra Mare',
+        vendorName: 'Tera Mare',
         title: 'Our restaurant gives you 15%',
         category: 'Food',
         tags: ['Pizza', 'Pasta', 'Focaccia' ],
@@ -104,7 +104,7 @@ export class DiscountsComponent implements OnInit {
     {
       background: '90deg, #faf0cd, #fab397',
       discount: {
-        vendorName: 'Contenintal Barbrshop',
+        vendorName: 'Continental Barbershop',
         title: 'Improve your look with our 20% discount',
         category: 'Beaty',
         tags: ['Barbershop', ],

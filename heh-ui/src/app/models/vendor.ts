@@ -11,4 +11,5 @@ export interface Vendor {
     vk?: string;
     discounts?: Array<Discount>;
     isReceiveNotificationsAllowed: boolean;
+    views?: number;
   }
