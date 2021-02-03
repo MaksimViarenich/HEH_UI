@@ -15,77 +15,77 @@ export class UsersComponent implements OnInit {
       email: 'michael.browk@exadel.com',
       role: 'user',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Petro Kachur',
       email: 'michael.browk@exadel.com',
       role: 'moderator',
       isAсtive: false,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Andriy Zheka',
       email: 'michael.browk@exadel.com',
       role: 'user',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     },
     {
       name: 'Kostya Shikarchuk',
       email: 'michael.browk@exadel.com',
       role: 'admin',
       isAсtive: true,
-      avatar: '../../../assets/images/header/header_profile.svg'
+      avatar: '../../../assets/images/user.jpg'
     }
   ];
 
