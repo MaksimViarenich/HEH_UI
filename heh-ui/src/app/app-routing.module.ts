@@ -14,11 +14,13 @@ import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.
 import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
 import {AdminComponent} from './pages/admin/admin.component';
 import {ModeratorComponent} from './pages/moderator/moderator.component';
+import {AuthGuard} from '../app/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: '/discounts', pathMatch: 'full'},
       {path: 'discounts', component: DiscountsComponent},
@@ -31,8 +33,9 @@ const routes: Routes = [
           {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
           {path: 'vendors', component: VendorsComponent},
           {path: 'categories_tags', component: CategoriesTagsComponent}
-        ]
-      },
+        ],
+        canActivate: [AuthGuard]
+         },
       {
         path: 'admin',
         component: AdminComponent,
@@ -41,9 +44,10 @@ const routes: Routes = [
           {path: 'users', component: UsersComponent},
           {path: 'statistics', component: StatisticsComponent},
           {path: 'history', component: EventHistoryComponent},
-        ]
+        ],
+        canActivate: [AuthGuard]
       }
-    ]
+    ],
   },
   {
     path: '',

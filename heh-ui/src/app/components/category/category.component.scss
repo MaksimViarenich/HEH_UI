@@ -2,11 +2,14 @@
 
 .category {
   @include category-tags;
-  background-color: $color-dark-gray;
+  border: 1px solid #0082ca;
+  background-color: #0082ca;
   color: $color-white;
 }
 
 .category:hover {
-  background-color: $color-violet;
+  background-color: $color-blue-green;
+  color: white;
+  border-color: $color-blue-green;
   cursor: pointer;
 }

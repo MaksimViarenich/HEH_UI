@@ -2,11 +2,12 @@
 
 .tag {
   @include category-tags;
-  background-color: $color-blue-green;
-  color: $color-white;
+  border: 1px solid $color-blue-green;
+  color: $color-blue-green;
 }
 
 .tag:hover {
-  background-color: $color-violet;
+  background-color: $color-blue-green;
   cursor: pointer;
+  color: white;
 }

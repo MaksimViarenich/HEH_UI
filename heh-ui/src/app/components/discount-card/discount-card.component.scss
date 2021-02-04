@@ -25,8 +25,8 @@
       max-height: fit-content;
       align-self: center;
       max-width: 80%;
-      @include font-bold-vendor;
       font-size: #{$font-vendor * 0.9};
+      font-weight: 500;
     }
     .btn {
       position: relative;
@@ -46,8 +46,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      @include font-bold-discount;
-      font-size: #{$font-title * 0.9};
+      font-size: 0.8rem;
     }
 
     .category-and-tags {
