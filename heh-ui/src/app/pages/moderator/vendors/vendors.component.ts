@@ -3,9 +3,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {SearchOptions} from '../../../models/search-options';
 import {VendorCard} from '../../../models/vendor-card';
 import {ModalService} from '../../../services/modal-service/modal.service';
-import {Discount} from '../../../models/discount';
-import {Vendor} from '../../../models/vendor';
-
 
 @Component({
   selector: 'app-vendors',
