@@ -15,8 +15,9 @@ interface Language {
   styleUrls: ['./language-selection.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LanguageSelectionComponent {
+export class LanguageSelectionComponent implements OnInit {
 
+  currentLang = '';
   imagePath = '../../../assets/images/header/header_menu_uk.svg';
 
   languages: Language[] = [
@@ -29,5 +30,20 @@ export class LanguageSelectionComponent {
   selectLang(path: string, langCode: string): void {
     this.translate.use(langCode);
     this.imagePath = path;
+    this.currentLang = langCode;
+    this.saveCurrentLangLocalStorage(langCode);
+    }
+
+  saveCurrentLangLocalStorage(langCode: any): void {
+    localStorage.setItem('lang', langCode);
+  }
+
+  ngOnInit(): void {
+    // console.log(localStorage.getItem('lang'));
+    if (localStorage.getItem('lang')){
+      console.log(localStorage.getItem('lang'));
+      // this.translate.use(this.currentLang);
+      // this.translate.setDefaultLang(this.currentLang);
     }
   }
+}
