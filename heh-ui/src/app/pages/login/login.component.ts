@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  username = '';
+  email = '';
   password = '';
   // username = 'jacks@exadel.com';
   // password = '895sdj9O765';
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private router: Router) {}
 
  login(): any {
-  this.authService.login(this.username, this.password).subscribe(
+  this.authService.login(this.email, this.password).subscribe(
     (data) => {
       console.log(data.access_token);
       localStorage.setItem('isAuth', data.access_token);

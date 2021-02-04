@@ -14,7 +14,7 @@ import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.
 import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
 import {AdminComponent} from './pages/admin/admin.component';
 import {ModeratorComponent} from './pages/moderator/moderator.component';
-import { AuthGuard } from '../app/auth/auth.guard';
+import {AuthGuard} from '../app/auth/auth.guard';
 
 const routes: Routes = [
   {
