@@ -5,7 +5,7 @@ import { Address } from './address';
 //   isFavorite?: boolean;
 //   vendorName: string;
 //   title: string;
-//   category: string;
+//   categoryId: string;
 //   tags?: Array<string>;
 //   description: string;
 //   addressList: Array<string>;

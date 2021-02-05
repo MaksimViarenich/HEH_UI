@@ -1,21 +1,29 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { BASE_API_URL } from 'src/app/global';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {forkJoin, Observable} from 'rxjs';
+import {BASE_API_URL} from 'src/app/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FiltersService {
+  filterOptions: any;
 
-  constructor(private http: HttpClient) { }
-
-  getToken(): any {
-   const token = localStorage.getItem('isAuth');
-   return token;
+  constructor(private http: HttpClient) {
+    this.filterOptions = {
+      locations: [],
+      categories: [],
+      tags: [],
+      vendors: []
+    };
   }
 
-  getLocation(): Observable<any> {
+  getToken(): any {
+    const token = localStorage.getItem('isAuth');
+    return token;
+  }
+
+  getLocations(): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', `Bearer ${this.getToken()}`);
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
@@ -40,4 +48,53 @@ export class FiltersService {
     return this.http.get(`${BASE_API_URL}/api/vendor`, {headers});
   }
 
+  loadFilters(): any {
+    const promises = [this.getLocations(), this.getCategoriesTags(), this.getVendors()];
+
+    return forkJoin(promises).subscribe((response) => {
+      response[0].forEach((address: any) => {
+        address.cities.forEach((city: any) => {
+          this.filterOptions.locations.push({
+            id: city.id,
+            viewValue: `${address.country}, ${city.name}`
+          });
+        });
+      });
+
+      response[1].forEach((category: any) => {
+        addItemToFilters(this.filterOptions.categories, category);
+
+        category.tags.forEach((tag: any) => {
+          addItemToFilters(this.filterOptions.tags, tag);
+        });
+      });
+
+      response[2].forEach((vendor: any) => {
+        addItemToFilters(this.filterOptions.vendors, vendor);
+      });
+    });
+
+    function addItemToFilters(dataArray: any, data: any): void {
+      dataArray.push({
+        id: data.id,
+        viewValue: data.name
+      });
+    }
+  }
+
+  getTagById(id: string): string {
+    return this.filterOptions.tags.find((tag: any) => {
+      return tag.id === id;
+    })?.viewValue;
+  }
+
+  getCategoryById(id: string): string {
+    return this.filterOptions.categories.find((category: any) => {
+      return category.id === id;
+    })?.viewValue;
+  }
+
+  getFilters(): any {
+    return this.filterOptions;
+  }
 }

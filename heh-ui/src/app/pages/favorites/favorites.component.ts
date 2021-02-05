@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'search.category',
+          label: 'search.categoryId',
           options: [
             {value: '5', viewValue: 'Food'},
             {value: '6', viewValue: 'Sport'},
@@ -32,7 +32,7 @@ export class FavoritesComponent implements OnInit {
           ]
         },
         {
-          label: 'search.tag',
+          label: 'search.tagId',
           options: [
             {value: '9', viewValue: 'Pizza'},
             {value: '10', viewValue: 'Sushi'},
@@ -64,7 +64,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Domino\'s pizza',
     //     title: 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
     //     feedback: 'Pepperoni pizza  is tastier with double cheese',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza'],
     //   }
     // },
@@ -79,7 +79,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Ronin',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Sushi'],
     //   }
     // },
@@ -94,7 +94,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Pizza Tempo',
     //     title: 'Feel our love',
     //     feedback: 'coca',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza', 'Sushi', 'Drinks'],
     //   }
     // },
@@ -109,7 +109,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Mango',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Clothes',
+    //     categoryId: 'Clothes',
     //   }
     // },
     // {
@@ -123,7 +123,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Papa Johns',
     //     title: 'Buy our tasty pizza with 20% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
     //     feedback: 'Chicken Ranch',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza'],
     //   }
     // },
@@ -138,7 +138,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Mango',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Clothes',
+    //     categoryId: 'Clothes',
     //   }
     // },
     // {
@@ -152,7 +152,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Zara rgergher ergerger fff',
     //     title: 'Feel the taste of the holiday with Coca-Cola!',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Clothes',
+    //     categoryId: 'Clothes',
     //   }
     // },
     // {
@@ -166,7 +166,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'KFC',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza', 'Drinks', ],
     //   }
     // },
@@ -181,7 +181,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Pizza Tempo',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza'],
     //   }
     // },
@@ -196,7 +196,7 @@ export class FavoritesComponent implements OnInit {
     //     vendorName: 'Papa Johns',
     //     title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
     //     feedback: 'Vegeterian tofu roll is the best roll',
-    //     category: 'Food',
+    //     categoryId: 'Food',
     //     tags: ['Pizza'],
     //   }
     // },

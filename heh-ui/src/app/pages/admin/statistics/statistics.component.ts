@@ -23,7 +23,7 @@ export class StatisticsComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'search.category',
+          label: 'search.categoryId',
           options: [
             {value: '4', viewValue: 'Food'},
             {value: '5', viewValue: 'Sport'},
@@ -31,7 +31,7 @@ export class StatisticsComponent implements OnInit {
           ]
         },
         {
-          label: 'search.tag',
+          label: 'search.tagId',
           options: [
             {value: '7', viewValue: 'Pizza'},
             {value: '8', viewValue: 'Sushi'},

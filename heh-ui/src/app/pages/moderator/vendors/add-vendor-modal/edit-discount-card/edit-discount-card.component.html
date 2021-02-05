@@ -2,9 +2,9 @@
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
-        <app-category [discountCategory]="discountInfo.category"></app-category>
+        <app-category [categoryId]="discountInfo.category"></app-category>
         <app-tag *ngFor="let tag of discountInfo.tags"
-                 [discountTag]="tag"></app-tag>
+                 [tagId]="tag"></app-tag>
       </div>
 
       <div class="card-content-description">

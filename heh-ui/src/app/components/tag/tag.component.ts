@@ -1,6 +1,6 @@
-import { Category } from './../../models/category';
-import { TagService } from './tag.service';
-import {  Component, Input, OnInit  } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Tag} from '../../models/tag';
+import {FiltersService} from '../../pages/discounts/filters.service';
 
 @Component({
   selector: 'app-tag',
@@ -8,19 +8,14 @@ import {  Component, Input, OnInit  } from '@angular/core';
   styleUrls: ['./tag.component.scss']
 })
 export class TagComponent implements OnInit {
-  @Input() discountTag: string | undefined;
-  categoryArray: Category[] = [];
+  @Input() tagId: string | undefined;
+  tagName: string | undefined;
 
-  constructor(public tagService: TagService) {
+  constructor(private filtersService: FiltersService) {
   }
 
   ngOnInit(): void {
-    this.tagService.getTags().subscribe(
-      (data) => {
-        this.categoryArray = data;
-        localStorage.setItem('categories', JSON.stringify(this.categoryArray));
-      }
-    );
+    this.tagName = this.filtersService.getTagById(this.tagId || '');
+    console.log(this.filtersService.getTagById(this.tagId || ''));
   }
-
 }

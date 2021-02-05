@@ -26,7 +26,7 @@ export class VendorsComponent implements OnInit {
       },
       multiSelectOptions: [
         {
-          label: 'search.category',
+          label: 'search.categoryId',
           options: [
             {value: '4', viewValue: 'Food'},
             {value: '5', viewValue: 'Sport'},
@@ -34,7 +34,7 @@ export class VendorsComponent implements OnInit {
           ]
         },
         {
-          label: 'search.tag',
+          label: 'search.tagId',
           options: [
             {value: '7', viewValue: 'Pizza'},
             {value: '8', viewValue: 'Sushi'},
@@ -76,7 +76,7 @@ export class VendorsComponent implements OnInit {
     //       {
     //         vendorName: 'Domino\'s Pizza',
     //         title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
-    //         category: 'Food',
+    //         categoryId: 'Food',
     //         tags: ['Pizza'],
     //         description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
     //         addressList: [
