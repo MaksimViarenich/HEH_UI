@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Category } from './../../models/category';
+import { TagService } from './tag.service';
+import {  Component, Input, OnInit  } from '@angular/core';
 
 @Component({
   selector: 'app-tag',
@@ -7,11 +9,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TagComponent implements OnInit {
   @Input() discountTag: string | undefined;
+  categoryArray: Category[] = [];
 
-  constructor() {
+  constructor(public tagService: TagService) {
   }
 
   ngOnInit(): void {
+    this.tagService.getTags().subscribe(
+      (data) => {
+        this.categoryArray = data;
+        localStorage.setItem('categories', JSON.stringify(this.categoryArray));
+      }
+    );
   }
 
 }

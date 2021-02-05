@@ -1,24 +1,23 @@
-<div class="card"
-     [style.background]="'linear-gradient('+ discountInfo.background +')'">
+<div class="card">
   <div class="card-header">
-    <div class="card-title">{{discountInfo.discount.vendorName}}</div>
+    <div class="card-title">{{discountInfo.vendorName}}</div>
     <app-btn-favorite [isFavorite]="discountInfo.isFavorite"
                       class="btn" ></app-btn-favorite>
   </div>
 
   <div class="card-content">
     <div class="category-and-tags">
-      <app-category [discountCategory]="discountInfo.discount.category"></app-category>
-      <app-tag *ngIf="discountInfo.discount.tags.length" [discountTag]="discountInfo.discount.tags[0]"></app-tag>
-      <div *ngIf="discountInfo.discount.tags.length - 1 > 0"
+      <app-category [discountCategory]="categoryName"></app-category>
+      <app-tag *ngIf="discountInfo.tagsIds.length" [discountTag]="discountInfo.tagsIds[0]"></app-tag>
+      <div *ngIf="discountInfo.tagsIds.length - 1 > 0"
            class="additional-tags">
         <span class="material-icons">add_circle</span>
-        {{ discountInfo.discount.tags.length - 1 }}
+        {{ discountInfo.tagsIds.length - 1 }}
       </div>
     </div>
 
     <div class="card-content-description">
-      {{discountInfo.discount.title}}
+      {{discountInfo.title}}
     </div>
   </div>
 </div>
