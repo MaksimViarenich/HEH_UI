@@ -4,6 +4,7 @@ import { DiscountDetailsModalComponent } from './discount-details-modal/discount
 import { DiscountCard } from '../../models/discount-card';
 import { SearchOptions } from '../../models/search-options';
 import {ModalService} from '../../services/modal-service/modal.service';
+import { FiltersService } from './filters.service';
 
 @Component({
   selector: 'app-discounts',
@@ -14,40 +15,28 @@ export class DiscountsComponent implements OnInit {
   searchFieldsOptions: SearchOptions;
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService) {
+              private modalService: ModalService,
+              private filtersService: FiltersService) {
     this.searchFieldsOptions = {
       selectOptions: {
         label: 'search.location',
-        options: [
-          {value: '1', viewValue: 'Belarus, Minsk'},
-          {value: '2', viewValue: 'Belarus, Grodno'},
-          {value: '3', viewValue: 'Ukraine, Vinnitsa'}
-        ]
+        options: []
       },
       multiSelectOptions: [
         {
           label: 'search.category',
-          options: [
-            {value: '4', viewValue: 'Food'},
-            {value: '5', viewValue: 'Sport'},
-            {value: '6', viewValue: 'Beauty'}
-          ]
+          options: []
         },
         {
           label: 'search.tag',
-          options: [
-            {value: '7', viewValue: 'Pizza'},
-            {value: '8', viewValue: 'Sushi'},
-            {value: '9', viewValue: 'Barbershop'},
-            {value: '10', viewValue: 'Swimming pool'},
-          ]
+          options: []
         },
         {
           label: 'search.vendor',
           options: [
-            {value: '11', viewValue: 'Garage'},
-            {value: '12', viewValue: 'Best Beauty Center'},
-            {value: '13', viewValue: 'GYM24'}
+            // {value: '11', viewValue: 'Garage'},
+            // {value: '12', viewValue: 'Best Beauty Center'},
+            // {value: '13', viewValue: 'GYM24'}
           ]
         },
       ]
@@ -223,6 +212,52 @@ export class DiscountsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.filtersService.getLocation().subscribe(
+      (data) => {
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < data.length; i++){
+          for (const city of data[i].cities){
+            const optionObj = {
+              value: city.id,
+              viewValue: `${data[i].country}, ${city.name}`
+            };
+            this.searchFieldsOptions.selectOptions.options.push(optionObj);
+          }
+        }
+      }
+    );
+
+    this.filtersService.getCategoriesTags().subscribe(
+      (data) => {
+        for (const category of data){
+          const categoryObj = {
+            value: category.id,
+            viewValue: category.name
+          };
+          this.searchFieldsOptions.multiSelectOptions[0].options.push(categoryObj);
+          for (const tag of category.tags) {
+            const tagObj = {
+              value: tag.id,
+              viewValue: tag.name
+            };
+            this.searchFieldsOptions.multiSelectOptions[1].options.push(tagObj);
+          }
+        }
+      }
+    );
+
+    this.filtersService.getVendors().subscribe(
+      (data) => {
+        for (const vendor of data) {
+          const vendorObj = {
+            value: vendor.id,
+            viewValue: vendor.name
+          };
+          this.searchFieldsOptions.multiSelectOptions[2].options.push(vendorObj);
+        }
+      }
+    );
   }
 
 }
