@@ -15,12 +15,12 @@
       <mat-label>{{categoryOptions.label | translate }}</mat-label>
       <mat-select>
         <mat-option></mat-option>
-        <mat-option [value]="option.value"
+        <mat-option [value]="option.id"
                     *ngFor="let option of categoryOptions.options">
           {{ option.viewValue }}
         </mat-option>
         <mat-option *ngFor="let option of categoryOptions.options"
-                    [value]="option.value">{{option.viewValue}}</mat-option>
+                    [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
 

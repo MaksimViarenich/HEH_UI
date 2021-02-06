@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   email = '';
   password = '';
-  // username = 'jacks@exadel.com';
-  // password = '895sdj9O765';
+  // username = 'user.liza@mail.com';
+  // password = 'a5Adj7O7';
 
   constructor(
     private authService: AuthService,

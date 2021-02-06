@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Tag} from '../../models/tag';
+import {FiltersService} from '../../pages/discounts/filters.service';
 
 @Component({
   selector: 'app-tag',
@@ -6,12 +8,14 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tag.component.scss']
 })
 export class TagComponent implements OnInit {
-  @Input() discountTag: string | undefined;
+  @Input() tagId: string | undefined;
+  tagName: string | undefined;
 
-  constructor() {
+  constructor(private filtersService: FiltersService) {
   }
 
   ngOnInit(): void {
+    this.tagName = this.filtersService.getTagById(this.tagId || '');
+    console.log(this.filtersService.getTagById(this.tagId || ''));
   }
-
 }

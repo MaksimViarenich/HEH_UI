@@ -34,7 +34,8 @@
     "vendor": "Вендор",
     "date-search-start": "Дата начала",
     "date-search-end": "Дата окончания",
-    "date-range": "Промежуток времени"
+    "date-range": "Промежуток времени",
+    "select": "Выбрать"
   },
   "event-history": {
     "date": "Дата",

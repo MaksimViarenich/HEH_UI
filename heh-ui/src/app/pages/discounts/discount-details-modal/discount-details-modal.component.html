@@ -1,3 +1,4 @@
+<!--
 <div mat-dialog-content class="mat-dialog-content">
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
@@ -10,9 +11,9 @@
       <div class="discount-detail-service">{{data.discount.title}}</div>
 
       <div class="category-and-tags">
-        <app-category [discountCategory]="data.discount.category"></app-category>
+        <app-category [categoryId]="data.discount.category"></app-category>
         <app-tag *ngFor="let tag of data.discount.tags"
-                 [discountTag]="tag"></app-tag>
+                 [tagId]="tag"></app-tag>
       </div>
 
       <div class="discount-detail-description">{{data.discount.description}}</div>
@@ -22,15 +23,15 @@
 
         <mat-select [formControl]="address" multiple>
           <mat-select-trigger>
-            {{address.value ? address.value[0] : ''}}
-            <span *ngIf="address.value?.length > 1"
+            {{address.id ? address.id[0] : ''}}
+            <span *ngIf="address.id?.length > 1"
                   class="example-additional-selection">
-          (+{{address.value.length - 1}}
-              {{address.value?.length === 2 ? 'other' : 'others'}})
+          (+{{address.id.length - 1}}
+              {{address.id?.length === 2 ? 'other' : 'others'}})
         </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of data.discount.addressList"
-                      [value]="address">{{address}}</mat-option>
+                      [id]="address">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -87,3 +88,4 @@
     </div>
   </div>
 </div>
+-->

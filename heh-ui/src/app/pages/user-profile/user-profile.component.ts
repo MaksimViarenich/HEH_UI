@@ -46,12 +46,10 @@ export class UserProfileComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our tag
     if ((value || '').trim()) {
       this.tags.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -70,7 +68,7 @@ export class UserProfileComponent implements OnInit {
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
     // @ts-ignore
-    this.tagInput.nativeElement.value = '';
+    this.tagInput.nativeElement.id = '';
     this.tagCtrl.setValue(null);
   }
 
