@@ -30,10 +30,6 @@ export class LanguageSelectionComponent implements OnInit {
     this.translate.use(langCode);
     this.imagePath = path;
     this.currentLang = langCode;
-    this.saveCurrentLangLocalStorage(langCode);
-    }
-
-  saveCurrentLangLocalStorage(langCode: any): void {
     localStorage.setItem('lang', langCode);
   }
 
@@ -41,20 +37,11 @@ export class LanguageSelectionComponent implements OnInit {
     const lang = localStorage.getItem('lang');
 
     this.languages.forEach((language) => {
-      console.log(language.path);
-      if (language.langCode === lang) {
-        this.imagePath = language.path;
-        console.log(language);
-      }
-      else {
-        this.imagePath = '../../../assets/images/header/header_menu_uk.svg';
-      }
+      this.imagePath = (language.langCode === lang) ?
+      this.imagePath = language.path :
+      '../../../assets/images/header/header_menu_uk.svg';
     });
 
-    if (lang) {
-      this.translate.setDefaultLang(lang);
-    } else {
-      this.translate.setDefaultLang('en');
-    }
+    this.translate.setDefaultLang(lang || 'en');
   }
 }
