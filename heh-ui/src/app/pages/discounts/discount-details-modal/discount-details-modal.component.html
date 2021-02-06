@@ -1,3 +1,4 @@
+<!--
 <div mat-dialog-content class="mat-dialog-content">
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
@@ -10,9 +11,9 @@
       <div class="discount-detail-service">{{data.discount.title}}</div>
 
       <div class="category-and-tags">
-        <app-category [discountCategory]="data.discount.category"></app-category>
+        <app-category [categoryId]="data.discount.category"></app-category>
         <app-tag *ngFor="let tag of data.discount.tags"
-                 [discountTag]="tag"></app-tag>
+                 [tagId]="tag"></app-tag>
       </div>
 
       <div class="discount-detail-description">{{data.discount.description}}</div>
@@ -87,3 +88,4 @@
     </div>
   </div>
 </div>
+-->

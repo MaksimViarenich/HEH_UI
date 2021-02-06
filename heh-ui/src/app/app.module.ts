@@ -46,6 +46,7 @@ import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-mo
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { ThemesToggleComponent } from './components/themes-toggle/themes-toggle.component';
 import { AgmCoreModule } from '@agm/core';
+import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -93,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     DateSearchComponent,
     ModelListInputComponent,
     VendorCardComponent,
+    AddVendorCardComponent,
     ThemesToggleComponent,
   ],
   imports: [

@@ -6,7 +6,7 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./add-vendor-card.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class VendorCardComponent implements OnInit {
+export class AddVendorCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {

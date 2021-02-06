@@ -1,10 +1,12 @@
+import { Address } from './address';
+import { Phones } from './phones';
 import {Discount} from './discount';
 
 export interface Vendor {
     name: string;
-    addressList: Array<string>;
+    addressList: Array<Address>;
     website?: string;
-    phones: Array<string>;
+    phones: Array<Phones>;
     workingHours: string;
     instagram?: string;
     facebook?: string;
