@@ -16,21 +16,21 @@ export class CategoriesTagsComponent {
     this.categoryOptions = {
       label: 'categories-and-tags.categoryId',
       options: [
-        {value: '1', viewValue: 'Food'},
-        {value: '2', viewValue: 'Devices'},
-        {value: '3', viewValue: 'Medicine'},
-        {value: '4', viewValue: 'Beauty'},
-        {value: '5', viewValue: 'Sport'}
+        {id: '1', viewValue: 'Food'},
+        {id: '2', viewValue: 'Devices'},
+        {id: '3', viewValue: 'Medicine'},
+        {id: '4', viewValue: 'Beauty'},
+        {id: '5', viewValue: 'Sport'}
       ]
     };
 
     this.tagsOptions = {
       label: 'categories-and-tags.tagId',
       options: [
-        {value: '1', viewValue: 'Sushi'},
-        {value: '2', viewValue: 'Pizza'},
-        {value: '3', viewValue: 'Coffe'},
-        {value: '4', viewValue: 'China food'}
+        {id: '1', viewValue: 'Sushi'},
+        {id: '2', viewValue: 'Pizza'},
+        {id: '3', viewValue: 'Coffe'},
+        {id: '4', viewValue: 'China food'}
       ]
     };
   }

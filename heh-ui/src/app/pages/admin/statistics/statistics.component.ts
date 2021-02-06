@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SearchOptions } from '../../../models/search-options';
 import { VendorCard } from '../../../models/vendor-card';
 
 @Component({
@@ -9,42 +8,7 @@ import { VendorCard } from '../../../models/vendor-card';
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
-  searchFieldsOptions: SearchOptions;
-
-  constructor(public dialog: MatDialog) {
-    this.searchFieldsOptions = {
-      selectOptions: {
-        label: 'search.location',
-        options: [
-          {value: '1', viewValue: 'Belarus, Minsk'},
-          {value: '2', viewValue: 'Belarus, Grodno'},
-          {value: '3', viewValue: 'Ukraine, Vinnitsa'}
-        ]
-      },
-      multiSelectOptions: [
-        {
-          label: 'search.categoryId',
-          options: [
-            {value: '4', viewValue: 'Food'},
-            {value: '5', viewValue: 'Sport'},
-            {value: '6', viewValue: 'Beauty'}
-          ]
-        },
-        {
-          label: 'search.tagId',
-          options: [
-            {value: '7', viewValue: 'Pizza'},
-            {value: '8', viewValue: 'Sushi'},
-            {value: '9', viewValue: 'Barbershop'},
-            {value: '10', viewValue: 'Swimming pool'},
-          ]
-        },
-      ],
-      dateOptions: {
-        label: 'search.date-range' || ' ',
-      }
-    };
-  }
+  constructor(public dialog: MatDialog) {}
 
   list: Array<VendorCard> = [
     // {

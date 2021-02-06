@@ -29,7 +29,7 @@ export class ListInputComponent {
     if ((value || '').trim()) {
       this.options.push({
         viewValue: value.trim(),
-        value: value.trim(),
+        id: value.trim(),
       });
     }
 

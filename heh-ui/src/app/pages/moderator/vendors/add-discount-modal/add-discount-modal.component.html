@@ -13,14 +13,14 @@
                     [(ngModel)]="discount.addressList"
                     multiple required>
           <mat-select-trigger>
-            {{address.value ? address.value[0] : ''}}
-            <span *ngIf="address.value?.length > 1"
+            {{address.id ? address.id[0] : ''}}
+            <span *ngIf="address.id?.length > 1"
                   class="example-additional-selection">
-              (+{{address.value.length - 1}} {{address.value?.length === 2 ? 'other' : 'others'}})
+              (+{{address.id.length - 1}} {{address.id?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of data.addresses"
-                      [value]="address">{{address}}</mat-option>
+                      [id]="address">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -30,14 +30,14 @@
                     [(ngModel)]="discount.phones"
                     multiple required>
           <mat-select-trigger>
-            {{phone.value ? phone.value[0] : ''}}
-            <span *ngIf="phone.value?.length > 1"
+            {{phone.id ? phone.id[0] : ''}}
+            <span *ngIf="phone.id?.length > 1"
                   class="example-additional-selection">
-              (+{{phone.value.length - 1}} {{phone.value?.length === 2 ? 'other' : 'others'}})
+              (+{{phone.id.length - 1}} {{phone.id?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let phone of data.phones"
-                      [value]="phone">{{phone}}</mat-option>
+                      [id]="phone">{{phone}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -83,7 +83,7 @@
                     [(ngModel)]="discount.category"
                     required>
           <mat-option *ngFor="let category of categories"
-                      [value]="category">{{category}}</mat-option>
+                      [id]="category">{{category}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -93,14 +93,14 @@
                     [(ngModel)]="discount.tags"
                     multiple>
           <mat-select-trigger>
-            {{tag.value ? tag.value[0] : ''}}
-            <span *ngIf="tag.value?.length > 1"
+            {{tag.id ? tag.id[0] : ''}}
+            <span *ngIf="tag.id?.length > 1"
                   class="example-additional-selection">
-              (+{{tag.value.length - 1}} {{tag.value?.length === 2 ? 'other' : 'others'}})
+              (+{{tag.id.length - 1}} {{tag.id?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let tag of discount.tags"
-                      [value]="tag">{{tag}}</mat-option>
+                      [id]="tag">{{tag}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

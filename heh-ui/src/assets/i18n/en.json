@@ -34,7 +34,8 @@
     "vendor": "Vendor",
     "date-search-start": "Start date",
     "date-search-end": "End date",
-    "date-range": "Date range"
+    "date-range": "Date range",
+    "select": "Select"
   },
   "event-history": {
     "date": "Date",

@@ -23,15 +23,15 @@
 
         <mat-select [formControl]="address" multiple>
           <mat-select-trigger>
-            {{address.value ? address.value[0] : ''}}
-            <span *ngIf="address.value?.length > 1"
+            {{address.id ? address.id[0] : ''}}
+            <span *ngIf="address.id?.length > 1"
                   class="example-additional-selection">
-          (+{{address.value.length - 1}}
-              {{address.value?.length === 2 ? 'other' : 'others'}})
+          (+{{address.id.length - 1}}
+              {{address.id?.length === 2 ? 'other' : 'others'}})
         </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of data.discount.addressList"
-                      [value]="address">{{address}}</mat-option>
+                      [id]="address">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 

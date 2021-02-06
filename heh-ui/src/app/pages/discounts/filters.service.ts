@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {forkJoin, Observable} from 'rxjs';
 import {BASE_API_URL} from 'src/app/global';
+import {cloneDeep} from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,7 @@ export class FiltersService {
   loadFilters(): any {
     const promises = [this.getLocations(), this.getCategoriesTags(), this.getVendors()];
 
-    return forkJoin(promises).subscribe((response) => {
+    return forkJoin(promises).toPromise().then((response) => {
       response[0].forEach((address: any) => {
         address.cities.forEach((city: any) => {
           this.filterOptions.locations.push({
@@ -65,7 +66,11 @@ export class FiltersService {
         addItemToFilters(this.filterOptions.categories, category);
 
         category.tags.forEach((tag: any) => {
-          addItemToFilters(this.filterOptions.tags, tag);
+          this.filterOptions.tags.push({
+            id: tag.id,
+            viewValue: tag.name,
+            categoryId: tag.categoryId
+          });
         });
       });
 
@@ -95,6 +100,6 @@ export class FiltersService {
   }
 
   getFilters(): any {
-    return this.filterOptions;
+    return cloneDeep(this.filterOptions);
   }
 }

@@ -1,4 +1,4 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+<app-page-search [isDateRangeSearchAvailable]="true"></app-page-search>
 <mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
   <mat-grid-tile *ngFor="let item of list">
     <app-vendor-card [data]="item"

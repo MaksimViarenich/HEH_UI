@@ -51,7 +51,7 @@ export class UserProfileComponent implements OnInit {
       this.tags.push(value.trim());
     }
 
-    // Reset the input value
+    // Reset the input id
     if (input) {
       input.value = '';
     }
@@ -70,7 +70,7 @@ export class UserProfileComponent implements OnInit {
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
     // @ts-ignore
-    this.tagInput.nativeElement.value = '';
+    this.tagInput.nativeElement.id = '';
     this.tagCtrl.setValue(null);
   }
 
