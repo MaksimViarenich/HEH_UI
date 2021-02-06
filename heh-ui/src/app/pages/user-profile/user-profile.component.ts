@@ -46,12 +46,10 @@ export class UserProfileComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our tagId
     if ((value || '').trim()) {
       this.tags.push(value.trim());
     }
 
-    // Reset the input id
     if (input) {
       input.value = '';
     }
