@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tag} from '../../models/tag';
 import {FiltersService} from '../../pages/discounts/filters.service';
 
 @Component({
@@ -16,6 +15,5 @@ export class TagComponent implements OnInit {
 
   ngOnInit(): void {
     this.tagName = this.filtersService.getTagById(this.tagId || '');
-    console.log(this.filtersService.getTagById(this.tagId || ''));
   }
 }

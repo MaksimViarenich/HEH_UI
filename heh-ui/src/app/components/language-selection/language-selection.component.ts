@@ -1,6 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 interface Language {
   lang: string;
@@ -18,7 +17,7 @@ interface Language {
 export class LanguageSelectionComponent implements OnInit {
 
   currentLang = '';
-  imagePath = '../../../assets/images/header/header_menu_uk.svg';
+  imagePath = '';
 
   languages: Language[] = [
     {lang: 'English', path: '../../../assets/images/header/header_menu_uk.svg', langId: 0, langCode: 'en'},
@@ -39,11 +38,23 @@ export class LanguageSelectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(localStorage.getItem('lang'));
-    if (localStorage.getItem('lang')){
-      console.log(localStorage.getItem('lang'));
-      // this.translate.use(this.currentLang);
-      // this.translate.setDefaultLang(this.currentLang);
+    const lang = localStorage.getItem('lang');
+
+    this.languages.forEach((language) => {
+      console.log(language.path);
+      if (language.langCode === lang) {
+        this.imagePath = language.path;
+        console.log(language);
+      }
+      else {
+        this.imagePath = '../../../assets/images/header/header_menu_uk.svg';
+      }
+    });
+
+    if (lang) {
+      this.translate.setDefaultLang(lang);
+    } else {
+      this.translate.setDefaultLang('en');
     }
   }
 }
