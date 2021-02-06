@@ -1,8 +1,8 @@
 <div class="login-wrapper">
   <div class="login-main">
     <div class="login-main-content">
-      <img class="login-logo" src="../../../assets/img/logo.svg"><br>
-      <img class="login-picture" src="../../../assets/img/Guy_with_like.svg">
+      <img class="login-logo" src="../../../assets/images/logo.svg"><br>
+      <img class="login-picture" src="../../../assets/images/Guy_with_like.svg">
     </div>
 
   </div>
@@ -11,18 +11,26 @@
     <div class="login-form-content">
       <div class="login-title">Happy Exadel Hours</div>
 
-      <div class="login-field">
-        <img src="../../../assets/img/icons/account_box.svg">
-        <input matInput type="email" placeholder="Login">
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Login</mat-label>
+        <input [(ngModel)]="email" matInput required type="email">
+      </mat-form-field>
 
-      <div class="login-password">
-        <img src="../../../assets/img/icons/password_box.svg">
-        <input matInput type="password" placeholder="Password">
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'"
+               required>
+        <button mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+      </mat-form-field>
 
       <div class="login-button">
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
       </div>
     </div>
   </div>

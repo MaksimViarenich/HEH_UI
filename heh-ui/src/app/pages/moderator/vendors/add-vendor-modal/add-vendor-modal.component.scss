@@ -1,0 +1,102 @@
+@import "../../../../../styles.scss";
+
+.mat-icon {
+  color: $color-violet;
+}
+
+.vendor-details-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 66rem);
+}
+
+.vendor-details-modal.cdk-overlay-pane {
+  width: 66rem;
+
+  .add-vendor-content {
+    display: flex;
+    justify-content: space-between;
+    padding: $margin-1;
+
+    .add-vendor-info-title {
+      margin-bottom: $margin-1;
+      font-size: $font-title;
+      font-weight: bold;
+    }
+  }
+
+  .add-vendor-info,
+  .add-vendor-discounts {
+    width: calc(50% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+
+    .mat-form-field {
+      display: block;
+    }
+  }
+
+  .add-vendor-info {
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      padding-bottom: 0;
+      margin: 0 0 $margin-1 0;
+      @include glass;
+      border-radius: 5px;
+    }
+
+    .mat-select-arrow {
+      border-top: 0;
+    }
+  }
+
+  .add-vendor-discounts {
+    .vendors-component {
+      margin-top: $margin-1;
+
+      .edit-discount-card-container {
+        @include glass;
+        box-shadow: $shadow-violet;
+        border-radius: $border-radius-small;
+      }
+
+      app-edit-discout-card:hover {
+        cursor: pointer;
+      }
+    }
+
+    .add-discount-button {
+      min-height: 3rem;
+      background: $color-violet;
+      color: $color-white;
+    }
+  }
+
+  .add-vendor-background {
+    height: $height-header;
+    padding: 0 $margin-1;
+
+    .add-vendor-title {
+      @include font-bold-vendor;
+      line-height: $height-header;
+    }
+  }
+
+  .add-vendor-group {
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: $margin-1;
+    @include glass;
+    border-radius: $border-radius-small;
+    box-shadow: $shadow-violet;
+  }
+}
+
+.add-vendor-buttons {
+  text-align: right;
+  font-weight: bold;
+  margin: 0 $margin-1 0 0;
+  padding: 0;
+
+  button:last-child {
+    background: $color-violet;
+    color: $color-white;
+    margin-left: $margin-1;
+  }
+}

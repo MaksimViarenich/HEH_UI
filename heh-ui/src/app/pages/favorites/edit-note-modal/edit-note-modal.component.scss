@@ -1,50 +1,59 @@
 @import "../../../../styles.scss";
 
-.cdk-global-overlay-wrapper {
-  justify-content: flex-end !important;
-  margin: 0;
+.edit-note-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 25rem);
+}
 
-  .cdk-overlay-pane {
-    width: 30%;
-    height: 100%;
-    margin: 0;
+.edit-note-modal.cdk-overlay-pane {
+  width: 25rem;
 
-    .mat-dialog-container {
-      padding: 0;
+  .edit-wrapper {
+    margin: 0 $margin-1;
 
-      .mat-dialog-content {
-        display: block;
-        margin: 0;
+    .edit-header {
+      height: $height-header;
+      display: flex;
+      align-items: center;
+      @include font-bold-vendor;
+    }
+
+    .edit-field {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      justify-content: space-between;
+      padding: 1rem;
+      @include glass;
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-violet;
+
+      .discount-name {
+        @include font-bold-discount;
+        margin-bottom: $margin-1;
+      }
+
+      .mat-form-field-wrapper{
         padding: 0;
-        max-height: 100vh;
+        @include glass;
+        border-radius: $border-radius-small;
+      }
+    }
 
-        .header {
-          background-size: cover;
-          display: flex;
-          align-items: center;
-          height: 7rem;
-          padding-left: .5rem;
-          @include font-bold-vendor;
-        }
+    .edit-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-top: $margin-1;
 
-        .edit-field {
-          display: flex;
-          flex-direction: column;
-          height: auto;
-          justify-content: space-between;
-          padding: 1rem;
+      .btn-cancel {
+        color: $color-black;
+      }
 
-          .discount-name {
-            @include font-bold-discount;
-            margin-bottom: 1rem;
-          }
-
-          button {
-            background-color: $color-violet;
-            color: $color-white;
-          }
-        }
+      .btn-submit {
+        background-color: $color-violet;
+        color: $color-white;
       }
     }
   }
+
 }

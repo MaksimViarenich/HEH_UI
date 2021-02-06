@@ -1,0 +1,15 @@
+@import "../../../../styles.scss";
+
+.search {
+  margin-top: 1.5rem;
+}
+
+.users-list {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(9rem, 4fr));
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
+  column-gap: 1rem;
+  row-gap: 1rem;
+  margin-top: 1.5rem;
+  padding-bottom: $padding-last;
+}

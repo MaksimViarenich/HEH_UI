@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import { SelectOption } from 'src/app/models/select-option';
+import { Component, Input, ViewEncapsulation} from '@angular/core';
+import { Option } from 'src/app/models/option';
 
 @Component({
   selector: 'app-select',
@@ -9,7 +9,7 @@ import { SelectOption } from 'src/app/models/select-option';
 })
 
 export class SelectComponent {
-  @Input() options: SelectOption[];
+  @Input() options: Option[];
   @Input() label: string;
 
   selectedOption = '';

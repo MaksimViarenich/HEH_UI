@@ -13,15 +13,15 @@ import { HEADER_TABS } from '../../models/tab';
 export class HeaderComponent implements OnInit {
   tabs = HEADER_TABS;
 
-  ngOnInit() {
-  }
-
   user: NotificationPreferences = {
     username: 'Michael Browk',
-    userphoto: '../../../assets/img/header_profile.svg',
+    userphoto: '../../../assets/images/user.jpg',
     location: 'Belarus, Minsk',
-    address: 'Naturalistov 3',
+    address: 'Naturalistov, 3',
   };
+
+  ngOnInit(): void {
+  }
 
   constructor(private router: Router) { }
 
@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
+    localStorage.removeItem('isAuth');
     this.router.navigate(['/login']);
   }
 

@@ -1,0 +1,63 @@
+@import "../../../../../styles.scss";
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: $color-white;
+  box-shadow: $shadow-gray;
+  border-radius: $border-radius-small;
+  display: inline-block;
+
+  .card-header {
+    @include glass;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .5rem;
+    height: calc(100% - 1rem);
+
+    .card-title {
+      position: relative;
+      max-height: fit-content;
+      align-self: center;
+      max-width: 80%;
+      @include font-bold-vendor;
+      font-size: #{$font-vendor * 0.9};
+    }
+
+    .btn {
+      align-self: flex-start;
+    }
+
+    .btn-delete {
+      @include btn-icon;
+      opacity: 50%;
+
+      span {
+        color: $color-red;
+      }
+
+      &:hover {
+        opacity: 100%;
+      }
+    }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $color-dark-gray;
+
+      span {
+        font-size: 1rem;
+        color: $color-dark-gray;
+      }
+    }
+  }
+}

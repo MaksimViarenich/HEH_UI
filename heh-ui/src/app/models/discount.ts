@@ -1,6 +1,6 @@
 export interface Discount {
   isFavorite?: boolean;
-  vendor: string;
+  vendorName: string;
   title: string;
   category: string;
   tags?: Array<string>;
@@ -14,4 +14,6 @@ export interface Discount {
   facebook?: string;
   vk?: string;
   feedback?: string;
+  startDate?: Date;
+  endDate?: Date;
 }

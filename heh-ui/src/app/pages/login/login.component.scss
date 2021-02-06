@@ -1,26 +1,11 @@
+@import '../../../styles.scss';
+
 $width-field: 35vh;
 $height-field: 5vh;
 $height-button: calc(5vh + 2px); // 2px для одинаковой высоты кнопки с input(заданы border)
 $border-radius-field: 0.4rem;
-$button-color: #0082CA;
 $font-field: 500 2vh Montserrat;
 $margin-bottom-form: 1.8vh;
-
-@mixin login-div-input {
-  background-color: #FFFFFF;
-  width: $width-field;
-  height: $height-field;
-  margin: 0 auto $margin-bottom-form auto;
-  border-radius: $border-radius-field;
-  outline: none;
-  border: 1px solid #D2D2D2;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  &::placeholder {
-    color: #BCBCBC;
-  }
-}
 
 @mixin login-input-field {
   padding: 0;
@@ -36,7 +21,8 @@ $margin-bottom-form: 1.8vh;
   background: linear-gradient(107.56deg, #E7E5FD 0%, #D7E9F2 100%);
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  overflow: hidden;
 
   .login-main {
     display: flex;
@@ -53,17 +39,24 @@ $margin-bottom-form: 1.8vh;
 
   .login-picture {
     height: 70vh;
-    width: 70vh;
+    max-width: 50vw;
   }
 
   .login-main, .login-form {
-    margin: 0 5vh;
+    margin: auto;
   }
 
   .login-form {
     display: flex;
+    padding: 3rem;
+    margin: auto;
+    border-radius: 0.6rem;
+    @include glass;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 
     .login-form-content {
+      display: flex;
+      flex-direction: column;
       margin: auto;
 
       .login-title {
@@ -74,19 +67,6 @@ $margin-bottom-form: 1.8vh;
         text-transform: uppercase;
       }
 
-      .login-field, .login-password {
-        @include login-div-input;
-
-        img {
-          width: $height-field;
-          height: $height-field;
-        }
-
-        input {
-          @include login-input-field;
-        }
-      }
-
       .login-button {
         display: flex;
 
@@ -94,7 +74,7 @@ $margin-bottom-form: 1.8vh;
           margin: 0 auto;
           width: $width-field;
           height: calc(5vh + 2px);
-          background-color: $button-color;
+          background-color: $color-violet;
           border-radius: $border-radius-field;
           font: $font-field;
         }

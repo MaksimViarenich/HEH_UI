@@ -1,22 +1,15 @@
 <div mat-dialog-content class="mat-dialog-content">
 
-  <div class="add-discount-background">
-    <div class="add-discount-title">Add discount</div>
+  <div class="add-discount-header">
+    <div class="add-discount-title">{{ 'vendors.add-vendor.add-dsk' | translate }}</div>
   </div>
 
   <div class="add-discount-info">
     <div class="add-discount-fields">
-      <mat-form-field appearance="outline" class="add-discount-vendor">
-        <mat-label>Vendor</mat-label>
-        <mat-select [formControl]="vendor" required>
-          <mat-option *ngFor="let vendor of vendors"
-                      [value]="vendor">{{vendor}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
       <mat-form-field appearance="outline" class="add-discount-address">
-        <mat-label>Address</mat-label>
+        <mat-label>{{ 'vendors.add-discount.address' | translate }}</mat-label>
         <mat-select [formControl]="address"
+                    [(ngModel)]="discount.addressList"
                     multiple required>
           <mat-select-trigger>
             {{address.value ? address.value[0] : ''}}
@@ -25,14 +18,15 @@
               (+{{address.value.length - 1}} {{address.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let address of discount.addressList"
+          <mat-option *ngFor="let address of data.addresses"
                       [value]="address">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-phone">
-        <mat-label>Telephone</mat-label>
+        <mat-label>{{ 'vendors.add-discount.phone' | translate }}</mat-label>
         <mat-select [formControl]="phone"
+                    [(ngModel)]="discount.phones"
                     multiple required>
           <mat-select-trigger>
             {{phone.value ? phone.value[0] : ''}}
@@ -41,38 +35,51 @@
               (+{{phone.value.length - 1}} {{phone.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let phone of discount.phones"
+          <mat-option *ngFor="let phone of data.phones"
                       [value]="phone">{{phone}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="add-discount-name" appearance="outline">
-        <mat-label>Discount name</mat-label>
+        <mat-label>{{ 'vendors.add-discount.name' | translate }}</mat-label>
         <input matInput
+               [(ngModel)]="discount.title"
                [formControl]="name"
                required>
       </mat-form-field>
 
       <mat-form-field class="add-discount-description" appearance="outline">
-        <mat-label>Discount description</mat-label>
+        <mat-label>{{ 'vendors.add-discount.description' | translate }}</mat-label>
         <input matInput
+               [(ngModel)]="discount.description"
                [formControl]="description"
                required>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Expiration date</mat-label>
+        <mat-label>{{ 'vendors.add-discount.start' | translate }}</mat-label>
         <input matInput
-               [matDatepicker]="picker"
+               [(ngModel)]="discount.startDate"
+               [matDatepicker]="pickerStart"
                [formControl]="date"
                required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'vendors.add-discount.end' | translate }}</mat-label>
+        <input matInput
+               [(ngModel)]="discount.endDate"
+               [matDatepicker]="pickerEnd">
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-category">
-        <mat-label>Category</mat-label>
+        <mat-label>{{ 'vendors.add-discount.category' | translate }}</mat-label>
         <mat-select [formControl]="category"
+                    [(ngModel)]="discount.category"
                     required>
           <mat-option *ngFor="let category of categories"
                       [value]="category">{{category}}</mat-option>
@@ -80,8 +87,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-phone">
-        <mat-label>Tag</mat-label>
+        <mat-label>{{ 'vendors.add-discount.tag' | translate }}</mat-label>
         <mat-select [formControl]="tag"
+                    [(ngModel)]="discount.tags"
                     multiple>
           <mat-select-trigger>
             {{tag.value ? tag.value[0] : ''}}
@@ -94,14 +102,11 @@
                       [value]="tag">{{tag}}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-slide-toggle color="primary"
-                        [(ngModel)]="isActive">{{isActive ? 'Active' : 'Inactive'}}</mat-slide-toggle>
     </div>
 
     <div class="add-discount-button">
-      <button mat-button>Cancel</button>
-      <button mat-raised-button>Submit</button>
+      <button mat-button mat-dialog-close>{{ 'vendors.add-discount.cancel' | translate }}</button>
+      <button mat-raised-button>{{ 'vendors.add-discount.subm' | translate }}</button>
     </div>
   </div>
 </div>

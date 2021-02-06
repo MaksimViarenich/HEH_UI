@@ -1,14 +1,14 @@
 @import "../../../styles.scss";
 
 .btn-favorite {
-  user-select: none;
+  @include btn-icon;
+  opacity: 0.4;
 
   span {
-    font-size: 2rem;
-    color: $color-white;
+    color: $color-red;
   }
 
-  span:hover {
-    cursor: pointer;
+  &:hover {
+    opacity: 1;
   }
 }

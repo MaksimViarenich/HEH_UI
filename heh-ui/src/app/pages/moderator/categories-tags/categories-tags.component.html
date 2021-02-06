@@ -1,3 +1,32 @@
-<div class="cat-tags-container">
-    hello
+<div class="category-and-tag-container">
+  <div class="category-and-tag-wrapper">
+    <div class="category-and-tag-title">{{ 'categories-and-tags.categories' | translate }}</div>
+
+    <div class="category-and-tag-content">
+      <app-list-input [label]="categoryOptions.label | translate"
+                      [options]="categoryOptions.options"></app-list-input>
+    </div>
+  </div>
+
+  <div class="category-and-tag-wrapper">
+    <div class="category-and-tag-title">{{ 'categories-and-tags.tags' | translate }}</div>
+
+    <mat-form-field appearance="outline" class="select-category">
+      <mat-label>{{categoryOptions.label | translate }}</mat-label>
+      <mat-select>
+        <mat-option></mat-option>
+        <mat-option [value]="option.value"
+                    *ngFor="let option of categoryOptions.options">
+          {{ option.viewValue }}
+        </mat-option>
+        <mat-option *ngFor="let option of categoryOptions.options"
+                    [value]="option.value">{{option.viewValue}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="category-and-tag-content">
+      <app-list-input [label]="tagsOptions.label | translate"
+                      [options]="tagsOptions.options"></app-list-input>
+    </div>
+  </div>
 </div>

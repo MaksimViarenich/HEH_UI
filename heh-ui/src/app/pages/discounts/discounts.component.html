@@ -1,6 +1,7 @@
 <app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<div class="container">
-    <app-discount-card *ngFor="let discount of discounts" 
-                        [discountInfo]="discount" 
-                        (click)="openDiscountDetails(discount)"></app-discount-card>
-</div>
+<mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
+  <mat-grid-tile *ngFor="let discount of discounts" >
+   <app-discount-card [discountInfo]="discount"
+                      (click)="openDiscountDetails(discount)"></app-discount-card>
+  </mat-grid-tile>
+</mat-grid-list>

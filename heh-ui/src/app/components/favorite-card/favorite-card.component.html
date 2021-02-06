@@ -1,8 +1,9 @@
 <div class="favorite-card">
-  <div class="favorite-vendor"
-       [ngStyle]="{'background-image': 'url('+favoriteInfo.background+')'}">
-    <div class="card-title">
-      {{ favoriteInfo.discount.vendor}}
+  <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
+    <div class="favorite-vendor">
+      <div class="card-title">
+        {{ favoriteInfo.discount.vendorName}}
+      </div>
     </div>
   </div>
 
@@ -19,7 +20,7 @@
   </div>
 
   <div class="card-actions">
-    <i class="material-icons" (click)="editNote()">edit</i>
+    <i class="material-icons" (click)="openEditNoteModal()">edit</i>
     <i class="material-icons">clear</i>
   </div>
 </div>

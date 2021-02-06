@@ -1,0 +1,59 @@
+@import '../../../styles.scss';
+
+.user-card {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: $shadow-gray;
+  border-radius: $border-radius-small;
+
+  .user-card__avatar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+
+    img {
+      width: 40%;
+      border-radius: 50%;
+    }
+  }
+
+  .user-card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    p {
+      font-weight: bold;
+      font-size: 0.825rem;
+    }
+
+    .btn-toggle {
+      display: flex;
+      margin-right: 1%;
+
+      mat-button-toggle {
+        font-size: 0.9rem;
+        height: 1.4rem;
+        padding: 0;
+        margin: 0;
+      }
+
+      span {
+        padding: 0 0.2rem;
+        height: 1.4rem;
+        line-height: 1.4rem;
+      }
+    }
+
+    mat-slide-toggle {
+      margin-top: 0.5rem;
+    }
+  }
+}

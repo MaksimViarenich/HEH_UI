@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-$height-background-triangle: 3.8rem;
+$height-header: 3.8rem;
 $font-vendor: 1.5rem;
 $font-title: 1.1rem;
 $font-content: 0.85rem;
@@ -7,7 +7,8 @@ $margin-1: 1rem;
 $margin-half: 0.5rem;
 $margin-small: 0.35rem;
 
-$box-shadow: 0 4px 30px rgba(34, 35, 38, 0.15);
+$shadow-gray: 0 4px 30px rgba(34, 35, 38, 0.15);
+$shadow-violet: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 $border-radius-small: .33rem;
 
 $color-violet: #9A90FE;
@@ -15,16 +16,64 @@ $color-red: #DB0404;
 $color-black: #333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
-$color-grey: #B0B4B6;
+$color-gray: #B0B4B6;
+$color-dark-gray: #747474;
+$color-blue-green: #628C97;
+$color-table-header: #F4F2FF;
 
-$margin-category-tag: .3rem .3rem .3rem 0;
+$margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
+$padding-last: 1.5rem;
+
+@mixin glass {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+@mixin category-tags {
+  min-width: fit-content;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  padding: $padding-category-tag;
+  margin: $margin-category-tag;
+}
+
+@mixin img-profile-language {
+  height: 2.2rem;
+  width: 2.2rem;
+  align-self: center;
+}
+
+@mixin mat-grid-tile {
+  box-shadow: $shadow-gray;
+  border-radius: $border-radius-small;
+
+  app-discount-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@mixin mat-grid-tile {
+  box-shadow: $shadow-gray;
+  border-radius: $border-radius-small;
+
+  app-discount-card,
+  app-vendor-card {
+    user-select: none;
+    height: 100%;
+    width: 100%;
+  }
+}
 
 @mixin font-bold-vendor {
   font-size: $font-vendor;
   font-weight: bold;
-  color: $color-white;
+  color: $color-black;
 }
 
 @mixin font-bold-discount {
@@ -32,8 +81,61 @@ $padding-category-tag: 0 0.3rem;
   font-weight: bold;
 }
 
+@mixin btn-icon {
+  user-select: none;
+
+  span {
+    font-size: 2rem;
+    color: $color-white;
+  }
+
+  span:hover {
+    cursor: pointer;
+  }
+}
+
 body {
   margin: 0;
   height: 100vh;
   color: $color-black;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.cdk-overlay-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.cdk-global-overlay-wrapper {
+  justify-content: flex-end !important;
+
+  .cdk-overlay-pane {
+    height: 100%;
+    margin-top: 0;
+
+    .mat-dialog {
+      overflow-y: hidden;
+    }
+
+    .mat-dialog-container {
+      padding: 0;
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+
+      .mat-dialog-content {
+        display: block;
+        margin: 0;
+        padding: 0;
+        max-height: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+.mat-snack-bar-container {
+  background-color: $color-red;
+  color: $color-white;
 }

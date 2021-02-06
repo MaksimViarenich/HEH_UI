@@ -6,21 +6,24 @@
   justify-content: space-between;
   height: 5.7rem;
   background: $color-white;
-  box-shadow: $box-shadow;
+  box-shadow: $shadow-gray;
   border-radius: 5px;
   margin-bottom: 1rem;
 
-  .favorite-vendor {
-    background-size: cover;
+  div {
     display: flex;
-    min-width: 14rem;
-    padding: 0.5rem;
 
-    .card-title {
-      max-width: fit-content;
-      line-height: 1.2;
-      @include font-bold-vendor;
-      align-self: center;
+    .favorite-vendor {
+      box-sizing: border-box;
+      min-width: 14rem;
+      padding: 0.5rem;
+      @include glass;
+
+      .card-title {
+        max-width: fit-content;
+        align-self: center;
+        @include font-bold-vendor;
+      }
     }
   }
 
@@ -28,7 +31,8 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
-    padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+    padding: 0.1rem 0.5rem 0.3rem 0.5rem;
+    background-color: $color-white;
 
     .discount-info {
       display: flex;
@@ -38,6 +42,7 @@
       .category-and-tags {
         display: flex;
         justify-content: flex-start;
+        margin-bottom: -0.5rem;
       }
 
       .discount-name {
@@ -76,6 +81,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 0.5rem;
+    background-color: $color-white;
 
     i {
       color: $color-black;

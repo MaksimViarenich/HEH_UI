@@ -1,1 +1,5 @@
-<app-favorite-card *ngFor="let card of favoriteCards" [favoriteInfo]="card"></app-favorite-card>
+<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+
+<div class="favorites-container">
+  <app-favorite-card *ngFor="let card of favoriteCards" [favoriteInfo]="card"></app-favorite-card>
+</div>

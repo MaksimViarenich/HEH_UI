@@ -1,18 +1,13 @@
 @import "../../../styles.scss";
 
 .tag {
-  max-width: fit-content;
-  height: 1.525rem;
-  line-height: 1.525rem;
-  border-radius: 0.3rem;
-  background-color: $color-grey;
-  padding: $padding-category-tag;
-  color: $color-white;
-  margin: $margin-category-tag;
-  display: inline-block;
+  @include category-tags;
+  border: 1px solid $color-blue-green;
+  color: $color-blue-green;
 }
 
 .tag:hover {
-  background-color: $color-violet;
+  background-color: $color-blue-green;
   cursor: pointer;
+  color: white;
 }

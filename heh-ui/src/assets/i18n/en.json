@@ -1,0 +1,105 @@
+{
+  "header": {
+    "profile": "Profile",
+    "logout": "Logout",
+    "discounts": "Discounts",
+    "favorites": "Favorites",
+    "moderator": "Moderator",
+    "admin": "Admin"
+  },
+  "moderator": {
+    "vendors": "Vendors",
+    "categories": "Categories and tags"
+  },
+  "admin": {
+    "users": "Users",
+    "history": "History",
+    "statistics": "Statistics"
+  },
+  "profile": {
+    "subscription": "Subscriptions",
+    "tag": "New tag...",
+    "newsletters": "Reseive a newsletters",
+    "service": "New services",
+    "vendors": "New vendors",
+    "city": "On city",
+    "hot_sales": "Hot sales"
+  },
+  "search": {
+    "btn_search": "Search",
+    "input_search": "Search",
+    "tag": "Tag",
+    "category": "Category",
+    "location": "Location",
+    "vendor": "Vendor",
+    "date-search-start": "Start date",
+    "date-search-end": "End date",
+    "date-range": "Date range"
+  },
+  "event-history": {
+    "date": "Date",
+    "state": "State",
+    "user": "User",
+    "description": "Description"
+  },
+  "users" : {
+    "admin": "administrator",
+    "user": "user",
+    "moderator": "moderator",
+    "active": "active"
+  },
+  "vendors": {
+    "add": "Add vendor",
+    "add-vendor": {
+      "info": "Vendor's info",
+      "name": "Vendor's name",
+      "address": "Address",
+      "phone": "Phone",
+      "web-site": "Web site",
+      "hours": "Open hours",
+      "inst": "Instagram",
+      "vk": "Vkontakte",
+      "fb": "Facebook",
+      "permission": "Vendor gave permission to receive newsletters",
+      "cancel": "Cancel",
+      "subm": "Submit",
+      "dsk": "Discounts",
+      "add-dsk": "Add discount"
+    },
+    "add-discount": {
+      "name": "Discount name",
+      "address": "Address",
+      "phone": "Telephone",
+      "description": "Discount description",
+      "tag": "Tag",
+      "category": "Category",
+      "start": "Start date",
+      "end": "Expiration date",
+      "cancel": "Cancel",
+      "subm": "Submit"
+    }
+  },
+  "categories-and-tags": {
+    "categories": "Categories",
+    "tags": "Tags",
+    "category": "Category",
+    "add": "Add",
+    "tag": "Tag"
+  },
+  "favorites": {
+    "notes": "Note",
+    "cancel": "Cancel",
+    "subm": "Submit"
+  },
+  "discounts": {
+    "address": "Address",
+    "availible": "Availible to",
+    "open": "Open",
+    "cancel": "Cancel"
+  },
+  "notfound": {
+    "ops": "Oops!",
+    "find": "We can't seem to find the page you're looking for.",
+    "err": "Error code:"
+  }
+}
