@@ -1,4 +1,4 @@
-import { UserInfo } from './../../models/user-info';
+import { UserInfo } from '../../models/user-info';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
@@ -20,7 +20,7 @@ export class UserCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checked = this.user?.isAсtive;
+    this.checked = this.user?.isActive;
   }
 
 }
