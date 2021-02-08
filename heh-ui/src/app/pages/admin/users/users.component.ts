@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
       },
       (error) => {
         this.snackBar.open(
-          'Something went wrong',
+          'Can not load users',
           'Close',
           {verticalPosition: 'top'}
         );
