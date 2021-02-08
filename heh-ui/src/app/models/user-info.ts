@@ -5,12 +5,12 @@ import { Vendor } from './vendor';
 
 export interface UserInfo {
   id: string;
-  avatar?: string;
+  img?: string;
   role: string;
   name: string;
   email: string;
   address: Array<Address>;
-  isActive?: boolean;
+  isActive: boolean;
   categoryNotifications?: Array<Category>;
   tagNotifications?: Array<Tag>;
   vendorNotifications?: Array<Vendor>;

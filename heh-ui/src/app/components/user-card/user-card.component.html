@@ -1,6 +1,10 @@
 <div class="user-card">
   <div class="user-card__avatar">
-    <img src="{{ user?.avatar }}">
+    <img *ngIf="user.img===null; else photo"
+         src="assets/images/no-photo.png">
+    <ng-template #photo>
+      <img src="{{ user?.img }}">
+    </ng-template>
   </div>
 
   <div class="user-card__info">
@@ -10,7 +14,7 @@
     <mat-button-toggle-group class="btn-toggle"
                              name="userRole"
                              aria-label="Role"
-                             value="{{ user?.role }}">
+                             value="{{role}}">
       <mat-button-toggle value="Employee">{{ 'users.user' | translate }}</mat-button-toggle>
       <mat-button-toggle value="Moderator">{{ 'users.moderator' | translate }}</mat-button-toggle>
       <mat-button-toggle value="Administrator">{{ 'users.admin' | translate }}</mat-button-toggle>
@@ -20,7 +24,7 @@
                       [color]="color"
                       [checked]="checked"
                       [disabled]="false">
-      {{ 'users.active' | translate }}
+      {{checked ? ('users.active' | translate) : ('users.inactive' | translate)}}
     </mat-slide-toggle>
   </div>
 </div>
