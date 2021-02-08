@@ -100,7 +100,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'en'
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
@@ -110,5 +109,4 @@ export function HttpLoaderFactory(http: HttpClient): any {
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-}
+export class AppModule {}
