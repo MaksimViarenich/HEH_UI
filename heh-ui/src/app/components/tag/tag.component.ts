@@ -14,5 +14,4 @@ export class TagComponent {
   }
   getTagName(): string {
     return this.tagName = this.filtersService.getTagById(this.tagId || '');
-  }
 }

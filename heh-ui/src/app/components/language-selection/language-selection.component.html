@@ -1,7 +1,7 @@
 <div mat-button
   [matMenuTriggerFor]="beforeMenu"
   class="lang-select-button">
-    <img src={{imagePath}} alt="">
+    <img src={{imagePath}}>
 </div>
 <mat-menu
   class="menu-items"
@@ -9,8 +9,7 @@
   #beforeMenu="matMenu"
   xPosition="before">
   <div mat-menu-item
-    (click)="selectLang(item.path)"
-    (click)="translate.use(item.langCode)"
+    (click)="selectLang(item.path, item.langCode)"
     class="lang-select-option lang-item"
     *ngFor="let item of languages">
       <img src={{item.path}} alt="lang">  {{item.lang}}
