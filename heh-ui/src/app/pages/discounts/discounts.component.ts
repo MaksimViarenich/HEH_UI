@@ -21,7 +21,7 @@ export class DiscountsComponent implements OnInit {
   discounts: Array<Discount> = [];
 
   openDiscountDetails(discount: Discount): void {
-    // this.modalService.openDiscountDetailsModal(discount);
+    this.modalService.openDiscountDetailsModal(discount);
   }
 
   ngOnInit(): void {
@@ -31,5 +31,4 @@ export class DiscountsComponent implements OnInit {
       }
     );
   }
-
 }

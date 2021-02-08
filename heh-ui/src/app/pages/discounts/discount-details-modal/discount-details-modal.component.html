@@ -1,76 +1,82 @@
-<!--
 <div mat-dialog-content class="mat-dialog-content">
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
-      <div class="discount-detail-title">{{data.discount.vendorName}}</div>
-      <app-btn-favorite [isFavorite]="data.discount.isFavorite"
+      <div class="discount-detail-title">{{discountDetails.vendorName}}</div>
+      <app-btn-favorite [isFavorite]="discountDetails.isFavorite"
                         class="discount-detail-favorite"></app-btn-favorite>
     </div>
 
     <div class="discount-details-info">
-      <div class="discount-detail-service">{{data.discount.title}}</div>
+      <div class="discount-detail-service">{{discountDetails.promoCode}}</div>
 
       <div class="category-and-tags">
-        <app-category [categoryId]="data.discount.category"></app-category>
-        <app-tag *ngFor="let tag of data.discount.tags"
-                 [tagId]="tag"></app-tag>
+        <app-category [categoryId]="discountDetails.categoryId"></app-category>
+        <div *ngIf="discountDetails.tagsIds.length"
+             class="tags">
+          <app-tag *ngFor="let tag of discountDetails.tagsIds"
+                   [tagId]="tag"></app-tag>
+        </div>
       </div>
 
-      <div class="discount-detail-description">{{data.discount.description}}</div>
+      <div class="discount-detail-description">{{discountDetails.conditions}}</div>
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'discounts.address' | translate }}</mat-label>
 
         <mat-select [formControl]="address" multiple>
           <mat-select-trigger>
-            {{address.id ? address.id[0] : ''}}
-            <span *ngIf="address.id?.length > 1"
-                  class="example-additional-selection">
-          (+{{address.id.length - 1}}
-              {{address.id?.length === 2 ? 'other' : 'others'}})
-        </span>
+            {{address.value ? address.value[0] : ''}}
+            <span *ngIf="address.value?.length > 1" class="example-additional-selection">
+              (+{{address.value.length - 1}}
+              {{address.value?.length === 2 ? 'other' : 'others'}})
+            </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let address of data.discount.addressList"
-                      [id]="address">{{address}}</mat-option>
+          <mat-option *ngFor="let address of discountDetails.addresses"
+                      [value]="address.id">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <div class="modal-contacts">
-        <div class="sidenav-website">
-          <a href="{{data.discount.website}}" target="_blank">
+        <div *ngIf="links.website"
+             class="sidenav-website">
+          <a href="{{links.website}}" target="_blank">
             <span class="material-icons">language</span>
-            <span>{{data.discount.website}}</span>
+            <span>{{links.website}}</span>
           </a>
         </div>
 
-        <div class="sidenav-phone">
+        <div *ngFor="let phone of discountDetails.phones"
+             class="sidenav-phone">
           <span class="material-icons">phone</span>
-          <span>{{data.discount.phones}}</span>
+          <span>{{phone.number}}</span>
         </div>
 
         <div class="sidenav-time">
           <span class="material-icons">query_builder</span>
-          <span>{{ 'discounts.open' | translate }}: {{data.discount.workingHours}}</span>
+          <span>{{ 'discounts.open' | translate }}: {{discountDetails.workingHours}}</span>
         </div>
 
         <div class="sidenav-validity">
           <span class="material-icons">calendar_today</span>
-          <span>{{ 'discounts.availible' | translate }} {{data.discount.validity  | date: 'dd/MM/yyyy'}}</span>
+          <span>{{ 'discounts.available' | translate }} {{discountDetails.endDate  | date: 'dd/MM/yyyy'}}</span>
         </div>
       </div>
 
       <div class="social-network">
-        <a href="{{data.discount.instagram}}"
+        <a *ngIf="links.instagram"
+           href="{{links.instagram}}"
            target="_blank">
           <img src="assets/images/icons/instagram-icon.svg">
         </a>
 
-        <a href="{{data.discount.facebook}}"
+        <a *ngIf="links.facebook"
+           href="{{links.facebook}}"
            target="_blank">
           <img src="assets/images/icons/facebook-icon.svg">
         </a>
 
-        <a href="{{data.discount.vk}}"
+        <a *ngIf="links.vkontakte"
+           href="{{links.vkontakte}}"
            target="_blank">
           <img src="assets/images/icons/vk-icon.svg">
         </a>
@@ -88,4 +94,3 @@
     </div>
   </div>
 </div>
--->

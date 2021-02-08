@@ -21,4 +21,15 @@ getDiscounts(): Observable<any> {
 
     return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
   }
+  getDiscountDetails(id: string): Observable<any> {
+
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.get(`${BASE_API_URL}/odata/Discount(${id})`, {headers});
+  }
 }
