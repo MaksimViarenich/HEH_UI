@@ -5,7 +5,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../models/discount';
 import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import {Vendor} from '../../models/vendor';
-import {DiscountCard} from '../../models/discount-card';
 import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 
@@ -48,7 +47,7 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(discount: DiscountCard): void {
+    openDiscountDetailsModal(discount: Discount): void {
     const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
       data: discount,
       maxWidth: '33rem',

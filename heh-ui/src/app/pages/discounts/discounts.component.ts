@@ -23,7 +23,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    // this.modalService.openDiscountDetailsModal(discount);
+    this.modalService.openDiscountDetailsModal(discount);
   }
 
   ngOnInit(): void {
