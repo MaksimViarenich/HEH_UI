@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-event-history',
@@ -17,8 +18,10 @@ export class EventHistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor(private historyService: HistoryService) {
+  constructor(private historyService: HistoryService,
+              private snackBar: MatSnackBar) {
   }
+
   eventData: EventHistoryElement[] = [];
   dataSource: any;
 
@@ -28,6 +31,13 @@ export class EventHistoryComponent implements OnInit {
         this.eventData = data;
         console.log(this.eventData);
         this.dataSource = new MatTableDataSource(this.eventData);
+      },
+      (error) => {
+        this.snackBar.open(
+          'Something went wrong',
+          'Close',
+          {verticalPosition: 'top'}
+        );
       }
     );
   }
