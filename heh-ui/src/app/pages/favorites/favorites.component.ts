@@ -1,5 +1,9 @@
+import { FavoritesService } from './favorites.service';
 import { Component, OnInit } from '@angular/core';
-import { DiscountCard } from '../../models/discount-card';
+import { Favorites } from '../../models/favorite';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalService } from '../../services/modal-service/modal.service';
+import { FiltersService } from '../discounts/filters.service';
 
 @Component({
   selector: 'app-favorites',
@@ -8,10 +12,23 @@ import { DiscountCard } from '../../models/discount-card';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor() {}
+  constructor(public dialog: MatDialog,
+              private modalService: ModalService,
+              private filtersService: FiltersService,
+              private favoritesService: FavoritesService) {}
 
-  favoriteCards: Array<DiscountCard> = [];
+  favoriteCards: Array<Favorites> = [];
+
+  openEditNoteModal(): void{
+    // this.modalService.openEditNoteModal();
+  }
 
   ngOnInit(): void {
+    this.favoritesService.getFavorites().subscribe(
+      (data) => {
+        this.favoriteCards = data.value;
+        console.log(data);
+      }
+    );
   }
 }
