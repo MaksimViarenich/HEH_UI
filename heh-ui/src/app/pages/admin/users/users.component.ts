@@ -1,7 +1,7 @@
-import {UserInfo} from '../../../models/user-info';
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {UsersService} from './users.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { UserInfo } from '../../../models/user-info';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UsersService } from './users.service';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
   users: UserInfo[] = [];
 
   constructor(private usersService: UsersService,
-              private snackBar: MatSnackBar) {
+              private toaster: ToasterService) {
   }
 
   ngOnInit(): void {
@@ -25,11 +25,7 @@ export class UsersComponent implements OnInit {
         this.users = data;
       },
       (error) => {
-        this.snackBar.open(
-          'Can not load users',
-          'Close',
-          {verticalPosition: 'top'}
-        );
+        this.toaster.open('Сan not get users');
       }
     );
   }

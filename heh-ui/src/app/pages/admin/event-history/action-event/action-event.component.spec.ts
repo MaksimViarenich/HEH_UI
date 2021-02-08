@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StateEventComponent } from './state-event.component';
+import { ActionEventComponent } from './action-event.component';
 
 describe('StateEventComponent', () => {
-  let component: StateEventComponent;
-  let fixture: ComponentFixture<StateEventComponent>;
+  let component: ActionEventComponent;
+  let fixture: ComponentFixture<ActionEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StateEventComponent ]
+      declarations: [ ActionEventComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StateEventComponent);
+    fixture = TestBed.createComponent(ActionEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

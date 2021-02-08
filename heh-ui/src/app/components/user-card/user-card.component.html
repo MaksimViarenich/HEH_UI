@@ -1,6 +1,6 @@
 <div class="user-card">
   <div class="user-card__avatar">
-    <img *ngIf="user.img===null; else photo"
+    <img *ngIf="user?.img===null; else photo"
          src="assets/images/no-photo.png">
     <ng-template #photo>
       <img src="{{ user?.img }}">
