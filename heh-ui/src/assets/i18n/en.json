@@ -39,7 +39,7 @@
   },
   "event-history": {
     "date": "Date",
-    "state": "State",
+    "action": "Action",
     "user": "User",
     "description": "Description"
   },

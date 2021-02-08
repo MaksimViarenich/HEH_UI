@@ -39,7 +39,7 @@
   },
   "event-history": {
     "date": "Дата",
-    "state": "Состояние",
+    "action": "Действие",
     "user": "Пользователь",
     "description": "Описание"
   },
