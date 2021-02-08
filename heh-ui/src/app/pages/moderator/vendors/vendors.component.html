@@ -3,7 +3,7 @@
   <mat-grid-tile>
     <app-add-vendor-card (click)="openVendorModal()"></app-add-vendor-card>
   </mat-grid-tile>
-  <mat-grid-tile *ngFor="let item of list">
+  <mat-grid-tile *ngFor="let item of vendorList">
     <app-vendor-card [data]="item" (click)="openVendorModal(item)"></app-vendor-card>
   </mat-grid-tile>
 </mat-grid-list>
