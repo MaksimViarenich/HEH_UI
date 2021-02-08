@@ -1,10 +1,8 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-event-history',
@@ -14,16 +12,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EventHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'action', 'user', 'description'];
-
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  @ViewChild(MatSort) sort: MatSort | any;
-
-  constructor(private historyService: HistoryService,
-              private snackBar: MatSnackBar) {
-  }
-
   eventData: EventHistoryElement[] = [];
   dataSource: any;
+
+  constructor(private historyService: HistoryService,
+              private toaster: ToasterService) {
+  }
 
   ngOnInit(): void {
     this.historyService.getHistory().subscribe(
@@ -33,11 +27,7 @@ export class EventHistoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.eventData);
       },
       (error) => {
-        this.snackBar.open(
-          'Something went wrong',
-          'Close',
-          {verticalPosition: 'top'}
-        );
+        this.toaster.open('Сan not get history');
       }
     );
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     "password" : o90q4r93qt   */
   constructor(
     private authService: AuthService,
-    private snackBar: MatSnackBar,
+    private toaster: ToasterService,
     private router: Router) {
   }
 
@@ -39,16 +39,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/discounts']);
       },
       (error) => {
-        this.snackBar.open(
-          'The username and password you entered did not match our records. Please double-check and try again.',
-          'Close',
-          {verticalPosition: 'top'}
-        );
+        this.toaster.open('The username and password you entered did not match our records. Please double-check and try again.');
       }
     );
   }
 
   ngOnInit(): void {
   }
-
 }
