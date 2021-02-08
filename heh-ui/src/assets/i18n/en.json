@@ -47,7 +47,8 @@
     "admin": "administrator",
     "user": "user",
     "moderator": "moderator",
-    "active": "active"
+    "active": "active",
+    "inactive": "inactive"
   },
   "vendors": {
     "add": "Add vendor",
