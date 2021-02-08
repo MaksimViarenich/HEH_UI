@@ -1,6 +1,7 @@
-import { UserInfo } from '../../../models/user-info';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UsersService } from './users.service';
+import {UserInfo} from '../../../models/user-info';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {UsersService} from './users.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +13,8 @@ export class UsersComponent implements OnInit {
 
   users: UserInfo[] = [];
 
-  constructor(private usersService: UsersService) {
+  constructor(private usersService: UsersService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -21,6 +23,13 @@ export class UsersComponent implements OnInit {
       (data) => {
         console.log(data);
         this.users = data;
+      },
+      (error) => {
+        this.snackBar.open(
+          'Something went wrong',
+          'Close',
+          {verticalPosition: 'top'}
+        );
       }
     );
   }
