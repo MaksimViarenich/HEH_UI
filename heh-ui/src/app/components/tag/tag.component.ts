@@ -1,5 +1,5 @@
-import {Component, Input } from '@angular/core';
-import {FiltersService} from '../../pages/discounts/filters.service';
+import { Component, Input } from '@angular/core';
+import { FiltersService } from '../../pages/discounts/filters.service';
 
 @Component({
   selector: 'app-tag',
@@ -12,6 +12,8 @@ export class TagComponent {
 
   constructor(private filtersService: FiltersService) {
   }
+
   getTagName(): string {
     return this.tagName = this.filtersService.getTagById(this.tagId || '');
+  }
 }
