@@ -3,8 +3,8 @@ import {AddVendorModalComponent} from '../../pages/moderator/vendors/add-vendor-
 import {MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../models/discount';
 import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+import {VendorCard} from '../../models/vendor-card';
 import {Vendor} from '../../models/vendor';
-import {VendorDetail} from '../../models/vendor-detail';
 import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 
@@ -30,7 +30,7 @@ export class ModalService {
     });
   }
 
-  openAddDiscountModal(discount?: Discount, vendor?: VendorDetail): void {
+  openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
     const dialogRef = this.dialog.open(AddDiscountModalComponent, {
       data: {
         discount: discount || {},

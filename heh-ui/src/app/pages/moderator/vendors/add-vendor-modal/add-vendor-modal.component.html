@@ -12,27 +12,27 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
-            <input [(ngModel)]="vendorDetail.name"
+            <input [(ngModel)]="vendor.name"
                    [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
              <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
-              <input [(ngModel)]="vendorDetail.workingHours" matInput>
+              <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendorDetailAddresses"
+                                [listData]="vendorAddresses"
                                 (addData)="onAddAddress($event)"
                                 (deleteData)="onDeleteAddress($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendorDetailPhones"
+                                [listData]="vendorPhones"
                                 (addData)="onAddPhone($event)"
                                 (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>
@@ -40,31 +40,38 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="website" matInput>
+              <input [(ngModel)]="links.website" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
-              <input [(ngModel)]="inst" matInput>
+              <input [(ngModel)]="links.instagram" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
-              <input [(ngModel)]="vk" matInput>
+              <input [(ngModel)]="links.vkontakte" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
-             <input [(ngModel)]="facebook" matInput>
+             <input [(ngModel)]="links.facebook" matInput>
           </mat-form-field>
         </div>
 
-        <section>
-          <mat-checkbox [color]="'primary'"
-                        [(ngModel)]="vendorDetail.mailing">
-                        {{ 'vendors.add-vendor.permission' | translate }}
-          </mat-checkbox>
-        </section>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.email' | translate }}</mat-label>
+             <input [(ngModel)]="vendor.email" matInput>
+          </mat-form-field>
+          <section>
+            <mat-checkbox [color]="'primary'"
+                          [(ngModel)]="vendor.mailing">
+                          {{ 'vendors.add-vendor.permission' | translate }}
+            </mat-checkbox>
+          </section>
+        </div>
+
       </div>
 
       <div class="add-vendor-discounts">
@@ -77,7 +84,7 @@
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of vendorDetail.discounts"
+          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
                                  (click)="openDiscountModal(discount)"
                                  [discountInfo]="discount"></app-edit-discout-card>
         </div>

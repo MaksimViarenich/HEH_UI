@@ -1,10 +1,9 @@
-import { Vendor } from './../../../models/vendor';
 import { VendorService } from './vendor.service';
-import {  Component, OnInit } from '@angular/core';
-import {  MatDialog } from '@angular/material/dialog';
-import {  VendorCard  } from '../../../models/vendor-card';
-import {  ModalService  } from '../../../services/modal-service/modal.service';
-import { VendorDetail } from 'src/app/models/vendor-detail';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { VendorCard } from '../../../models/vendor-card';
+import { ModalService } from '../../../services/modal-service/modal.service';
+import { Vendor } from 'src/app/models/vendor';
 
 @Component({
   selector: 'app-vendors',
@@ -32,11 +31,5 @@ export class VendorsComponent implements OnInit {
         this.vendors = data;
       }
     );
-
-    // this.vendorService.getVendorsDetail().subscribe(
-    //   (data) => {
-    //     this.vendorsDetail = data;
-    //   }
-    // );
   }
 }
