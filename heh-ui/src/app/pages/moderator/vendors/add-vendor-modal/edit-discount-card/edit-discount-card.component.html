@@ -2,14 +2,14 @@
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
-        <app-category [categoryId]="discountInfo.category"></app-category>
-        <app-tag *ngFor="let tag of discountInfo.tags"
+        <app-category [categoryId]="discountInfo.categoryId"></app-category>
+        <app-tag *ngFor="let tag of discountInfo.tagsIds"
                  [tagId]="tag"></app-tag>
       </div>
 
       <div class="card-content-description">
         <div class="discount-name line-clamp">
-          {{ discountInfo.title }}
+          {{ discountInfo.conditions }}
         </div>
       </div>
     </div>

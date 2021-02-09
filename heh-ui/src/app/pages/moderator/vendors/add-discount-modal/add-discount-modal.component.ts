@@ -10,12 +10,12 @@ import {Discount} from '../../../../models/discount';
   encapsulation: ViewEncapsulation.None
 })
 export class AddDiscountModalComponent implements OnInit {
-  discount: Discount;
+  discountDetail: Discount;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    this.discount = data.discount;
+    this.discountDetail = data.discounts;
   }
 
   vendor = new FormControl();
@@ -26,14 +26,6 @@ export class AddDiscountModalComponent implements OnInit {
   date = new FormControl();
   tag = new FormControl();
   category = new FormControl();
-
-  categories: string[] = [
-    'Food', 'Clothes', 'Shop', 'Beauty', 'Sport', 'Car', 'Health', 'Education',
-  ];
-
-  tags: string[] = [
-    'Pizza', 'Sushi', 'Nails',
-  ];
 
   ngOnInit(): void {
   }

@@ -1,17 +1,17 @@
 import { Address } from './address';
 import { Phones } from './phones';
-import {Discount} from './discount';
+import { Discount } from './discount';
+import { Link } from './link';
 
 export interface Vendor {
     name: string;
-    addressList: Array<Address>;
-    website?: string;
+    email: string;
+    id: string;
+    addresses: Array<Address>;
+    links?: Array<Link>;
     phones: Array<Phones>;
-    workingHours: string;
-    instagram?: string;
-    facebook?: string;
-    vk?: string;
+    workingHours?: string;
     discounts?: Array<Discount>;
-    isReceiveNotificationsAllowed: boolean;
-    views?: number;
+    mailing: boolean;
+    viewsAmount?: number;
   }
