@@ -1,33 +1,40 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, CanActivateChild, Router} from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree
+} from '@angular/router';
 import { RoleService } from '../services/role-service/role.service';
-import { ToasterService } from '../services/toaster-service/toaster.service';
-
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoleGuard implements CanActivate, CanActivateChild {
+export class RoleGuard implements CanActivate {
   constructor(private roleService: RoleService,
-              private toaster: ToasterService,
               private router: Router) {
   }
-  canActivate(): any {
-    if (this.roleService.getRoles().administrator) {
-      return true;
-    } else {
-      this.router.navigate(['/discounts']);
-      this.toaster.open('You don\`t have administrator permissions');
 
-      return false;
-    }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    const url: string = state.url;
+    return this.checkUserRole(next, url);
   }
-  canActivateChild(): any {
-    if (this.roleService.getRoles().moderator) {
+
+  checkUserRole(route: ActivatedRouteSnapshot, url: any ): any {
+    const roles = this.roleService.getRoles();
+
+    if (roles.includes(route.data.role)) {
+      console.log(roles);
+      console.log(route.data.role);
+      console.log(roles.includes(route.data.role));
+
       return true;
     } else {
       this.router.navigate(['/discounts']);
-      this.toaster.open('You don\`t have moderator / administrator permissions');
 
       return false;
     }

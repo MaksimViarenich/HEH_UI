@@ -9,26 +9,18 @@ export class RoleService {
   decoded: any;
 
   constructor() {
-    this.roles = {
-      administrator: false,
-      moderator: false,
-      employee: false,
-    };
+    this.roles = [];
   }
 
   getRoles(): any {
     const token = localStorage.getItem('isAuth');
+    this.roles = [];
 
     if (typeof token === 'string') {
       this.decoded = jwt_decode(token);
-
-      if (this.decoded.role.length) {
-        this.roles = Object.assign({}, ...this.decoded.role.map((role: string) => {
-          return {
-            [role.toLowerCase()]: true
-          };
-        }));
-      }
+      this.decoded.role.forEach((role: string) => {
+        this.roles.push(role.toLowerCase());
+      });
 
       return this.roles;
     }

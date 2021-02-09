@@ -29,8 +29,10 @@ const routes: Routes = [
       {path: 'profile', component: UserProfileComponent},
       {
         path: 'moderator',
-        canActivate: [AuthGuard],
-        canActivateChild: [RoleGuard],
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'moderator',
+        },
         component: ModeratorComponent,
         children: [
           {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
@@ -41,6 +43,9 @@ const routes: Routes = [
       {
         path: 'admin',
         canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'administrator',
+        },
         component: AdminComponent,
         children: [
           {path: '', redirectTo: '/admin/users', pathMatch: 'full'},

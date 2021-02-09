@@ -30,13 +30,13 @@ export class HeaderComponent implements OnInit{
     const role = this.roleService.getRoles();
 
     switch (true) {
-      case (role.administrator):
+      case (role.includes('administrator')):
         return this.tabs = HEADER_TABS;
 
-      case (role.moderator):
+      case (role.includes('moderator')):
         return this.tabs = HEADER_TABS.slice(0, 3);
 
-      case (role.employee):
+      case (role.includes('employee')):
         return this.tabs = HEADER_TABS.slice(0, 2);
     }
   }
