@@ -11,7 +11,11 @@ export class FiltersService {
   filterOptions: any;
 
   constructor(private http: HttpClient) {
-    this.filterOptions = {
+    this.filterOptions = this.getDefaultFilters();
+  }
+
+  getDefaultFilters(): any {
+    return {
       locations: [],
       categories: [],
       tags: [],
@@ -50,6 +54,8 @@ export class FiltersService {
   }
 
   loadFilters(): any {
+    this.filterOptions = this.getDefaultFilters();
+
     const promises = [this.getLocations(), this.getCategoriesTags(), this.getVendors()];
 
     return forkJoin(promises).toPromise().then((response) => {

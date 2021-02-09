@@ -7,4 +7,10 @@
 
 .select-background-menu:hover {
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+.background-select-option,
+.select-background-menu {
+  background-blend-mode: screen ;
 }
