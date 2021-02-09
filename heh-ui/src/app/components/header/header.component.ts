@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationPreferences } from '../../models/notification-preferences';
 import { HEADER_TABS } from '../../models/tab';
+import { RoleService } from '../../services/role-service/role.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,8 @@ import { HEADER_TABS } from '../../models/tab';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent {
-  tabs = HEADER_TABS;
+export class HeaderComponent implements OnInit{
+  tabs: any;
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
@@ -20,7 +21,20 @@ export class HeaderComponent {
     address: 'Naturalistov, 3',
   };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private roleService: RoleService) {
+    this.tabs = [];
+  }
+
+  getTabs(): any {
+    if (this.roleService.getRoles().administrator) {
+      return this.tabs = HEADER_TABS;
+    } else if (this.roleService.getRoles().moderator) {
+      return this.tabs = HEADER_TABS.slice(0, 3);
+    } else if (this.roleService.getRoles().employee) {
+      return this.tabs = HEADER_TABS.slice(0, 2);
+    }
+  }
 
   goToPerson(): void {
     this.router.navigate(['/profile']);
@@ -33,5 +47,9 @@ export class HeaderComponent {
 
   goToMain(): void {
     this.router.navigate(['/discounts']);
+  }
+
+  ngOnInit(): any {
+    this.tabs = this.getTabs();
   }
 }
