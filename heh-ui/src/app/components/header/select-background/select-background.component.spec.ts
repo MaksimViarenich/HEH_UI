@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThemesToggleComponent } from './themes-toggle.component';
+import { SelectBackgroundComponent } from './select-background.component';
 
-describe('ThemesToggleComponent', () => {
-  let component: ThemesToggleComponent;
-  let fixture: ComponentFixture<ThemesToggleComponent>;
+describe('SelectBackgroundComponent', () => {
+  let component: SelectBackgroundComponent;
+  let fixture: ComponentFixture<SelectBackgroundComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThemesToggleComponent ]
+      declarations: [ SelectBackgroundComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThemesToggleComponent);
+    fixture = TestBed.createComponent(SelectBackgroundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
