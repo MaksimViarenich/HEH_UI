@@ -26,12 +26,16 @@
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendorDetail.addresses"></app-model-list-input>
+                                [listData]="vendorDetailAddresses"
+                                (addData)="onAddAddress($event)"
+                                (deleteData)="onDeleteAddress($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendorDetail.phones"></app-model-list-input>
+                                [listData]="vendorDetailPhones"
+                                (addData)="onAddPhone($event)"
+                                (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
