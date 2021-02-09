@@ -34,7 +34,7 @@ import { ListInputComponent } from './pages/moderator/categories-tags/list-input
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
-import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
+import { ActionEventComponent } from './pages/admin/event-history/action-event/action-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -83,7 +83,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     UserCardComponent,
     AddDiscountModalComponent,
     AddVendorModalComponent,
-    StateEventComponent,
+    ActionEventComponent,
     ModelListInputComponent,
     VendorCardComponent,
     AddVendorCardComponent,
@@ -100,7 +100,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'en'
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
@@ -110,5 +109,4 @@ export function HttpLoaderFactory(http: HttpClient): any {
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-}
+export class AppModule {}

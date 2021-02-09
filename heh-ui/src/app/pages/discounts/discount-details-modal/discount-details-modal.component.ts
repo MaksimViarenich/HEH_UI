@@ -1,7 +1,8 @@
-import {OnInit, Component, Inject, ViewEncapsulation} from '@angular/core';
+import { OnInit, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DiscountCard } from '../../../models/discount-card';
+import { Discount } from '../../../models/discount';
+import { DiscountsService } from '../discounts.service';
 
 @Component({
   selector: 'app-discount-details',
@@ -10,16 +11,40 @@ import { DiscountCard } from '../../../models/discount-card';
   encapsulation: ViewEncapsulation.None
 })
 export class DiscountDetailsModalComponent implements OnInit {
+  discountDetails: any;
+  links: any;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DiscountCard
+    private discountService: DiscountsService,
+    @Inject(MAT_DIALOG_DATA) public data: Discount
   ) {
+    this.discountDetails = {
+      tagsIds: [],
+    };
+    this.links = {
+      website: '',
+      instagram: '',
+      facebook: '',
+      vkontakte: '',
+    };
   }
   address = new FormControl();
-
+  discountId: string = this.data.id;
   lat = 53.90731553965919;
   lng = 27.552685142738643;
 
   ngOnInit(): void {
-  }
+    this.discountService.getDiscountDetails(this.discountId).subscribe(
+      (data) => {
+        this.discountDetails = data;
 
+        if (data.links.length) {
+          this.links = Object.assign({}, ...data.links.map((link: any) => {
+            return {
+              [link.type.toLowerCase()]: link.url
+            };
+          }));
+        }
+      }
+    );
+  }
 }

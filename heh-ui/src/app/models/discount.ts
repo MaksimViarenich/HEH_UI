@@ -9,7 +9,7 @@ export interface Discount {
   title: string;
   categoryId: string;
   tagsIds?: Array<string>;
-  condition: string;
+  conditions: string;
   addressList: Array<Address>;
   phones: Array<Phones>;
   promoCode?: string;

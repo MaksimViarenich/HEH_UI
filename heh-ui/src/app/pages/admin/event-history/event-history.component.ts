@@ -1,27 +1,8 @@
-import {AfterViewInit, Component, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-
-export interface EventDataElement {
-  date: Date;
-  state: string;
-  user: string;
-  description: string;
-}
-
-const EVENT_DATA: EventDataElement[] = [
-  {date: new Date(2021, 1, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 1, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 4, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-];
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { HistoryService } from './history.service';
+import { EventHistoryElement } from '../../../models/event-history-element';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-event-history',
@@ -29,27 +10,25 @@ const EVENT_DATA: EventDataElement[] = [
   styleUrls: ['./event-history.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventHistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['date', 'state', 'user', 'description'];
-  dataSource = new MatTableDataSource(EVENT_DATA);
+export class EventHistoryComponent implements OnInit {
+  displayedColumns: string[] = ['date', 'action', 'user', 'description'];
+  eventData: EventHistoryElement[] = [];
+  dataSource: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  @ViewChild(MatSort) sort: MatSort | any;
-
-  constructor() {
+  constructor(private historyService: HistoryService,
+              private toaster: ToasterService) {
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  ngOnInit(): void {
+    this.historyService.getHistory().subscribe(
+      (data) => {
+        this.eventData = data;
+        console.log(this.eventData);
+        this.dataSource = new MatTableDataSource(this.eventData);
+      },
+      (error) => {
+        this.toaster.open('Сan not get history');
+      }
+    );
   }
 }

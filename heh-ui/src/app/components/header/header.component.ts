@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, } from '@angular/core';
+import { Component, ViewEncapsulation, } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationPreferences } from '../../models/notification-preferences';
 import { HEADER_TABS } from '../../models/tab';
@@ -10,7 +10,7 @@ import { HEADER_TABS } from '../../models/tab';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   tabs = HEADER_TABS;
 
   user: NotificationPreferences = {
@@ -19,9 +19,6 @@ export class HeaderComponent implements OnInit {
     location: 'Belarus, Minsk',
     address: 'Naturalistov, 3',
   };
-
-  ngOnInit(): void {
-  }
 
   constructor(private router: Router) { }
 

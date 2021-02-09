@@ -13,6 +13,7 @@ $border-radius-small: .33rem;
 
 $color-violet: #9A90FE;
 $color-red: #DB0404;
+$color-green: #008000;
 $color-black: #333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
@@ -115,6 +116,19 @@ body {
     height: 100%;
     margin-top: 0;
 
+    .mat-snack-bar-container {
+      background-color: $color-red;
+      color: $color-white;
+      height: max-content;
+      .mat-simple-snackbar-action button {
+        color: $color-white;
+      }
+    }
+
+    .mat-snack-bar-container.success {
+      background-color: $color-green;
+    }
+
     .mat-dialog {
       overflow-y: hidden;
     }
@@ -135,7 +149,4 @@ body {
     }
   }
 }
-.mat-snack-bar-container {
-  background-color: $color-red;
-  color: $color-white;
-}
+

@@ -39,7 +39,7 @@
   },
   "event-history": {
     "date": "Date",
-    "state": "State",
+    "action": "Action",
     "user": "User",
     "description": "Description"
   },
@@ -47,7 +47,8 @@
     "admin": "administrator",
     "user": "user",
     "moderator": "moderator",
-    "active": "active"
+    "active": "active",
+    "inactive": "inactive"
   },
   "vendors": {
     "add": "Add vendor",
@@ -94,7 +95,7 @@
   },
   "discounts": {
     "address": "Address",
-    "availible": "Availible to",
+    "available": "Available to",
     "open": "Open",
     "cancel": "Cancel"
   },
