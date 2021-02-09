@@ -18,6 +18,7 @@ export class RoleService {
 
   getRoles(): any {
     const token = localStorage.getItem('isAuth');
+
     if (typeof token === 'string') {
       this.decoded = jwt_decode(token);
 

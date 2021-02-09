@@ -27,12 +27,17 @@ export class HeaderComponent implements OnInit{
   }
 
   getTabs(): any {
-    if (this.roleService.getRoles().administrator) {
-      return this.tabs = HEADER_TABS;
-    } else if (this.roleService.getRoles().moderator) {
-      return this.tabs = HEADER_TABS.slice(0, 3);
-    } else if (this.roleService.getRoles().employee) {
-      return this.tabs = HEADER_TABS.slice(0, 2);
+    const role = this.roleService.getRoles();
+
+    switch (true) {
+      case (role.administrator):
+        return this.tabs = HEADER_TABS;
+
+      case (role.moderator):
+        return this.tabs = HEADER_TABS.slice(0, 3);
+
+      case (role.employee):
+        return this.tabs = HEADER_TABS.slice(0, 2);
     }
   }
 
