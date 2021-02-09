@@ -6,6 +6,8 @@ import {Discount} from '../../../../models/discount';
 import {ModalService} from '../../../../services/modal-service/modal.service';
 import { VendorDetail } from 'src/app/models/vendor-detail';
 import { VendorService } from '../vendor.service';
+import { Phones } from 'src/app/models/phones';
+import { Address } from '../../../../models/address';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -16,12 +18,14 @@ import { VendorService } from '../vendor.service';
 export class AddVendorModalComponent implements OnInit {
   vendorDetail: any;
 
-  setListData() {
-    if (address) {
-      ListData = this.vendorDetail.street;
-    } else {
-      ListData = ....
-    }
+  get vendorDetailPhones(): string[] {
+    return this.vendorDetail.phones ?
+      this.vendorDetail.phones.map((phone: Phones) => phone.number) : [];
+  }
+
+  get vendorDetailAddresses(): string[] {
+    return this.vendorDetail.addresses ?
+      this.vendorDetail.addresses.map((address: Address) => address.street) : [];
   }
 
   constructor(
@@ -41,6 +45,26 @@ export class AddVendorModalComponent implements OnInit {
 
   openDiscountModal(discount?: Discount): void {
     this.modalService.openAddDiscountModal(discount, this.vendorDetail);
+  }
+
+  onAddPhone(phoneNumber: string): void {
+    this.vendorDetail.phones.push({
+      number: phoneNumber
+    });
+  }
+
+  onDeletePhone(idx: number): void {
+    this.vendorDetail.phones.splice(idx, 1);
+  }
+
+  onAddAddress(street: string): void {
+    this.vendorDetail.addresses.push({
+      street
+    });
+  }
+
+  onDeleteAddress(idx: number): void {
+    this.vendorDetail.addresses.splice(idx, 1);
   }
 
   ngOnInit(): void {

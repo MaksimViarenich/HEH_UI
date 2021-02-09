@@ -1,10 +1,10 @@
 <div class="model-list-input-container">
   <mat-form-field appearance="outline">
     <mat-label>{{label}}</mat-label>
-    <input matInput (keydown.enter)="addData(inputValue)"
+    <input matInput (keydown.enter)="onAddData()"
            [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
-    <mat-icon matSuffix (click)="addData(inputValue)">add</mat-icon>
+    <mat-icon matSuffix (click)="onAddData()">add</mat-icon>
   </mat-form-field>
 
   <div class="text-wrapper"
@@ -12,7 +12,7 @@
     {{value}}
 
     <div class="submit-div"
-         (click)="deleteData(idx)">
+         (click)="deleteData.emit(idx)">
       <mat-icon matSuffix>clear</mat-icon>
     </div>
   </div>

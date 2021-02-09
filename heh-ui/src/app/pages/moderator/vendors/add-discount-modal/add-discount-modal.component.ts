@@ -27,14 +27,6 @@ export class AddDiscountModalComponent implements OnInit {
   tag = new FormControl();
   category = new FormControl();
 
-  // categories: string[] = [
-  //   'Food', 'Clothes', 'Shop', 'Beauty', 'Sport', 'Car', 'Health', 'Education',
-  // ];
-
-  // tags: string[] = [
-  //   'Pizza', 'Sushi', 'Nails',
-  // ];
-
   ngOnInit(): void {
   }
 }
