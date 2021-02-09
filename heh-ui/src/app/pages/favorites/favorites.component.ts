@@ -1,6 +1,6 @@
 import { FavoritesService } from './favorites.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { Favorites } from '../../models/favorite';
+import { Discount } from '../../models/discount';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../services/modal-service/modal.service';
 import { FiltersService } from '../discounts/filters.service';
@@ -13,7 +13,7 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
 })
 export class FavoritesComponent implements OnInit {
   @Input() favoriteInfo: any | undefined;
-  favoriteCards: Array<Favorites> = [];
+  favoriteCards: Array<Discount> = [];
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
