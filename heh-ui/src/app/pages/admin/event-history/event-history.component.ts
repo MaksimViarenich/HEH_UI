@@ -23,7 +23,6 @@ export class EventHistoryComponent implements OnInit {
     this.historyService.getHistory().subscribe(
       (data) => {
         this.eventData = data;
-        console.log(this.eventData);
         this.dataSource = new MatTableDataSource(this.eventData);
       },
       (error) => {

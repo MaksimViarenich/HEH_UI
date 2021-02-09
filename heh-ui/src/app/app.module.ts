@@ -18,9 +18,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
-import { InputSearchComponent } from './components/search/input-search/input-search.component';
-import { PageSearchComponent } from './components/search/page-search/page-search.component';
-import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { InputSearchComponent } from './components/page-search/input-search/input-search.component';
+import { PageSearchComponent } from './components/page-search/page-search.component';
+import { LanguageSelectionComponent } from './components/header/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { EditDiscountCardComponent } from './pages/moderator/vendors/add-vendor-modal/edit-discount-card/edit-discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
@@ -40,9 +40,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
-import { ThemesToggleComponent } from './components/themes-toggle/themes-toggle.component';
 import { AgmCoreModule } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
+import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -87,7 +87,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ModelListInputComponent,
     VendorCardComponent,
     AddVendorCardComponent,
-    ThemesToggleComponent,
+    SelectBackgroundComponent,
   ],
   imports: [
     BrowserModule,

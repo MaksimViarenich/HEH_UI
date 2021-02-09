@@ -6,11 +6,17 @@
   table {
     margin: 1.5rem 0 0 0;
     width: 100%;
+    background: transparent;
 
     th.mat-header-cell {
       text-transform: uppercase;
       font-weight: bold;
-      background-color: $color-table-header;
+      background-color: $color-blue-green;
+      color: white;
+    }
+
+    td {
+      @include glass;
     }
   }
 }
