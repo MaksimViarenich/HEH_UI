@@ -39,15 +39,16 @@
   },
   "event-history": {
     "date": "Date",
-    "state": "State",
+    "action": "Action",
     "user": "User",
     "description": "Description"
   },
   "users" : {
-    "admin": "administrator",
-    "user": "user",
-    "moderator": "moderator",
-    "active": "active"
+    "admin": "Administrator",
+    "user": "User",
+    "moderator": "Moderator",
+    "active": "Active",
+    "inactive": "Inactive"
   },
   "vendors": {
     "add": "Add vendor",
@@ -94,7 +95,7 @@
   },
   "discounts": {
     "address": "Address",
-    "availible": "Availible to",
+    "available": "Available to",
     "open": "Open",
     "cancel": "Cancel"
   },

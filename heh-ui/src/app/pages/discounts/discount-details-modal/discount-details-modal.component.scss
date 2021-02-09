@@ -47,6 +47,10 @@
         justify-content: flex-start;
         flex-wrap: wrap;
         margin-bottom: $margin-half;
+
+        .tags {
+          display: flex;
+        }
       }
 
       .discount-detail-description {

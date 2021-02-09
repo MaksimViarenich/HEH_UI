@@ -2,7 +2,7 @@
 
 .user-card {
   width: 100%;
-  background-color: white;
+  @include glass;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -34,21 +34,29 @@
       font-size: 0.825rem;
     }
 
+    .mat-button-toggle-group-appearance-standard,
+    .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+      border-color: $color-blue-green;
+    }
+
     .btn-toggle {
       display: flex;
       margin-right: 1%;
 
       mat-button-toggle {
         font-size: 0.9rem;
-        height: 1.4rem;
-        padding: 0;
         margin: 0;
+        background: transparent;
+      }
+
+      mat-button-toggle.mat-button-toggle-checked {
+        background: $color-blue-green;
+        color: white;
       }
 
       span {
-        padding: 0 0.2rem;
-        height: 1.4rem;
-        line-height: 1.4rem;
+        padding: 0 0.3rem;
+        line-height: 2rem
       }
     }
 

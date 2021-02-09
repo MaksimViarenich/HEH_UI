@@ -1,5 +1,5 @@
-import {Input, Component, OnInit} from '@angular/core';
-import {FiltersService} from '../../pages/discounts/filters.service';
+import { Input, Component } from '@angular/core';
+import { FiltersService } from '../../pages/discounts/filters.service';
 
 @Component({
   selector: 'app-category',
@@ -7,13 +7,13 @@ import {FiltersService} from '../../pages/discounts/filters.service';
   styleUrls: ['./category.component.scss']
 })
 
-export class CategoryComponent implements OnInit {
+export class CategoryComponent {
   @Input() categoryId: string | undefined;
   categoryName: string | undefined;
 
-  constructor(private filtersService: FiltersService) {}
-
-  ngOnInit(): void {
-    this.categoryName = this.filtersService.getCategoryById(this.categoryId || '');
+  constructor(private filtersService: FiltersService) {
+  }
+  getCategoryName(): string {
+    return this.filtersService.getCategoryById(this.categoryId || '');
   }
 }
