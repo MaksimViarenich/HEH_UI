@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {DiscountCard} from '../../../models/discount-card';
+import {Favorites} from '../../../models/favorite';
+import {FavoritesService} from '../favorites.service';
 
 @Component({
   selector: 'app-edit-note-modal',
@@ -10,12 +11,13 @@ import {DiscountCard} from '../../../models/discount-card';
 })
 
 export class EditNoteModalComponent implements OnInit {
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DiscountCard
+  favoriteCards: any;
+  constructor(private favoriteService: FavoritesService,
+              @Inject(MAT_DIALOG_DATA) public data: Favorites
   ) {
+    this.favoriteCards = data;
   }
 
   ngOnInit(): void {
   }
-
 }

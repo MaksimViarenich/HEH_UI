@@ -43,11 +43,25 @@
         display: flex;
         justify-content: flex-start;
         margin-bottom: -0.5rem;
+
+        .discount-detail-promo-code {
+          @include font-bold-discount;
+          margin-top: $margin-half;
+
+          &::before {
+            content: 'Promocode: ';
+            font-weight: 400;
+          }
+        }
       }
 
       .discount-name {
         @include font-bold-discount;
         line-height: 1.5rem;
+
+        :before {
+          content: 'Promocode';
+        }
       }
 
       .discount-note {

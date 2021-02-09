@@ -19,6 +19,6 @@ getFavorites(): Observable<any> {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/api/Favorites`, {headers});
+    return this.http.get(`${BASE_API_URL}/api/favorites`, {headers});
   }
 }
