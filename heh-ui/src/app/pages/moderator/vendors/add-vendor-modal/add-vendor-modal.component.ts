@@ -16,6 +16,14 @@ import { VendorService } from '../vendor.service';
 export class AddVendorModalComponent implements OnInit {
   vendorDetail: any;
 
+  setListData() {
+    if (address) {
+      ListData = this.vendorDetail.street;
+    } else {
+      ListData = ....
+    }
+  }
+
   constructor(
     public vendorService: VendorService,
     public dialog: MatDialog,

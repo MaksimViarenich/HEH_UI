@@ -26,11 +26,13 @@
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
+                                [typeModelListInput]="address"
                                 [listData]="vendorDetail.addresses"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
+                                [typeModelListInput]="phones"
                                 [listData]="vendorDetail.phones"></app-model-list-input>
         </div>
 
