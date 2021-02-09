@@ -1,4 +1,3 @@
-<!--
 <div class="mat-dialog">
   <div mat-dialog-content class="mat-dialog-content">
 
@@ -26,42 +25,53 @@
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendor.addressList"></app-model-list-input>
+                                [listData]="vendorAddresses"
+                                (addData)="onAddAddress($event)"
+                                (deleteData)="onDeleteAddress($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendor.phones"></app-model-list-input>
+                                [listData]="vendorPhones"
+                                (addData)="onAddPhone($event)"
+                                (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.website" matInput>
+              <input [(ngModel)]="links.website" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.instagram" matInput>
+              <input [(ngModel)]="links.instagram" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.vk" matInput>
+              <input [(ngModel)]="links.vkontakte" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
-             <input [(ngModel)]="vendor.facebook" matInput>
+             <input [(ngModel)]="links.facebook" matInput>
           </mat-form-field>
         </div>
 
-        <section>
-          <mat-checkbox [color]="'primary'"
-                        [(ngModel)]="vendor.isReceiveNotificationsAllowed">
-                        {{ 'vendors.add-vendor.permission' | translate }}
-          </mat-checkbox>
-        </section>
+        <div class="add-vendor-group">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'vendors.add-vendor.email' | translate }}</mat-label>
+             <input [(ngModel)]="vendor.email" matInput>
+          </mat-form-field>
+          <section>
+            <mat-checkbox [color]="'primary'"
+                          [(ngModel)]="vendor.mailing">
+                          {{ 'vendors.add-vendor.permission' | translate }}
+            </mat-checkbox>
+          </section>
+        </div>
+
       </div>
 
       <div class="add-vendor-discounts">
@@ -87,4 +97,3 @@
     <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>
--->

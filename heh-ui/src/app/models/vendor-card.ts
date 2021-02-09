@@ -1,6 +1,4 @@
-import {Vendor} from './vendor';
-
 export interface VendorCard {
-  background: string;
-  vendor: Vendor;
+  id: string;
+  name: string;
 }
