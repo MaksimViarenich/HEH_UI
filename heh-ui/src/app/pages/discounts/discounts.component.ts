@@ -30,7 +30,6 @@ export class DiscountsComponent implements OnInit {
     this.discountService.getDiscounts().subscribe(
       (data) => {
         this.discounts = data.value;
-        console.log(data.value);
       },
       (error) => {
         this.toaster.open('Сan not get discounts');
