@@ -1,6 +1,6 @@
+import { Phones } from './../../../../../models/phones';
+import { Address } from './../../../../../models/address';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../../models/address';
 
 @Component({
   selector: 'app-model-list-input',

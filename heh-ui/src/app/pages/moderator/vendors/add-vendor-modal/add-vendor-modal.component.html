@@ -26,36 +26,34 @@
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [typeModelListInput]="address"
                                 [listData]="vendorDetail.addresses"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [typeModelListInput]="phones"
                                 [listData]="vendorDetail.phones"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="vendorDetail.links" matInput>
+              <input [(ngModel)]="website" matInput>
           </mat-form-field>
 
-          <!-- <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.instagram" matInput>
-          </mat-form-field> -->
+              <input [(ngModel)]="inst" matInput>
+          </mat-form-field>
 
-          <!-- <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.vk" matInput>
-          </mat-form-field> -->
+              <input [(ngModel)]="vk" matInput>
+          </mat-form-field>
 
-          <!-- <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
-             <input [(ngModel)]="vendor.facebook" matInput>
-          </mat-form-field> -->
+             <input [(ngModel)]="facebook" matInput>
+          </mat-form-field>
         </div>
 
         <section>
