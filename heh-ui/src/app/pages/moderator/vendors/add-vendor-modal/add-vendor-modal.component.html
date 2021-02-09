@@ -1,4 +1,4 @@
-<!--
+
 <div class="mat-dialog">
   <div mat-dialog-content class="mat-dialog-content">
 
@@ -13,52 +13,52 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
-            <input [(ngModel)]="vendor.name"
+            <input [(ngModel)]="vendorDetail.name"
                    [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
              <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.workingHours" matInput>
+              <input [(ngModel)]="vendorDetail.workingHours" matInput>
           </mat-form-field>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendor.addressList"></app-model-list-input>
+                                [listData]="vendorDetail.addresses"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendor.phones"></app-model-list-input>
+                                [listData]="vendorDetail.phones"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.website" matInput>
+              <input [(ngModel)]="vendorDetail.links" matInput>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
+          <!-- <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
               <input [(ngModel)]="vendor.instagram" matInput>
-          </mat-form-field>
+          </mat-form-field> -->
 
-          <mat-form-field appearance="outline">
+          <!-- <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
               <input [(ngModel)]="vendor.vk" matInput>
-          </mat-form-field>
+          </mat-form-field> -->
 
-          <mat-form-field appearance="outline">
+          <!-- <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
              <input [(ngModel)]="vendor.facebook" matInput>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
 
         <section>
           <mat-checkbox [color]="'primary'"
-                        [(ngModel)]="vendor.isReceiveNotificationsAllowed">
+                        [(ngModel)]="vendorDetail.mailing">
                         {{ 'vendors.add-vendor.permission' | translate }}
           </mat-checkbox>
         </section>
@@ -74,7 +74,7 @@
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
+          <app-edit-discout-card *ngFor="let discount of vendorDetail.discounts"
                                  (click)="openDiscountModal(discount)"
                                  [discountInfo]="discount"></app-edit-discout-card>
         </div>
@@ -87,4 +87,4 @@
     <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>
--->
+

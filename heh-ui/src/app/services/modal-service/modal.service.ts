@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {VendorCard} from '../../models/vendor-card';
 import {AddVendorModalComponent} from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../models/discount';
 import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import {Vendor} from '../../models/vendor';
+import {VendorDetail} from '../../models/vendor-detail';
 import {DiscountCard} from '../../models/discount-card';
 import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,9 @@ export class ModalService {
   constructor(public dialog: MatDialog) {
   }
 
-  openVendorModal(data?: VendorCard): void {
+  openVendorModal(data?: Vendor): void {
     const dialogRef = this.dialog.open(AddVendorModalComponent, {
-      data: data ? data.vendor : {},
+      data: data ? data : {},
       panelClass: 'vendor-details-modal',
       backdropClass: 'vendor-details-modal-backdrop',
       maxWidth: '66rem',
@@ -31,11 +33,11 @@ export class ModalService {
     });
   }
 
-  openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
+  openAddDiscountModal(discount?: Discount, vendor?: VendorDetail): void {
     const dialogRef = this.dialog.open(AddDiscountModalComponent, {
       data: {
         discount: discount || {},
-        addresses: vendor ? vendor.addressList : [],
+        addresses: vendor ? vendor.addresses : [],
         phones: vendor ? vendor.phones : [],
       },
       panelClass: 'add-discount-modal',

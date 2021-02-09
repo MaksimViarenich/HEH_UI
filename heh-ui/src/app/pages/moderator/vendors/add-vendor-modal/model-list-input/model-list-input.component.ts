@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Phones } from 'src/app/models/phones';
+import { Address } from '../../../../../models/address';
 
 @Component({
   selector: 'app-model-list-input',
@@ -9,7 +11,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 export class ModelListInputComponent {
   @Input() label: string;
-  @Input() listData: string[] = [];
+  @Input() listData: string[];
   inputValue = '';
 
   constructor() {

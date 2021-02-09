@@ -4,6 +4,7 @@ import {  Component, OnInit } from '@angular/core';
 import {  MatDialog } from '@angular/material/dialog';
 import {  VendorCard  } from '../../../models/vendor-card';
 import {  ModalService  } from '../../../services/modal-service/modal.service';
+import { VendorDetail } from 'src/app/models/vendor-detail';
 
 @Component({
   selector: 'app-vendors',
@@ -17,18 +18,25 @@ export class VendorsComponent implements OnInit {
               private vendorService: VendorService) {
   }
 
-  vendorList: Array<Vendor> = [];
+  // vendorList: Array<Vendor> = [];
+  vendors: any = [];
+  vendorsDetail: any = [];
 
-  openVendorModal(data?: VendorCard): void {
+  openVendorModall(data?: Vendor): void {
     this.modalService.openVendorModal(data);
   }
 
   ngOnInit(): void {
     this.vendorService.getVendors().subscribe(
       (data) => {
-        this.vendorList = data;
-        console.log(this.vendorList);
+        this.vendors = data;
       }
     );
+
+    // this.vendorService.getVendorsDetail().subscribe(
+    //   (data) => {
+    //     this.vendorsDetail = data;
+    //   }
+    // );
   }
 }

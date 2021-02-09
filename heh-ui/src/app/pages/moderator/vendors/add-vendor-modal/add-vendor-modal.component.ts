@@ -4,6 +4,8 @@ import {Vendor} from '../../../../models/vendor';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../../../models/discount';
 import {ModalService} from '../../../../services/modal-service/modal.service';
+import { VendorDetail } from 'src/app/models/vendor-detail';
+import { VendorService } from '../vendor.service';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -12,11 +14,16 @@ import {ModalService} from '../../../../services/modal-service/modal.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AddVendorModalComponent implements OnInit {
+  vendorDetail: any;
+
   constructor(
+    public vendorService: VendorService,
     public dialog: MatDialog,
     private modalService: ModalService,
-    @Inject(MAT_DIALOG_DATA) public vendor: Vendor
+    @Inject(MAT_DIALOG_DATA) public vendorForId: Vendor
+    // VendorDetail
   ) {
+    this.vendorDetail = {};
   }
 
   vendorName = new FormControl();
@@ -25,9 +32,16 @@ export class AddVendorModalComponent implements OnInit {
   phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount): void {
-    this.modalService.openAddDiscountModal(discount, this.vendor);
+    this.modalService.openAddDiscountModal(discount, this.vendorDetail);
   }
 
   ngOnInit(): void {
+    if (this.vendorForId.id) {
+      this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
+        (data) => {
+          this.vendorDetail = data;
+        }
+      );
+    }
   }
 }
