@@ -12,6 +12,8 @@ import {Option} from '../../../../models/option';
 export class ListInputComponent {
   @Input() label: string;
   @Input() options: Option[];
+  @Input() isDisabled?: boolean;
+
   selectable = true;
   removable = true;
   addOnBlur = true;

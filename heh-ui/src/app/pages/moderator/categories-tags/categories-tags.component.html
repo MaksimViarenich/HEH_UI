@@ -4,7 +4,8 @@
 
     <div class="category-and-tag-content">
       <app-list-input [label]="categoryOptions.label | translate"
-                      [options]="categoryOptions.options"></app-list-input>
+                      [options]="categoryOptions.options"
+                      [isDisabled]=false></app-list-input>
     </div>
   </div>
 
@@ -13,20 +14,20 @@
 
     <mat-form-field appearance="outline" class="select-category">
       <mat-label>{{categoryOptions.label | translate }}</mat-label>
-      <mat-select>
-        <mat-option></mat-option>
+      <mat-select [(ngModel)]="activeCategoryId"
+                  (ngModelChange)="showTagsList()">
+        <mat-option>{{ 'search.select' | translate }}</mat-option>
         <mat-option [value]="option.id"
                     *ngFor="let option of categoryOptions.options">
           {{ option.viewValue }}
         </mat-option>
-        <mat-option *ngFor="let option of categoryOptions.options"
-                    [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="category-and-tag-content">
       <app-list-input [label]="tagsOptions.label | translate"
-                      [options]="tagsOptions.options"></app-list-input>
+                      [options]="tagsOptions.options"
+                      [isDisabled]="isDisabled"></app-list-input>
     </div>
   </div>
 </div>
