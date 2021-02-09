@@ -21,5 +21,10 @@
     vertical-align: top;
     float: right;
     width: 7rem;
+
+    &:disabled {
+      background-color: $color-white;
+      @include glass;
+    }
   }
 }

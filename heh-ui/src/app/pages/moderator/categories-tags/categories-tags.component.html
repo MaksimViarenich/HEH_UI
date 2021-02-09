@@ -3,8 +3,8 @@
     <div class="category-and-tag-title">{{ 'categories-and-tags.categories' | translate }}</div>
 
     <div class="category-and-tag-content">
-      <app-list-input [label]="categoryOptions.label | translate"
-                      [options]="categoryOptions.options"
+      <app-list-input [label]="'categories-and-tags.category' | translate"
+                      [options]="categoriesAll"
                       [isDisabled]=false></app-list-input>
     </div>
   </div>
@@ -13,20 +13,20 @@
     <div class="category-and-tag-title">{{ 'categories-and-tags.tags' | translate }}</div>
 
     <mat-form-field appearance="outline" class="select-category">
-      <mat-label>{{categoryOptions.label | translate }}</mat-label>
+      <mat-label>{{'categories-and-tags.category' | translate }}</mat-label>
       <mat-select [(ngModel)]="activeCategoryId"
                   (ngModelChange)="showTagsList()">
         <mat-option>{{ 'search.select' | translate }}</mat-option>
         <mat-option [value]="option.id"
-                    *ngFor="let option of categoryOptions.options">
-          {{ option.viewValue }}
+                    *ngFor="let option of categoriesAll">
+          {{ option.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="category-and-tag-content">
-      <app-list-input [label]="tagsOptions.label | translate"
-                      [options]="tagsOptions.options"
+      <app-list-input [label]="'categories-and-tags.tag' | translate"
+                      [options]="tagsAll"
                       [isDisabled]="isDisabled"></app-list-input>
     </div>
   </div>

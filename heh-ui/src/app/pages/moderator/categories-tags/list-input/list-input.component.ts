@@ -1,7 +1,6 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component, Input} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {Option} from '../../../../models/option';
 
 @Component({
   selector: 'app-list-input',
@@ -11,7 +10,7 @@ import {Option} from '../../../../models/option';
 
 export class ListInputComponent {
   @Input() label: string;
-  @Input() options: Option[];
+  @Input() options: any;
   @Input() isDisabled?: boolean;
 
   selectable = true;
@@ -30,7 +29,7 @@ export class ListInputComponent {
 
     if ((value || '').trim()) {
       this.options.push({
-        viewValue: value.trim(),
+        name: value.trim(),
         id: value.trim(),
       });
     }
@@ -40,7 +39,7 @@ export class ListInputComponent {
     }
   }
 
-  remove(item: Option): void {
+  remove(item: any): void {
     const index = this.options.indexOf(item);
 
     if (index >= 0) {
