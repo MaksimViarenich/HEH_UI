@@ -10,10 +10,8 @@ export class FavoritesService {
 
   constructor(public http: HttpClient) { }
 
-getFavorites(): Observable<any> {
-
+  getFavorites(): Observable<any> {
     const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
 
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
