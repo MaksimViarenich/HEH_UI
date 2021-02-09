@@ -36,9 +36,14 @@
       box-shadow: $shadow-violet;
       border-radius: $border-radius-small;
 
-      .discount-detail-service {
+      .discount-detail-promo-code {
         @include font-bold-discount;
         margin-bottom: $margin-half;
+
+        &::before {
+          content: 'Promocode: ';
+          font-weight: 400;
+        }
       }
 
       .category-and-tags {
