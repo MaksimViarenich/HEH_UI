@@ -12,7 +12,7 @@
   <div class="category-and-tag-wrapper">
     <div class="category-and-tag-title">{{ 'categories-and-tags.tags' | translate }}</div>
 
-    <mat-form-field appearance="outline" class="select-category">
+    <mat-form-field appearance="fill" class="select-category">
       <mat-label>{{'categories-and-tags.category' | translate }}</mat-label>
       <mat-select [(ngModel)]="activeCategoryId"
                   (ngModelChange)="showTagsList()">
