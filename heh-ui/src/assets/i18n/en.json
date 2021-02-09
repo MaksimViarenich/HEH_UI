@@ -44,11 +44,11 @@
     "description": "Description"
   },
   "users" : {
-    "admin": "administrator",
-    "user": "user",
-    "moderator": "moderator",
-    "active": "active",
-    "inactive": "inactive"
+    "admin": "Administrator",
+    "user": "User",
+    "moderator": "Moderator",
+    "active": "Active",
+    "inactive": "Inactive"
   },
   "vendors": {
     "add": "Add vendor",

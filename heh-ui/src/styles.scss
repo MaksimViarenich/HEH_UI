@@ -28,18 +28,19 @@ $padding-category-tag: 0 0.3rem;
 $padding-last: 1.5rem;
 
 @mixin glass {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
 }
 
 @mixin category-tags {
-  min-width: fit-content;
-  display: flex;
   align-items: center;
-  height: 1.5rem;
+  line-height: 1.5rem;
   border-radius: 0.3rem;
   padding: $padding-category-tag;
   margin: $margin-category-tag;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @mixin img-profile-language {
@@ -97,8 +98,10 @@ $padding-last: 1.5rem;
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   color: $color-black;
+  background-blend-mode: screen;
 }
 
 .mat-form-field-underline {
@@ -120,6 +123,7 @@ body {
       background-color: $color-red;
       color: $color-white;
       height: max-content;
+
       .mat-simple-snackbar-action button {
         color: $color-white;
       }
@@ -150,3 +154,38 @@ body {
   }
 }
 
+//changes for default mat-tab behaviour
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none;
+}
+
+.mat-tab-links .tab {
+  min-width: 1.5rem;
+}
+
+.mat-menu-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-tab-links .tab,
+.mat-tab-link {
+  color: $color-black;
+  opacity: 1;
+}
+
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background: $color-blue-green;
+}
+
+.mat-menu-panel .mat-menu-content {
+  padding: 0;
+}
+
+.mat-select-panel {
+  @include glass;
+}
+
+.mat-calendar-body-selected {
+  background-color: $color-blue-green;
+}

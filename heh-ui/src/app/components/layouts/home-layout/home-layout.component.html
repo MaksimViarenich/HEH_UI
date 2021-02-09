@@ -1,11 +1,8 @@
-<div class="background-image"
-  [ngStyle]="{'background-image': getBackgroundImage() }">
-  <app-header></app-header>
-    <div class="container">
-      <div class="title">
-        {{ getLocalizationKey() | translate }}
-    </div>
-    <router-outlet></router-outlet>
+<app-header></app-header>
+<div class="container">
+  <div class="title">
+    {{ getLocalizationKey() | translate }}
   </div>
+  <router-outlet></router-outlet>
 </div>
 

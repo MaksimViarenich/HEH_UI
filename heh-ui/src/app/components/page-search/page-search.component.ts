@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {FiltersService} from '../../../pages/discounts/filters.service';
+import {FiltersService} from '../../pages/discounts/filters.service';
 import {FormControl} from '@angular/forms';
 
 @Component({
