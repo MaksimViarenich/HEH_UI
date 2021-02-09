@@ -1,7 +1,7 @@
 import { Address } from './address';
 import { Tag } from './tag';
 import { Category } from './category';
-import { Vendor } from './vendor-card';
+import { Vendor } from './vendor';
 
 export interface UserInfo {
   id: string;
