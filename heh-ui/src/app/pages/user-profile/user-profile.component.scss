@@ -9,6 +9,8 @@
 .profile-wrapper {
   display: flex;
   flex-direction: row;
+  width: 60%;
+  margin: auto;
   @include glass;
   border-radius: $border-radius-small;
   box-shadow: $shadow-violet;
@@ -25,6 +27,7 @@
     margin-top: 3.2rem;
     margin-left: 1.6rem;
     padding-left: 1rem;
+    width: 100%;
 
     .profile-info {
       margin-bottom: 0.5rem;
@@ -85,12 +88,19 @@
     }
 
     mat-form-field {
-      width: 24rem;
+      width: 90%;
       padding: 0.5rem 0.5rem 0 0.5rem;
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(10px);
       box-shadow: $shadow-gray;
       border-radius: 4px;
+
+      .mat-chip {
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        background: rgba(240, 240, 240, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
     }
   }
 }
