@@ -16,12 +16,8 @@ export class VendorCardComponent implements OnInit {
 
   deleteVendor(): any {
     this.deleteVendorCard.emit(this.data.id);
-    console.log('delete');
 
-    this.vendorService.deleteVendor(this.data.id).subscribe(
-      data => {
-        console.log(data);
-    });
+    this.vendorService.deleteVendor(this.data.id).subscribe();
   }
 
   ngOnInit(): void {
