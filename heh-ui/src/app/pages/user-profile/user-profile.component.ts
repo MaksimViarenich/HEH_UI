@@ -74,12 +74,6 @@ export class UserProfileComponent implements OnInit {
     this.tagCtrl.setValue(null);
   }
 
-  disableCheckbox(): void {
-    this.newslettersChecked = !this.newslettersChecked;
-
-    this.disabled = this.newslettersChecked ? false : true;
-  }
-
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

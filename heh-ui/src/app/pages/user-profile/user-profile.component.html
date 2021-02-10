@@ -16,14 +16,14 @@
     <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'"
                        [(ngModel)]="newslettersChecked"
-                       (click)="disableCheckbox()"
+                       (click)="newslettersChecked = ! newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.newsletters' | translate }}
       </mat-list-option>
 
       <mat-list-option *ngFor="let subscription of typesOfSubscription"
                         [color]="'primary'"
-                        [disabled]="disabled">
+                        [disabled]="!newslettersChecked">
         {{ subscription | translate }}
       </mat-list-option>
     </mat-selection-list>
