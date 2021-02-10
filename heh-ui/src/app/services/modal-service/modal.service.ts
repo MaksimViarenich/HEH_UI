@@ -47,7 +47,7 @@ export class ModalService {
     });
   }
 
-    openDiscountDetailsModal(discount: Discount): void {
+  openDiscountDetailsModal(discount: Discount): void {
     const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
       data: discount,
       maxWidth: '33rem',

@@ -16,8 +16,7 @@
     .favorite-vendor {
       box-sizing: border-box;
       min-width: 14rem;
-      padding: 0.5rem;
-      @include glass;
+      padding: 1rem;
 
       .card-title {
         max-width: fit-content;

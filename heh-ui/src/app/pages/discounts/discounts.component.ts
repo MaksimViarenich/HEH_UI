@@ -2,9 +2,9 @@ import { DiscountsService } from './discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
-import { ModalService } from '../../services/modal-service/modal.service';
 import { FiltersService } from './filters.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
 
 @Component({
   selector: 'app-discounts',
@@ -16,17 +16,11 @@ export class DiscountsComponent implements OnInit {
   discounts: Array<Discount> = [];
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService,
-              private filtersService: FiltersService,
               private discountService: DiscountsService,
               private toaster: ToasterService) {
   }
 
-  openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount);
-  }
-
-  ngOnInit(): void {
+  getDiscounts(): void {
     this.discountService.getDiscounts().subscribe(
       (data) => {
         this.discounts = data.value;
@@ -35,5 +29,24 @@ export class DiscountsComponent implements OnInit {
         this.toaster.open('Сan not get discounts');
       }
     );
+  }
+
+  openDiscountDetails(discount: Discount): void {
+    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
+      data: discount,
+      maxWidth: '33rem',
+      panelClass: 'discount-details-modal',
+      backdropClass: 'discount-details-modal-backdrop',
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getDiscounts();
+    });
+  }
+
+  ngOnInit(): void {
+    this.getDiscounts();
   }
 }
