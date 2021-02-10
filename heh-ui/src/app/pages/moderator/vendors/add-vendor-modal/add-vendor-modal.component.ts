@@ -66,13 +66,14 @@ export class AddVendorModalComponent implements OnInit {
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
+
     if (this.vendor.id) {
       this.vendorService.updateVendor(this.vendor).subscribe(
         (data) => {
-          this.toaster.open('Vendor was updated', 'success');
+          this.toaster.open('There is no possibility to add a new vendor', 'success');
         },
         (error) => {
-          this.toaster.open('There is no possibility to add a new vendor');
+          this.toaster.open('Vendor was updated');
         }
       );
     } else {

@@ -34,14 +34,14 @@ export class VendorService {
   }
 
   addVendor(newVendor: string): Observable<any> {
-
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
+
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
-    console.log(newVendor);
+
     return this.http.post(`${BASE_API_URL}/api/Vendor`, newVendor, {headers});
   }
 
@@ -49,6 +49,7 @@ export class VendorService {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
+
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
