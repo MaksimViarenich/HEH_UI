@@ -66,22 +66,22 @@ export class AddVendorModalComponent implements OnInit {
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
-    if (this.vendor.id){
-/*      this.vendorService.updateVendor(JSON.stringify(this.vendor)).subscribe(
+    if (this.vendor.id) {
+      this.vendorService.updateVendor(this.vendor).subscribe(
         (data) => {
-          this.toaster.open('New vendor has been added', 'success');
+          this.toaster.open('Vendor was updated', 'success');
         },
         (error) => {
           this.toaster.open('There is no possibility to add a new vendor');
         }
-      );*/
+      );
     } else {
-      this.vendorService.addVendor(JSON.stringify(this.vendor)).subscribe(
+      this.vendorService.addVendor(this.vendor).subscribe(
         (data) => {
           this.toaster.open('New vendor has been added', 'success');
         },
         (error) => {
-          this.toaster.open('There is no possibility to add a new vendor');
+          this.toaster.open('Update issue was occurred');
         }
       );
     }
@@ -106,22 +106,6 @@ export class AddVendorModalComponent implements OnInit {
   onDeleteAddress(idx: number): void {
     this.vendor.addresses.splice(idx, 1);
   }
-
-  // convertLinks(obj: object): any{
-  //   const arrayOfObj = Object.entries(obj).map((e) => ( { type: e[0], url: e[1] } ));
-  //   console.log(arrayOfObj);
-  //   return arrayOfObj;
-  // }
-
-  // submitVendor(): void {
-  //   this.vendorService.updateVendor(this.vendor).subscribe(
-  //     (data) => {
-  //       this.toaster.open('Vendor was updated', 'success');
-  //     },
-  //     (error) => {
-  //       this.toaster.open('Update issue was occurred');
-  //     });
-  // }
 
   ngOnInit(): void {
     if (this.vendorForId.id) {
