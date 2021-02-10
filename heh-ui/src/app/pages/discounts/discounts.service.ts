@@ -27,7 +27,7 @@ getDiscounts(): Observable<any> {
 
     let headers = new HttpHeaders();
 
-    headers = headers.append('accept', '*/*');
+    headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.get(`${BASE_API_URL}/odata/Discount(${id})`, {headers});

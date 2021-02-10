@@ -1,16 +1,16 @@
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../../global';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class ProfileService {
   constructor(public http: HttpClient) {
   }
 
-  getUsers(): Observable<any> {
+  getUser(): Observable<any> {
 
     const token = localStorage.getItem('isAuth');
 
@@ -19,6 +19,6 @@ export class UsersService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/api/user`, {headers});
+    return this.http.get(`${BASE_API_URL}/api/user/profile`, {headers});
   }
 }

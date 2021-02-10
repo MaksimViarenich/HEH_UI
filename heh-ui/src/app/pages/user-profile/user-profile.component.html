@@ -1,18 +1,18 @@
 <div class="profile-wrapper">
 
   <div class="profile-photo">
-    <img src='{{user.userphoto}}' alt='Profile photo' title='Profile photo'/>
+    <img src='{{user?.img}}' alt='Profile photo' title='Profile photo'/>
   </div>
 
   <div class="profile-content">
     <div class="profile-info">
-      <div class="profile-username">{{user.username}}</div>
+      <div class="profile-username">{{user.name}}</div>
       <div class="profile-location">
-        <div>{{user.location}}</div>
         <div>{{user.address}}</div>
+        <div>{{user.address.street}}</div>
       </div>
     </div>
-
+<!--Вот до сюда нормально дальше нужно разбираться-->
     <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'" *ngFor="let subscription of typesOfSubscription">
         {{ subscription | translate }}

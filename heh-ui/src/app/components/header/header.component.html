@@ -14,42 +14,12 @@
            #rla="routerLinkActive"
            [active]="rla.isActive">{{ tab.localizationKey | translate }}</a>
       </nav>
-
-      <div class='person'>
-        <div class='person-info'>
-          <a class='person-name'
-             href='/profile'
-             (click)='goToPerson()'>Michael Browk</a>
-          <a class='person-place'
-             href='#'>Belarus, Minsk</a>
-        </div>
-
-        <div class='person-pic'>
-          <img class='profile-icon'
-               src='{{user.userphoto}}'
-               alt='profile-icon'
-               mat-button
-               [matMenuTriggerFor]='beforeMenuProfile'>
-          <mat-menu class='profile-menu'
-                    #beforeMenuProfile='matMenu'
-                    xPosition='before'>
-            <button class='btn-person btn-primary'
-                    (click)='goToPerson()'
-                    mat-menu-item>
-              <img src='../../../assets/images/header/header_menu_profile.svg'
-                   alt='btn-person'>{{ 'header.profile' | translate }}</button>
-            <button class='btn-person btn-primary'
-                    (click)='logout()'
-                    mat-menu-item>
-              <img src='../../../assets/images/header/header_menu_logout.svg'
-                   alt='btn-person'>{{ 'header.logout' | translate }}</button>
-          </mat-menu>
-
-          <app-language-selection></app-language-selection>
-
-          <app-select-background></app-select-background>
-        </div>
+      <div class="person">
+        <app-profile></app-profile>
+        <app-language-selection></app-language-selection>
+        <app-select-background></app-select-background>
       </div>
+
     </nav>
   </div>
 </header>

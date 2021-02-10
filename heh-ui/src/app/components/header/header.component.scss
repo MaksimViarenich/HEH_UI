@@ -38,52 +38,5 @@
     display: flex;
     align-items: center;
     margin-left: 2rem;
-
-    .person-info a {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: $color-black;
-
-      .person-name, .person-place {
-        font-size: 1.6rem;
-        font-weight: normal;
-      }
-    }
-
-    .person-pic {
-      display: flex;
-
-      img {
-        @include img-profile-language;
-        margin-right: 0.5rem;
-      }
-
-      .profile-menu {
-        margin-top: .2rem;
-      }
-    }
-
-    .profile-icon {
-      margin-left: 1.5rem;
-      border-radius: 50%;
-    }
-
-    .profile-icon:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-  }
-}
-
-button.mat-menu-item {
-  display: flex;
-  align-items: center;
-  font-size: .8rem;
-
-  img {
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-right: .5rem;
   }
 }
