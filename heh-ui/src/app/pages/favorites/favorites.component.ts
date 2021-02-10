@@ -1,7 +1,6 @@
 import { FavoritesService } from './favorites.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Discount } from '../../models/discount';
-
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 
 @Component({

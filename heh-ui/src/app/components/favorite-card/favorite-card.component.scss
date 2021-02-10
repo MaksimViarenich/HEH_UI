@@ -5,10 +5,10 @@
   display: flex;
   justify-content: space-between;
   height: 5.7rem;
-  background: rgba(255, 255, 255, 0.7);
   box-shadow: $shadow-gray;
   border-radius: 5px;
   margin-bottom: 1rem;
+  @include glass;
 
   div {
     display: flex;
