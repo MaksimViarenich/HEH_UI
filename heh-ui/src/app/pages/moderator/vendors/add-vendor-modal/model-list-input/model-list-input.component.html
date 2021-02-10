@@ -1,11 +1,13 @@
 <div class="model-list-input-container">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline"
+                  *ngIf="type !== 'address'">
     <mat-label>{{label}}</mat-label>
     <input matInput (keydown.enter)="onAddData()"
            [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
     <mat-icon matSuffix (click)="onAddData()">add</mat-icon>
   </mat-form-field>
+  <button *ngIf="type === 'address'" mat-button (click)="openAddAddress()">add address</button>
 
   <div class="text-wrapper"
        *ngFor="let value of listData; let idx = index">

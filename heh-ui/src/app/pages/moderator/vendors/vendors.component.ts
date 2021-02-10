@@ -17,7 +17,6 @@ export class VendorsComponent implements OnInit {
               private vendorService: VendorService) {
   }
 
-  // vendorList: Array<Vendor> = [];
   vendors: any = [];
   vendorsDetail: any = [];
 

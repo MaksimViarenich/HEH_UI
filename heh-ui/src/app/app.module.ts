@@ -45,6 +45,7 @@ import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-car
 import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './role-guard/role.guard';
+import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -90,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     VendorCardComponent,
     AddVendorCardComponent,
     SelectBackgroundComponent,
+    AddAddressComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import {cloneDeep} from 'lodash';
 })
 export class FiltersService {
   filterOptions: any;
+  countriesCities: any;
 
   constructor(private http: HttpClient) {
     this.filterOptions = this.getDefaultFilters();
@@ -54,6 +55,10 @@ export class FiltersService {
   }
 
   loadFilters(): any {
+    this.getLocations().subscribe(data => {
+      this.countriesCities = data;
+    });
+
     this.filterOptions = this.getDefaultFilters();
 
     const promises = [this.getLocations(), this.getCategoriesTags(), this.getVendors()];

@@ -40,7 +40,6 @@ export class PageSearchComponent implements OnInit {
 
   changeTagsList(): void {
     this.filtersOptions.tags = [];
-
     if (this.activeFilters.categories.length) {
       this.filtersOptions.tags = this.filtersService.getFilters().tags.filter((tag: any) => {
         return this.activeFilters.categories.indexOf(tag.categoryId) !== -1;

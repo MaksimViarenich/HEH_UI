@@ -27,7 +27,8 @@
           <app-model-list-input [label]="addressTitle | translate"
                                 [listData]="vendorAddresses"
                                 (addData)="onAddAddress($event)"
-                                (deleteData)="onDeleteAddress($event)"></app-model-list-input>
+                                (deleteData)="onDeleteAddress($event)"
+                                [type]="'address'"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">

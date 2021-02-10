@@ -63,10 +63,14 @@ export class AddVendorModalComponent implements OnInit {
     this.vendor.phones.splice(idx, 1);
   }
 
-  onAddAddress(street: string): void {
+  onAddAddress(address: any): void {
     this.vendor.addresses.push({
-      street
+      id: '',
+      countryId: 'countryId',
+      cityId: 'cityId',
+      street: address.address.street,
     });
+    console.log(this.vendor.addresses);
   }
 
   onDeleteAddress(idx: number): void {
