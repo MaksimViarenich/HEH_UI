@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../global';
@@ -28,5 +28,35 @@ export class FavoritesService {
     headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.delete(`${BASE_API_URL}/api/favorites/${id}`, {headers});
+  }
+
+  updateFavoriteNote(discountId: string, note: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+    let headers = new HttpHeaders();
+
+    const body = {
+      discountId,
+      note
+    };
+
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${BASE_API_URL}/api/favorites`, body, {headers});
+  }
+
+  addToFavorite(discountId: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+    let headers = new HttpHeaders();
+
+    const body = {
+      discountId,
+      note: ''
+    };
+
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.post(`${BASE_API_URL}/api/favorites`, body, {headers});
   }
 }

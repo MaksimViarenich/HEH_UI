@@ -16,6 +16,10 @@ export class FavoritesComponent implements OnInit {
               private toaster: ToasterService) {
   }
 
+  deleteFavorite(id: string): any {
+    this.favoriteCards = this.favoriteCards.filter(item => item.id !== id);
+  }
+
   ngOnInit(): void {
     this.favoritesService.getFavorites().subscribe(
       (data) => {

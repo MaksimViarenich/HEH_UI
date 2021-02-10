@@ -10,4 +10,8 @@ export class DiscountCardComponent{
   @Input() discount: any | undefined;
 
   constructor() {}
+
+  hello(): void {
+    console.log('hello');
+  }
 }

@@ -2,7 +2,8 @@
   <div class="card-header">
     <div class="card-title">{{discount.vendorName}}</div>
     <app-btn-favorite [isFavorite]="discount.isFavorite"
-                      class="btn" ></app-btn-favorite>
+                      [id]="discount.id"
+                      class="btn"></app-btn-favorite>
   </div>
 
   <div class="card-content">
