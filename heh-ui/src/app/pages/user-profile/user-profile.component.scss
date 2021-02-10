@@ -9,16 +9,22 @@
 .profile-wrapper {
   display: flex;
   flex-direction: row;
+  @include glass;
+  border-radius: $border-radius-small;
+  box-shadow: $shadow-violet;
+  padding: 1rem 1rem 2rem 1rem;
 
   img {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+    padding: 0.5rem;
   }
 
   .profile-content {
     margin-top: 3.2rem;
     margin-left: 1.6rem;
+    padding-left: 1rem;
 
     .profile-info {
       margin-bottom: 0.5rem;
@@ -61,6 +67,11 @@
       width: 13rem;
       padding: 0;
       margin-bottom: 0.8rem;
+      outline: none;
+
+      mat-list-option {
+        background: none;
+      }
 
       mat-list-option:not(:first-child) {
         margin-left: 0.8rem;
@@ -76,7 +87,8 @@
     mat-form-field {
       width: 24rem;
       padding: 0.5rem 0.5rem 0 0.5rem;
-      @include glass;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
       box-shadow: $shadow-gray;
       border-radius: 4px;
     }

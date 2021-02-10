@@ -15,6 +15,8 @@ import {map, startWith} from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent implements OnInit {
+  newslettersChecked = false;
+  disabled = true;
 
   user: NotificationPreferences = {
     username: 'Michael Browk',
@@ -23,7 +25,7 @@ export class UserProfileComponent implements OnInit {
     address: 'Naturalistov, 3',
   };
 
-  typesOfSubscription: string[] = ['profile.newsletters', 'profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
+  typesOfSubscription: string[] = ['profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
   visible = true;
   selectable = true;
   removable = true;
@@ -70,6 +72,12 @@ export class UserProfileComponent implements OnInit {
     // @ts-ignore
     this.tagInput.nativeElement.id = '';
     this.tagCtrl.setValue(null);
+  }
+
+  disableCheckbox(): void {
+    this.newslettersChecked = !this.newslettersChecked;
+
+    this.disabled = this.newslettersChecked ? false : true;
   }
 
   private _filter(value: string): string[] {
