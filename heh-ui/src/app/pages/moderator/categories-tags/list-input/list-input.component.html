@@ -1,5 +1,5 @@
 <div class="list-input-container">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="fill">
     <mat-label>{{label}}</mat-label>
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -9,13 +9,15 @@
     </mat-chip-list>
   </mat-form-field>
 
-  <button mat-raised-button color="primary">{{ 'categories-and-tags.add' | translate }}</button>
+  <button mat-raised-button
+          color="primary"
+          [disabled]="isDisabled">{{ 'categories-and-tags.add' | translate }}</button>
 </div>
 
 <div class="chips-container">
   <mat-chip *ngFor="let item of options" [selectable]="selectable"
             [removable]="removable" (removed)="remove(item)">
-    {{item.viewValue}}
+    {{item.name}}
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
 </div>

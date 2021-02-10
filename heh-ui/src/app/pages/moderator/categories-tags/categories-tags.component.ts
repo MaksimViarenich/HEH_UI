@@ -1,5 +1,9 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {SelectOption} from '../../../models/select-option';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ToasterService} from '../../../services/toaster-service/toaster.service';
+import {FiltersService} from '../../discounts/filters.service';
+import {Category} from '../../../models/category';
+import {Tag} from '../../../models/tag';
+import {cloneDeep} from 'lodash';
 
 @Component({
   selector: 'app-categories-tags',
@@ -8,30 +12,51 @@ import {SelectOption} from '../../../models/select-option';
   encapsulation: ViewEncapsulation.None
 })
 
-export class CategoriesTagsComponent {
-  categoryOptions: SelectOption;
-  tagsOptions: SelectOption;
+export class CategoriesTagsComponent implements OnInit {
+  categoriesAll: Category[] = [];
+  tagsAll: Tag[] = [];
+  activeCategoryId: any;
+  tagsAllCopy: any;
+  isDisabled: boolean;
 
-  constructor() {
-    this.categoryOptions = {
-      label: 'categories-and-tags.category',
-      options: [
-        {id: '1', viewValue: 'Food'},
-        {id: '2', viewValue: 'Devices'},
-        {id: '3', viewValue: 'Medicine'},
-        {id: '4', viewValue: 'Beauty'},
-        {id: '5', viewValue: 'Sport'}
-      ]
-    };
+  constructor(private filterService: FiltersService,
+              private toaster: ToasterService) {
+    this.isDisabled = true;
+  }
 
-    this.tagsOptions = {
-      label: 'categories-and-tags.tag',
-      options: [
-        {id: '1', viewValue: 'Sushi'},
-        {id: '2', viewValue: 'Pizza'},
-        {id: '3', viewValue: 'Coffe'},
-        {id: '4', viewValue: 'China food'}
-      ]
-    };
+  ngOnInit(): void {
+    this.filterService.getCategoriesTags().subscribe(
+      (data) => {
+        this.categoriesAll = data;
+        data.forEach((category: any) => {
+          category.tags.forEach((tag: any) => {
+            this.tagsAll.push({
+              categoryId: tag.categoryId,
+              name: tag.name,
+              id: tag.id
+            });
+            this.tagsAllCopy = cloneDeep(this.tagsAll);
+          });
+        });
+      },
+      (error) => {
+        this.toaster.open('Сan not get categories and tags');
+      }
+    );
+  }
+
+  showTagsList(): void {
+    if (this.activeCategoryId) {
+      this.tagsAll = [];
+      this.isDisabled = false;
+      this.categoriesAll.forEach((category: any) => {
+        if (this.activeCategoryId === category.id) {
+          this.tagsAll = category.tags;
+        }
+      });
+    } else {
+      this.isDisabled = true;
+      this.tagsAll = cloneDeep(this.tagsAllCopy);
+    }
   }
 }

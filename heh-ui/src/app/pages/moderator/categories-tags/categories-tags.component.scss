@@ -33,6 +33,11 @@
     }
   }
 
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    @include glass;
+    border-radius: $border-radius-small;
+  }
+
   .category-and-tag-wrapper:first-child {
     margin-right: 1rem;
   }
