@@ -1,7 +1,6 @@
 import { VendorService } from './vendor.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { VendorCard } from '../../../models/vendor-card';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 
@@ -22,14 +21,23 @@ export class VendorsComponent implements OnInit {
   vendorsDetail: any = [];
 
   openVendorModall(data?: Vendor): void {
-    this.modalService.openVendorModal(data);
+    const dialogRef = this.modalService.openVendorModal(data);
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.getAllVendors();
+    });
   }
 
-  ngOnInit(): void {
+  getAllVendors(): void {
     this.vendorService.getVendors().subscribe(
       (data) => {
         this.vendors = data;
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getAllVendors();
   }
 }

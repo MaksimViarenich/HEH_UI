@@ -1,7 +1,7 @@
 
-import { BASE_API_URL } from './../../../global';
+import { BASE_API_URL } from '../../../global';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -32,5 +32,16 @@ export class VendorService {
     headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.get(`${BASE_API_URL}/api/vendor/${vendorId}`, {headers});
+  }
+
+  updateVendor(updatedVendor: any): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+    headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
+
+    return this.http.put(`${BASE_API_URL}/api/Vendor`, updatedVendor, {headers});
   }
 }

@@ -7,6 +7,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { Phones } from 'src/app/models/phones';
 import { Address } from '../../../../models/address';
+import {ToasterService} from '../../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -32,9 +33,15 @@ export class AddVendorModalComponent implements OnInit {
     public vendorService: VendorService,
     public dialog: MatDialog,
     private modalService: ModalService,
+    private toaster: ToasterService,
     @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
   ) {
-    this.vendor = {};
+    this.vendor = {
+      phones: [],
+      links: [],
+      addresses: [],
+      discounts: [],
+    };
     this.links = {
       website: '',
       instagram: '',
@@ -72,6 +79,22 @@ export class AddVendorModalComponent implements OnInit {
   onDeleteAddress(idx: number): void {
     this.vendor.addresses.splice(idx, 1);
   }
+
+  // convertLinks(obj: object): any{
+  //   const arrayOfObj = Object.entries(obj).map((e) => ( { type: e[0], url: e[1] } ));
+  //   console.log(arrayOfObj);
+  //   return arrayOfObj;
+  // }
+
+  // submitVendor(): void {
+  //   this.vendorService.updateVendor(this.vendor).subscribe(
+  //     (data) => {
+  //       this.toaster.open('Vendor was updated', 'success');
+  //     },
+  //     (error) => {
+  //       this.toaster.open('Update issue was occurred');
+  //     });
+  // }
 
   ngOnInit(): void {
     if (this.vendorForId.id) {
