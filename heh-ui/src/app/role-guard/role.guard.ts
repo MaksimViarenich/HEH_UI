@@ -28,10 +28,6 @@ export class RoleGuard implements CanActivate {
     const roles = this.roleService.getRoles();
 
     if (roles.includes(route.data.role)) {
-      console.log(roles);
-      console.log(route.data.role);
-      console.log(roles.includes(route.data.role));
-
       return true;
     } else {
       this.router.navigate(['/discounts']);
