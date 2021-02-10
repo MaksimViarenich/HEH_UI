@@ -17,7 +17,7 @@ export class ModalService {
   }
 
   openVendorModal(data?: Vendor): any {
-      return this.dialog.open(AddVendorModalComponent, {
+    return this.dialog.open(AddVendorModalComponent, {
       data: data ? data : {},
       panelClass: 'vendor-details-modal',
       backdropClass: 'vendor-details-modal-backdrop',

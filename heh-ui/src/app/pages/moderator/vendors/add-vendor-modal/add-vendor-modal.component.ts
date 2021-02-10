@@ -107,11 +107,28 @@ export class AddVendorModalComponent implements OnInit {
     this.vendor.addresses.splice(idx, 1);
   }
 
+  // convertLinks(obj: object): any{
+  //   const arrayOfObj = Object.entries(obj).map((e) => ( { type: e[0], url: e[1] } ));
+  //   console.log(arrayOfObj);
+  //   return arrayOfObj;
+  // }
+
+  // submitVendor(): void {
+  //   this.vendorService.updateVendor(this.vendor).subscribe(
+  //     (data) => {
+  //       this.toaster.open('Vendor was updated', 'success');
+  //     },
+  //     (error) => {
+  //       this.toaster.open('Update issue was occurred');
+  //     });
+  // }
+
   ngOnInit(): void {
     if (this.vendorForId.id) {
       this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
         (data) => {
           this.vendor = data;
+
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
