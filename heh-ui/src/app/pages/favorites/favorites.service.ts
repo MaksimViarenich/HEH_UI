@@ -19,4 +19,14 @@ export class FavoritesService {
 
     return this.http.get(`${BASE_API_URL}/api/favorites`, {headers});
   }
+
+  deleteFavoriteCard(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+    let headers = new HttpHeaders();
+
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/favorites/${id}`, {headers});
+  }
 }
