@@ -1,19 +1,19 @@
 <div mat-dialog-content>
   <div class="edit-wrapper">
     <div class="edit-header">
-      {{ data.discount.vendorName }}
+      {{ favorite.vendorName }}
     </div>
 
     <div class="edit-field">
       <div class="discount-name">
-        {{ data.discount.title }}
+        {{ favorite.conditions }}
       </div>
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'favorites.notes' | translate }}</mat-label>
         <textarea matInput
                   type="text"
-                  [(ngModel)]="data.discount.feedback"></textarea>
+                  [(ngModel)]="favorite.note"></textarea>
       </mat-form-field>
     </div>
 

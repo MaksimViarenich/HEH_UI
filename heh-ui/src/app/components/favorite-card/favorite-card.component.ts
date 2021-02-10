@@ -13,7 +13,7 @@ export class FavoriteCardComponent implements OnInit {
   @Input() favoriteInfo: any;
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService,) {}
+              private modalService: ModalService, ) {}
 
   openEditNoteModal(): void {
     this.modalService.openEditNoteModal(this.favoriteInfo);

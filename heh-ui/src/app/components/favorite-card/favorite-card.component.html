@@ -2,7 +2,7 @@
   <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
     <div class="favorite-vendor">
       <div class="card-title">
-        {{ favoriteInfo.discount.vendorName}}
+        {{ favoriteInfo.vendorName}}
       </div>
     </div>
   </div>
@@ -10,12 +10,14 @@
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
-        <app-category [categoryId]="favoriteInfo.discount.category"></app-category>
-        <app-tag *ngFor="let tag of favoriteInfo.discount.tags"
+        <app-category [categoryId]="favoriteInfo.categoryId"></app-category>
+        <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
                  [tagId]="tag"></app-tag>
+        <div class="discount-detail-promo-code">{{favoriteInfo.promoCode}}</div>
       </div>
-      <div class="discount-name line-clamp">{{ favoriteInfo.discount.title }}</div>
-      <div class="discount-note line-clamp">{{ favoriteInfo.discount.feedback }}</div>
+
+      <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>
+      <div class="discount-note line-clamp">{{ favoriteInfo.note }}</div>
     </div>
   </div>
 

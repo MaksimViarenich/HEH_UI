@@ -5,10 +5,10 @@
   display: flex;
   justify-content: space-between;
   height: 5.7rem;
-  background: $color-white;
   box-shadow: $shadow-gray;
   border-radius: 5px;
   margin-bottom: 1rem;
+  @include glass;
 
   div {
     display: flex;
@@ -32,7 +32,6 @@
     flex-grow: 1;
     justify-content: space-between;
     padding: 0.1rem 0.5rem 0.3rem 0.5rem;
-    background-color: $color-white;
 
     .discount-info {
       display: flex;
@@ -43,11 +42,25 @@
         display: flex;
         justify-content: flex-start;
         margin-bottom: -0.5rem;
+
+        .discount-detail-promo-code {
+          @include font-bold-discount;
+          margin-top: $margin-half;
+
+          &::before {
+            content: 'Promocode: ';
+            font-weight: 400;
+          }
+        }
       }
 
       .discount-name {
         @include font-bold-discount;
         line-height: 1.5rem;
+
+        :before {
+          content: 'Promocode';
+        }
       }
 
       .discount-note {
@@ -81,7 +94,6 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 0.5rem;
-    background-color: $color-white;
 
     i {
       color: $color-black;
