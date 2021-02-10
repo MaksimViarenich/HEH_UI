@@ -7,6 +7,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { Phones } from 'src/app/models/phones';
 import { Address } from '../../../../models/address';
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -32,6 +33,7 @@ export class AddVendorModalComponent implements OnInit {
     public vendorService: VendorService,
     public dialog: MatDialog,
     private modalService: ModalService,
+    private toaster: ToasterService,
     @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
   ) {
     this.vendor = {};
@@ -50,8 +52,16 @@ export class AddVendorModalComponent implements OnInit {
 
   openDiscountModal(discount?: Discount): void {
     this.modalService.openAddDiscountModal(discount, this.vendor);
-  }
 
+    this.vendorService.addVendor(JSON.stringify(this.vendor)).subscribe(
+      (data) => {
+        this.toaster.open('New vendor has been added', 'success');
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to add a new vendor');
+      }
+    );
+  }
 
   onAddPhone(phoneNumber: string): void {
     this.vendor.phones.push({
@@ -86,6 +96,9 @@ export class AddVendorModalComponent implements OnInit {
               };
             }));
           }
+        },
+        (error) => {
+          this.toaster.open('Сan not get vendorId');
         }
       );
     }

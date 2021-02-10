@@ -21,7 +21,7 @@ export class VendorsComponent implements OnInit {
   vendors: any = [];
   vendorsDetail: any = [];
 
-  openVendorModall(data?: Vendor): void {
+  openVendorModal(data?: Vendor): void {
     this.modalService.openVendorModal(data);
   }
 
