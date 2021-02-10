@@ -25,6 +25,10 @@ export class VendorsComponent implements OnInit {
     this.modalService.openVendorModal(data);
   }
 
+  deleteVendorCard(id: string): any {
+    this.vendors = this.vendors.filter((item: { id: string; }) => item.id !== id);
+  }
+
   ngOnInit(): void {
     this.vendorService.getVendors().subscribe(
       (data) => {

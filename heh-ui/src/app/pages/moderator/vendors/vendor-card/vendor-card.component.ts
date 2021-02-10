@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { VendorService } from './../vendor.service';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-vendor-card',
@@ -8,8 +9,19 @@ import {Component, Input, OnInit} from '@angular/core';
 export class VendorCardComponent implements OnInit {
   @Input() data: any | undefined;
   @Input() isViewCountsVisible: boolean | undefined;
+  @Output() deleteVendorCard: EventEmitter<string> = new EventEmitter();
 
-  constructor() {
+  constructor(public vendorService: VendorService) {
+  }
+
+  deleteVendor(): any {
+    this.deleteVendorCard.emit(this.data.id);
+    console.log('delete');
+
+    this.vendorService.deleteVendor(this.data.id).subscribe(
+      data => {
+        console.log(data);
+    });
   }
 
   ngOnInit(): void {

@@ -33,4 +33,15 @@ export class VendorService {
 
     return this.http.get(`${BASE_API_URL}/api/vendor/${vendorId}`, {headers});
   }
+
+  deleteVendor(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/vendor?id=${id}`, {headers});
+  }
 }
