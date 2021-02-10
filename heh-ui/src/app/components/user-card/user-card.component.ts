@@ -1,6 +1,8 @@
 import { UserInfo } from '../../models/user-info';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { UsersService } from '../../pages/admin/users/users.service';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
 
 
 @Component({
@@ -11,13 +13,25 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class UserCardComponent implements OnInit {
 
-  @Input() user: UserInfo | undefined;
+  @Input() user: any;
 
   color: ThemePalette = 'primary';
   checked: boolean | undefined;
   role: string | undefined;
 
-  constructor() {
+  constructor(private usersService: UsersService,
+              private toaster: ToasterService) {
+    this.role = '';
+  }
+
+  changeUserRole(value: string): void {
+    this.usersService.changeRole(this.user.id, value).subscribe(
+      (data) => {
+        this.toaster.open('User role was changed', 'success');
+      },
+      (error) => {
+        this.toaster.open('Couldn\'t change role');
+      });
   }
 
   ngOnInit(): void {

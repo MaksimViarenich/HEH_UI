@@ -15,9 +15,12 @@
                              name="userRole"
                              aria-label="Role"
                              value="{{role}}">
-      <mat-button-toggle value="Employee">{{ 'users.user' | translate }}</mat-button-toggle>
-      <mat-button-toggle value="Moderator">{{ 'users.moderator' | translate }}</mat-button-toggle>
-      <mat-button-toggle value="Administrator">{{ 'users.admin' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="Employee"
+                         (change)="changeUserRole($event.value)">{{ 'users.user' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="Moderator"
+                         (change)="changeUserRole($event.value)">{{ 'users.moderator' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="Administrator"
+                         (change)="changeUserRole($event.value)">{{ 'users.admin' | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
 
     <mat-slide-toggle class="example-margin"
