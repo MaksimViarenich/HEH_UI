@@ -3,10 +3,10 @@ import {AddVendorModalComponent} from '../../pages/moderator/vendors/add-vendor-
 import {MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../models/discount';
 import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
-import {VendorCard} from '../../models/vendor-card';
 import {Vendor} from '../../models/vendor';
 import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
+import {AddAddressComponent} from '../../pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 
 @Injectable({
   providedIn: 'root'
@@ -71,6 +71,12 @@ export class ModalService {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openAddAddressModal(): any {
+    return this.dialog.open(AddAddressComponent, {
+      width: '250px',
     });
   }
 }

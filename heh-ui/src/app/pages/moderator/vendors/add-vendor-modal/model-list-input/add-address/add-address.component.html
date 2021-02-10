@@ -3,11 +3,11 @@
   <mat-form-field appearance="fill">
     <mat-label>Country</mat-label>
 
-    <mat-select>
+    <mat-select [(ngModel)]="data.country"
+                (ngModelChange)="changeCitiesList()">
       <mat-option>{{ 'search.select' | translate }}</mat-option>
-      <mat-option [value]="option.countryId"
-                  *ngFor="let option of countries"
-                  (click)="showCitiesList(option.countryId)">
+      <mat-option [value]="option"
+                  *ngFor="let option of countries">
         {{ option.country }}
       </mat-option>
     </mat-select>
@@ -16,21 +16,21 @@
   <mat-form-field appearance="fill">
     <mat-label>City</mat-label>
 
-    <mat-select>
+    <mat-select [(ngModel)]="data.city">
       <mat-option>{{ 'search.select' | translate }}</mat-option>
       <mat-option [value]="option"
-                  *ngFor="let option of activeCities">
-        {{ option }}
+                  *ngFor="let option of cities">
+        {{ option.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Street</mat-label>
-  <input matInput [(ngModel)]="data.street">
+    <input matInput [(ngModel)]="data.street">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button mat-dialog-close>No Thanks</button>
   <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

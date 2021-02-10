@@ -18,23 +18,16 @@ export class AddVendorModalComponent implements OnInit {
   vendor: any;
   links: any;
 
-  get vendorPhones(): string[] {
-    return this.vendor.phones ?
-      this.vendor.phones.map((phone: Phones) => phone.number) : [];
-  }
-
-  get vendorAddresses(): string[] {
-    return this.vendor.addresses ?
-      this.vendor.addresses.map((address: Address) => address.street) : [];
-  }
-
   constructor(
     public vendorService: VendorService,
     public dialog: MatDialog,
     private modalService: ModalService,
     @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
   ) {
-    this.vendor = {};
+    this.vendor = {
+      addresses: [],
+      phones: []
+    };
     this.links = {
       website: '',
       instagram: '',
@@ -61,6 +54,10 @@ export class AddVendorModalComponent implements OnInit {
 
   onDeletePhone(idx: number): void {
     this.vendor.phones.splice(idx, 1);
+  }
+
+  aaa(): any {
+    console.log(this.vendor);
   }
 
   onAddAddress(address: any): void {

@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {FiltersService} from 'src/app/pages/discounts/filters.service';
 
 export interface AddressData {
-    countryId: string;
-    cityId: string;
-    street: string;
+  country: any;
+  city: any;
+  street: string;
 }
 
 @Component({
@@ -16,49 +16,28 @@ export interface AddressData {
 export class AddAddressComponent implements OnInit {
   countries: Array<any> = [];
   cities: Array<any> = [];
-  activeCities: string[] = [];
-  countriesCities: any;
+  data: AddressData;
 
   constructor(
-    private filterService: FiltersService,
-    public dialogRef: MatDialogRef<AddAddressComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: AddressData) {}
+    private filterService: FiltersService) {
+    this.data = {
+      country: '',
+      city: '',
+      street: ''
+    };
+  }
 
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  changeCitiesList(): void {
+    this.countries.forEach((country: any) => {
+      if (country.id === this.data.country.id) {
+        this.cities = country.cities;
+      }
+    });
+  }
 
-    showCitiesList(id: string): void {
-      this.activeCities = [];
-      this.countriesCities.forEach((item: any) => {
-        if (item.id === id) {
-          for (const city of item.cities) {
-            this.activeCities.push(city.name);
-          }
-        }
-      });
-    }
 
-    getCountriesAndCities(): void {
-      this.countriesCities.forEach((item: any) => {
-        const country: any = {};
-        country.countryId = item.id;
-        country.country = item.country;
-        this.countries.push(country);
-      });
 
-      this.countriesCities.forEach((country: any) => {
-          for (const item of country.cities) {
-            const city: any = {};
-            city.cityId = item.id;
-            city.city = item.name;
-            this.cities.push(city);
-          }
-      });
-    }
-
-    ngOnInit(): void {
-      this.countriesCities = this.filterService.countriesCities;
-      this.getCountriesAndCities();
-    }
+  ngOnInit(): void {
+    this.countries = this.filterService.countriesCities;
+  }
 }

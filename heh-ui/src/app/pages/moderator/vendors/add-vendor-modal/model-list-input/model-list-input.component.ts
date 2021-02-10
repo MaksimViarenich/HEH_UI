@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddAddressComponent } from './add-address/add-address.component';
+import {ModalService} from '../../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-model-list-input',
@@ -11,41 +12,28 @@ import { AddAddressComponent } from './add-address/add-address.component';
 
 export class ModelListInputComponent {
   @Input() label: string;
-  @Input() listData: string[];
+  @Input() listData: any[];
   @Input() type: string;
   @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
-  inputCountry = '';
-  inputCity = '';
-  inputStreet = '';
-  address: any = {};
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private modalService: ModalService) {
     this.label = '';
     this.listData = [];
     this.type = '';
   }
 
-  onAddData(): void {
-    this.addData.emit(this.address);
+  addPhone(): void {
+    this.listData.push(this.inputValue);
     this.inputValue = '';
   }
 
-  openAddAddress(): void {
-    const dialogRef = this.dialog.open(AddAddressComponent, {
-      width: '250px',
-      data:  {
-        country: this.inputCountry,
-        city: this.inputCity,
-        street: this.inputStreet,
-      }
-    });
+  openAddAddressModal(): void {
+    const dialogRef = this.modalService.openAddAddressModal();
 
-    dialogRef.afterClosed().subscribe(adr => {
-      this.address = adr;
-      this.inputValue = `${this.address.country}, ${this.address.city},  ${this.address.street}`;
-      console.log(this.address);
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.listData.push(data);
     });
   }
 }
