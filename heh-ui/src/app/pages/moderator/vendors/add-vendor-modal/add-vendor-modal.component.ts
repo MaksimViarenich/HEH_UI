@@ -68,7 +68,7 @@ export class AddVendorModalComponent implements OnInit {
       id: '',
       countryId: 'countryId',
       cityId: 'cityId',
-      street: address.address.street,
+      street: address.street,
     });
     console.log(this.vendor.addresses);
   }

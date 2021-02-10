@@ -35,11 +35,11 @@ export class ModelListInputComponent {
   openAddAddress(): void {
     const dialogRef = this.dialog.open(AddAddressComponent, {
       width: '250px',
-      data: {address: {
+      data:  {
         country: this.inputCountry,
         city: this.inputCity,
         street: this.inputStreet,
-      }}
+      }
     });
 
     dialogRef.afterClosed().subscribe(adr => {
