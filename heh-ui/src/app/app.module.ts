@@ -43,6 +43,8 @@ import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendo
 import { AgmCoreModule } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
 import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
+import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard } from './role-guard/role.guard';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -105,7 +107,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
-  providers: [],
+  providers: [AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 

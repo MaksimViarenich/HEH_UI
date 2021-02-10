@@ -14,7 +14,8 @@ import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.
 import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
 import {AdminComponent} from './pages/admin/admin.component';
 import {ModeratorComponent} from './pages/moderator/moderator.component';
-import {AuthGuard} from '../app/auth/auth.guard';
+import {AuthGuard} from './auth/auth.guard';
+import {RoleGuard} from './role-guard/role.guard';
 
 const routes: Routes = [
   {
@@ -28,16 +29,23 @@ const routes: Routes = [
       {path: 'profile', component: UserProfileComponent},
       {
         path: 'moderator',
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'moderator',
+        },
         component: ModeratorComponent,
         children: [
           {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
           {path: 'vendors', component: VendorsComponent},
           {path: 'categories_tags', component: CategoriesTagsComponent}
         ],
-        canActivate: [AuthGuard]
          },
       {
         path: 'admin',
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'administrator',
+        },
         component: AdminComponent,
         children: [
           {path: '', redirectTo: '/admin/users', pathMatch: 'full'},
@@ -45,7 +53,6 @@ const routes: Routes = [
           {path: 'statistics', component: StatisticsComponent},
           {path: 'history', component: EventHistoryComponent},
         ],
-        canActivate: [AuthGuard]
       }
     ],
   },
