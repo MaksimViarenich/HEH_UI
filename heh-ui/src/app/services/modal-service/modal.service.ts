@@ -3,7 +3,6 @@ import {AddVendorModalComponent} from '../../pages/moderator/vendors/add-vendor-
 import {MatDialog} from '@angular/material/dialog';
 import {Discount} from '../../models/discount';
 import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
-import {VendorCard} from '../../models/vendor-card';
 import {Vendor} from '../../models/vendor';
 import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
@@ -17,16 +16,12 @@ export class ModalService {
   constructor(public dialog: MatDialog) {
   }
 
-  openVendorModal(data?: Vendor): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent, {
+  openVendorModal(data?: Vendor): any {
+      return this.dialog.open(AddVendorModalComponent, {
       data: data ? data : {},
       panelClass: 'vendor-details-modal',
       backdropClass: 'vendor-details-modal-backdrop',
       maxWidth: '66rem',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

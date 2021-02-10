@@ -36,7 +36,12 @@ export class AddVendorModalComponent implements OnInit {
     private toaster: ToasterService,
     @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
   ) {
-    this.vendor = {};
+    this.vendor = {
+      phones: [],
+      addresses: [],
+      links: [],
+      discounts: []
+    };
     this.links = {
       website: '',
       instagram: '',
@@ -52,15 +57,34 @@ export class AddVendorModalComponent implements OnInit {
 
   openDiscountModal(discount?: Discount): void {
     this.modalService.openAddDiscountModal(discount, this.vendor);
+  }
 
-    this.vendorService.addVendor(JSON.stringify(this.vendor)).subscribe(
-      (data) => {
-        this.toaster.open('New vendor has been added', 'success');
-      },
-      (error) => {
-        this.toaster.open('There is no possibility to add a new vendor');
-      }
+  addUpdateNewVendor(): void {
+    this.vendor.links.push(
+      {type: 'Website', url: this.links.website},
+      {type: 'Instagram', url: this.links.instagram},
+      {type: 'Facebook', url: this.links.facebook},
+      {type: 'Vkontakte', url: this.links.vkontakte},
     );
+    if (this.vendor.id){
+/*      this.vendorService.updateVendor(JSON.stringify(this.vendor)).subscribe(
+        (data) => {
+          this.toaster.open('New vendor has been added', 'success');
+        },
+        (error) => {
+          this.toaster.open('There is no possibility to add a new vendor');
+        }
+      );*/
+    } else {
+      this.vendorService.addVendor(JSON.stringify(this.vendor)).subscribe(
+        (data) => {
+          this.toaster.open('New vendor has been added', 'success');
+        },
+        (error) => {
+          this.toaster.open('There is no possibility to add a new vendor');
+        }
+      );
+    }
   }
 
   onAddPhone(phoneNumber: string): void {
@@ -88,7 +112,6 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
         (data) => {
           this.vendor = data;
-
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {

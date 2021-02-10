@@ -41,7 +41,7 @@ export class VendorService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
-
+    console.log(newVendor);
     return this.http.post(`${BASE_API_URL}/api/Vendor`, newVendor, {headers});
   }
 }
