@@ -18,7 +18,7 @@ export class BtnFavoriteComponent implements OnInit {
   }
 
   addFavorite(): any {
-    this.favoriteService.addToFavorite(this.id).subscribe();
+    this.favoriteService.addUpdateFavorite(this.id, '', 'add').subscribe();
   }
 
   deleteFavorite(): any {

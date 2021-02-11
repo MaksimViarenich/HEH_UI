@@ -19,7 +19,7 @@ export class EditNoteModalComponent implements OnInit {
   }
 
   updateInfo(): any {
-    this.favoriteService.updateFavoriteNote(this.favorite.id, this.favorite.note).subscribe();
+    this.favoriteService.addUpdateFavorite(this.favorite.id, this.favorite.note, 'update').subscribe();
   }
 
   ngOnInit(): void {
