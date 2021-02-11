@@ -13,7 +13,7 @@ import { Output, EventEmitter } from '@angular/core';
 
 export class FavoriteCardComponent implements OnInit {
   @Input() favoriteInfo: any;
-  @Output() favoriteItemDelete: EventEmitter<any> = new EventEmitter();
+  @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -25,7 +25,7 @@ export class FavoriteCardComponent implements OnInit {
 
   deleteFavorite(): any {
     this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(() => {
-        this.favoriteItemDelete.emit();
+        this.updateCardsAfterDelete.emit();
       }
     );
   }
