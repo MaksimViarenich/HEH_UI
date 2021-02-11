@@ -25,8 +25,8 @@
 
     <mat-slide-toggle class="example-margin"
                       [color]="color"
-                      [checked]="checked"
-                      [disabled]="false">
+                      [(ngModel)]="checked"
+                      (change)="changeUserState($event.checked)">
       {{checked ? ('users.active' | translate) : ('users.inactive' | translate)}}
     </mat-slide-toggle>
   </div>

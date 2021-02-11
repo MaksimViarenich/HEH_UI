@@ -34,6 +34,16 @@ export class UserCardComponent implements OnInit {
       });
   }
 
+  changeUserState(checked: any): void {
+    this.usersService.changeState(this.user.id, checked).subscribe(
+      (data) => {
+        this.toaster.open('User state was changed', 'success');
+      },
+      (error) => {
+        this.toaster.open('Couldn\'t change state');
+      });
+  }
+
   ngOnInit(): void {
     this.checked = this.user?.isActive;
     this.role = this.user?.role;
