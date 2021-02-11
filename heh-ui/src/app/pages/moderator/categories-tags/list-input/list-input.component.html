@@ -1,8 +1,7 @@
 <div class="list-input-container">
   <mat-form-field appearance="fill">
     <mat-label>{{label}}</mat-label>
-    <input [(ngModel)]="newCategory"
-           [matChipInputFor]="chipList"
+    <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
            (matChipInputTokenEnd)="add($event)">

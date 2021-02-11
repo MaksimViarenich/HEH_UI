@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {ToasterService} from '../../../../services/toaster-service/toaster.service';
 import {FiltersService} from '../../../discounts/filters.service';
@@ -14,6 +14,7 @@ export class ListInputComponent {
   @Input() label: string;
   @Input() options: any;
   @Input() isDisabled?: boolean;
+  @Output() changeData = new EventEmitter<string>();
 
   newCategory: any;
   categoryObj: any;
@@ -34,20 +35,15 @@ export class ListInputComponent {
     const input = event.input;
     const value = event.value;
 
-    if ((value || '').trim()) {
-      this.options.push({
-        name: value.trim(),
-        id: value.trim(),
-      });
-    }
-
     if (input) {
       input.value = '';
     }
-    this.categoryObj.name = this.newCategory;
+
+    this.categoryObj.name = value;
     this.filtersService.addNewCategory(this.categoryObj).subscribe(
       (data) => {
         this.toaster.open('New category has been added', 'success');
+        this.changeData.emit(value);
       },
       (error) => {
         this.toaster.open('There is no possibility to add a new category');
@@ -56,14 +52,10 @@ export class ListInputComponent {
   }
 
   remove(item: any): void {
-    const index = this.options.indexOf(item);
-
-    if (index >= 0) {
-      this.options.splice(index, 1);
-    }
     this.filtersService.deleteCategory(item.id).subscribe(
       (data) => {
         this.toaster.open('Category has been deleted', 'success');
+        this.changeData.emit(item.id);
       },
       (error) => {
         this.toaster.open('There is no possibility to delete this category');
