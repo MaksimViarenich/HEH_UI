@@ -29,10 +29,6 @@ export class VendorsComponent implements OnInit {
     });
   }
 
-  deleteVendor(): any {
-    this.getAllVendors();
-  }
-
   getAllVendors(): void {
     this.vendorService.getVendors().subscribe(
       (data) => {

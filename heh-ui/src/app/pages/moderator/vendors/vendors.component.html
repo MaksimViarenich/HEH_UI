@@ -6,6 +6,6 @@
   <mat-grid-tile *ngFor="let item of vendors">
     <app-vendor-card [data]="item"
                      (click)="openVendorModal(item)"
-                     (deleteVendorItem)="deleteVendor()"></app-vendor-card>
+                     (updateCardsAfterDelete)="getAllVendors()"></app-vendor-card>
   </mat-grid-tile>
 </mat-grid-list>

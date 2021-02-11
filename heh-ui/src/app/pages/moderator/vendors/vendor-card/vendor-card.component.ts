@@ -10,14 +10,14 @@ import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } fro
 export class VendorCardComponent implements OnInit {
   @Input() data: any | undefined;
   @Input() isViewCountsVisible: boolean | undefined;
-  @Output() deleteVendorItem: EventEmitter<any> = new EventEmitter();
+  @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
 
   constructor(public vendorService: VendorService) {
   }
 
   deleteVendor(): any {
     this.vendorService.deleteVendor(this.data.id).subscribe(() => {
-        this.deleteVendorItem.emit();
+        this.updateCardsAfterDelete.emit();
       }
     );
   }
