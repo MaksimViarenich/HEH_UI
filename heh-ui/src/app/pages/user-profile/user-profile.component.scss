@@ -9,16 +9,25 @@
 .profile-wrapper {
   display: flex;
   flex-direction: row;
+  width: 60%;
+  margin: auto;
+  @include glass;
+  border-radius: $border-radius-small;
+  box-shadow: $shadow-violet;
+  padding: 1rem 1rem 2rem 1rem;
 
   img {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+    padding: 0.5rem;
   }
 
   .profile-content {
     margin-top: 3.2rem;
     margin-left: 1.6rem;
+    padding-left: 1rem;
+    width: 100%;
 
     .profile-info {
       margin-bottom: 0.5rem;
@@ -61,6 +70,11 @@
       width: 13rem;
       padding: 0;
       margin-bottom: 0.8rem;
+      outline: none;
+
+      mat-list-option {
+        background: none;
+      }
 
       mat-list-option:not(:first-child) {
         margin-left: 0.8rem;
@@ -74,11 +88,19 @@
     }
 
     mat-form-field {
-      width: 24rem;
+      width: 90%;
       padding: 0.5rem 0.5rem 0 0.5rem;
-      @include glass;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
       box-shadow: $shadow-gray;
       border-radius: 4px;
+
+      .mat-chip {
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        background: rgba(240, 240, 240, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
     }
   }
 }
