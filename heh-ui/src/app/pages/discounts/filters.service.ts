@@ -53,6 +53,48 @@ export class FiltersService {
     return this.http.get(`${BASE_API_URL}/api/vendor`, {headers});
   }
 
+  addNewCategory(newCategory: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${token}`);
+    headers = headers.append('Content-Type', `application/json;odata.metadata=minimal;odata.streaming=true`);
+    headers = headers.append('accept', '*/*');
+
+    return this.http.post(`${BASE_API_URL}/api/category`, newCategory, {headers});
+  }
+
+  deleteCategory(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/category?id=${id}`, {headers});
+  }
+
+  addNewTag(newTag: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${token}`);
+    headers = headers.append('Content-Type', `application/json;odata.metadata=minimal;odata.streaming=true`);
+    headers = headers.append('accept', '*/*');
+
+    return this.http.post(`${BASE_API_URL}/api/tag`, newTag, {headers});
+  }
+
+  deleteTag(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/tag?id=${id}`, {headers});
+  }
+
   loadFilters(): any {
     this.filterOptions = this.getDefaultFilters();
 
