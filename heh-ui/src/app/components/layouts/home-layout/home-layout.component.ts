@@ -14,7 +14,6 @@ interface PageTitles {
 })
 export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   showSpinner: boolean | undefined;
-  spinnerColor: string;
 
   route: string;
   imagePath: string;
@@ -37,7 +36,6 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
-    this.spinnerColor = '#3fb53f';
 
     this.getLocalizationKey();
   }
