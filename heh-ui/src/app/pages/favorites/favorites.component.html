@@ -3,5 +3,5 @@
 <div class="favorites-container">
   <app-favorite-card *ngFor="let card of favoriteCards"
                      [favoriteInfo]="card"
-                     (favoriteItemDelete)="deleteFavorite($event)"></app-favorite-card>
+                     (favoriteItemDelete)="deleteFavorite()"></app-favorite-card>
 </div>
