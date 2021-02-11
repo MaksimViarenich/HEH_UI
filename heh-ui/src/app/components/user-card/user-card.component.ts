@@ -16,7 +16,7 @@ export class UserCardComponent implements OnInit {
   @Input() user: any;
 
   color: ThemePalette = 'primary';
-  checked: boolean | undefined;
+  isActive: boolean | undefined;
   role: string | undefined;
 
   constructor(private usersService: UsersService,
@@ -34,8 +34,8 @@ export class UserCardComponent implements OnInit {
       });
   }
 
-  changeUserState(checked: any): void {
-    this.usersService.changeState(this.user.id, checked).subscribe(
+  changeUserState(): void {
+    this.usersService.changeState(this.user.id, this.isActive).subscribe(
       (data) => {
         this.toaster.open('User state was changed', 'success');
       },
@@ -45,7 +45,7 @@ export class UserCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checked = this.user?.isActive;
+    this.isActive = this.user?.isActive;
     this.role = this.user?.role;
   }
 
