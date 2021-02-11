@@ -16,7 +16,7 @@
     .favorite-vendor {
       box-sizing: border-box;
       min-width: 14rem;
-      padding: 0.5rem;
+      padding: 1rem;
 
       .card-title {
         max-width: fit-content;
@@ -56,6 +56,10 @@
       .discount-name {
         @include font-bold-discount;
         line-height: 1.5rem;
+
+        :before {
+          content: 'Promocode';
+        }
       }
 
       .discount-note {

@@ -19,10 +19,12 @@ import {Tag} from '../../models/tag';
   encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent implements OnInit {
+  newslettersChecked = false;
+  disabled = true;
 
   user: UserInfo;
 
-  typesOfSubscription: string[] = ['profile.newsletters', 'profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
+  typesOfSubscription: string[] = ['profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
   visible = true;
   selectable = true;
   removable = true;

@@ -1,10 +1,11 @@
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">{{data.name}}</div>
+<div class="vendor-card">
+  <div class="vendor-card-header">
+    <div class="vendor-card-title">{{data.name}}</div>
     <div *ngIf="!isViewCountsVisible"
          class="btn btn-delete"
          (click)="$event.stopPropagation()">
-      <span class="material-icons">delete_outline</span>
+      <span class="material-icons"
+            (click)="deleteVendor()">delete_outline</span>
     </div>
     <div *ngIf="isViewCountsVisible"
          class="btn btn-view">
