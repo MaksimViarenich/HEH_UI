@@ -16,10 +16,6 @@ export class FavoritesComponent implements OnInit {
               private toaster: ToasterService) {
   }
 
-  deleteFavorite(): any {
-    this.getFavorites();
-  }
-
   getFavorites(): void {
     this.favoritesService.getFavorites().subscribe(
       (data) => {
