@@ -4,7 +4,8 @@
     <div *ngIf="!isViewCountsVisible"
          class="btn btn-delete"
          (click)="$event.stopPropagation()">
-      <span class="material-icons">delete_outline</span>
+      <span class="material-icons"
+            (click)="deleteVendor()">delete_outline</span>
     </div>
     <div *ngIf="isViewCountsVisible"
          class="btn btn-view">
