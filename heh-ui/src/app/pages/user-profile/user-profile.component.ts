@@ -1,4 +1,4 @@
-import { TranslateService } from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation, Input} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
@@ -9,6 +9,8 @@ import {map, startWith} from 'rxjs/operators';
 import {ToasterService} from '../../services/toaster-service/toaster.service';
 import {UserProfileService} from './user-profile.service';
 import {UsersService} from '../admin/users/users.service';
+import {UserInfo} from '../../models/user-info';
+import {Tag} from '../../models/tag';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,7 +20,7 @@ import {UsersService} from '../admin/users/users.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  @Input() user: any | undefined;
+  user: UserInfo;
 
   typesOfSubscription: string[] = ['profile.newsletters', 'profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
   visible = true;
@@ -44,6 +46,7 @@ export class UserProfileComponent implements OnInit {
       email: '',
       address: [],
       isActive: false,
+      tagNotifications: [],
     };
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),

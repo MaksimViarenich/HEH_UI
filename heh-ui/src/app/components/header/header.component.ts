@@ -1,8 +1,9 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationPreferences } from '../../models/notification-preferences';
 import { HEADER_TABS } from '../../models/tab';
 import { RoleService } from '../../services/role-service/role.service';
+import {UserInfo} from '../../models/user-info';
+import {ProfileService} from './profile-selection/profile.service';
 
 @Component({
   selector: 'app-header',
@@ -13,16 +14,19 @@ import { RoleService } from '../../services/role-service/role.service';
 
 export class HeaderComponent implements OnInit{
   tabs: any;
-
-  user: NotificationPreferences = {
-    username: 'Michael Browk',
-    userphoto: '../../../assets/images/user.jpg',
-    location: 'Belarus, Minsk',
-    address: 'Naturalistov, 3',
-  };
+  user: UserInfo;
 
   constructor(private router: Router,
-              private roleService: RoleService) {
+              private roleService: RoleService,
+              private profileService: ProfileService) {
+    this.user = {
+      id: '',
+      role: '',
+      name: '',
+      email: '',
+      address: [],
+      isActive: false,
+    };
     this.tabs = [];
   }
 

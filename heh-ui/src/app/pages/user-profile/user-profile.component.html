@@ -23,7 +23,7 @@
       <mat-label>{{ 'profile.subscription' | translate }}</mat-label>
       <mat-chip-list #chipList aria-label="Tag selection">
         <mat-chip
-          *ngFor="let tag of tags"
+          *ngFor="let tag of user.tagNotifications"
           [selectable]="selectable"
           [removable]="removable"
           (removed)="remove(tag)">
