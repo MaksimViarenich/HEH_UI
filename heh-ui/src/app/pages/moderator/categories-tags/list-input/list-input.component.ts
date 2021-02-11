@@ -13,7 +13,10 @@ import {FiltersService} from '../../../discounts/filters.service';
 export class ListInputComponent {
   @Input() label: string;
   @Input() options: any;
+  @Input() addElement: any;
+  @Input() deleteElement: any;
   @Input() isDisabled?: boolean;
+  @Input() activeCategoryId?: any;
   @Output() changeData = new EventEmitter<string>();
 
   newCategory: any;
@@ -39,27 +42,10 @@ export class ListInputComponent {
       input.value = '';
     }
 
-    this.categoryObj.name = value;
-    this.filtersService.addNewCategory(this.categoryObj).subscribe(
-      (data) => {
-        this.toaster.open('New category has been added', 'success');
-        this.changeData.emit(value);
-      },
-      (error) => {
-        this.toaster.open('There is no possibility to add a new category');
-      }
-    );
+    this.addElement(value, this.changeData);
   }
 
   remove(item: any): void {
-    this.filtersService.deleteCategory(item.id).subscribe(
-      (data) => {
-        this.toaster.open('Category has been deleted', 'success');
-        this.changeData.emit(item.id);
-      },
-      (error) => {
-        this.toaster.open('There is no possibility to delete this category');
-      }
-    );
+    this.deleteElement(item.id, this.changeData);
   }
 }

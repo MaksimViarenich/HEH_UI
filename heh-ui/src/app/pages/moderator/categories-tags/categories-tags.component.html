@@ -5,6 +5,8 @@
     <div class="category-and-tag-content">
       <app-list-input [label]="'categories-and-tags.category' | translate"
                       [options]="categoriesAll"
+                      [addElement]="addCategory"
+                      [deleteElement]="deleteCategory"
                       [isDisabled]=false
                       (changeData)="onChangeData($event)"></app-list-input>
     </div>
@@ -28,7 +30,10 @@
     <div class="category-and-tag-content">
       <app-list-input [label]="'categories-and-tags.tag' | translate"
                       [options]="tagsAll"
+                      [addElement]="addTag"
+                      [deleteElement]="deleteTag"
                       [isDisabled]="isDisabled"
+                      [activeCategoryId]="activeCategoryId"
                       (changeData)="onChangeData($event)"></app-list-input>
     </div>
   </div>

@@ -15,17 +15,19 @@ import {cloneDeep} from 'lodash';
 export class CategoriesTagsComponent implements OnInit {
   categoriesAll: Category[] = [];
   tagsAll: Tag[] = [];
+  categoryObj: any;
+  tagObj: any;
   activeCategoryId: any;
   tagsAllCopy: any;
   isDisabled: boolean;
 
-  constructor(private filterService: FiltersService,
+  constructor(private filtersService: FiltersService,
               private toaster: ToasterService) {
     this.isDisabled = true;
   }
 
-  getAllCategoriesAndTags(): void {
-    this.filterService.getCategoriesTags().subscribe(
+  getAllCategoriesAndTags(event: any = true): void {
+    this.filtersService.getCategoriesTags().subscribe(
       (data) => {
         this.categoriesAll = data;
         data.forEach((category: any) => {
@@ -45,7 +47,62 @@ export class CategoriesTagsComponent implements OnInit {
     );
   }
 
+  addCategory(category: string, reload: any): void {
+    this.categoryObj = {};
+    this.categoryObj.name = category;
+    this.filtersService.addNewCategory(this.categoryObj).subscribe(
+      (data) => {
+        this.toaster.open('New category has been added', 'success');
+        reload.emit();
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to add a new category');
+      }
+    );
+  }
+
+  addTag(tag: string, reload: any): void {
+    this.tagObj = {};
+    this.tagObj.categoryId = this.activeCategoryId;
+    this.tagObj.name = tag;
+    this.filtersService.addNewTag(this.tagObj).subscribe(
+      (data) => {
+        this.toaster.open('New tag has been added', 'success');
+        reload.emit();
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to add a new tag');
+      }
+    );
+  }
+
+  deleteCategory(categoryId: string, reload: any): void {
+    this.filtersService.deleteCategory(categoryId).subscribe(
+      (data) => {
+        this.toaster.open('Category has been deleted', 'success');
+        reload.emit();
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to delete this category');
+      }
+    );
+  }
+
+  deleteTag(tagId: string, reload: any): void {
+    this.filtersService.deleteTag(tagId).subscribe(
+      (data) => {
+        this.toaster.open('Tag has been deleted', 'success');
+        reload.emit();
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to delete this tag');
+      }
+    );
+  }
+
   onChangeData(params: string): void {
+    this.tagsAll = [];
+    this.activeCategoryId = null;
     this.getAllCategoriesAndTags();
   }
 
