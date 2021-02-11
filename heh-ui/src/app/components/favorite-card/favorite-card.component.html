@@ -1,5 +1,5 @@
 <div class="favorite-card">
-  <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
+  <div>
     <div class="favorite-vendor">
       <div class="card-title">
         {{ favoriteInfo.vendorName}}
@@ -23,6 +23,7 @@
 
   <div class="card-actions">
     <i class="material-icons" (click)="openEditNoteModal()">edit</i>
-    <i class="material-icons">clear</i>
+    <i class="material-icons"
+       (click)="deleteFavorite()">clear</i>
   </div>
 </div>
