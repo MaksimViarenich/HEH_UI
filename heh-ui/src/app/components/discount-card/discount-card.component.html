@@ -1,12 +1,12 @@
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">{{discount.vendorName}}</div>
+<div class="discount-card">
+  <div class="discount-card-header">
+    <div class="discount-card-title">{{discount.vendorName}}</div>
     <app-btn-favorite [isFavorite]="discount.isFavorite"
                       [id]="discount.id"
                       class="btn"></app-btn-favorite>
   </div>
 
-  <div class="card-content">
+  <div class="discount-card-content">
     <div class="category-and-tags">
       <app-category [categoryId]="discount.categoryId"></app-category>
       <app-tag *ngIf="discount.tagsIds.length" [tagId]="discount.tagsIds[0]"></app-tag>
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="card-content-description">
+    <div class="discount-card-content-description">
       {{discount.conditions}}
     </div>
   </div>
