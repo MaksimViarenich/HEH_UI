@@ -1,10 +1,10 @@
 @import "../../../../../styles.scss";
 
-.card:hover {
+.vendor-card:hover {
   cursor: pointer;
 }
 
-.card {
+.vendor-card {
   @include glass;
   overflow: hidden;
   width: 100%;
@@ -13,14 +13,14 @@
   border-radius: $border-radius-small;
   display: inline-block;
 
-  .card-header {
+  .vendor-card-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: .5rem;
     height: calc(100% - 1rem);
 
-    .card-title {
+    .vendor-card-title {
       position: relative;
       max-height: fit-content;
       align-self: center;
