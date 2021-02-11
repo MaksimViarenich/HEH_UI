@@ -10,14 +10,24 @@
   }
 }
 
-.mat-progress-spinner {
+.spinner-overlay {
   position: absolute;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  margin: auto;
-}
+  height:100vh;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.286);
+  z-index:    10;
+  top:        0;
+  left:       0;
 
-.mat-progress-spinner::ng-deep circle {
-  stroke: #628C97;
+  .mat-progress-spinner {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+  }
+
+  .mat-progress-spinner::ng-deep circle {
+    stroke: #baeafa;
+  }
 }
