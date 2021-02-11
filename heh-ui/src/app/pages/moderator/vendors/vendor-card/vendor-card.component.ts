@@ -10,15 +10,16 @@ import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } fro
 export class VendorCardComponent implements OnInit {
   @Input() data: any | undefined;
   @Input() isViewCountsVisible: boolean | undefined;
-  @Output() deleteVendorCard: EventEmitter<string> = new EventEmitter();
+  @Output() deleteVendorItem: EventEmitter<any> = new EventEmitter();
 
   constructor(public vendorService: VendorService) {
   }
 
   deleteVendor(): any {
-    this.deleteVendorCard.emit(this.data.id);
-
-    this.vendorService.deleteVendor(this.data.id).subscribe();
+    this.vendorService.deleteVendor(this.data.id).subscribe(() => {
+        this.deleteVendorItem.emit();
+      }
+    );
   }
 
   ngOnInit(): void {

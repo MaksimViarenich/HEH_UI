@@ -29,8 +29,8 @@ export class VendorsComponent implements OnInit {
     });
   }
 
-  deleteVendorCard(id: string): any {
-    this.vendors = this.vendors.filter((item: { id: string; }) => item.id !== id);
+  deleteVendor(): any {
+    this.getAllVendors();
   }
 
   getAllVendors(): void {
