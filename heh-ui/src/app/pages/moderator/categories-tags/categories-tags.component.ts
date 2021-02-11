@@ -24,7 +24,7 @@ export class CategoriesTagsComponent implements OnInit {
     this.isDisabled = true;
   }
 
-  ngOnInit(): void {
+  getAllCategoriesAndTags(): void {
     this.filterService.getCategoriesTags().subscribe(
       (data) => {
         this.categoriesAll = data;
@@ -43,6 +43,14 @@ export class CategoriesTagsComponent implements OnInit {
         this.toaster.open('Сan not get categories and tags');
       }
     );
+  }
+
+  onChangeData(params: string): void {
+    this.getAllCategoriesAndTags();
+  }
+
+  ngOnInit(): void {
+    this.getAllCategoriesAndTags();
   }
 
   showTagsList(): void {
