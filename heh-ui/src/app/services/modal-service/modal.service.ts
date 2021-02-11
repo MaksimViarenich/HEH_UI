@@ -42,17 +42,12 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(discount: Discount): void {
-    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
+  openDiscountDetailsModal(discount: Discount): any {
+    return this.dialog.open(DiscountDetailsModalComponent, {
       data: discount,
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

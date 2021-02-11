@@ -5,6 +5,7 @@ import { Discount } from '../../models/discount';
 import { FiltersService } from './filters.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
+import { ModalService } from 'src/app/services/modal-service/modal.service';
 
 @Component({
   selector: 'app-discounts',
@@ -16,6 +17,7 @@ export class DiscountsComponent implements OnInit {
   discounts: Array<Discount> = [];
 
   constructor(public dialog: MatDialog,
+              private modalService: ModalService,
               private discountService: DiscountsService,
               private toaster: ToasterService) {
   }
@@ -32,15 +34,9 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
-      data: discount,
-      maxWidth: '33rem',
-      panelClass: 'discount-details-modal',
-      backdropClass: 'discount-details-modal-backdrop',
-    });
+    const dialogRef = this.modalService.openDiscountDetailsModal(discount);
 
-
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
       this.getDiscounts();
     });
