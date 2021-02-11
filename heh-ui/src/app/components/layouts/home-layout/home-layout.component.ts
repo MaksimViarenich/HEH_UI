@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../../../services/spinner-service/spinner.service';
 
 interface PageTitles {
   localizationKey: string;
@@ -11,7 +12,9 @@ interface PageTitles {
   templateUrl: './home-layout.component.html',
   styleUrls: ['./home-layout.component.scss']
 })
-export class HomeLayoutComponent implements OnInit {
+export class HomeLayoutComponent implements OnInit, AfterViewChecked {
+  showSpinner: boolean | undefined;
+  spinnerColor: string;
 
   route: string;
   imagePath: string;
@@ -28,16 +31,28 @@ export class HomeLayoutComponent implements OnInit {
     {localizationKey: 'header.admin', pagePath: '/admin/history'}
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              public spinnerService: SpinnerService,
+              private cdRef: ChangeDetectorRef) {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
+    this.spinnerColor = '#3fb53f';
 
     this.getLocalizationKey();
   }
 
   ngOnInit(): void {
+  }
 
+  ngAfterViewChecked(): void {
+    this.spinnerInit();
+  }
+
+  spinnerInit(): void {
+    this.spinnerService.getSpinner().subscribe((status) => {
+      this.cdRef.detectChanges();
+    });
   }
 
   getLocalizationKey(): string {
