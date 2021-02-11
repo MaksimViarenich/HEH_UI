@@ -22,6 +22,7 @@
               mat-button
               mat-dialog-close>{{ 'favorites.cancel' | translate }}</button>
       <button class="btn-submit"
+              (click)="updateInfo()"
               mat-raised-button>{{ 'favorites.subm' | translate }}</button>
     </div>
   </div>
