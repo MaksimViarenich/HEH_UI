@@ -35,7 +35,8 @@
           <app-model-list-input [label]="phoneTitle | translate"
                                 [listData]="vendor.phones"
                                 (addData)="onAddPhone($event)"
-                                (deleteData)="onDeletePhone($event)"></app-model-list-input>
+                                (deleteData)="onDeletePhone($event)"
+                                [inputType]="'tel'"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
@@ -95,6 +96,6 @@
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
     <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
-    <button mat-raised-button (click)="aaa()">{{ 'vendors.add-vendor.subm' | translate }}</button>
+    <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

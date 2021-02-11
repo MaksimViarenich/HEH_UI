@@ -25,9 +25,7 @@ export class ModalService {
       maxWidth: '66rem',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe(() => { });
   }
 
   openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
@@ -76,7 +74,7 @@ export class ModalService {
 
   openAddAddressModal(): any {
     return this.dialog.open(AddAddressComponent, {
-      width: '250px',
+      width: '33rem',
     });
   }
 }

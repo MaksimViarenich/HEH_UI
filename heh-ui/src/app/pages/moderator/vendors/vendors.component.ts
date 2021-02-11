@@ -1,7 +1,6 @@
 import { VendorService } from './vendor.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { VendorCard } from '../../../models/vendor-card';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 

@@ -35,4 +35,16 @@
       margin: 1rem 0;
     }
   }
+
+  .btn-add {
+    margin: 0 auto 1rem;
+    display: block;
+    width: 100%;
+    line-height: 3rem;
+    border: 0.1rem solid $color-gray;
+    border-radius: $border-radius-small;
+    text-align: left;
+    color: $color-white;
+    background-color: $color-violet;
+  }
 }

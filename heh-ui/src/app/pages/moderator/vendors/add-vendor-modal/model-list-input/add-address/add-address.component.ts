@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {FiltersService} from 'src/app/pages/discounts/filters.service';
 
 export interface AddressData {
@@ -11,7 +10,8 @@ export interface AddressData {
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
-  styleUrls: ['./add-address.component.scss']
+  styleUrls: ['./add-address.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddAddressComponent implements OnInit {
   countries: Array<any> = [];
@@ -21,8 +21,8 @@ export class AddAddressComponent implements OnInit {
   constructor(
     private filterService: FiltersService) {
     this.data = {
-      country: '',
-      city: '',
+      country: {},
+      city: {},
       street: ''
     };
   }
@@ -34,8 +34,6 @@ export class AddAddressComponent implements OnInit {
       }
     });
   }
-
-
 
   ngOnInit(): void {
     this.countries = this.filterService.countriesCities;

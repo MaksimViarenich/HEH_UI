@@ -1,6 +1,5 @@
-import { Component, ViewEncapsulation, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddAddressComponent } from './add-address/add-address.component';
 import {ModalService} from '../../../../../services/modal-service/modal.service';
 
 @Component({
@@ -14,6 +13,7 @@ export class ModelListInputComponent {
   @Input() label: string;
   @Input() listData: any[];
   @Input() type: string;
+  @Input() inputType: string;
   @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
@@ -22,10 +22,14 @@ export class ModelListInputComponent {
     this.label = '';
     this.listData = [];
     this.type = '';
+    this.inputType = '';
   }
 
   addPhone(): void {
-    this.listData.push(this.inputValue);
+    this.listData.push({
+      id: '1',
+      number: this.inputValue
+    });
     this.inputValue = '';
   }
 
@@ -33,7 +37,9 @@ export class ModelListInputComponent {
     const dialogRef = this.modalService.openAddAddressModal();
 
     dialogRef.afterClosed().subscribe((data: any) => {
-      this.listData.push(data);
+      if (data.street) {
+        this.listData.push(data);
+      }
     });
   }
 }

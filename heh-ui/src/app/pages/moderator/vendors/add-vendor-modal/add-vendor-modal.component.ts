@@ -5,8 +5,6 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../models/address';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -34,6 +32,7 @@ export class AddVendorModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
+    // console.log(this.vendor);
   }
 
   vendorName = new FormControl();
@@ -45,7 +44,6 @@ export class AddVendorModalComponent implements OnInit {
     this.modalService.openAddDiscountModal(discount, this.vendor);
   }
 
-
   onAddPhone(phoneNumber: string): void {
     this.vendor.phones.push({
       number: phoneNumber
@@ -56,18 +54,14 @@ export class AddVendorModalComponent implements OnInit {
     this.vendor.phones.splice(idx, 1);
   }
 
-  aaa(): any {
-    console.log(this.vendor);
-  }
-
   onAddAddress(address: any): void {
+    console.log(address);
     this.vendor.addresses.push({
-      id: '',
-      countryId: 'countryId',
-      cityId: 'cityId',
+      id: 1,
+      countryId: '',
+      cityId: '',
       street: address.street,
     });
-    console.log(this.vendor.addresses);
   }
 
   onDeleteAddress(idx: number): void {
