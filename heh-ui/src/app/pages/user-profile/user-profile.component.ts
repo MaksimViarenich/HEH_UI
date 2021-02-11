@@ -10,7 +10,7 @@ import {ToasterService} from '../../services/toaster-service/toaster.service';
 import {UserProfileService} from './user-profile.service';
 import {UsersService} from '../admin/users/users.service';
 import {UserInfo} from '../../models/user-info';
-import {Tag} from '../../models/tag';
+import {FiltersService} from '../discounts/filters.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -40,7 +40,8 @@ export class UserProfileComponent implements OnInit {
   constructor(public translate: TranslateService,
               private usersService: UsersService,
               private userProfleService: UserProfileService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private filtersService: FiltersService) {
     this.user = {
       id: '',
       role: '',
@@ -48,7 +49,6 @@ export class UserProfileComponent implements OnInit {
       email: '',
       address: [],
       isActive: false,
-      tagNotifications: [],
     };
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -95,11 +95,16 @@ export class UserProfileComponent implements OnInit {
     this.userProfleService.getUser().subscribe(
       (data) => {
         this.user = data;
-        console.log(data);
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
       }
     );
+      this.userProfleService.getDefaultFilters().subscribe(
+        (data) => {
+          this.user = data;
+        },
+        this.filtersService.getTagById()
+
   }
 }
