@@ -100,11 +100,6 @@ export class UserProfileComponent implements OnInit {
         this.toaster.open('Сan not get user profile');
       }
     );
-      this.userProfleService.getDefaultFilters().subscribe(
-        (data) => {
-          this.user = data;
-        },
-        this.filtersService.getTagById()
-
   }
 }
+
