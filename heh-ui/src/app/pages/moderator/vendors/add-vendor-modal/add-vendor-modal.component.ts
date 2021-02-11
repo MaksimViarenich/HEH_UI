@@ -14,6 +14,7 @@ import { FiltersService } from 'src/app/pages/discounts/filters.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AddVendorModalComponent implements OnInit {
+  vendorForView: any;
   vendor: any;
   links: any;
   countriesCities: any;
@@ -98,8 +99,8 @@ export class AddVendorModalComponent implements OnInit {
     if (this.vendorForId.id) {
       this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
         (data) => {
-          this.onAddAddress(data.addresses);
           this.vendor = data;
+          this.onAddAddress(data.addresses);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
