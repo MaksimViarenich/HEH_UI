@@ -61,6 +61,7 @@ export class AddVendorModalComponent implements OnInit {
   onAddAddress(address: any): void {
       console.log(address);
       console.log(this.countriesCities);
+      const editAddresses: any[] = [];
       const editAddress: any = {};
       const country: any = {};
       const city: any = {};
@@ -72,6 +73,7 @@ export class AddVendorModalComponent implements OnInit {
             editAddress.street = adr.street;
           }
         }
+        editAddress.country = country;
       });
       this.countriesCities.forEach((item: any) => {
         for (const cit of address) {
@@ -84,11 +86,11 @@ export class AddVendorModalComponent implements OnInit {
             });
           }
         }
+        editAddress.city = city;
+        editAddresses.push(editAddress);
       });
-      editAddress.city = city;
-      editAddress.country = country;
-      console.log(editAddress);
-      this.vendor.addresses.push(editAddress);
+      console.log(editAddresses);
+      this.vendor.addresses = editAddresses;
   }
 
   onDeleteAddress(idx: number): void {
