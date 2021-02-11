@@ -11,13 +11,11 @@
 }
 
 .spinner-overlay {
-  position: absolute;
-  height:100vh;
+  position: fixed;
+  height: 100%;
   width: 100%;
   background-color:rgba(0, 0, 0, 0.286);
   z-index:    10;
-  top:        0;
-  left:       0;
 
   .mat-progress-spinner {
     position: absolute;
