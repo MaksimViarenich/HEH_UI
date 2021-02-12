@@ -28,6 +28,7 @@ export class ModelListInputComponent {
       id: '1',
       number: this.inputValue
     });
+    this.inputValue = '';
   }
 
   openAddAddressModal(): void {
