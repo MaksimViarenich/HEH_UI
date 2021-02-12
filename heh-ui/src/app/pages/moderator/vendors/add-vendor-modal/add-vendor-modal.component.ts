@@ -95,21 +95,18 @@ export class AddVendorModalComponent implements OnInit {
   onAddAddress(address: any): void {
       const editAddress: any = {};
       const editAddresses: any[] = [];
-
       address.map((addr: any) => {
-
         this.countriesCities.forEach( (item: any) => {
           if (addr.countryId === item.id) {
-
-            for (const cit of item.cities) {
-              if (addr.cityId === cit.id) {
+            for (const city of item.cities) {
+              if (addr.cityId === city.id) {
                 editAddresses.push({
                   country: {
                         country: item.country,
                         id: item.id,
                         cities: item.cities,
                       },
-                  city: cit,
+                  city,
                   street: addr.street,
                 });
               }

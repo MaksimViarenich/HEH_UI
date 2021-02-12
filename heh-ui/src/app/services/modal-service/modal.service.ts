@@ -24,8 +24,6 @@ export class ModalService {
       backdropClass: 'vendor-details-modal-backdrop',
       maxWidth: '66rem',
     });
-
-    dialogRef.afterClosed().subscribe(() => { });
   }
 
   openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {

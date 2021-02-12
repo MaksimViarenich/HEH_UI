@@ -13,7 +13,6 @@ export class ModelListInputComponent {
   @Input() label: string;
   @Input() listData: any[];
   @Input() type: string;
-  @Input() inputType: string;
   @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
@@ -22,7 +21,6 @@ export class ModelListInputComponent {
     this.label = '';
     this.listData = [];
     this.type = '';
-    this.inputType = '';
   }
 
   addPhone(): void {
@@ -30,7 +28,6 @@ export class ModelListInputComponent {
       id: '1',
       number: this.inputValue
     });
-    this.inputValue = '';
   }
 
   openAddAddressModal(): void {
