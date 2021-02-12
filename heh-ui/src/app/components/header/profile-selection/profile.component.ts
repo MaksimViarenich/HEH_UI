@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserInfo } from '../../../models/user-info';
 import { ProfileService } from './profile.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../../pages/discounts/filters.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,15 +21,22 @@ export class ProfileComponent implements OnInit{
               private profileService: ProfileService,
               private filtersService: FiltersService,
               private toaster: ToasterService) {
-   this.user = {
-     id: '',
-     role: '',
-     name: '',
-     email: '',
-     address: [],
-     isActive: false,
-   };
+    this.user = {
+      id: '',
+      role: '',
+      name: '',
+      email: '',
+      address: {
+        id: '',
+        countryId: '',
+        cityId: '',
+        street: '',
+      },
+      isActive: false,
+    };
+    this.location = '';
   }
+
 
   goToPerson(): void {
     this.router.navigate(['/profile']);
@@ -43,7 +51,7 @@ export class ProfileComponent implements OnInit{
     this.profileService.getUser().subscribe(
       (data) => {
         this.user = data;
-        console.log(data);
+        this.location = this.filtersService.getAddressByCityId(data.address.cityId);
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
