@@ -1,9 +1,5 @@
 @import "../../../../../styles.scss";
 
-.vendor-card:hover {
-  cursor: pointer;
-}
-
 .vendor-card {
   @include glass;
   overflow: hidden;
