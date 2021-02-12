@@ -113,4 +113,14 @@ export class FiltersService {
   getFilters(): any {
     return cloneDeep(this.filterOptions);
   }
+
+  getAddressByCityId(cityId: string): string {
+    let address = '';
+    this.filterOptions.locations.forEach((item: any) => {
+      if (cityId === item.id ) {
+      address = item.viewValue;
+      }
+    });
+    return address;
+  }
 }

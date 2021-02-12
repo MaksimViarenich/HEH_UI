@@ -36,7 +36,6 @@ export class AddVendorModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
-    // console.log(this.vendor);
   }
 
   vendorName = new FormControl();
@@ -59,35 +58,31 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-      const editAddresses: any[] = [];
       const editAddress: any = {};
-      const country: any = {};
-      const city: any = {};
-      this.countriesCities.forEach((item: any) => {
-        for (const adr of address) {
-          if (adr.countryId === item.id) {
-            country.country = item.country;
-            country.id = item.id;
-            editAddress.street = adr.street;
-          }
-        }
-        editAddress.country = country;
-      });
-      this.countriesCities.forEach((item: any) => {
-        for (const cit of address) {
-          if (cit.countryId === item.id) {
-            item.cities.forEach((cityNames: any) => {
-              if (cit.cityId === cityNames.id) {
-                city.name = cityNames.name;
-                city.id = cityNames.id;
+      const editAddresses: any[] = [];
+
+      address.map((addr: any) => {
+
+        this.countriesCities.forEach( (item: any) => {
+          if (addr.countryId === item.id) {
+
+            for (const cit of item.cities) {
+              if (addr.cityId === cit.id) {
+                editAddresses.push({
+                  country: {
+                        country: item.country,
+                        id: item.id,
+                        cities: item.cities,
+                      },
+                  city: cit,
+                  street: addr.street,
+                });
               }
-            });
+            }
           }
         }
-        editAddress.city = city;
-        editAddresses.push(editAddress);
+        );
       });
-      // editAddresses.push(editAddress);
       this.vendor.addresses = editAddresses;
   }
 
