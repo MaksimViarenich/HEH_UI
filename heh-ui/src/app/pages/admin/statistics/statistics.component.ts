@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VendorCard } from '../../../models/vendor-card';
 import { VendorService } from '../../moderator/vendors/vendor.service';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-statistics',
@@ -10,7 +11,8 @@ import { VendorService } from '../../moderator/vendors/vendor.service';
 })
 export class StatisticsComponent implements OnInit {
   constructor(public dialog: MatDialog,
-              private vendorService: VendorService) {}
+              private vendorService: VendorService,
+              private toaster: ToasterService) {}
 
   list: Array<VendorCard> = [];
 
@@ -18,8 +20,10 @@ export class StatisticsComponent implements OnInit {
     this.vendorService.getVendorsStatistics().subscribe(
       (data) => {
         this.list = data;
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to show statistics');
       }
     );
   }
-
 }
