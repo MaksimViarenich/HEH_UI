@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationPreferences } from '../../models/notification-preferences';
 import { HEADER_TABS } from '../../models/tab';
 import { RoleService } from '../../services/role-service/role.service';
+import {UserInfo} from '../../models/user-info';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +13,7 @@ import { RoleService } from '../../services/role-service/role.service';
 
 export class HeaderComponent implements OnInit{
   tabs: any;
-
-  user: NotificationPreferences = {
-    username: 'Michael Browk',
-    userphoto: '../../../assets/images/user.jpg',
-    location: 'Belarus, Minsk',
-    address: 'Naturalistov, 3',
-  };
+  user: UserInfo | undefined;
 
   constructor(private router: Router,
               private roleService: RoleService) {
@@ -39,15 +33,6 @@ export class HeaderComponent implements OnInit{
       case (role.includes('employee')):
         return this.tabs = HEADER_TABS.slice(0, 2);
     }
-  }
-
-  goToPerson(): void {
-    this.router.navigate(['/profile']);
-  }
-
-  logout(): void {
-    localStorage.removeItem('isAuth');
-    this.router.navigate(['/login']);
   }
 
   goToMain(): void {

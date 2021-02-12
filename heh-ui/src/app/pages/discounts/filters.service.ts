@@ -25,8 +25,7 @@ export class FiltersService {
   }
 
   getToken(): any {
-    const token = localStorage.getItem('isAuth');
-    return token;
+    return localStorage.getItem('isAuth');
   }
 
   getLocations(): Observable<any> {
@@ -52,6 +51,48 @@ export class FiltersService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
     return this.http.get(`${BASE_API_URL}/api/vendor`, {headers});
+  }
+
+  addNewCategory(newCategory: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${token}`);
+    headers = headers.append('Content-Type', `application/json;odata.metadata=minimal;odata.streaming=true`);
+    headers = headers.append('accept', '*/*');
+
+    return this.http.post(`${BASE_API_URL}/api/category`, newCategory, {headers});
+  }
+
+  deleteCategory(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/category?id=${id}`, {headers});
+  }
+
+  addNewTag(newTag: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${token}`);
+    headers = headers.append('Content-Type', `application/json;odata.metadata=minimal;odata.streaming=true`);
+    headers = headers.append('accept', '*/*');
+
+    return this.http.post(`${BASE_API_URL}/api/tag`, newTag, {headers});
+  }
+
+  deleteTag(id: string): Observable<any> {
+    const token = localStorage.getItem('isAuth');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${BASE_API_URL}/api/tag?id=${id}`, {headers});
   }
 
   loadFilters(): any {
@@ -110,15 +151,22 @@ export class FiltersService {
     })?.viewValue;
   }
 
+  getVendorById(id: string): string {
+    return this.filterOptions.vendors.find((vendor: any) => {
+      return vendor.id === id;
+    })?.viewValue;
+  }
+
   getFilters(): any {
     return cloneDeep(this.filterOptions);
   }
 
   getAddressByCityId(cityId: string): string {
     let address = '';
+
     this.filterOptions.locations.forEach((item: any) => {
       if (cityId === item.id ) {
-      address = item.viewValue;
+        address = item.viewValue;
       }
     });
     return address;

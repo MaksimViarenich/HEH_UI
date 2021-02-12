@@ -1,9 +1,11 @@
 <app-page-search [isVendorSearchAvailable]="true"></app-page-search>
 <mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
   <mat-grid-tile>
-    <app-add-vendor-card (click)="openVendorModall()"></app-add-vendor-card>
+    <app-add-vendor-card (click)="openVendorModal()"></app-add-vendor-card>
   </mat-grid-tile>
   <mat-grid-tile *ngFor="let item of vendors">
-    <app-vendor-card [data]="item" (click)="openVendorModall(item)"></app-vendor-card>
+    <app-vendor-card [data]="item"
+                     (click)="openVendorModal(item)"
+                     (updateCardsAfterDelete)="getAllVendors()"></app-vendor-card>
   </mat-grid-tile>
 </mat-grid-list>

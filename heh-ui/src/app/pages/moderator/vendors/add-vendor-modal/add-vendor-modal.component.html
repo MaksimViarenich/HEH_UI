@@ -18,8 +18,8 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.workingHours" matInput>
+            <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
+            <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
 
@@ -42,34 +42,34 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="links.website" matInput>
+            <input [(ngModel)]="links.website" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
-              <input [(ngModel)]="links.instagram" matInput>
+            <input [(ngModel)]="links.instagram" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
-              <input [(ngModel)]="links.vkontakte" matInput>
+            <input [(ngModel)]="links.vkontakte" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
-             <input [(ngModel)]="links.facebook" matInput>
+            <input [(ngModel)]="links.facebook" matInput>
           </mat-form-field>
         </div>
 
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.email' | translate }}</mat-label>
-             <input [(ngModel)]="vendor.email" matInput>
+            <input [(ngModel)]="vendor.email" matInput>
           </mat-form-field>
           <section>
             <mat-checkbox [color]="'primary'"
                           [(ngModel)]="vendor.mailing">
-                          {{ 'vendors.add-vendor.permission' | translate }}
+              {{ 'vendors.add-vendor.permission' | translate }}
             </mat-checkbox>
           </section>
         </div>
@@ -82,7 +82,7 @@
         <button (click)="openDiscountModal()"
                 class="add-discount-button"
                 mat-raised-button>
-                {{ 'vendors.add-vendor.add-dsk' | translate }}
+          {{ 'vendors.add-vendor.add-dsk' | translate }}
         </button>
 
         <div class="vendors-component">
@@ -96,6 +96,7 @@
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
     <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
-    <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
+    <button mat-raised-button mat-dialog-close
+            (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

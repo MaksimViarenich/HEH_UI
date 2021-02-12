@@ -37,7 +37,7 @@ import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-mo
 import { ActionEventComponent } from './pages/admin/event-history/action-event/action-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { AgmCoreModule } from '@agm/core';
@@ -46,6 +46,8 @@ import { SelectBackgroundComponent } from './components/header/select-background
 import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './role-guard/role.guard';
 import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
+import { ProfileComponent } from './components/header/profile-selection/profile.component';
+import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -92,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AddVendorCardComponent,
     SelectBackgroundComponent,
     AddAddressComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,11 @@ export function HttpLoaderFactory(http: HttpClient): any {
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
-  providers: [AuthGuard, RoleGuard],
+  providers: [AuthGuard, RoleGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SpinnerHttpInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 

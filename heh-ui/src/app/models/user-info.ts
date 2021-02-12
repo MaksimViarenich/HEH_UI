@@ -9,7 +9,7 @@ export interface UserInfo {
   role: string;
   name: string;
   email: string;
-  address: Array<Address>;
+  address: Address;
   isActive: boolean;
   categoryNotifications?: Array<Category>;
   tagNotifications?: Array<Tag>;

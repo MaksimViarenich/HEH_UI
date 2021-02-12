@@ -3,6 +3,7 @@
     <div class="discount-details-header">
       <div class="discount-detail-title">{{discountDetails.vendorName}}</div>
       <app-btn-favorite [isFavorite]="discountDetails.isFavorite"
+                        [id]="discountDetails.id"
                         class="discount-detail-favorite"></app-btn-favorite>
     </div>
 
@@ -32,7 +33,7 @@
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of discountDetails.addresses"
-                      [value]="address.id">{{address}}</mat-option>
+                      [value]="address.id">{{address.street}}</mat-option>
         </mat-select>
       </mat-form-field>
 

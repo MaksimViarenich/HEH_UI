@@ -19,7 +19,7 @@
   "profile": {
     "subscription": "Subscriptions",
     "tag": "New tag...",
-    "newsletters": "Reseive a newsletters",
+    "newsletters": "Receive a newsletters",
     "service": "New services",
     "vendors": "New vendors",
     "city": "On city",
@@ -99,10 +99,5 @@
     "available": "Available to",
     "open": "Open",
     "cancel": "Cancel"
-  },
-  "notfound": {
-    "ops": "Oops!",
-    "find": "We can't seem to find the page you're looking for.",
-    "err": "Error code:"
   }
 }

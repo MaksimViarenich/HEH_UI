@@ -20,9 +20,13 @@
     <div class="edit-btn">
       <button class="btn-cancel"
               mat-button
-              mat-dialog-close>{{ 'favorites.cancel' | translate }}</button>
+              mat-dialog-close>
+              {{ 'favorites.cancel' | translate }}</button>
       <button class="btn-submit"
-              mat-raised-button>{{ 'favorites.subm' | translate }}</button>
+              mat-raised-button
+              mat-dialog-close
+              (click)="updateInfo()">
+              {{ 'favorites.subm' | translate }}</button>
     </div>
   </div>
 </div>

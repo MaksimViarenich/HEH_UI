@@ -16,7 +16,7 @@ export class FavoritesComponent implements OnInit {
               private toaster: ToasterService) {
   }
 
-  ngOnInit(): void {
+  getFavorites(): void {
     this.favoritesService.getFavorites().subscribe(
       (data) => {
         this.favoriteCards = data;
@@ -25,5 +25,9 @@ export class FavoritesComponent implements OnInit {
         this.toaster.open('Сan not get favorites');
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getFavorites();
   }
 }

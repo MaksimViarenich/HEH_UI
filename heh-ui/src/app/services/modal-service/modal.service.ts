@@ -17,8 +17,8 @@ export class ModalService {
   constructor(public dialog: MatDialog) {
   }
 
-  openVendorModal(data?: Vendor): void {
-    const dialogRef = this.dialog.open(AddVendorModalComponent, {
+  openVendorModal(data?: Vendor): any {
+    return this.dialog.open(AddVendorModalComponent, {
       data: data ? data : {},
       panelClass: 'vendor-details-modal',
       backdropClass: 'vendor-details-modal-backdrop',
@@ -45,17 +45,12 @@ export class ModalService {
     });
   }
 
-    openDiscountDetailsModal(discount: Discount): void {
-    const dialogRef = this.dialog.open(DiscountDetailsModalComponent, {
+  openDiscountDetailsModal(discount: Discount): any {
+    return this.dialog.open(DiscountDetailsModalComponent, {
       data: discount,
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
-    });
-
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

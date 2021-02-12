@@ -1,5 +1,5 @@
 <div class="favorite-card">
-  <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
+  <div>
     <div class="favorite-vendor">
       <div class="card-title">
         {{ favoriteInfo.vendorName}}
@@ -13,7 +13,6 @@
         <app-category [categoryId]="favoriteInfo.categoryId"></app-category>
         <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
                  [tagId]="tag"></app-tag>
-        <div class="discount-detail-promo-code">{{favoriteInfo.promoCode}}</div>
       </div>
 
       <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>
@@ -23,6 +22,7 @@
 
   <div class="card-actions">
     <i class="material-icons" (click)="openEditNoteModal()">edit</i>
-    <i class="material-icons">clear</i>
+    <i class="material-icons"
+       (click)="deleteFavorite()">clear</i>
   </div>
 </div>
