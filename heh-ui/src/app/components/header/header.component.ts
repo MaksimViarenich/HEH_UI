@@ -2,8 +2,6 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HEADER_TABS } from '../../models/tab';
 import { RoleService } from '../../services/role-service/role.service';
-import {UserInfo} from '../../models/user-info';
-import {ProfileService} from './profile-selection/profile.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +10,7 @@ import {ProfileService} from './profile-selection/profile.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   tabs: any;
   user: UserInfo;
 

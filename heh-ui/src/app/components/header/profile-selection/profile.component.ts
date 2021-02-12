@@ -14,9 +14,11 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 export class ProfileComponent implements OnInit{
 
   user: UserInfo;
+  location: string;
 
   constructor(private router: Router,
               private profileService: ProfileService,
+              private filtersService: FiltersService,
               private toaster: ToasterService) {
    this.user = {
      id: '',
@@ -27,7 +29,6 @@ export class ProfileComponent implements OnInit{
      isActive: false,
    };
   }
-
 
   goToPerson(): void {
     this.router.navigate(['/profile']);

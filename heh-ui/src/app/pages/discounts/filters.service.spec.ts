@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { FiltersService } from './filters.service';
 
 describe('FiltersService', () => {

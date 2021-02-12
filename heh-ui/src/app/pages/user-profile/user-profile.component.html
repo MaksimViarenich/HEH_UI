@@ -30,29 +30,25 @@
 
     <mat-form-field>
       <mat-label>{{ 'profile.subscription' | translate }}</mat-label>
-      <mat-chip-list #chipList aria-label="Tag selection">
-        <mat-chip
-          *ngFor="let tag of user.tagNotifications"
-          [selectable]="selectable"
-          [removable]="removable"
-          (removed)="remove(tag)">
-          {{ tag }}
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
-        <input
-          placeholder="{{ 'profile.tag' | translate }}"
-          #tagInput
-          [formControl]="tagCtrl"
-          [matAutocomplete]="auto"
-          [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          (matChipInputTokenEnd)="add($event)">
-      </mat-chip-list>
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-          {{ tag }}
-        </mat-option>
-      </mat-autocomplete>
+      <mat-select multiple [(ngModel)]="selectedOptions">
+        <mat-optgroup [label]="'Categories'">
+          <mat-option *ngFor="let category of allOptions.categories" [value]="category.id">
+            {{category.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+        <mat-optgroup [label]="'Tags'">
+          <mat-option *ngFor="let tag of allOptions.tags" [value]="tag.id">
+            {{tag.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+        <mat-optgroup [label]="'Vendors'">
+          <mat-option *ngFor="let vendor of allOptions.vendors" [value]="vendor.id">
+            {{vendor.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+
+        <mat-option *ngFor="let option of allOptions" [value]="option.id">{{option.viewValue}}</mat-option>
+      </mat-select>
     </mat-form-field>
 
   </div>
