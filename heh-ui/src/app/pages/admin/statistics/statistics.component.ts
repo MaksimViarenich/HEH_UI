@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { VendorCard } from '../../../models/vendor-card';
-import {VendorService} from '../../moderator/vendors/vendor.service';
+import { VendorService } from '../../moderator/vendors/vendor.service';
 
 @Component({
   selector: 'app-statistics',
