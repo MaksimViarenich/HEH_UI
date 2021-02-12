@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
-import { BASE_API_URL } from 'src/app/global';
-import { cloneDeep } from 'lodash';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {forkJoin, Observable} from 'rxjs';
+import {BASE_API_URL} from 'src/app/global';
+import {cloneDeep} from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +24,7 @@ export class FiltersService {
   }
 
   getToken(): any {
-    const token = localStorage.getItem('isAuth');
-    return token;
+    return localStorage.getItem('isAuth');
   }
 
   getLocations(): Observable<any> {
@@ -147,7 +146,25 @@ export class FiltersService {
     })?.viewValue;
   }
 
+  getVendorById(id: string): string {
+    return this.filterOptions.vendors.find((vendor: any) => {
+      return vendor.id === id;
+    })?.viewValue;
+  }
+
   getFilters(): any {
     return cloneDeep(this.filterOptions);
+  }
+
+  getAddressByCityId(cityId: string): string {
+    let address = '';
+
+    this.filterOptions.locations.forEach((item: any) => {
+      if (cityId === item.id ) {
+        address = item.viewValue;
+      }
+    });
+
+    return address;
   }
 }
