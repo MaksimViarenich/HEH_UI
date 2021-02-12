@@ -59,8 +59,6 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-      console.log(address);
-      console.log(this.countriesCities);
       const editAddresses: any[] = [];
       const editAddress: any = {};
       const country: any = {};
@@ -89,7 +87,7 @@ export class AddVendorModalComponent implements OnInit {
         editAddress.city = city;
         editAddresses.push(editAddress);
       });
-      console.log(editAddresses);
+      // editAddresses.push(editAddress);
       this.vendor.addresses = editAddresses;
   }
 
