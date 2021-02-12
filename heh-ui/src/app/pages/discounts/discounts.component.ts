@@ -2,9 +2,7 @@ import { DiscountsService } from './discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
-import { FiltersService } from './filters.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
-import { DiscountDetailsModalComponent } from './discount-details-modal/discount-details-modal.component';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
 
 @Component({

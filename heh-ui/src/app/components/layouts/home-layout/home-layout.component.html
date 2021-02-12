@@ -1,4 +1,11 @@
 <app-header></app-header>
+<div *ngIf="spinnerService.visibility | async"
+     class="spinner-overlay">
+  <mat-spinner mode="indeterminate"
+               [diameter]="70"
+               class="mat-progress-spinner">
+  </mat-spinner>
+</div>
 <div class="container">
   <div class="title">
     {{ getLocalizationKey() | translate }}
