@@ -23,7 +23,7 @@
       height: auto;
       justify-content: space-between;
       padding: 1rem;
-      @include glass;
+      background: rgba(255, 255, 255, 0.7);
       border-radius: $border-radius-small;
       box-shadow: $shadow-violet;
 
@@ -47,6 +47,7 @@
 
       .btn-cancel {
         color: $color-black;
+        margin-right: 0.5rem;
       }
 
       .btn-submit {
@@ -55,5 +56,4 @@
       }
     }
   }
-
 }
