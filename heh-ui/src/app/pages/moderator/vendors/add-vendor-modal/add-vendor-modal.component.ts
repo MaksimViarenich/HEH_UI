@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
+import { FiltersService } from 'src/app/pages/discounts/filters.service';
 import { Phones } from 'src/app/models/phones';
 import { Address } from '../../../../models/address';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
@@ -16,20 +17,13 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
   encapsulation: ViewEncapsulation.None,
 })
 export class AddVendorModalComponent implements OnInit {
+  vendorForView: any;
   vendor: any;
   links: any;
-
-  get vendorPhones(): string[] {
-    return this.vendor.phones ?
-      this.vendor.phones.map((phone: Phones) => phone.number) : [];
-  }
-
-  get vendorAddresses(): string[] {
-    return this.vendor.addresses ?
-      this.vendor.addresses.map((address: Address) => address.street) : [];
-  }
+  countriesCities: any;
 
   constructor(
+    private filterService: FiltersService,
     public vendorService: VendorService,
     public dialog: MatDialog,
     private modalService: ModalService,
@@ -98,10 +92,30 @@ export class AddVendorModalComponent implements OnInit {
     this.vendor.phones.splice(idx, 1);
   }
 
-  onAddAddress(street: string): void {
-    this.vendor.addresses.push({
-      street
-    });
+  onAddAddress(address: any): void {
+      const editAddress: any = {};
+      const editAddresses: any[] = [];
+      address.map((addr: any) => {
+        this.countriesCities.forEach( (item: any) => {
+          if (addr.countryId === item.id) {
+            for (const city of item.cities) {
+              if (addr.cityId === city.id) {
+                editAddresses.push({
+                  country: {
+                        country: item.country,
+                        id: item.id,
+                        cities: item.cities,
+                      },
+                  city,
+                  street: addr.street,
+                });
+              }
+            }
+          }
+        }
+        );
+      });
+      this.vendor.addresses = editAddresses;
   }
 
   onDeleteAddress(idx: number): void {
@@ -113,7 +127,7 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
         (data) => {
           this.vendor = data;
-
+          this.onAddAddress(data.addresses);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
@@ -126,6 +140,7 @@ export class AddVendorModalComponent implements OnInit {
           this.toaster.open('Сan not get vendorId');
         }
       );
+      this.countriesCities = this.filterService.countriesCities;
     }
   }
 }

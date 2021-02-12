@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../../models/address';
+import { MatDialog } from '@angular/material/dialog';
+import {ModalService} from '../../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-model-list-input',
@@ -11,18 +11,32 @@ import { Address } from '../../../../../models/address';
 
 export class ModelListInputComponent {
   @Input() label: string;
-  @Input() listData: string[];
+  @Input() listData: any[];
+  @Input() type: string;
   @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
 
-  constructor() {
+  constructor(public dialog: MatDialog, private modalService: ModalService) {
     this.label = '';
     this.listData = [];
+    this.type = '';
   }
 
-  onAddData(): void {
-    this.addData.emit(this.inputValue);
-    this.inputValue = '';
+  addPhone(): void {
+    this.listData.push({
+      id: '1',
+      number: this.inputValue
+    });
+  }
+
+  openAddAddressModal(): void {
+    const dialogRef = this.modalService.openAddAddressModal();
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data.street) {
+        this.listData.push(data);
+      }
+    });
   }
 }

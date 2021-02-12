@@ -1,0 +1,51 @@
+@import '../../../../../../../styles.scss';
+
+.add-adress-container {
+    height: 85%;
+    padding: 1rem;
+
+    .add-vendor-group {
+        padding: 1rem 1rem 0 1rem;
+        margin-bottom: $margin-1;
+        @include glass;
+        border-radius: $border-radius-small;
+        box-shadow: $shadow-violet;
+    }
+
+    .add-address-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        line-height: 3.8rem;
+    }
+
+    .mat-dialog-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mat-form-field {
+        display: block;
+    }
+
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color:transparent;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+        margin-left: 0.6rem;
+    }
+
+    .add-address-btns {
+        text-align: right;
+        font-weight: bold;
+        margin: 0 $margin-1 0 0;
+        padding: 0;
+    
+        button:last-child {
+            background: $color-violet;
+            color: $color-white;
+            margin-left: $margin-1;
+        }
+    }
+}

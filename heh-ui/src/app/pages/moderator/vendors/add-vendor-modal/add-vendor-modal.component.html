@@ -25,14 +25,15 @@
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendorAddresses"
+                                [listData]="vendor.addresses"
                                 (addData)="onAddAddress($event)"
-                                (deleteData)="onDeleteAddress($event)"></app-model-list-input>
+                                (deleteData)="onDeleteAddress($event)"
+                                [type]="'address'"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendorPhones"
+                                [listData]="vendor.phones"
                                 (addData)="onAddPhone($event)"
                                 (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>

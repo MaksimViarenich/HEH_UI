@@ -1,15 +1,20 @@
 <div class="model-list-input-container">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline"
+                  *ngIf="type !== 'address'">
     <mat-label>{{label}}</mat-label>
-    <input matInput (keydown.enter)="onAddData()"
+    <input  matInput (keydown.enter)="addPhone()"
+            type="tel"
            [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
-    <mat-icon matSuffix (click)="onAddData()">add</mat-icon>
+    <mat-icon matSuffix (click)="addPhone()">add</mat-icon>
   </mat-form-field>
+
+  <button class="btn-add" *ngIf="type === 'address'" mat-button (click)="openAddAddressModal()">Add address</button>
 
   <div class="text-wrapper"
        *ngFor="let value of listData; let idx = index">
-    {{value}}
+    <span *ngIf="type !== 'address'">{{value.number}}</span>
+    <span>{{value?.country?.country}}, {{value?.city?.name}}, {{value?.street}}</span>
 
     <div class="submit-div"
          (click)="deleteData.emit(idx)">

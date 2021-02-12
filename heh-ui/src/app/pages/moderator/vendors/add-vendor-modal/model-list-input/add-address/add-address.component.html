@@ -1,0 +1,41 @@
+<div class="add-adress-container">
+  <div mat-dialog-content>
+    <p class="add-address-title">Vendor address</p>
+    <div class="add-vendor-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+    
+        <mat-select [(ngModel)]="data.country"
+                    (ngModelChange)="changeCitiesList()">
+          <mat-option>{{ 'search.select' | translate }}</mat-option>
+          <mat-option [value]="option"
+                      *ngFor="let option of countries">
+            {{ option.country }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+    
+        <mat-select [(ngModel)]="data.city">
+          <mat-option>{{ 'search.select' | translate }}</mat-option>
+          <mat-option [value]="option"
+                      *ngFor="let option of cities">
+            {{ option.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input class="add-address-input" matInput [(ngModel)]="data.street" required>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end" class="add-address-btns">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="data"
+            [disabled]="!data.street">Add</button>
+  </div>
+</div>
