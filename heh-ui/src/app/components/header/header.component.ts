@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HEADER_TABS } from '../../models/tab';
 import { RoleService } from '../../services/role-service/role.service';
-import {UserInfo} from '../../models/user-info';
+import { UserInfo } from '../../models/user-info';
 
 @Component({
   selector: 'app-header',

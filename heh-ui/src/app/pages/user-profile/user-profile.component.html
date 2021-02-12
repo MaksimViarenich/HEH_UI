@@ -72,10 +72,11 @@
           </mat-option>
         </mat-optgroup>
 
-
-        <mat-option *ngFor="let option of allOptions" [value]="option.id">{{option.viewValue}}</mat-option>
+        <mat-option *ngFor="let option of allOptions.id" [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
-
+    <button mat-raised-button mat-dialog-close
+            class="add-profile-button"
+            (click)=UpdateProfile()>{{ 'users.add-profile.subm' | translate }}</button>
   </div>
 </div>

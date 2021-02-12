@@ -43,12 +43,15 @@
     "user": "User",
     "description": "Description"
   },
-  "users" : {
+  "users": {
     "admin": "Administrator",
     "user": "User",
     "moderator": "Moderator",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "add-profile": {
+      "subm": "Submit"
+    }
   },
   "vendors": {
     "add": "Add vendor",

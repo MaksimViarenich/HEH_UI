@@ -1,16 +1,12 @@
-import {TranslateService} from '@ngx-translate/core';
-import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation, Input} from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {ToasterService} from '../../services/toaster-service/toaster.service';
-import {UserProfileService} from './user-profile.service';
-import {UsersService} from '../admin/users/users.service';
-import {UserInfo} from '../../models/user-info';
-import {FiltersService} from '../discounts/filters.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { UserProfileService } from './user-profile.service';
+import { UsersService } from '../admin/users/users.service';
+import { UserInfo } from '../../models/user-info';
+import { FiltersService } from '../discounts/filters.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -58,6 +54,20 @@ export class UserProfileComponent implements OnInit {
       },
       isActive: false,
     };
+  }
+
+  UpdateProfile(): void {
+    if (this.user.id) {
+      this.userProfleService.editProfile(this.user).subscribe(
+        (data) => {
+          this.toaster.open('Profile was updated', 'success');
+          console.log(data);
+        },
+        (error) => {
+          this.toaster.open('Update issue was occurred');
+        }
+      );
+    }
   }
 
   ngOnInit(): void {
