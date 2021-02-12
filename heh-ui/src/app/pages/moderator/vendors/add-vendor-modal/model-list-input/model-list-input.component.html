@@ -3,7 +3,7 @@
                   *ngIf="type !== 'address'">
     <mat-label>{{label}}</mat-label>
     <input  matInput (keydown.enter)="addPhone()"
-            type="'tel'"
+            type="tel"
            [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
     <mat-icon matSuffix (click)="addPhone()">add</mat-icon>
