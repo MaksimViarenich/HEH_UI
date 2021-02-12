@@ -18,7 +18,6 @@ export class StatisticsComponent implements OnInit {
     this.vendorService.getVendorsStatistics().subscribe(
       (data) => {
         this.list = data;
-        console.log(this.list);
       }
     );
   }
