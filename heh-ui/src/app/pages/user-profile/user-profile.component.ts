@@ -1,12 +1,12 @@
 import { TranslateService } from '@ngx-translate/core';
-import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {NotificationPreferences} from 'src/app/models/notification-preferences';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { UserProfileService } from './user-profile.service';
+import { UsersService } from '../admin/users/users.service';
+import { UserInfo } from '../../models/user-info';
+import { FiltersService } from '../discounts/filters.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,12 +18,7 @@ export class UserProfileComponent implements OnInit {
   newslettersChecked = false;
   disabled = true;
 
-  user: NotificationPreferences = {
-    username: 'Michael Browk',
-    userphoto: '../../../assets/images/user.jpg',
-    location: 'Belarus, Minsk',
-    address: 'Naturalistov, 3',
-  };
+  user: UserInfo;
 
   typesOfSubscription: string[] = ['profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
   visible = true;
@@ -38,7 +33,19 @@ export class UserProfileComponent implements OnInit {
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement> | undefined;
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService,
+              private usersService: UsersService,
+              private userProfleService: UserProfileService,
+              private toaster: ToasterService,
+              private filtersService: FiltersService) {
+    this.user = {
+      id: '',
+      role: '',
+      name: '',
+      email: '',
+      address: [],
+      isActive: false,
+    };
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
@@ -81,5 +88,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userProfleService.getUser().subscribe(
+      (data) => {
+        this.user = data;
+      },
+      (error) => {
+        this.toaster.open('Сan not get user profile');
+      }
+    );
   }
 }
+

@@ -7,7 +7,6 @@ import { BASE_API_URL } from '../../../global';
   providedIn: 'root'
 })
 export class UsersService {
-
   constructor(public http: HttpClient) {
   }
 

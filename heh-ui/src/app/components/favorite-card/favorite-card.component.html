@@ -13,7 +13,6 @@
         <app-category [categoryId]="favoriteInfo.categoryId"></app-category>
         <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
                  [tagId]="tag"></app-tag>
-        <div class="discount-detail-promo-code">{{favoriteInfo.promoCode}}</div>
       </div>
 
       <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>

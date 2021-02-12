@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
-import {BASE_API_URL} from 'src/app/global';
-import {cloneDeep} from 'lodash';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { forkJoin, Observable } from 'rxjs';
+import { BASE_API_URL } from 'src/app/global';
+import { cloneDeep } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
