@@ -33,7 +33,7 @@
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of discountDetails.addresses"
-                      [value]="address.id">{{address}}</mat-option>
+                      [value]="address.id">{{address.street}}</mat-option>
         </mat-select>
       </mat-form-field>
 
