@@ -29,11 +29,16 @@
     padding-left: 1rem;
     width: 100%;
 
-    .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+    .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,
+    .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
+      background: $color-gray;
+    }
+
+    .mat-pseudo-checkbox-checked {
       background: $color-blue-green;
     }
 
-    .add-profile-button{
+    .add-update-profile-button {
       margin-top: $margin-half;
       height: 3rem;
       width: 90%;
@@ -107,7 +112,7 @@
       box-shadow: $shadow-gray;
       border-radius: 4px;
 
-      .mat-form-field-wrapper{
+      .mat-form-field-wrapper {
         padding: 0;
       }
 
@@ -119,4 +124,8 @@
       }
     }
   }
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  background: $color-blue-green;
 }

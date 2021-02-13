@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {AddVendorModalComponent} from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
-import {MatDialog} from '@angular/material/dialog';
-import {Discount} from '../../models/discount';
-import {AddDiscountModalComponent} from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
-import {Vendor} from '../../models/vendor';
-import {DiscountDetailsModalComponent} from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
-import {EditNoteModalComponent} from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
-import {AddAddressComponent} from '../../pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
+import { Injectable } from '@angular/core';
+import { AddVendorModalComponent } from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Discount } from '../../models/discount';
+import { AddDiscountModalComponent } from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
+import { Vendor } from '../../models/vendor';
+import { DiscountDetailsModalComponent } from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
+import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
+import { AddAddressComponent } from '../../pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 
 @Injectable({
   providedIn: 'root'

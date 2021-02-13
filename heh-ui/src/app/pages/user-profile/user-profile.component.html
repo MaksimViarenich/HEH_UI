@@ -8,8 +8,8 @@
     <div class="profile-info">
       <div class="profile-username">{{user.name}}</div>
       <div class="profile-location">
-        <div >{{location}}</div>
-        <div >{{user.address.street}}</div>
+        <div>{{location}}</div>
+        <div>{{user.address.street}}</div>
       </div>
     </div>
 
@@ -30,7 +30,6 @@
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newVendorNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
                        [disabled]="!newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.vendors' | translate }}
@@ -38,7 +37,6 @@
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.cityChangeNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
                        [disabled]="!newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.city' | translate }}
@@ -46,7 +44,6 @@
 
       <mat-list-option [color]="'primary'"
                        [(ngModel)]="user.hotDiscountsNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
                        [disabled]="!newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.hot_sales' | translate }}

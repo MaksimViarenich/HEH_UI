@@ -32,6 +32,6 @@ export class UserProfileService {
     headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
-    return this.http.put(`${BASE_API_URL}api/user/profile`, updatedProfile, {headers});
+    return this.http.put(`${BASE_API_URL}/api/user/profile`, updatedProfile, {headers});
   }
 }

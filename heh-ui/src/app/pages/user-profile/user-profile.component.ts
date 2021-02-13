@@ -14,10 +14,12 @@ import { FiltersService } from '../discounts/filters.service';
   styleUrls: ['./user-profile.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class UserProfileComponent implements OnInit {
   newslettersChecked: boolean;
   filtersOptions: any;
-  user: UserInfo;
+  user: UserInfo | any;
+  userInfo: any;
   location: string;
   separatorKeysCodes: number[];
   allOptions: any;
@@ -29,7 +31,7 @@ export class UserProfileComponent implements OnInit {
               private usersService: UsersService,
               private filtersService: FiltersService,
               private userProfleService: UserProfileService,
-              private toaster: ToasterService, ) {
+              private toaster: ToasterService) {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
@@ -57,17 +59,15 @@ export class UserProfileComponent implements OnInit {
   }
 
   UpdateProfile(): void {
-    if (this.user.id) {
       this.userProfleService.editProfile(this.user).subscribe(
         (data) => {
-          this.toaster.open('Profile was updated', 'success');
-          console.log(data);
+          this.user = data;
+          this.toaster.open('Vendor was updated', 'success');
         },
         (error) => {
           this.toaster.open('Update issue was occurred');
         }
       );
-    }
   }
 
   ngOnInit(): void {

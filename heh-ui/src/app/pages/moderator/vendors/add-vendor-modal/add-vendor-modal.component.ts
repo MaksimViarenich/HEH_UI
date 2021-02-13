@@ -6,8 +6,6 @@ import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/pages/discounts/filters.service';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../models/address';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({
@@ -65,9 +63,11 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.updateVendor(this.vendor).subscribe(
         (data) => {
           this.toaster.open('Vendor was updated', 'success');
+          console.log(data);
         },
         (error) => {
           this.toaster.open('Update issue was occurred');
+          console.log(error);
         }
       );
     } else {
@@ -93,7 +93,6 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-      const editAddress: any = {};
       const editAddresses: any[] = [];
       address.map((addr: any) => {
         this.countriesCities.forEach( (item: any) => {

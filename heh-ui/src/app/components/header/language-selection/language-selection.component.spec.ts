@@ -9,7 +9,7 @@ describe('LanguageSelectionComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ LanguageSelectionComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

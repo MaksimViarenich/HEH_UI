@@ -12,7 +12,7 @@ import { FiltersService } from '../../../pages/discounts/filters.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
   user: UserInfo;
   location: string;
