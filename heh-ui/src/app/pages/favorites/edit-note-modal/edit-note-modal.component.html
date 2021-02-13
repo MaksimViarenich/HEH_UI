@@ -1,20 +1,22 @@
 <div mat-dialog-content>
   <div class="edit-wrapper">
-    <div class="edit-header">
-      {{ favorite.vendorName }}
-    </div>
-
-    <div class="edit-field">
-      <div class="discount-name">
-        {{ favorite.conditions }}
+    <div class="edit-content">
+      <div class="edit-header">
+        {{ favorite.vendorName }}
       </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{ 'favorites.notes' | translate }}</mat-label>
-        <textarea matInput
-                  type="text"
-                  [(ngModel)]="favorite.note"></textarea>
-      </mat-form-field>
+      <div class="edit-field">
+        <div class="discount-name">
+          {{ favorite.conditions }}
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'favorites.notes' | translate }}</mat-label>
+          <textarea matInput
+                    type="text"
+                    [(ngModel)]="favorite.note"></textarea>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="edit-btn">
@@ -26,7 +28,7 @@
               mat-raised-button
               mat-dialog-close
               (click)="updateInfo()">
-              {{ 'favorites.subm' | translate }}</button>
+              {{ 'favorites.save' | translate }}</button>
     </div>
   </div>
 </div>
