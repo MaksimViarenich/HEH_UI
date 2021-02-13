@@ -4,14 +4,15 @@
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
-           (matChipInputTokenEnd)="add($event)">
+           [(ngModel)]="newItem">
     <mat-chip-list #chipList>
     </mat-chip-list>
   </mat-form-field>
 
   <button mat-raised-button
           color="primary"
-          [disabled]="isDisabled">{{ 'categories-and-tags.add' | translate }}</button>
+          [disabled]="isDisabled"
+          (click)="add(newItem)">{{ 'categories-and-tags.add' | translate }}</button>
 </div>
 
 <div class="chips-container">
