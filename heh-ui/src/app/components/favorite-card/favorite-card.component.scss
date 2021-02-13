@@ -66,11 +66,6 @@
         display: flex;
         flex-direction: row;
         font-size: $font-content;
-
-        i {
-          font-size: $font-title;
-          vertical-align: text-bottom;
-        }
       }
 
       .discount-note::before {
@@ -101,7 +96,6 @@
       &:hover {
         cursor: pointer;
         color: $color-blue-green;
-
       }
 
       &:last-child {
