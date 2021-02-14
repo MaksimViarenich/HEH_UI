@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ToasterService} from '../../../services/toaster-service/toaster.service';
-import {FiltersService} from '../../discounts/filters.service';
-import {Category} from '../../../models/category';
-import {Tag} from '../../../models/tag';
-import {cloneDeep} from 'lodash';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../discounts/filters.service';
+import { Category } from '../../../models/category';
+import { Tag } from '../../../models/tag';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-categories-tags',
@@ -40,6 +40,7 @@ export class CategoriesTagsComponent implements OnInit {
             this.tagsAllCopy = cloneDeep(this.tagsAll);
           });
         });
+        this.toaster.open('Categories and tags have been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get categories and tags');

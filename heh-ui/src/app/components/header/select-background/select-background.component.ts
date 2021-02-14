@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SelectBackgroundService} from './select-background.service';
+import { SelectBackgroundService } from './select-background.service';
 
 @Component({
   selector: 'app-select-background',

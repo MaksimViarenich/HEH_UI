@@ -1,16 +1,12 @@
-import {TranslateService} from '@ngx-translate/core';
-import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation, Input} from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {ToasterService} from '../../services/toaster-service/toaster.service';
-import {UserProfileService} from './user-profile.service';
-import {UsersService} from '../admin/users/users.service';
-import {UserInfo} from '../../models/user-info';
-import {FiltersService} from '../discounts/filters.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { COMMA, ENTER} from '@angular/cdk/keycodes';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { UserProfileService } from './user-profile.service';
+import { UsersService } from '../admin/users/users.service';
+import { UserInfo } from '../../models/user-info';
+import { FiltersService } from '../discounts/filters.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -75,6 +71,7 @@ export class UserProfileComponent implements OnInit {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
+        this.toaster.open('User profile has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get user profile');

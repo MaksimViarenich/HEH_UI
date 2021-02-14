@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
-import {BASE_API_URL} from 'src/app/global';
-import {cloneDeep} from 'lodash';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { forkJoin, Observable } from 'rxjs';
+import { BASE_API_URL } from 'src/app/global';
+import { cloneDeep } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,7 @@ export class FiltersService {
   }
 
   getLocations(): Observable<any> {
+
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', `Bearer ${this.getToken()}`);
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
@@ -46,6 +47,7 @@ export class FiltersService {
   }
 
   getVendors(): Observable<any> {
+
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', `Bearer ${this.getToken()}`);
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');

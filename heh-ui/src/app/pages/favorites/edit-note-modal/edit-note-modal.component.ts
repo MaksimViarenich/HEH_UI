@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewEncapsulation, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Discount} from '../../../models/discount';
-import {FavoritesService} from '../favorites.service';
+import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
+import { Discount } from '../../../models/discount';
+import { FavoritesService } from '../favorites.service';
 
 @Component({
   selector: 'app-edit-note-modal',
@@ -13,13 +14,21 @@ import {FavoritesService} from '../favorites.service';
 export class EditNoteModalComponent implements OnInit {
   favorite: any;
   constructor(private favoriteService: FavoritesService,
+              private toaster: ToasterService,
               @Inject(MAT_DIALOG_DATA) public data: Discount
   ) {
     this.favorite = data;
   }
 
   updateInfo(): any {
-    this.favoriteService.addUpdateFavorite(this.favorite.id, this.favorite.note, 'update').subscribe();
+    this.favoriteService.addUpdateFavorite(this.favorite.id, this.favorite.note, 'update').subscribe(
+      (data) => {
+        this.toaster.open('Information has been updated', 'success');
+      },
+      (error) => {
+        this.toaster.open('Information hasn\'t been updated');
+      }
+    );
   }
 
   ngOnInit(): void {

@@ -1,8 +1,8 @@
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {ToasterService} from '../../../../services/toaster-service/toaster.service';
-import {FiltersService} from '../../../discounts/filters.service';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../../discounts/filters.service';
 
 @Component({
   selector: 'app-list-input',
