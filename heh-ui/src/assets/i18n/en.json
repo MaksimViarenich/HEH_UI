@@ -50,7 +50,7 @@
     "active": "Active",
     "inactive": "Inactive",
     "add-profile": {
-      "subm": "Submit"
+      "save": "Save"
     }
   },
   "vendors": {

@@ -15,36 +15,36 @@
 
     <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'"
-                       [(ngModel)]="newslettersChecked"
-                       (click)="newslettersChecked = ! newslettersChecked"
+                       [(ngModel)]="user.allNotificationsAreOn"
+                       (click)="newslettersChecked = !newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.newsletters' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newDiscountNotificationIsOn"
-                       [disabled]="!newslettersChecked"
+                       [disabled]="newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.service' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newVendorNotificationIsOn"
-                       [disabled]="!newslettersChecked"
+                       [disabled]="newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.vendors' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.cityChangeNotificationIsOn"
-                       [disabled]="!newslettersChecked"
+                       [disabled]="newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.city' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
-                       [(ngModel)]="user.hotDiscountsNotificationIsOn"
-                       [disabled]="!newslettersChecked"
+                       [selected]="user.hotDiscountsNotificationIsOn"
+                       [disabled]="newslettersChecked"
                        ngDefaultControl>
         {{ 'profile.hot_sales' | translate }}
       </mat-list-option>
@@ -74,6 +74,6 @@
     </mat-form-field>
     <button mat-raised-button mat-dialog-close
             class="add-profile-button"
-            (click)=UpdateProfile()>{{ 'users.add-profile.subm' | translate }}</button>
+            (click)=SaveProfile()>{{ 'users.add-profile.save' | translate }}</button>
   </div>
 </div>

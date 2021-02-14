@@ -19,7 +19,6 @@ export class UserProfileComponent implements OnInit {
   newslettersChecked: boolean;
   filtersOptions: any;
   user: UserInfo | any;
-  userInfo: any;
   location: string;
   separatorKeysCodes: number[];
   allOptions: any;
@@ -58,11 +57,17 @@ export class UserProfileComponent implements OnInit {
     };
   }
 
-  UpdateProfile(): void {
-      this.userProfleService.editProfile(this.user).subscribe(
+  SaveProfile(): void {
+    const userNotification = {
+      selectedOptions: this.selectedOptions,
+      newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
+      newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
+      hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
+      allNotificationsAreOn: this.user.allNotificationsAreOn};
+
+    this.userProfleService.editProfile(userNotification).subscribe(
         (data) => {
-          this.user = data;
-          this.toaster.open('Vendor was updated', 'success');
+          this.toaster.open('Profile was updated', 'success');
         },
         (error) => {
           this.toaster.open('Update issue was occurred');
