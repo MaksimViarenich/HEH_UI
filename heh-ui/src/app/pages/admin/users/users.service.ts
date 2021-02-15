@@ -11,7 +11,6 @@ export class UsersService {
   }
 
   getUsers(): Observable<any> {
-
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();

@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('isAuth', data.access_token);
         this.getExpirationDate(data.access_token);
         this.router.navigate(['/discounts']);
+        this.toaster.open('Authorization succeeded', 'success');
       },
       (error) => {
         this.toaster.open('The username and password you entered did not match our records. Please double-check and try again.');

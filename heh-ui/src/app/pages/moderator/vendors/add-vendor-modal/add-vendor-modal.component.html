@@ -85,9 +85,9 @@
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
-                                 (click)="openDiscountModal(discount)"
-                                 [discountInfo]="discount"></app-edit-discout-card>
+          <app-edit-discount-card *ngFor="let discount of vendor.discounts"
+                                  (click)="openDiscountModal(discount)"
+                                  [discountInfo]="discount"></app-edit-discount-card>
         </div>
       </div>
     </div>

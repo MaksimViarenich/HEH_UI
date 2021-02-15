@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Discount} from '../../../../models/discount';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Discount } from '../../../../models/discount';
 
 @Component({
   selector: 'app-add-discount-modal',

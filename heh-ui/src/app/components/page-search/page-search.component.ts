@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {FiltersService} from '../../pages/discounts/filters.service';
-import {FormControl} from '@angular/forms';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { FiltersService } from '../../pages/discounts/filters.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-page-search',

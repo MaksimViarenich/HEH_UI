@@ -11,7 +11,6 @@ export class DiscountsService {
   constructor(public http: HttpClient) { }
 
 getDiscounts(): Observable<any> {
-
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -23,7 +22,6 @@ getDiscounts(): Observable<any> {
   }
 
 getDiscountDetails(id: string): Observable<any> {
-
   const token = localStorage.getItem('isAuth');
 
   let headers = new HttpHeaders();
