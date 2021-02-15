@@ -14,6 +14,7 @@ import {ToasterService} from '../../../../services/toaster-service/toaster.servi
   encapsulation: ViewEncapsulation.None
 })
 export class AddDiscountModalComponent implements OnInit {
+  @Output() saveDiscountEvent = new EventEmitter<any>();
   discountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
@@ -64,5 +65,8 @@ export class AddDiscountModalComponent implements OnInit {
         this.toaster.open('Сan not get categories and tags');
       }
     );
+  }
+  saveDiscount(discount: any): void{
+    return this.saveDiscountEvent.emit(discount);
   }
 }

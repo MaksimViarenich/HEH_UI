@@ -26,8 +26,8 @@ export class ModalService {
     });
   }
 
-  openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
-    const dialogRef = this.dialog.open(AddDiscountModalComponent, {
+  openAddDiscountModal(discount?: Discount, vendor?: Vendor): any {
+    return this.dialog.open(AddDiscountModalComponent, {
       data: {
         discount: discount || {},
         addresses: vendor ? vendor.addresses : [],
@@ -36,10 +36,6 @@ export class ModalService {
       panelClass: 'add-discount-modal',
       backdropClass: 'add-discount-modal-backdrop',
       maxWidth: '33rem',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

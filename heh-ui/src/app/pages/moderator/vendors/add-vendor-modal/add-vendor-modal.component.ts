@@ -51,7 +51,11 @@ export class AddVendorModalComponent implements OnInit {
   phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount): void {
-    this.modalService.openAddDiscountModal(discount, this.vendor);
+    const dialogRef = this.modalService.openAddDiscountModal(discount, this.vendor);
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   addUpdateNewVendor(): void {
