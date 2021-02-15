@@ -11,7 +11,7 @@
 
         <mat-select [formControl]="locationFormControl">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
-          <mat-option [value]="option.viewValue"
+          <mat-option [value]="option.id"
                       *ngFor="let option of filtersOptions.locations">
             {{ option.viewValue }}
           </mat-option>
@@ -40,7 +40,7 @@
 
         <mat-select [formControl]="tagsFormControl" multiple>
           <mat-option *ngFor="let option of filtersOptions.tags"
-                      [value]="option.viewValue">{{option.viewValue}}</mat-option>
+                      [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -52,7 +52,7 @@
 
         <mat-select [formControl]="vendorsFormControl" multiple>
           <mat-option *ngFor="let option of filtersOptions.vendors"
-                      [value]="option.viewValue">{{option.viewValue}}</mat-option>
+                      [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

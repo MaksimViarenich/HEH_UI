@@ -42,18 +42,10 @@ export class PageSearchComponent implements OnInit {
     });
   }
 
-  getCategoriesValue(arrIds: string[]): string[] {
-    const categoriesValues: string[] = [];
-    arrIds.map((item: string) => {
-      categoriesValues.push(this.filtersService.getCategoryById(item));
-    });
-    return categoriesValues;
-  }
-
   submitSearch(): void {
     this.searchData.location = this.locationFormControl.value;
     this.searchData.searchText = this.searchText;
-    this.searchData.categories = this.getCategoriesValue(this.categoriesFormControl.value);
+    this.searchData.categories = this.categoriesFormControl.value;
     this.searchData.tags = this.tagsFormControl.value;
     this.searchData.vendors = this.vendorsFormControl.value;
     this.sendSubmitData.emit(this.searchData);

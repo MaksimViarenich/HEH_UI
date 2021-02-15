@@ -41,6 +41,9 @@ export class DiscountsService {
 
     let params = new HttpParams();
     params = params.append('searchText', searchData.searchText);
+    // $filter=Address/City eq 'Redmond'
+    params = params.append('$filter', `categoryId eq ${searchData.categories[0]}`);
+    console.log(searchData);
 
     return this.http.get(`${BASE_API_URL}/odata/discount`, {headers, params});
   }
