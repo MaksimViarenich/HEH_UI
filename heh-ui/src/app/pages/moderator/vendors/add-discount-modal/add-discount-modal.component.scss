@@ -30,7 +30,7 @@
 
       .mat-form-field-wrapper {
         padding-bottom: 0;
-        @include glass;
+        background: rgba(255, 255, 255, 0.7);
         border-radius: $border-radius-small;
       }
     }

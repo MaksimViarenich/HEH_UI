@@ -35,8 +35,8 @@
                required>
       </mat-form-field>
 
-      <mat-form-field class="add-discount-description" appearance="outline">
-        <mat-label>{{ 'vendors.add-discount.description' | translate }}</mat-label>
+      <mat-form-field class="add-discount-conditions" appearance="outline">
+        <mat-label>{{ 'vendors.add-discount.conditions' | translate }}</mat-label>
         <input matInput
                [(ngModel)]="discountDetail.conditions"
                [formControl]="conditions"
@@ -78,7 +78,7 @@
         <mat-label>{{ 'vendors.add-discount.tag' | translate }}</mat-label>
         <mat-select [formControl]="tag"
                     [(ngModel)]="discountDetail.tagsIds"
-                    disabled="{{!discountDetail.categoryId}}"
+                    [disabled]="!discountDetail.categoryId"
                     multiple>
           <mat-option *ngFor="let tag of tagsByCategory"
                       [value]="tag.id">{{tag.name}}</mat-option>
@@ -89,7 +89,7 @@
     <div class="add-discount-button">
       <button mat-button mat-dialog-close>{{ 'vendors.add-discount.cancel' | translate }}</button>
       <button mat-raised-button
-              [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.subm' | translate }}</button>
+              [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.save' | translate }}</button>
     </div>
   </div>
 </div>

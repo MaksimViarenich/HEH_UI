@@ -8,51 +8,47 @@
   width: 25rem;
 
   .add-address-container {
-    height: 85%;
-    padding: 1rem;
-
-    .add-vendor-group {
-      padding: 1rem 1rem 0 1rem;
-      margin-bottom: $margin-1;
-      @include glass;
-      border-radius: $border-radius-small;
-      box-shadow: $shadow-violet;
-    }
+    height: calc(100% - 1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .add-address-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #333;
-      line-height: 3.8rem;
+      @include font-bold-vendor;
+      line-height: $height-header;
+      padding: 0 1rem;
     }
 
-    .mat-dialog-content {
-      display: flex;
-      flex-direction: column;
-    }
+    .add-address-wrapper {
+      padding: 1rem;
 
-    .mat-form-field {
-      display: block;
-    }
+      .add-address-group {
+        padding: 1rem 1rem 0 1rem;
+        @include glass;
+        border-radius: $border-radius-small;
+        box-shadow: $shadow-violet;
 
-    .mat-form-field-appearance-fill .mat-form-field-flex {
-      background-color: transparent;
-    }
+        mat-form-field {
+          width: 100%;
 
-    .mat-form-field-appearance-legacy .mat-form-field-label {
-      margin-left: 0.6rem;
+          .mat-form-field-wrapper {
+            padding-bottom: 0;
+            margin: 0 0 1rem 0;
+            @include glass;
+            border-radius: 5px;
+          }
+        }
+      }
     }
 
     .add-address-btns {
       text-align: right;
       font-weight: bold;
-      margin: 0 $margin-1 0 0;
-      padding: 0;
+      margin: 0 1rem;
 
       button:last-child {
         background: $color-violet;
         color: $color-white;
-        margin-left: $margin-1;
       }
     }
   }
