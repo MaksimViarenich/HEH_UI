@@ -64,6 +64,8 @@ export class ModalService {
   openAddAddressModal(): any {
     return this.dialog.open(AddAddressComponent, {
       width: '33rem',
+      panelClass: 'add-address-modal',
+      backdropClass: 'add-address-modal-backdrop',
     });
   }
 }

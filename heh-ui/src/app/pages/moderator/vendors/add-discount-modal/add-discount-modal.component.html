@@ -11,8 +11,8 @@
         <mat-select [formControl]="address"
                     [(ngModel)]="data.discount.addressesIds"
                     multiple required>
-          <mat-option *ngFor="let address of data.addresses"
-                      [value]="address.id">{{address?.country?.country}}, {{address?.city?.name}}
+          <mat-option *ngFor="let address of data.addresses, let i = index"
+                      [value]="i+1">{{address?.country?.country}}, {{address?.city?.name}}
             , {{address?.street}}</mat-option>
         </mat-select>
       </mat-form-field>

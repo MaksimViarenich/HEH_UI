@@ -50,19 +50,16 @@ export class AddVendorModalComponent implements OnInit {
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
 
-  openDiscountModal(discount?: Discount): void {
+  openDiscountModal(discount?: Discount, index?: any): void {
     const dialogRef = this.modalService.openAddDiscountModal(discount, this.vendor);
 
     dialogRef.afterClosed().subscribe((data: any) => {
-      if (data.id) {
-        this.vendor.discounts = this.vendor.discounts.map((item: any) => {
-          if (data.id === item.id) {
-            return data;
-          }
-          return item;
-        });
-      } else {
-        this.vendor.discounts.push(data);
+      if (data) {
+        if (index !== undefined) {
+          this.vendor.discounts[index] = data;
+        } else {
+          this.vendor.discounts.push(data);
+        }
       }
     });
   }
@@ -106,9 +103,11 @@ export class AddVendorModalComponent implements OnInit {
     }
   }
 
-  deleteDiscount(index: any): void{
-    this.vendor.discounts.forEach((item: any) => {
-    });
+  deleteDiscount(index: any): void {
+    if (this.vendor.discounts[index] !== undefined) {
+      this.vendor.discounts.splice(index, 1);
+    }
+    return this.vendor.discounts;
   }
 
   onAddPhone(phoneNumber: string): void {

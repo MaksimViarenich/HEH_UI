@@ -1,10 +1,10 @@
-<div class="add-adress-container">
+<div class="add-address-container">
   <div mat-dialog-content>
     <p class="add-address-title">Vendor address</p>
     <div class="add-vendor-group">
       <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
-    
+
         <mat-select [(ngModel)]="data.country"
                     (ngModelChange)="changeCitiesList()">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
@@ -17,7 +17,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
-    
+
         <mat-select [(ngModel)]="data.city">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
           <mat-option [value]="option"

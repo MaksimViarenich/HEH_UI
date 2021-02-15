@@ -86,7 +86,7 @@
 
         <div class="vendors-component">
           <app-edit-discount-card *ngFor="let discount of vendor.discounts, let i = index"
-                                  (click)="openDiscountModal(discount)"
+                                  (click)="openDiscountModal(discount, i)"
                                   [discountInfo]="discount"
                                   (removeDiscountFromVendor)="deleteDiscount(i)"></app-edit-discount-card>
         </div>
