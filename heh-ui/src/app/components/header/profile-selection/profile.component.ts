@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit{
 
   logout(): void {
     localStorage.removeItem('isAuth');
+    localStorage.removeItem('expDate');
     this.router.navigate(['/login']);
   }
 
@@ -52,6 +53,7 @@ export class ProfileComponent implements OnInit{
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
+        this.toaster.open('User profile has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get user profile');

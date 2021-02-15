@@ -24,6 +24,7 @@ export class DiscountsComponent implements OnInit {
     this.discountService.getDiscounts().subscribe(
       (data) => {
         this.discounts = data.value;
+        this.toaster.open('Discounts have been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get discounts');

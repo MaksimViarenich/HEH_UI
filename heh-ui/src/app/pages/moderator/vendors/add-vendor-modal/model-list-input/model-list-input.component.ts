@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {ModalService} from '../../../../../services/modal-service/modal.service';
+import { ModalService } from '../../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-model-list-input',

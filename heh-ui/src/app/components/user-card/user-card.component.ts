@@ -1,4 +1,3 @@
-import { UserInfo } from '../../models/user-info';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { UsersService } from '../../pages/admin/users/users.service';
@@ -48,5 +47,4 @@ export class UserCardComponent implements OnInit {
     this.isActive = this.user?.isActive;
     this.role = this.user?.role;
   }
-
 }

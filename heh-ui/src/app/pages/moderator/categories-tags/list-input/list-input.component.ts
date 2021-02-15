@@ -1,8 +1,7 @@
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {ToasterService} from '../../../../services/toaster-service/toaster.service';
-import {FiltersService} from '../../../discounts/filters.service';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../../discounts/filters.service';
 
 @Component({
   selector: 'app-list-input',
@@ -19,8 +18,7 @@ export class ListInputComponent {
   @Input() activeCategoryId?: any;
   @Output() changeData = new EventEmitter<string>();
 
-  newCategory: any;
-  categoryObj: any;
+  newItem: any;
   selectable = true;
   removable = true;
   addOnBlur = true;
@@ -31,18 +29,11 @@ export class ListInputComponent {
     private toaster: ToasterService) {
     this.label = '';
     this.options = [];
-    this.categoryObj = {};
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    if (input) {
-      input.value = '';
-    }
-
-    this.addElement(value, this.changeData);
+  add(item: any): void {
+    this.addElement(item, this.changeData);
+    this.newItem = '';
   }
 
   remove(item: any): void {

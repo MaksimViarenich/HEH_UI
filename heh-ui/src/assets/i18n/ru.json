@@ -93,7 +93,7 @@
   "favorites": {
     "notes": "Заметка",
     "cancel": "Отмена",
-    "subm": "Подтвердить"
+    "save": "Сохранить"
   },
   "discounts": {
     "address": "Адрес",

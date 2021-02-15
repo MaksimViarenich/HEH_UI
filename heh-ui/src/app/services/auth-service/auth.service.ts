@@ -25,10 +25,6 @@ export class AuthService {
   }
 
   isAuthenticated(): any {
-    if (localStorage.getItem('isAuth')){
-      return true;
-    }
-
-    return false;
+    return !!localStorage.getItem('isAuth');
   }
 }
