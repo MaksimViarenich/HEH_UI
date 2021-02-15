@@ -13,22 +13,18 @@
   cursor: pointer;
 }
 
-.lang-item {
-  display: flex;
-
-  img {
-    @include img-profile-language;
-    border-radius: 1.125rem;
-    margin-right: $margin-half;
-  }
-}
-
-.mat-menu-content {
-  display: block;
-}
-
 .menu-items {
   margin-top: .2rem;
+
+  .lang-item {
+    display: flex;
+
+    img {
+      @include img-profile-language;
+      border-radius: 1.125rem;
+      margin-right: $margin-half;
+    }
+  }
 }
 
 .mat-menu-panel .mat-menu-content {

@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ToasterService} from '../../../services/toaster-service/toaster.service';
-import {FiltersService} from '../../discounts/filters.service';
-import {Category} from '../../../models/category';
-import {Tag} from '../../../models/tag';
-import {cloneDeep} from 'lodash';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../discounts/filters.service';
+import { Category } from '../../../models/category';
+import { Tag } from '../../../models/tag';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-categories-tags',
@@ -26,9 +26,12 @@ export class CategoriesTagsComponent implements OnInit {
     this.isDisabled = true;
   }
 
-  getAllCategoriesAndTags(event: any = true): void {
+  getAllCategoriesAndTags(): void {
     this.filtersService.getCategoriesTags().subscribe(
       (data) => {
+        if (!(data.find((item: any) => item.id === this.activeCategoryId))){
+          this.activeCategoryId = '';
+        }
         this.categoriesAll = data;
         data.forEach((category: any) => {
           category.tags.forEach((tag: any) => {
@@ -40,6 +43,7 @@ export class CategoriesTagsComponent implements OnInit {
             this.tagsAllCopy = cloneDeep(this.tagsAll);
           });
         });
+        this.showTagsList();
       },
       (error) => {
         this.toaster.open('Сan not get categories and tags');
@@ -102,7 +106,6 @@ export class CategoriesTagsComponent implements OnInit {
 
   onChangeData(params: string): void {
     this.tagsAll = [];
-    this.activeCategoryId = null;
     this.getAllCategoriesAndTags();
   }
 
