@@ -106,6 +106,11 @@ export class AddVendorModalComponent implements OnInit {
     }
   }
 
+  deleteDiscount(index: any): void{
+    this.vendor.discounts.forEach((item: any) => {
+    });
+  }
+
   onAddPhone(phoneNumber: string): void {
     this.vendor.phones.push({
       number: phoneNumber

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Discount} from '../../../../models/discount';
@@ -29,7 +29,7 @@ export class AddDiscountModalComponent implements OnInit {
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
     this.tagsByCategory = [];
-    console.log(this.discountDetail);
+    console.log(data);
   }
 
   vendor = new FormControl();
