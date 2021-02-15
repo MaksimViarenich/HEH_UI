@@ -1,8 +1,9 @@
-import { FavoritesService } from './../../pages/favorites/favorites.service';
-import {Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {ModalService} from '../../services/modal-service/modal.service';
+import { FavoritesService } from '../../pages/favorites/favorites.service';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalService } from '../../services/modal-service/modal.service';
 import { Output, EventEmitter } from '@angular/core';
+import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-favorite-card',
@@ -17,15 +18,21 @@ export class FavoriteCardComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
-              private favoriteService: FavoritesService) {}
+              private favoriteService: FavoritesService,
+              private toaster: ToasterService) {}
 
   openEditNoteModal(): void {
     this.modalService.openEditNoteModal(this.favoriteInfo);
   }
 
   deleteFavorite(): any {
-    this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(() => {
+    this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(
+      (data) => {
         this.updateCardsAfterDelete.emit();
+        this.toaster.open('Discount has been removed from favorites', 'success');
+      },
+      (error) => {
+        this.toaster.open('Discount can not be removed from favorites');
       }
     );
   }

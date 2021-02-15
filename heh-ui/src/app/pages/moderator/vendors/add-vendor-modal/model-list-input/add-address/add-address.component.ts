@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {FiltersService} from 'src/app/pages/discounts/filters.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FiltersService } from 'src/app/pages/discounts/filters.service';
 
 export interface AddressData {
   country: any;

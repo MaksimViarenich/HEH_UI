@@ -1,8 +1,9 @@
-import {VendorService} from './vendor.service';
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {ModalService} from '../../../services/modal-service/modal.service';
-import {Vendor} from 'src/app/models/vendor';
+import { VendorService } from './vendor.service';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalService } from '../../../services/modal-service/modal.service';
+import { Vendor } from 'src/app/models/vendor';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-vendors',
@@ -13,7 +14,8 @@ import {Vendor} from 'src/app/models/vendor';
 export class VendorsComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
-              private vendorService: VendorService) {
+              private vendorService: VendorService,
+              private toaster: ToasterService) {
   }
 
   vendors: any = [];
@@ -32,6 +34,10 @@ export class VendorsComponent implements OnInit {
     this.vendorService.getVendors().subscribe(
       (data) => {
         this.vendors = data;
+        this.toaster.open('Information about vendors has been received', 'success');
+      },
+      (error) => {
+        this.toaster.open('Information about vendors hasn\'t been received');
       }
     );
   }

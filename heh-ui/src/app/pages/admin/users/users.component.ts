@@ -18,10 +18,10 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.usersService.getUsers().subscribe(
       (data) => {
         this.users = data;
+        this.toaster.open('Information about users has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get users');

@@ -1,6 +1,7 @@
 import { OnInit, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { Discount } from '../../../models/discount';
 import { DiscountsService } from '../discounts.service';
 
@@ -15,6 +16,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   links: any;
   constructor(
     private discountService: DiscountsService,
+    private toaster: ToasterService,
     @Inject(MAT_DIALOG_DATA) public data: Discount
   ) {
     this.discountDetails = {
@@ -44,6 +46,10 @@ export class DiscountDetailsModalComponent implements OnInit {
             };
           }));
         }
+        this.toaster.open('Information about discount has been received', 'success');
+      },
+      (error) => {
+        this.toaster.open('Can not get discountId');
       }
     );
   }

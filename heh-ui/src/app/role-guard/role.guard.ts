@@ -7,7 +7,7 @@ import {
   UrlTree
 } from '@angular/router';
 import { RoleService } from '../services/role-service/role.service';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
