@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FiltersService } from '../../pages/discounts/filters.service';
 import { FormControl } from '@angular/forms';
 
@@ -11,9 +11,13 @@ import { FormControl } from '@angular/forms';
 export class PageSearchComponent implements OnInit {
   @Input() isVendorSearchAvailable: boolean;
   @Input() isDateRangeSearchAvailable: boolean;
+  @Output() sendSubmitData = new EventEmitter<any>();
   filtersOptions: any;
   activeFilters: any;
+  searchText = '';
+  searchData: any = {};
 
+  locationFormControl = new FormControl();
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
   vendorsFormControl = new FormControl();
@@ -36,6 +40,23 @@ export class PageSearchComponent implements OnInit {
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
     });
+  }
+
+  getCategoriesValue(arrIds: string[]): string[] {
+    const categoriesValues: string[] = [];
+    arrIds.map((item: string) => {
+      categoriesValues.push(this.filtersService.getCategoryById(item));
+    });
+    return categoriesValues;
+  }
+
+  submitSearch(): void {
+    this.searchData.location = this.locationFormControl.value;
+    this.searchData.searchText = this.searchText;
+    this.searchData.categories = this.getCategoriesValue(this.categoriesFormControl.value);
+    this.searchData.tags = this.tagsFormControl.value;
+    this.searchData.vendors = this.vendorsFormControl.value;
+    this.sendSubmitData.emit(this.searchData);
   }
 
   changeTagsList(): void {
