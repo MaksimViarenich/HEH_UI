@@ -13,11 +13,14 @@ import { FavoritesService } from '../favorites.service';
 
 export class EditNoteModalComponent implements OnInit {
   favorite: any;
+  initialValue: string;
+
   constructor(private favoriteService: FavoritesService,
               private toaster: ToasterService,
               @Inject(MAT_DIALOG_DATA) public data: Discount
   ) {
     this.favorite = data;
+    this.initialValue = this.favorite.note;
   }
 
   updateInfo(): any {
