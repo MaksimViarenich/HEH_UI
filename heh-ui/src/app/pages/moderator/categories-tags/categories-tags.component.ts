@@ -26,9 +26,12 @@ export class CategoriesTagsComponent implements OnInit {
     this.isDisabled = true;
   }
 
-  getAllCategoriesAndTags(event: any = true): void {
+  getAllCategoriesAndTags(): void {
     this.filtersService.getCategoriesTags().subscribe(
       (data) => {
+        if (!(data.find((item: any) => item.id === this.activeCategoryId))){
+          this.activeCategoryId = '';
+        }
         this.categoriesAll = data;
         data.forEach((category: any) => {
           category.tags.forEach((tag: any) => {
@@ -41,6 +44,7 @@ export class CategoriesTagsComponent implements OnInit {
           });
         });
         this.toaster.open('Categories and tags have been received', 'success');
+        this.showTagsList();
       },
       (error) => {
         this.toaster.open('Сan not get categories and tags');
@@ -103,7 +107,6 @@ export class CategoriesTagsComponent implements OnInit {
 
   onChangeData(params: string): void {
     this.tagsAll = [];
-    this.activeCategoryId = null;
     this.getAllCategoriesAndTags();
   }
 

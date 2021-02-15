@@ -18,6 +18,8 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   route: string;
   imagePath: string;
   pageTitle: string;
+  token: any;
+  decodedToken: any;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},
@@ -36,11 +38,25 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
+    this.token = '';
 
     this.getLocalizationKey();
   }
 
   ngOnInit(): void {
+    this.tokenExpirationLogout();
+  }
+
+  tokenExpirationLogout(): any {
+    const dateNow = Date.now();
+    const expDate = Number(localStorage.getItem('expDate'));
+
+    setTimeout(() => {
+      localStorage.removeItem('isAuth');
+      localStorage.removeItem('expDate');
+
+      this.router.navigate(['/login']);
+    }, (expDate - dateNow));
   }
 
   ngAfterViewChecked(): void {
