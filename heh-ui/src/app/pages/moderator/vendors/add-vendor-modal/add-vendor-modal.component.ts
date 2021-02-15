@@ -1,14 +1,15 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { VendorCard } from '../../../../models/vendor-card';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Discount } from '../../../../models/discount';
-import { ModalService } from '../../../../services/modal-service/modal.service';
-import { VendorService } from '../vendor.service';
-import { FiltersService } from 'src/app/pages/discounts/filters.service';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../models/address';
-import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {VendorCard} from '../../../../models/vendor-card';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {Discount} from '../../../../models/discount';
+import {ModalService} from '../../../../services/modal-service/modal.service';
+import {VendorService} from '../vendor.service';
+import {FiltersService} from 'src/app/pages/discounts/filters.service';
+import {Phones} from 'src/app/models/phones';
+import {Address} from '../../../../models/address';
+import {ToasterService} from '../../../../services/toaster-service/toaster.service';
+import {concat} from 'rxjs';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -54,12 +55,22 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   addUpdateNewVendor(): void {
+    this.vendor.links = [];
     this.vendor.links.push(
       {type: 'Website', url: this.links.website},
       {type: 'Instagram', url: this.links.instagram},
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
+
+    this.vendor.addresses = this.vendor.addresses.map((address: any, key: any) => {
+      return {
+        id: key + 1,
+        countryId: address.country.id,
+        cityId: address.city.id,
+        street: address.street,
+      };
+    });
 
     if (this.vendor.id) {
       this.vendorService.updateVendor(this.vendor).subscribe(
@@ -93,19 +104,19 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-      const editAddress: any = {};
-      const editAddresses: any[] = [];
-      address.map((addr: any) => {
-        this.countriesCities.forEach( (item: any) => {
+    const editAddress: any = {};
+    const editAddresses: any[] = [];
+    address.map((addr: any) => {
+      this.countriesCities.forEach((item: any) => {
           if (addr.countryId === item.id) {
             for (const city of item.cities) {
               if (addr.cityId === city.id) {
                 editAddresses.push({
                   country: {
-                        country: item.country,
-                        id: item.id,
-                        cities: item.cities,
-                      },
+                    country: item.country,
+                    id: item.id,
+                    cities: item.cities,
+                  },
                   city,
                   street: addr.street,
                 });
@@ -113,9 +124,9 @@ export class AddVendorModalComponent implements OnInit {
             }
           }
         }
-        );
-      });
-      this.vendor.addresses = editAddresses;
+      );
+    });
+    this.vendor.addresses = editAddresses;
   }
 
   onDeleteAddress(idx: number): void {

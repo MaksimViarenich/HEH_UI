@@ -1,4 +1,3 @@
-<!-- 
 <div mat-dialog-content class="mat-dialog-content">
 
   <div class="add-discount-header">
@@ -10,57 +9,44 @@
       <mat-form-field appearance="outline" class="add-discount-address">
         <mat-label>{{ 'vendors.add-discount.address' | translate }}</mat-label>
         <mat-select [formControl]="address"
-                    [(ngModel)]="discount.addressList"
+                    [(ngModel)]="data.discount.addressesIds"
                     multiple required>
-          <mat-select-trigger>
-            {{address.id ? address.id[0] : ''}}
-            <span *ngIf="address.id?.length > 1"
-                  class="example-additional-selection">
-              (+{{address.id.length - 1}} {{address.id?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
           <mat-option *ngFor="let address of data.addresses"
-                      [id]="address">{{address}}</mat-option>
+                      [value]="address.id">{{address?.country?.country}}, {{address?.city?.name}}
+            , {{address?.street}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-phone">
         <mat-label>{{ 'vendors.add-discount.phone' | translate }}</mat-label>
         <mat-select [formControl]="phone"
-                    [(ngModel)]="discount.phones"
+                    [(ngModel)]="data.discount.phonesIds"
                     multiple required>
-          <mat-select-trigger>
-            {{phone.id ? phone.id[0] : ''}}
-            <span *ngIf="phone.id?.length > 1"
-                  class="example-additional-selection">
-              (+{{phone.id.length - 1}} {{phone.id?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
           <mat-option *ngFor="let phone of data.phones"
-                      [id]="phone">{{phone}}</mat-option>
+                      [value]="phone.id">{{phone.number}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="add-discount-name" appearance="outline">
-        <mat-label>{{ 'vendors.add-discount.name' | translate }}</mat-label>
+        <mat-label>{{ 'vendors.add-discount.promo' | translate }}</mat-label>
         <input matInput
-               [(ngModel)]="discount.title"
-               [formControl]="name"
+               [(ngModel)]="discountDetail.promoCode"
+               [formControl]="promoCode"
                required>
       </mat-form-field>
 
       <mat-form-field class="add-discount-description" appearance="outline">
         <mat-label>{{ 'vendors.add-discount.description' | translate }}</mat-label>
         <input matInput
-               [(ngModel)]="discount.description"
-               [formControl]="description"
+               [(ngModel)]="discountDetail.conditions"
+               [formControl]="conditions"
                required>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-discount.start' | translate }}</mat-label>
         <input matInput
-               [(ngModel)]="discount.startDate"
+               [(ngModel)]="discountDetail.startDate"
                [matDatepicker]="pickerStart"
                [formControl]="date"
                required>
@@ -71,44 +57,38 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-discount.end' | translate }}</mat-label>
         <input matInput
-               [(ngModel)]="discount.endDate"
+               [(ngModel)]="discountDetail.endDate"
                [matDatepicker]="pickerEnd">
         <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
         <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-category">
-        <mat-label>{{ 'vendors.add-discount.categoryId' | translate }}</mat-label>
+        <mat-label>{{ 'vendors.add-discount.category' | translate }}</mat-label>
         <mat-select [formControl]="category"
-                    [(ngModel)]="discount.category"
+                    [(ngModel)]="discountDetail.categoryId"
+                    (ngModelChange)="showTagList()"
                     required>
-          <mat-option *ngFor="let category of categories"
-                      [id]="category">{{category}}</mat-option>
+          <mat-option *ngFor="let category of categoriesAll"
+                      [value]="category.id">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="add-discount-phone">
-        <mat-label>{{ 'vendors.add-discount.tagId' | translate }}</mat-label>
+      <mat-form-field appearance="outline" class="add-discount-tag">
+        <mat-label>{{ 'vendors.add-discount.tag' | translate }}</mat-label>
         <mat-select [formControl]="tag"
-                    [(ngModel)]="discount.tags"
+                    [(ngModel)]="discountDetail.tagsIds"
+                    disabled="{{!discountDetail.categoryId}}"
                     multiple>
-          <mat-select-trigger>
-            {{tag.id ? tag.id[0] : ''}}
-            <span *ngIf="tag.id?.length > 1"
-                  class="example-additional-selection">
-              (+{{tag.id.length - 1}} {{tag.id?.length === 2 ? 'other' : 'others'}})
-            </span>
-          </mat-select-trigger>
-          <mat-option *ngFor="let tag of discount.tags"
-                      [id]="tag">{{tag}}</mat-option>
+          <mat-option *ngFor="let tag of tagsByCategory"
+                      [value]="tag.id">{{tag.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
     <div class="add-discount-button">
       <button mat-button mat-dialog-close>{{ 'vendors.add-discount.cancel' | translate }}</button>
-      <button mat-raised-button>{{ 'vendors.add-discount.subm' | translate }}</button>
+      <button mat-raised-button (click)=UpdateAddDiscount()>{{ 'vendors.add-discount.subm' | translate }}</button>
     </div>
   </div>
 </div>
- -->

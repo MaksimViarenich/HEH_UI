@@ -25,7 +25,7 @@ export class ModelListInputComponent {
 
   addPhone(): void {
     this.listData.push({
-      id: '1',
+      id: this.listData.length + 1,
       number: this.inputValue
     });
     this.inputValue = '';
