@@ -15,36 +15,32 @@
 
     <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'"
-                       [(ngModel)]="user.allNotificationsAreOn"
-                       (click)="newslettersChecked = !newslettersChecked"
+                       [selected]="user.allNotificationsAreOn"
+                       (click)="user.allNotificationsAreOn = !user.allNotificationsAreOn"
                        ngDefaultControl>
         {{ 'profile.newsletters' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newDiscountNotificationIsOn"
-                       [disabled]="newslettersChecked"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.newDiscountNotificationIsOn = !user.newDiscountNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.service' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newVendorNotificationIsOn"
-                       [disabled]="newslettersChecked"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.newVendorNotificationIsOn = !user.newVendorNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.vendors' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
-                       [selected]="user.cityChangeNotificationIsOn"
-                       [disabled]="newslettersChecked"
-                       ngDefaultControl>
-        {{ 'profile.city' | translate }}
-      </mat-list-option>
-
-      <mat-list-option [color]="'primary'"
                        [selected]="user.hotDiscountsNotificationIsOn"
-                       [disabled]="newslettersChecked"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.hotDiscountsNotificationIsOn = !user.hotDiscountsNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.hot_sales' | translate }}
       </mat-list-option>
@@ -69,7 +65,7 @@
           </mat-option>
         </mat-optgroup>
 
-        <mat-option *ngFor="let option of allOptions.id" [value]="option.id">{{option.viewValue}}</mat-option>
+        <mat-option *ngFor="let option of selectedOptions" [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button mat-dialog-close
