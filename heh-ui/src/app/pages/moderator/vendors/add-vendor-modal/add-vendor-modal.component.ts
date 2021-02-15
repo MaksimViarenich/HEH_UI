@@ -53,8 +53,17 @@ export class AddVendorModalComponent implements OnInit {
   openDiscountModal(discount?: Discount): void {
     const dialogRef = this.modalService.openAddDiscountModal(discount, this.vendor);
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data.id) {
+        this.vendor.discounts = this.vendor.discounts.map((item: any) => {
+          if (data.id === item.id) {
+            return data;
+          }
+          return item;
+        });
+      } else {
+        this.vendor.discounts.push(data);
+      }
     });
   }
 

@@ -89,8 +89,7 @@
     <div class="add-discount-button">
       <button mat-button mat-dialog-close>{{ 'vendors.add-discount.cancel' | translate }}</button>
       <button mat-raised-button
-              mat-dialog-close
-              (click)=saveDiscount(discountDetail)>{{ 'vendors.add-discount.subm' | translate }}</button>
+              [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.subm' | translate }}</button>
     </div>
   </div>
 </div>
