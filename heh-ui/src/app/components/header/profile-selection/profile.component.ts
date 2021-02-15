@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit{
 
   logout(): void {
     localStorage.removeItem('isAuth');
+    localStorage.removeItem('expDate');
     this.router.navigate(['/login']);
   }
 
