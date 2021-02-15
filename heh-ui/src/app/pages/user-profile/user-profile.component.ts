@@ -23,6 +23,9 @@ export class UserProfileComponent implements OnInit {
   separatorKeysCodes: number[];
   allOptions: any;
   selectedOptions: Array<any>;
+  selectedCategories: Array<any>;
+  selectedTags: Array<any>;
+  selectedVendors: Array<any>;
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
@@ -35,7 +38,12 @@ export class UserProfileComponent implements OnInit {
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
     this.allOptions = {};
-    this.selectedOptions = [];
+    this.selectedOptions = [
+      this.selectedCategories = [],
+      this.selectedTags = [],
+      this.selectedVendors = [],
+    ];
+
     this.filtersOptions = {
       locations: [],
       categories: [],
@@ -60,11 +68,20 @@ export class UserProfileComponent implements OnInit {
   SaveProfile(): void {
     const userNotification = {
       selectedOptions: this.selectedOptions,
+      selectedCategories: this.selectedOptions,
+      tagNotifications: this.selectedOptions,
+      vendorNotifications: this.selectedOptions,
       newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
       newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
       hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
       allNotificationsAreOn: this.user.allNotificationsAreOn};
 
+    // this.selectedOptions.forEach((selectedCategories: any) => {
+    //   if (selectedCategories.id === this.selectedOptions.country.id) {
+    //     this.cities = country.cities;
+    //   }
+    // });
+    console.log(userNotification);
     this.userProfleService.editProfile(userNotification).subscribe(
         (data) => {
           this.toaster.open('Profile was updated', 'success');
@@ -90,6 +107,7 @@ export class UserProfileComponent implements OnInit {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
+        console.log(this.selectedOptions);
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
