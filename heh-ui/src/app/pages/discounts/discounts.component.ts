@@ -42,9 +42,8 @@ export class DiscountsComponent implements OnInit {
 
   addSearchData(searchData: any): void {
     this.discountService.getSearchDiscounts(searchData).subscribe((data: any) => {
-      console.log(data);
+      this.discounts = data.value;
     });
-    // this.discountService.getSearchDiscounts(searchData);
   }
 
   ngOnInit(): void {

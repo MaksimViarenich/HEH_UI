@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../global';
@@ -39,12 +39,9 @@ export class DiscountsService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    const url = new URL('/odata/Discount', BASE_API_URL);
-    // url.searchParams.set('searchText', searchData.searchText);
-    url.searchParams.append('searchText', searchData.searchText);
-    console.log(typeof(url));
-    console.log(JSON.stringify(url));
+    let params = new HttpParams();
+    params = params.append('searchText', searchData.searchText);
 
-    return this.http.get(JSON.stringify(url), {headers});
+    return this.http.get(`${BASE_API_URL}/odata/discount`, {headers, params});
   }
 }
