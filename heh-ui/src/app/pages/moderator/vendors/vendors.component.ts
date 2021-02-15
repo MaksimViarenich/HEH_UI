@@ -34,7 +34,6 @@ export class VendorsComponent implements OnInit {
     this.vendorService.getVendors().subscribe(
       (data) => {
         this.vendors = data;
-        this.toaster.open('Information about vendors has been received', 'success');
       },
       (error) => {
         this.toaster.open('Information about vendors hasn\'t been received');

@@ -24,7 +24,6 @@ export class EventHistoryComponent implements OnInit {
       (data) => {
         this.eventData = data;
         this.dataSource = new MatTableDataSource(this.eventData);
-        this.toaster.open('History has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get history');

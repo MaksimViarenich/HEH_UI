@@ -135,7 +135,6 @@ export class AddVendorModalComponent implements OnInit {
               };
             }));
           }
-          this.toaster.open('Information about vendor has been received', 'success');
         },
         (error) => {
           this.toaster.open('Сan not get vendorId');

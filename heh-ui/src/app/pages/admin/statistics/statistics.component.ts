@@ -20,7 +20,6 @@ export class StatisticsComponent implements OnInit {
     this.vendorService.getVendorsStatistics().subscribe(
       (data) => {
         this.list = data;
-        this.toaster.open('Statistics has been received', 'success');
       },
       (error) => {
         this.toaster.open('There is no possibility to show statistics');

@@ -71,7 +71,6 @@ export class UserProfileComponent implements OnInit {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
-        this.toaster.open('User profile has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
