@@ -32,7 +32,7 @@ export class AddDiscountModalComponent implements OnInit {
     this.tagsByCategory = [];
     this.form = new FormGroup({
       address: new FormControl(),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl(),
       promoCode: new FormControl('', [Validators.required]),
       conditions: new FormControl('', [Validators.required]),
       dateStart: new FormControl('', [Validators.required]),

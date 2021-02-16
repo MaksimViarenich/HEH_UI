@@ -17,10 +17,6 @@
         </mat-select>
       </mat-form-field>
 
-<!--      <span *ngIf="formAddress?.get('country').invalid && formAddress?.get('country').touched" class="helper-error-text">
-        <span *ngIf="formAddress?.get('country').errors['required']">Country must not be empty</span>
-      </span>-->
-
       <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
         <mat-select [(ngModel)]="data.city"
@@ -33,10 +29,6 @@
         </mat-select>
       </mat-form-field>
 
-<!--      <span *ngIf="formAddress?.get('city').invalid && formAddress?.get('city').touched" class="helper-error-text">
-        <span *ngIf="formAddress?.get('city').errors['required']">City must not be empty</span>
-      </span>-->
-
       <mat-form-field appearance="outline">
         <mat-label>Street</mat-label>
         <input class="add-address-input"
@@ -45,10 +37,6 @@
                formControlName="street"
                required>
       </mat-form-field>
-
-<!--      <span *ngIf="formAddress?.get('street').invalid && formAddress?.get('street').touched" class="helper-error-text">
-        <span *ngIf="formAddress?.get('street').errors['required']">Street must not be empty</span>
-      </span>-->
 
     </div>
   </div>
