@@ -10,7 +10,6 @@
   }
 
   .text-wrapper {
-    margin-top: 1rem;
     padding: 0 0.6rem 0 0.5rem;
     line-height: 2rem;
     border-radius: $border-radius-small;
@@ -33,6 +32,7 @@
   }
 
   .btn-add {
+    margin-bottom: 1rem;
     width: 100%;
     min-height: 3rem;
     border-radius: $border-radius-small;
