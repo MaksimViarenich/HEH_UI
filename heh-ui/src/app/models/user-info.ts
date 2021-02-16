@@ -14,6 +14,7 @@ export interface UserInfo {
   categoryNotifications?: Array<Category>;
   tagNotifications?: Array<Tag>;
   vendorNotifications?: Array<Vendor>;
+  allNotificationsAreOn?: boolean;
   newVendorNotificationIsOn?: boolean;
   newDiscountNotificationIsOn?: boolean;
   hotDiscountsNotificationIsOn?: boolean;
