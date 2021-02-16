@@ -52,6 +52,7 @@
   },
   "vendors": {
     "add": "Add vendor",
+    "edit": "Edit vendor",
     "add-vendor": {
       "info": "Vendor's info",
       "name": "Vendor's name",
@@ -70,9 +71,11 @@
       "add-dsk": "Add discount"
     },
     "add-discount": {
+      "add": "Add discount",
+      "edit": "Edit discount",
       "name": "Discount name",
       "address": "Address",
-      "phone": "Telephone",
+      "phone": "Phone",
       "conditions": "Discount conditions",
       "tag": "Tag",
       "category": "Category",

@@ -2,7 +2,11 @@
   <div mat-dialog-content class="mat-dialog-content">
 
     <div class="add-vendor-background">
-      <div class="add-vendor-title">{{ 'vendors.add' | translate }}</div>
+      <div class="add-vendor-title">
+        {{(vendorForId.id)
+        ? ('vendors.edit' | translate)
+        : ('vendors.add' | translate)}}
+      </div>
     </div>
 
     <div class="add-vendor-content">
@@ -10,20 +14,23 @@
         <span class="add-vendor-info-title">{{ 'vendors.add-vendor.info' | translate }}:</span>
 
         <div class="add-vendor-group">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="add-vendor-name">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
             <input [(ngModel)]="vendor.name"
                    [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
+          <span *ngIf="vendorName.invalid && vendorName.touched" class="helper-error-text">
+            <span *ngIf="vendorName.errors['required']">Field Vendor name must not be empty</span>
+          </span>
 
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="add-vendor-hours">
             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
             <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
 
-        <div class="add-vendor-group">
+        <div class="add-vendor-group add-vendor-validation">
           <app-model-list-input [label]="addressTitle | translate"
                                 [listData]="vendor.addresses"
                                 (addData)="onAddAddress($event)"
@@ -31,7 +38,7 @@
                                 [type]="'address'"></app-model-list-input>
         </div>
 
-        <div class="add-vendor-group">
+        <div class="add-vendor-group add-vendor-validation">
           <app-model-list-input [label]="phoneTitle | translate"
                                 [listData]="vendor.phones"
                                 (addData)="onAddPhone($event)"
@@ -96,7 +103,9 @@
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
     <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
-    <button mat-raised-button mat-dialog-close
+    <button mat-raised-button
+            [mat-dialog-close]="vendor"
+            [disabled]="!vendor.name"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../../../services/modal-service/modal.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-model-list-input',
@@ -23,6 +24,8 @@ export class ModelListInputComponent {
     this.type = '';
   }
 
+  phonesVendor = new FormControl(null, [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
+
   addPhone(): void {
     this.listData.push({
       id: this.listData.length + 1,
@@ -35,8 +38,10 @@ export class ModelListInputComponent {
     const dialogRef = this.modalService.openAddAddressModal();
 
     dialogRef.afterClosed().subscribe((data: any) => {
-      if (data.street) {
-        this.listData.push(data);
+      if (data) {
+        if (data.street) {
+          this.listData.push(data);
+        }
       }
     });
   }

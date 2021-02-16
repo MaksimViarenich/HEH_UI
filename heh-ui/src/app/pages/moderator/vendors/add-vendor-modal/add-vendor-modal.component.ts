@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { VendorCard } from '../../../../models/vendor-card';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
@@ -15,7 +15,6 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
   encapsulation: ViewEncapsulation.None,
 })
 export class AddVendorModalComponent implements OnInit {
-  vendorForView: any;
   vendor: any;
   links: any;
   countriesCities: any;
@@ -42,13 +41,13 @@ export class AddVendorModalComponent implements OnInit {
     };
   }
 
-  vendorName = new FormControl();
+  vendorName = new FormControl(null, [Validators.required]);
 
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount, index?: any): void {
-    const dialogRef = this.modalService.openAddDiscountModal(discount, this.vendor);
+    const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {

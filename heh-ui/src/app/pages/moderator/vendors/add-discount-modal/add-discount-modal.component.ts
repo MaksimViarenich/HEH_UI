@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { Address } from '../../../../models/address';
@@ -14,6 +14,7 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
   encapsulation: ViewEncapsulation.None
 })
 export class AddDiscountModalComponent implements OnInit {
+  form: FormGroup | undefined;
   discountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
@@ -31,18 +32,19 @@ export class AddDiscountModalComponent implements OnInit {
     this.tagsByCategory = [];
   }
 
-  vendor = new FormControl();
-  address = new FormControl();
-  phone = new FormControl();
-  promoCode = new FormControl();
-  conditions = new FormControl();
-  date = new FormControl();
-  tag = new FormControl();
-  category = new FormControl();
-
   ngOnInit(): void {
     this.getAllCategoriesAndTags();
     this.showTagList();
+    this.form = new FormGroup({
+      address: new FormControl(),
+      phone: new FormControl(null, [Validators.required]),
+      promoCode: new FormControl(null, [Validators.required]),
+      conditions: new FormControl(null, [Validators.required]),
+      dateStart: new FormControl(null, [Validators.required]),
+      dateEnd: new FormControl(),
+      category: new FormControl(null, [Validators.required]),
+      tag: new FormControl()
+    });
   }
 
   showTagList(): void {

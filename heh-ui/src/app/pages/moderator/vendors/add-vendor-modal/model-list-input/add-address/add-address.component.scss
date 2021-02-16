@@ -23,7 +23,7 @@
       padding: 1rem;
 
       .add-address-group {
-        padding: 1rem 1rem 0 1rem;
+        padding: 1rem;
         @include glass;
         border-radius: $border-radius-small;
         box-shadow: $shadow-violet;
@@ -33,7 +33,7 @@
 
           .mat-form-field-wrapper {
             padding-bottom: 0;
-            margin: 0 0 1rem 0;
+            margin: 1rem 0 0 0;
             @include glass;
             border-radius: 5px;
           }
@@ -47,8 +47,13 @@
       margin: 0 1rem;
 
       button:last-child {
-        background: $color-violet;
+        background: $color-blue-green;
         color: $color-white;
+
+        &:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          color: rgba(0, 0, 0, .26);
+        }
       }
     }
   }
