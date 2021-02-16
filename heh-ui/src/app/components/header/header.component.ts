@@ -11,7 +11,7 @@ import { UserInfo } from '../../models/user-info';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   tabs: any;
   user: UserInfo | undefined;
 
