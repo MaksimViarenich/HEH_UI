@@ -73,13 +73,14 @@
       "name": "Discount name",
       "address": "Address",
       "phone": "Telephone",
-      "description": "Discount description",
+      "conditions": "Discount conditions",
       "tag": "Tag",
       "category": "Category",
       "start": "Start date",
       "end": "Expiration date",
       "cancel": "Cancel",
-      "subm": "Submit"
+      "save": "Save",
+      "promo": "Promocode"
     }
   },
   "categories-and-tags": {

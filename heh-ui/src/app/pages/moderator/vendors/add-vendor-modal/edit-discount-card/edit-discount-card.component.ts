@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import {Component, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -10,6 +10,11 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class EditDiscountCardComponent {
   @Input() discountInfo: any;
+  @Output() removeDiscountFromVendor: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog) {}
+
+  deleteDiscount(): void{
+    this.removeDiscountFromVendor.emit();
+  }
 }
