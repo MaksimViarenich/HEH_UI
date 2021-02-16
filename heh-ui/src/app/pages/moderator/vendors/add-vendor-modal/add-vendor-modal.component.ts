@@ -6,8 +6,6 @@ import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/pages/discounts/filters.service';
-import { Phones } from 'src/app/models/phones';
-import { Address } from '../../../../models/address';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({
@@ -49,17 +47,37 @@ export class AddVendorModalComponent implements OnInit {
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
 
-  openDiscountModal(discount?: Discount): void {
-    this.modalService.openAddDiscountModal(discount, this.vendor);
+  openDiscountModal(discount?: Discount, index?: any): void {
+    const dialogRef = this.modalService.openAddDiscountModal(discount, this.vendor);
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data) {
+        if (index !== undefined) {
+          this.vendor.discounts[index] = data;
+        } else {
+          this.vendor.discounts.push(data);
+        }
+      }
+    });
   }
 
   addUpdateNewVendor(): void {
+    this.vendor.links = [];
     this.vendor.links.push(
       {type: 'Website', url: this.links.website},
       {type: 'Instagram', url: this.links.instagram},
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
+
+    this.vendor.addresses = this.vendor.addresses.map((address: any, key: any) => {
+      return {
+        id: key + 1,
+        countryId: address.country.id,
+        cityId: address.city.id,
+        street: address.street,
+      };
+    });
 
     if (this.vendor.id) {
       this.vendorService.updateVendor(this.vendor).subscribe(
@@ -82,6 +100,14 @@ export class AddVendorModalComponent implements OnInit {
     }
   }
 
+  deleteDiscount(index: any): void {
+    if (this.vendor.discounts[index] !== undefined) {
+      this.vendor.discounts.splice(index, 1);
+    }
+
+    return this.vendor.discounts;
+  }
+
   onAddPhone(phoneNumber: string): void {
     this.vendor.phones.push({
       number: phoneNumber
@@ -93,19 +119,18 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-      const editAddress: any = {};
-      const editAddresses: any[] = [];
-      address.map((addr: any) => {
-        this.countriesCities.forEach( (item: any) => {
+    const editAddresses: any[] = [];
+    address.map((addr: any) => {
+      this.countriesCities.forEach((item: any) => {
           if (addr.countryId === item.id) {
             for (const city of item.cities) {
               if (addr.cityId === city.id) {
                 editAddresses.push({
                   country: {
-                        country: item.country,
-                        id: item.id,
-                        cities: item.cities,
-                      },
+                    country: item.country,
+                    id: item.id,
+                    cities: item.cities,
+                  },
                   city,
                   street: addr.street,
                 });
@@ -113,9 +138,9 @@ export class AddVendorModalComponent implements OnInit {
             }
           }
         }
-        );
-      });
-      this.vendor.addresses = editAddresses;
+      );
+    });
+    this.vendor.addresses = editAddresses;
   }
 
   onDeleteAddress(idx: number): void {
@@ -135,7 +160,6 @@ export class AddVendorModalComponent implements OnInit {
               };
             }));
           }
-          this.toaster.open('Information about vendor has been received', 'success');
         },
         (error) => {
           this.toaster.open('Сan not get vendorId');

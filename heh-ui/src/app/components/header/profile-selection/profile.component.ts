@@ -12,7 +12,7 @@ import { FiltersService } from '../../../pages/discounts/filters.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
   user: UserInfo;
   location: string;
@@ -53,7 +53,6 @@ export class ProfileComponent implements OnInit{
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
-        this.toaster.open('User profile has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get user profile');

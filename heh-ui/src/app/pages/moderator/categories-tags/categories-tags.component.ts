@@ -43,7 +43,6 @@ export class CategoriesTagsComponent implements OnInit {
             this.tagsAllCopy = cloneDeep(this.tagsAll);
           });
         });
-        this.toaster.open('Categories and tags have been received', 'success');
         this.showTagsList();
       },
       (error) => {

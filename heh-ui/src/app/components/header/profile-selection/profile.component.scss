@@ -1,48 +1,48 @@
 @import "../../../../styles.scss";
 
-  .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
-    display: none;
-  }
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none;
+}
 
-  .person {
+.person {
+  display: flex;
+  align-items: center;
+  margin: 0 $margin-half 0 2rem;
+
+  .person-info a {
     display: flex;
-    align-items: center;
-    margin: 0 $margin-half 0 2rem;
+    flex-direction: column;
+    text-decoration: none;
+    color: $color-black;
 
-    .person-info a {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: $color-black;
-
-      .person-name, .person-place {
-        font-size: 1.6rem;
-        font-weight: normal;
-      }
-    }
-
-    .person-pic {
-      display: flex;
-
-      img {
-        @include img-profile-language;
-      }
-
-      .profile-menu {
-        margin-top: .2rem;
-      }
-    }
-
-    .profile-icon {
-      margin-left: 1.5rem;
-      border-radius: 50%;
-    }
-
-    .profile-icon:hover {
-      transform: scale(1.1);
-      cursor: pointer;
+    .person-name, .person-place {
+      font-size: 1.6rem;
+      font-weight: normal;
     }
   }
+
+  .person-pic {
+    display: flex;
+
+    img {
+      @include img-profile-language;
+    }
+
+    .profile-menu {
+      margin-top: .2rem;
+    }
+  }
+
+  .profile-icon {
+    margin-left: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .profile-icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
 
 button.mat-menu-item {
   display: flex;

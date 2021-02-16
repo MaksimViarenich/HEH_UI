@@ -20,7 +20,6 @@ export class FavoritesComponent implements OnInit {
     this.favoritesService.getFavorites().subscribe(
       (data) => {
         this.favoriteCards = data;
-        this.toaster.open('Favorites have been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get favorites');

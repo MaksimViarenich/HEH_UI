@@ -24,7 +24,8 @@ export class LanguageSelectionComponent implements OnInit {
     {lang: 'Русский', path: '../../../assets/images/header/header_menu_ru.svg', langId: 1, langCode: 'ru'}
   ];
 
-  constructor(public translate: TranslateService) {}
+  constructor(public translate: TranslateService) {
+  }
 
   selectLang(path: string, langCode: string): void {
     this.translate.use(langCode);
@@ -38,8 +39,8 @@ export class LanguageSelectionComponent implements OnInit {
 
     this.languages.forEach((language) => {
       this.imagePath = (language.langCode === lang) ?
-      this.imagePath = language.path :
-      '../../../assets/images/header/header_menu_uk.svg';
+        this.imagePath = language.path :
+        '../../../assets/images/header/header_menu_uk.svg';
     });
 
     this.translate.setDefaultLang(lang || 'en');
