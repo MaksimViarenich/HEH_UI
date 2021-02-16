@@ -2,7 +2,11 @@
   <div mat-dialog-content class="mat-dialog-content">
 
     <div class="add-vendor-background">
-      <div class="add-vendor-title">{{ 'vendors.add' | translate }}</div>
+      <div class="add-vendor-title">
+        {{(vendorForId.id)
+        ? ('vendors.edit' | translate)
+        : ('vendors.add' | translate)}}
+      </div>
     </div>
 
     <div class="add-vendor-content">
@@ -95,11 +99,10 @@
   </div>
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
-    <button mat-button
-            mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
-
+    <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
     <button mat-raised-button
-            mat-dialog-close
+            [mat-dialog-close]="vendor"
+            [disabled]="!vendor.name"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

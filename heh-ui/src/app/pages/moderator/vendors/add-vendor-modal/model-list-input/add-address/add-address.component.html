@@ -1,4 +1,5 @@
-<div class="add-address-container">
+<form class="add-address-container"
+      [formGroup]="formAddress">
   <div class="add-address-title">Vendor address</div>
 
   <div class="add-address-wrapper" mat-dialog-content>
@@ -6,8 +7,9 @@
       <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
         <mat-select [(ngModel)]="data.country"
-                    (ngModelChange)="changeCitiesList()">
-          <mat-option>{{ 'search.select' | translate }}</mat-option>
+                    (ngModelChange)="changeCitiesList()"
+                    formControlName="country"
+                    required>
           <mat-option [value]="option"
                       *ngFor="let option of countries">
             {{ option.country }}
@@ -17,8 +19,9 @@
 
       <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
-        <mat-select [(ngModel)]="data.city">
-          <mat-option>{{ 'search.select' | translate }}</mat-option>
+        <mat-select [(ngModel)]="data.city"
+                    formControlName="city"
+                    required>
           <mat-option [value]="option"
                       *ngFor="let option of cities">
             {{ option.name }}
@@ -31,8 +34,10 @@
         <input class="add-address-input"
                matInput
                [(ngModel)]="data.street"
+               formControlName="street"
                required>
       </mat-form-field>
+
     </div>
   </div>
 
@@ -40,6 +45,6 @@
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button
             [mat-dialog-close]="data"
-            [disabled]="!data.street">Add</button>
+            [disabled]="formAddress.invalid">Add</button>
   </div>
-</div>
+</form>
