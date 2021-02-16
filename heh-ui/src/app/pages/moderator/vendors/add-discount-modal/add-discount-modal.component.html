@@ -32,9 +32,9 @@
         </mat-select>
       </mat-form-field>
 
-      <span *ngIf="form.get('phone').invalid && form.get('phone').touched" class="helper-error-text">
-        <span *ngIf="form.get('phone').errors['required']">Field Phone must not be empty</span>
-      </span>
+<!--      <span *ngIf="form?.get('phone').invalid && form?.get('phone').touched" class="helper-error-text">
+        <span *ngIf="form?.get('phone').errors['required']">Field Phone must not be empty</span>
+      </span>-->
 
       <mat-form-field class="add-discount-name" appearance="outline">
         <mat-label>{{ 'vendors.add-discount.promo' | translate }}</mat-label>
@@ -44,9 +44,9 @@
                required>
       </mat-form-field>
 
-      <span *ngIf="form.get('promoCode').invalid && form.get('promoCode').touched" class="helper-error-text">
-        <span *ngIf="form.get('promoCode').errors['required']">Field Promocode must not be empty</span>
-      </span>
+<!--      <span *ngIf="form?.get('promoCode').invalid && form?.get('promoCode').touched" class="helper-error-text">
+        <span *ngIf="form?.get('promoCode').errors['required']">Field Promocode must not be empty</span>
+      </span>-->
 
       <mat-form-field class="add-discount-conditions" appearance="outline">
         <mat-label>{{ 'vendors.add-discount.conditions' | translate }}</mat-label>
@@ -56,9 +56,9 @@
                required>
       </mat-form-field>
 
-      <span *ngIf="form.get('conditions').invalid && form.get('conditions').touched" class="helper-error-text">
-        <span *ngIf="form.get('conditions').errors['required']">Field Conditions must not be empty</span>
-      </span>
+<!--      <span *ngIf="form?.get('conditions').invalid && form?.get('conditions').touched" class="helper-error-text">
+        <span *ngIf="form?.get('conditions').errors['required']">Field Conditions must not be empty</span>
+      </span>-->
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-discount.start' | translate }}</mat-label>
@@ -73,9 +73,9 @@
         <mat-datepicker #pickerStart></mat-datepicker>
       </mat-form-field>
 
-      <span *ngIf="form.get('dateStart').invalid && form.get('dateStart').touched" class="helper-error-text">
-        <span *ngIf="form.get('dateStart').errors['required']">Field Start date must not be empty</span>
-      </span>
+<!--      <span *ngIf="form?.get('dateStart').invalid && form?.get('dateStart').touched" class="helper-error-text">
+        <span *ngIf="form?.get('dateStart').errors['required']">Field Start date must not be empty</span>
+      </span>-->
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-discount.end' | translate }}</mat-label>
@@ -100,9 +100,9 @@
         </mat-select>
       </mat-form-field>
 
-      <span *ngIf="form.get('category').invalid && form.get('category').touched" class="helper-error-text">
-        <span *ngIf="form.get('category').errors['required']">Field Category must not be empty</span>
-      </span>
+<!--      <span *ngIf=" form?.get('category').invalid && form?.get('category').touched" class="helper-error-text">
+        <span *ngIf="form?.get('category').errors['required']">Field Category must not be empty</span>
+      </span>-->
 
       <mat-form-field appearance="outline" class="add-discount-tag">
         <mat-label>{{ 'vendors.add-discount.tag' | translate }}</mat-label>

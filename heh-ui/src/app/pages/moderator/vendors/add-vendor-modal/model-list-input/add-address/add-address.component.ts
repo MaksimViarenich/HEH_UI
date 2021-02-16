@@ -15,7 +15,7 @@ export interface AddressData {
   encapsulation: ViewEncapsulation.None
 })
 export class AddAddressComponent implements OnInit {
-  formAddress: FormGroup | undefined;
+  formAddress: FormGroup;
   countries: Array<any> = [];
   cities: Array<any> = [];
   data: AddressData;
@@ -27,6 +27,11 @@ export class AddAddressComponent implements OnInit {
       city: {},
       street: ''
     };
+    this.formAddress = new FormGroup({
+      country: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required]),
+    });
   }
 
   changeCitiesList(): void {
@@ -39,10 +44,5 @@ export class AddAddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.countries = this.filterService.countriesCities;
-    this.formAddress = new FormGroup({
-      country: new FormControl(null, [Validators.required]),
-      city: new FormControl(null, [Validators.required]),
-      street: new FormControl(null, [Validators.required]),
-    });
   }
 }

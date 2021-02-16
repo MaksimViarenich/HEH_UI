@@ -14,7 +14,7 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
   encapsulation: ViewEncapsulation.None
 })
 export class AddDiscountModalComponent implements OnInit {
-  form: FormGroup | undefined;
+  form: FormGroup;
   discountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
@@ -30,24 +30,25 @@ export class AddDiscountModalComponent implements OnInit {
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
     this.tagsByCategory = [];
+    this.form = new FormGroup({
+      address: new FormControl(),
+      phone: new FormControl('', [Validators.required]),
+      promoCode: new FormControl('', [Validators.required]),
+      conditions: new FormControl('', [Validators.required]),
+      dateStart: new FormControl('', [Validators.required]),
+      dateEnd: new FormControl(),
+      category: new FormControl('', [Validators.required]),
+      tag: new FormControl()
+    });
   }
 
   ngOnInit(): void {
     this.getAllCategoriesAndTags();
     this.showTagList();
-    this.form = new FormGroup({
-      address: new FormControl(),
-      phone: new FormControl(null, [Validators.required]),
-      promoCode: new FormControl(null, [Validators.required]),
-      conditions: new FormControl(null, [Validators.required]),
-      dateStart: new FormControl(null, [Validators.required]),
-      dateEnd: new FormControl(),
-      category: new FormControl(null, [Validators.required]),
-      tag: new FormControl()
-    });
   }
 
   showTagList(): void {
+    this.tagsByCategory = [];
     this.categoriesAll.forEach((category: any) => {
       if (this.discountDetail.categoryId === category.id) {
         this.tagsByCategory = category.tags;

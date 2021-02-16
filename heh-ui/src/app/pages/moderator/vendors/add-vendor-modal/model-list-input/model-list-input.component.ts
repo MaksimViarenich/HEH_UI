@@ -17,14 +17,15 @@ export class ModelListInputComponent {
   @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
+  phonesVendor: FormControl;
 
   constructor(public dialog: MatDialog, private modalService: ModalService) {
     this.label = '';
     this.listData = [];
     this.type = '';
+    this.phonesVendor = new FormControl('', [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
   }
 
-  phonesVendor = new FormControl(null, [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
 
   addPhone(): void {
     this.listData.push({

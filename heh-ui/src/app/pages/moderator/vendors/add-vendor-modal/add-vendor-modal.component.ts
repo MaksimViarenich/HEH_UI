@@ -18,6 +18,7 @@ export class AddVendorModalComponent implements OnInit {
   vendor: any;
   links: any;
   countriesCities: any;
+  vendorName: FormControl;
 
   constructor(
     private filterService: FiltersService,
@@ -39,9 +40,8 @@ export class AddVendorModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
+    this.vendorName = new FormControl('', [Validators.required]);
   }
-
-  vendorName = new FormControl(null, [Validators.required]);
 
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';

@@ -14,10 +14,10 @@
               (click)="addPhone()">add</mat-icon>
   </mat-form-field>
 
-  <span *ngIf="phonesVendor.invalid && phonesVendor.touched" class="helper-error-text">
-    <span *ngIf="phonesVendor.errors['required']">Vendor should have at least one phone</span>
-    <span *ngIf="phonesVendor.errors['pattern']">Phone should contain only numbers, + and ()</span>
-  </span>
+<!--  <span *ngIf="phonesVendor?.invalid && phonesVendor?.touched" class="helper-error-text">
+    <span *ngIf="phonesVendor?.errors['required']">Vendor should have at least one phone</span>
+    <span *ngIf="phonesVendor?.errors['pattern']">Phone should contain only numbers, + and ()</span>
+  </span>-->
 
   <button *ngIf="type === 'address'"
           class="btn-add"

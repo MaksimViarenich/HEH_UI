@@ -20,9 +20,10 @@
                    [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
-          <span *ngIf="vendorName.invalid && vendorName.touched" class="helper-error-text">
-            <span *ngIf="vendorName.errors['required']">Field Vendor name must not be empty</span>
-          </span>
+
+<!--          <span *ngIf="vendorName?.invalid && vendorName?.touched" class="helper-error-text">
+            <span *ngIf="vendorName?.errors['required']">Field Vendor name must not be empty</span>
+          </span>-->
 
           <mat-form-field appearance="outline" class="add-vendor-hours">
             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
