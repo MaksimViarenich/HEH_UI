@@ -53,9 +53,9 @@ export class DiscountsService {
         }
       });
       resultParams.push(categoryParams);
-    }
+    } else { categoryParams = ''; }
 
-    if (searchData.tags) {
+    if (searchData.tags.length) {
       searchData.tags.forEach((item: string, index: number) => {
         if (searchData.tags.length - 1 === index) {
           tagParams += `tagsIds/any(t: t eq ${item})`;
@@ -64,9 +64,9 @@ export class DiscountsService {
         }
       });
       resultParams.push(tagParams);
-    }
+    } else {tagParams = ''; }
 
-    if (searchData.vendors) {
+    if (searchData.vendors.length) {
       searchData.vendors.forEach((item: string, index: number) => {
         if (searchData.vendors.length - 1 === index) {
           vendorParams += `vendorId eq ${item}`;
@@ -75,10 +75,11 @@ export class DiscountsService {
         }
       });
       resultParams.push(vendorParams);
-    }
+    } else {vendorParams = ''; }
 
     let params = new HttpParams();
     params = params.append('searchText', searchData.searchText);
+
     if (resultParams.length) {
       resultParams.forEach((item: string, index: number) => {
         if (resultParams.length - 1 === index) {

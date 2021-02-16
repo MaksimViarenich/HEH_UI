@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FiltersService } from '../../pages/discounts/filters.service';
 import { FormControl } from '@angular/forms';
+import { SearchData } from '../../models/search-data';
 
 @Component({
   selector: 'app-page-search',
@@ -15,9 +16,11 @@ export class PageSearchComponent implements OnInit {
   filtersOptions: any;
   activeFilters: any;
   searchText = '';
-  searchData: any = {};
+  searchData: SearchData = {};
+  locationSearch = '';
+  tagsSearch = [];
+  vendorsSearch = [];
 
-  locationFormControl = new FormControl();
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
   vendorsFormControl = new FormControl();
@@ -43,14 +46,12 @@ export class PageSearchComponent implements OnInit {
   }
 
   submitSearch(): void {
-    this.searchData.location = this.locationFormControl.value;
+    this.searchData.location = this.locationSearch;
     this.searchData.searchText = this.searchText;
-    this.searchData.categories = this.categoriesFormControl.value;
-    this.searchData.tags = this.tagsFormControl.value;
-    this.searchData.vendors = this.vendorsFormControl.value;
+    this.searchData.categories = this.activeFilters.categories;
+    this.searchData.tags = this.tagsSearch;
+    this.searchData.vendors = this.vendorsSearch;
     this.sendSubmitData.emit(this.searchData);
-    this.searchData.location = this.searchText = this.searchData.categories = '';
-    this.searchData.tags = this.searchData.vendors = '';
   }
 
   changeTagsList(): void {
