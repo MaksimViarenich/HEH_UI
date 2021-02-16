@@ -8,46 +8,39 @@
     <div class="profile-info">
       <div class="profile-username">{{user.name}}</div>
       <div class="profile-location">
-        <div >{{location}}</div>
-        <div >{{user.address.street}}</div>
+        <div>{{location}}</div>
+        <div>{{user.address.street}}</div>
       </div>
     </div>
 
     <mat-selection-list disableRipple>
       <mat-list-option [color]="'primary'"
-                       [(ngModel)]="newslettersChecked"
-                       (click)="newslettersChecked = ! newslettersChecked"
+                       [selected]="user.allNotificationsAreOn"
+                       (click)="user.allNotificationsAreOn = !user.allNotificationsAreOn"
                        ngDefaultControl>
         {{ 'profile.newsletters' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newDiscountNotificationIsOn"
-                       [disabled]="!newslettersChecked"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.newDiscountNotificationIsOn = !user.newDiscountNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.service' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
                        [selected]="user.newVendorNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
-                       [disabled]="!newslettersChecked"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.newVendorNotificationIsOn = !user.newVendorNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.vendors' | translate }}
       </mat-list-option>
 
       <mat-list-option [color]="'primary'"
-                       [selected]="user.cityChangeNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
-                       [disabled]="!newslettersChecked"
-                       ngDefaultControl>
-        {{ 'profile.city' | translate }}
-      </mat-list-option>
-
-      <mat-list-option [color]="'primary'"
-                       [(ngModel)]="user.hotDiscountsNotificationIsOn"
-                       (click)="newslettersChecked = ! newslettersChecked"
-                       [disabled]="!newslettersChecked"
+                       [selected]="user.hotDiscountsNotificationIsOn"
+                       [disabled]="!user.allNotificationsAreOn"
+                       (click)="user.hotDiscountsNotificationIsOn = !user.hotDiscountsNotificationIsOn"
                        ngDefaultControl>
         {{ 'profile.hot_sales' | translate }}
       </mat-list-option>
@@ -71,11 +64,10 @@
             {{vendor.viewValue}}
           </mat-option>
         </mat-optgroup>
-
-
-        <mat-option *ngFor="let option of allOptions" [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
-
+    <button mat-raised-button
+            class="add-profile-button"
+            (click)="saveProfile()">{{ 'users.add-profile.save' | translate }}</button>
   </div>
 </div>
