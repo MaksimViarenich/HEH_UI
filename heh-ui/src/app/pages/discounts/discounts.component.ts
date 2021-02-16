@@ -33,7 +33,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    const dialogRef = this.modalService.openDiscountDetailsModal(discount);
+    const dialogRef = this.modalService.openDiscountDetailsModal(discount.id);
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);

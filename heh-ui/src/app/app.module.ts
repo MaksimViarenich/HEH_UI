@@ -40,7 +40,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
 import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
 import { AuthGuard } from './auth-guard/auth.guard';
@@ -116,7 +116,9 @@ export function HttpLoaderFactory(http: HttpClient): any {
     provide: HTTP_INTERCEPTORS,
     useClass: SpinnerHttpInterceptor,
     multi: true,
-  }],
+  },
+  GoogleMapsAPIWrapper
+  ],
   bootstrap: [AppComponent]
 })
 

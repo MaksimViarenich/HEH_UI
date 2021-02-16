@@ -42,9 +42,9 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(discount: Discount): any {
+  openDiscountDetailsModal(id: string): any {
     return this.dialog.open(DiscountDetailsModalComponent, {
-      data: discount,
+      data: id,
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
