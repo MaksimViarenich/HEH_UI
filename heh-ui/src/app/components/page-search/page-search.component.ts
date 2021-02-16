@@ -49,6 +49,8 @@ export class PageSearchComponent implements OnInit {
     this.searchData.tags = this.tagsFormControl.value;
     this.searchData.vendors = this.vendorsFormControl.value;
     this.sendSubmitData.emit(this.searchData);
+    this.searchData.location = this.searchText = this.searchData.categories = '';
+    this.searchData.tags = this.searchData.vendors = '';
   }
 
   changeTagsList(): void {

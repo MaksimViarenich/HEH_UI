@@ -39,11 +39,56 @@ export class DiscountsService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
+    let categoryParams = '';
+    let tagParams = '';
+    let vendorParams = '';
+    const resultParams: any = [];
+    let continiusParams = '';
+    if (searchData.categories.length) {
+      searchData.categories.forEach((item: string, index: number) => {
+        if (searchData.categories.length - 1 === index) {
+          categoryParams += `categoryId eq ${item}`;
+        } else {
+          categoryParams += `categoryId eq ${item} or `;
+        }
+      });
+      resultParams.push(categoryParams);
+    }
+
+    if (searchData.tags) {
+      searchData.tags.forEach((item: string, index: number) => {
+        if (searchData.tags.length - 1 === index) {
+          tagParams += `tagsIds/any(t: t eq ${item})`;
+        } else {
+          tagParams += `tagsIds/any(t: t eq ${item}) or `;
+        }
+      });
+      resultParams.push(tagParams);
+    }
+
+    if (searchData.vendors) {
+      searchData.vendors.forEach((item: string, index: number) => {
+        if (searchData.vendors.length - 1 === index) {
+          vendorParams += `vendorId eq ${item}`;
+        } else {
+          vendorParams += `vendorId eq ${item} or `;
+        }
+      });
+      resultParams.push(vendorParams);
+    }
+
     let params = new HttpParams();
     params = params.append('searchText', searchData.searchText);
-    // $filter=Address/City eq 'Redmond'
-    params = params.append('$filter', `categoryId eq ${searchData.categories[0]}`);
-    console.log(searchData);
+    if (resultParams.length) {
+      resultParams.forEach((item: string, index: number) => {
+        if (resultParams.length - 1 === index) {
+          continiusParams += item;
+        } else {
+          vendorParams += `${item} and `;
+        }
+      });
+      params = params.append('$filter', continiusParams);
+    }
 
     return this.http.get(`${BASE_API_URL}/odata/discount`, {headers, params});
   }
