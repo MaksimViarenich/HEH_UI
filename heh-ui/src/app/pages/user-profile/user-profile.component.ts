@@ -26,6 +26,9 @@ export class UserProfileComponent implements OnInit {
   selectedCategories: Array<any>;
   selectedTags: Array<any>;
   selectedVendors: Array<any>;
+  categoryNotifications: Array<any>;
+  tagNotifications: Array<any>;
+  vendorNotifications: Array<any>;
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
@@ -43,6 +46,9 @@ export class UserProfileComponent implements OnInit {
       this.selectedTags = [],
       this.selectedVendors = [],
     ];
+    this.categoryNotifications = [],
+      this.tagNotifications = [],
+      this.vendorNotifications = [],
 
     this.filtersOptions = {
       locations: [],
@@ -67,20 +73,20 @@ export class UserProfileComponent implements OnInit {
 
   SaveProfile(): void {
     const userNotification = {
-      selectedOptions: this.selectedOptions,
-      selectedCategories: this.selectedOptions,
-      tagNotifications: this.selectedOptions,
-      vendorNotifications: this.selectedOptions,
+      categoryNotifications: this.allOptions.categories.forEach((allCategories: any) => {
+        console.log(allCategories.id);
+      }),
+      tagNotifications:  this.allOptions.tags.forEach((allTags: any) => {
+        console.log(allTags.id);
+      }),
+      vendorNotifications: this.allOptions.vendors.forEach((allVendors: any) => {
+        console.log(allVendors.id);
+      }),
       newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
       newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
       hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
       allNotificationsAreOn: this.user.allNotificationsAreOn};
 
-    // this.selectedOptions.forEach((selectedCategories: any) => {
-    //   if (selectedCategories.id === this.selectedOptions.country.id) {
-    //     this.cities = country.cities;
-    //   }
-    // });
     console.log(userNotification);
     this.userProfleService.editProfile(userNotification).subscribe(
         (data) => {
@@ -107,7 +113,6 @@ export class UserProfileComponent implements OnInit {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
-        console.log(this.selectedOptions);
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
