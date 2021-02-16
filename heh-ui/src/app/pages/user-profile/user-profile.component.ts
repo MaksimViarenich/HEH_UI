@@ -23,9 +23,6 @@ export class UserProfileComponent implements OnInit {
   separatorKeysCodes: number[];
   allOptions: any;
   selectedOptions: Array<any>;
-  selectedCategories: Array<any>;
-  selectedTags: Array<any>;
-  selectedVendors: Array<any>;
   categoryNotifications: Array<any>;
   tagNotifications: Array<any>;
   vendorNotifications: Array<any>;
@@ -40,22 +37,18 @@ export class UserProfileComponent implements OnInit {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
-    this.allOptions = {};
-    this.selectedOptions = [
-      this.selectedCategories = [],
-      this.selectedTags = [],
-      this.selectedVendors = [],
-    ];
+    this.allOptions = [];
+    this.selectedOptions = [];
     this.categoryNotifications = [],
       this.tagNotifications = [],
       this.vendorNotifications = [],
 
-    this.filtersOptions = {
-      locations: [],
-      categories: [],
-      tags: [],
-      vendors: []
-    };
+      this.filtersOptions = {
+        locations: [],
+        categories: [],
+        tags: [],
+        vendors: []
+      };
     this.user = {
       id: '',
       role: '',
@@ -71,31 +64,49 @@ export class UserProfileComponent implements OnInit {
     };
   }
 
-  SaveProfile(): void {
+  getNotifications(): void {
+    this.allOptions.categories.forEach((allCategories: any) => {
+      if (this.categoryNotifications.indexOf(allCategories.id) === -1) {
+        if (this.selectedOptions.indexOf(allCategories.id) !== -1) {
+          this.categoryNotifications.push(allCategories.id);
+        }
+      }
+    });
+    this.allOptions.tags.forEach((allTags: any) => {
+      if (this.tagNotifications.indexOf(allTags.id) === -1) {
+        if (this.selectedOptions.indexOf(allTags.id) !== -1) {
+          this.tagNotifications.push(allTags.id);
+        }
+      }
+    });
+    this.allOptions.vendors.forEach((allVendors: any) => {
+      if (this.vendorNotifications.indexOf(allVendors.id) === -1) {
+        if (this.selectedOptions.indexOf(allVendors.id) !== -1) {
+          this.vendorNotifications.push(allVendors.id);
+        }
+      }
+    });
+  }
+
+  saveProfile(): void {
     const userNotification = {
-      categoryNotifications: this.allOptions.categories.forEach((allCategories: any) => {
-        console.log(allCategories.id);
-      }),
-      tagNotifications:  this.allOptions.tags.forEach((allTags: any) => {
-        console.log(allTags.id);
-      }),
-      vendorNotifications: this.allOptions.vendors.forEach((allVendors: any) => {
-        console.log(allVendors.id);
-      }),
+      categoryNotifications: this.categoryNotifications,
+      tagNotifications: this.tagNotifications,
+      vendorNotifications: this.vendorNotifications,
       newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
       newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
       hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
-      allNotificationsAreOn: this.user.allNotificationsAreOn};
+      allNotificationsAreOn: this.user.allNotificationsAreOn
+    };
 
-    console.log(userNotification);
     this.userProfleService.editProfile(userNotification).subscribe(
-        (data) => {
-          this.toaster.open('Profile was updated', 'success');
-        },
-        (error) => {
-          this.toaster.open('Update issue was occurred');
-        }
-      );
+      (data) => {
+        this.toaster.open('Profile was updated', 'success');
+      },
+      (error) => {
+        this.toaster.open('Update issue was occurred');
+      }
+    );
   }
 
   ngOnInit(): void {
