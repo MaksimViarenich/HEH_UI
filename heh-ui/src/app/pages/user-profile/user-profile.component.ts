@@ -89,6 +89,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   saveProfile(): void {
+    this.getNotifications();
+
     const userNotification = {
       categoryNotifications: this.categoryNotifications,
       tagNotifications: this.tagNotifications,

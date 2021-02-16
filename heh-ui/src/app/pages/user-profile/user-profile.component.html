@@ -48,7 +48,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>{{ 'profile.subscription' | translate }}</mat-label>
-      <mat-select multiple [(ngModel)]="selectedOptions" (ngModelChange)="getNotifications()">
+      <mat-select multiple [(ngModel)]="selectedOptions">
         <mat-optgroup [label]="'Categories'">
           <mat-option *ngFor="let category of allOptions.categories" [value]="category.id">
             {{category.viewValue}}
@@ -64,8 +64,6 @@
             {{vendor.viewValue}}
           </mat-option>
         </mat-optgroup>
-
-        <mat-option *ngFor="let option of selectedOptions" [value]="option.id">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button
