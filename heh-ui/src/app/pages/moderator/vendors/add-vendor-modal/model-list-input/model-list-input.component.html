@@ -5,7 +5,7 @@
     <mat-label>{{label}}</mat-label>
     <input matInput
            (keydown.enter)="addPhone()"
-           type="tel"
+           (keypress)="validatePhone($event)"
            [formControl]="phonesVendor"
            [required]="listData && listData.length === 0"
            [(ngModel)]="inputValue">
@@ -16,7 +16,7 @@
 
 <!--  <span *ngIf="phonesVendor?.invalid && phonesVendor?.touched" class="helper-error-text">
     <span *ngIf="phonesVendor?.errors['required']">Vendor should have at least one phone</span>
-    <span *ngIf="phonesVendor?.errors['pattern']">Phone should contain only numbers, + and ()</span>
+    <span *ngIf="phonesVendor?.errors['pattern']">Phone should contain only numbers, only one or no + and only one () or no ()</span>
   </span>-->
 
   <button *ngIf="type === 'address'"

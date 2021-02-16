@@ -23,7 +23,13 @@ export class ModelListInputComponent {
     this.label = '';
     this.listData = [];
     this.type = '';
-    this.phonesVendor = new FormControl('', [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
+    this.phonesVendor = new FormControl(null, [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
+  }
+
+  validatePhone(event: any): any{
+    let k;
+    k = event.charCode;
+    return(k === 43 || k === 40 || k === 41 || (k >= 48 && k <= 57));
   }
 
 
