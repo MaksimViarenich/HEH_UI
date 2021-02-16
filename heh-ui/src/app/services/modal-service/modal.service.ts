@@ -14,8 +14,7 @@ import { AddAddressComponent } from '../../pages/moderator/vendors/add-vendor-mo
 
 export class ModalService {
 
-  constructor(public dialog: MatDialog) {
-  }
+  constructor(public dialog: MatDialog) {}
 
   openVendorModal(data?: Vendor): any {
     return this.dialog.open(AddVendorModalComponent, {
@@ -26,8 +25,8 @@ export class ModalService {
     });
   }
 
-  openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
-    const dialogRef = this.dialog.open(AddDiscountModalComponent, {
+  openAddDiscountModal(discount?: Discount, vendor?: Vendor): any {
+    return this.dialog.open(AddDiscountModalComponent, {
       data: {
         discount: discount || {},
         addresses: vendor ? vendor.addresses : [],
@@ -36,10 +35,6 @@ export class ModalService {
       panelClass: 'add-discount-modal',
       backdropClass: 'add-discount-modal-backdrop',
       maxWidth: '33rem',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -68,6 +63,8 @@ export class ModalService {
   openAddAddressModal(): any {
     return this.dialog.open(AddAddressComponent, {
       width: '33rem',
+      panelClass: 'add-address-modal',
+      backdropClass: 'add-address-modal-backdrop',
     });
   }
 }

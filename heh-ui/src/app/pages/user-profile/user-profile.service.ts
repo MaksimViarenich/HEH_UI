@@ -8,11 +8,9 @@ import { BASE_API_URL } from '../../global';
 })
 export class UserProfileService {
 
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) {}
 
   getUser(): Observable<any> {
-
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();

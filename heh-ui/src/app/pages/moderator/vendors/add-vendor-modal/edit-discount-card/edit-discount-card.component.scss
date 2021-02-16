@@ -74,8 +74,12 @@
 
         &:hover {
           opacity: 1;
+          cursor: pointer;
         }
       }
     }
+  }
+  &:hover{
+    cursor: pointer;
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../global';
@@ -12,6 +12,7 @@ export class FavoritesService {
 
   getFavorites(): Observable<any> {
     const token = localStorage.getItem('isAuth');
+
     let headers = new HttpHeaders();
 
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
@@ -22,6 +23,7 @@ export class FavoritesService {
 
   deleteFavoriteCard(id: string): Observable<any> {
     const token = localStorage.getItem('isAuth');
+
     let headers = new HttpHeaders();
 
     headers = headers.append('accept', '*/*');
@@ -32,6 +34,7 @@ export class FavoritesService {
 
   addUpdateFavorite(discountId: string, note: string, type: string): Observable<any> {
     const token = localStorage.getItem('isAuth');
+
     let headers = new HttpHeaders();
 
     headers = headers.append('accept', '*/*');

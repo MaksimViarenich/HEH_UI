@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { UserProfileService } from './user-profile.service';

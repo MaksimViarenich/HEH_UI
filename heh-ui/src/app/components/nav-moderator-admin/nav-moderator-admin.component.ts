@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Tab} from '../../models/tab';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Tab } from '../../models/tab';
 
 @Component({
   selector: 'app-nav-moderator-admin',

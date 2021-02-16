@@ -22,7 +22,8 @@
     <div class="edit-btn">
       <button class="btn-cancel"
               mat-button
-              mat-dialog-close>
+              mat-dialog-close
+              (click)="favorite.note = initialValue">
               {{ 'favorites.cancel' | translate }}</button>
       <button class="btn-submit"
               mat-raised-button
