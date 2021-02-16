@@ -1,15 +1,12 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {VendorCard} from '../../../../models/vendor-card';
-import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {Discount} from '../../../../models/discount';
-import {ModalService} from '../../../../services/modal-service/modal.service';
-import {VendorService} from '../vendor.service';
-import {FiltersService} from 'src/app/pages/discounts/filters.service';
-import {Phones} from 'src/app/models/phones';
-import {Address} from '../../../../models/address';
-import {ToasterService} from '../../../../services/toaster-service/toaster.service';
-import {concat} from 'rxjs';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { VendorCard } from '../../../../models/vendor-card';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Discount } from '../../../../models/discount';
+import { ModalService } from '../../../../services/modal-service/modal.service';
+import { VendorService } from '../vendor.service';
+import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -107,6 +104,7 @@ export class AddVendorModalComponent implements OnInit {
     if (this.vendor.discounts[index] !== undefined) {
       this.vendor.discounts.splice(index, 1);
     }
+
     return this.vendor.discounts;
   }
 
@@ -121,7 +119,6 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   onAddAddress(address: any): void {
-    const editAddress: any = {};
     const editAddresses: any[] = [];
     address.map((addr: any) => {
       this.countriesCities.forEach((item: any) => {
@@ -163,7 +160,6 @@ export class AddVendorModalComponent implements OnInit {
               };
             }));
           }
-          this.toaster.open('Information about vendor has been received', 'success');
         },
         (error) => {
           this.toaster.open('Сan not get vendorId');

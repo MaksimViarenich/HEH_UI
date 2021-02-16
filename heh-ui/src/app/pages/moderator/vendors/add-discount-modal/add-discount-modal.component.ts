@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Discount} from '../../../../models/discount';
-import {Address} from '../../../../models/address';
-import {Phones} from '../../../../models/phones';
-import {FiltersService} from '../../../discounts/filters.service';
-import {ToasterService} from '../../../../services/toaster-service/toaster.service';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Discount } from '../../../../models/discount';
+import { Address } from '../../../../models/address';
+import { Phones } from '../../../../models/phones';
+import { FiltersService } from '../../../discounts/filters.service';
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -29,7 +29,6 @@ export class AddDiscountModalComponent implements OnInit {
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
     this.tagsByCategory = [];
-    console.log(data);
   }
 
   vendor = new FormControl();
