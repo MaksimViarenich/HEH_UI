@@ -14,14 +14,18 @@ import { FiltersService } from '../discounts/filters.service';
   styleUrls: ['./user-profile.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class UserProfileComponent implements OnInit {
   newslettersChecked: boolean;
   filtersOptions: any;
-  user: UserInfo;
+  user: UserInfo | any;
   location: string;
   separatorKeysCodes: number[];
   allOptions: any;
   selectedOptions: Array<any>;
+  categoryNotifications: Array<any>;
+  tagNotifications: Array<any>;
+  vendorNotifications: Array<any>;
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
@@ -29,18 +33,22 @@ export class UserProfileComponent implements OnInit {
               private usersService: UsersService,
               private filtersService: FiltersService,
               private userProfleService: UserProfileService,
-              private toaster: ToasterService, ) {
+              private toaster: ToasterService) {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
-    this.allOptions = {};
+    this.allOptions = [];
     this.selectedOptions = [];
-    this.filtersOptions = {
-      locations: [],
-      categories: [],
-      tags: [],
-      vendors: []
-    };
+    this.categoryNotifications = [],
+      this.tagNotifications = [],
+      this.vendorNotifications = [],
+
+      this.filtersOptions = {
+        locations: [],
+        categories: [],
+        tags: [],
+        vendors: []
+      };
     this.user = {
       id: '',
       role: '',
@@ -54,6 +62,53 @@ export class UserProfileComponent implements OnInit {
       },
       isActive: false,
     };
+  }
+
+  getNotifications(): void {
+    this.allOptions.categories.forEach((allCategories: any) => {
+      if (this.categoryNotifications.indexOf(allCategories.id) === -1) {
+        if (this.selectedOptions.indexOf(allCategories.id) !== -1) {
+          this.categoryNotifications.push(allCategories.id);
+        }
+      }
+    });
+    this.allOptions.tags.forEach((allTags: any) => {
+      if (this.tagNotifications.indexOf(allTags.id) === -1) {
+        if (this.selectedOptions.indexOf(allTags.id) !== -1) {
+          this.tagNotifications.push(allTags.id);
+        }
+      }
+    });
+    this.allOptions.vendors.forEach((allVendors: any) => {
+      if (this.vendorNotifications.indexOf(allVendors.id) === -1) {
+        if (this.selectedOptions.indexOf(allVendors.id) !== -1) {
+          this.vendorNotifications.push(allVendors.id);
+        }
+      }
+    });
+  }
+
+  saveProfile(): void {
+    this.getNotifications();
+
+    const userNotification = {
+      categoryNotifications: this.categoryNotifications,
+      tagNotifications: this.tagNotifications,
+      vendorNotifications: this.vendorNotifications,
+      newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
+      newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
+      hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
+      allNotificationsAreOn: this.user.allNotificationsAreOn
+    };
+
+    this.userProfleService.editProfile(userNotification).subscribe(
+      (data) => {
+        this.toaster.open('Profile was updated', 'success');
+      },
+      (error) => {
+        this.toaster.open('Update issue was occurred');
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -71,7 +126,6 @@ export class UserProfileComponent implements OnInit {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
-        this.toaster.open('User profile has been received', 'success');
       },
       (error) => {
         this.toaster.open('Сan not get user profile');

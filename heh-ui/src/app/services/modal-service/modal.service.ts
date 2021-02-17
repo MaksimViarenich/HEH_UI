@@ -22,23 +22,22 @@ export class ModalService {
       panelClass: 'vendor-details-modal',
       backdropClass: 'vendor-details-modal-backdrop',
       maxWidth: '66rem',
+      autoFocus: false,
     });
   }
 
-  openAddDiscountModal(discount?: Discount, vendor?: Vendor): void {
-    const dialogRef = this.dialog.open(AddDiscountModalComponent, {
+  openAddDiscountModal(discount?: Discount, index?: any, vendor?: Vendor): any {
+    return this.dialog.open(AddDiscountModalComponent, {
       data: {
         discount: discount || {},
         addresses: vendor ? vendor.addresses : [],
         phones: vendor ? vendor.phones : [],
+        indexForLabel: index + 1 || '',
       },
       panelClass: 'add-discount-modal',
       backdropClass: 'add-discount-modal-backdrop',
       maxWidth: '33rem',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      autoFocus: false,
     });
   }
 
@@ -48,6 +47,7 @@ export class ModalService {
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
+      autoFocus: false,
     });
   }
 
@@ -57,6 +57,7 @@ export class ModalService {
       maxWidth: '25rem',
       panelClass: 'edit-note-modal',
       backdropClass: 'edit-note-modal-backdrop',
+      autoFocus: false,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -67,6 +68,9 @@ export class ModalService {
   openAddAddressModal(): any {
     return this.dialog.open(AddAddressComponent, {
       width: '33rem',
+      panelClass: 'add-address-modal',
+      backdropClass: 'add-address-modal-backdrop',
+      autoFocus: false,
     });
   }
 }

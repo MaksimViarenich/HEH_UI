@@ -30,7 +30,7 @@
 
       .mat-form-field-wrapper {
         padding-bottom: 0;
-        @include glass;
+        background: rgba(255, 255, 255, 0.7);
         border-radius: $border-radius-small;
       }
     }
@@ -48,8 +48,13 @@
       margin-top: $margin-1;
 
       button:last-child {
-        background: $color-violet;
+        background: $color-blue-green;
         color: $color-white;
+
+        &:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          color: rgba(0, 0, 0, .26);
+        }
       }
     }
   }

@@ -43,15 +43,19 @@
     "user": "User",
     "description": "Description"
   },
-  "users" : {
+  "users": {
     "admin": "Administrator",
     "user": "User",
     "moderator": "Moderator",
     "active": "Active",
-    "inactive": "Inactive"
+    "inactive": "Inactive",
+    "add-profile": {
+      "save": "Save"
+    }
   },
   "vendors": {
     "add": "Add vendor",
+    "edit": "Edit vendor",
     "add-vendor": {
       "info": "Vendor's info",
       "name": "Vendor's name",
@@ -70,16 +74,19 @@
       "add-dsk": "Add discount"
     },
     "add-discount": {
+      "add": "Add discount",
+      "edit": "Edit discount",
       "name": "Discount name",
       "address": "Address",
-      "phone": "Telephone",
-      "description": "Discount description",
+      "phone": "Phone",
+      "conditions": "Discount conditions",
       "tag": "Tag",
       "category": "Category",
       "start": "Start date",
       "end": "Expiration date",
       "cancel": "Cancel",
-      "subm": "Submit"
+      "save": "Save",
+      "promo": "Promocode"
     }
   },
   "categories-and-tags": {

@@ -61,7 +61,7 @@
       align-items: center;
 
       .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
-        background-color: $color-violet;
+        background-color: $color-blue-green;
       }
 
       .mat-slide-toggle-thumb {
@@ -74,8 +74,13 @@
 
         &:hover {
           opacity: 1;
+          cursor: pointer;
         }
       }
     }
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }

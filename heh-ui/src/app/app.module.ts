@@ -48,6 +48,7 @@ import { RoleGuard } from './role-guard/role.guard';
 import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 import { ProfileComponent } from './components/header/profile-selection/profile.component';
 import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -99,6 +100,8 @@ export function HttpLoaderFactory(http: HttpClient): any {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppMaterialModule,
     HttpClientModule,
     TranslateModule.forRoot({

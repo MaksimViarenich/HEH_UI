@@ -46,7 +46,6 @@ export class DiscountDetailsModalComponent implements OnInit {
             };
           }));
         }
-        this.toaster.open('Information about discount has been received', 'success');
       },
       (error) => {
         this.toaster.open('Can not get discountId');
