@@ -35,8 +35,6 @@ export class DiscountsComponent implements OnInit {
     const dialogRef = this.modalService.openDiscountDetailsModal(discount);
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
-      this.getDiscounts();
     });
   }
 
