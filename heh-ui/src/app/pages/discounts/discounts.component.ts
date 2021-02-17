@@ -21,7 +21,7 @@ export class DiscountsComponent implements OnInit {
               private modalService: ModalService,
               private discountService: DiscountsService,
               private toaster: ToasterService) {
-    this.topDiscounts = 8;
+    this.topDiscounts = 16;
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
   }
