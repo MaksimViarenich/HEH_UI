@@ -18,7 +18,7 @@ getDiscounts(top: any, skip: any): Observable<any> {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}&$count=true`, {headers});
   }
 
 getDiscountDetails(id: string): Observable<any> {

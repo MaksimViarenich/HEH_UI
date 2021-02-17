@@ -15,12 +15,14 @@ export class UsersComponent implements OnInit {
   topUsers: any;
   skipUsers: any;
   previousScrollPosition: any;
+  totalCount: any;
 
   constructor(private usersService: UsersService,
               private toaster: ToasterService) {
     this.topUsers = 6;
     this.skipUsers = 0;
     this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
 
   getUsersList(top: any, skip: any): void {
@@ -29,6 +31,7 @@ export class UsersComponent implements OnInit {
         data.value.forEach((user: any) => {
           this.users.push(user);
         });
+        this.totalCount = data['@odata.count'];
       },
       (error) => {
         this.toaster.open('Сan not get users');
@@ -41,7 +44,7 @@ export class UsersComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.users.length === this.totalCount)) {
       this.skipUsers += this.topUsers;
       this.getUsersList(this.topUsers, this.skipUsers);
       this.previousScrollPosition = event.currentScrollPosition;

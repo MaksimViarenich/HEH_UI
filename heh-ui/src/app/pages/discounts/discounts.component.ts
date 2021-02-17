@@ -16,6 +16,7 @@ export class DiscountsComponent implements OnInit {
   topDiscounts: any;
   skipDiscounts: any;
   previousScrollPosition: any;
+  totalCount: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -24,6 +25,7 @@ export class DiscountsComponent implements OnInit {
     this.topDiscounts = 16;
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
 
   getDiscounts(top: any, skip: any): void {
@@ -32,6 +34,7 @@ export class DiscountsComponent implements OnInit {
         data.value.forEach((discount: any) => {
           this.discounts.push(discount);
         });
+        this.totalCount = data['@odata.count'];
       },
       (error) => {
         this.toaster.open('Сan not get discounts');
@@ -48,7 +51,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length === this.totalCount)) {
       this.skipDiscounts += this.topDiscounts;
       this.getDiscounts(this.topDiscounts, this.skipDiscounts);
       this.previousScrollPosition = event.currentScrollPosition;
