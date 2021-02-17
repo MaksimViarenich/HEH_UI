@@ -53,7 +53,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length % this.topDiscounts)) {
       this.skipDiscounts += this.topDiscounts;
       this.getDiscounts(this.topDiscounts, this.skipDiscounts);
       this.previousScrollPosition = event.currentScrollPosition;
