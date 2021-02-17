@@ -49,6 +49,7 @@ import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/
 import { ProfileComponent } from './components/header/profile-selection/profile.component';
 import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -104,6 +105,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ReactiveFormsModule,
     AppMaterialModule,
     HttpClientModule,
+    InfiniteScrollModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

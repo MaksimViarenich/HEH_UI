@@ -2,7 +2,11 @@
   <app-input-search ></app-input-search>
 </div>
 
-<div class="users-list">
+<div class="users-list"
+     infiniteScroll
+     [infiniteScrollDistance]="3"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
   <app-user-card *ngFor="let item of users"
                   [user]="item">
   </app-user-card>

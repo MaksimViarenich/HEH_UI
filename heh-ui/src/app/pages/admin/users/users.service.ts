@@ -10,7 +10,7 @@ export class UsersService {
   constructor(public http: HttpClient) {
   }
 
-  getUsers(): Observable<any> {
+  getUsers(top: any, skip: any): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -18,7 +18,7 @@ export class UsersService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/api/user`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/user?$top=${top}&$skip=${skip}`, {headers});
   }
 
   changeRole(userId: string, userRole: string): Observable<any> {
