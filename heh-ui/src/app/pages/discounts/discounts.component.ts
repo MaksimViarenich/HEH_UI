@@ -43,7 +43,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    const dialogRef = this.modalService.openDiscountDetailsModal(discount);
+    this.modalService.openDiscountDetailsModal(discount.id);
   }
 
   ngOnInit(): void {

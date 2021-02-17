@@ -24,7 +24,10 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ 'discounts.address' | translate }}</mat-label>
 
-        <mat-select [formControl]="address" multiple>
+        <mat-select [formControl]="address"
+                    [(ngModel)]="activeAddresses"
+                    (ngModelChange)="displayActiveMarkers()"
+                    multiple>
           <mat-select-trigger>
             {{address.value ? address.value[0] : ''}}
             <span *ngIf="address.value?.length > 1" class="example-additional-selection">
@@ -32,8 +35,8 @@
               {{address.value?.length === 2 ? 'other' : 'others'}})
             </span>
           </mat-select-trigger>
-          <mat-option *ngFor="let address of discountDetails.addresses"
-                      [value]="address.id">{{address.street}}</mat-option>
+          <mat-option *ngFor="let address of addresses"
+                      [value]="address">{{address}}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -85,8 +88,12 @@
     </div>
 
     <div class="discount-details-map">
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-map [latitude]="location.lat"
+               [longitude]="location.lng"
+               [zoom]="zoom">
+        <agm-marker *ngFor="let marker of markers"
+                    [latitude]="marker.lat"
+                    [longitude]="marker.lng"></agm-marker>
       </agm-map>
     </div>
 
