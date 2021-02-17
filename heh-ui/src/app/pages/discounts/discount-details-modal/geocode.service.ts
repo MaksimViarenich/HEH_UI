@@ -20,7 +20,7 @@ export class GeocodeService {
     });
   }
 
-  findLocation(address: string): any {
+  findLocation(address: string, callback: any): any {
     // tslint:disable-next-line: prefer-const
     let obj = {
       lat: 0,
@@ -35,6 +35,9 @@ export class GeocodeService {
       if (status === 'OK' && results) {
         obj.lat = results[0].geometry.location.lat();
         obj.lng = results[0].geometry.location.lng();
+        if (callback) {
+          callback(obj);
+        }
       }
     });
 

@@ -67,15 +67,31 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.markers = [];
 
     this.activeAddresses.forEach(address => {
-      this.markers.push(this.geocodeService.findLocation(address));
+      this.geocodeService.findLocation(address, (obj: Marker) => {
+        this.markers.push(obj);
+      });
     });
+
+    setTimeout(() => {
+      if (this.markers.length === 1) {
+        this.location = this.markers[0];
+        this.zoom = 14;
+      } else if (this.markers.length > 1) {
+        this.location.lat = this.markers.reduce((sum, marker) => sum + marker.lat, 0) / this.markers.length;
+        this.location.lng = this.markers.reduce((sum, marker) => sum + marker.lng, 0) / this.markers.length;
+        this.zoom = 5;
+        console.log(this.location);
+      }
+    }, 1000);
   }
 
   ngOnInit(): void {
     this.userProfleService.getUser().subscribe(
       (data: { address: { cityId: string; street: string }; }) => {
         this.userLocation = `${this.filtersService.getAddressByCityId(data.address.cityId)} ${data.address.street}`;
-        this.location = this.geocodeService.findLocation(this.userLocation);
+        this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
+          this.location = obj;
+        });
       },
       (error: any) => {
         this.toaster.open('Сan not get user location');
