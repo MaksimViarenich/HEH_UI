@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface AddressData {
   country: any;
@@ -14,6 +15,7 @@ export interface AddressData {
   encapsulation: ViewEncapsulation.None
 })
 export class AddAddressComponent implements OnInit {
+  formAddress: FormGroup;
   countries: Array<any> = [];
   cities: Array<any> = [];
   data: AddressData;
@@ -25,6 +27,11 @@ export class AddAddressComponent implements OnInit {
       city: {},
       street: ''
     };
+    this.formAddress = new FormGroup({
+      country: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required]),
+    });
   }
 
   changeCitiesList(): void {

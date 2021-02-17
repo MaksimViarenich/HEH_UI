@@ -12,19 +12,42 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 export class UsersComponent implements OnInit {
 
   users: UserInfo[] = [];
+  topUsers: any;
+  skipUsers: any;
+  previousScrollPosition: any;
+  totalCount: any;
 
   constructor(private usersService: UsersService,
               private toaster: ToasterService) {
+    this.topUsers = 6;
+    this.skipUsers = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
 
-  ngOnInit(): void {
-    this.usersService.getUsers().subscribe(
+  getUsersList(top: any, skip: any): void {
+    this.usersService.getUsers(top, skip).subscribe(
       (data) => {
-        this.users = data;
+        data.value.forEach((user: any) => {
+          this.users.push(user);
+        });
+        this.totalCount = data['@odata.count'];
       },
       (error) => {
         this.toaster.open('Сan not get users');
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getUsersList(this.topUsers, this.skipUsers);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.users.length === this.totalCount)) {
+      this.skipUsers += this.topUsers;
+      this.getUsersList(this.topUsers, this.skipUsers);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
   }
 }

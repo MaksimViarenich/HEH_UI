@@ -21,8 +21,7 @@ export class GeocodeService {
   }
 
   findLocation(address: string, callback: any): any {
-    // tslint:disable-next-line: prefer-const
-    let obj = {
+    const obj = {
       lat: 0,
       lng: 0
     };

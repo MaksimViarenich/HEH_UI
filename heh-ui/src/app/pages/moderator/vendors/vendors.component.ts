@@ -24,8 +24,10 @@ export class VendorsComponent implements OnInit {
   openVendorModal(data?: Vendor): void {
     const dialogRef = this.modalService.openVendorModal(data);
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      this.getAllVendors();
+    dialogRef.afterClosed().subscribe((dataVendor: any) => {
+      if (dataVendor) {
+        this.getAllVendors();
+      }
     });
   }
 

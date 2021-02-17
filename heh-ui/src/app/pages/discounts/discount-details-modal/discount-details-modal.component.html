@@ -99,7 +99,8 @@
 
     <div class="discount-details-button">
       <button mat-button
-              mat-dialog-close>{{ 'discounts.cancel' | translate }}</button>
+              [mat-dialog-close]="discountDetails"
+              [disabled]="!discountDetails">{{ 'discounts.cancel' | translate }}</button>
     </div>
   </div>
 </div>

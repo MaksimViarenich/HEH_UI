@@ -1,7 +1,7 @@
 @import "../../../../../styles.scss";
 
 .mat-icon {
-  color: $color-violet;
+  color: $color-blue-green;
 }
 
 .vendor-details-modal-backdrop.cdk-overlay-backdrop {
@@ -64,7 +64,7 @@
 
     .add-discount-button {
       min-height: 3rem;
-      background: $color-violet;
+      background: $color-blue-green;
       color: $color-white;
     }
   }
@@ -99,8 +99,13 @@
   padding: 0;
 
   button:last-child {
-    background: $color-violet;
+    background: $color-blue-green;
     color: $color-white;
     margin-left: $margin-1;
+
+    &:disabled {
+      background-color: rgba(0, 0, 0, .12);
+      color: rgba(0, 0, 0, .26);
+    }
   }
 }

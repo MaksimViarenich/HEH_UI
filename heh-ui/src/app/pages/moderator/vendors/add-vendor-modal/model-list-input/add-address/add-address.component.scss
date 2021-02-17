@@ -47,8 +47,13 @@
       margin: 0 1rem;
 
       button:last-child {
-        background: $color-violet;
+        background: $color-blue-green;
         color: $color-white;
+
+        &:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          color: rgba(0, 0, 0, .26);
+        }
       }
     }
   }
