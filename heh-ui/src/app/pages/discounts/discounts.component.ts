@@ -13,17 +13,25 @@ import { ModalService } from 'src/app/services/modal-service/modal.service';
 export class DiscountsComponent implements OnInit {
 
   discounts: Array<Discount> = [];
+  topDiscounts: any;
+  skipDiscounts: any;
+  previousScrollPosition: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private discountService: DiscountsService,
               private toaster: ToasterService) {
+    this.topDiscounts = 8;
+    this.skipDiscounts = 0;
+    this.previousScrollPosition = 0;
   }
 
-  getDiscounts(): void {
-    this.discountService.getDiscounts().subscribe(
+  getDiscounts(top: any, skip: any): void {
+    this.discountService.getDiscounts(top, skip).subscribe(
       (data) => {
-        this.discounts = data.value;
+        data.value.forEach((discount: any) => {
+          this.discounts.push(discount);
+        });
       },
       (error) => {
         this.toaster.open('Сan not get discounts');
@@ -33,12 +41,17 @@ export class DiscountsComponent implements OnInit {
 
   openDiscountDetails(discount: Discount): void {
     const dialogRef = this.modalService.openDiscountDetailsModal(discount);
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-    });
   }
 
   ngOnInit(): void {
-    this.getDiscounts();
+    this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition) {
+      this.skipDiscounts += this.topDiscounts;
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
   }
 }
