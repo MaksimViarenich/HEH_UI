@@ -9,20 +9,20 @@ import {FiltersService} from 'src/app/services/filter-service/filters.service';
 })
 export class DiscountsService {
 
-  constructor(public http: HttpClient, private filterService: FiltersService) {}
+ constructor(public http: HttpClient, private filterService: FiltersService) {}
 
-  getDiscountDetails(id: string): Observable<any> {
-    const token = localStorage.getItem('isAuth');
+ getDiscountDetails(id: string): Observable<any> {
+   const token = localStorage.getItem('isAuth');
 
-    let headers = new HttpHeaders();
+  let headers = new HttpHeaders();
 
-    headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
+  headers = headers.append('accept', '*/*');
+  headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/odata/Discount(${id})`, {headers});
+  return this.http.get(`${BASE_API_URL}/odata/Discount(${id})`, {headers});
   }
 
-  getSearchDiscounts(): any {
+  getSearchDiscounts(top: any, skip: any): any {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -38,20 +38,20 @@ export class DiscountsService {
         params = params.append('$filter', this.filterService.queryParams);
         params = params.append('searchText', this.filterService.queryTextParam);
 
-        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
+        return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}&$count=true`, {headers, params});
 
       case this.filterService.queryParams !== '':
         params = params.append('$filter', this.filterService.queryParams);
 
-        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
+        return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}&$count=true`, {headers, params});
 
       case this.filterService.queryTextParam !== '':
         params = params.append('searchText', this.filterService.queryTextParam);
 
-        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
+        return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}&$count=true`, {headers, params});
 
       default:
-        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
+        return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}&$count=true`, {headers});
     }
   }
 }

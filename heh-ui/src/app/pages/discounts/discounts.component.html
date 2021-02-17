@@ -1,8 +1,13 @@
 <app-page-search [isVendorSearchAvailable]="true"
                  (applySearch)="getDiscounts($event)"></app-page-search>
-<mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let discount of discounts" >
-   <app-discount-card [discount]="discount"
-                      (click)="openDiscountDetails(discount)"></app-discount-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div infiniteScroll
+     [infiniteScrollDistance]="0.2"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+  <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
+    <mat-grid-tile *ngFor="let discount of discounts">
+     <app-discount-card [discount]="discount"
+                        (click)="openDiscountDetails(discount)"></app-discount-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

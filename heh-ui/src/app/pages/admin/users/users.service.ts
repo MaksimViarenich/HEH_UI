@@ -11,7 +11,7 @@ export class UsersService {
   constructor(public http: HttpClient,
               private filterService: FiltersService) {}
 
-  getUsers(): Observable<any> {
+  getUsers(top: any, skip: any): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -23,9 +23,9 @@ export class UsersService {
       let params = new HttpParams();
       params = params.append('$filter', `${this.filterService.queryParams}`);
 
-      return this.http.get(`${BASE_API_URL}/odata/user`, {headers, params});
+      return this.http.get(`${BASE_API_URL}/odata/user?$top=${top}&$skip=${skip}&$count=true`, {headers, params});
     } else {
-      return this.http.get(`${BASE_API_URL}/odata/user`, {headers});
+      return this.http.get(`${BASE_API_URL}/odata/user?$top=${top}&$skip=${skip}&$count=true`, {headers});
     }
   }
 

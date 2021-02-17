@@ -14,6 +14,10 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 export class DiscountsComponent implements OnInit {
 
   discounts: Array<Discount> = [];
+  topDiscounts: any;
+  skipDiscounts: any;
+  previousScrollPosition: any;
+  totalCount: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -21,16 +25,23 @@ export class DiscountsComponent implements OnInit {
               private toaster: ToasterService,
               private filterService: FiltersService) {
     this.filterService.queryParams = '';
+    this.topDiscounts = 16;
+    this.skipDiscounts = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
 
-  getDiscounts(filters?: any): void {
+  getDiscounts(filters?: any, top: any, skip: any): void {
     if (filters) {
       this.filterService.setQueryParams(filters);
     }
-    this.discountService.getSearchDiscounts().subscribe(
+    this.discountService.getSearchDiscounts(top, skip).subscribe(
       (data: any) => {
-        this.discounts = data.value;
-      },
+        data.value.forEach((discount: any) => {
+          this.discounts.push(discount);
+        });
+        this.totalCount = data['@odata.count'];
+     },
       (error: any) => {
         this.toaster.open('Сan not get discounts');
       }
@@ -39,13 +50,17 @@ export class DiscountsComponent implements OnInit {
 
   openDiscountDetails(discount: Discount): void {
     const dialogRef = this.modalService.openDiscountDetailsModal(discount);
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.getDiscounts();
-    });
   }
 
   ngOnInit(): void {
-    this.getDiscounts();
+    this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length === this.totalCount)) {
+      this.skipDiscounts += this.topDiscounts;
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
   }
 }
