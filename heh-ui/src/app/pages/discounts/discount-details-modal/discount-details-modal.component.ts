@@ -57,8 +57,6 @@ export class DiscountDetailsModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
-    // this.mapsApiLoader = mapsApiLoader;
-    // this.zone = zone;
   }
   address = new FormControl();
   discountId: string = this.data;
@@ -119,15 +117,4 @@ export class DiscountDetailsModalComponent implements OnInit {
       }
     );
   }
-
-  // renderAddressMarkers(): any {
-  //   this.addresses.forEach(address => {
-  //     // tslint:disable-next-line: new-parens
-  //     this.geocodeService.geocodeAddress(address).subscribe(
-  //       (data) => {
-  //         console.log(data);
-  //       }
-  //     );
-  //   });
-  // }
 }
