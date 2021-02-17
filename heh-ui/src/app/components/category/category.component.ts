@@ -1,5 +1,5 @@
 import { Input, Component } from '@angular/core';
-import { FiltersService } from '../../pages/discounts/filters.service';
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-category',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ADMIN_TABS } from '../../models/tab';
 
 @Component({
@@ -6,14 +6,7 @@ import { ADMIN_TABS } from '../../models/tab';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
 
   tabsAdmin = ADMIN_TABS;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

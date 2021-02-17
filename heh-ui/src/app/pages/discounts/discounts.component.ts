@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
 @Component({
   selector: 'app-discounts',
@@ -17,7 +18,8 @@ export class DiscountsComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private discountService: DiscountsService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private filterService: FiltersService) {
   }
 
   getDiscounts(): void {
@@ -40,12 +42,15 @@ export class DiscountsComponent implements OnInit {
   }
 
   applySearch(filters: any): void {
-    this.discountService.getSearchDiscounts(filters).subscribe((data: any) => {
-      this.discounts = data.value;
+    this.filterService.setQueryParams(filters);
+    this.discountService.getSearchDiscounts().subscribe((data: any) => {
+    this.discounts = data.value;
     });
   }
 
   ngOnInit(): void {
+    this.filterService.queryParams = '';
+    // this.filterService.queryTextParam = '';
     this.getDiscounts();
   }
 }

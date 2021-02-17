@@ -1,7 +1,8 @@
 <div class="search-container">
   <div class="main-search-container">
     <div class="search-wrapper">
-      <app-input-search [(ngModel)]="searchData.searchText"></app-input-search>
+      <app-input-search [(ngModel)]="searchData.searchText"
+                        (keydown.enter)="submitSearch()"></app-input-search>
     </div>
 
     <div class="search-filter">

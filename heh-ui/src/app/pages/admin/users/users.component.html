@@ -1,5 +1,6 @@
 <div class="search">
-  <app-input-search ></app-input-search>
+  <app-input-search [(ngModel)]="searchData.searchUserText"
+                    (keydown.enter)="applyUsersearch()"></app-input-search>
 </div>
 
 <div class="users-list">

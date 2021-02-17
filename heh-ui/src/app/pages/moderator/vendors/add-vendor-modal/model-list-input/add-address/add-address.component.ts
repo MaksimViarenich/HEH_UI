@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface AddressData {
