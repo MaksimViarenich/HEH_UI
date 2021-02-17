@@ -18,7 +18,7 @@ export class UsersService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/api/user`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/user`, {headers});
   }
 
   changeRole(userId: string, userRole: string): Observable<any> {

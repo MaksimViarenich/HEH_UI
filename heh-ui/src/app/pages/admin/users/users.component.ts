@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(
       (data) => {
-        this.users = data;
+        this.users = data.value;
       },
       (error) => {
         this.toaster.open('Сan not get users');

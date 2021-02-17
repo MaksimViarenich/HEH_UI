@@ -39,8 +39,8 @@ export class DiscountsComponent implements OnInit {
     });
   }
 
-  addSearchData(searchData: any): void {
-    this.discountService.getSearchDiscounts(searchData).subscribe((data: any) => {
+  applySearch(filters: any): void {
+    this.discountService.getSearchDiscounts(filters).subscribe((data: any) => {
       this.discounts = data.value;
     });
   }

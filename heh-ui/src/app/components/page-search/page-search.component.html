@@ -1,15 +1,14 @@
 <div class="search-container">
   <div class="main-search-container">
     <div class="search-wrapper">
-      <app-input-search
-      [(ngModel)]="searchText"></app-input-search>
+      <app-input-search [(ngModel)]="searchData.searchText"></app-input-search>
     </div>
 
     <div class="search-filter">
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
 
-        <mat-select [(ngModel)]="locationSearch">
+        <mat-select [(ngModel)]="searchData.location">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
           <mat-option [value]="option.id"
                       *ngFor="let option of filtersOptions.locations">
@@ -25,7 +24,7 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.category' | translate }}</mat-label>
 
-        <mat-select [(ngModel)]="activeFilters.categories"
+        <mat-select [(ngModel)]="searchData.categories"
                     (ngModelChange)="changeTagsList()"
                     [formControl]="categoriesFormControl" multiple>
           <mat-option *ngFor="let option of filtersOptions.categories"
@@ -39,7 +38,7 @@
         <mat-label>{{ 'search.tag' | translate }}</mat-label>
 
         <mat-select [formControl]="tagsFormControl" multiple
-                    [(ngModel)]="tagsSearch">
+                    [(ngModel)]="this.searchData.tags">
           <mat-option *ngFor="let option of filtersOptions.tags"
                       [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>
@@ -52,7 +51,7 @@
         <mat-label>{{ 'search.vendor' | translate }}</mat-label>
 
         <mat-select [formControl]="vendorsFormControl" multiple
-                    [(ngModel)]="vendorsSearch">
+                    [(ngModel)]="searchData.vendors">
           <mat-option *ngFor="let option of filtersOptions.vendors"
                       [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>

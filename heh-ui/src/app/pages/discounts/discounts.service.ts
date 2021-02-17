@@ -1,14 +1,15 @@
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { BASE_API_URL } from '../../global';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BASE_API_URL} from '../../global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscountsService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
   getDiscounts(): Observable<any> {
     const token = localStorage.getItem('isAuth');
@@ -39,11 +40,17 @@ export class DiscountsService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
+    let locationParams = '';
     let categoryParams = '';
     let tagParams = '';
     let vendorParams = '';
     const resultParams: any = [];
     let continiusParams = '';
+    if (searchData.location) {
+      locationParams = `addresses/any(a: a/cityId eq ${searchData.location})`;
+      resultParams.push(locationParams);
+    }
+
     if (searchData.categories.length) {
       searchData.categories.forEach((item: string, index: number) => {
         if (searchData.categories.length - 1 === index) {
@@ -53,7 +60,9 @@ export class DiscountsService {
         }
       });
       resultParams.push(categoryParams);
-    } else { categoryParams = ''; }
+    } else {
+      categoryParams = '';
+    }
 
     if (searchData.tags.length) {
       searchData.tags.forEach((item: string, index: number) => {
@@ -64,7 +73,9 @@ export class DiscountsService {
         }
       });
       resultParams.push(tagParams);
-    } else {tagParams = ''; }
+    } else {
+      tagParams = '';
+    }
 
     if (searchData.vendors.length) {
       searchData.vendors.forEach((item: string, index: number) => {
@@ -75,10 +86,12 @@ export class DiscountsService {
         }
       });
       resultParams.push(vendorParams);
-    } else {vendorParams = ''; }
+    } else {
+      vendorParams = '';
+    }
 
     let params = new HttpParams();
-    params = params.append('searchText', searchData.searchText);
+    params = params.append('searchText', searchData.searchText || '');
 
     if (resultParams.length) {
       resultParams.forEach((item: string, index: number) => {

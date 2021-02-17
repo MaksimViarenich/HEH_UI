@@ -8,7 +8,7 @@ import { ControlValueAccessor, NgControl, FormControl } from '@angular/forms';
 })
 export class InputSearchComponent implements ControlValueAccessor{
 
-  control = new FormControl();
+  searchControl = new FormControl();
 
   constructor(
     @Self() @Optional() public ngControl: NgControl,
@@ -19,14 +19,14 @@ export class InputSearchComponent implements ControlValueAccessor{
   }
 
   registerOnChange(fn: (value: any) => void): any {
-    this.control.valueChanges.subscribe(fn);
+    this.searchControl.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: any): void {
-    this.control.valueChanges.subscribe(fn);
+    this.searchControl.valueChanges.subscribe(fn);
   }
 
   writeValue(value: any): void {
-    this.control.setValue(value);
+    this.searchControl.setValue(value);
   }
 }

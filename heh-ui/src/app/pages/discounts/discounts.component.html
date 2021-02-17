@@ -1,5 +1,5 @@
 <app-page-search [isVendorSearchAvailable]="true"
-                  (sendSubmitData)="addSearchData($event)"></app-page-search>
+                 (applySearch)="applySearch($event)"></app-page-search>
 <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
   <mat-grid-tile *ngFor="let discount of discounts" >
    <app-discount-card [discount]="discount"

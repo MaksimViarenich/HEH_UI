@@ -12,14 +12,9 @@ import { SearchData } from '../../models/search-data';
 export class PageSearchComponent implements OnInit {
   @Input() isVendorSearchAvailable: boolean;
   @Input() isDateRangeSearchAvailable: boolean;
-  @Output() sendSubmitData = new EventEmitter<any>();
+  @Output() applySearch = new EventEmitter<any>();
   filtersOptions: any;
-  activeFilters: any;
-  searchText = '';
-  searchData: SearchData = {};
-  locationSearch = '';
-  tagsSearch = [];
-  vendorsSearch = [];
+  searchData: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -28,8 +23,10 @@ export class PageSearchComponent implements OnInit {
   constructor(private filtersService: FiltersService) {
     this.isVendorSearchAvailable = false;
     this.isDateRangeSearchAvailable = false;
-    this.activeFilters = {
-      categories: []
+    this.searchData = {
+      categories: [],
+      tags: [],
+      vendors: []
     };
     this.filtersOptions = {
       locations: [],
@@ -46,19 +43,14 @@ export class PageSearchComponent implements OnInit {
   }
 
   submitSearch(): void {
-    this.searchData.location = this.locationSearch;
-    this.searchData.searchText = this.searchText;
-    this.searchData.categories = this.activeFilters.categories;
-    this.searchData.tags = this.tagsSearch;
-    this.searchData.vendors = this.vendorsSearch;
-    this.sendSubmitData.emit(this.searchData);
+    this.applySearch.emit(this.searchData);
   }
 
   changeTagsList(): void {
     this.filtersOptions.tags = [];
-    if (this.activeFilters.categories.length) {
+    if (this.searchData.categories.length) {
       this.filtersOptions.tags = this.filtersService.getFilters().tags.filter((tag: any) => {
-        return this.activeFilters.categories.indexOf(tag.categoryId) !== -1;
+        return this.searchData.categories.indexOf(tag.categoryId) !== -1;
       });
     } else {
       this.filtersOptions.tags = this.filtersService.getFilters().tags;
