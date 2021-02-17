@@ -10,7 +10,7 @@ export class DiscountsService {
 
   constructor(public http: HttpClient) { }
 
-getDiscounts(): Observable<any> {
+getDiscounts(top: any, skip: any): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -18,7 +18,7 @@ getDiscounts(): Observable<any> {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/Discount?$top=${top}&$skip=${skip}`, {headers});
   }
 
 getDiscountDetails(id: string): Observable<any> {
