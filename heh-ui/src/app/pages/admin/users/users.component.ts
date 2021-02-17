@@ -17,9 +17,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private usersService: UsersService,
               private toaster: ToasterService,
-              private filterService: FiltersService) {
-                // this.searchData.searchUserText = '';
-              }
+              private filterService: FiltersService) { }
 
   ngOnInit(): void {
     this.filterService.queryParams = '';
@@ -33,7 +31,7 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  applyUsersearch(): void {
+  applyUserSearch(): void {
     this.filterService.setQueryParams(this.searchData);
     this.searchData.searchUserText = '';
     this.usersService.getUsers().subscribe(

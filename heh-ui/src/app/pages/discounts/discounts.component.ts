@@ -20,14 +20,18 @@ export class DiscountsComponent implements OnInit {
               private discountService: DiscountsService,
               private toaster: ToasterService,
               private filterService: FiltersService) {
+    this.filterService.queryParams = '';
   }
 
-  getDiscounts(): void {
-    this.discountService.getDiscounts().subscribe(
-      (data) => {
+  getDiscounts(filters?: any): void {
+    if (filters) {
+      this.filterService.setQueryParams(filters);
+    }
+    this.discountService.getSearchDiscounts().subscribe(
+      (data: any) => {
         this.discounts = data.value;
       },
-      (error) => {
+      (error: any) => {
         this.toaster.open('Сan not get discounts');
       }
     );
@@ -36,21 +40,12 @@ export class DiscountsComponent implements OnInit {
   openDiscountDetails(discount: Discount): void {
     const dialogRef = this.modalService.openDiscountDetailsModal(discount);
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.getDiscounts();
     });
   }
 
-  applySearch(filters: any): void {
-    this.filterService.setQueryParams(filters);
-    this.discountService.getSearchDiscounts().subscribe((data: any) => {
-    this.discounts = data.value;
-    });
-  }
-
   ngOnInit(): void {
-    this.filterService.queryParams = '';
-    // this.filterService.queryTextParam = '';
     this.getDiscounts();
   }
 }

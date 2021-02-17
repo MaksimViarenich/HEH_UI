@@ -11,17 +11,6 @@ export class DiscountsService {
 
   constructor(public http: HttpClient, private filterService: FiltersService) {}
 
-  getDiscounts(): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
-    let headers = new HttpHeaders();
-
-    headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
-
-    return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
-  }
-
   getDiscountDetails(id: string): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
@@ -40,27 +29,29 @@ export class DiscountsService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    if (this.filterService.queryParams && this.filterService.queryTextParam) {
-      let params = new HttpParams();
-      params = params.append('$filter', this.filterService.queryParams);
-      params = params.append('searchText', this.filterService.queryTextParam);
+    let params = new HttpParams();
 
-      return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
-    }
+    switch (true) {
+      case this.filterService.queryParams !== '':
+      case this.filterService.queryTextParam !== '':
 
-    if (this.filterService.queryParams) {
-      let params = new HttpParams();
-      params = params.append('$filter', this.filterService.queryParams);
+        params = params.append('$filter', this.filterService.queryParams);
+        params = params.append('searchText', this.filterService.queryTextParam);
 
-      return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
-    }
-    if (this.filterService.queryTextParam) {
-      let params = new HttpParams();
-      params = params.append('searchText', this.filterService.queryTextParam);
+        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
 
-      return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
-    } else {
-      return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
+      case this.filterService.queryParams !== '':
+        params = params.append('$filter', this.filterService.queryParams);
+
+        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
+
+      case this.filterService.queryTextParam !== '':
+        params = params.append('searchText', this.filterService.queryTextParam);
+
+        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
+
+      default:
+        return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers});
     }
   }
 }

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { FormControl } from '@angular/forms';
-import { SearchData } from '../../models/search-data';
 
 @Component({
   selector: 'app-page-search',

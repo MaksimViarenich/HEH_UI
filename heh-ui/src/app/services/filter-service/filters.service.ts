@@ -169,7 +169,7 @@ export class FiltersService {
     let address = '';
 
     this.filterOptions.locations.forEach((item: any) => {
-      if (cityId === item.id ) {
+      if (cityId === item.id) {
         address = item.viewValue;
       }
     });
@@ -194,7 +194,6 @@ export class FiltersService {
 
     if (searchData.searchText) {
       this.queryTextParam = `${searchData.searchText}`;
-
     }
 
     if (searchData.location) {
