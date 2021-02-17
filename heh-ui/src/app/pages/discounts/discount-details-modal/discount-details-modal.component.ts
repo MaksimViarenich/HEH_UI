@@ -78,7 +78,6 @@ export class DiscountDetailsModalComponent implements OnInit {
         this.location.lat = this.markers.reduce((sum, marker) => sum + marker.lat, 0) / this.markers.length;
         this.location.lng = this.markers.reduce((sum, marker) => sum + marker.lng, 0) / this.markers.length;
         this.zoom = 5;
-        console.log(this.location);
       }
     }, 1000);
   }
