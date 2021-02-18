@@ -33,6 +33,7 @@ export class EventHistoryComponent implements OnInit {
         data.value.forEach((event: any) => {
           this.eventData.push(event);
         });
+
         this.dataSource = new MatTableDataSource(this.eventData);
         this.totalCountEvents = data['@odata.count'];
       },
