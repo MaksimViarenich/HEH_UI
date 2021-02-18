@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { VendorCard } from '../../../models/vendor-card';
-import { VendorService } from '../../moderator/vendors/vendor.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { StatisticsService } from './statistics.service';
+import { DiscountCard } from '../../../models/discount-card';
 
 @Component({
   selector: 'app-statistics',
@@ -11,15 +11,15 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 })
 export class StatisticsComponent implements OnInit {
   constructor(public dialog: MatDialog,
-              private vendorService: VendorService,
+              private statisticsService: StatisticsService,
               private toaster: ToasterService) {}
 
-  list: Array<VendorCard> = [];
+  list: Array<DiscountCard> = [];
 
   ngOnInit(): void {
-    this.vendorService.getVendorsStatistics().subscribe(
+    this.statisticsService.getVendorsStatistics().subscribe(
       (data) => {
-        this.list = data;
+        this.list = data.value;
       },
       (error) => {
         this.toaster.open('There is no possibility to show statistics');
