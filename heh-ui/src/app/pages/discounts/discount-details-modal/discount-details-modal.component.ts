@@ -83,18 +83,6 @@ export class DiscountDetailsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userProfleService.getUser().subscribe(
-      (data: { address: { cityId: string; street: string }; }) => {
-        this.userLocation = `${this.filtersService.getAddressByCityId(data.address.cityId)} ${data.address.street}`;
-        this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
-          this.location = obj;
-        });
-      },
-      (error: any) => {
-        this.toaster.open('Сan not get user location');
-      }
-    );
-
     this.discountService.getDiscountDetails(this.discountId).subscribe(
       (data) => {
         this.discountDetails = data;
@@ -102,6 +90,26 @@ export class DiscountDetailsModalComponent implements OnInit {
         data.addresses.forEach((item: { cityId: string; street: string; }) => {
           this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
         });
+
+        if (this.addresses.length !== 0) {
+          this.geocodeService.findLocation(this.addresses[0], (obj: Marker) => {
+            this.markers[0] = obj;
+            this.location = obj;
+          });
+          this.activeAddresses[0] = this.addresses[0];
+        } else {
+          this.userProfleService.getUser().subscribe(
+            (user: { address: { cityId: string; street: string }; }) => {
+              this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
+              this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
+                this.location = obj;
+              });
+            },
+            (error: any) => {
+              this.toaster.open('Сan not get user location');
+            }
+          );
+        }
 
         if (data.links.length) {
           this.links = Object.assign({}, ...data.links.map((link: any) => {
