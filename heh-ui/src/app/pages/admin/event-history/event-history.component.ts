@@ -14,20 +14,44 @@ export class EventHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'action', 'user', 'description'];
   eventData: EventHistoryElement[] = [];
   dataSource: any;
+  topEvents: any;
+  skipEvents: any;
+  previousScrollPosition: any;
+  totalCountEvents: any;
 
   constructor(private historyService: HistoryService,
               private toaster: ToasterService) {
+    this.topEvents = 20;
+    this.skipEvents = 0;
+    this.previousScrollPosition = 0;
+    this.totalCountEvents = 0;
   }
 
-  ngOnInit(): void {
-    this.historyService.getHistory().subscribe(
+  getEventHistory(top: any, skip: any): void {
+    this.historyService.getHistory(top, skip).subscribe(
       (data) => {
-        this.eventData = data.value;
+        data.value.forEach((event: any) => {
+          this.eventData.push(event);
+        });
+
         this.dataSource = new MatTableDataSource(this.eventData);
+        this.totalCountEvents = data['@odata.count'];
       },
       (error) => {
         this.toaster.open('Сan not get history');
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getEventHistory(this.topEvents, this.skipEvents);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.eventData.length === this.totalCountEvents)) {
+      this.skipEvents += this.topEvents;
+      this.getEventHistory(this.topEvents, this.skipEvents);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
   }
 }
