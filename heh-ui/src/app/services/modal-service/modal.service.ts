@@ -7,6 +7,7 @@ import { Vendor } from '../../models/vendor';
 import { DiscountDetailsModalComponent } from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
 import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 import { AddAddressComponent } from '../../pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
+import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -67,10 +68,19 @@ export class ModalService {
 
   openAddAddressModal(): any {
     return this.dialog.open(AddAddressComponent, {
-      width: '33rem',
+      width: '25rem',
       panelClass: 'add-address-modal',
       backdropClass: 'add-address-modal-backdrop',
       autoFocus: false,
+    });
+  }
+
+  openConfirmModal(): any {
+    return this.dialog.open(ConfirmationDialogComponent, {
+      width: '18rem',
+      height: '8rem',
+      panelClass: 'confirm-modal',
+      backdropClass: 'confirm-modal-backdrop',
     });
   }
 }
