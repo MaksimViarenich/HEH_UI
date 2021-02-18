@@ -1,6 +1,6 @@
-import { UserProfileService } from './../../user-profile/user-profile.service';
+import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
-import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import { FiltersService } from '../../../services/filter-service/filters.service';
 import { OnInit, Component, Inject, ViewEncapsulation, NgZone, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
