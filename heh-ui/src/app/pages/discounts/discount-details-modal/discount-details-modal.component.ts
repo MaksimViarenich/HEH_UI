@@ -98,17 +98,28 @@ export class DiscountDetailsModalComponent implements OnInit {
           });
           this.activeAddresses[0] = this.addresses[0];
         } else {
-          this.userProfleService.getUser().subscribe(
-            (user: { address: { cityId: string; street: string }; }) => {
-              this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
-              this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
-                this.location = obj;
-              });
-            },
-            (error: any) => {
-              this.toaster.open('Сan not get user location');
-            }
-          );
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              this.location.lat = position.coords.latitude;
+              this.location.lng = position.coords.longitude;
+              this.markers[0] = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+            });
+          } else {
+            this.userProfleService.getUser().subscribe(
+              (user: { address: { cityId: string; street: string }; }) => {
+                this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
+                this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
+                  this.location = obj;
+                });
+              },
+              (error: any) => {
+                this.toaster.open('Сan not get user location');
+              }
+            );
+          }
         }
 
         if (data.links.length) {
