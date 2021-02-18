@@ -10,7 +10,7 @@ export class HistoryService {
   constructor(public http: HttpClient) {
   }
 
-  getHistory(): Observable<any> {
+  getHistory(top: any, skip: any): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -18,6 +18,6 @@ export class HistoryService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${BASE_API_URL}/api/history`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/history?$top=${top}&$skip=${skip}&$count=true`, {headers});
   }
 }

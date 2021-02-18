@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalService } from '../../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-edit-discount-card',
@@ -12,9 +13,15 @@ export class EditDiscountCardComponent {
   @Input() discountInfo: any;
   @Output() removeDiscountFromVendor: EventEmitter<any> = new EventEmitter();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+              private modalService: ModalService) {}
 
   deleteDiscount(): void{
-    this.removeDiscountFromVendor.emit();
+    const dialogRef = this.modalService.openConfirmModal();
+    dialogRef.afterClosed().subscribe((isDelete: any) => {
+      if (isDelete) {
+        this.removeDiscountFromVendor.emit();
+      }
+    });
   }
 }

@@ -9,25 +9,25 @@
 .profile-wrapper {
   display: flex;
   flex-direction: row;
-  width: 60%;
-  margin: auto;
+  width: 39.5%;
   @include glass;
   border-radius: $border-radius-small;
   box-shadow: $shadow-violet;
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1.5rem;
 
   img {
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
-    padding: 0.5rem;
   }
 
   .profile-content {
-    margin-top: 3.2rem;
-    margin-left: 1.6rem;
-    padding-left: 1rem;
+    margin-left: 1rem;
     width: 100%;
+
+    .form-selection {
+      text-align: right;
+    }
 
     .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,
     .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
@@ -39,9 +39,9 @@
     }
 
     .add-profile-button {
-      margin-top: $margin-half;
+      margin-top: $margin-1;
       height: 3rem;
-      width: 90%;
+      width: 45%;
       color: $color-white;
       background: $color-blue-green;
     }
@@ -105,7 +105,7 @@
     }
 
     mat-form-field {
-      width: 90%;
+      width: 100%;
       padding: 0;
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(10px);
