@@ -36,7 +36,6 @@
                        ngDefaultControl>
         {{ 'profile.vendors' | translate }}
       </mat-list-option>
-
       <mat-list-option [color]="'primary'"
                        [selected]="user.hotDiscountsNotificationIsOn"
                        [disabled]="!user.allNotificationsAreOn"
@@ -46,28 +45,30 @@
       </mat-list-option>
     </mat-selection-list>
 
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'profile.subscription' | translate }}</mat-label>
-      <mat-select multiple [(ngModel)]="selectedOptions">
-        <mat-optgroup [label]="'Categories'">
-          <mat-option *ngFor="let category of allOptions.categories" [value]="category.id">
-            {{category.viewValue}}
-          </mat-option>
-        </mat-optgroup>
-        <mat-optgroup [label]="'Tags'">
-          <mat-option *ngFor="let tag of allOptions.tags" [value]="tag.id">
-            {{tag.viewValue}}
-          </mat-option>
-        </mat-optgroup>
-        <mat-optgroup [label]="'Vendors'">
-          <mat-option *ngFor="let vendor of allOptions.vendors" [value]="vendor.id">
-            {{vendor.viewValue}}
-          </mat-option>
-        </mat-optgroup>
-      </mat-select>
-    </mat-form-field>
-    <button mat-raised-button
-            class="add-profile-button"
-            (click)="saveProfile()">{{ 'users.add-profile.save' | translate }}</button>
+    <div class="form-selection">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'profile.subscription' | translate }}</mat-label>
+        <mat-select multiple [(ngModel)]="selectedOptions">
+          <mat-optgroup [label]="'Categories'">
+            <mat-option *ngFor="let category of allOptions.categories" [value]="category.id">
+              {{category.viewValue}}
+            </mat-option>
+          </mat-optgroup>
+          <mat-optgroup [label]="'Tags'">
+            <mat-option *ngFor="let tag of allOptions.tags" [value]="tag.id">
+              {{tag.viewValue}}
+            </mat-option>
+          </mat-optgroup>
+          <mat-optgroup [label]="'Vendors'">
+            <mat-option *ngFor="let vendor of allOptions.vendors" [value]="vendor.id">
+              {{vendor.viewValue}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button
+              class="add-profile-button"
+              (click)="saveProfile()">{{ 'users.add-profile.save' | translate }}</button>
+    </div>
   </div>
 </div>
