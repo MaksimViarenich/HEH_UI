@@ -2,6 +2,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../discounts/filters.service';
+import { ModalService } from '../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-list-input',
@@ -26,7 +27,8 @@ export class ListInputComponent {
 
   constructor(
     private filtersService: FiltersService,
-    private toaster: ToasterService) {
+    private toaster: ToasterService,
+    private modalService: ModalService) {
     this.label = '';
     this.options = [];
   }
@@ -37,6 +39,11 @@ export class ListInputComponent {
   }
 
   remove(item: any): void {
-    this.deleteElement(item.id, this.changeData);
+    const dialogRef = this.modalService.openConfirmModal();
+    dialogRef.afterClosed().subscribe((isDelete: any) => {
+      if (isDelete) {
+        this.deleteElement(item.id, this.changeData);
+      }
+    });
   }
 }

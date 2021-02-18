@@ -19,7 +19,7 @@ export class FavoritesComponent implements OnInit {
   getFavorites(): void {
     this.favoritesService.getFavorites().subscribe(
       (data) => {
-        this.favoriteCards = data;
+        this.favoriteCards = data.value;
       },
       (error) => {
         this.toaster.open('Сan not get favorites');

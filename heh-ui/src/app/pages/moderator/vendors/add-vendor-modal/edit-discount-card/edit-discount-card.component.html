@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="card-actions">
+    <div class="card-actions" (click)="$event.stopPropagation()">
       <span class="material-icons warn-color" (click)="deleteDiscount()">delete</span>
     </div>
   </div>

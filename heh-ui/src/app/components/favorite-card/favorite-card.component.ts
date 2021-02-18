@@ -26,15 +26,20 @@ export class FavoriteCardComponent implements OnInit {
   }
 
   deleteFavorite(): any {
-    this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(
-      (data) => {
-        this.updateCardsAfterDelete.emit();
-        this.toaster.open('Discount has been removed from favorites', 'success');
-      },
-      (error) => {
-        this.toaster.open('Discount can not be removed from favorites');
+    const dialogRef = this.modalService.openConfirmModal();
+    dialogRef.afterClosed().subscribe((isDelete: any) => {
+      if (isDelete) {
+        this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(
+          (data) => {
+            this.updateCardsAfterDelete.emit();
+            this.toaster.open('Discount has been removed from favorites', 'success');
+          },
+          (error) => {
+            this.toaster.open('Discount can not be removed from favorites');
+          }
+        );
       }
-    );
+    });
   }
 
   ngOnInit(): void {
