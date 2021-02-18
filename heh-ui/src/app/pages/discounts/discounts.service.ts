@@ -22,7 +22,7 @@ export class DiscountsService {
    return this.http.get(`${BASE_API_URL}/odata/Discount(${id})`, {headers});
 }
 
-  getSearchDiscounts(top?: any, skip?: any): any {
+  getSearchDiscounts(top?: any, skip?: any, filters: any): any {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();

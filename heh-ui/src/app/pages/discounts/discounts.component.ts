@@ -32,19 +32,16 @@ export class DiscountsComponent implements OnInit {
   }
 
   getDiscountsWrapper(filters: any): void {
-    if (filters) {
-      this.discounts = [];
-      this.skipDiscounts = 0;
-      this.previousScrollPosition = 0;
-      this.getDiscounts(this.topDiscounts, this.skipDiscounts, filters);
-    }
+    this.discounts = [];
+    this.skipDiscounts = 0;
+    this.previousScrollPosition = 0;
+    this.getDiscounts(this.topDiscounts, this.skipDiscounts, filters);
   }
 
   getDiscounts(top: any, skip: any, filters?: any): void {
-    if (filters) {
-      this.filterService.setQueryParams(filters);
-    }
-    this.discountService.getSearchDiscounts(top, skip).subscribe(
+    const appliedFilters = filters ? this.filterService.getQueryParams(filters) : {};
+
+    this.discountService.getSearchDiscounts(top, skip, appliedFilters).subscribe(
       (data: any) => {
         data.value.forEach((discount: any) => {
           this.discounts.push(discount);

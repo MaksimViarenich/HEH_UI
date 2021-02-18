@@ -176,80 +176,82 @@ export class FiltersService {
     return address;
   }
 
-  setQueryParams(searchData: any): void {
-    this.queryParams = '';
-    this.queryTextParam = '';
+  getQueryParams(searchData: any): any {
+    let queryParams = '';
+    let queryTextParam = '';
 
     if (searchData.searchUserText) {
-        this.queryParams =  `contains(name, '${searchData.searchUserText}') or contains(email, '${searchData.searchUserText}')`;
+        queryParams =  `contains(name, '${searchData.searchUserText}') or contains(email, '${searchData.searchUserText}')`;
     }
     if (searchData.searchText || searchData.location ||
         searchData.categories || searchData.tags || searchData.vendors) {
-    let locationParams = '';
-    let categoryParams = '';
-    let tagParams = '';
-    let vendorParams = '';
-    const resultParams: any = [];
-    let continiusParams = '';
+      let locationParams = '';
+      let categoryParams = '';
+      let tagParams = '';
+      let vendorParams = '';
+      const resultParams: any = [];
+      let continuousParams = '';
 
-    if (searchData.searchText) {
-      this.queryTextParam = `${searchData.searchText}`;
-    }
+      if (searchData.searchText) {
+        queryTextParam = `${searchData.searchText}`;
+      }
 
-    if (searchData.location) {
-      locationParams = `addresses/any(a: a/cityId eq ${searchData.location})`;
-      resultParams.push(locationParams);
-    }
+      if (searchData.location) {
+        locationParams = `addresses/any(a: a/cityId eq ${searchData.location})`;
+        resultParams.push(locationParams);
+      }
 
-    if (searchData.categories.length) {
-      searchData.categories.forEach((item: string, index: number) => {
-        if (searchData.categories.length - 1 === index) {
-          categoryParams += `categoryId eq ${item}`;
-        } else {
-          categoryParams += `categoryId eq ${item} or `;
-        }
-      });
-      resultParams.push(categoryParams);
-    } else {
-      categoryParams = '';
-    }
-
-    if (searchData.tags.length) {
-      searchData.tags.forEach((item: string, index: number) => {
-        if (searchData.tags.length - 1 === index) {
-          tagParams += `tagsIds/any(t: t eq ${item})`;
-        } else {
-          tagParams += `tagsIds/any(t: t eq ${item}) or `;
-        }
-      });
-      resultParams.push(tagParams);
-    } else {
-      tagParams = '';
-    }
-
-    if (searchData.vendors.length) {
-      searchData.vendors.forEach((item: string, index: number) => {
-        if (searchData.vendors.length - 1 === index) {
-          vendorParams += `vendorId eq ${item}`;
-        } else {
-          vendorParams += `vendorId eq ${item} or `;
-        }
-      });
-      resultParams.push(vendorParams);
-    } else {
-      vendorParams = '';
-    }
-
-    if (resultParams.length) {
-      resultParams.forEach((item: string, index: number) => {
-        if (resultParams.length - 1 === index) {
-          continiusParams += item;
+      if (searchData.categories.length) {
+        searchData.categories.forEach((item: string, index: number) => {
+          if (searchData.categories.length - 1 === index) {
+            categoryParams += `categoryId eq ${item}`;
           } else {
-          continiusParams += `${item} and `;
+            categoryParams += `categoryId eq ${item} or `;
           }
         });
+        resultParams.push(categoryParams);
+      } else {
+        categoryParams = '';
       }
-    this.queryParams = continiusParams;
+
+      if (searchData.tags.length) {
+        searchData.tags.forEach((item: string, index: number) => {
+          if (searchData.tags.length - 1 === index) {
+            tagParams += `tagsIds/any(t: t eq ${item})`;
+          } else {
+            tagParams += `tagsIds/any(t: t eq ${item}) or `;
+          }
+        });
+        resultParams.push(tagParams);
+      } else {
+        tagParams = '';
+      }
+
+      if (searchData.vendors.length) {
+        searchData.vendors.forEach((item: string, index: number) => {
+          if (searchData.vendors.length - 1 === index) {
+            vendorParams += `vendorId eq ${item}`;
+          } else {
+            vendorParams += `vendorId eq ${item} or `;
+          }
+        });
+        resultParams.push(vendorParams);
+      } else {
+        vendorParams = '';
+      }
+
+      if (resultParams.length) {
+        resultParams.forEach((item: string, index: number) => {
+          if (resultParams.length - 1 === index) {
+            continuousParams += item;
+            } else {
+            continuousParams += `${item} and `;
+            }
+          });
+        }
+      queryParams = continuousParams;
     }
+
+    return {queryParams, queryTextParam};
   }
 }
