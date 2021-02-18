@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   topUsers: any;
   skipUsers: any;
   previousScrollPosition: any;
-  totalCount: any;  
+  totalCount: any;
 
   constructor(private usersService: UsersService,
               private toaster: ToasterService,
@@ -31,27 +31,14 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getUsersList(this.topUsers, this.skipUsers);
     this.filterService.queryParams = '';
-    this.usersService.getUsers().subscribe(
-      (data) => {
-        this.users = data.value;
-      },
-      (error) => {
-        this.toaster.open('Сan not get users');
-      }
-    );
   }
 
   applyUserSearch(): void {
     this.filterService.setQueryParams(this.searchData);
-    this.searchData.searchUserText = '';
-    this.usersService.getUsers().subscribe(
-      (data) => {
-        this.users = data.value;
-     },
-      (error) => {
-        this.toaster.open('Сan not get users');
-      }
-    );
+    this.users = [];
+    this.skipUsers = 0;
+    this.previousScrollPosition = 0;
+    this.getUsersList(this.topUsers, this.skipUsers);
   }
 
   getUsersList(top: any, skip: any): void {

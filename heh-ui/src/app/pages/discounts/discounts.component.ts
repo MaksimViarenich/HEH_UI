@@ -31,7 +31,16 @@ export class DiscountsComponent implements OnInit {
     this.totalCount = 0;
   }
 
-  getDiscounts(filters?: any, top: any, skip: any): void {
+  getDiscountsWrapper(filters: any): void {
+    if (filters) {
+      this.discounts = [];
+      this.skipDiscounts = 0;
+      this.previousScrollPosition = 0;
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts, filters);
+    }
+  }
+
+  getDiscounts(top: any, skip: any, filters?: any): void {
     if (filters) {
       this.filterService.setQueryParams(filters);
     }

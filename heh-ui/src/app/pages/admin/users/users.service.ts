@@ -11,7 +11,7 @@ export class UsersService {
   constructor(public http: HttpClient,
               private filterService: FiltersService) {}
 
-  getUsers(top: any, skip: any): Observable<any> {
+  getUsers(top?: any, skip?: any): Observable<any> {
     const token = localStorage.getItem('isAuth');
 
     let headers = new HttpHeaders();
@@ -19,14 +19,15 @@ export class UsersService {
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
     headers = headers.append('Authorization', `Bearer ${token}`);
 
-    if (this.filterService.queryParams) {
-      let params = new HttpParams();
-      params = params.append('$filter', `${this.filterService.queryParams}`);
+    let params = new HttpParams();
+    params = params.append('$top', `${top}`);
+    params = params.append('$skip', `${skip}`);
+    params = params.append('$count', 'true');
 
-      return this.http.get(`${BASE_API_URL}/odata/user?$top=${top}&$skip=${skip}&$count=true`, {headers, params});
-    } else {
-      return this.http.get(`${BASE_API_URL}/odata/user?$top=${top}&$skip=${skip}&$count=true`, {headers});
+    if (this.filterService.queryParams) {
+      params = params.append('$filter', `${this.filterService.queryParams}`);
     }
+    return this.http.get(`${BASE_API_URL}/odata/user`, {headers, params});
   }
 
   changeRole(userId: string, userRole: string): Observable<any> {
