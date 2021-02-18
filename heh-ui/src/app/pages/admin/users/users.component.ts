@@ -29,27 +29,26 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsersList(this.topUsers, this.skipUsers);
+    this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
     this.filterService.queryParams = '';
   }
 
   applyUserSearch(): void {
-    this.filterService.setQueryParams(this.searchData);
     this.users = [];
     this.skipUsers = 0;
     this.previousScrollPosition = 0;
-    this.getUsersList(this.topUsers, this.skipUsers);
+    this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
   }
 
-  getUsersList(top: any, skip: any): void {
-    this.usersService.getUsers(top, skip).subscribe(
+  getUsersList(searchData: any, top: any, skip: any): void {
+    this.usersService.getUsers(searchData, top, skip).subscribe(
       (data) => {
         data.value.forEach((user: any) => {
           this.users.push(user);
         });
         this.totalCount = data['@odata.count'];
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get users');
       }
     );
@@ -58,7 +57,7 @@ export class UsersComponent implements OnInit {
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.users.length === this.totalCount)) {
       this.skipUsers += this.topUsers;
-      this.getUsersList(this.topUsers, this.skipUsers);
+      this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }

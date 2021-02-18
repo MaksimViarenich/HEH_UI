@@ -39,16 +39,14 @@ export class DiscountsComponent implements OnInit {
   }
 
   getDiscounts(top: any, skip: any, filters?: any): void {
-    const appliedFilters = filters ? this.filterService.getQueryParams(filters) : {};
-
-    this.discountService.getSearchDiscounts(top, skip, appliedFilters).subscribe(
+    this.discountService.getSearchDiscounts(filters, top, skip).subscribe(
       (data: any) => {
         data.value.forEach((discount: any) => {
           this.discounts.push(discount);
         });
         this.totalCount = data['@odata.count'];
      },
-      (error: any) => {
+      () => {
         this.toaster.open('Сan not get discounts');
       }
     );
