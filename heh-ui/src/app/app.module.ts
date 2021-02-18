@@ -50,6 +50,7 @@ import { ProfileComponent } from './components/header/profile-selection/profile.
 import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -97,6 +98,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     SelectBackgroundComponent,
     AddAddressComponent,
     ProfileComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

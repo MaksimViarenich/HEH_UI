@@ -22,7 +22,7 @@ export class EventHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.historyService.getHistory().subscribe(
       (data) => {
-        this.eventData = data;
+        this.eventData = data.value;
         this.dataSource = new MatTableDataSource(this.eventData);
       },
       (error) => {
