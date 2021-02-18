@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
-import { FiltersService } from 'src/app/pages/discounts/filters.service';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 
 @Component({

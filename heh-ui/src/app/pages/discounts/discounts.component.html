@@ -1,4 +1,5 @@
-<app-page-search [isVendorSearchAvailable]="true"></app-page-search>
+<app-page-search [isVendorSearchAvailable]="true"
+                 (applySearch)="getDiscountsWrapper($event)"></app-page-search>
 <div infiniteScroll
      [infiniteScrollDistance]="0.2"
      [infiniteScrollThrottle]="100"

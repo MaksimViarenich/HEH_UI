@@ -1,14 +1,15 @@
 <div class="search-container">
   <div class="main-search-container">
     <div class="search-wrapper">
-      <app-input-search></app-input-search>
+      <app-input-search [(ngModel)]="searchData.searchText"
+                        (keydown.enter)="submitSearch()"></app-input-search>
     </div>
 
     <div class="search-filter">
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
 
-        <mat-select>
+        <mat-select [(ngModel)]="searchData.location">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
           <mat-option [value]="option.id"
                       *ngFor="let option of filtersOptions.locations">
@@ -24,7 +25,7 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.category' | translate }}</mat-label>
 
-        <mat-select [(ngModel)]="activeFilters.categories"
+        <mat-select [(ngModel)]="searchData.categories"
                     (ngModelChange)="changeTagsList()"
                     [formControl]="categoriesFormControl" multiple>
           <mat-option *ngFor="let option of filtersOptions.categories"
@@ -37,7 +38,8 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.tag' | translate }}</mat-label>
 
-        <mat-select [formControl]="tagsFormControl" multiple>
+        <mat-select [formControl]="tagsFormControl" multiple
+                    [(ngModel)]="this.searchData.tags">
           <mat-option *ngFor="let option of filtersOptions.tags"
                       [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>
@@ -49,7 +51,8 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.vendor' | translate }}</mat-label>
 
-        <mat-select [formControl]="vendorsFormControl" multiple>
+        <mat-select [formControl]="vendorsFormControl" multiple
+                    [(ngModel)]="searchData.vendors">
           <mat-option *ngFor="let option of filtersOptions.vendors"
                       [value]="option.id">{{option.viewValue}}</mat-option>
         </mat-select>
@@ -73,7 +76,7 @@
     </div>
 
     <div class="btn-container">
-      <button mat-raised-button>{{ 'search.btn_search' | translate }}</button>
+      <button mat-raised-button (click)="submitSearch()">{{ 'search.btn_search' | translate }}</button>
     </div>
   </div>
 </div>

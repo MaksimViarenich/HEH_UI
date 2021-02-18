@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
 import { cloneDeep } from 'lodash';
@@ -10,6 +10,8 @@ import { cloneDeep } from 'lodash';
 export class FiltersService {
   filterOptions: any;
   countriesCities: any;
+  queryParams = '';
+  queryTextParam = '';
 
   constructor(private http: HttpClient) {
     this.filterOptions = this.getDefaultFilters();
@@ -153,12 +155,6 @@ export class FiltersService {
     })?.viewValue;
   }
 
-  getVendorById(id: string): string {
-    return this.filterOptions.vendors.find((vendor: any) => {
-      return vendor.id === id;
-    })?.viewValue;
-  }
-
   getFilters(): any {
     return cloneDeep(this.filterOptions);
   }
@@ -167,10 +163,101 @@ export class FiltersService {
     let address = '';
 
     this.filterOptions.locations.forEach((item: any) => {
-      if (cityId === item.id ) {
+      if (cityId === item.id) {
         address = item.viewValue;
       }
     });
     return address;
+  }
+
+  getFiltersParams(filters: any): any {
+    const filtersMap = new Map()
+      .set('categories', 'categoryId')
+      .set('vendors', 'vendorId')
+      .set('tags', 'tagsIds')
+      .set('location', 'addresses');
+
+    let queryParams = '';
+    let queryTextParam = '';
+
+    const resultParams: any = [];
+
+    for (const key in filters) {
+      if (filters.hasOwnProperty(key)) {
+        let queryString = '';
+
+        switch (key) {
+          case 'categories':
+          case 'vendors':
+            if (filters[key].length) {
+              filters[key].forEach((item: string, index: number) => {
+                queryString += `${filtersMap.get(key)} eq ${item}`;
+                queryString += filters.categories.length - 1 === index ? '' : ' or ';
+              });
+
+              resultParams.push(queryString);
+            }
+            break;
+
+          case 'tags':
+            if (filters[key].length) {
+              filters[key].forEach((item: string, index: number) => {
+                queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
+                queryString += filters.categories.length - 1 === index ? '' : ' or ';
+              });
+
+              resultParams.push(queryString);
+            }
+            break;
+
+          case 'location':
+            if (filters[key]) {
+              queryString = `${filtersMap.get(key)}/any(a: a/cityId eq ${filters[key]})`;
+              resultParams.push(queryString);
+            }
+            break;
+
+          case 'searchText':
+            if (filters[key]) {
+              queryTextParam = filters[key];
+            }
+            break;
+
+          case 'searchUserText':
+            if (filters[key]) {
+              queryParams = `contains(name, '${filters[key]}') or contains(email, '${filters[key]}')`;
+            }
+            break;
+        }
+      }
+    }
+
+    if (resultParams.length) {
+      resultParams.forEach((item: string, index: number) => {
+        queryParams += resultParams.length - 1 === index ? item : `${item} and `;
+      });
+    }
+
+    return {queryParams, queryTextParam};
+  }
+
+  getQueryParams(filters: any, top: number, skip: number): any {
+    let params = new HttpParams();
+
+    const filtersParams = this.getFiltersParams(filters);
+
+    params = params.append('$top', `${top}`);
+    params = params.append('$skip', `${skip}`);
+    params = params.append('$count', 'true');
+
+    if (filtersParams.queryTextParam) {
+      params = params.append('searchText', filtersParams.queryTextParam);
+    }
+
+    if (filtersParams.queryParams) {
+      params = params.append('$filter', filtersParams.queryParams);
+    }
+
+    return params;
   }
 }

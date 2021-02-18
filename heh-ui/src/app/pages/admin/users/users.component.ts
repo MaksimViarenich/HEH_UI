@@ -2,6 +2,7 @@ import { UserInfo } from '../../../models/user-info';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsersService } from './users.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-users',
@@ -12,41 +13,51 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 export class UsersComponent implements OnInit {
 
   users: UserInfo[] = [];
+  searchData: any = {};
   topUsers: any;
   skipUsers: any;
   previousScrollPosition: any;
   totalCount: any;
 
   constructor(private usersService: UsersService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private filterService: FiltersService) {
     this.topUsers = 6;
     this.skipUsers = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
   }
 
-  getUsersList(top: any, skip: any): void {
-    this.usersService.getUsers(top, skip).subscribe(
+  ngOnInit(): void {
+    this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
+    this.filterService.queryParams = '';
+  }
+
+  applyUserSearch(): void {
+    this.users = [];
+    this.skipUsers = 0;
+    this.previousScrollPosition = 0;
+    this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
+  }
+
+  getUsersList(searchData: any, top: any, skip: any): void {
+    this.usersService.getUsers(searchData, top, skip).subscribe(
       (data) => {
         data.value.forEach((user: any) => {
           this.users.push(user);
         });
         this.totalCount = data['@odata.count'];
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get users');
       }
     );
   }
 
-  ngOnInit(): void {
-    this.getUsersList(this.topUsers, this.skipUsers);
-  }
-
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.users.length === this.totalCount)) {
       this.skipUsers += this.topUsers;
-      this.getUsersList(this.topUsers, this.skipUsers);
+      this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }

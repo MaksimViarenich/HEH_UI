@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { FiltersService } from '../../pages/discounts/filters.service';
+import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { FiltersService } from '../../services/filter-service/filters.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -11,8 +11,9 @@ import { FormControl } from '@angular/forms';
 export class PageSearchComponent implements OnInit {
   @Input() isVendorSearchAvailable: boolean;
   @Input() isDateRangeSearchAvailable: boolean;
+  @Output() applySearch = new EventEmitter<any>();
   filtersOptions: any;
-  activeFilters: any;
+  searchData: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -21,8 +22,10 @@ export class PageSearchComponent implements OnInit {
   constructor(private filtersService: FiltersService) {
     this.isVendorSearchAvailable = false;
     this.isDateRangeSearchAvailable = false;
-    this.activeFilters = {
-      categories: []
+    this.searchData = {
+      categories: [],
+      tags: [],
+      vendors: []
     };
     this.filtersOptions = {
       locations: [],
@@ -38,11 +41,15 @@ export class PageSearchComponent implements OnInit {
     });
   }
 
+  submitSearch(): void {
+    this.applySearch.emit(this.searchData);
+  }
+
   changeTagsList(): void {
     this.filtersOptions.tags = [];
-    if (this.activeFilters.categories.length) {
+    if (this.searchData.categories.length) {
       this.filtersOptions.tags = this.filtersService.getFilters().tags.filter((tag: any) => {
-        return this.activeFilters.categories.indexOf(tag.categoryId) !== -1;
+        return this.searchData.categories.indexOf(tag.categoryId) !== -1;
       });
     } else {
       this.filtersOptions.tags = this.filtersService.getFilters().tags;
