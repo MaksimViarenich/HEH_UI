@@ -8,6 +8,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class DiscountCardComponent{
   @Input() discount: any | undefined;
+  @Input() isViewCountsVisible: boolean | undefined;
 
   constructor() {}
 }

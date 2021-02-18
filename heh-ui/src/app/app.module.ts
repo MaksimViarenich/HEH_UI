@@ -50,7 +50,6 @@ import { ProfileComponent } from './components/header/profile-selection/profile.
 import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { StatisticCardComponent } from './components/statistic-card/statistic-card.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
@@ -99,7 +98,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     SelectBackgroundComponent,
     AddAddressComponent,
     ProfileComponent,
-    StatisticCardComponent,
     ConfirmationDialogComponent,
   ],
   imports: [
