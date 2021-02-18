@@ -6,7 +6,7 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { UserProfileService } from './user-profile.service';
 import { UsersService } from '../admin/users/users.service';
 import { UserInfo } from '../../models/user-info';
-import { FiltersService } from '../discounts/filters.service';
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-user-profile',

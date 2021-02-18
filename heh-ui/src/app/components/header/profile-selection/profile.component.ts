@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserInfo } from '../../../models/user-info';
 import { ProfileService } from './profile.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { FiltersService } from '../../../pages/discounts/filters.service';
+import { FiltersService } from '../../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-profile',

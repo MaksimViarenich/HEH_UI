@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { FiltersService } from '../../discounts/filters.service';
+import { FiltersService } from '../../../services/filter-service/filters.service';
 import { Category } from '../../../models/category';
 import { Tag } from '../../../models/tag';
 import { cloneDeep } from 'lodash';
