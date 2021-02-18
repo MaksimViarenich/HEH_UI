@@ -1,6 +1,10 @@
 <app-input-search></app-input-search>
 
-<div class="table-container">
+<div class="table-container"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource"
            matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
