@@ -1,8 +1,13 @@
 <app-page-search [isDateRangeSearchAvailable]="true"></app-page-search>
-<mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let item of list">
-    <app-vendor-card class="vendor-card-statistics"
-                     [data]="item"
-                     [isViewCountsVisible]="true"></app-vendor-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+  <mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
+    <mat-grid-tile *ngFor="let item of list">
+      <app-vendor-card class="vendor-card-statistics"
+                      [data]="item"
+                      [isViewCountsVisible]="true"></app-vendor-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
