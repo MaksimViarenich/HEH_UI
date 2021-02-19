@@ -21,7 +21,8 @@
 
       <div class="discount-detail-description">{{discountDetails.conditions}}</div>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field *ngIf="addresses.length"
+                      appearance="outline">
         <mat-label>{{ 'discounts.address' | translate }}</mat-label>
 
         <mat-select [formControl]="address"
@@ -87,7 +88,8 @@
       </div>
     </div>
 
-    <div class="discount-details-map">
+    <div *ngIf="addresses.length"
+         class="discount-details-map">
       <agm-map [latitude]="location.lat"
                [longitude]="location.lng"
                [zoom]="zoom">

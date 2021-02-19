@@ -48,6 +48,7 @@ export class FavoritesComponent implements OnInit {
   getFavoritesAfterDelete(): void {
     this.favoriteCards = [];
     this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
     this.getFavorites(this.topFavorites, this.skipFavorites);
   }
 
