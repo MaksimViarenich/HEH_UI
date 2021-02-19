@@ -1,9 +1,10 @@
+import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
-import { DiscountsService } from './../../discounts/discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { VendorCard } from '../../../models/vendor-card';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { StatisticsService } from './statistics.service';
+import { DiscountCard } from '../../../models/discount-card';
 
 @Component({
   selector: 'app-statistics',
@@ -18,9 +19,10 @@ export class StatisticsComponent implements OnInit {
   totalCount: any;
 
   constructor(public dialog: MatDialog,
-              private discountsService: DiscountsService,
               private filterService: FiltersService,
-              private toaster: ToasterService) {
+              private statisticsService: StatisticsService,
+              private toaster: ToasterService,
+              private modalService: ModalService) {
                 this.filterService.queryParams = '';
                 this.topStatistics = 16;
                 this.skipStatistics = 0;
@@ -28,26 +30,41 @@ export class StatisticsComponent implements OnInit {
                 this.totalCount = 0;
               }
 
-  list: Array<VendorCard> = [];
+  statistics: Array<DiscountCard> = [];
 
   ngOnInit(): void {
+    this.getStatistics(this.topStatistics, this.skipStatistics);
   }
 
-  getStatistics(): any {
-    this.discountsService.getDiscountsStatistics().subscribe(
-      (data) => {
-        this.list = data;
-      },
-      (error) => {
+  getStatisticsWrapper(filters: any): void {
+    this.statistics = [];
+    this.skipStatistics = 0;
+    this.previousScrollPosition = 0;
+    this.getStatistics(this.topStatistics, this.skipStatistics, filters);
+  }
+
+  openDiscountDetails(discount: any): void {
+    this.modalService.openDiscountDetailsModal(discount.id, true, discount.viewsAmount);
+  }
+
+  getStatistics(top: any, skip: any, filter?: any): any {
+    this.statisticsService.getDiscountsStatistics(filter, top, skip).subscribe(
+      (data: any) => {
+        data.value.forEach((discount: any) => {
+          this.statistics.push(discount);
+        });
+        this.totalCount = data['@odata.count'];
+     },
+      () => {
         this.toaster.open('There is no possibility to show statistics');
       }
     );
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length === this.totalCount)) {
-      this.skipDiscounts += this.topDiscounts;
-      this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.statistics.length === this.totalCount)) {
+      this.skipStatistics += this.topStatistics;
+      this.getStatistics(this.topStatistics, this.skipStatistics);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }

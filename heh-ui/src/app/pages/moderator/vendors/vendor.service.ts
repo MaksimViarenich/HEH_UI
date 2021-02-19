@@ -32,17 +32,6 @@ export class VendorService {
     return this.http.get(`${BASE_API_URL}/api/vendor/${vendorId}`, {headers});
   }
 
-  getVendorsStatistics(): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
-    let headers = new HttpHeaders();
-
-    headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
-    headers = headers.append('Authorization', `Bearer ${token}`);
-
-    return this.http.get(`${BASE_API_URL}/api/vendor/detailed`, {headers});
-  }
-
   deleteVendor(id: string): Observable<any> {
     const token = localStorage.getItem('isAuth');
 

@@ -41,18 +41,5 @@
         opacity: 100%;
       }
     }
-
-    .btn-view {
-      @include btn-icon;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      color: $color-dark-gray;
-
-      span {
-        font-size: 1rem;
-        color: $color-dark-gray;
-      }
-    }
   }
 }

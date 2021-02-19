@@ -9,8 +9,8 @@
   justify-content: center !important;
 
   .confirm-modal.cdk-overlay-pane {
-    width: 18rem;
-    height: 8rem;
+    width: 20rem;
+    height: 10rem;
     bottom: 0;
     top: 0;
     left: 0;
@@ -23,27 +23,31 @@
       border-radius: $border-radius-small;
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
 
-      .mat-dialog-title {
-        margin: 0 0 10px;
-      }
-
-      .confirm-buttons {
+      .confirm-container {
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        padding: 0;
+        flex-direction: column;
+        justify-content: space-between;
 
-        button:last-child {
-          background: $color-blue-green;
-          color: $color-white;
+        .mat-dialog-title {
+          margin: 0 0 10px;
+        }
 
-          &:disabled {
-            background-color: rgba(0, 0, 0, .12);
-            color: rgba(0, 0, 0, .26);
+        .confirm-buttons {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          padding: 0;
+
+          button:last-child {
+            background: $color-blue-green;
+            color: $color-white;
+
+            &:disabled {
+              background-color: rgba(0, 0, 0, .12);
+              color: rgba(0, 0, 0, .26);
+            }
           }
         }
       }

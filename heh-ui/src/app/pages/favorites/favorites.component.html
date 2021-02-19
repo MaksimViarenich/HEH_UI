@@ -1,7 +1,12 @@
-<app-page-search [isVendorSearchAvailable]="true"></app-page-search>
+<app-page-search [isVendorSearchAvailable]="true"
+                 (applySearch)="getFavoritesWrapper($event)"></app-page-search>
 
-<div class="favorites-container">
+<div class="favorites-container"
+     infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
   <app-favorite-card *ngFor="let card of favoriteCards"
                      [favoriteInfo]="card"
-                     (updateCardsAfterDelete)="getFavorites();"></app-favorite-card>
+                     (updateCardsAfterDelete)="getFavoritesAfterDelete()"></app-favorite-card>
 </div>
