@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpinnerService } from '../../../services/spinner-service/spinner.service';
 
@@ -10,7 +10,8 @@ interface PageTitles {
 @Component({
   selector: 'app-home-layout',
   templateUrl: './home-layout.component.html',
-  styleUrls: ['./home-layout.component.scss']
+  styleUrls: ['./home-layout.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   showSpinner: boolean | undefined;
@@ -19,7 +20,6 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   imagePath: string;
   pageTitle: string;
   token: any;
-  decodedToken: any;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},

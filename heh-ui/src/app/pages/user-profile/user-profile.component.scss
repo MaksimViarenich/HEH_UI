@@ -35,7 +35,7 @@
     }
 
     .mat-pseudo-checkbox-checked {
-      background: $color-blue-green;
+      @extend .backgroundColor;
     }
 
     .add-profile-button {
@@ -43,7 +43,7 @@
       height: 3rem;
       width: 45%;
       color: $color-white;
-      background: $color-blue-green;
+      @extend .backgroundColor;
     }
 
     .profile-info {
@@ -127,5 +127,5 @@
 }
 
 .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
-  background: $color-blue-green;
+  @extend .backgroundColor;
 }

@@ -12,7 +12,7 @@
     th.mat-header-cell {
       text-transform: uppercase;
       font-weight: bold;
-      background-color: $color-blue-green;
+      @extend .backgroundColor;
       color: white;
       z-index: 2;
     }

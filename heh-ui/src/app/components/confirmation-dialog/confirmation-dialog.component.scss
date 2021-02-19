@@ -41,7 +41,7 @@
           padding: 0;
 
           button:last-child {
-            background: $color-blue-green;
+            @extend .backgroundColor;
             color: $color-white;
 
             &:disabled {

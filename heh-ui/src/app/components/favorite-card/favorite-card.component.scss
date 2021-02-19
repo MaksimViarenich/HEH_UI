@@ -95,7 +95,7 @@
 
       &:hover {
         cursor: pointer;
-        color: $color-blue-green;
+        @extend .textColor;
       }
 
       &:last-child {

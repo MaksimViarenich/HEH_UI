@@ -1,9 +1,12 @@
+@import "../../../../styles";
+
 .container {
   width: 65.625%;
   margin: auto;
-  padding-top: 6.0625rem;
 
   .title {
+    padding-top: 6.0625rem;
+    @extend .textTitleColor;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 3rem;

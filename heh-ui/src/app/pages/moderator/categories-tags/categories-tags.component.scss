@@ -17,6 +17,7 @@
     }
 
     .category-and-tag-title {
+      @extend .textTitleColor;
       font-size: $font-title;
       font-weight: bold;
       margin-bottom: 2rem;

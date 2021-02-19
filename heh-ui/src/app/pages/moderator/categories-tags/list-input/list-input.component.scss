@@ -17,7 +17,7 @@
   button {
     line-height: 3.25rem;
     font-size: 1rem;
-    background-color: $color-blue-green;
+    @extend .backgroundColor;
     vertical-align: top;
     float: right;
     width: 7rem;

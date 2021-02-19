@@ -13,13 +13,14 @@ $border-radius-small: .33rem;
 
 $color-red: #DB0404;
 $color-green: #008000;
-$color-black: #333;
+$color-black: #333333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-gray: #B0B4B6;
 $color-dark-gray: #747474;
 $color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
+$color-dark: #343f4c;
 
 $margin-category-tag: .5rem .5rem .5rem 0;
 
@@ -90,6 +91,46 @@ body {
   height: 100%;
   color: $color-black;
   background-blend-mode: screen;
+}
+
+.light .backgroundColor {
+  background-color: $color-blue-green;
+}
+
+.dark .backgroundColor {
+  background-color: $color-dark;
+}
+
+.light .borderSolidColor {
+  border: 1px solid $color-blue-green;
+}
+
+.dark .borderSolidColor {
+  border: 1px solid $color-dark;
+}
+
+.light .textColor {
+  color: $color-blue-green;
+}
+
+.dark .textColor {
+  color: $color-dark;
+}
+
+.light .textTitleColor {
+  color: $color-black;
+}
+
+.dark .textTitleColor {
+  color: $color-white;
+}
+
+.light .borderColor {
+  border-color: $color-blue-green;
+}
+
+.dark .borderColor {
+  border-color: $color-dark;
 }
 
 .mat-form-field-underline {
@@ -163,7 +204,7 @@ body {
 }
 
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  background: $color-blue-green;
+  @extend .backgroundColor;
 }
 
 .mat-menu-panel .mat-menu-content {
@@ -175,5 +216,5 @@ body {
 }
 
 .mat-calendar-body-selected {
-  background-color: $color-blue-green;
+  @extend .backgroundColor;
 }

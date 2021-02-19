@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss']
+  styleUrls: ['./tag.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TagComponent {
   @Input() tagId: string | undefined;
