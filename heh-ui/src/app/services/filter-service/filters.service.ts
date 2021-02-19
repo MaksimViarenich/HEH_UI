@@ -192,7 +192,7 @@ export class FiltersService {
             if (filters[key].length) {
               filters[key].forEach((item: string, index: number) => {
                 queryString += `${filtersMap.get(key)} eq ${item}`;
-                queryString += filters.categories.length - 1 === index ? '' : ' or ';
+                queryString += filters[key].length - 1 === index ? '' : ' or ';
               });
 
               resultParams.push(queryString);
