@@ -1,7 +1,7 @@
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
-import { OnInit, Component, Inject, ViewEncapsulation, ViewChild, Input } from '@angular/core';
+import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -24,14 +24,11 @@ export class DiscountDetailsModalComponent implements OnInit {
   addresses: Array<string>;
   markers: Array<Marker>;
   loading: boolean;
-  selectedAddresses = new FormControl();
   result: any;
   activeAddresses: Array<string>;
   userLocation: string;
-  @Input() isViewCountsVisible: boolean;
 
   @ViewChild(AgmMap) map!: AgmMap;
-  searchElementRef: any;
 
   constructor(
     private geocodeService: GeocodeService,
@@ -117,7 +114,7 @@ export class DiscountDetailsModalComponent implements OnInit {
                   this.location = obj;
                 });
               },
-              (error: any) => {
+              () => {
                 this.toaster.open('Сan not get user location');
               }
             );
@@ -132,7 +129,7 @@ export class DiscountDetailsModalComponent implements OnInit {
           }));
         }
       },
-      (error) => {
+      () => {
         this.toaster.open('Can not get discountId');
       }
     );
