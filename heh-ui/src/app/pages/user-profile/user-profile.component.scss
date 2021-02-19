@@ -129,3 +129,73 @@
 .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
   background: $color-blue-green;
 }
+
+@media screen and (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 25.5rem;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+      margin-left: 0;
+
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .profile-wrapper {
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .profile-wrapper {
+    max-width: 15rem;
+    max-height: 100%;
+
+    img {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile-wrapper {
+    max-width: 13.5rem;
+    max-height: 100%;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile-wrapper {
+    max-width: 13rem;
+    max-height: 100%;
+
+    img {
+      width: 6rem;
+      height: 6rem;
+    }
+  }
+}
