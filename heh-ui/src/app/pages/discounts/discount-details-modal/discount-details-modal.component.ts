@@ -1,7 +1,7 @@
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
-import { OnInit, Component, Inject, ViewEncapsulation, NgZone, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { OnInit, Component, Inject, ViewEncapsulation, ViewChild, Input } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -28,6 +28,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   result: any;
   activeAddresses: Array<string>;
   userLocation: string;
+  @Input() isViewCountsVisible: boolean;
 
   @ViewChild(AgmMap) map!: AgmMap;
   searchElementRef: any;
@@ -39,11 +40,12 @@ export class DiscountDetailsModalComponent implements OnInit {
     public mapsApiLoader: MapsAPILoader,
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
-    @Inject(MAT_DIALOG_DATA) public data: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.discountDetails = {
       tagsIds: [],
     };
+    this.isViewCountsVisible = true;
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
@@ -59,7 +61,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     };
   }
   address = new FormControl();
-  discountId: string = this.data;
+  discountId: string = this.data.id;
 
   displayActiveMarkers(): void {
     this.markers = [];

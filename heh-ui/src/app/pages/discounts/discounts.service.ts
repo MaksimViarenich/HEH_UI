@@ -32,15 +32,4 @@ export class DiscountsService {
 
     return this.http.get(`${BASE_API_URL}/odata/Discount`, {headers, params});
   }
-
-  getDiscountsStatistics(filters: any, top: number, skip: number): any {
-    const token = localStorage.getItem('isAuth');
-    const params = this.filterService.getQueryParams(filters, top, skip);
-
-    let headers = new HttpHeaders();
-    headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
-
-    return this.http.get(`${BASE_API_URL}/odata/Statistics`, {headers, params});
-  }
 }

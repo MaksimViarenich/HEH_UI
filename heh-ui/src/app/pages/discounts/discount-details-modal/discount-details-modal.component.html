@@ -2,9 +2,16 @@
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
       <div class="discount-detail-title">{{discountDetails.vendorName}}</div>
-      <app-btn-favorite [isFavorite]="discountDetails.isFavorite"
+      <app-btn-favorite *ngIf="!data.countsVisible"
+                        [isFavorite]="discountDetails.isFavorite"
                         [id]="discountDetails.id"
                         class="discount-detail-favorite"></app-btn-favorite>
+
+      <div *ngIf="data.countsVisible"
+            class="views">
+        <span class="material-icons">visibility</span>
+        {{ data.viewAmount }}
+      </div>
     </div>
 
     <div class="discount-details-info">
