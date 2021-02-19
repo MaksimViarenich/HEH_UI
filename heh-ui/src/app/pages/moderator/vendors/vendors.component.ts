@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { filter } from 'lodash';
 
 @Component({
   selector: 'app-vendors',
@@ -55,10 +56,11 @@ export class VendorsComponent implements OnInit {
   }
 
   getVendorSearch(filters: any): void {
-    console.log(filters);
     this.vendors = [];
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
+    filters.vendorCategories = filters.categories;
+    filters.idForVendor = filters.vendors;
     this.getAllVendors(this.topVendors, this.skipVendors, filters);
   }
 

@@ -175,7 +175,9 @@ export class FiltersService {
       .set('categories', 'categoryId')
       .set('vendors', 'vendorId')
       .set('tags', 'tagsIds')
-      .set('location', 'addresses');
+      .set('location', 'addresses')
+      .set('vendorCategories', 'categoriesIds')
+      .set('idForVendor', 'id');
 
     let queryParams = '';
     let queryTextParam = '';
@@ -187,8 +189,38 @@ export class FiltersService {
         let queryString = '';
 
         switch (key) {
+          case 'vendorCategories':
+            if (filters[key].length) {
+              filters[key].forEach((item: string, index: number) => {
+                queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
+                queryString += filters[key].length - 1 === index ? '' : ' or ';
+              });
+              resultParams.push(queryString);
+            }
+            break;
+
           case 'categories':
+              if (filters[key].length && !filters.hasOwnProperty('vendorCategories')) {
+                filters[key].forEach((item: string, index: number) => {
+                  queryString += `${filtersMap.get(key)} eq ${item}`;
+                  queryString += filters[key].length - 1 === index ? '' : ' or ';
+                });
+                resultParams.push(queryString);
+              }
+              break;
+
           case 'vendors':
+            if (filters[key].length && !filters.hasOwnProperty('idForVendor')) {
+              filters[key].forEach((item: string, index: number) => {
+                queryString += `${filtersMap.get(key)} eq ${item}`;
+                queryString += filters[key].length - 1 === index ? '' : ' or ';
+              });
+
+              resultParams.push(queryString);
+            }
+            break;
+
+          case 'idForVendor':
             if (filters[key].length) {
               filters[key].forEach((item: string, index: number) => {
                 queryString += `${filtersMap.get(key)} eq ${item}`;
@@ -203,7 +235,7 @@ export class FiltersService {
             if (filters[key].length) {
               filters[key].forEach((item: string, index: number) => {
                 queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
-                queryString += filters.tags.length - 1 === index ? '' : ' or ';
+                queryString += filters[key].length - 1 === index ? '' : ' or ';
               });
 
               resultParams.push(queryString);
