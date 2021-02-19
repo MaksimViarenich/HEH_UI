@@ -25,6 +25,9 @@ export class AuthService {
   }
 
   isAuthenticated(): any {
-    return !!localStorage.getItem('isAuth');
+    const dateNow = Date.now();
+    const expDate = Number(localStorage.getItem('expDate'));
+
+    return !!((expDate > dateNow) && localStorage.getItem('isAuth'));
   }
 }

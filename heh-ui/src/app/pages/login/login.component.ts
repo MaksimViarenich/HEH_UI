@@ -34,12 +34,9 @@ export class LoginComponent implements OnInit {
   }
 
   getExpirationDate(token: string): any {
-    if (typeof token === 'string') {
-      this.decodedToken = jwt_decode(token);
-
-      const expirationDate = (this.decodedToken.exp * 1000).toString();
-      localStorage.setItem('expDate', expirationDate);
-    }
+    this.decodedToken = jwt_decode(token);
+    const expirationDate = (this.decodedToken.exp * 1000).toString();
+    localStorage.setItem('expDate', expirationDate);
   }
 
   login(): any {
