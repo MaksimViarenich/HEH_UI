@@ -37,11 +37,12 @@ export class DiscountDetailsModalComponent implements OnInit {
     public mapsApiLoader: MapsAPILoader,
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
-    @Inject(MAT_DIALOG_DATA) public data: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.discountDetails = {
       tagsIds: [],
     };
+    this.isViewCountsVisible = true;
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
@@ -57,7 +58,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     };
   }
   address = new FormControl();
-  discountId: string = this.data;
+  discountId: string = this.data.id;
 
   displayActiveMarkers(): void {
     this.markers = [];

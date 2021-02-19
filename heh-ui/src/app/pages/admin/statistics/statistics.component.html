@@ -1,8 +1,16 @@
-<app-page-search [isDateRangeSearchAvailable]="true"></app-page-search>
-<mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let item of list">
-    <app-discount-card class="card-statistics"
-                       [discount]="item"
-                       [isViewCountsVisible]="true"></app-discount-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<app-page-search [isDateRangeSearchAvailable]="true"
+                 (applySearch)="getStatisticsWrapper($event)"></app-page-search>
+
+<div infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+     <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
+      <mat-grid-tile *ngFor="let item of statistics">
+        <app-discount-card class="card-statistics"
+                           [discount]="item"
+                           [isViewCountsVisible]="true"
+                           (click)="openDiscountDetails(item)"></app-discount-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+</div>
