@@ -12,37 +12,72 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 })
 
 export class VendorsComponent implements OnInit {
+  vendors: any = [];
+  vendorsDetail: any = [];
+  searchData: any = {};
+  topVendors: number;
+  skipVendors: number;
+  previousScrollPosition: number;
+  totalCount: number;
+
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private vendorService: VendorService,
               private toaster: ToasterService) {
+    this.topVendors = 7;
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
-
-  vendors: any = [];
-  vendorsDetail: any = [];
 
   openVendorModal(data?: Vendor): void {
     const dialogRef = this.modalService.openVendorModal(data);
 
     dialogRef.afterClosed().subscribe((dataVendor: any) => {
       if (dataVendor) {
-        this.getAllVendors();
+        this.getAllVendors(this.topVendors, this.skipVendors);
       }
     });
   }
 
-  getAllVendors(): void {
-    this.vendorService.getVendors().subscribe(
+  getAllVendors(top: any, skip: any, filters?: any): void {
+    this.vendorService.getVendors(filters, top, skip).subscribe(
       (data) => {
-        this.vendors = data;
+        data.value.forEach((vendor: any) => {
+          this.vendors.push(vendor);
+        });
+        this.totalCount = data['@odata.count'];
       },
-      (error) => {
+      () => {
         this.toaster.open('Information about vendors hasn\'t been received');
       }
     );
   }
 
+  getVendorSearch(filters: any): void {
+    console.log(filters);
+    this.vendors = [];
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    this.getAllVendors(this.topVendors, this.skipVendors, filters);
+  }
+
+  getAllVendorsAfterDelete(): void {
+    this.vendors = [];
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    this.getAllVendors(this.topVendors, this.skipVendors);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.vendors.length === this.totalCount)) {
+      this.skipVendors += this.topVendors;
+      this.getAllVendors(this.topVendors, this.skipVendors);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
   ngOnInit(): void {
-    this.getAllVendors();
+    this.getAllVendors(this.topVendors, this.skipVendors);
   }
 }
