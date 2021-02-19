@@ -33,6 +33,24 @@
       align-self: flex-start;
       margin-left: .3rem;
     }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-self: flex-start;
+      align-items: center;
+      color: $color-dark-gray;
+
+      span {
+        font-size: 1rem;
+        color: $color-dark-gray;
+
+        &:hover {
+          cursor: auto;
+        }
+      }
+    }
   }
 
   .discount-card-content {

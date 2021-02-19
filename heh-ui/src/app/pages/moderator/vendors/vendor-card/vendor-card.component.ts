@@ -11,7 +11,6 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 })
 export class VendorCardComponent implements OnInit {
   @Input() data: any | undefined;
-  @Input() isViewCountsVisible: boolean | undefined;
   @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
 
   constructor(public vendorService: VendorService,
