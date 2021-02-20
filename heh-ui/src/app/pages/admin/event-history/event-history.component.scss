@@ -11,6 +11,7 @@
 
     th.mat-header-cell {
       text-transform: uppercase;
+      text-align: center;
       font-weight: bold;
       background-color: $color-blue-green;
       color: white;
@@ -36,9 +37,22 @@
       th.mat-header-cell {
         font-size: .6rem;
       }
+
       td.mat-cell {
         font-size: .6rem;
         line-height: .7rem;
+      }
+
+      td.mat-cell:nth-child(3) {
+        padding-right: .2rem;
+      }
+
+      td.mat-cell:first-of-type {
+        padding-left: .5rem;
+      }
+
+      td.mat-cell:last-of-type {
+        padding-right: .5rem;
       }
     }
   }
@@ -49,6 +63,7 @@
     table {
       margin-top: .5rem;
     }
+
     th.mat-header-cell {
       font-size: .4rem;
     }
