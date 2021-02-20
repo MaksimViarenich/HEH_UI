@@ -44,27 +44,37 @@ export class VendorsComponent implements OnInit {
   }
 
   onResize(event: any): void {
-    if (event.target.innerWidth > 1200) {
-      this.breakpoint = 4;
-    } else if (event.target.innerWidth <= 1200 && event.target.innerWidth > 800) {
-      this.breakpoint = 3;
-    } else if (event.target.innerWidth <= 800 && event.target.innerWidth > 540) {
-      this.breakpoint = 2;
-    }else if (event.target.innerWidth <= 540) {
-      this.breakpoint = 1;
+    switch (true) {
+      case event.target.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (event.target.innerWidth <= 800 && event.target.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case event.target.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
     }
   }
 
   ngOnInit(): void {
     this.getAllVendors();
-    if (window.innerWidth > 1200) {
-      this.breakpoint = 4;
-    } else if (window.innerWidth <= 1200 && window.innerWidth > 800) {
-      this.breakpoint = 3;
-    } else if (window.innerWidth <= 800 && window.innerWidth > 540) {
-      this.breakpoint = 2;
-    }else if (window.innerWidth <= 540) {
-      this.breakpoint = 1;
+    switch (true) {
+      case window.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (window.innerWidth <= 1200 && window.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (window.innerWidth <= 800 && window.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case window.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
     }
   }
 }
