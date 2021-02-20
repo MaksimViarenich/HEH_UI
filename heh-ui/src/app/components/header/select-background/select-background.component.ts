@@ -13,11 +13,10 @@ export class SelectBackgroundComponent implements OnInit {
 
   constructor(private selectBackgroundServer: SelectBackgroundService) {
     this.backgrounds = selectBackgroundServer.getBackgrounds();
-    this.activeBackground = { background: ''};
+    this.activeBackground = JSON.parse(localStorage.getItem('background') as string) || this.backgrounds[0];
   }
 
   ngOnInit(): void {
-    this.activeBackground = JSON.parse(localStorage.getItem('background') as string) || this.backgrounds[0];
     document.body.style.background = (this.activeBackground?.background as string);
     this.changeColorTheme(this.activeBackground);
   }
