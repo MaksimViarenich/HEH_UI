@@ -26,11 +26,26 @@
       color: $color-black;
     }
 
+    .header-title-adaptive {
+      font-weight: bold;
+      display: none;
+      color: $color-black;
+    }
+
     .header-title:hover {
       cursor: pointer;
     }
   }
 }
+
+// .example-sidenav-container {
+//   flex: 1;
+//   width: 20%;
+// }
+
+// .example-is-mobile .example-sidenav-container {
+//   flex: 1 0 auto;
+// }
 
 .navigation {
   display: flex;
@@ -46,8 +61,30 @@
   }
 }
 
+@media screen and (max-width: 1024px) {
+  .header .container {
+
+    .header-title {
+      font-size: 1rem;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .hamburger {
-    display: flex;
+  .header .container {
+
+    .hamburger {
+      display: flex;
+      outline: none;
+    }
+
+    .hamburger:active,
+    .hamburger:focus {
+      outline: none;
+    }
+  }
+
+  .navigation {
+    display: none;
   }
 }

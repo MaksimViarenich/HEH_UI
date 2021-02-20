@@ -1,14 +1,12 @@
 <header class='header'>
   <div class='container'>
 
-    <button class="hamburger hamburger--collapse" type="button">
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
-
     <div class='header-title'
          (click)='goToMain()'> happy exadel hours
+    </div>
+
+    <div class='header-title-adaptive'
+         (click)='goToMain()'> HEH
     </div>
 
     <nav class='navigation'>
@@ -21,11 +19,21 @@
            #rla="routerLinkActive"
            [active]="rla.isActive">{{ tab.localizationKey | translate }}</a>
       </nav>
+
       <div class="person-content">
         <app-profile></app-profile>
         <app-language-selection></app-language-selection>
         <app-select-background></app-select-background>
       </div>
     </nav>
+
+    <button class="hamburger hamburger--collapse"
+            type="button"
+            (click)="openSideNav()">
+        <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+
   </div>
 </header>
