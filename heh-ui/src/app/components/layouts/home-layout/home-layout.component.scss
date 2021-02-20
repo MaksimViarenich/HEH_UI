@@ -14,7 +14,7 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color:rgba(0, 0, 0, 0.286);
+  background-color: rgba(0, 0, 0, 0.286);
   z-index: 1010;
   top: 0;
   left: 0;
@@ -29,5 +29,35 @@
 
   .mat-progress-spinner::ng-deep circle {
     stroke: #baeafa;
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container .title {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    padding-top: 5rem;
+  }
+  .container .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container .title {
+    font-size: 1.2rem;
+    margin-bottom: .8rem;
   }
 }
