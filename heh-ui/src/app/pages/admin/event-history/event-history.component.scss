@@ -18,6 +18,14 @@
       z-index: 2;
     }
 
+    td.mat-cell:first-of-type {
+      padding-right: .2rem;
+    }
+
+    td.mat-cell:last-of-type {
+      padding-left: .2rem;
+    }
+
     thead th {
       position: sticky;
       top: 3rem;
@@ -35,24 +43,24 @@
       margin-top: 1rem;
 
       th.mat-header-cell {
-        font-size: .6rem;
+        font-size: .7rem;
       }
 
       td.mat-cell {
-        font-size: .6rem;
-        line-height: .7rem;
+        font-size: .7rem;
+        line-height: .8rem;
       }
 
       td.mat-cell:nth-child(3) {
-        padding-right: .2rem;
+        padding: 0 .2rem;
       }
 
       td.mat-cell:first-of-type {
-        padding-left: .5rem;
+        padding-left: .4rem;
       }
 
       td.mat-cell:last-of-type {
-        padding-right: .5rem;
+        padding-right: .4rem;
       }
     }
   }
@@ -64,7 +72,16 @@
       margin-top: .5rem;
     }
 
+    .mat-header-row{
+      height: 2.5rem;
+      top: 4rem;
+    }
+
     th.mat-header-cell {
+      font-size: .4rem;
+    }
+
+    td.mat-cell {
       font-size: .4rem;
     }
   }
