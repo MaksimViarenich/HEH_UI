@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { StatisticsService } from './statistics.service';
 import { DiscountCard } from '../../../models/discount-card';
+import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-statistics',
@@ -23,7 +24,8 @@ export class StatisticsComponent implements OnInit {
               private filterService: FiltersService,
               private statisticsService: StatisticsService,
               private toaster: ToasterService,
-              private modalService: ModalService) {
+              private modalService: ModalService,
+              private gridService: GridService) {
                 this.filterService.queryParams = '';
                 this.topStatistics = 16;
                 this.skipStatistics = 0;
@@ -36,20 +38,7 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStatistics(this.topStatistics, this.skipStatistics);
-    switch (true) {
-      case window.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case (window.innerWidth <= 1200 && window.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case (window.innerWidth <= 800 && window.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case window.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
+    this.breakpoint = this.gridService.getUserGrid(window.innerWidth);
   }
 
   getStatisticsWrapper(filters: any): void {
@@ -86,19 +75,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   onResize(event: any): void {
-    switch (true) {
-      case event.target.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case (event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case (event.target.innerWidth <= 800 && event.target.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case event.target.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
+   this.breakpoint =  this.gridService.getUserGrid(event.target.innerWidth);
   }
 }

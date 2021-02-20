@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-vendors',
@@ -12,15 +13,19 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 })
 
 export class VendorsComponent implements OnInit {
+  breakpoint: number;
+
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private vendorService: VendorService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private gridService: GridService) {
+    this.breakpoint = 0;
   }
 
   vendors: any = [];
   vendorsDetail: any = [];
-  breakpoint = 0;
+
 
   openVendorModal(data?: Vendor): void {
     const dialogRef = this.modalService.openVendorModal(data);
@@ -44,37 +49,11 @@ export class VendorsComponent implements OnInit {
   }
 
   onResize(event: any): void {
-    switch (true) {
-      case event.target.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case (event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case (event.target.innerWidth <= 800 && event.target.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case event.target.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
   }
 
   ngOnInit(): void {
     this.getAllVendors();
-    switch (true) {
-      case window.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case (window.innerWidth <= 1200 && window.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case (window.innerWidth <= 800 && window.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case window.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 }
