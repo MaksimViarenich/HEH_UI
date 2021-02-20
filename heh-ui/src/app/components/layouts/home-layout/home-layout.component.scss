@@ -1,9 +1,9 @@
 .container {
   width: 65.625%;
   margin: auto;
-  padding-top: 6.0625rem;
 
   .title {
+    padding-top: 5.0625rem;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 3rem;
@@ -14,7 +14,7 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color:rgba(0, 0, 0, 0.286);
+  background-color: rgba(0, 0, 0, 0.286);
   z-index: 1010;
   top: 0;
   left: 0;
@@ -49,6 +49,7 @@
   .container {
     padding-top: 5rem;
   }
+
   .container .title {
     font-size: 1.5rem;
     margin-bottom: 1rem;

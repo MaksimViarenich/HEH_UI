@@ -1,18 +1,19 @@
 <div class="favorite-card">
-  <div>
-    <div class="favorite-vendor">
-      <div class="card-title">
-        {{ favoriteInfo.vendorName}}
-      </div>
+  <div class="favorite-vendor">
+    <div class="card-title">
+      {{ favoriteInfo.vendorName}}
     </div>
   </div>
 
   <div class="card-content">
     <div class="discount-info">
       <div class="category-and-tags">
-        <app-category [categoryId]="favoriteInfo.categoryId"></app-category>
-        <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
-                 [tagId]="tag"></app-tag>
+        <app-category class="favorites-category"
+                      [categoryId]="favoriteInfo.categoryId"></app-category>
+        <div class="favorites-tags">
+          <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
+                   [tagId]="tag"></app-tag>
+        </div>
       </div>
 
       <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>
@@ -23,6 +24,7 @@
   <div class="card-actions">
     <div class="material-icons" (click)="openEditNoteModal()">edit</div>
     <div class="material-icons"
-       (click)="deleteFavorite()">delete_outline</div>
+         (click)="deleteFavorite()">delete_outline
+    </div>
   </div>
 </div>
