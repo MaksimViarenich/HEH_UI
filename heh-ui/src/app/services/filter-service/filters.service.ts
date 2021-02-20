@@ -190,6 +190,7 @@ export class FiltersService {
 
         switch (key) {
           case 'vendorCategories':
+          case 'tags':
             if (filters[key].length) {
               filters[key].forEach((item: string, index: number) => {
                 queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
@@ -224,17 +225,6 @@ export class FiltersService {
             if (filters[key].length) {
               filters[key].forEach((item: string, index: number) => {
                 queryString += `${filtersMap.get(key)} eq ${item}`;
-                queryString += filters[key].length - 1 === index ? '' : ' or ';
-              });
-
-              resultParams.push(queryString);
-            }
-            break;
-
-          case 'tags':
-            if (filters[key].length) {
-              filters[key].forEach((item: string, index: number) => {
-                queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
                 queryString += filters[key].length - 1 === index ? '' : ' or ';
               });
 
