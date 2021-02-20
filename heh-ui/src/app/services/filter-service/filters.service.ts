@@ -237,7 +237,6 @@ export class FiltersService {
           break;
         }
       }
-    }
 
     resultParams = resultParams
       .filter((item: string) => item.length);
@@ -249,7 +248,7 @@ export class FiltersService {
     return { queryParams, queryTextParam };
   }
 
-  buildListQuery(filters: any, key: string): string {
+buildListQuery(filters: any, key: string): string {
     let query = '';
     (filters[key] || []).forEach((item: string, index: number) => {
       query +=
@@ -261,7 +260,7 @@ export class FiltersService {
     return query;
   }
 
-  getQueryParams(filters: any, top: number, skip: number): any {
+getQueryParams(filters: any, top: number, skip: number): any {
     let params = new HttpParams();
 
     const filtersParams = this.getFiltersParams(filters);
