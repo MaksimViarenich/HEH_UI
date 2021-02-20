@@ -7,6 +7,7 @@
   line-height: 1.2rem;
   border-radius: 0.7rem;
   padding: 0 .8rem 0 .5rem;
+  margin: 0 .2rem;
   font-weight: 500;
   display: flex;
   flex-direction: row;
@@ -45,5 +46,22 @@
 
   .action-event-dot {
     background-color: #D30000;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .action-event-field {
+    font-size: .6rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .action-event-field {
+
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .action-event-field {
+
   }
 }

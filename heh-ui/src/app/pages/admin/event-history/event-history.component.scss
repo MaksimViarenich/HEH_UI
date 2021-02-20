@@ -28,11 +28,35 @@
   }
 }
 
-.admin-search-event {
-  width: calc(100% - 1.6rem);
-  background-color: $color-white;
-  box-shadow: $shadow-gray;
-  padding: .3rem .8rem;
-  border-radius: 4px;
-  margin: 1rem 0;
+@media screen and (max-width: 768px) {
+  .mat-elevation-z8 {
+    table {
+      margin-top: 1rem;
+
+      th.mat-header-cell {
+        font-size: .6rem;
+      }
+      td.mat-cell {
+        font-size: .6rem;
+        line-height: .7rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .mat-elevation-z8 {
+    table {
+      margin-top: .5rem;
+    }
+    th.mat-header-cell {
+      font-size: .4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-wrapper .login-form {
+    padding: 2rem;
+  }
 }
