@@ -4,6 +4,15 @@ import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
 import { cloneDeep } from 'lodash';
 
+export const FILTERS_MAP = new Map([
+  ['categories', 'categoryId'],
+  ['vendors', 'vendorId'],
+  ['tags', 'tagsIds'],
+  ['location', 'addresses'],
+  ['vendorCategories', 'categoriesIds'],
+  ['idForVendor', 'id']
+  ]);
+
 @Injectable({
   providedIn: 'root'
 })
@@ -171,96 +180,78 @@ export class FiltersService {
   }
 
   getFiltersParams(filters: any): any {
-    const filtersMap = new Map()
-      .set('categories', 'categoryId')
-      .set('vendors', 'vendorId')
-      .set('tags', 'tagsIds')
-      .set('location', 'addresses')
-      .set('vendorCategories', 'categoriesIds')
-      .set('idForVendor', 'id');
-
+    let resultParams: any = [];
     let queryParams = '';
     let queryTextParam = '';
 
-    const resultParams: any = [];
-
     for (const key in filters) {
-      if (filters.hasOwnProperty(key)) {
-        let queryString = '';
+      if (!filters.hasOwnProperty(key))
+      { continue; }
 
-        switch (key) {
-          case 'vendorCategories':
-          case 'tags':
-            if (filters[key].length) {
-              filters[key].forEach((item: string, index: number) => {
-                queryString += `${filtersMap.get(key)}/any(t: t eq ${item})`;
-                queryString += filters[key].length - 1 === index ? '' : ' or ';
-              });
-              resultParams.push(queryString);
-            }
-            break;
+      switch (key) {
+        case 'vendorCategories':
+        case 'tags':
+          resultParams.push(this.buildListQuery(filters, key));
+          break;
 
-          case 'categories':
-              if (filters[key].length && !filters.hasOwnProperty('vendorCategories')) {
-                filters[key].forEach((item: string, index: number) => {
-                  queryString += `${filtersMap.get(key)} eq ${item}`;
-                  queryString += filters[key].length - 1 === index ? '' : ' or ';
-                });
-                resultParams.push(queryString);
-              }
-              break;
+        case 'categories':
+          if (!filters.hasOwnProperty('vendorCategories')) {
+            resultParams.push(this.buildListQuery(filters, key));
+          }
+          break;
 
-          case 'vendors':
-            if (filters[key].length && !filters.hasOwnProperty('idForVendor')) {
-              filters[key].forEach((item: string, index: number) => {
-                queryString += `${filtersMap.get(key)} eq ${item}`;
-                queryString += filters[key].length - 1 === index ? '' : ' or ';
-              });
+        case 'vendors':
+          if (!filters.hasOwnProperty('idForVendor')) {
+            resultParams.push(this.buildListQuery(filters, key));
+          }
+          break;
 
-              resultParams.push(queryString);
-            }
-            break;
+        case 'idForVendor':
+          resultParams.push(this.buildListQuery(filters, key));
+          break;
 
-          case 'idForVendor':
-            if (filters[key].length) {
-              filters[key].forEach((item: string, index: number) => {
-                queryString += `${filtersMap.get(key)} eq ${item}`;
-                queryString += filters[key].length - 1 === index ? '' : ' or ';
-              });
+        case 'location':
+          if (filters[key]) {
+            resultParams.push(
+              `${FILTERS_MAP.get(key)}/any(a: a/cityId eq ${filters[key]})`
+            );
+          }
+          break;
 
-              resultParams.push(queryString);
-            }
-            break;
+        case 'searchText':
+          if (filters[key]) {
+            queryTextParam = filters[key];
+          }
+          break;
 
-          case 'location':
-            if (filters[key]) {
-              queryString = `${filtersMap.get(key)}/any(a: a/cityId eq ${filters[key]})`;
-              resultParams.push(queryString);
-            }
-            break;
-
-          case 'searchText':
-            if (filters[key]) {
-              queryTextParam = filters[key];
-            }
-            break;
-
-          case 'searchUserText':
-            if (filters[key]) {
-              queryParams = `contains(name, '${filters[key]}') or contains(email, '${filters[key]}')`;
-            }
-            break;
-        }
+        case 'searchUserText':
+          if (filters[key]) {
+            queryParams = `contains(name, '${filters[key]}') or contains(email, '${filters[key]}')`;
+          }
+          break;
       }
     }
 
-    if (resultParams.length) {
-      resultParams.forEach((item: string, index: number) => {
-        queryParams += resultParams.length - 1 === index ? item : `${item} and `;
+    resultParams = resultParams
+      .filter((item: string) => item.length);
+    resultParams.forEach((item: string, index: number) => {
+        queryParams +=
+          resultParams.length - 1 === index ? item : `${item} and `;
       });
-    }
 
-    return {queryParams, queryTextParam};
+    return { queryParams, queryTextParam };
+  }
+
+  buildListQuery(filters: any, key: string): string {
+    let query = '';
+    (filters[key] || []).forEach((item: string, index: number) => {
+      query +=
+      `${FILTERS_MAP.get(key)}` + (['vendorCategories', 'tags'].includes(key)
+      ? `/any(t: t eq ${item})`
+      : ` eq ${item}`) + ` ${filters[key].length - 1 === index ? '' : 'or '}`;
+    });
+
+    return query;
   }
 
   getQueryParams(filters: any, top: number, skip: number): any {
