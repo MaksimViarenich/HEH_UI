@@ -9,10 +9,11 @@ import { Background, SelectBackgroundService } from './select-background.service
 export class SelectBackgroundComponent implements OnInit {
 
   backgrounds: Array<Background>;
-  activeBackground: Background | undefined;
+  activeBackground: Background;
 
   constructor(private selectBackgroundServer: SelectBackgroundService) {
     this.backgrounds = selectBackgroundServer.getBackgrounds();
+    this.activeBackground = { background: ''};
   }
 
   ngOnInit(): void {
