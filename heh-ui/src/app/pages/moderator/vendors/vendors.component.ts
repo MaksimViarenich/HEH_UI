@@ -20,6 +20,7 @@ export class VendorsComponent implements OnInit {
   skipVendors: number;
   previousScrollPosition: number;
   totalCount: number;
+   breakpoint = 0;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -29,7 +30,7 @@ export class VendorsComponent implements OnInit {
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
-  }
+  } 
 
   openVendorModal(data?: Vendor): void {
     const dialogRef = this.modalService.openVendorModal(data);
@@ -76,10 +77,40 @@ export class VendorsComponent implements OnInit {
       this.skipVendors += this.topVendors;
       this.getAllVendors(this.topVendors, this.skipVendors);
       this.previousScrollPosition = event.currentScrollPosition;
+
+  onResize(event: any): void {
+    switch (true) {
+      case event.target.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (event.target.innerWidth <= 800 && event.target.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case event.target.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
     }
   }
 
   ngOnInit(): void {
     this.getAllVendors(this.topVendors, this.skipVendors);
+    this.getAllVendors();
+    switch (true) {
+      case window.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (window.innerWidth <= 1200 && window.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (window.innerWidth <= 800 && window.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case window.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
+    }
   }
 }

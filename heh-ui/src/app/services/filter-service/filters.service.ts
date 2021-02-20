@@ -229,6 +229,13 @@ export class FiltersService {
             queryParams = `contains(name, '${filters[key]}') or contains(email, '${filters[key]}')`;
           }
           break;
+
+        case 'searchHistoryText':
+          if (filters[key]) {
+            queryParams = `contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`;
+          }
+          break;
+        }
       }
     }
 

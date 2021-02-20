@@ -1,7 +1,7 @@
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
-import { OnInit, Component, Inject, ViewEncapsulation, NgZone, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -24,13 +24,11 @@ export class DiscountDetailsModalComponent implements OnInit {
   addresses: Array<string>;
   markers: Array<Marker>;
   loading: boolean;
-  selectedAddresses = new FormControl();
   result: any;
   activeAddresses: Array<string>;
   userLocation: string;
 
   @ViewChild(AgmMap) map!: AgmMap;
-  searchElementRef: any;
 
   constructor(
     private geocodeService: GeocodeService,
@@ -39,11 +37,12 @@ export class DiscountDetailsModalComponent implements OnInit {
     public mapsApiLoader: MapsAPILoader,
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
-    @Inject(MAT_DIALOG_DATA) public data: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.discountDetails = {
       tagsIds: [],
     };
+    this.isViewCountsVisible = true;
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
@@ -59,7 +58,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     };
   }
   address = new FormControl();
-  discountId: string = this.data;
+  discountId: string = this.data.id;
 
   displayActiveMarkers(): void {
     this.markers = [];
@@ -115,7 +114,7 @@ export class DiscountDetailsModalComponent implements OnInit {
                   this.location = obj;
                 });
               },
-              (error: any) => {
+              () => {
                 this.toaster.open('Сan not get user location');
               }
             );
@@ -130,7 +129,7 @@ export class DiscountDetailsModalComponent implements OnInit {
           }));
         }
       },
-      (error) => {
+      () => {
         this.toaster.open('Can not get discountId');
       }
     );

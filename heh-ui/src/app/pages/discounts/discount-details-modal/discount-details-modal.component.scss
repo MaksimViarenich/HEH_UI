@@ -19,6 +19,16 @@
       flex-direction: row;
       justify-content: space-between;
 
+      .views {
+        display: flex;
+        align-items: center;
+        line-height: $height-header;
+
+        span {
+          margin-right: 0.3rem;
+        }
+      }
+
       .discount-detail-title {
         @include font-bold-vendor;
         line-height: $height-header;

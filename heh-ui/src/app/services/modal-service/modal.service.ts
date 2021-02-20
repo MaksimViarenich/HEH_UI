@@ -42,9 +42,13 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(id: string): any {
+  openDiscountDetailsModal(id: string, countsVisible?: boolean, viewAmount?: number): any {
     return this.dialog.open(DiscountDetailsModalComponent, {
-      data: id,
+      data: {
+        id,
+        countsVisible,
+        viewAmount
+      },
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
@@ -77,8 +81,8 @@ export class ModalService {
 
   openConfirmModal(): any {
     return this.dialog.open(ConfirmationDialogComponent, {
-      width: '18rem',
-      height: '8rem',
+      width: '20rem',
+      height: '10rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
     });

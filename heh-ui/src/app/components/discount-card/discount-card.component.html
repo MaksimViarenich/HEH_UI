@@ -1,9 +1,15 @@
 <div class="discount-card">
   <div class="discount-card-header">
     <div class="discount-card-title">{{discount.vendorName}}</div>
-    <app-btn-favorite [isFavorite]="discount.isFavorite"
+    <app-btn-favorite *ngIf="!isViewCountsVisible"
+                      [isFavorite]="discount.isFavorite"
                       [id]="discount.id"
                       class="btn"></app-btn-favorite>
+    <div *ngIf="isViewCountsVisible"
+         class="btn-view">
+      <span class="material-icons">visibility</span>
+      {{ discount.viewsAmount }}
+    </div>
   </div>
 
   <div class="discount-card-content">

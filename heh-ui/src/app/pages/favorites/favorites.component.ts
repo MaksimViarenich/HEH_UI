@@ -11,23 +11,56 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
 export class FavoritesComponent implements OnInit {
   @Input() favoriteInfo: any | undefined;
   favoriteCards: Array<Discount> = [];
+  topFavorites: any;
+  skipFavorites: any;
+  previousScrollPosition: any;
+  totalCount: any;
 
   constructor(private favoritesService: FavoritesService,
               private toaster: ToasterService) {
+    this.topFavorites = 8;
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
   }
 
-  getFavorites(): void {
-    this.favoritesService.getFavorites().subscribe(
-      (data) => {
-        this.favoriteCards = data.value;
+  getFavoritesWrapper(filters: any): void {
+    this.favoriteCards = [];
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.getFavorites(this.topFavorites, this.skipFavorites, filters);
+  }
+
+  getFavorites(top: any, skip: any, filters?: any): void {
+    this.favoritesService.getFavorites(filters, top, skip).subscribe(
+      (data: any) => {
+        data.value.forEach((favorite: any) => {
+          this.favoriteCards.push(favorite);
+        });
+        this.totalCount = data['@odata.count'];
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get favorites');
       }
     );
   }
 
+  getFavoritesAfterDelete(): void {
+    this.favoriteCards = [];
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.getFavorites(this.topFavorites, this.skipFavorites);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !(this.favoriteCards.length === this.totalCount)) {
+      this.skipFavorites += this.topFavorites;
+      this.getFavorites(this.topFavorites, this.skipFavorites);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
   ngOnInit(): void {
-    this.getFavorites();
+    this.getFavorites(this.topFavorites, this.skipFavorites);
   }
 }

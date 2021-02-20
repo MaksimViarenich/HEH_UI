@@ -1,12 +1,13 @@
 <app-page-search [isVendorSearchAvailable]="true"
                  (applySearch)="getDiscountsWrapper($event)"></app-page-search>
 <div infiniteScroll
-     [infiniteScrollDistance]="0.2"
+     [infiniteScrollDistance]="1"
      [infiniteScrollThrottle]="100"
      (scrolled)="onScrollDown($event)">
   <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
     <mat-grid-tile *ngFor="let discount of discounts">
      <app-discount-card [discount]="discount"
+                        [isViewCountsVisible]="false"
                         (click)="openDiscountDetails(discount)"></app-discount-card>
     </mat-grid-tile>
   </mat-grid-list>

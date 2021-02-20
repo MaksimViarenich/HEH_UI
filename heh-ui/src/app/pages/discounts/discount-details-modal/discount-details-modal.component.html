@@ -2,9 +2,16 @@
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
       <div class="discount-detail-title">{{discountDetails.vendorName}}</div>
-      <app-btn-favorite [isFavorite]="discountDetails.isFavorite"
+      <app-btn-favorite *ngIf="!data.countsVisible"
+                        [isFavorite]="discountDetails.isFavorite"
                         [id]="discountDetails.id"
                         class="discount-detail-favorite"></app-btn-favorite>
+
+      <div *ngIf="data.countsVisible"
+            class="views">
+        <span class="material-icons">visibility</span>
+        {{ data.viewAmount }}
+      </div>
     </div>
 
     <div class="discount-details-info">
@@ -21,7 +28,8 @@
 
       <div class="discount-detail-description">{{discountDetails.conditions}}</div>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field *ngIf="addresses.length"
+                      appearance="outline">
         <mat-label>{{ 'discounts.address' | translate }}</mat-label>
 
         <mat-select [formControl]="address"
@@ -87,7 +95,8 @@
       </div>
     </div>
 
-    <div class="discount-details-map">
+    <div *ngIf="addresses.length"
+         class="discount-details-map">
       <agm-map [latitude]="location.lat"
                [longitude]="location.lng"
                [zoom]="zoom">

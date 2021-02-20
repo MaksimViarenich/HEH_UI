@@ -1,4 +1,5 @@
-<app-input-search></app-input-search>
+<app-input-search [(ngModel)]="searchData.searchHistoryText"
+                  (keydown.enter)="applyHistorySearch()"></app-input-search>
 
 <div class="table-container"
      infiniteScroll

@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
-import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
 @Component({
   selector: 'app-discounts',
@@ -22,9 +21,7 @@ export class DiscountsComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private discountService: DiscountsService,
-              private toaster: ToasterService,
-              private filterService: FiltersService) {
-    this.filterService.queryParams = '';
+              private toaster: ToasterService) {
     this.topDiscounts = 16;
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
