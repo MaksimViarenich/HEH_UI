@@ -68,3 +68,37 @@
     }
   }
 }
+
+@media (max-width: 540px) {
+  .search-container {
+    margin-bottom: 1rem;
+
+    .main-search-container {
+      flex-direction: column;
+      margin-bottom: 0;
+
+      .search-wrapper {
+        width: 100%;
+        margin-bottom: .5rem;
+      }
+
+      .select-wrapper {
+        width: 100%;
+        margin-bottom: .5rem;
+      }
+    }
+
+    .filters-container {
+      flex-direction: column;
+
+      .btn-container {
+        width: 100%;
+      }
+    }
+
+    .search-filter {
+      width: 100%;
+      margin-bottom: .5rem;
+    }
+  }
+}

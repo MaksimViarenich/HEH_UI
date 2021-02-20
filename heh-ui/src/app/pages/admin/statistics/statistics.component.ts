@@ -17,6 +17,7 @@ export class StatisticsComponent implements OnInit {
   skipStatistics: any;
   previousScrollPosition: any;
   totalCount: any;
+  breakpoint: number;
 
   constructor(public dialog: MatDialog,
               private filterService: FiltersService,
@@ -28,12 +29,27 @@ export class StatisticsComponent implements OnInit {
                 this.skipStatistics = 0;
                 this.previousScrollPosition = 0;
                 this.totalCount = 0;
+                this.breakpoint = 0;
               }
 
   statistics: Array<DiscountCard> = [];
 
   ngOnInit(): void {
     this.getStatistics(this.topStatistics, this.skipStatistics);
+    switch (true) {
+      case window.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (window.innerWidth <= 1200 && window.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (window.innerWidth <= 800 && window.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case window.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
+    }
   }
 
   getStatisticsWrapper(filters: any): void {
@@ -66,6 +82,23 @@ export class StatisticsComponent implements OnInit {
       this.skipStatistics += this.topStatistics;
       this.getStatistics(this.topStatistics, this.skipStatistics);
       this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  onResize(event: any): void {
+    switch (true) {
+      case event.target.innerWidth > 1200:
+        this.breakpoint = 4;
+        break;
+      case (event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
+        this.breakpoint = 3;
+        break;
+      case (event.target.innerWidth <= 800 && event.target.innerWidth > 540):
+        this.breakpoint = 2;
+        break;
+      case event.target.innerWidth <= 540:
+        this.breakpoint = 1;
+        break;
     }
   }
 }

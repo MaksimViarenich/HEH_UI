@@ -129,3 +129,94 @@
 .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
   @extend .backgroundColor;
 }
+
+@media screen and (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 25.5rem;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+      margin-left: 0;
+
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .profile-wrapper {
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .profile-wrapper {
+    max-width: 15rem;
+    max-height: 100%;
+
+    img {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile-wrapper {
+    max-width: 13.5rem;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile-wrapper {
+    max-width: 13rem;
+    padding: 1.25rem;
+
+    .profile-content .add-profile-button {
+      height: 2.5rem;
+      margin-top: $margin-half;
+    }
+
+    .profile-content .mat-list-base .mat-list-item .mat-list-item-content-reverse {
+      font-size: .8rem;
+    }
+
+    .profile-content .profile-info .profile-username {
+      margin-bottom: .8rem;
+      font-size: 1.4rem;
+    }
+
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:first-child {
+  width: 13rem;
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:not(:first-child) {
+  width: 12.2rem;
+}

@@ -28,3 +28,13 @@
     }
   }
 }
+
+@media (max-width: 650px) {
+  .list-input-container mat-form-field {
+    width: calc(100% - 5.5rem);
+  }
+
+  .list-input-container button {
+    width: 5rem;
+  }
+}

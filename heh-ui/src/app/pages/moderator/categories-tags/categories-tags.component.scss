@@ -47,3 +47,14 @@
     margin-left: 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .category-and-tag-container .category-and-tag-wrapper {
+    display: block;
+    width: 100%;
+  }
+
+  .category-and-tag-container .category-and-tag-wrapper:nth-child(2) {
+    margin: 2rem 0 1rem 0;
+  }
+}
