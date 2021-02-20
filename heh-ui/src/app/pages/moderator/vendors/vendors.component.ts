@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { filter } from 'lodash';
 import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
@@ -15,8 +14,6 @@ import { GridService } from '../../../services/grid-service/grid.service';
 
 export class VendorsComponent implements OnInit {
   vendors: any = [];
-  vendorsDetail: any = [];
-  searchData: any = {};
   topVendors: number;
   skipVendors: number;
   previousScrollPosition: number;
@@ -27,7 +24,7 @@ export class VendorsComponent implements OnInit {
               private modalService: ModalService,
               private vendorService: VendorService,
               private toaster: ToasterService,
-              private gridService: GridService,) {
+              private gridService: GridService) {
     this.topVendors = 7;
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
