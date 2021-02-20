@@ -20,6 +20,7 @@ export class VendorsComponent implements OnInit {
 
   vendors: any = [];
   vendorsDetail: any = [];
+  breakpoint = 0;
 
   openVendorModal(data?: Vendor): void {
     const dialogRef = this.modalService.openVendorModal(data);
@@ -36,13 +37,34 @@ export class VendorsComponent implements OnInit {
       (data) => {
         this.vendors = data;
       },
-      (error) => {
+      () => {
         this.toaster.open('Information about vendors hasn\'t been received');
       }
     );
   }
 
+  onResize(event: any): void {
+    if (event.target.innerWidth > 1200) {
+      this.breakpoint = 4;
+    } else if (event.target.innerWidth <= 1200 && event.target.innerWidth > 800) {
+      this.breakpoint = 3;
+    } else if (event.target.innerWidth <= 800 && event.target.innerWidth > 540) {
+      this.breakpoint = 2;
+    }else if (event.target.innerWidth <= 540) {
+      this.breakpoint = 1;
+    }
+  }
+
   ngOnInit(): void {
     this.getAllVendors();
+    if (window.innerWidth > 1200) {
+      this.breakpoint = 4;
+    } else if (window.innerWidth <= 1200 && window.innerWidth > 800) {
+      this.breakpoint = 3;
+    } else if (window.innerWidth <= 800 && window.innerWidth > 540) {
+      this.breakpoint = 2;
+    }else if (window.innerWidth <= 540) {
+      this.breakpoint = 1;
+    }
   }
 }
