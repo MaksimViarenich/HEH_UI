@@ -174,7 +174,6 @@
 @media screen and (max-width: 360px) {
   .profile-wrapper {
     max-width: 13.5rem;
-    max-height: 100%;
 
     .profile-photo {
       display: flex;
@@ -191,11 +190,33 @@
 @media screen and (max-width: 320px) {
   .profile-wrapper {
     max-width: 13rem;
-    max-height: 100%;
+    padding: 1.25rem;
+
+    .profile-content .add-profile-button {
+      height: 2.5rem;
+      margin-top: $margin-half;
+    }
+
+    .profile-content .mat-list-base .mat-list-item .mat-list-item-content-reverse {
+      font-size: .8rem;
+    }
+
+    .profile-content .profile-info .profile-username {
+      margin-bottom: .8rem;
+      font-size: 1.4rem;
+    }
 
     img {
-      width: 6rem;
-      height: 6rem;
+      width: 5rem;
+      height: 5rem;
     }
   }
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:first-child {
+  width: 13rem;
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:not(:first-child) {
+  width: 12.2rem;
 }
