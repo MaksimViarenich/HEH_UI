@@ -80,7 +80,7 @@ export class AddVendorModalComponent implements OnInit {
 
     if (this.vendor.id) {
       this.vendorService.updateVendor(this.vendor).subscribe(
-        (data) => {
+        () => {
           this.toaster.open('Vendor was updated', 'success');
         },
         (error) => {
@@ -97,10 +97,10 @@ export class AddVendorModalComponent implements OnInit {
       );
     } else {
       this.vendorService.addVendor(this.vendor).subscribe(
-        (data) => {
+        () => {
           this.toaster.open('New vendor has been added', 'success');
         },
-        (error) => {
+        () => {
           this.toaster.open('There is no possibility to add a new vendor');
         }
       );
