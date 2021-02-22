@@ -46,7 +46,7 @@
   },
   "event-notification": {
     "date": "Дата",
-    "title": "Название",
+    "title": "Заголовок",
     "message": "Сообщение",
     "type": "Тип"
   },
