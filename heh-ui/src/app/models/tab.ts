@@ -16,6 +16,11 @@ export const HEADER_TABS: Tab[] = [
     localizationKey: 'header.favorites'
   },
   {
+    name: 'Notifications',
+    path: 'notifications',
+    localizationKey: 'header.notifications'
+  },
+  {
     name: 'Moderator',
     path: 'moderator',
     localizationKey: 'header.moderator'

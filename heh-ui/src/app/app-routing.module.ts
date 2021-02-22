@@ -16,6 +16,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ModeratorComponent } from './pages/moderator/moderator.component';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { RoleGuard } from './role-guard/role.guard';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: '', redirectTo: '/discounts', pathMatch: 'full'},
       {path: 'discounts', component: DiscountsComponent},
       {path: 'favorites', component: FavoritesComponent},
+      {path: 'notifications', component: NotificationsComponent},
       {path: 'profile', component: UserProfileComponent},
       {
         path: 'moderator',
