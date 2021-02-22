@@ -20,7 +20,6 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   imagePath: string;
   pageTitle: string;
   token: any;
-  decodedToken: any;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},

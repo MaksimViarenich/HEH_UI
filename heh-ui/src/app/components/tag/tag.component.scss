@@ -2,8 +2,8 @@
 
 .tag {
   @include category-tags;
-  border: 1px solid $color-blue-green;
-  color: $color-blue-green;
+  @extend .borderSolidColor;
+  @extend .textColor;
 }
 
 .tag:hover {

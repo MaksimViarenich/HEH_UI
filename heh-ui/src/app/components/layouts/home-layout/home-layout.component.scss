@@ -1,8 +1,11 @@
+@import "../../../../styles";
+
 .container {
   width: 65.625%;
   margin: auto;
 
   .title {
+    @extend .textTitleColor;
     padding-top: 5.0625rem;
     font-size: 2rem;
     font-weight: bold;
@@ -27,7 +30,7 @@
     margin: auto;
   }
 
-  .mat-progress-spinner::ng-deep circle {
+  .mat-progress-spinner circle, .mat-spinner circle{
     stroke: #baeafa;
   }
 }

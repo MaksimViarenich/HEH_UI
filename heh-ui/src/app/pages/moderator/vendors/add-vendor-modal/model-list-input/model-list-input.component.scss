@@ -38,6 +38,6 @@
     min-height: 3rem;
     border-radius: $border-radius-small;
     color: $color-white;
-    background-color: $color-blue-green;
+    @extend .backgroundColor;
   }
 }

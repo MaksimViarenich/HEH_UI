@@ -36,7 +36,7 @@
 
     .mat-button-toggle-group-appearance-standard,
     .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
-      border-color: $color-blue-green;
+      @extend .borderColor;
     }
 
     .btn-toggle {
@@ -50,7 +50,7 @@
       }
 
       mat-button-toggle.mat-button-toggle-checked {
-        background: $color-blue-green;
+        @extend .backgroundColor;
         color: white;
       }
 
@@ -64,6 +64,14 @@
       margin-top: 0.5rem;
     }
   }
+}
+
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+  @extend .backgroundColor;
+}
+
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(51, 51, 51, .2);
 }
 
 @media (max-width: 800px) {

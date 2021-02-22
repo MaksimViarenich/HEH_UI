@@ -2,4 +2,7 @@
 
 .nav-moderator-admin{
   margin-bottom: 1.5rem;
+  .nav-title{
+    @extend .textTitleColor;
+  }
 }

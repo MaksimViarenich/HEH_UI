@@ -2,8 +2,8 @@
 
 .category {
   @include category-tags;
-  border: 1px solid $color-blue-green;
-  background-color: $color-blue-green;
+  @extend .borderSolidColor;
+  @extend .backgroundColor;
   color: $color-white;
 }
 

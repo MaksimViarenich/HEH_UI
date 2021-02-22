@@ -9,7 +9,7 @@
 
   .material-icons {
     font-size: 6rem;
-    color: $color-blue-green;
+    @extend .textColor;
     opacity: 0.7;
   }
 }

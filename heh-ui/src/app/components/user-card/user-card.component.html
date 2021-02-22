@@ -23,7 +23,7 @@
                          (change)="changeUserRole($event.value)">{{ 'users.admin' | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
 
-    <mat-slide-toggle class="example-margin"
+    <mat-slide-toggle class="active-toggle"
                       [color]="color"
                       [(ngModel)]="isActive"
                       (ngModelChange)="changeUserState()">

@@ -13,7 +13,7 @@
       text-transform: uppercase;
       text-align: center;
       font-weight: bold;
-      background-color: $color-blue-green;
+      @extend .backgroundColor;
       color: white;
       z-index: 2;
     }

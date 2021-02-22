@@ -70,8 +70,7 @@
             <input [(ngModel)]="vendor.email" matInput>
           </mat-form-field>
           <section>
-            <mat-checkbox [color]="'primary'"
-                          [(ngModel)]="vendor.mailing">
+            <mat-checkbox [(ngModel)]="vendor.mailing">
               {{ 'vendors.add-vendor.permission' | translate }}
             </mat-checkbox>
           </section>

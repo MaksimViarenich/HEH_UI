@@ -55,7 +55,7 @@
       }
 
       .btn-submit {
-        background-color: $color-blue-green;
+        @extend .backgroundColor;
         color: $color-white;
       }
     }

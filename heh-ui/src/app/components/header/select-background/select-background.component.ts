@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectBackgroundService } from './select-background.service';
+import { Background, SelectBackgroundService } from './select-background.service';
 
 @Component({
   selector: 'app-select-background',
@@ -8,22 +8,31 @@ import { SelectBackgroundService } from './select-background.service';
 })
 export class SelectBackgroundComponent implements OnInit {
 
-  backgrounds: Array<string>;
-  activeBackground: string | undefined;
+  backgrounds: Array<Background>;
+  activeBackground: Background;
 
   constructor(private selectBackgroundServer: SelectBackgroundService) {
     this.backgrounds = selectBackgroundServer.getBackgrounds();
+    this.activeBackground = {background: '', colorClass: ''};
   }
 
   ngOnInit(): void {
-    this.activeBackground = localStorage.getItem('background') || this.backgrounds[0];
-    document.body.style.background = this.activeBackground;
+    this.activeBackground = JSON.parse(localStorage.getItem('background') as string) || this.backgrounds[0];
+    document.body.style.background = (this.activeBackground?.background as string);
+    this.changeColorTheme(this.activeBackground);
   }
 
-  changeBackground(background: string): void {
+  changeBackground(background: Background): void {
     this.activeBackground = background;
-    localStorage.setItem('background', background);
-    document.body.style.background = this.activeBackground;
+    localStorage.setItem('background', JSON.stringify(this.activeBackground));
+    document.body.style.background = background.background;
+    this.changeColorTheme(background);
   }
 
+  changeColorTheme(background: Background): void {
+    if (background.colorClass) {
+      document.body.className = 'mat-typography';
+      document.body.classList.add(background.colorClass);
+    }
+  }
 }
