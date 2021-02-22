@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { filter } from 'lodash';
+import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-vendors',
@@ -14,22 +14,22 @@ import { filter } from 'lodash';
 
 export class VendorsComponent implements OnInit {
   vendors: any = [];
-  vendorsDetail: any = [];
-  searchData: any = {};
   topVendors: number;
   skipVendors: number;
   previousScrollPosition: number;
   totalCount: number;
-  breakpoint = 0;
+  breakpoint: number;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private vendorService: VendorService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private gridService: GridService) {
     this.topVendors = 7;
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
+    this.breakpoint = 0;
   }
 
   openVendorModal(data?: Vendor): void {
@@ -72,6 +72,10 @@ export class VendorsComponent implements OnInit {
     this.getAllVendors(this.topVendors, this.skipVendors);
   }
 
+  onResize(event: any): void {
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
+  }
+
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.vendors.length === this.totalCount)) {
       this.skipVendors += this.topVendors;
@@ -80,39 +84,8 @@ export class VendorsComponent implements OnInit {
     }
   }
 
-    onResize(event: any): void {
-    switch (true) {
-      case event.target.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case(event.target.innerWidth <= 1200 && event.target.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case(event.target.innerWidth <= 800 && event.target.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case event.target.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
-  }
-
   ngOnInit(): void {
     this.getAllVendors(this.topVendors, this.skipVendors);
-
-    switch (true) {
-      case window.innerWidth > 1200:
-        this.breakpoint = 4;
-        break;
-      case (window.innerWidth <= 1200 && window.innerWidth > 800):
-        this.breakpoint = 3;
-        break;
-      case (window.innerWidth <= 800 && window.innerWidth > 540):
-        this.breakpoint = 2;
-        break;
-      case window.innerWidth <= 540:
-        this.breakpoint = 1;
-        break;
-    }
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 }
