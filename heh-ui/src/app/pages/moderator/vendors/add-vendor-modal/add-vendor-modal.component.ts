@@ -84,7 +84,17 @@ export class AddVendorModalComponent implements OnInit {
           this.toaster.open('Vendor was updated', 'success');
         },
         (error) => {
-          this.toaster.open('Update issue was occurred');
+          let errorMessage = '';
+          console.log(error.error.errors.Addresses);
+          console.log(error.error.errors.Discounts);
+          console.log(error.error.errors.hasOwnProperty('Addresses'));
+          console.log(error.error.errors.hasOwnProperty('Discounts'));
+          if (error.error.errors.hasOwnProperty('Addresses')) {
+            errorMessage += `${error.error.errors.Addresses[0]} `;
+          } else if (error.error.errors.hasOwnProperty('Discounts')) {
+            errorMessage += `${error.error.errors.Discounts[0]} `;
+          }
+          this.toaster.open(errorMessage);
         }
       );
     } else {
