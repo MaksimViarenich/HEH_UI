@@ -4,6 +4,7 @@
     "logout": "Выйти",
     "discounts": "Скидки",
     "favorites": "Избранное",
+    "notifications": "Уведомления",
     "moderator": "Модератор",
     "admin": "Администратор"
   },
@@ -42,6 +43,12 @@
     "action": "Действие",
     "user": "Пользователь",
     "description": "Описание"
+  },
+  "event-notification": {
+    "date": "Дата",
+    "title": "Заголовок",
+    "message": "Сообщение",
+    "type": "Тип"
   },
   "users" : {
     "admin": "Администратор",

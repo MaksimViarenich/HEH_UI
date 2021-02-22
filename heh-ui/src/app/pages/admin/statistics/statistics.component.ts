@@ -26,19 +26,19 @@ export class StatisticsComponent implements OnInit {
               private toaster: ToasterService,
               private modalService: ModalService,
               private gridService: GridService) {
-                this.filterService.queryParams = '';
-                this.topStatistics = 16;
-                this.skipStatistics = 0;
-                this.previousScrollPosition = 0;
-                this.totalCount = 0;
-                this.breakpoint = 0;
-              }
+    this.filterService.queryParams = '';
+    this.topStatistics = 16;
+    this.skipStatistics = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
+    this.breakpoint = 0;
+  }
 
   statistics: Array<DiscountCard> = [];
 
   ngOnInit(): void {
     this.getStatistics(this.topStatistics, this.skipStatistics);
-    this.breakpoint = this.gridService.getUserGrid(window.innerWidth);
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 
   getStatisticsWrapper(filters: any): void {
@@ -59,7 +59,7 @@ export class StatisticsComponent implements OnInit {
           this.statistics.push(discount);
         });
         this.totalCount = data['@odata.count'];
-     },
+      },
       () => {
         this.toaster.open('There is no possibility to show statistics');
       }
@@ -75,6 +75,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   onResize(event: any): void {
-   this.breakpoint =  this.gridService.getUserGrid(event.target.innerWidth);
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
   }
 }

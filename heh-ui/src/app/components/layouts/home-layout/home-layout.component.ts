@@ -20,11 +20,11 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   imagePath: string;
   pageTitle: string;
   token: any;
-  decodedToken: any;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},
     {localizationKey: 'header.favorites', pagePath: '/favorites'},
+    {localizationKey: 'header.notifications', pagePath: '/notifications'},
     {localizationKey: 'header.profile', pagePath: '/profile'},
     {localizationKey: 'header.moderator', pagePath: '/moderator/vendors'},
     {localizationKey: 'header.moderator', pagePath: '/moderator/categories_tags'},
