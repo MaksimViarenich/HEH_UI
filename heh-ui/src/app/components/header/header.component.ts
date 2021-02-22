@@ -30,10 +30,10 @@ export class HeaderComponent implements OnInit {
         return this.tabs = HEADER_TABS;
 
       case (role.includes('moderator')):
-        return this.tabs = HEADER_TABS.slice(0, 3);
+        return this.tabs = HEADER_TABS.slice(0, 4);
 
       case (role.includes('employee')):
-        return this.tabs = HEADER_TABS.slice(0, 2);
+        return this.tabs = HEADER_TABS.slice(0, 3);
     }
   }
 

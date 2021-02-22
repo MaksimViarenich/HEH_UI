@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from 'src/app/models/user-info';
 import { HEADER_TABS } from 'src/app/models/tab';
@@ -13,7 +13,8 @@ interface PageTitles {
 @Component({
   selector: 'app-home-layout',
   templateUrl: './home-layout.component.html',
-  styleUrls: ['./home-layout.component.scss']
+  styleUrls: ['./home-layout.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   showSpinner: boolean | undefined;
@@ -22,11 +23,11 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   imagePath: string;
   pageTitle: string;
   token: any;
-  decodedToken: any;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},
     {localizationKey: 'header.favorites', pagePath: '/favorites'},
+    {localizationKey: 'header.notifications', pagePath: '/notifications'},
     {localizationKey: 'header.profile', pagePath: '/profile'},
     {localizationKey: 'header.moderator', pagePath: '/moderator/vendors'},
     {localizationKey: 'header.moderator', pagePath: '/moderator/categories_tags'},

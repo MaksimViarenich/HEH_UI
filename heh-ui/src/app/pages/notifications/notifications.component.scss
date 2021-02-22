@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@import "../../../styles.scss";
 
 .mat-elevation-z8 {
   position: relative;
@@ -11,9 +11,9 @@
 
     th.mat-header-cell {
       text-transform: uppercase;
-      text-align: center;
+      text-align: left;
       font-weight: bold;
-      @extend .backgroundColor;
+      background-color: $color-blue-green;
       color: white;
       z-index: 2;
     }

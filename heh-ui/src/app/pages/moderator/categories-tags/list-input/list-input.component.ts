@@ -1,5 +1,5 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';
@@ -7,7 +7,8 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 @Component({
   selector: 'app-list-input',
   templateUrl: './list-input.component.html',
-  styleUrls: ['./list-input.component.scss']
+  styleUrls: ['./list-input.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ListInputComponent {

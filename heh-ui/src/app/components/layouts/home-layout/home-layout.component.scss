@@ -1,3 +1,5 @@
+@import "../../../../styles";
+
 .mat-sidenav-container {
   background:rgba(0, 0, 0, 0);
   height: 100vh;
@@ -20,9 +22,10 @@
 .container {
   width: 65.625%;
   margin: auto;
-  padding-top: 6.0625rem;
 
   .title {
+    @extend .textTitleColor;
+    padding-top: 5.0625rem;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 3rem;
@@ -33,7 +36,7 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color:rgba(0, 0, 0, 0.286);
+  background-color: rgba(0, 0, 0, 0.286);
   z-index: 1010;
   top: 0;
   left: 0;
@@ -46,19 +49,38 @@
     margin: auto;
   }
 
-  .mat-progress-spinner::ng-deep circle {
+  .mat-progress-spinner circle, .mat-spinner circle{
     stroke: #baeafa;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 950px) {
   .container {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 425px) {
+@media (max-width: 768px) {
+  .container .title {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
   .container {
-    width: 96%;
+    padding-top: 5rem;
+  }
+
+  .container .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container .title {
+    font-size: 1.2rem;
+    margin-bottom: .8rem;
   }
 }

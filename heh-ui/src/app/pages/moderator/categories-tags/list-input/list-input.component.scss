@@ -17,7 +17,7 @@
   button {
     line-height: 3.25rem;
     font-size: 1rem;
-    background-color: $color-blue-green;
+    @extend .backgroundColor;
     vertical-align: top;
     float: right;
     width: 7rem;
@@ -26,5 +26,15 @@
       background-color: $color-white;
       @include glass;
     }
+  }
+}
+
+@media (max-width: 650px) {
+  .list-input-container mat-form-field {
+    width: calc(100% - 5.5rem);
+  }
+
+  .list-input-container button {
+    width: 5rem;
   }
 }

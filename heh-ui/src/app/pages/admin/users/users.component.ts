@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsersService } from './users.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
+import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-users',
@@ -18,19 +19,23 @@ export class UsersComponent implements OnInit {
   skipUsers: any;
   previousScrollPosition: any;
   totalCount: any;
+  breakpoint: number;
 
   constructor(private usersService: UsersService,
               private toaster: ToasterService,
-              private filterService: FiltersService) {
-    this.topUsers = 6;
+              private filterService: FiltersService,
+              private gridService: GridService) {
+    this.topUsers = 9;
     this.skipUsers = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
+    this.breakpoint = 0;
   }
 
   ngOnInit(): void {
     this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
     this.filterService.queryParams = '';
+    this.breakpoint = this.gridService.getUserGrid(window.innerWidth);
   }
 
   applyUserSearch(): void {
@@ -60,5 +65,9 @@ export class UsersComponent implements OnInit {
       this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
       this.previousScrollPosition = event.currentScrollPosition;
     }
+  }
+
+  onResize(event: any): void {
+    this.breakpoint = this.gridService.getUserGrid(event.target.innerWidth);
   }
 }

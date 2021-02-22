@@ -5,12 +5,13 @@
      [infiniteScrollDistance]="1"
      [infiniteScrollThrottle]="100"
      (scrolled)="onScrollDown($event)">
-     <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
+     <mat-grid-list [cols]="breakpoint" rowHeight="11rem" gutterSize="1rem">
       <mat-grid-tile *ngFor="let item of statistics">
         <app-discount-card class="card-statistics"
                            [discount]="item"
                            [isViewCountsVisible]="true"
-                           (click)="openDiscountDetails(item)"></app-discount-card>
+                           (click)="openDiscountDetails(item)"
+                           (window:resize)="onResize($event)"></app-discount-card>
       </mat-grid-tile>
     </mat-grid-list>
 </div>
