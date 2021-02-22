@@ -1,5 +1,8 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserInfo } from 'src/app/models/user-info';
+import { HEADER_TABS } from 'src/app/models/tab';
+import { RoleService } from 'src/app/services/role-service/role.service';
 import { SpinnerService } from '../../../services/spinner-service/spinner.service';
 
 interface PageTitles {
@@ -34,17 +37,38 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
 
   constructor(private router: Router,
               public spinnerService: SpinnerService,
-              private cdRef: ChangeDetectorRef) {
+              private cdRef: ChangeDetectorRef,
+              private roleService: RoleService) {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
     this.token = '';
 
     this.getLocalizationKey();
+    this.tabs = [];
   }
+
+  tabs: any;
+  user: UserInfo | undefined;
 
   ngOnInit(): void {
     this.tokenExpirationLogout();
+    this.tabs = this.getTabs();
+  }
+
+  getTabs(): any {
+    const role = this.roleService.getRoles();
+
+    switch (true) {
+      case (role.includes('administrator')):
+        return this.tabs = HEADER_TABS;
+
+      case (role.includes('moderator')):
+        return this.tabs = HEADER_TABS.slice(0, 3);
+
+      case (role.includes('employee')):
+        return this.tabs = HEADER_TABS.slice(0, 2);
+    }
   }
 
   tokenExpirationLogout(): any {

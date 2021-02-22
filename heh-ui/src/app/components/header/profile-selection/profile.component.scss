@@ -55,3 +55,9 @@ button.mat-menu-item {
     margin-right: .5rem;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .person .person-info {
+    display: none;
+  }
+}

@@ -24,16 +24,14 @@
         <app-profile></app-profile>
         <app-language-selection></app-language-selection>
         <app-select-background></app-select-background>
+        <button class="hamburger hamburger--collapse"
+            type="button"
+            (click)="onSidenavToggle()">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
       </div>
     </nav>
-
-    <button class="hamburger hamburger--collapse"
-            type="button"
-            (click)="openSideNav()">
-        <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
-
   </div>
 </header>

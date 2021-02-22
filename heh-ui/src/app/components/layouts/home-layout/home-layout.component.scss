@@ -1,3 +1,22 @@
+.mat-sidenav-container {
+  background:rgba(0, 0, 0, 0);
+  height: 100vh;
+  padding-top: 3.1875;
+
+  .mat-drawer {
+    z-index: 3;
+    right: 0;
+    height: 100%;
+    width: 35vw;
+  }
+
+  .mat-sidenav {
+    height: 100vh;
+    transform: translate3d(100%, 0, 0);
+    margin-top: 3.1875rem;
+  }
+}
+
 .container {
   width: 65.625%;
   margin: auto;
@@ -29,5 +48,17 @@
 
   .mat-progress-spinner::ng-deep circle {
     stroke: #baeafa;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 96%;
   }
 }

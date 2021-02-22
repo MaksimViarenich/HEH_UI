@@ -51,7 +51,7 @@ import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-inter
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { SideNavComponent } from './components/header/side-nav/side-nav.component';
+import { CommonModule } from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -100,10 +100,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AddAddressComponent,
     ProfileComponent,
     ConfirmationDialogComponent,
-    SideNavComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,15 +1,32 @@
-<app-header></app-header>
-<div *ngIf="spinnerService.visibility | async"
-     class="spinner-overlay">
-  <mat-spinner mode="indeterminate"
-               [diameter]="70"
-               class="mat-progress-spinner">
-  </mat-spinner>
-</div>
-<div class="container">
-  <div class="title">
-    {{ getLocalizationKey() | translate }}
-  </div>
-  <router-outlet></router-outlet>
-</div>
+<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
 
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav
+               class="sidenav">
+    <mat-nav-list>
+      <a class='tab'
+           mat-list-item
+           (click)="sidenav.close()"
+           *ngFor="let tab of tabs"
+           [routerLink]="tab.path"
+           routerLinkActive="list-item-active"
+           #rla="routerLinkActive">{{ tab.localizationKey | translate }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <div *ngIf="spinnerService.visibility | async"
+        class="spinner-overlay">
+      <mat-spinner mode="indeterminate"
+                  [diameter]="70"
+                  class="mat-progress-spinner">
+      </mat-spinner>
+    </div>
+    <div class="container">
+      <div class="title">
+        {{ getLocalizationKey() | translate }}
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

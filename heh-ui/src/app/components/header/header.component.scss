@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 5;
 
   .container {
     display: flex;
@@ -38,15 +38,6 @@
   }
 }
 
-// .example-sidenav-container {
-//   flex: 1;
-//   width: 20%;
-// }
-
-// .example-is-mobile .example-sidenav-container {
-//   flex: 1 0 auto;
-// }
-
 .navigation {
   display: flex;
 
@@ -62,11 +53,8 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .header .container {
-
-    .header-title {
-      font-size: 1rem;
-    }
+  .header .container .header-title {
+    font-size: 1rem;
   }
 }
 
@@ -84,7 +72,30 @@
     }
   }
 
-  .navigation {
+  .navigation a {
     display: none;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .header .navigation .person-content {
+    app-language-selection {
+      display: none;
+    }
+
+    app-select-background {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .header .container .header-title {
+    display: none;
+  }
+
+  .header .container .header-title-adaptive {
+    display: flex;
+    font-size: 1.3rem;
   }
 }

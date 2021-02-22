@@ -1,9 +1,8 @@
-import { ModalService } from 'src/app/services/modal-service/modal.service';
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { HEADER_TABS } from '../../models/tab';
-import { RoleService } from '../../services/role-service/role.service';
-import { UserInfo } from '../../models/user-info';
+import { HEADER_TABS } from 'src/app/models/tab';
+import { RoleService } from 'src/app/services/role-service/role.service';
+import { UserInfo } from 'src/app/models/user-info';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +13,10 @@ import { UserInfo } from '../../models/user-info';
 
 export class HeaderComponent implements OnInit {
 
+  @Output() sidenavToggle: EventEmitter<any> = new EventEmitter();
+
   constructor(private router: Router,
-              private roleService: RoleService,
-              private modalService: ModalService) {
+              private roleService: RoleService) {
     this.tabs = [];
   }
   tabs: any;
@@ -41,11 +41,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/discounts']);
   }
 
-  openSideNav(): any {
-    this.modalService.openSideNav();
-  }
-
   ngOnInit(): any {
     this.tabs = this.getTabs();
+  }
+
+  onSidenavToggle(): any {
+    this.sidenavToggle.emit();
   }
 }

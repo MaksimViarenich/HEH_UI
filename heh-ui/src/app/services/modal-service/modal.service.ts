@@ -1,4 +1,3 @@
-import { SideNavComponent } from './../../components/header/side-nav/side-nav.component';
 import { Injectable } from '@angular/core';
 import { AddVendorModalComponent } from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -86,14 +85,6 @@ export class ModalService {
       height: '10rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
-    });
-  }
-
-  openSideNav(): any {
-    return this.dialog.open(SideNavComponent, {
-      width: '50vw',
-      panelClass: 'side-nav',
-      backdropClass: 'side-nav-backdrop',
     });
   }
 }
