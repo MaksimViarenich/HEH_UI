@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
+import {GridService} from '../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-discounts',
@@ -17,15 +18,18 @@ export class DiscountsComponent implements OnInit {
   skipDiscounts: any;
   previousScrollPosition: any;
   totalCount: any;
+  breakpoint: number;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private discountService: DiscountsService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private gridService: GridService) {
     this.topDiscounts = 16;
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
+    this.breakpoint = 0;
   }
 
   getDiscountsWrapper(filters: any): void {
@@ -55,6 +59,11 @@ export class DiscountsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
+  }
+
+  onResize(event: any): void {
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
   }
 
   onScrollDown(event: any): void {

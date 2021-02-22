@@ -1,13 +1,13 @@
 <div class="favorite-card">
   <div class="favorite-vendor">
-    <div class="card-title">
+    <div class="favorite-card-title">
       {{ favoriteInfo.vendorName}}
     </div>
   </div>
 
-  <div class="card-content">
-    <div class="discount-info">
-      <div class="category-and-tags">
+  <div class="favorite-card-content">
+    <div class="favorite-info">
+      <div class="favorites-category-and-tags">
         <app-category class="favorites-category"
                       [categoryId]="favoriteInfo.categoryId"></app-category>
         <div class="favorites-tags">
@@ -17,11 +17,11 @@
       </div>
 
       <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>
-      <div class="discount-note line-clamp">{{ favoriteInfo.note }}</div>
+      <div class="favorite-note line-clamp">{{ favoriteInfo.note }}</div>
     </div>
   </div>
 
-  <div class="card-actions">
+  <div class="favorite-card-actions">
     <div class="material-icons" (click)="openEditNoteModal()">edit</div>
     <div class="material-icons"
          (click)="deleteFavorite()">delete_outline

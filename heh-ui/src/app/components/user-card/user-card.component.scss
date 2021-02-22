@@ -17,7 +17,7 @@
     padding-top: 1rem;
 
     img {
-      width: 40%;
+      width: 7rem;
       border-radius: 50%;
     }
   }
@@ -72,4 +72,17 @@
 
 .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
   background-color: rgba(51, 51, 51, .2);
+}
+
+@media (max-width: 800px) {
+  .user-card .user-card__avatar img {
+    width: 6.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .user-card .user-card__info .btn-toggle span {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+  }
 }
