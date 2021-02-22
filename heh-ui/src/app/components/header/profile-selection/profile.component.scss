@@ -56,8 +56,23 @@ button.mat-menu-item {
   }
 }
 
-@media screen and (max-width: 425px) {
-  .person .person-info {
-    display: none;
+@media screen and (max-width: 768px) {
+  .person .person-info .person-place {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 375px) {
+  .person {
+    width: 2.5rem;
+    margin-left: 0;
+
+    .profile-icon {
+      margin-left: 0;
+    }
+
+    .person-info {
+      display: none;
+    }
   }
 }

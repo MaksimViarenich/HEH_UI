@@ -6,17 +6,27 @@
   padding-top: 3.1875;
 
   .mat-drawer {
-    z-index: 3;
     right: 0;
     height: 100%;
     width: 35vw;
+    @include glass;
   }
 
   .mat-sidenav {
     height: 100vh;
     transform: translate3d(100%, 0, 0);
     margin-top: 3.1875rem;
+
+    .selectors {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem .5rem;
+    }
   }
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.226);
 }
 
 .container {
@@ -67,9 +77,36 @@
   }
 }
 
+@media (min-width: 769px) {
+  .mat-sidenav-container {
+    .selectors,
+    mat-divider {
+      display: none;
+
+      app-language-selection,
+      app-profile,
+      app-select-background {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .mat-sidenav-container .mat-drawer {
+    width: 50vw;
+  }
+
+  .mat-sidenav-container {
+    .selectors > app-profile {
+      margin-left: 0;
+    }
+  }
+}
+
 @media screen and (max-width: 360px) {
-  .container {
-    padding-top: 5rem;
+  .mat-sidenav-container .mat-drawer {
+    width: 50vw;
   }
 
   .container .title {
@@ -80,7 +117,7 @@
 
 @media screen and (max-width: 320px) {
   .container .title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: .8rem;
   }
 }

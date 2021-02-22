@@ -1,16 +1,26 @@
-<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+<app-header (sidenavToggle)="sidenav.toggle()"
+            (closeSidenav)="sidenav.close()"
+            [menuIsActive]="sidenav.opened"></app-header>
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav
-               class="sidenav">
+               autoFocus="false">
+
+    <div class="selectors">
+      <app-profile></app-profile>
+      <app-language-selection></app-language-selection>
+      <app-select-background></app-select-background>
+    </div>
+
+    <mat-divider></mat-divider>
+
     <mat-nav-list>
       <a class='tab'
-           mat-list-item
-           (click)="sidenav.close()"
-           *ngFor="let tab of tabs"
-           [routerLink]="tab.path"
-           routerLinkActive="list-item-active"
-           #rla="routerLinkActive">{{ tab.localizationKey | translate }}</a>
+         mat-list-item
+         *ngFor="let tab of tabs"
+         (click)="sidenav.close()"
+         [routerLink]="tab.path"
+         routerLinkActive="active">{{ tab.localizationKey | translate }}</a>
     </mat-nav-list>
   </mat-sidenav>
 

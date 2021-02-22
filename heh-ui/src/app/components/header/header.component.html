@@ -9,7 +9,8 @@
     </div>
 
     <nav class='navigation'>
-      <nav mat-tab-nav-bar>
+      <nav mat-tab-nav-bar
+           class="tabs">
         <a class='tab'
            mat-tab-link
            *ngFor="let tab of tabs"
@@ -22,8 +23,8 @@
       <div class="person-content">
         <app-profile></app-profile>
         <app-language-selection></app-language-selection>
-        <app-select-background></app-select-background>
-        <button class="hamburger hamburger--collapse"
+        <button class="hamburger hamburger--spin"
+                [class.is-active]="menuIsActive"
             type="button"
             (click)="onSidenavToggle()">
           <span class="hamburger-box">
