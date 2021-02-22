@@ -20,7 +20,17 @@ $color-gray: #B0B4B6;
 $color-dark-gray: #747474;
 $color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
-$color-dark: #343f4c;
+
+$color-theme-light-blue: #227cac;
+$color-theme-pink-yellow: #db5a5a;
+$color-theme-green-blue: #628C97;
+$color-theme-purple-blue: #726297;
+$color-theme-green-orange: #498d63;
+$color-theme-dark-blue: #165986;
+$color-theme-dark-violet: #6b2686;
+$color-theme-dark-grey: #606b77;
+$color-theme-dark-green: #20693e;
+$color-theme-dark-pink: #9b2f62;
 
 $margin-category-tag: .5rem .5rem .5rem 0;
 
@@ -28,7 +38,7 @@ $padding-category-tag: 0 0.3rem;
 $padding-last: 1.5rem;
 
 @mixin glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
 }
 
@@ -93,44 +103,204 @@ body {
   background-blend-mode: screen;
 }
 
-.light .backgroundColor {
-  background-color: $color-blue-green;
+.light-blue .backgroundColor {
+  background-color: $color-theme-light-blue;
 }
 
-.dark .backgroundColor {
-  background-color: $color-dark;
+.light-blue .borderSolidColor {
+  border: 1px solid $color-theme-light-blue;
 }
 
-.light .borderSolidColor {
-  border: 1px solid $color-blue-green;
+.light-blue .textColor {
+  color: $color-theme-light-blue;
 }
 
-.dark .borderSolidColor {
-  border: 1px solid $color-dark;
-}
-
-.light .textColor {
-  color: $color-blue-green;
-}
-
-.dark .textColor {
-  color: $color-dark;
-}
-
-.light .textTitleColor {
+.light-blue .textTitleColor {
   color: $color-black;
 }
 
-.dark .textTitleColor {
+.light-blue .borderColor {
+  border-color: $color-theme-light-blue;
+}
+
+.pink-yellow .backgroundColor {
+  background-color: $color-theme-pink-yellow;
+}
+
+.pink-yellow .borderSolidColor {
+  border: 1px solid $color-theme-pink-yellow;
+}
+
+.pink-yellow .textColor {
+  color: $color-theme-pink-yellow;
+}
+
+.pink-yellow .textTitleColor {
+  color: $color-black;
+}
+
+.pink-yellow .borderColor {
+  border-color: $color-theme-pink-yellow;
+}
+
+.green-blue .backgroundColor {
+  background-color: $color-theme-green-blue;
+}
+
+.green-blue .borderSolidColor {
+  border: 1px solid $color-theme-green-blue;
+}
+
+.green-blue .textColor {
+  color: $color-theme-green-blue;
+}
+
+.green-blue .textTitleColor {
+  color: $color-black;
+}
+
+.green-blue .borderColor {
+  border-color: $color-theme-green-blue;
+}
+
+.purple-blue .backgroundColor {
+  background-color: $color-theme-purple-blue;
+}
+
+.purple-blue .borderSolidColor {
+  border: 1px solid $color-theme-purple-blue;
+}
+
+.purple-blue .textColor {
+  color: $color-theme-purple-blue;
+}
+
+.purple-blue .textTitleColor {
+  color: $color-black;
+}
+
+.purple-blue .borderColor {
+  border-color: $color-theme-purple-blue;
+}
+
+.green-orange .backgroundColor {
+  background-color: $color-theme-green-orange;
+}
+
+.green-orange .borderSolidColor {
+  border: 1px solid $color-theme-green-orange;
+}
+
+.green-orange .textColor {
+  color: $color-theme-green-orange;
+}
+
+.green-orange .textTitleColor {
+  color: $color-black;
+}
+
+.green-orange .borderColor {
+  border-color: $color-theme-green-orange;
+}
+
+.dark-blue .backgroundColor {
+  background-color: $color-theme-dark-blue;
+}
+
+.dark-blue .borderSolidColor {
+  border: 1px solid $color-theme-dark-blue;
+}
+
+.dark-blue .textColor {
+  color: $color-theme-dark-blue;
+}
+
+.dark-blue .textTitleColor {
   color: $color-white;
 }
 
-.light .borderColor {
-  border-color: $color-blue-green;
+.dark-blue .borderColor {
+  border-color: $color-theme-dark-blue;
 }
 
-.dark .borderColor {
-  border-color: $color-dark;
+.dark-violet .backgroundColor {
+  background-color: $color-theme-dark-violet;
+}
+
+.dark-violet .borderSolidColor {
+  border: 1px solid $color-theme-dark-violet;
+}
+
+.dark-violet .textColor {
+  color: $color-theme-dark-violet;
+}
+
+.dark-violet .textTitleColor {
+  color: $color-white;
+}
+
+.dark-violet .borderColor {
+  border-color: $color-theme-dark-violet;
+}
+
+.dark-grey .backgroundColor {
+  background-color: $color-theme-dark-grey;
+}
+
+.dark-grey .borderSolidColor {
+  border: 1px solid $color-theme-dark-grey;
+}
+
+.dark-grey .textColor {
+  color: $color-theme-dark-grey;
+}
+
+.dark-grey .textTitleColor {
+  color: $color-white;
+}
+
+.dark-grey .borderColor {
+  border-color: $color-theme-dark-grey;
+}
+
+.dark-green .backgroundColor {
+  background-color: $color-theme-dark-green;
+}
+
+.dark-green .borderSolidColor {
+  border: 1px solid $color-theme-dark-green;
+}
+
+.dark-green .textColor {
+  color: $color-theme-dark-green;
+}
+
+.dark-green .textTitleColor {
+  color: $color-white;
+}
+
+.dark-green .borderColor {
+  border-color: $color-theme-dark-green;
+}
+
+.dark-pink .backgroundColor {
+  background-color: $color-theme-dark-pink;
+}
+
+.dark-pink .borderSolidColor {
+  border: 1px solid $color-theme-dark-pink;
+}
+
+.dark-pink .textColor {
+  color: $color-theme-dark-pink;
+}
+
+.dark-pink .textTitleColor {
+  color: $color-white;
+}
+
+.dark-pink .borderColor {
+  border-color: $color-theme-dark-pink;
 }
 
 .mat-form-field-underline {

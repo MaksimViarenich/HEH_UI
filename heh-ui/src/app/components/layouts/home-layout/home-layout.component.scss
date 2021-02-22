@@ -30,7 +30,7 @@
     margin: auto;
   }
 
-  .mat-progress-spinner::ng-deep circle {
+  .mat-progress-spinner circle, .mat-spinner circle{
     stroke: #baeafa;
   }
 }
