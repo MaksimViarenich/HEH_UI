@@ -65,8 +65,18 @@
         <mat-label>{{ 'search.date-range' | translate }}</mat-label>
 
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate placeholder="{{ 'search.date-search-start' | translate }}" readonly>
-          <input matEndDate placeholder="{{ 'search.date-search-end' | translate }}" readonly>
+          <input
+          matStartDate
+          matInput
+          placeholder="{{ 'search.date-search-start' | translate }}"
+          readonly
+          (dateChange)="changeDate($event)">
+          <input
+          matEndDate
+          matInput
+          placeholder="{{ 'search.date-search-end' | translate }}"
+          readonly
+          (dateChange)="changeDate($event)">
         </mat-date-range-input>
 
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

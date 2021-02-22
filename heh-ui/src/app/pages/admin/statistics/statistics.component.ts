@@ -52,8 +52,8 @@ export class StatisticsComponent implements OnInit {
     this.modalService.openDiscountDetailsModal(discount.id, true, discount.viewsAmount);
   }
 
-  getStatistics(top: any, skip: any, filter?: any): any {
-    this.statisticsService.getDiscountsStatistics(filter, top, skip).subscribe(
+  getStatistics(top: any, skip: any, filters?: any): any {
+    this.statisticsService.getDiscountsStatistics(filters, top, skip).subscribe(
       (data: any) => {
         data.value.forEach((discount: any) => {
           this.statistics.push(discount);
