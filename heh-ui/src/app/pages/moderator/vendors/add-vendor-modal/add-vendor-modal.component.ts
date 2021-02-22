@@ -85,14 +85,12 @@ export class AddVendorModalComponent implements OnInit {
         },
         (error) => {
           let errorMessage = '';
-          console.log(error.error.errors.Addresses);
-          console.log(error.error.errors.Discounts);
-          console.log(error.error.errors.hasOwnProperty('Addresses'));
-          console.log(error.error.errors.hasOwnProperty('Discounts'));
           if (error.error.errors.hasOwnProperty('Addresses')) {
             errorMessage += `${error.error.errors.Addresses[0]} `;
           } else if (error.error.errors.hasOwnProperty('Discounts')) {
             errorMessage += `${error.error.errors.Discounts[0]} `;
+          } else {
+            errorMessage = 'Couldn\`t update vendor';
           }
           this.toaster.open(errorMessage);
         }

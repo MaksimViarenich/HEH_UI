@@ -60,7 +60,13 @@ export class CategoriesTagsComponent implements OnInit {
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to add a new category');
+        let errorMessage;
+        if (error.error.errors.hasOwnProperty('Name')) {
+          errorMessage = error.error.errors.Name[0];
+        } else {
+          errorMessage = 'There is no possibility to add a new category';
+        }
+        this.toaster.open(errorMessage);
       }
     );
   }
@@ -75,7 +81,13 @@ export class CategoriesTagsComponent implements OnInit {
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to add a new tag');
+        let errorMessage;
+        if (error.error.errors.hasOwnProperty('Name')) {
+          errorMessage = error.error.errors.Name[0];
+        } else {
+          errorMessage = 'There is no possibility to add a new tag';
+        }
+        this.toaster.open(errorMessage);
       }
     );
   }
@@ -87,7 +99,14 @@ export class CategoriesTagsComponent implements OnInit {
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to delete this category');
+        let errorMessage;
+        if (error.error) {
+          errorMessage = error.error;
+        } else {
+          errorMessage = 'There is no possibility to delete this category';
+        }
+        console.log(error.error);
+        this.toaster.open(errorMessage);
       }
     );
   }

@@ -29,7 +29,13 @@ export class EditNoteModalComponent implements OnInit {
         this.toaster.open('Information has been updated', 'success');
       },
       (error) => {
-        this.toaster.open('Information hasn\'t been updated');
+        let errorMessage;
+        if (error.error.errors.hasOwnProperty('Note')) {
+          errorMessage = error.error.errors.Note[0];
+        } else {
+          errorMessage = 'Information hasn\'t been updated';
+        }
+        this.toaster.open(errorMessage);
       }
     );
   }
