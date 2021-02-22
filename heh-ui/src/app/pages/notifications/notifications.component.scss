@@ -1,0 +1,94 @@
+@import "../../../styles.scss";
+
+.mat-elevation-z8 {
+  position: relative;
+  z-index: 0;
+
+  table {
+    margin-top: 1.5rem;
+    width: 100%;
+    background: transparent;
+
+    th.mat-header-cell {
+      text-transform: uppercase;
+      text-align: left;
+      font-weight: bold;
+      background-color: $color-blue-green;
+      color: white;
+      z-index: 2;
+    }
+
+    td.mat-cell:first-of-type {
+      padding-right: .2rem;
+    }
+
+    td.mat-cell:last-of-type {
+      padding-left: .2rem;
+    }
+
+    thead th {
+      position: sticky;
+      top: 3rem;
+    }
+
+    td {
+      @include glass;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mat-elevation-z8 {
+    table {
+      margin-top: 1rem;
+
+      th.mat-header-cell {
+        font-size: .7rem;
+      }
+
+      td.mat-cell {
+        font-size: .7rem;
+        line-height: .8rem;
+      }
+
+      td.mat-cell:nth-child(3) {
+        padding: 0 .2rem;
+      }
+
+      td.mat-cell:first-of-type {
+        padding-left: .4rem;
+      }
+
+      td.mat-cell:last-of-type {
+        padding-right: .4rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .mat-elevation-z8 {
+    table {
+      margin-top: .5rem;
+    }
+
+    .mat-header-row{
+      height: 2.5rem;
+      top: 4rem;
+    }
+
+    th.mat-header-cell {
+      font-size: .4rem;
+    }
+
+    td.mat-cell {
+      font-size: .4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login-wrapper .login-form {
+    padding: 2rem;
+  }
+}

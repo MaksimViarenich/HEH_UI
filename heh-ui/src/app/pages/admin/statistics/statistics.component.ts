@@ -38,7 +38,7 @@ export class StatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStatistics(this.topStatistics, this.skipStatistics);
-    this.breakpoint = this.gridService.getUserGrid(window.innerWidth);
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 
   getStatisticsWrapper(filters: any): void {
