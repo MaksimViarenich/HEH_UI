@@ -103,204 +103,224 @@ body {
   background-blend-mode: screen;
 }
 
-.light-blue .backgroundColor {
-  background-color: $color-theme-light-blue;
+.light-blue {
+  .backgroundColor {
+    background-color: $color-theme-light-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-light-blue;
+  }
+
+  .textColor {
+    color: $color-theme-light-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-light-blue;
+  }
 }
 
-.light-blue .borderSolidColor {
-  border: 1px solid $color-theme-light-blue;
+.pink-yellow {
+  .backgroundColor {
+    background-color: $color-theme-pink-yellow;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-pink-yellow;
+  }
+
+  .textColor {
+    color: $color-theme-pink-yellow;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-pink-yellow;
+  }
 }
 
-.light-blue .textColor {
-  color: $color-theme-light-blue;
+.green-blue {
+  .backgroundColor {
+    background-color: $color-theme-green-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-blue;
+  }
+
+  .textColor {
+    color: $color-theme-green-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-blue;
+  }
 }
 
-.light-blue .textTitleColor {
-  color: $color-black;
+.purple-blue {
+  .backgroundColor {
+    background-color: $color-theme-purple-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-purple-blue;
+  }
+
+  .textColor {
+    color: $color-theme-purple-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-purple-blue;
+  }
 }
 
-.light-blue .borderColor {
-  border-color: $color-theme-light-blue;
+.green-orange {
+  .backgroundColor {
+    background-color: $color-theme-green-orange;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-orange;
+  }
+
+  .textColor {
+    color: $color-theme-green-orange;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-orange;
+  }
 }
 
-.pink-yellow .backgroundColor {
-  background-color: $color-theme-pink-yellow;
+.dark-blue {
+  .backgroundColor {
+    background-color: $color-theme-dark-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-blue;
+  }
+
+  .textColor {
+    color: $color-theme-dark-blue;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-blue;
+  }
 }
 
-.pink-yellow .borderSolidColor {
-  border: 1px solid $color-theme-pink-yellow;
+.dark-violet {
+  .backgroundColor {
+    background-color: $color-theme-dark-violet;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-violet;
+  }
+
+  .textColor {
+    color: $color-theme-dark-violet;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-violet;
+  }
 }
 
-.pink-yellow .textColor {
-  color: $color-theme-pink-yellow;
+.dark-grey {
+  .backgroundColor {
+    background-color: $color-theme-dark-grey;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-grey;
+  }
+
+  .textColor {
+    color: $color-theme-dark-grey;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-grey;
+  }
 }
 
-.pink-yellow .textTitleColor {
-  color: $color-black;
+.dark-green {
+  .backgroundColor {
+    background-color: $color-theme-dark-green;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-green;
+  }
+
+  .textColor {
+    color: $color-theme-dark-green;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-green;
+  }
 }
 
-.pink-yellow .borderColor {
-  border-color: $color-theme-pink-yellow;
-}
+.dark-pink {
+  .backgroundColor {
+    background-color: $color-theme-dark-pink;
+  }
 
-.green-blue .backgroundColor {
-  background-color: $color-theme-green-blue;
-}
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-pink;
+  }
 
-.green-blue .borderSolidColor {
-  border: 1px solid $color-theme-green-blue;
-}
+  .textColor {
+    color: $color-theme-dark-pink;
+  }
 
-.green-blue .textColor {
-  color: $color-theme-green-blue;
-}
+  .textTitleColor {
+    color: $color-white;
+  }
 
-.green-blue .textTitleColor {
-  color: $color-black;
-}
-
-.green-blue .borderColor {
-  border-color: $color-theme-green-blue;
-}
-
-.purple-blue .backgroundColor {
-  background-color: $color-theme-purple-blue;
-}
-
-.purple-blue .borderSolidColor {
-  border: 1px solid $color-theme-purple-blue;
-}
-
-.purple-blue .textColor {
-  color: $color-theme-purple-blue;
-}
-
-.purple-blue .textTitleColor {
-  color: $color-black;
-}
-
-.purple-blue .borderColor {
-  border-color: $color-theme-purple-blue;
-}
-
-.green-orange .backgroundColor {
-  background-color: $color-theme-green-orange;
-}
-
-.green-orange .borderSolidColor {
-  border: 1px solid $color-theme-green-orange;
-}
-
-.green-orange .textColor {
-  color: $color-theme-green-orange;
-}
-
-.green-orange .textTitleColor {
-  color: $color-black;
-}
-
-.green-orange .borderColor {
-  border-color: $color-theme-green-orange;
-}
-
-.dark-blue .backgroundColor {
-  background-color: $color-theme-dark-blue;
-}
-
-.dark-blue .borderSolidColor {
-  border: 1px solid $color-theme-dark-blue;
-}
-
-.dark-blue .textColor {
-  color: $color-theme-dark-blue;
-}
-
-.dark-blue .textTitleColor {
-  color: $color-white;
-}
-
-.dark-blue .borderColor {
-  border-color: $color-theme-dark-blue;
-}
-
-.dark-violet .backgroundColor {
-  background-color: $color-theme-dark-violet;
-}
-
-.dark-violet .borderSolidColor {
-  border: 1px solid $color-theme-dark-violet;
-}
-
-.dark-violet .textColor {
-  color: $color-theme-dark-violet;
-}
-
-.dark-violet .textTitleColor {
-  color: $color-white;
-}
-
-.dark-violet .borderColor {
-  border-color: $color-theme-dark-violet;
-}
-
-.dark-grey .backgroundColor {
-  background-color: $color-theme-dark-grey;
-}
-
-.dark-grey .borderSolidColor {
-  border: 1px solid $color-theme-dark-grey;
-}
-
-.dark-grey .textColor {
-  color: $color-theme-dark-grey;
-}
-
-.dark-grey .textTitleColor {
-  color: $color-white;
-}
-
-.dark-grey .borderColor {
-  border-color: $color-theme-dark-grey;
-}
-
-.dark-green .backgroundColor {
-  background-color: $color-theme-dark-green;
-}
-
-.dark-green .borderSolidColor {
-  border: 1px solid $color-theme-dark-green;
-}
-
-.dark-green .textColor {
-  color: $color-theme-dark-green;
-}
-
-.dark-green .textTitleColor {
-  color: $color-white;
-}
-
-.dark-green .borderColor {
-  border-color: $color-theme-dark-green;
-}
-
-.dark-pink .backgroundColor {
-  background-color: $color-theme-dark-pink;
-}
-
-.dark-pink .borderSolidColor {
-  border: 1px solid $color-theme-dark-pink;
-}
-
-.dark-pink .textColor {
-  color: $color-theme-dark-pink;
-}
-
-.dark-pink .textTitleColor {
-  color: $color-white;
-}
-
-.dark-pink .borderColor {
-  border-color: $color-theme-dark-pink;
+  .borderColor {
+    border-color: $color-theme-dark-pink;
+  }
 }
 
 .mat-form-field-underline {
