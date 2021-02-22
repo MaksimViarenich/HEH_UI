@@ -4,7 +4,10 @@
      [infiniteScrollDistance]="1"
      [infiniteScrollThrottle]="100"
      (scrolled)="onScrollDown($event)">
-  <mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
+  <mat-grid-list [cols]="breakpoint"
+                 rowHeight="11rem"
+                 gutterSize="1rem"
+                 (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let discount of discounts">
      <app-discount-card [discount]="discount"
                         [isViewCountsVisible]="false"
