@@ -17,7 +17,7 @@
     padding-top: 1rem;
 
     img {
-      width: 40%;
+      width: 7rem;
       border-radius: 50%;
     }
   }
@@ -35,7 +35,7 @@
     }
 
     .mat-button-toggle-group-appearance-standard,
-    .mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+    .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
       border-color: $color-blue-green;
     }
 
@@ -63,5 +63,18 @@
     mat-slide-toggle {
       margin-top: 0.5rem;
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .user-card .user-card__avatar img {
+    width: 6.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .user-card .user-card__info .btn-toggle span {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
   }
 }
