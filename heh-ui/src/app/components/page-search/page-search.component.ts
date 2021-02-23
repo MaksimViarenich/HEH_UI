@@ -15,7 +15,7 @@ export class PageSearchComponent implements OnInit {
   filtersOptions: any;
   searchData: any;
   pickerDate: any[];
-  xxx: any[];
+  month = '';
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -30,7 +30,6 @@ export class PageSearchComponent implements OnInit {
       vendors: [],
     };
     this.pickerDate = [];
-    this.xxx = [];
     this.filtersOptions = {
       locations: [],
       categories: [],
@@ -45,8 +44,22 @@ export class PageSearchComponent implements OnInit {
     });
   }
 
+  transformPickerDate(objDate: any): string {
+    const pickerDateString = objDate.toString();
+    if (objDate.getMonth().length === 1) {
+      this.month = `0${(objDate.getMonth() + 1).toString()}`;
+    } else {
+      this.month = (objDate.getMonth() + 1).toString();
+    }
+    return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
+  }
+
   changeDate(event: any): void {
-    this.pickerDate.push(JSON.stringify(event.target.value));
+    if (event.target.value) {
+      this.pickerDate.push(this.transformPickerDate(event.target.value));
+    } else {
+      this.pickerDate.push(event.target.value);
+    }
     this.searchData.startDate = this.pickerDate[0];
     this.searchData.endDate = this.pickerDate[1];
     if (this.pickerDate.length > 1) {

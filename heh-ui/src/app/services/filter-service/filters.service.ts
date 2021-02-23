@@ -245,7 +245,7 @@ export class FiltersService {
           break;
 
         case 'endDate':
-          if (filters[key] !== 'null') {
+          if (filters[key]) {
             queryEndDate = filters[key];
           }
           break;
@@ -287,13 +287,13 @@ getQueryParams(filters: any, top: number, skip: number): any {
     }
 
     if (filtersParams.queryStartDate && !filtersParams.queryEndDate) {
-      params = params.append('startDate', `${filtersParams.queryStartDate.slice(1, 12)}00:00:00Z`);
-      params = params.append('endDate', `${filtersParams.queryStartDate.slice(1, 12)}00:00:00Z`);
+      params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
+      params = params.append('endDate', `${filtersParams.queryStartDate}T00:00:00Z`);
     }
 
     if (filtersParams.queryEndDate && filtersParams.queryStartDate) {
-      params = params.append('startDate', `${filtersParams.queryStartDate.slice(1, 12)}00:00:00Z`);
-      params = params.append('endDate', `${filtersParams.queryEndDate.slice(1, 12)}00:00:00Z`);
+      params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
+      params = params.append('endDate', `${filtersParams.queryEndDate}T00:00:00Z`);
     }
 
     if (filtersParams.queryParams) {
