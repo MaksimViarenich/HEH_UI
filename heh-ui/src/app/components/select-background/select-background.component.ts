@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Background, SelectBackgroundService } from './select-background.service';
 
 @Component({
   selector: 'app-select-background',
   templateUrl: './select-background.component.html',
-  styleUrls: ['./select-background.component.scss']
+  styleUrls: ['./select-background.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SelectBackgroundComponent implements OnInit {
 
