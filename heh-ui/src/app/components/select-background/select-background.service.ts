@@ -30,4 +30,11 @@ export class SelectBackgroundService {
   getBackgrounds(): Array<Background> {
     return this.backgrounds;
   }
+
+  changeColorTheme(background: Background): void {
+    if (background.colorClass) {
+      document.body.className = 'mat-typography';
+      document.body.classList.add(background.colorClass);
+    }
+  }
 }
