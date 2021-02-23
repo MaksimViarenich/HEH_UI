@@ -4,6 +4,7 @@
     "logout": "Выйти",
     "discounts": "Скидки",
     "favorites": "Избранное",
+    "notifications": "Уведомления",
     "moderator": "Модератор",
     "admin": "Администратор"
   },
@@ -23,7 +24,10 @@
     "service": "Новые сервисы",
     "vendors": "Новые вендоры",
     "city": "По городу",
-    "hot_sales": "Горячие скидки"
+    "hot_sales": "Горячие скидки",
+    "color-theme": "Цветовая тема",
+    "light-mode": "Светлая",
+    "dark-mode": "Темная"
   },
   "search": {
     "btn_search": "Поиск",
@@ -42,6 +46,12 @@
     "action": "Действие",
     "user": "Пользователь",
     "description": "Описание"
+  },
+  "event-notification": {
+    "date": "Дата",
+    "title": "Заголовок",
+    "message": "Сообщение",
+    "type": "Тип"
   },
   "users" : {
     "admin": "Администратор",

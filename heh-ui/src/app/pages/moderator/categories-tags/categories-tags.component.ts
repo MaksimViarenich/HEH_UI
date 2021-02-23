@@ -45,7 +45,7 @@ export class CategoriesTagsComponent implements OnInit {
         });
         this.showTagsList();
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get categories and tags');
       }
     );
@@ -55,12 +55,13 @@ export class CategoriesTagsComponent implements OnInit {
     this.categoryObj = {};
     this.categoryObj.name = category;
     this.filtersService.addNewCategory(this.categoryObj).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('New category has been added', 'success');
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to add a new category');
+        const errorMessage = error.error.errors.hasOwnProperty('Name') ? error.error.errors.Name[0] : 'There is no possibility to add a new category';
+        this.toaster.open(errorMessage);
       }
     );
   }
@@ -70,35 +71,37 @@ export class CategoriesTagsComponent implements OnInit {
     this.tagObj.categoryId = this.activeCategoryId;
     this.tagObj.name = tag;
     this.filtersService.addNewTag(this.tagObj).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('New tag has been added', 'success');
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to add a new tag');
+        const errorMessage = error.error.errors.hasOwnProperty('Name') ? error.error.errors.Name[0] : 'There is no possibility to add a new tag';
+        this.toaster.open(errorMessage);
       }
     );
   }
 
   deleteCategory(categoryId: string, reload: any): void {
     this.filtersService.deleteCategory(categoryId).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Category has been deleted', 'success');
         reload.emit();
       },
       (error) => {
-        this.toaster.open('There is no possibility to delete this category');
+        const errorMessage = error.error ? error.error : 'There is no possibility to delete this category';
+        this.toaster.open(errorMessage);
       }
     );
   }
 
   deleteTag(tagId: string, reload: any): void {
     this.filtersService.deleteTag(tagId).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Tag has been deleted', 'success');
         reload.emit();
       },
-      (error) => {
+      () => {
         this.toaster.open('There is no possibility to delete this tag');
       }
     );

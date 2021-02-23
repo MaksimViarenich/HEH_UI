@@ -13,7 +13,7 @@ $border-radius-small: .33rem;
 
 $color-red: #DB0404;
 $color-green: #008000;
-$color-black: #333;
+$color-black: #333333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-gray: #B0B4B6;
@@ -21,13 +21,24 @@ $color-dark-gray: #747474;
 $color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
 
+$color-theme-light-blue: #227cac;
+$color-theme-pink-yellow: #db5a5a;
+$color-theme-green-blue: #628C97;
+$color-theme-purple-blue: #726297;
+$color-theme-green-orange: #498d63;
+$color-theme-dark-blue: #165986;
+$color-theme-dark-violet: #6b2686;
+$color-theme-dark-grey: #606b77;
+$color-theme-dark-green: #20693e;
+$color-theme-dark-pink: #9b2f62;
+
 $margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
 $padding-last: 1.5rem;
 
 @mixin glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
 }
 
@@ -90,6 +101,230 @@ body {
   height: 100%;
   color: $color-black;
   background-blend-mode: screen;
+}
+
+.overflow{
+  overflow: hidden;
+}
+
+.light-blue {
+  .backgroundColor {
+    background-color: $color-theme-light-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-light-blue;
+  }
+
+  .textColor {
+    color: $color-theme-light-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-light-blue;
+  }
+}
+
+.pink-yellow {
+  .backgroundColor {
+    background-color: $color-theme-pink-yellow;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-pink-yellow;
+  }
+
+  .textColor {
+    color: $color-theme-pink-yellow;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-pink-yellow;
+  }
+}
+
+.green-blue {
+  .backgroundColor {
+    background-color: $color-theme-green-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-blue;
+  }
+
+  .textColor {
+    color: $color-theme-green-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-blue;
+  }
+}
+
+.purple-blue {
+  .backgroundColor {
+    background-color: $color-theme-purple-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-purple-blue;
+  }
+
+  .textColor {
+    color: $color-theme-purple-blue;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-purple-blue;
+  }
+}
+
+.green-orange {
+  .backgroundColor {
+    background-color: $color-theme-green-orange;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-orange;
+  }
+
+  .textColor {
+    color: $color-theme-green-orange;
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-orange;
+  }
+}
+
+.dark-blue {
+  .backgroundColor {
+    background-color: $color-theme-dark-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-blue;
+  }
+
+  .textColor {
+    color: $color-theme-dark-blue;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-blue;
+  }
+}
+
+.dark-violet {
+  .backgroundColor {
+    background-color: $color-theme-dark-violet;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-violet;
+  }
+
+  .textColor {
+    color: $color-theme-dark-violet;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-violet;
+  }
+}
+
+.dark-grey {
+  .backgroundColor {
+    background-color: $color-theme-dark-grey;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-grey;
+  }
+
+  .textColor {
+    color: $color-theme-dark-grey;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-grey;
+  }
+}
+
+.dark-green {
+  .backgroundColor {
+    background-color: $color-theme-dark-green;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-green;
+  }
+
+  .textColor {
+    color: $color-theme-dark-green;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-green;
+  }
+}
+
+.dark-pink {
+  .backgroundColor {
+    background-color: $color-theme-dark-pink;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-pink;
+  }
+
+  .textColor {
+    color: $color-theme-dark-pink;
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-pink;
+  }
 }
 
 .mat-form-field-underline {
@@ -163,7 +398,7 @@ body {
 }
 
 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  background: $color-blue-green;
+  @extend .backgroundColor;
 }
 
 .mat-menu-panel .mat-menu-content {
@@ -175,5 +410,5 @@ body {
 }
 
 .mat-calendar-body-selected {
-  background-color: $color-blue-green;
+  @extend .backgroundColor;
 }

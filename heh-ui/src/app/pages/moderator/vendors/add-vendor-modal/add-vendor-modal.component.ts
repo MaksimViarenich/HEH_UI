@@ -80,19 +80,27 @@ export class AddVendorModalComponent implements OnInit {
 
     if (this.vendor.id) {
       this.vendorService.updateVendor(this.vendor).subscribe(
-        (data) => {
+        () => {
           this.toaster.open('Vendor was updated', 'success');
         },
         (error) => {
-          this.toaster.open('Update issue was occurred');
+          let errorMessage = '';
+          if (error.error.errors.hasOwnProperty('Addresses')) {
+            errorMessage += `${error.error.errors.Addresses[0]} `;
+          } else if (error.error.errors.hasOwnProperty('Discounts')) {
+            errorMessage += `${error.error.errors.Discounts[0]} `;
+          } else {
+            errorMessage = 'Couldn\`t update vendor';
+          }
+          this.toaster.open(errorMessage);
         }
       );
     } else {
       this.vendorService.addVendor(this.vendor).subscribe(
-        (data) => {
+        () => {
           this.toaster.open('New vendor has been added', 'success');
         },
-        (error) => {
+        () => {
           this.toaster.open('There is no possibility to add a new vendor');
         }
       );

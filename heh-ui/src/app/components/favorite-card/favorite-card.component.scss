@@ -98,7 +98,7 @@
 
       &:hover {
         cursor: pointer;
-        color: $color-blue-green;
+        @extend .textColor;
       }
 
       &:last-child {
@@ -141,10 +141,6 @@
     .favorites-category {
       width: fit-content;
       margin-bottom: -0.5rem;
-    }
-
-    .favorites-tags {
-      display: flex;
     }
   }
 }

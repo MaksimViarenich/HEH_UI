@@ -42,7 +42,7 @@ import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-mo
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
-import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
+import { SelectBackgroundComponent } from './components/select-background/select-background.component';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { RoleGuard } from './role-guard/role.guard';
 import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
@@ -51,6 +51,8 @@ import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-inter
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CommonModule } from '@angular/common';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -99,9 +101,11 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AddAddressComponent,
     ProfileComponent,
     ConfirmationDialogComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

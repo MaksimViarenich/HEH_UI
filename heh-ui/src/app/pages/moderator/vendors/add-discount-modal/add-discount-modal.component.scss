@@ -48,7 +48,7 @@
       margin-top: $margin-1;
 
       button:last-child {
-        background: $color-blue-green;
+        @extend .backgroundColor;
         color: $color-white;
 
         &:disabled {

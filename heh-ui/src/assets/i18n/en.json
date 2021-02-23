@@ -4,6 +4,7 @@
     "logout": "Logout",
     "discounts": "Discounts",
     "favorites": "Favorites",
+    "notifications": "Notifications",
     "moderator": "Moderator",
     "admin": "Admin"
   },
@@ -23,7 +24,10 @@
     "service": "New services",
     "vendors": "New vendors",
     "city": "On city",
-    "hot_sales": "Hot sales"
+    "hot_sales": "Hot sales",
+    "color-theme": "Color theme",
+    "light-mode": "Light mode",
+    "dark-mode": "Dark mode"
   },
   "search": {
     "btn_search": "Search",
@@ -42,6 +46,12 @@
     "action": "Action",
     "user": "User",
     "description": "Description"
+  },
+  "event-notification": {
+    "date": "Date",
+    "title": "Title",
+    "message": "Message",
+    "type": "Type"
   },
   "users": {
     "admin": "Administrator",

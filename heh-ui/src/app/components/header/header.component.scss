@@ -1,4 +1,5 @@
 @import "../../../styles.scss";
+@import '~hamburgers/_sass/hamburgers/hamburgers.scss';
 
 .header {
   @include glass;
@@ -6,7 +7,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 5;
 
   .header-container {
     display: flex;
@@ -14,10 +15,20 @@
     align-items: center;
     margin: 0 1rem;
 
+    .hamburger {
+      display: none;
+    }
+
     .header-title {
       font-size: 1.3rem;
       font-weight: bold;
       text-transform: uppercase;
+      color: $color-black;
+    }
+
+    .header-title-adaptive {
+      font-weight: bold;
+      display: none;
       color: $color-black;
     }
 
@@ -37,6 +48,63 @@
   .person-content {
     display: flex;
     align-items: center;
-    margin-left: 2rem;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .header .header-container {
+    .header-title {
+      font-size: 1rem;
+    }
+
+    .navigation .tabs .tab {
+      padding: 0 0.9rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header .header-container .navigation .tabs .tab {
+    font-size: 0.7rem;
+    padding: 0 0.7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    .navigation .person-content {
+      app-language-selection,
+      app-select-background,
+      app-profile {
+        display: none;
+      }
+    }
+
+    .header-container {
+      .hamburger {
+        display: flex;
+        outline: none;
+      }
+
+      .hamburger:active,
+      .hamburger:focus {
+        outline: none;
+      }
+    }
+
+    .navigation a {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .header .header-container .header-title {
+    display: none;
+  }
+
+  .header .header-container .header-title-adaptive {
+    display: flex;
+    font-size: 1.3rem;
   }
 }

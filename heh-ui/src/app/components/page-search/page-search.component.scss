@@ -29,9 +29,9 @@
       width: 24%;
 
       button {
+        @extend .backgroundColor;
         width: 100%;
         height: 100%;
-        background: $color-blue-green;
         color: $color-white;
       }
     }
@@ -67,6 +67,20 @@
       background-color: $color-white;
     }
   }
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  @extend .backgroundColor;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  @extend .textColor;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow,
+.mat-datepicker-toggle-active {
+  color: rgba(0, 0, 0, .6)
 }
 
 @media (max-width: 540px) {

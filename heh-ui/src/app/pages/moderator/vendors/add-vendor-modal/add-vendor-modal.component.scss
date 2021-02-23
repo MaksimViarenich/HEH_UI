@@ -1,7 +1,7 @@
 @import "../../../../../styles.scss";
 
 .mat-icon {
-  color: $color-blue-green;
+  @extend .textColor;
 }
 
 .vendor-details-modal-backdrop.cdk-overlay-backdrop {
@@ -64,7 +64,7 @@
 
     .add-discount-button {
       min-height: 3rem;
-      background: $color-blue-green;
+      @extend .backgroundColor;
       color: $color-white;
     }
   }
@@ -88,6 +88,10 @@
 
     section {
       padding-bottom: 1rem;
+
+      .mat-checkbox-layout {
+        white-space: normal;
+      }
     }
   }
 }
@@ -99,7 +103,7 @@
   padding: 0;
 
   button:last-child {
-    background: $color-blue-green;
+    @extend .backgroundColor;
     color: $color-white;
     margin-left: $margin-1;
 
@@ -109,3 +113,23 @@
     }
   }
 }
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  @extend .backgroundColor;
+}
+
+.mat-ripple-element {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .add-vendor-content {
+    flex-direction: column;
+  }
+
+  .vendor-details-modal.cdk-overlay-pane .add-vendor-info, .vendor-details-modal.cdk-overlay-pane .add-vendor-discounts {
+    width: 100%;
+  }
+}
+
