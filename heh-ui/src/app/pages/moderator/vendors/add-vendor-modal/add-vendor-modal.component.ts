@@ -68,10 +68,9 @@ export class AddVendorModalComponent implements OnInit {
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
-
     this.vendor.addresses = this.vendor.addresses.map((address: any, key: any) => {
       return {
-        id: key + 1,
+        id: address.id ? address.id : key + 1,
         countryId: address.country.id,
         cityId: address.city.id,
         street: address.street,
@@ -133,6 +132,7 @@ export class AddVendorModalComponent implements OnInit {
             for (const city of item.cities) {
               if (addr.cityId === city.id) {
                 editAddresses.push({
+                  id: addr.id,
                   country: {
                     country: item.country,
                     id: item.id,
@@ -168,7 +168,7 @@ export class AddVendorModalComponent implements OnInit {
             }));
           }
         },
-        (error) => {
+        () => {
           this.toaster.open('Сan not get vendorId');
         }
       );
