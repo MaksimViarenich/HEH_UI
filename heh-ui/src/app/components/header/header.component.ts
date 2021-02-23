@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   @Output() closeSidenav: EventEmitter<any> = new EventEmitter();
   @Input() menuIsActive: boolean | undefined;
 
-
   constructor(private router: Router,
               private roleService: RoleService) {
     this.tabs = [];
