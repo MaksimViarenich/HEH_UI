@@ -14,6 +14,8 @@ export class PageSearchComponent implements OnInit {
   @Output() applySearch = new EventEmitter<any>();
   filtersOptions: any;
   searchData: any;
+  pickerDate: any[];
+  month = '';
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -25,8 +27,9 @@ export class PageSearchComponent implements OnInit {
     this.searchData = {
       categories: [],
       tags: [],
-      vendors: []
+      vendors: [],
     };
+    this.pickerDate = [];
     this.filtersOptions = {
       locations: [],
       categories: [],
@@ -41,8 +44,31 @@ export class PageSearchComponent implements OnInit {
     });
   }
 
+  transformPickerDate(objDate: any): string {
+    const pickerDateString = objDate.toString();
+    this.month = objDate.getMonth().length === 1 ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
+
+    return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
+  }
+
+  changeDate(event: any): void {
+    if (event.target.value) {
+      this.pickerDate.push(this.transformPickerDate(event.target.value));
+    } else {
+      this.pickerDate.push(event.target.value);
+    }
+
+    this.searchData.startDate = this.pickerDate[0];
+    this.searchData.endDate = this.pickerDate[1];
+
+    if (this.pickerDate.length > 1) {
+      this.pickerDate = [];
+    }
+  }
+
   submitSearch(): void {
     this.applySearch.emit(this.searchData);
+    this.pickerDate = [];
   }
 
   changeTagsList(): void {
