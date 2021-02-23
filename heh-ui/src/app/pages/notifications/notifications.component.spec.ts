@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { NotificationsComponent } from './notifications.component';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
 
 describe('NotificationsComponent', () => {
   let component: NotificationsComponent;
@@ -8,7 +13,13 @@ describe('NotificationsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationsComponent ]
+      imports: [ MatDialogModule],
+      declarations: [ NotificationsComponent ],
+      providers: [ ToasterService,
+        { provide: MatSnackBar },
+        { provide: Overlay }
+        ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   });

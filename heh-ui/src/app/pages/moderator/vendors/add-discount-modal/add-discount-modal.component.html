@@ -10,7 +10,7 @@
 
   <form class="add-discount-info"
         [formGroup]="form">
-    <div class="add-discount-fields">
+    <div class="add-discount-fields" *ngIf="data">
       <mat-form-field appearance="outline" class="add-discount-address">
         <mat-label>{{ 'vendors.add-discount.address' | translate }}</mat-label>
         <mat-select formControlName="address"
