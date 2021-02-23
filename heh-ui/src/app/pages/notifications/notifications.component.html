@@ -1,4 +1,5 @@
-<app-input-search></app-input-search>
+<app-input-search [(ngModel)]="searchData.searchNotificationText"
+                  (keydown.enter)="applyNotificationSearch()"></app-input-search>
 
 <div class="table-container"
      infiniteScroll

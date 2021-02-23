@@ -235,6 +235,12 @@ export class FiltersService {
             queryParams = `contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`;
           }
           break;
+
+        case 'searchNotificationText':
+          if (filters[key]) {
+            queryParams = `contains(title, '${filters[key]}') or contains(message, '${filters[key]}') or type eq '${filters[key]}'`;
+          }
+          break;
         }
       }
 
