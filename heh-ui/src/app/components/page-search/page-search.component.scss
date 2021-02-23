@@ -69,6 +69,20 @@
   }
 }
 
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  @extend .backgroundColor;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  @extend .textColor;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow,
+.mat-datepicker-toggle-active {
+  color: rgba(0, 0, 0, .6)
+}
+
 @media (max-width: 540px) {
   .search-container {
     margin-bottom: 1rem;
