@@ -51,6 +51,7 @@ import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-inter
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
@@ -104,6 +105,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
