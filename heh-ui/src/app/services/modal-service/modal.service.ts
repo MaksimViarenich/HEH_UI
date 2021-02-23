@@ -1,5 +1,3 @@
-import { NotificationDetailModalComponent
-        } from 'src/app/pages/notifications/notification-detail-modal/notification-detail-modal.component';
 import { Injectable } from '@angular/core';
 import { AddVendorModalComponent } from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -87,16 +85,6 @@ export class ModalService {
       height: '10rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
-    });
-  }
-
-  openNotificationDetailModal(data: string): any {
-    return this.dialog.open(NotificationDetailModalComponent, {
-      data,
-      maxWidth: '25rem',
-      panelClass: 'notification-details-modal',
-      backdropClass: 'notification-details-modal-backdrop',
-      autoFocus: false,
     });
   }
 }
