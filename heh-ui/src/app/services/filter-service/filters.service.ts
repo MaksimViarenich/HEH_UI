@@ -238,7 +238,7 @@ export class FiltersService {
 
         case 'searchNotificationText':
           if (filters[key]) {
-            queryParams = `contains(title, '${filters[key]}') or contains(message, '${filters[key]}') or type eq '${filters[key]}'`;
+            queryParams = `contains(title, '${filters[key]}') or contains(message, '${filters[key]}')`;
           }
           break;
         }

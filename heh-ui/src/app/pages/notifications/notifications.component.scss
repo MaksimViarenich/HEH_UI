@@ -24,15 +24,12 @@
 
     td.mat-cell:last-of-type {
       padding-left: .2rem;
+      cursor: pointer;
     }
 
     thead th {
       position: sticky;
       top: 3rem;
-    }
-
-    td {
-      @include glass;
     }
   }
 }

@@ -1,3 +1,4 @@
+import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { NotificationService } from './notification.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,7 +24,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private toaster: ToasterService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private modalService: ModalService) {
     this.topNotifications = 20;
     this.skipNotifications = 0;
     this.previousScrollPosition = 0;
@@ -53,6 +55,10 @@ export class NotificationsComponent implements OnInit {
         this.toaster.open('Сan not get notifications');
       }
     );
+  }
+
+  openNotificationDetailModal(id: string): any {
+    this.modalService.openNotificationDetailModal(id);
   }
 
   onScrollDown(event: any): void {

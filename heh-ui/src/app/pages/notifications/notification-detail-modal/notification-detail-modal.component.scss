@@ -1,0 +1,57 @@
+@import "src/styles.scss";
+
+.notification-details-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 25rem);
+}
+
+.notification-details-modal.cdk-overlay-pane {
+  width: 25rem;
+
+  .notification-details-wrapper {
+    margin: 0 $margin-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 1rem 0;
+    }
+
+    .content {
+      .notification-details-info {
+        @include glass;
+        border-radius: $border-radius-small;
+        padding: 1rem;
+      }
+
+      .notification-details-info {
+        font-size: 1rem;
+
+        .type,
+        .message {
+          padding-bottom: 1rem;
+        }
+      }
+    }
+
+    .edit-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-bottom: $margin-half;
+
+      .btn-cancel {
+        color: $color-black;
+        margin-right: 0.5rem;
+      }
+
+      .btn-submit {
+        @extend .backgroundColor;
+        color: $color-white;
+      }
+    }
+  }
+}

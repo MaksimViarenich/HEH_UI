@@ -53,6 +53,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { NotificationDetailModalComponent } from './pages/notifications/notification-detail-modal/notification-detail-modal.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -102,6 +103,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ProfileComponent,
     ConfirmationDialogComponent,
     NotificationsComponent,
+    NotificationDetailModalComponent,
   ],
   imports: [
     BrowserModule,
