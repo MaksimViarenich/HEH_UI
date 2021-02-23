@@ -25,7 +25,7 @@ export class VendorsComponent implements OnInit {
               private vendorService: VendorService,
               private toaster: ToasterService,
               private gridService: GridService) {
-    this.topVendors = 7;
+    this.topVendors = 16;
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
@@ -37,6 +37,9 @@ export class VendorsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((dataVendor: any) => {
       if (dataVendor) {
+        this.vendors = [];
+        this.skipVendors = 0;
+        this.previousScrollPosition = 0;
         this.getAllVendors(this.topVendors, this.skipVendors);
       }
     });
