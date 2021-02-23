@@ -88,6 +88,10 @@
 
     section {
       padding-bottom: 1rem;
+
+      .mat-checkbox-layout {
+        white-space: normal;
+      }
     }
   }
 }
@@ -118,3 +122,14 @@
 .mat-ripple-element {
   display: none;
 }
+
+@media (max-width: 640px) {
+  .add-vendor-content {
+    flex-direction: column;
+  }
+
+  .vendor-details-modal.cdk-overlay-pane .add-vendor-info, .vendor-details-modal.cdk-overlay-pane .add-vendor-discounts {
+    width: 100%;
+  }
+}
+
