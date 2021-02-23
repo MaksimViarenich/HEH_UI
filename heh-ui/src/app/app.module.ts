@@ -42,7 +42,7 @@ import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-mo
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
-import { SelectBackgroundComponent } from './components/header/select-background/select-background.component';
+import { SelectBackgroundComponent } from './components/select-background/select-background.component';
 import { AuthGuard } from './auth-guard/auth.guard';
 import { RoleGuard } from './role-guard/role.guard';
 import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
