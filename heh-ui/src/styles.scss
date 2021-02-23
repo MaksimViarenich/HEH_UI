@@ -103,6 +103,10 @@ body {
   background-blend-mode: screen;
 }
 
+.overflow{
+  overflow: hidden;
+}
+
 .light-blue {
   .backgroundColor {
     background-color: $color-theme-light-blue;
