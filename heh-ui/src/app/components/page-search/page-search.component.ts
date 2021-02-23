@@ -46,11 +46,8 @@ export class PageSearchComponent implements OnInit {
 
   transformPickerDate(objDate: any): string {
     const pickerDateString = objDate.toString();
-    if (objDate.getMonth().length === 1) {
-      this.month = `0${(objDate.getMonth() + 1).toString()}`;
-    } else {
-      this.month = (objDate.getMonth() + 1).toString();
-    }
+    this.month = objDate.getMonth().length === 1 ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
+
     return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
   }
 
@@ -60,8 +57,10 @@ export class PageSearchComponent implements OnInit {
     } else {
       this.pickerDate.push(event.target.value);
     }
+
     this.searchData.startDate = this.pickerDate[0];
     this.searchData.endDate = this.pickerDate[1];
+
     if (this.pickerDate.length > 1) {
       this.pickerDate = [];
     }
