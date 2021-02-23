@@ -25,11 +25,12 @@ export class EditNoteModalComponent implements OnInit {
 
   updateInfo(): any {
     this.favoriteService.addUpdateFavorite(this.favorite.id, this.favorite.note, 'update').subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Information has been updated', 'success');
       },
       (error) => {
-        this.toaster.open('Information hasn\'t been updated');
+        const errorMessage = error.error.errors.hasOwnProperty('Note') ? error.error.errors.Note[0] : 'Information hasn\'t been updated';
+        this.toaster.open(errorMessage);
       }
     );
   }
