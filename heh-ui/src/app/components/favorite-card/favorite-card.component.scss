@@ -138,8 +138,9 @@
   .favorites-category-and-tags {
     flex-direction: column;
 
-    .favorites-tags {
-      margin-top: -0.5rem;
+    .favorites-category {
+      width: fit-content;
+      margin-bottom: -0.5rem;
     }
   }
 }
