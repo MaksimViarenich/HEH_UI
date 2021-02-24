@@ -271,6 +271,12 @@ export class FiltersService {
             queryEndDate = filters[key];
           }
           break;
+
+        case 'searchNotificationText':
+          if (filters[key]) {
+            queryParams = `contains(title, '${filters[key]}') or contains(message, '${filters[key]}')`;
+          }
+          break;
         }
       }
 
