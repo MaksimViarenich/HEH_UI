@@ -183,6 +183,8 @@ export class FiltersService {
     let resultParams: any = [];
     let queryParams = '';
     let queryTextParam = '';
+    let queryStartDate = '';
+    let queryEndDate = '';
 
     for (const key in filters) {
       if (!filters.hasOwnProperty(key))
@@ -218,12 +220,6 @@ export class FiltersService {
           }
           break;
 
-        case 'searchText':
-          if (filters[key]) {
-            queryTextParam = filters[key];
-          }
-          break;
-
         case 'searchUserText':
           if (filters[key]) {
             queryParams = `contains(name, '${filters[key]}') or contains(email, '${filters[key]}')`;
@@ -235,17 +231,34 @@ export class FiltersService {
             queryParams = `contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`;
           }
           break;
+
+        case 'searchText':
+          if (filters[key]) {
+            queryTextParam = filters[key];
+          }
+          break;
+
+        case 'startDate':
+          if (filters[key]) {
+            queryStartDate = filters[key];
+          }
+          break;
+
+        case 'endDate':
+          if (filters[key]) {
+            queryEndDate = filters[key];
+          }
+          break;
         }
       }
 
-    resultParams = resultParams
-      .filter((item: string) => item.length);
+    resultParams = resultParams.filter((item: string) => item.length);
     resultParams.forEach((item: string, index: number) => {
         queryParams +=
           resultParams.length - 1 === index ? item : `${item} and `;
       });
 
-    return { queryParams, queryTextParam };
+    return { queryParams, queryTextParam, queryStartDate, queryEndDate };
   }
 
 buildListQuery(filters: any, key: string): string {
@@ -271,6 +284,16 @@ getQueryParams(filters: any, top: number, skip: number): any {
 
     if (filtersParams.queryTextParam) {
       params = params.append('searchText', filtersParams.queryTextParam);
+    }
+
+    if (filtersParams.queryStartDate && !filtersParams.queryEndDate) {
+      params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
+      params = params.append('endDate', `${filtersParams.queryStartDate}T00:00:00Z`);
+    }
+
+    if (filtersParams.queryEndDate && filtersParams.queryStartDate) {
+      params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
+      params = params.append('endDate', `${filtersParams.queryEndDate}T00:00:00Z`);
     }
 
     if (filtersParams.queryParams) {

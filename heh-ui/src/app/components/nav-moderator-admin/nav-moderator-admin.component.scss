@@ -1,8 +1,15 @@
 @import "../../../styles.scss";
 
-.nav-moderator-admin{
+.nav-moderator-admin {
   margin-bottom: 1.5rem;
-  .nav-title{
+
+  .nav-title {
     @extend .textTitleColor;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-title{
+    padding: 0 0.5rem;
   }
 }

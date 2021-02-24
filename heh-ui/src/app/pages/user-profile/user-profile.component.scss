@@ -65,6 +65,17 @@
       }
     }
 
+    .profile-scheme{
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-gray;
+      padding: 0.5rem;
+      width: 12.3rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin: 1.5rem 0;
+    }
+
     .mat-list-base .mat-list-item .mat-list-item-content-reverse {
       padding: 0;
       font-size: 0.9rem;
@@ -108,22 +119,18 @@
       width: 100%;
       padding: 0;
       background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(10px);
       box-shadow: $shadow-gray;
       border-radius: 4px;
 
       .mat-form-field-wrapper {
         padding: 0;
       }
-
-      .mat-chip {
-        margin: 0.5rem 0.5rem 0.5rem 0;
-        background: rgba(240, 240, 240, 0.7);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-      }
     }
   }
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: transparent;
 }
 
 .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
