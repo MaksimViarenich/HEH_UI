@@ -20,17 +20,17 @@ interface PageTitles {
   encapsulation: ViewEncapsulation.None
 })
 export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked {
+  tabs: any;
+  user: UserInfo | undefined;
   showSpinner: boolean | undefined;
   notificationsCount: number;
   timerId: any;
-
   route: string;
   imagePath: string;
   pageTitle: string;
   token: any;
   backgrounds: Array<Background>;
   activeBackground: Background;
-
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},
     {localizationKey: 'header.favorites', pagePath: '/favorites'},
@@ -61,9 +61,6 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
     this.notificationsCount = 0;
   }
 
-  tabs: any;
-  user: UserInfo | undefined;
-
   ngOnInit(): void {
     this.tokenExpirationLogout();
     this.tabs = this.getTabs();
@@ -84,7 +81,7 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
         this.toaster.open('Сan not get notifivations count');
       }
     );
-}
+  }
 
   getTabs(): any {
     const role = this.roleService.getRoles();

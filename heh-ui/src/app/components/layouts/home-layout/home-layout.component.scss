@@ -97,6 +97,11 @@
 }
 
 @media (max-width: 425px) {
+  .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 4rem;
+    top: 0.3rem;
+  }
+
   .mat-sidenav-container .mat-drawer {
     width: 50vw;
   }
@@ -109,6 +114,11 @@
 }
 
 @media screen and (max-width: 360px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3rem;
+    top: 0.2rem;
+  }
+
   .mat-sidenav-container .mat-drawer {
     width: 50vw;
   }
@@ -123,5 +133,10 @@
   .container .title {
     font-size: 1.4rem;
     margin-bottom: .8rem;
+  }
+    
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 1.8rem;
+    top: 0.3rem;
   }
 }
