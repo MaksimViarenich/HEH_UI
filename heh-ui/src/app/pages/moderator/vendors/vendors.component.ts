@@ -14,6 +14,7 @@ import { GridService } from '../../../services/grid-service/grid.service';
 
 export class VendorsComponent implements OnInit {
   vendors: any = [];
+  filterSearchForModal: any = {};
   topVendors: number;
   skipVendors: number;
   previousScrollPosition: number;
@@ -40,7 +41,7 @@ export class VendorsComponent implements OnInit {
         this.vendors = [];
         this.skipVendors = 0;
         this.previousScrollPosition = 0;
-        this.getAllVendors(this.topVendors, this.skipVendors);
+        this.getAllVendors(this.topVendors, this.skipVendors, this.filterSearchForModal);
       }
     });
   }
@@ -60,6 +61,8 @@ export class VendorsComponent implements OnInit {
   }
 
   getVendorSearch(filters: any): void {
+    this.filterSearchForModal = {};
+    this.filterSearchForModal = filters;
     this.vendors = [];
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
