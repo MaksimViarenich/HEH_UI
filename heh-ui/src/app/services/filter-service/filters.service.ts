@@ -65,11 +65,8 @@ export class FiltersService {
   }
 
   editCategory(category: any): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
     return this.http.put(`${BASE_API_URL}/api/category`, category, {headers});
@@ -91,11 +88,8 @@ export class FiltersService {
   }
 
   editTag(tag: any): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
     return this.http.put(`${BASE_API_URL}/api/tag`, tag, {headers});

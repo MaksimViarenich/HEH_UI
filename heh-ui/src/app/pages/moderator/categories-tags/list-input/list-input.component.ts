@@ -17,7 +17,7 @@ export class ListInputComponent {
   @Input() addElement: any;
   @Input() editElement: any;
   @Input() deleteElement: any;
-  @Input() isDisabled?: boolean;
+  @Input() isDisabled?: any;
   @Input() activeCategoryId?: any;
   @Output() changeData = new EventEmitter<string>();
 

@@ -13,23 +13,17 @@ export class NotificationService {
   }
 
   getNotificationDetails(id: string): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
-
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
-    headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.get(`${BASE_API_URL}/api/notification/${id}`, {headers});
   }
 
   getSearchNotifications(filters: any, top: number, skip: number): any {
-    const token = localStorage.getItem('isAuth');
-    const params = this.filterService.getQueryParams(filters, top, skip);
-
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    const params = this.filterService.getQueryParams(filters, top, skip);
 
     return this.http.get(`${BASE_API_URL}/odata/notification`, {headers, params});
   }
