@@ -30,6 +30,10 @@
       position: sticky;
       top: 3rem;
     }
+
+    td {
+      @include glass;
+    }
   }
 }
 
