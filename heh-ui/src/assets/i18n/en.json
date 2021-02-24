@@ -24,7 +24,10 @@
     "service": "New services",
     "vendors": "New vendors",
     "city": "On city",
-    "hot_sales": "Hot sales"
+    "hot_sales": "Hot sales",
+    "color-theme": "Color theme",
+    "light-mode": "Light mode",
+    "dark-mode": "Dark mode"
   },
   "search": {
     "btn_search": "Search",

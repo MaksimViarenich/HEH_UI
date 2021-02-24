@@ -4,6 +4,7 @@ import { UserInfo } from 'src/app/models/user-info';
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
 import { SpinnerService } from '../../../services/spinner-service/spinner.service';
+import { Background, SelectBackgroundService } from '../../select-background/select-background.service';
 
 interface PageTitles {
   localizationKey: string;
@@ -23,6 +24,8 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   imagePath: string;
   pageTitle: string;
   token: any;
+  backgrounds: Array<Background>;
+  activeBackground: Background;
 
   pageTitles: PageTitles[] = [
     {localizationKey: 'header.discounts', pagePath: '/discounts'},
@@ -39,11 +42,14 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   constructor(private router: Router,
               public spinnerService: SpinnerService,
               private cdRef: ChangeDetectorRef,
-              private roleService: RoleService) {
+              private roleService: RoleService,
+              private selectBackgroundServer: SelectBackgroundService) {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
     this.token = '';
+    this.backgrounds = selectBackgroundServer.getBackgrounds();
+    this.activeBackground = JSON.parse(localStorage.getItem('background') as string) || this.backgrounds[0];
 
     this.getLocalizationKey();
     this.tabs = [];
@@ -55,6 +61,8 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     this.tokenExpirationLogout();
     this.tabs = this.getTabs();
+    document.body.style.background = (this.activeBackground?.background as string);
+    this.selectBackgroundServer.changeColorTheme(this.activeBackground);
   }
 
   getTabs(): any {
@@ -65,10 +73,10 @@ export class HomeLayoutComponent implements OnInit, AfterViewChecked {
         return this.tabs = HEADER_TABS;
 
       case (role.includes('moderator')):
-        return this.tabs = HEADER_TABS.slice(0, 3);
+        return this.tabs = HEADER_TABS.slice(0, 4);
 
       case (role.includes('employee')):
-        return this.tabs = HEADER_TABS.slice(0, 2);
+        return this.tabs = HEADER_TABS.slice(0, 3);
     }
   }
 

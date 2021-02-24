@@ -107,6 +107,7 @@
 
         &:last-child:hover {
           opacity: 1;
+          color: $color-red;
         }
       }
     }
@@ -141,10 +142,6 @@
     .favorites-category {
       width: fit-content;
       margin-bottom: -0.5rem;
-    }
-
-    .favorites-tags {
-      display: flex;
     }
   }
 }
