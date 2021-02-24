@@ -56,17 +56,13 @@ export class ModalService {
     });
   }
 
-  openEditNoteModal(data: any): void {
-    const dialogRef = this.dialog.open(EditNoteModalComponent, {
+  openEditNoteModal(data: any): any {
+    return this.dialog.open(EditNoteModalComponent, {
       data,
       maxWidth: '25rem',
       panelClass: 'edit-note-modal',
       backdropClass: 'edit-note-modal-backdrop',
       autoFocus: false,
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 
