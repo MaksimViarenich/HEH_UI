@@ -7,6 +7,7 @@
                       [options]="categoriesAll"
                       [addElement]="addCategory"
                       [deleteElement]="deleteCategory"
+                      [editElement]="editCategory"
                       [isDisabled]=false
                       (changeData)="onChangeData($event)"></app-list-input>
     </div>
@@ -32,6 +33,7 @@
                       [options]="tagsAll"
                       [addElement]="addTag"
                       [deleteElement]="deleteTag"
+                      [editElement]="editTag"
                       [isDisabled]="isDisabled"
                       [activeCategoryId]="activeCategoryId"
                       (changeData)="onChangeData($event)"></app-list-input>

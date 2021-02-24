@@ -44,7 +44,7 @@
   <div class="add-address-btns">
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button
-            [mat-dialog-close]="data"
+            (click)="addAddress()"
             [disabled]="formAddress.invalid">Add</button>
   </div>
 </form>

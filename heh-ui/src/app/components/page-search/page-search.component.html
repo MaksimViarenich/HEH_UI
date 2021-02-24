@@ -64,7 +64,7 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.date-range' | translate }}</mat-label>
 
-        <mat-date-range-input [rangePicker]="picker">
+        <mat-date-range-input [rangePicker]="picker" [max]="maxDate">
           <input
           matStartDate
           matInput

@@ -15,6 +15,7 @@ export class PageSearchComponent implements OnInit {
   filtersOptions: any;
   searchData: any;
   pickerDate: any[];
+  maxDate: Date;
   month = '';
 
   categoriesFormControl = new FormControl();
@@ -22,6 +23,7 @@ export class PageSearchComponent implements OnInit {
   vendorsFormControl = new FormControl();
 
   constructor(private filtersService: FiltersService) {
+    this.maxDate = new Date();
     this.isVendorSearchAvailable = false;
     this.isDateRangeSearchAvailable = false;
     this.searchData = {

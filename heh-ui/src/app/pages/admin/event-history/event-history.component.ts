@@ -3,9 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { FiltersService } from '../../../services/filter-service/filters.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalService } from '../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-event-history',
@@ -24,10 +22,8 @@ export class EventHistoryComponent implements OnInit {
   totalCountEvents: any;
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService,
               private historyService: HistoryService,
-              private toaster: ToasterService,
-              private filterService: FiltersService) {
+              private toaster: ToasterService) {
     this.topEvents = 20;
     this.skipEvents = 0;
     this.previousScrollPosition = 0;

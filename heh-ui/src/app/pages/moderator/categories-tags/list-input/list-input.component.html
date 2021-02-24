@@ -4,7 +4,9 @@
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
-           [(ngModel)]="newItem">
+           [(ngModel)]="newItem"
+           (keydown.enter)="add(newItem)"
+           [disabled]="isDisabled">
     <mat-chip-list #chipList>
     </mat-chip-list>
   </mat-form-field>
@@ -16,9 +18,20 @@
 </div>
 
 <div class="chips-container">
-  <mat-chip *ngFor="let item of options" [selectable]="selectable"
-            [removable]="removable" (removed)="remove(item)">
-    {{item.name}}
+  <mat-chip *ngFor="let item of options"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(item)"
+            (dblclick)="changeItem(item)">
+    <span *ngIf="!item.isChanged">{{item.name}}</span>
+
+    <input class="chips-input"
+           *ngIf="item.isChanged"
+           [value]="item.name"
+           [(ngModel)]="item.name"
+           (keydown.escape)="cancelChange(item)"
+           (keydown.enter)="edit(item)"
+           (keydown)="$event.stopPropagation()"/>
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
 </div>
