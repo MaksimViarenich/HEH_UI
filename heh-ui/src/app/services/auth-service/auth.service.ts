@@ -24,6 +24,10 @@ export class AuthService {
     return this.http.post(`${BASE_API_URL}/connect/token`, params, {headers});
   }
 
+  getToken(): any {
+    return localStorage.getItem('isAuth');
+  }
+
   isAuthenticated(): any {
     const dateNow = Date.now();
     const expDate = Number(localStorage.getItem('expDate'));

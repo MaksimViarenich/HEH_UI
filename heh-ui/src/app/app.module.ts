@@ -37,7 +37,7 @@ import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-mo
 import { ActionEventComponent } from './pages/admin/event-history/action-event/action-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
@@ -53,6 +53,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { TokenInterceptor } from './services/token.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -126,6 +127,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
   providers: [AuthGuard, RoleGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: SpinnerHttpInterceptor,
+    multi: true,
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
     multi: true,
   },
   GoogleMapsAPIWrapper

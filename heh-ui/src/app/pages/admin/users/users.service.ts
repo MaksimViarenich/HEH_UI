@@ -12,12 +12,8 @@ export class UsersService {
               private filterService: FiltersService) {}
 
   getUsers(filters: any, top: number, skip: number): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
-
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
-    headers = headers.append('Authorization', `Bearer ${token}`);
 
     const params = this.filterService.getQueryParams(filters, top, skip);
 
@@ -25,23 +21,15 @@ export class UsersService {
   }
 
   changeRole(userId: string, userRole: string): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
-
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${BASE_API_URL}/api/user/${userId}/${userRole}`, userRole, {headers});
   }
 
   changeState(userId: string, isUserActive: any): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-
     let headers = new HttpHeaders();
-
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
 
     return this.http.put(`${BASE_API_URL}/api/user/${userId}/${isUserActive}`, isUserActive, {headers});
   }
