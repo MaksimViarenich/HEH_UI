@@ -4,7 +4,9 @@
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
-           [(ngModel)]="newItem">
+           [(ngModel)]="newItem"
+           (keydown.enter)="add(newItem)"
+           [disabled]="isDisabled">
     <mat-chip-list #chipList>
     </mat-chip-list>
   </mat-form-field>
