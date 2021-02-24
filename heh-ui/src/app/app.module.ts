@@ -53,6 +53,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -109,6 +110,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     AppMaterialModule,
     HttpClientModule,
     InfiniteScrollModule,
@@ -123,7 +125,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
-  providers: [AuthGuard, RoleGuard, {
+  providers: [AuthGuard, RoleGuard, HttpClient, MatDialog, {
     provide: HTTP_INTERCEPTORS,
     useClass: SpinnerHttpInterceptor,
     multi: true,

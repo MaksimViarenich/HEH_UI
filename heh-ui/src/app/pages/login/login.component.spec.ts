@@ -37,4 +37,12 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+    component.email = 'user.alexander@mail.com';
+    expect(component.email).toEqual('user.alexander@mail.com');
+    component.password = '0kash914t3';
+    expect(component.password).toEqual('0kash914t3');
+  });
 });

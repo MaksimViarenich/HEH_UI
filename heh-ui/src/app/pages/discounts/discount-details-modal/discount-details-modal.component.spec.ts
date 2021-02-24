@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {HttpClient, HttpHandler} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
 
 import { DiscountDetailsModalComponent } from './discount-details-modal.component';
 import { GeocodeService } from './geocode.service';
@@ -21,17 +21,12 @@ describe('DiscountDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule ],
-      providers: [ GeocodeService,
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientModule, MatMenuModule ],
+      declarations: [ DiscountDetailsModalComponent ],
+      providers: [ GeocodeService, MatSnackBar, Overlay,
         { provide: MapsAPILoader, useValue: { load: jasmine.createSpy('load').and.returnValue(new Promise(() => true)) }},
         { provide: GoogleMapsAPIWrapper },
-        DiscountsService, HttpHandler,
-        { provide: HttpClient },
-        ToasterService,
-        { provide: MatSnackBar },
-        { provide: Overlay },
         { provide: MAT_DIALOG_DATA, useValue: { }},
-        { provide: MatDialogRef, useValue: { }}
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
