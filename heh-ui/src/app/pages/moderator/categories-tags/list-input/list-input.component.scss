@@ -5,6 +5,14 @@
     margin: 0.5rem 0.5rem 0.5rem 0;
     @include glass;
   }
+
+  .chips-input {
+    width: 7rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .list-input-container {

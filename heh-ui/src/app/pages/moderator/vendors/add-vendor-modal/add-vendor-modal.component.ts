@@ -1,12 +1,13 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { VendorCard } from '../../../../models/vendor-card';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -26,6 +27,7 @@ export class AddVendorModalComponent implements OnInit {
     public dialog: MatDialog,
     private modalService: ModalService,
     private toaster: ToasterService,
+    private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
   ) {
     this.vendor = {
@@ -61,27 +63,30 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   addUpdateNewVendor(): void {
-    this.vendor.links = [];
-    this.vendor.links.push(
+    const vendorCopy = cloneDeep(this.vendor);
+
+    vendorCopy.links = [];
+    vendorCopy.links.push(
       {type: 'Website', url: this.links.website},
       {type: 'Instagram', url: this.links.instagram},
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
 
-    this.vendor.addresses = this.vendor.addresses.map((address: any, key: any) => {
+    vendorCopy.addresses = vendorCopy.addresses.map((address: any) => {
       return {
-        id: key + 1,
+        id: address.id,
         countryId: address.country.id,
         cityId: address.city.id,
         street: address.street,
       };
     });
 
-    if (this.vendor.id) {
-      this.vendorService.updateVendor(this.vendor).subscribe(
+    if (vendorCopy.id) {
+      this.vendorService.updateVendor(vendorCopy).subscribe(
         () => {
           this.toaster.open('Vendor was updated', 'success');
+          this.matDialogRef.close(vendorCopy);
         },
         (error) => {
           let errorMessage = '';
@@ -89,6 +94,8 @@ export class AddVendorModalComponent implements OnInit {
             errorMessage += `${error.error.errors.Addresses[0]} `;
           } else if (error.error.errors.hasOwnProperty('Discounts')) {
             errorMessage += `${error.error.errors.Discounts[0]} `;
+          } else if (Object.keys(error.error.errors).length) {
+            errorMessage += 'The length of \'Street\' must be 50 characters or fewer.';
           } else {
             errorMessage = 'Couldn\`t update vendor';
           }
@@ -96,9 +103,10 @@ export class AddVendorModalComponent implements OnInit {
         }
       );
     } else {
-      this.vendorService.addVendor(this.vendor).subscribe(
+      this.vendorService.addVendor(vendorCopy).subscribe(
         () => {
           this.toaster.open('New vendor has been added', 'success');
+          this.matDialogRef.close(vendorCopy);
         },
         () => {
           this.toaster.open('There is no possibility to add a new vendor');
@@ -113,12 +121,6 @@ export class AddVendorModalComponent implements OnInit {
     }
 
     return this.vendor.discounts;
-  }
-
-  onAddPhone(phoneNumber: string): void {
-    this.vendor.phones.push({
-      number: phoneNumber
-    });
   }
 
   onDeletePhone(idx: number): void {
@@ -140,6 +142,7 @@ export class AddVendorModalComponent implements OnInit {
                   },
                   city,
                   street: addr.street,
+                  id: addr.id,
                 });
               }
             }
@@ -168,7 +171,7 @@ export class AddVendorModalComponent implements OnInit {
             }));
           }
         },
-        (error) => {
+        () => {
           this.toaster.open('Сan not get vendorId');
         }
       );

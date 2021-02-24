@@ -13,12 +13,10 @@ export class StatisticsService {
               private filterService: FiltersService) { }
 
   getDiscountsStatistics(filters: any, top: number, skip: number): Observable<any> {
-    const token = localStorage.getItem('isAuth');
-    const params = this.filterService.getQueryParams(filters, top, skip);
-
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
-    headers = headers.append('Authorization', `Bearer ${token}`);
+
+    const params = this.filterService.getQueryParams(filters, top, skip);
 
     return this.http.get(`${BASE_API_URL}/odata/Statistics`, {headers, params});
   }

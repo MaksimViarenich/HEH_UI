@@ -11,9 +11,7 @@ export class TagService {
   constructor(public http: HttpClient) { }
 
   getTags(): Observable<any> {
-
     let headers = new HttpHeaders();
-
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
     return this.http.get(`${BASE_API_URL}/api/Category`, {headers});

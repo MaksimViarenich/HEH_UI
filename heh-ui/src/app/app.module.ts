@@ -37,7 +37,7 @@ import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-mo
 import { ActionEventComponent } from './pages/admin/event-history/action-event/action-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
@@ -54,6 +54,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { TokenInterceptor } from './services/token.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -128,6 +129,10 @@ export function HttpLoaderFactory(http: HttpClient): any {
   providers: [AuthGuard, RoleGuard, HttpClient, MatDialog, {
     provide: HTTP_INTERCEPTORS,
     useClass: SpinnerHttpInterceptor,
+    multi: true,
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
     multi: true,
   },
   GoogleMapsAPIWrapper

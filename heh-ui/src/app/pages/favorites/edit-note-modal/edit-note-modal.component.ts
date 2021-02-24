@@ -14,6 +14,7 @@ import { FavoritesService } from '../favorites.service';
 export class EditNoteModalComponent implements OnInit {
   favorite: any;
   initialValue: string;
+  editingValue: string;
 
   constructor(private favoriteService: FavoritesService,
               private toaster: ToasterService,
@@ -21,10 +22,13 @@ export class EditNoteModalComponent implements OnInit {
   ) {
     this.favorite = data;
     this.initialValue = this.favorite.note;
+    this.editingValue = this.favorite.note;
   }
 
   updateInfo(): any {
-    this.favoriteService.addUpdateFavorite(this.favorite.id, this.favorite.note, 'update').subscribe(
+    this.favorite.note = this.editingValue;
+
+    this.favoriteService.addUpdateFavorite(this.favorite.id, this.editingValue, 'update').subscribe(
       () => {
         this.toaster.open('Information has been updated', 'success');
       },

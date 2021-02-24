@@ -14,7 +14,6 @@ export class ModelListInputComponent {
   @Input() label: string;
   @Input() listData: any[];
   @Input() type: string;
-  @Output() addData = new EventEmitter<string>();
   @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
   phonesVendor: FormControl;

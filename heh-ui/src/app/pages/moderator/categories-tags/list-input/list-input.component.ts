@@ -15,8 +15,9 @@ export class ListInputComponent {
   @Input() label: string;
   @Input() options: any;
   @Input() addElement: any;
+  @Input() editElement: any;
   @Input() deleteElement: any;
-  @Input() isDisabled?: boolean;
+  @Input() isDisabled?: any;
   @Input() activeCategoryId?: any;
   @Output() changeData = new EventEmitter<string>();
 
@@ -24,6 +25,7 @@ export class ListInputComponent {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  previousName: any;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(
@@ -31,12 +33,28 @@ export class ListInputComponent {
     private toaster: ToasterService,
     private modalService: ModalService) {
     this.label = '';
+    this.previousName = '';
     this.options = [];
   }
 
   add(item: any): void {
     this.addElement(item, this.changeData);
     this.newItem = '';
+  }
+
+  changeItem(item: any): void {
+    this.previousName = item.name;
+    item.isChanged = true;
+  }
+
+  cancelChange(item: any): void {
+    item.name = this.previousName;
+    item.isChanged = false;
+    this.previousName = '';
+  }
+
+  edit(item: any): void {
+    this.editElement(item, this.changeData);
   }
 
   remove(item: any): void {
