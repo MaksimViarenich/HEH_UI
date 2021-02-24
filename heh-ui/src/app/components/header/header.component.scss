@@ -41,6 +41,11 @@
 .navigation {
   display: flex;
 
+  .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 0;
+    top: 0.5rem;
+  }
+
   .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none;
   }

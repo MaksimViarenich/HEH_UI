@@ -21,6 +21,11 @@
       justify-content: flex-end;
       padding: 1rem .5rem;
     }
+
+    .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+      right: 0;
+      top: 3rem;
+    }
   }
 }
 
