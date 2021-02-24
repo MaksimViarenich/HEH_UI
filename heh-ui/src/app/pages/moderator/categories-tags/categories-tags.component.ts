@@ -107,6 +107,33 @@ export class CategoriesTagsComponent implements OnInit {
     );
   }
 
+  editCategory(category: any, reload: any): void{
+    this.filtersService.editCategory(category).subscribe(
+      () => {
+        this.toaster.open('Category has been changed', 'success');
+        reload.emit();
+      },
+      (error) => {
+        const errorMessage = error.error.errors.hasOwnProperty('Name') ? error.error.errors.Name[0] : 'There is no possibility to change this category';
+        this.toaster.open(errorMessage);
+      }
+    );
+  }
+
+
+  editTag(tag: any, reload: any): void{
+    this.filtersService.editTag(tag).subscribe(
+      () => {
+        this.toaster.open('Tag has been changed', 'success');
+        reload.emit();
+      },
+      (error) => {
+        const errorMessage = error.error.errors.hasOwnProperty('Name') ? error.error.errors.Name[0] : 'There is no possibility to change this tag';
+        this.toaster.open(errorMessage);
+      }
+    );
+  }
+
   onChangeData(params: string): void {
     this.tagsAll = [];
     this.getAllCategoriesAndTags();
