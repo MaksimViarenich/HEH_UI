@@ -3,7 +3,7 @@
 
     <div class="add-vendor-background">
       <div class="add-vendor-title">
-        {{(vendorForId.id)
+        {{(vendorId.id)
         ? ('vendors.edit' | translate)
         : ('vendors.add' | translate)}}
       </div>
@@ -16,27 +16,27 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
-            <input [(ngModel)]="vendorCopy.name"
+            <input [(ngModel)]="vendor.name"
                    [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
-            <input [(ngModel)]="vendorCopy.workingHours" matInput>
+            <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendorCopy.addresses"
+                                [listData]="vendor.addresses"
                                 (deleteData)="onDeleteAddress($event)"
                                 [type]="'address'"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendorCopy.phones"
+                                [listData]="vendor.phones"
                                 (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>
 
@@ -65,10 +65,10 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.email' | translate }}</mat-label>
-            <input [(ngModel)]="vendorCopy.email" matInput>
+            <input [(ngModel)]="vendor.email" matInput>
           </mat-form-field>
           <section>
-            <mat-checkbox [(ngModel)]="vendorCopy.mailing">
+            <mat-checkbox [(ngModel)]="vendor.mailing">
               {{ 'vendors.add-vendor.permission' | translate }}
             </mat-checkbox>
           </section>
@@ -86,7 +86,7 @@
         </button>
 
         <div class="vendors-component">
-          <app-edit-discount-card *ngFor="let discount of vendorCopy.discounts, let i = index"
+          <app-edit-discount-card *ngFor="let discount of vendor.discounts, let i = index"
                                   (click)="openDiscountModal(discount, i)"
                                   [discountInfo]="discount"
                                   (removeDiscountFromVendor)="deleteDiscount(i)"></app-edit-discount-card>
@@ -100,7 +100,7 @@
     <button mat-button
             (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
     <button mat-raised-button
-            [disabled]="!vendorCopy.name"
+            [disabled]="!vendor.name"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.subm' | translate }}</button>
   </mat-dialog-actions>
 </div>

@@ -55,7 +55,6 @@ export class AddAddressComponent implements OnInit {
   addAddress(): void {
     const nodeid = customAlphabet('1234567890', 8);
     const generatedId = Number(nodeid());
-    console.log(typeof generatedId, generatedId);
 
     this.data.id = this.data.id || generatedId;
     this.matDialogRef.close(this.data);
