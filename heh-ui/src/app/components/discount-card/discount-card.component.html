@@ -1,4 +1,4 @@
-<div class="discount-card">
+<div class="discount-card" *ngIf="discount">
   <div class="discount-card-header">
     <div class="discount-card-title">{{discount.vendorName}}</div>
     <app-btn-favorite *ngIf="!isViewCountsVisible"
