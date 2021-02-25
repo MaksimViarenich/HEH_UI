@@ -81,7 +81,13 @@
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 8.5rem;
+    top: 0.3rem;
+  }
+
+
   .mat-sidenav-container {
     .selectors,
     mat-divider {
@@ -96,8 +102,15 @@
   }
 }
 
+@media (max-width: 600px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3.5rem;
+    top: 0.3rem;
+  }
+}
+
 @media (max-width: 425px) {
-  .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
     right: 4rem;
     top: 0.3rem;
   }
@@ -113,12 +126,19 @@
   }
 }
 
+@media (max-width: 400px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3.8rem;
+    top: 0.3rem;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
     right: 3rem;
     top: 0.2rem;
   }
-
+  
   .mat-sidenav-container .mat-drawer {
     width: 50vw;
   }
