@@ -13,7 +13,7 @@
       <!-- Date Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef disableClear>{{ 'event-history.date' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.dateTime | date: 'dd MMMM yyyy hh:mm'}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.dateTime | date: 'dd MMM yyyy hh:mm'}} </td>
       </ng-container>
 
       <!-- Action Column -->

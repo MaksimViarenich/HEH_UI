@@ -38,7 +38,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create', () => {
+  it('should test pass and email', () => {
     expect(component).toBeTruthy();
     component.email = 'user.alexander@mail.com';
     expect(component.email).toEqual('user.alexander@mail.com');
