@@ -1,29 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatMenuModule } from '@angular/material/menu';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { VendorsComponent } from './vendors.component';
-import { DiscountDetailsModalComponent } from '../../discounts/discount-details-modal/discount-details-modal.component';
-
-describe('DiscountDetailsComponent', () => {
-  let component: DiscountDetailsModalComponent;
-  let fixture: ComponentFixture<DiscountDetailsModalComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DiscountDetailsModalComponent ]
-    })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DiscountDetailsModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+import { GeocodeService } from '../../discounts/discount-details-modal/geocode.service';
+import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 describe('VendorsComponent', () => {
   let component: VendorsComponent;
@@ -31,9 +18,18 @@ describe('VendorsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VendorsComponent],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule, MatDialogModule ],
+      declarations: [ VendorsComponent ],
+      providers: [ GeocodeService,
+        { provide: MapsAPILoader, useValue: { load: jasmine.createSpy('load').and.returnValue(new Promise(() => true)) }},
+        { provide: GoogleMapsAPIWrapper },
+        { provide: MatSnackBar },
+        { provide: Overlay },
+        { provide: MAT_DIALOG_DATA, useValue: { }},
+        ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,4 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatMenuModule } from '@angular/material/menu';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
@@ -7,7 +15,10 @@ describe('UserProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule ],
+      declarations: [ UserProfileComponent ],
+      providers: [ MatSnackBar, Overlay ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
       .compileComponents();
   });
