@@ -24,15 +24,7 @@
           routerLinkActive="active">{{ tab.localizationKey | translate }}</a>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content class="content">
-    <div *ngIf="spinnerService.visibility | async"
-        class="spinner-overlay">
-      <mat-spinner mode="indeterminate"
-                  [diameter]="70"
-                  class="mat-progress-spinner">
-      </mat-spinner>
-    </div>
     <div class="container">
       <div class="title">
         {{ getLocalizationKey() | translate }}
@@ -41,3 +33,11 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<div *ngIf="spinnerService.visibility | async"
+        class="spinner-overlay">
+  <mat-spinner mode="indeterminate"
+              [diameter]="70"
+              class="mat-progress-spinner">
+  </mat-spinner>
+</div>

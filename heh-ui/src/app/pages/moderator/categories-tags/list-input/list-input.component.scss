@@ -5,6 +5,16 @@
     margin: 0.5rem 0.5rem 0.5rem 0;
     @include glass;
   }
+
+  .chips-input {
+    width: 7rem;
+    font: 400 14px/20px Montserrat;
+    letter-spacing: normal;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .list-input-container {
@@ -14,17 +24,17 @@
     width: calc(100% - 8rem);
   }
 
-  button {
+  .list-input-button {
     line-height: 3.25rem;
     font-size: 1rem;
     @extend .backgroundColor;
+    color: $color-white;
     vertical-align: top;
     float: right;
     width: 7rem;
 
     &:disabled {
-      background-color: $color-white;
-      @include glass;
+      @extend .backgroundDisabled;
     }
   }
 }

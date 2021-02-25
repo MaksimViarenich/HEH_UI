@@ -103,8 +103,26 @@ body {
   background-blend-mode: screen;
 }
 
-.overflow{
-  overflow: hidden;
+.light {
+  .backgroundDisabled {
+    background-color: rgba(0, 0, 0, .12);
+    color: rgba(0, 0, 0, .26);
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+}
+
+.dark {
+  .backgroundDisabled {
+    background-color: rgba(255, 255, 255, .12);
+    color: rgba(255, 255, 255, .26);
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
 }
 
 .light-blue {
@@ -118,10 +136,6 @@ body {
 
   .textColor {
     color: $color-theme-light-blue;
-  }
-
-  .textTitleColor {
-    color: $color-black;
   }
 
   .borderColor {
@@ -142,10 +156,6 @@ body {
     color: $color-theme-pink-yellow;
   }
 
-  .textTitleColor {
-    color: $color-black;
-  }
-
   .borderColor {
     border-color: $color-theme-pink-yellow;
   }
@@ -162,10 +172,6 @@ body {
 
   .textColor {
     color: $color-theme-green-blue;
-  }
-
-  .textTitleColor {
-    color: $color-black;
   }
 
   .borderColor {
@@ -186,10 +192,6 @@ body {
     color: $color-theme-purple-blue;
   }
 
-  .textTitleColor {
-    color: $color-black;
-  }
-
   .borderColor {
     border-color: $color-theme-purple-blue;
   }
@@ -206,10 +208,6 @@ body {
 
   .textColor {
     color: $color-theme-green-orange;
-  }
-
-  .textTitleColor {
-    color: $color-black;
   }
 
   .borderColor {
@@ -230,10 +228,6 @@ body {
     color: $color-theme-dark-blue;
   }
 
-  .textTitleColor {
-    color: $color-white;
-  }
-
   .borderColor {
     border-color: $color-theme-dark-blue;
   }
@@ -250,10 +244,6 @@ body {
 
   .textColor {
     color: $color-theme-dark-violet;
-  }
-
-  .textTitleColor {
-    color: $color-white;
   }
 
   .borderColor {
@@ -274,10 +264,6 @@ body {
     color: $color-theme-dark-grey;
   }
 
-  .textTitleColor {
-    color: $color-white;
-  }
-
   .borderColor {
     border-color: $color-theme-dark-grey;
   }
@@ -296,10 +282,6 @@ body {
     color: $color-theme-dark-green;
   }
 
-  .textTitleColor {
-    color: $color-white;
-  }
-
   .borderColor {
     border-color: $color-theme-dark-green;
   }
@@ -316,10 +298,6 @@ body {
 
   .textColor {
     color: $color-theme-dark-pink;
-  }
-
-  .textTitleColor {
-    color: $color-white;
   }
 
   .borderColor {
@@ -411,4 +389,22 @@ body {
 
 .mat-calendar-body-selected {
   @extend .backgroundColor;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  @extend .textColor;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow,
+.mat-datepicker-toggle-active {
+  color: rgba(0, 0, 0, .6);
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  @extend .backgroundColor;
+}
+
+.mat-input-element {
+  caret-color: rgba(0, 0, 0, .6);
 }

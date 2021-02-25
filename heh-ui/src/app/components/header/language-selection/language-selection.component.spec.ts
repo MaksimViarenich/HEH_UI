@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
+
 import { LanguageSelectionComponent } from './language-selection.component';
 
 describe('LanguageSelectionComponent', () => {
@@ -7,7 +13,9 @@ describe('LanguageSelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LanguageSelectionComponent ]
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule ],
+      declarations: [ LanguageSelectionComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
       .compileComponents();
   });
