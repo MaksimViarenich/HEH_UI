@@ -20,6 +20,7 @@ export class AddVendorModalComponent implements OnInit {
   links: any;
   countriesCities: any;
   vendorName: FormControl;
+  vendorCopy: any;
 
   constructor(
     private filterService: FiltersService,
@@ -43,37 +44,36 @@ export class AddVendorModalComponent implements OnInit {
       vkontakte: '',
     };
     this.vendorName = new FormControl('', [Validators.required]);
+    this.vendorCopy = {};
   }
 
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
 
   openDiscountModal(discount?: Discount, index?: any): void {
-    const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);
+    const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendorCopy);
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
         if (index !== undefined) {
-          this.vendor.discounts[index] = data;
+          this.vendorCopy.discounts[index] = data;
         } else {
-          this.vendor.discounts.push(data);
+          this.vendorCopy.discounts.push(data);
         }
       }
     });
   }
 
   addUpdateNewVendor(): void {
-    const vendorCopy = cloneDeep(this.vendor);
-
-    vendorCopy.links = [];
-    vendorCopy.links.push(
+    this.vendorCopy.links = [];
+    this.vendorCopy.links.push(
       {type: 'Website', url: this.links.website},
       {type: 'Instagram', url: this.links.instagram},
       {type: 'Facebook', url: this.links.facebook},
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
 
-    vendorCopy.addresses = vendorCopy.addresses.map((address: any) => {
+    this.vendorCopy.addresses = this.vendorCopy.addresses.map((address: any) => {
       return {
         id: address.id,
         countryId: address.country.id,
@@ -82,49 +82,56 @@ export class AddVendorModalComponent implements OnInit {
       };
     });
 
-    if (vendorCopy.id) {
-      this.vendorService.updateVendor(vendorCopy).subscribe(
+    if (this.vendorCopy.id) {
+      this.vendorService.updateVendor(this.vendorCopy).subscribe(
         () => {
           this.toaster.open('Vendor was updated', 'success');
-          this.matDialogRef.close(vendorCopy);
+          this.matDialogRef.close(this.vendorCopy);
         },
         (error) => {
           let errorMessage = '';
-          if (error.error.errors.hasOwnProperty('Addresses')) {
-            errorMessage += `${error.error.errors.Addresses[0]} `;
-          } else if (error.error.errors.hasOwnProperty('Discounts')) {
-            errorMessage += `${error.error.errors.Discounts[0]} `;
-          } else if (Object.keys(error.error.errors).length) {
-            errorMessage += 'The length of \'Street\' must be 50 characters or fewer.';
-          } else {
-            errorMessage = 'Couldn\`t update vendor';
+          switch (true) {
+            case error.error.errors.hasOwnProperty('Addresses'):
+              errorMessage += `${error.error.errors.Addresses[0]} `;
+              break;
+            case error.error.errors.hasOwnProperty('Discounts'):
+              errorMessage += `${error.error.errors.Discounts[0]} `;
+              break;
+            case error.error.errors.hasOwnProperty('WorkingHours'):
+              errorMessage += `${error.error.errors.WorkingHours} `;
+              break;
+            default:
+              errorMessage = 'Couldn\`t update vendor';
           }
+
           this.toaster.open(errorMessage);
+          this.onAddAddress(this.vendorCopy.addresses);
         }
       );
     } else {
-      this.vendorService.addVendor(vendorCopy).subscribe(
+      this.vendorService.addVendor(this.vendorCopy).subscribe(
         () => {
           this.toaster.open('New vendor has been added', 'success');
-          this.matDialogRef.close(vendorCopy);
+          this.matDialogRef.close(this.vendorCopy);
         },
         () => {
           this.toaster.open('There is no possibility to add a new vendor');
+          this.onAddAddress(this.vendorCopy.addresses);
         }
       );
     }
   }
 
   deleteDiscount(index: any): void {
-    if (this.vendor.discounts[index] !== undefined) {
-      this.vendor.discounts.splice(index, 1);
+    if (this.vendorCopy.discounts[index] !== undefined) {
+      this.vendorCopy.discounts.splice(index, 1);
     }
 
-    return this.vendor.discounts;
+    return this.vendorCopy.discounts;
   }
 
   onDeletePhone(idx: number): void {
-    this.vendor.phones.splice(idx, 1);
+    this.vendorCopy.phones.splice(idx, 1);
   }
 
   onAddAddress(address: any): void {
@@ -150,11 +157,16 @@ export class AddVendorModalComponent implements OnInit {
         }
       );
     });
-    this.vendor.addresses = editAddresses;
+    this.vendorCopy.addresses = editAddresses;
   }
 
   onDeleteAddress(idx: number): void {
-    this.vendor.addresses.splice(idx, 1);
+    this.vendorCopy.addresses.splice(idx, 1);
+  }
+
+  restoreVendorData(): void{
+    this.vendorCopy = cloneDeep(this.vendor);
+    this.onAddAddress(this.vendorCopy.addresses);
   }
 
   ngOnInit(): void {
@@ -162,6 +174,7 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
         (data) => {
           this.vendor = data;
+          this.vendorCopy = cloneDeep(this.vendor);
           this.onAddAddress(data.addresses);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
