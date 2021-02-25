@@ -8,5 +8,6 @@
      (scrolled)="onScrollDown($event)">
   <app-favorite-card *ngFor="let card of favoriteCards"
                      [favoriteInfo]="card"
+                     (click)="openDiscountDetailModal(card)"
                      (updateCardsAfterDelete)="getFavoritesAfterDelete()"></app-favorite-card>
 </div>

@@ -95,6 +95,17 @@
       </div>
     </div>
 
+    <div *ngIf="data.isVisibleEditNote"
+          class="edit-note-favorites">
+      <mat-form-field appearance="outline">
+          <mat-label>{{ 'favorites.notes' | translate }}</mat-label>
+          <textarea matInput
+                    type="text"
+                    [(ngModel)]="editingValue"
+                    (keydown.enter)="submitEditNote()"></textarea>
+      </mat-form-field>
+    </div>
+
     <div *ngIf="addresses.length"
          class="discount-details-map">
       <agm-map [latitude]="location.lat"
@@ -106,10 +117,15 @@
       </agm-map>
     </div>
 
-    <div class="discount-details-button">
+    <div class="discount-details-buttons">
       <button mat-button
               [mat-dialog-close]="discountDetails"
-              [disabled]="!discountDetails">{{ 'discounts.cancel' | translate }}</button>
+              [disabled]="!discountDetails">{{ 'discounts.close' | translate }}</button>
+      <button *ngIf="data.isVisibleEditNote"
+              class="btn-submit"
+              mat-raised-button
+              (click)="submitEditNote()">
+              {{ 'favorites.save' | translate }}</button>
     </div>
   </div>
 </div>

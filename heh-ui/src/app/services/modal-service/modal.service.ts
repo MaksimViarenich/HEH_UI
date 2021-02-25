@@ -5,7 +5,6 @@ import { Discount } from '../../models/discount';
 import { AddDiscountModalComponent } from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import { Vendor } from '../../models/vendor';
 import { DiscountDetailsModalComponent } from '../../pages/discounts/discount-details-modal/discount-details-modal.component';
-import { EditNoteModalComponent } from '../../pages/favorites/edit-note-modal/edit-note-modal.component';
 import { AddAddressComponent } from '../../pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 
@@ -42,26 +41,19 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(id: string, countsVisible?: boolean, viewAmount?: number): any {
+  openDiscountDetailsModal(id: string, isVisibleEditNote: boolean, favoriteNote: string,
+                           countsVisible?: boolean, viewAmount?: number): any {
     return this.dialog.open(DiscountDetailsModalComponent, {
       data: {
         id,
         countsVisible,
-        viewAmount
+        viewAmount,
+        isVisibleEditNote,
+        favoriteNote
       },
       maxWidth: '33rem',
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
-      autoFocus: false,
-    });
-  }
-
-  openEditNoteModal(data: any): any {
-    return this.dialog.open(EditNoteModalComponent, {
-      data,
-      maxWidth: '25rem',
-      panelClass: 'edit-note-modal',
-      backdropClass: 'edit-note-modal-backdrop',
       autoFocus: false,
     });
   }

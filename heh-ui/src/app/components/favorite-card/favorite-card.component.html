@@ -1,4 +1,5 @@
-<div class="favorite-card" *ngIf="favoriteInfo">
+<div *ngIf="favoriteInfo"
+      class="favorite-card">
   <div class="favorite-vendor">
     <div class="favorite-card-title">
       {{ favoriteInfo.vendorName}}
@@ -22,9 +23,9 @@
   </div>
 
   <div class="favorite-card-actions">
-    <div class="material-icons" (click)="openEditNoteModal()">edit</div>
     <div class="material-icons"
-         (click)="deleteFavorite()">delete_outline
+        (click)="$event.stopPropagation()"
+        (click)="deleteFavorite()">delete_outline
     </div>
   </div>
 </div>

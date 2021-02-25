@@ -2,6 +2,7 @@ import { FavoritesService } from './favorites.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { ModalService } from 'src/app/services/modal-service/modal.service';
 
 @Component({
   selector: 'app-favorites',
@@ -15,13 +16,26 @@ export class FavoritesComponent implements OnInit {
   skipFavorites: any;
   previousScrollPosition: any;
   totalCount: any;
+  isVisibleEditNote = true;
 
   constructor(private favoritesService: FavoritesService,
+              private modalService: ModalService,
               private toaster: ToasterService) {
     this.topFavorites = 8;
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
+  }
+
+  openDiscountDetailModal(favoriteCard: any): void {
+    const dialogRef = this.modalService.openDiscountDetailsModal(favoriteCard.id, this.isVisibleEditNote, favoriteCard.note);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.favoriteCards = [];
+      this.skipFavorites = 0;
+      this.previousScrollPosition = 0;
+      this.getFavorites(this.topFavorites, this.skipFavorites);
+    });
   }
 
   getFavoritesWrapper(filters: any): void {

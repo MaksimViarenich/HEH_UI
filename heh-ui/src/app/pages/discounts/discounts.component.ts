@@ -19,6 +19,7 @@ export class DiscountsComponent implements OnInit {
   previousScrollPosition: any;
   totalCount: any;
   breakpoint: number;
+  isVisibleEditNote = false;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -54,7 +55,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount.id);
+    this.modalService.openDiscountDetailsModal(discount.id, this.isVisibleEditNote, '');
   }
 
   ngOnInit(): void {
