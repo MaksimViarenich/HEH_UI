@@ -263,12 +263,14 @@ export class FiltersService {
 
 buildListQuery(filters: any, key: string): string {
     let query = '';
-    (filters[key] || []).forEach((item: string, index: number) => {
+
+    const mapped = (filters[key] || []).map((item: string) => `'${item}'` );
+
+    if (mapped.length >= 1) {
       query +=
       `${FILTERS_MAP.get(key)}` + (['vendorCategories', 'tags'].includes(key)
-      ? `/any(t: t eq ${item})`
-      : ` eq ${item}`) + ` ${filters[key].length - 1 === index ? '' : 'or '}`;
-    });
+      ? `/any(t: t in [${mapped}])` : ` in [${mapped}]`);
+    }
 
     return query;
   }
