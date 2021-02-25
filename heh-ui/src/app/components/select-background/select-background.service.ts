@@ -32,9 +32,8 @@ export class SelectBackgroundService {
   }
 
   changeColorTheme(background: Background): void {
-    if (background.colorClass) {
-      document.body.className = 'mat-typography';
-      document.body.classList.add(background.colorClass);
-    }
+    document.body.className = 'mat-typography';
+    background.isDark ? document.body.classList.add(background.colorClass, 'dark')
+                      : document.body.classList.add(background.colorClass, 'light');
   }
 }
