@@ -14,12 +14,14 @@
     <mat-divider></mat-divider>
 
     <mat-nav-list>
-      <a class='tab'
-         mat-list-item
-         *ngFor="let tab of tabs"
-         (click)="sidenav.close()"
-         [routerLink]="tab.path"
-         routerLinkActive="active">{{ tab.localizationKey | translate }}</a>
+      <a *ngFor="let tab of tabs"
+          class='tab'
+          [matBadge]="tab.name==='Notifications' && notificationsCount ? notificationsCount : undefined"
+          matBadgeSize="small"
+          mat-list-item
+          (click)="sidenav.close()"
+          [routerLink]="tab.path"
+          routerLinkActive="active">{{ tab.localizationKey | translate }}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">

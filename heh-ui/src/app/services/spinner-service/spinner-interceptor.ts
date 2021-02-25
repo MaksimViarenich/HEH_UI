@@ -6,6 +6,7 @@ import { HttpHandler } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { SpinnerService } from './spinner.service';
+import { BASE_API_URL } from 'src/app/global';
 
 @Injectable()
 export class SpinnerHttpInterceptor implements HttpInterceptor {
@@ -13,7 +14,9 @@ export class SpinnerHttpInterceptor implements HttpInterceptor {
   constructor(private spinnerService: SpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.spinnerService.show();
+    if (req.url !== `${BASE_API_URL}/api/notification/count`) {
+      this.spinnerService.show();
+    }
 
     return next
       .handle(req)

@@ -24,6 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   exports: [
@@ -53,6 +54,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatGridListModule,
     MatProgressSpinnerModule,
+    MatBadgeModule,
   ],
   imports: [],
   declarations: [],
