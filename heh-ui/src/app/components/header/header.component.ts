@@ -1,8 +1,10 @@
-import { Component, ViewEncapsulation, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
+import { HeaderService } from './header.service';
+import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +13,21 @@ import { UserInfo } from 'src/app/models/user-info';
   encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   @Output() sidenavToggle: EventEmitter<any> = new EventEmitter();
   @Output() closeSidenav: EventEmitter<any> = new EventEmitter();
   @Input() menuIsActive: boolean | undefined;
+  notificationsCount: number;
+  timerId: any;
 
   constructor(private router: Router,
-              private roleService: RoleService) {
+              private roleService: RoleService,
+              private headerService: HeaderService,
+              private toaster: ToasterService) {
     this.tabs = [];
     this.menuIsActive = false;
+    this.notificationsCount = 0;
   }
   tabs: any;
   user: UserInfo | undefined;
@@ -39,18 +46,36 @@ export class HeaderComponent implements OnInit {
         return this.tabs = HEADER_TABS.slice(0, 3);
     }
   }
+  ngOnInit(): void {
+      this.tabs = this.getTabs();
+      this.setNotificationsCount();
+      this.timerId = setInterval(() => {
+        this.setNotificationsCount();
+      }, 1000 * 60);
+  }
 
   goToMain(): void {
     this.router.navigate(['/discounts']);
     this.closeSidenav.emit();
   }
 
-  ngOnInit(): any {
-    this.tabs = this.getTabs();
-  }
-
-  onSidenavToggle(): any {
+  onSidenavToggle(): void {
     this.sidenavToggle.emit();
     this.menuIsActive = !this.menuIsActive;
+  }
+
+  setNotificationsCount(): void {
+      this.headerService.getNotificationsCount().subscribe(
+        (data) => {
+          this.notificationsCount = data;
+        },
+        (error) => {
+          this.toaster.open('Сan not get notifivations count');
+        }
+      );
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timerId);
   }
 }

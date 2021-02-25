@@ -18,12 +18,28 @@
       z-index: 2;
     }
 
+    th.mat-header-cell:first-of-type {
+      padding-right: .2rem;
+    }
+
+    th.mat-header-cell:nth-child(2) {
+      padding-left: .2rem;
+    }
+
     td.mat-cell:first-of-type {
       padding-right: .2rem;
     }
 
     td.mat-cell:last-of-type {
       padding-left: .2rem;
+    }
+
+    td.mat-cell:nth-child(2) {
+      padding: 0 .2rem;
+    }
+
+    td.mat-cell:nth-child(3) {
+      padding: 0 .2rem;
     }
 
     thead th {
@@ -56,11 +72,11 @@
       }
 
       td.mat-cell:first-of-type {
-        padding-left: .4rem;
+        padding: .2rem .2rem .2rem .4rem;
       }
 
       td.mat-cell:last-of-type {
-        padding-right: .4rem;
+        padding: .2rem .4rem .2rem .2rem;
       }
     }
   }

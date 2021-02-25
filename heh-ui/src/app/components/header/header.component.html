@@ -10,14 +10,16 @@
 
     <nav class='navigation'>
       <nav mat-tab-nav-bar
-           class="tabs">
-        <a class='tab'
-           mat-tab-link
-           *ngFor="let tab of tabs"
-           [routerLink]="tab.path"
-           routerLinkActive
-           #rla="routerLinkActive"
-           [active]="rla.isActive">{{ tab.localizationKey | translate }}</a>
+          class="tabs">
+          <a *ngFor="let tab of tabs"
+            class='tab'
+            [matBadge]="tab.name==='Notifications' && notificationsCount ? notificationsCount : undefined"
+            matBadgeSize="small"
+            mat-tab-link
+            [routerLink]="tab.path"
+            routerLinkActive
+            #rla="routerLinkActive"
+            [active]="rla.isActive">{{ tab.localizationKey | translate }}</a>
       </nav>
 
       <div class="person-content">

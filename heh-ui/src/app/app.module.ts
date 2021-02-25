@@ -55,6 +55,7 @@ import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TokenInterceptor } from './services/token.interceptor';
+import { TypeEventComponent } from './pages/notifications/type-event/type-event.component';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -104,6 +105,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     ProfileComponent,
     ConfirmationDialogComponent,
     NotificationsComponent,
+    TypeEventComponent,
   ],
   imports: [
     BrowserModule,
