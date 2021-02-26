@@ -41,7 +41,7 @@ export class ModalService {
     });
   }
 
-  openDiscountDetailsModal(id: string, isVisibleEditNote: boolean, favoriteNote: string,
+  openDiscountDetailsModal(id: string, isVisibleEditNote?: boolean, favoriteNote?: string,
                            countsVisible?: boolean, viewAmount?: number): any {
     return this.dialog.open(DiscountDetailsModalComponent, {
       data: {
