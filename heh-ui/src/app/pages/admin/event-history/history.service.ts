@@ -11,7 +11,7 @@ export class HistoryService {
               private filterService: FiltersService) {
   }
 
-  getSearchHistory(filters: any, top: number, skip: number): any {
+  getSearchHistory(top: number, skip: number, filters?: any): any {
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
 
