@@ -9,7 +9,7 @@
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
   
-        <mat-select [(ngModel)]="searchData.location"
+        <mat-select [(ngModel)]="searchData.historyLocation"
                     (ngModelChange)="applyHistorySearch()">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
           <mat-option [value]="option.id"

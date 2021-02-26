@@ -27,7 +27,7 @@ export class EventHistoryComponent implements OnInit {
               private filtersService: FiltersService,
               private historyService: HistoryService,
               private toaster: ToasterService) {
-    this.searchData.location = [];
+    this.searchData.historyLocation = '';
     this.filtersOptions = {
       locations: [],
     };

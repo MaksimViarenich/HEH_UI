@@ -226,6 +226,12 @@ export class FiltersService {
           }
           break;
 
+        case 'historyLocation':
+          if (filters[key]) {
+              resultParams.push(`UserAddress/CityId eq ${filters[key]}`);
+          }
+          break;
+
         case 'searchText':
           if (filters[key]) {
             queryTextParam = filters[key];

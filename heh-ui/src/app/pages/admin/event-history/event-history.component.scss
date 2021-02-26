@@ -74,7 +74,7 @@
       padding-right: .2rem;
     }
 
-    th.mat-header-cell:nth-child(2) {
+    th.mat-header-cell:not(:first-child) {
       padding-left: .2rem;
     }
 
