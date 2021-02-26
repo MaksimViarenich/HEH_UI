@@ -20,6 +20,7 @@ export class AddVendorModalComponent implements OnInit {
   links: any;
   countriesCities: any;
   vendorName: FormControl;
+  pristineVendor: any;
 
   constructor(
     private filterService: FiltersService,
@@ -28,7 +29,7 @@ export class AddVendorModalComponent implements OnInit {
     private modalService: ModalService,
     private toaster: ToasterService,
     private matDialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public vendorForId: VendorCard
+    @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
   ) {
     this.vendor = {
       phones: [],
@@ -43,6 +44,7 @@ export class AddVendorModalComponent implements OnInit {
       vkontakte: '',
     };
     this.vendorName = new FormControl('', [Validators.required]);
+    this.pristineVendor = {};
   }
 
   addressTitle = 'vendors.add-vendor.address';
@@ -90,15 +92,20 @@ export class AddVendorModalComponent implements OnInit {
         },
         (error) => {
           let errorMessage = '';
-          if (error.error.errors.hasOwnProperty('Addresses')) {
-            errorMessage += `${error.error.errors.Addresses[0]} `;
-          } else if (error.error.errors.hasOwnProperty('Discounts')) {
-            errorMessage += `${error.error.errors.Discounts[0]} `;
-          } else if (Object.keys(error.error.errors).length) {
-            errorMessage += 'The length of \'Street\' must be 50 characters or fewer.';
-          } else {
-            errorMessage = 'Couldn\`t update vendor';
+          switch (true) {
+            case error.error.errors.hasOwnProperty('Addresses'):
+              errorMessage += `${error.error.errors.Addresses[0]} `;
+              break;
+            case error.error.errors.hasOwnProperty('Discounts'):
+              errorMessage += `${error.error.errors.Discounts[0]} `;
+              break;
+            case error.error.errors.hasOwnProperty('WorkingHours'):
+              errorMessage += `${error.error.errors.WorkingHours} `;
+              break;
+            default:
+              errorMessage = 'Couldn\`t update vendor';
           }
+
           this.toaster.open(errorMessage);
         }
       );
@@ -157,11 +164,17 @@ export class AddVendorModalComponent implements OnInit {
     this.vendor.addresses.splice(idx, 1);
   }
 
+  restoreVendorData(): void{
+    this.vendor = cloneDeep(this.pristineVendor);
+    this.onAddAddress(this.vendor.addresses);
+  }
+
   ngOnInit(): void {
-    if (this.vendorForId.id) {
-      this.vendorService.getVendorDetail(this.vendorForId.id).subscribe(
+    if (this.vendorId.id) {
+      this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {
           this.vendor = data;
+          this.pristineVendor = cloneDeep(this.vendor);
           this.onAddAddress(data.addresses);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {

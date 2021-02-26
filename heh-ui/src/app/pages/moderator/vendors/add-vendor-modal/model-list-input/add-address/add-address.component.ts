@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { customAlphabet } from 'nanoid/non-secure';
 
 export interface AddressData {
   country: any;
@@ -22,6 +23,7 @@ export class AddAddressComponent implements OnInit {
   cities: Array<any> = [];
   data: AddressData;
 
+
   constructor(
     private filterService: FiltersService,
     private matDialogRef: MatDialogRef<any>) {
@@ -34,7 +36,7 @@ export class AddAddressComponent implements OnInit {
     this.formAddress = new FormGroup({
       country: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
-      street: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     });
   }
 
@@ -51,7 +53,10 @@ export class AddAddressComponent implements OnInit {
   }
 
   addAddress(): void {
-    this.data.id = this.data.id || Math.floor(Math.random() * 100);
+    const nodeid = customAlphabet('1234567890', 8);
+    const generatedId = Number(nodeid());
+
+    this.data.id = this.data.id || generatedId;
     this.matDialogRef.close(this.data);
   }
 }

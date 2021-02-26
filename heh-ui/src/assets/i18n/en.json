@@ -79,6 +79,7 @@
       "email": "E-mail",
       "permission": "Vendor gave permission to receive newsletters",
       "cancel": "Cancel",
+      "restore": "Restore",
       "subm": "Submit",
       "dsk": "Discounts",
       "add-dsk": "Add discount"

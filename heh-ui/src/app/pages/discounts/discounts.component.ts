@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
-import {GridService} from '../../services/grid-service/grid.service';
+import { GridService } from '../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-discounts',
