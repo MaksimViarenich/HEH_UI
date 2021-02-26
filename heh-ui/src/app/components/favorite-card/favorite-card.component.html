@@ -22,9 +22,9 @@
     </div>
   </div>
 
-  <div class="favorite-card-actions">
+  <div class="favorite-card-actions"
+       (click)="$event.stopPropagation()">
     <div class="material-icons"
-        (click)="$event.stopPropagation()"
         (click)="deleteFavorite()">delete_outline
     </div>
   </div>
