@@ -12,12 +12,13 @@ export class NotificationService {
               private filterService: FiltersService) {
   }
 
-  getNotificationDetails(id: string): Observable<any> {
+  readNotification(id: string): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
     return this.http.get(`${BASE_API_URL}/api/notification/${id}`, {headers});
   }
+
 
   getSearchNotifications(filters: any, top: number, skip: number): any {
     let headers = new HttpHeaders();

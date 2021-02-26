@@ -19,26 +19,28 @@
     }
 
     th.mat-header-cell:first-of-type {
-      padding-right: .2rem;
+      padding-right: 2rem;
+      outline: none;
     }
 
-    th.mat-header-cell:nth-child(2) {
+    th.mat-header-cell:nth-child(3) {
       padding-left: .2rem;
     }
 
     td.mat-cell:first-of-type {
       padding-right: .2rem;
+      padding-left: 2rem;
     }
 
     td.mat-cell:last-of-type {
       padding-left: .2rem;
     }
 
-    td.mat-cell:nth-child(2) {
+    td.mat-cell:nth-child(3) {
       padding: 0 .2rem;
     }
 
-    td.mat-cell:nth-child(3) {
+    td.mat-cell:nth-child(4) {
       padding: 0 .2rem;
     }
 
@@ -48,9 +50,18 @@
     }
 
     td {
-      @include glass;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .is-read {
+      opacity: 0.7;
     }
   }
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  @extend .backgroundColor;
 }
 
 @media screen and (max-width: 768px) {
@@ -68,7 +79,7 @@
       }
 
       td.mat-cell:first-of-type {
-        padding: .2rem .2rem .2rem .4rem;
+        padding: .2rem .2rem .2rem 2rem;
       }
 
       td.mat-cell:last-of-type {

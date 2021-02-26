@@ -12,7 +12,7 @@ import { NotificationElement } from '../../models/notification-element';
   encapsulation: ViewEncapsulation.None,
 })
 export class NotificationsComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'type', 'title', 'message'];
+  displayedColumns: string[] = ['read', 'date', 'type', 'title', 'message'];
   notificationData: NotificationElement[];
   searchData: any = {};
   dataSource: any;
@@ -53,6 +53,15 @@ export class NotificationsComponent implements OnInit {
         this.toaster.open('Сan not get notifications');
       }
     );
+  }
+
+  readNotification(id: string): any {
+    this.notificationService.readNotification(id).subscribe(() => {
+      this.applyNotificationSearch();
+    },
+    () => {
+      this.toaster.open('Сan not read notification');
+    });
   }
 
   onScrollDown(event: any): void {
