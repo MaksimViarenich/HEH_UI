@@ -39,6 +39,15 @@
   }
 }
 
+.hot {
+  background-color: #FFE0E0;
+  color: #D30000;
+
+  .type-event-dot {
+    background-color: #D30000;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .type-event-field {
