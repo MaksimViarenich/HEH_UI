@@ -1,5 +1,5 @@
 import { FavoritesService } from '../../pages/favorites/favorites.service';
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../services/modal-service/modal.service';
 import { Output, EventEmitter } from '@angular/core';
@@ -12,18 +12,15 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
   encapsulation: ViewEncapsulation.None,
 })
 
-export class FavoriteCardComponent implements OnInit {
+export class FavoriteCardComponent {
   @Input() favoriteInfo: any;
   @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
+  isVisibleEditNote = true;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private favoriteService: FavoritesService,
               private toaster: ToasterService) {}
-
-  openEditNoteModal(): void {
-    this.modalService.openEditNoteModal(this.favoriteInfo);
-  }
 
   deleteFavorite(): any {
     const dialogRef = this.modalService.openConfirmModal();
@@ -40,8 +37,5 @@ export class FavoriteCardComponent implements OnInit {
         );
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 }

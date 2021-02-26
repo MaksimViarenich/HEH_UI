@@ -28,7 +28,6 @@ import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
-import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 import { ListInputComponent } from './pages/moderator/categories-tags/list-input/list-input.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
@@ -90,7 +89,6 @@ export function HttpLoaderFactory(http: HttpClient): any {
     BtnFavoriteComponent,
     NavModeratorAdminComponent,
     DiscountDetailsModalComponent,
-    EditNoteModalComponent,
     DiscountDetailsModalComponent,
     ListInputComponent,
     UserCardComponent,

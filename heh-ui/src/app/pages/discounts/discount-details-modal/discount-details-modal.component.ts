@@ -4,10 +4,11 @@ import { FiltersService } from '../../../services/filter-service/filters.service
 import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
+import { FavoritesService } from '../../favorites/favorites.service';
 
 @Component({
   selector: 'app-discount-details',
@@ -27,6 +28,9 @@ export class DiscountDetailsModalComponent implements OnInit {
   result: any;
   activeAddresses: Array<string>;
   userLocation: string;
+  editingValue = this.data.favoriteNote;
+  discountId: string = this.data.id;
+  address = new FormControl();
 
   @ViewChild(AgmMap) map!: AgmMap;
 
@@ -37,6 +41,8 @@ export class DiscountDetailsModalComponent implements OnInit {
     public mapsApiLoader: MapsAPILoader,
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
+    private favoriteService: FavoritesService,
+    private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.discountDetails = {
@@ -57,8 +63,19 @@ export class DiscountDetailsModalComponent implements OnInit {
       vkontakte: '',
     };
   }
-  address = new FormControl();
-  discountId: string = this.data.id;
+
+  submitEditNote(): void {
+    this.favoriteService.addUpdateFavorite(this.discountId, this.editingValue, 'update').subscribe(
+      () => {
+        this.toaster.open('Information has been updated', 'success');
+        this.matDialogRef.close(this.discountId);
+      },
+      (error) => {
+        const errorMessage = error.error.errors.hasOwnProperty('Note') ? error.error.errors.Note[0] : 'Information hasn\'t been updated';
+        this.toaster.open(errorMessage);
+      }
+    );
+  }
 
   displayActiveMarkers(): void {
     this.markers = [];

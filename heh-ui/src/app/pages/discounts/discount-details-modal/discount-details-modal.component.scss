@@ -111,9 +111,33 @@
       }
     }
 
-    .discount-details-button {
+    .edit-note-favorites {
+      height: auto;
+      padding: 1rem;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-violet;
+
+      mat-form-field {
+        width: 100%;
+      }
+
+      .mat-form-field-wrapper {
+        padding: 0;
+        @include glass;
+        border-radius: $border-radius-small;
+      }
+    }
+
+    .discount-details-buttons {
       text-align: right;
       margin: auto 0 $margin-half 0;
+
+      .btn-submit {
+        @extend .backgroundColor;
+        color: $color-white;
+      }
     }
   }
 
