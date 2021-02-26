@@ -4,7 +4,7 @@ import { FiltersService } from '../../../services/filter-service/filters.service
 import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
@@ -42,6 +42,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
+    private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.discountDetails = {
@@ -67,6 +68,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.favoriteService.addUpdateFavorite(this.discountId, this.editingValue, 'update').subscribe(
       () => {
         this.toaster.open('Information has been updated', 'success');
+        this.matDialogRef.close(this.discountId);
       },
       (error) => {
         const errorMessage = error.error.errors.hasOwnProperty('Note') ? error.error.errors.Note[0] : 'Information hasn\'t been updated';

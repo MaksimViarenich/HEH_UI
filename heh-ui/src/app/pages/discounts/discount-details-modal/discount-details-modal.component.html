@@ -119,7 +119,7 @@
 
     <div class="discount-details-buttons">
       <button mat-button
-              [mat-dialog-close]="discountDetails"
+              mat-dialog-close
               [disabled]="!discountDetails">{{ 'discounts.close' | translate }}</button>
       <button *ngIf="data.isVisibleEditNote"
               class="btn-submit"
