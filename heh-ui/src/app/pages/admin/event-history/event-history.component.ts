@@ -4,6 +4,7 @@ import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
 @Component({
   selector: 'app-event-history',
@@ -15,6 +16,7 @@ export class EventHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'action', 'user', 'description'];
   eventData: EventHistoryElement[] = [];
   searchData: any = {};
+  filtersOptions: any;
   dataSource: any;
   topEvents: any;
   skipEvents: any;
@@ -22,8 +24,13 @@ export class EventHistoryComponent implements OnInit {
   totalCountEvents: any;
 
   constructor(public dialog: MatDialog,
+              private filtersService: FiltersService,
               private historyService: HistoryService,
               private toaster: ToasterService) {
+    this.searchData.location = [];
+    this.filtersOptions = {
+      locations: [],
+    };
     this.topEvents = 20;
     this.skipEvents = 0;
     this.previousScrollPosition = 0;
@@ -34,11 +41,11 @@ export class EventHistoryComponent implements OnInit {
     this.eventData = [];
     this.skipEvents = 0;
     this.previousScrollPosition = 0;
-    this.getEventHistory(this.searchData, this.topEvents, this.skipEvents);
+    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 
-  getEventHistory(searchData: any, top: any, skip: any): void {
-    this.historyService.getSearchHistory(searchData, top, skip).subscribe(
+  getEventHistory(top: any, skip: any, searchData?: any): void {
+    this.historyService.getSearchHistory(top, skip, searchData).subscribe(
       (data: any) => {
         data.value.forEach((event: any) => {
           this.eventData.push(event);
@@ -54,13 +61,16 @@ export class EventHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getEventHistory(this.searchData, this.topEvents, this.skipEvents);
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+    });
+    this.getEventHistory(this.topEvents, this.skipEvents);
   }
 
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.eventData.length === this.totalCountEvents)) {
       this.skipEvents += this.topEvents;
-      this.getEventHistory(this.searchData, this.topEvents, this.skipEvents);
+      this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }
