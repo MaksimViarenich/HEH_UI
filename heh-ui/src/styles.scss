@@ -408,3 +408,8 @@ body {
 .mat-input-element {
   caret-color: rgba(0, 0, 0, .6);
 }
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+.mat-form-field-appearance-outline:not(.mat-form-field-disabled) .mat-form-field-flex:hover .mat-form-field-outline {
+  color: $color-gray;
+}

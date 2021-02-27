@@ -20,6 +20,7 @@ export class DiscountsComponent implements OnInit {
   totalCount: any;
   breakpoint: number;
   isVisibleEditNote = false;
+  filterStorage: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -31,9 +32,12 @@ export class DiscountsComponent implements OnInit {
     this.previousScrollPosition = 0;
     this.totalCount = 0;
     this.breakpoint = 0;
+    this.filterStorage = {};
   }
 
   getDiscountsWrapper(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
     this.discounts = [];
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
@@ -55,11 +59,10 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount.id, this.isVisibleEditNote, '');
+    this.modalService.openDiscountDetailsModal(discount.id);
   }
 
   ngOnInit(): void {
-    this.getDiscounts(this.topDiscounts, this.skipDiscounts);
     this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 
@@ -70,7 +73,7 @@ export class DiscountsComponent implements OnInit {
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length === this.totalCount)) {
       this.skipDiscounts += this.topDiscounts;
-      this.getDiscounts(this.topDiscounts, this.skipDiscounts);
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }

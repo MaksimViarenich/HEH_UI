@@ -19,6 +19,7 @@ export class StatisticsComponent implements OnInit {
   previousScrollPosition: any;
   totalCount: any;
   breakpoint: number;
+  filterStorage: any;
 
   constructor(public dialog: MatDialog,
               private filterService: FiltersService,
@@ -32,16 +33,18 @@ export class StatisticsComponent implements OnInit {
     this.previousScrollPosition = 0;
     this.totalCount = 0;
     this.breakpoint = 0;
+    this.filterStorage = {};
   }
 
   statistics: Array<DiscountCard> = [];
 
   ngOnInit(): void {
-    this.getStatistics(this.topStatistics, this.skipStatistics);
     this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 
   getStatisticsWrapper(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
     this.statistics = [];
     this.skipStatistics = 0;
     this.previousScrollPosition = 0;
@@ -49,7 +52,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: any): void {
-    this.modalService.openDiscountDetailsModal(discount.id, true, discount.viewsAmount);
+    this.modalService.openDiscountDetailsModal(discount.id, false, '', true, discount.viewsAmount);
   }
 
   getStatistics(top: any, skip: any, filters?: any): any {
@@ -69,7 +72,7 @@ export class StatisticsComponent implements OnInit {
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.statistics.length === this.totalCount)) {
       this.skipStatistics += this.topStatistics;
-      this.getStatistics(this.topStatistics, this.skipStatistics);
+      this.getStatistics(this.topStatistics, this.skipStatistics, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }
