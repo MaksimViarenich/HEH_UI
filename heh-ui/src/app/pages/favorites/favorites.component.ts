@@ -17,6 +17,7 @@ export class FavoritesComponent implements OnInit {
   previousScrollPosition: any;
   totalCount: any;
   isVisibleEditNote = true;
+  filterStorage: any;
 
   constructor(private favoritesService: FavoritesService,
               private modalService: ModalService,
@@ -25,6 +26,7 @@ export class FavoritesComponent implements OnInit {
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
+    this.filterStorage = {};
   }
 
   openDiscountDetailModal(favoriteCard: any): void {
@@ -35,12 +37,14 @@ export class FavoritesComponent implements OnInit {
         this.favoriteCards = [];
         this.skipFavorites = 0;
         this.previousScrollPosition = 0;
-        this.getFavorites(this.topFavorites, this.skipFavorites);
+        this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
       }
     });
   }
 
   getFavoritesWrapper(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
     this.favoriteCards = [];
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
@@ -65,18 +69,16 @@ export class FavoritesComponent implements OnInit {
     this.favoriteCards = [];
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
-    this.getFavorites(this.topFavorites, this.skipFavorites);
+    this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
   }
 
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.favoriteCards.length === this.totalCount)) {
       this.skipFavorites += this.topFavorites;
-      this.getFavorites(this.topFavorites, this.skipFavorites);
+      this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }
 
-  ngOnInit(): void {
-    this.getFavorites(this.topFavorites, this.skipFavorites);
-  }
+  ngOnInit(): void {}
 }

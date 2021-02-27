@@ -30,6 +30,7 @@ export class PageSearchComponent implements OnInit {
       categories: [],
       tags: [],
       vendors: [],
+      location: '',
     };
     this.pickerDate = [];
     this.filtersOptions = {
@@ -40,7 +41,9 @@ export class PageSearchComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.searchData.location = sessionStorage.getItem('location');
+    this.submitSearch();
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
     });

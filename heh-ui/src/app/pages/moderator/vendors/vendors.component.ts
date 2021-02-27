@@ -14,7 +14,7 @@ import { GridService } from '../../../services/grid-service/grid.service';
 
 export class VendorsComponent implements OnInit {
   vendors: any = [];
-  filterSearchForModal: any = {};
+  filterStorage: any;
   topVendors: number;
   skipVendors: number;
   previousScrollPosition: number;
@@ -31,6 +31,7 @@ export class VendorsComponent implements OnInit {
     this.previousScrollPosition = 0;
     this.totalCount = 0;
     this.breakpoint = 0;
+    this.filterStorage = {};
   }
 
   openVendorModal(data?: Vendor): void {
@@ -41,7 +42,7 @@ export class VendorsComponent implements OnInit {
         this.vendors = [];
         this.skipVendors = 0;
         this.previousScrollPosition = 0;
-        this.getAllVendors(this.topVendors, this.skipVendors, this.filterSearchForModal);
+        this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
       }
     });
   }
@@ -61,8 +62,8 @@ export class VendorsComponent implements OnInit {
   }
 
   getVendorSearch(filters: any): void {
-    this.filterSearchForModal = {};
-    this.filterSearchForModal = filters;
+    this.filterStorage = {};
+    this.filterStorage = filters;
     this.vendors = [];
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
@@ -75,7 +76,7 @@ export class VendorsComponent implements OnInit {
     this.vendors = [];
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
-    this.getAllVendors(this.topVendors, this.skipVendors);
+    this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
   }
 
   onResize(event: any): void {
@@ -85,13 +86,12 @@ export class VendorsComponent implements OnInit {
   onScrollDown(event: any): void {
     if (event.currentScrollPosition > this.previousScrollPosition && !(this.vendors.length === this.totalCount)) {
       this.skipVendors += this.topVendors;
-      this.getAllVendors(this.topVendors, this.skipVendors);
+      this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }
 
   ngOnInit(): void {
-    this.getAllVendors(this.topVendors, this.skipVendors);
     this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 }
