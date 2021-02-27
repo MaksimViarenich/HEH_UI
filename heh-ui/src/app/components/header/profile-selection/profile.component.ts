@@ -53,8 +53,9 @@ export class ProfileComponent implements OnInit {
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
+        sessionStorage.setItem('location', data.address.cityId);
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get user profile');
       }
     );
