@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationElement } from '../../models/notification-element';
-
+import { NgxGlobalEventsService } from 'ngx-global-events';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
@@ -23,7 +23,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private toaster: ToasterService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private globalEventsService: NgxGlobalEventsService) {
     this.topNotifications = 20;
     this.skipNotifications = 0;
     this.previousScrollPosition = 0;
@@ -59,6 +60,8 @@ export class NotificationsComponent implements OnInit {
     if (!isRead) {
       this.notificationService.readNotification(id).subscribe(() => {
         this.applyNotificationSearch();
+
+        this.globalEventsService.emit('updateNotificationCount');
       },
       () => {
         this.toaster.open('Сan not read notification');
