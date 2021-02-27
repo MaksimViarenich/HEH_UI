@@ -80,7 +80,7 @@
       "permission": "Vendor gave permission to receive newsletters",
       "cancel": "Cancel",
       "restore": "Restore",
-      "subm": "Submit",
+      "save": "Save",
       "dsk": "Discounts",
       "add-dsk": "Add discount"
     },
@@ -116,6 +116,7 @@
     "address": "Address",
     "available": "Available to",
     "open": "Open",
-    "close": "Close"
+    "close": "Close",
+    "cancel": "Cancel"
   }
 }

@@ -16,17 +16,6 @@ export class LoginComponent implements OnInit {
   password = '';
   decodedToken: any;
 
-  /* Moder
-     username = 'user.liza@mail.com';
-     password = 'a5Adj7O7';*/
-
-  /* Admin
-    "email" : user.alexander@mail.com,
-    "password" : 0kash914t3  */
-
-  /* Employee
-    "email" : user.joe@mail.com,
-    "password" : o90q4r93qt   */
   constructor(
     private authService: AuthService,
     private toaster: ToasterService,
