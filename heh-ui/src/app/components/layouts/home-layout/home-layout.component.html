@@ -18,6 +18,7 @@
           class='tab'
           [matBadge]="tab.name==='Notifications' && notificationsCount ? notificationsCount : undefined"
           matBadgeSize="small"
+          matBadgeColor="warn"
           mat-list-item
           (click)="sidenav.close()"
           [routerLink]="tab.path"
