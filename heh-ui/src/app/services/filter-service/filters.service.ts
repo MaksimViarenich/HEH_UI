@@ -222,7 +222,13 @@ export class FiltersService {
 
         case 'searchHistoryText':
           if (filters[key]) {
-            queryParams = `contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`;
+              resultParams.push(`contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`);
+          }
+          break;
+
+        case 'historyLocation':
+          if (filters[key]) {
+              resultParams.push(`UserAddress/CityId eq ${filters[key]}`);
           }
           break;
 

@@ -30,7 +30,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   openDiscountDetailModal(favoriteCard: any): void {
-    const dialogRef = this.modalService.openDiscountDetailsModal(favoriteCard.id, this.isVisibleEditNote, favoriteCard.note);
+    const dialogRef = this.modalService.openDiscountDetailsModal(favoriteCard.id, true, favoriteCard.note);
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {

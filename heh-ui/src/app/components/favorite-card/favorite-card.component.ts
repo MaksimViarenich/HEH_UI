@@ -15,7 +15,6 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 export class FavoriteCardComponent {
   @Input() favoriteInfo: any;
   @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
-  isVisibleEditNote = true;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,

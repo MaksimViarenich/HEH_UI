@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth-service/auth.service';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.auth.isAuthenticated()) {
@@ -17,6 +19,14 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(tap(() => {},
+      (err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status !== 401) {
+            return;
+          }
+          this.router.navigate(['login']);
+        }
+      }));
   }
 }

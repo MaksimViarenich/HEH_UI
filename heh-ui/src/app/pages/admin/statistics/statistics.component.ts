@@ -52,7 +52,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: any): void {
-    this.modalService.openDiscountDetailsModal(discount.id, true, discount.viewsAmount);
+    this.modalService.openDiscountDetailsModal(discount.id, false, '', true, discount.viewsAmount);
   }
 
   getStatistics(top: any, skip: any, filters?: any): any {

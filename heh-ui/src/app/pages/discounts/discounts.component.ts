@@ -59,7 +59,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount.id, this.isVisibleEditNote, '');
+    this.modalService.openDiscountDetailsModal(discount.id);
   }
 
   ngOnInit(): void {

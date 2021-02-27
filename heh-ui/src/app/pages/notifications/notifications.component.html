@@ -4,7 +4,8 @@
 <div class="table-container"
      infiniteScroll
      [infiniteScrollDistance]="2"
-     [infiniteScrollThrottle]="100">
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource"
            matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
@@ -19,7 +20,7 @@
       <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-notification.type' | translate }}</th>
         <td mat-cell *matCellDef="let row">
-          <app-type-event [type]="row.type.toLowerCase()"></app-type-event>
+          <app-action-event [type]="row.type.toLowerCase()"></app-action-event>
         </td>
       </ng-container>
 
