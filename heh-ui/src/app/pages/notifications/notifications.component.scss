@@ -51,10 +51,12 @@
 
     td {
       background: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
+      cursor: pointer;
     }
 
     .is-read {
-      opacity: 0.7;
+      font-weight: normal;
     }
   }
 }

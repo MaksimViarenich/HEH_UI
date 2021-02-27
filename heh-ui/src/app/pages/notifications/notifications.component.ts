@@ -55,13 +55,15 @@ export class NotificationsComponent implements OnInit {
     );
   }
 
-  readNotification(id: string): any {
-    this.notificationService.readNotification(id).subscribe(() => {
-      this.applyNotificationSearch();
-    },
-    () => {
-      this.toaster.open('Сan not read notification');
-    });
+  readNotification(id: string, isRead?: boolean): any {
+    if (!isRead) {
+      this.notificationService.readNotification(id).subscribe(() => {
+        this.applyNotificationSearch();
+      },
+      () => {
+        this.toaster.open('Сan not read notification');
+      });
+    }
   }
 
   onScrollDown(event: any): void {
