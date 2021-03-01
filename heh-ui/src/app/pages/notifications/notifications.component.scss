@@ -19,7 +19,7 @@
     }
 
     th.mat-header-cell:first-of-type {
-      padding-right: 1rem;
+      padding-right: 1.5rem;
       outline: none;
     }
 
@@ -29,7 +29,6 @@
 
     td.mat-cell:first-of-type {
       padding-right: .2rem;
-      padding-left: 2rem;
     }
 
     td.mat-cell:last-of-type {
@@ -57,18 +56,6 @@
 
     .is-read {
       font-weight: normal;
-    }
-
-    .read-cell {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: 3.6rem;
-
-      mat-checkbox {
-        margin-bottom: 0.2rem;
-      }
     }
   }
 }

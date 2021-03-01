@@ -61,23 +61,15 @@ export class NotificationsComponent implements OnInit {
   }
 
   readOneOrAllNotification(type: string, id?: string, isRead?: boolean): any {
-    if (!isRead && type === 'one') {
-      this.notificationService.readNotifications('one', id).subscribe(() => {
+    if (!isRead && this.notificationCount !== 0) {
+      this.notificationService.readNotifications(type, id).subscribe(() => {
         this.applyNotificationSearch();
+        this.setCount();
 
         this.globalEventsService.emit('updateNotificationCount');
       },
       () => {
         this.toaster.open('Сan not read notification');
-      });
-    } else if (type === 'all' && this.notificationCount !== 0) {
-      this.notificationService.readNotifications('all').subscribe(() => {
-        this.applyNotificationSearch();
-
-        this.globalEventsService.emit('updateNotificationCount');
-      },
-      () => {
-        this.toaster.open('Сan not read notifications');
       });
     }
   }
@@ -90,12 +82,16 @@ export class NotificationsComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.getNotifications(this.searchData, this.topNotifications, this.skipNotifications);
+  setCount(): any {
     this.headerService.getNotificationsCount().subscribe(
       (data) => {
         this.notificationCount = data;
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.getNotifications(this.searchData, this.topNotifications, this.skipNotifications);
+    this.setCount();
   }
 }
