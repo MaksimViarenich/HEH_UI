@@ -4,7 +4,7 @@ import { FiltersService } from '../../../services/filter-service/filters.service
 import { Category } from '../../../models/category';
 import { Tag } from '../../../models/tag';
 import { cloneDeep } from 'lodash';
-import * as _ from 'lodash';
+import { forEach, isEqual, find } from 'lodash';
 
 @Component({
   selector: 'app-categories-tags',
@@ -30,12 +30,12 @@ export class CategoriesTagsComponent implements OnInit {
   getAllCategoriesAndTags(): void {
     this.filtersService.getCategoriesTags().subscribe(
       (data) => {
-        if (!(_.find(data, (item: any) => _.isEqual(item.id, this.activeCategoryId)))){
+        if (!(find(data, (item: any) => isEqual(item.id, this.activeCategoryId)))){
           this.activeCategoryId = '';
         }
         this.categoriesAll = data;
-        _.forEach(data, (category: any) => {
-          _.forEach(category.tags, (tag: any) => {
+        forEach(data, (category: any) => {
+          forEach(category.tags, (tag: any) => {
             this.tagsAll.push({
               categoryId: tag.categoryId,
               name: tag.name,
@@ -148,8 +148,8 @@ export class CategoriesTagsComponent implements OnInit {
     if (this.activeCategoryId) {
       this.tagsAll = [];
       this.isDisabled = false;
-      _.forEach(this.categoriesAll, (category: any) => {
-        if (_.isEqual(this.activeCategoryId, category.id)) {
+      forEach(this.categoriesAll, (category: any) => {
+        if (isEqual(this.activeCategoryId, category.id)) {
           this.tagsAll = category.tags;
         }
       });

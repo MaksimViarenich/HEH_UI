@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
-import * as _ from 'lodash';
+import { forEach, isEqual, size } from 'lodash';
 
 @Component({
   selector: 'app-favorites',
@@ -55,7 +55,7 @@ export class FavoritesComponent implements OnInit {
   getFavorites(top: any, skip: any, filters?: any): void {
     this.favoritesService.getFavorites(filters, top, skip).subscribe(
       (data: any) => {
-        _.forEach(data.value, (favorite: any) => {
+        forEach(data.value, (favorite: any) => {
           this.favoriteCards.push(favorite);
         });
         this.totalCount = data['@odata.count'];
@@ -74,7 +74,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.favoriteCards), this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.favoriteCards), this.totalCount)) {
       this.skipFavorites += this.topFavorites;
       this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;

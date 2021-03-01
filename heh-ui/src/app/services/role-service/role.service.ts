@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import * as _ from 'lodash';
+import { isString, toLower, forEach } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,10 @@ export class RoleService {
     const token = localStorage.getItem('isAuth');
     this.roles = [];
 
-    if (_.isString(token)) {
+    if (isString(token)) {
       this.decoded = jwt_decode(token);
-      _.forEach(this.decoded.role, (role: string) => {
-        this.roles.push(_.toLower(role));
+      forEach(this.decoded.role, (role: string) => {
+        this.roles.push(toLower(role));
       });
 
       return this.roles;

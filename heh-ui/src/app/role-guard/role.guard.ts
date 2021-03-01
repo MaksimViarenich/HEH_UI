@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { RoleService } from '../services/role-service/role.service';
 import { Observable } from 'rxjs';
-import * as _ from 'lodash';
+import { includes } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class RoleGuard implements CanActivate {
   checkUserRole(route: ActivatedRouteSnapshot, url: any ): any {
     const roles = this.roleService.getRoles();
 
-    if (_.includes(roles, route.data.role)) {
+    if (includes(roles, route.data.role)) {
       return true;
     } else {
       this.router.navigate(['/discounts']);

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../../../services/modal-service/modal.service';
 import { FormControl, Validators } from '@angular/forms';
-import * as _ from 'lodash';
+import { isEqual, size } from 'lodash';
 
 @Component({
   selector: 'app-model-list-input',
@@ -29,13 +29,13 @@ export class ModelListInputComponent {
   validatePhone(event: any): any{
     let k;
     k = event.charCode;
-    return(_.isEqual(k, 43) || _.isEqual(k, 40) || _.isEqual(k, 41) || (k >= 48 && k <= 57));
+    return(isEqual(k, 43) || isEqual(k, 40) || isEqual(k, 41) || (k >= 48 && k <= 57));
   }
 
 
   addPhone(): void {
     this.listData.push({
-      id: _.size(this.listData) + 1,
+      id: size(this.listData) + 1,
       number: this.inputValue
     });
     this.inputValue = '';

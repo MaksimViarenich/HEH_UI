@@ -7,7 +7,7 @@ import { UserProfileService } from './user-profile.service';
 import { UsersService } from '../admin/users/users.service';
 import { UserInfo } from '../../models/user-info';
 import { FiltersService } from '../../services/filter-service/filters.service';
-import * as _ from 'lodash';
+import { isEqual, indexOf, forEach } from 'lodash';
 
 @Component({
   selector: 'app-user-profile',
@@ -66,23 +66,23 @@ export class UserProfileComponent implements OnInit {
   }
 
   getNotifications(): void {
-    _.forEach(this.allOptions.categories, (allCategories: any) => {
-      if (_.indexOf(this.categoryNotifications, _.isEqual((allCategories.id), -1))) {
-        if (!_.isEqual(_.indexOf(this.selectedOptions, allCategories.id), -1)) {
+    forEach(this.allOptions.categories, (allCategories: any) => {
+      if (indexOf(this.categoryNotifications, isEqual((allCategories.id), -1))) {
+        if (!isEqual(indexOf(this.selectedOptions, allCategories.id), -1)) {
           this.categoryNotifications.push(allCategories.id);
         }
       }
     });
-    _.forEach(this.allOptions.tags, (allTags: any) => {
-      if (_.isEqual(_.indexOf(this.tagNotifications, allTags.id), -1)) {
-        if (!_.isEqual(_.indexOf(this.selectedOptions, allTags.id), -1)) {
+    forEach(this.allOptions.tags, (allTags: any) => {
+      if (isEqual(indexOf(this.tagNotifications, allTags.id), -1)) {
+        if (!isEqual(indexOf(this.selectedOptions, allTags.id), -1)) {
           this.tagNotifications.push(allTags.id);
         }
       }
     });
-    _.forEach(this.allOptions.vendors, (allVendors: any) => {
-      if (_.isEqual(_.indexOf(this.vendorNotifications, allVendors.id), -1)) {
-        if (!_.isEqual(_.indexOf(this.selectedOptions, allVendors.id), -1)) {
+    forEach(this.allOptions.vendors, (allVendors: any) => {
+      if (isEqual(indexOf(this.vendorNotifications, allVendors.id), -1)) {
+        if (!isEqual(indexOf(this.selectedOptions, allVendors.id), -1)) {
           this.vendorNotifications.push(allVendors.id);
         }
       }

@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as _ from 'lodash';
+import { forEach, isEqual } from 'lodash';
 
 interface Language {
   lang: string;
@@ -38,8 +38,8 @@ export class LanguageSelectionComponent implements OnInit {
   ngOnInit(): void {
     const lang = localStorage.getItem('lang');
 
-    _.forEach(this.languages, (language: any) => {
-      this.imagePath = (_.isEqual(language.langCode, lang)) ?
+    forEach(this.languages, (language: any) => {
+      this.imagePath = (isEqual(language.langCode, lang)) ?
         this.imagePath = language.path :
         '../../../assets/images/header/header_menu_uk.svg';
     });
