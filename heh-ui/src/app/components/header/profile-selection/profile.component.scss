@@ -7,19 +7,7 @@
 .person {
   display: flex;
   align-items: center;
-  margin: 0 $margin-half 0 2rem;
-
-  .person-info a {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: $color-black;
-
-    .person-name, .person-place {
-      font-size: 1.6rem;
-      font-weight: normal;
-    }
-  }
+  margin: 0 $margin-half 0 1.5rem;
 
   .person-pic {
     display: flex;
@@ -34,7 +22,6 @@
   }
 
   .profile-icon {
-    margin-left: 1.5rem;
     border-radius: 50%;
   }
 
@@ -57,22 +44,13 @@ button.mat-menu-item {
 }
 
 @media screen and (max-width: 768px) {
-  .person .person-info .person-place {
-      display: none;
+  .person {
+    margin-left: 0;
     }
 }
 
 @media screen and (max-width: 375px) {
   .person {
     width: 2.5rem;
-    margin-left: 0;
-
-    .profile-icon {
-      margin-left: 0;
-    }
-
-    .person-info {
-      display: none;
-    }
   }
 }
