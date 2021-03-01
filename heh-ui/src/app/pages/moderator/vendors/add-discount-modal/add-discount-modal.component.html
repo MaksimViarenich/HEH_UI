@@ -102,7 +102,7 @@
     <div class="add-discount-button" *ngIf="discountDetail">
       <button mat-button mat-dialog-close>{{ 'vendors.add-discount.cancel' | translate }}</button>
       <button mat-raised-button
-              [disabled]="form.invalid"
+              [disabled]="form.invalid || canNotBeSaved()"
               [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.save' | translate }}</button>
     </div>
   </form>

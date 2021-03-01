@@ -6,6 +6,7 @@ import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import {cloneDeep, isEqual} from 'lodash';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -16,6 +17,7 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
 export class AddDiscountModalComponent implements OnInit {
   form: FormGroup;
   discountDetail: Discount;
+  pristineDiscountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
   categoriesAll: any;
@@ -26,6 +28,7 @@ export class AddDiscountModalComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.discountDetail = data.discount;
+    this.pristineDiscountDetail = cloneDeep(this.discountDetail);
     this.vendorAddresses = data.addresses;
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
@@ -45,6 +48,10 @@ export class AddDiscountModalComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategoriesAndTags();
     this.showTagList();
+  }
+
+  canNotBeSaved(): boolean {
+    return isEqual(this.discountDetail, this.pristineDiscountDetail);
   }
 
   showTagList(): void {

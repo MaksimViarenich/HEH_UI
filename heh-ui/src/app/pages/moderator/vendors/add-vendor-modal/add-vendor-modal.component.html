@@ -99,7 +99,7 @@
     <button mat-button
             (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
     <button mat-raised-button
-            [disabled]="isSaveDisabled()"
+            [disabled]="isSaveDisabled() || canNotBeSaved()"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.save' | translate }}</button>
   </mat-dialog-actions>
 </div>

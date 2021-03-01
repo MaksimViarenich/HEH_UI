@@ -103,6 +103,16 @@
       @include glass;
     }
   }
+
+  .clickable-user {
+    span {
+      border-bottom: 1px solid $color-black;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {

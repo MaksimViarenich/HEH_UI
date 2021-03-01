@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BtnFavoriteComponent } from './btn-favorite.component';
 
@@ -12,7 +13,7 @@ describe('BtnFavoriteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ BtnFavoriteComponent ],
-      imports: [ HttpClientModule ],
+      imports: [ HttpClientModule, BrowserAnimationsModule ],
       providers: [MatSnackBar, Overlay]
     })
     .compileComponents();

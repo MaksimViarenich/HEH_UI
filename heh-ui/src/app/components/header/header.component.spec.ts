@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatMenuModule } from '@angular/material/menu';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -13,7 +14,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule ],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatMenuModule, MatSnackBarModule ],
       declarations: [ HeaderComponent ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })

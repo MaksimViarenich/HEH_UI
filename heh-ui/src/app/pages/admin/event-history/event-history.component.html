@@ -4,11 +4,11 @@
       <app-input-search [(ngModel)]="searchData.searchHistoryText"
                         (keydown.enter)="applyHistorySearch()"></app-input-search>
     </div>
-  
+
     <div class="search-filter">
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
-  
+
         <mat-select [(ngModel)]="searchData.historyLocation"
                     (ngModelChange)="applyHistorySearch()">
           <mat-option>{{ 'search.select' | translate }}</mat-option>
@@ -48,7 +48,9 @@
       <!-- User Column -->
       <ng-container matColumnDef="user">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.user' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.userName}} </td>
+        <td class="clickable-user" mat-cell *matCellDef="let row" (click)="routeWithData(row)">
+          <span>{{row.userName}}</span>
+        </td>
       </ng-container>
 
       <!-- Description Column -->

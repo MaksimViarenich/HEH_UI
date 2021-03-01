@@ -5,6 +5,7 @@ import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
 import { HeaderService } from './header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
+import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               private roleService: RoleService,
               private headerService: HeaderService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private globalEventsService: NgxGlobalEventsService) {
     this.tabs = [];
     this.menuIsActive = false;
     this.notificationsCount = 0;
@@ -46,12 +48,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         return this.tabs = HEADER_TABS.slice(0, 3);
     }
   }
+
   ngOnInit(): void {
       this.tabs = this.getTabs();
       this.setNotificationsCount();
       this.timerId = setInterval(() => {
         this.setNotificationsCount();
       }, 1000 * 60);
+      this.globalEventsService.get('updateNotificationCount').subscribe(() => {
+        this.setNotificationsCount();
+      });
   }
 
   goToMain(): void {
