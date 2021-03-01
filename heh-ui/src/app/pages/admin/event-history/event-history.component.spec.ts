@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
-import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { EventHistoryComponent } from './event-history.component';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('EventHistoryComponent', () => {
   let component: EventHistoryComponent;
@@ -14,9 +16,10 @@ describe('EventHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ BrowserAnimationsModule, HttpClientModule, MatDialogModule ],
+      // tslint:disable-next-line:max-line-length
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), BrowserAnimationsModule, HttpClientTestingModule, MatDialogModule, MatSnackBarModule ],
       declarations: [ EventHistoryComponent ],
-      providers: [ ToasterService, MatSnackBar, Overlay ]
+      providers: [ ToasterService, Overlay ]
     })
     .compileComponents();
   });

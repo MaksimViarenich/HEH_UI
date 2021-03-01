@@ -28,8 +28,4 @@ describe('BtnFavoriteComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('shouldnt add favorite', () => {
-    console.log((component.addFavorite()).toBeFalse());
-  });
 });

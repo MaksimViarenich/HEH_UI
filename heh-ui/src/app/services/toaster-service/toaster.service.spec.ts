@@ -23,8 +23,4 @@ describe('ToasterService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should be created', () => {
-   console.log(expect(service.open('Hello!', 'type')).toBeTruthy());
-  });
 });
