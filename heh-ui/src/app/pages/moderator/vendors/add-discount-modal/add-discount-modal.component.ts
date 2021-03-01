@@ -6,7 +6,7 @@ import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import * as _ from 'lodash';
+import { cloneDeep, isEqual, forEach } from 'lodash';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -17,6 +17,7 @@ import * as _ from 'lodash';
 export class AddDiscountModalComponent implements OnInit {
   form: FormGroup;
   discountDetail: Discount;
+  pristineDiscountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
   categoriesAll: any;
@@ -27,6 +28,7 @@ export class AddDiscountModalComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.discountDetail = data.discount;
+    this.pristineDiscountDetail = cloneDeep(this.discountDetail);
     this.vendorAddresses = data.addresses;
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
@@ -48,10 +50,14 @@ export class AddDiscountModalComponent implements OnInit {
     this.showTagList();
   }
 
+  canNotBeSaved(): boolean {
+    return isEqual(this.discountDetail, this.pristineDiscountDetail);
+  }
+
   showTagList(): void {
     this.tagsByCategory = [];
-    _.forEach(this.categoriesAll, (category: any) => {
-      if (_.isEqual(this.discountDetail.categoryId, category.id)) {
+    forEach(this.categoriesAll, (category: any) => {
+      if (isEqual(this.discountDetail.categoryId, category.id)) {
         this.tagsByCategory = category.tags;
       }
     });

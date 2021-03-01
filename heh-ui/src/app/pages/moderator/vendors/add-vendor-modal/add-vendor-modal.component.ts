@@ -7,8 +7,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import { cloneDeep } from 'lodash';
-import * as _ from 'lodash';
+import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -22,6 +21,7 @@ export class AddVendorModalComponent implements OnInit {
   countriesCities: any;
   vendorName: FormControl;
   pristineVendor: any;
+  pristineLinks: any;
 
   constructor(
     private filterService: FiltersService,
@@ -56,7 +56,7 @@ export class AddVendorModalComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
-        if (!_.isEqual(index, undefined)) {
+        if (!isEqual(index, undefined)) {
           this.vendor.discounts[index] = data;
         } else {
           this.vendor.discounts.push(data);
@@ -76,7 +76,7 @@ export class AddVendorModalComponent implements OnInit {
       {type: 'Vkontakte', url: this.links.vkontakte},
     );
 
-    vendorCopy.addresses = _.map(vendorCopy.addresses, (address: any) => {
+    vendorCopy.addresses = map(vendorCopy.addresses, (address: any) => {
       return {
         id: address.id,
         countryId: address.country.id,
@@ -124,7 +124,7 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   deleteDiscount(index: any): void {
-    if (!_.isEqual(this.vendor.discounts[index], undefined)) {
+    if (!isEqual(this.vendor.discounts[index], undefined)) {
       this.vendor.discounts.splice(index, 1);
     }
 
@@ -137,11 +137,11 @@ export class AddVendorModalComponent implements OnInit {
 
   onAddAddress(address: any): void {
     const editAddresses: any[] = [];
-    _.map(address, (addr: any) => {
-      _.forEach(this.countriesCities, (item: any) => {
-          if (_.isEqual(addr.countryId, item.id)) {
+    map(address, (addr: any) => {
+      forEach(this.countriesCities, (item: any) => {
+          if (isEqual(addr.countryId, item.id)) {
             for (const city of item.cities) {
-              if (_.isEqual(addr.cityId, city.id)) {
+              if (isEqual(addr.cityId, city.id)) {
                 editAddresses.push({
                   country: {
                     country: item.country,
@@ -167,7 +167,12 @@ export class AddVendorModalComponent implements OnInit {
 
   restoreVendorData(): void{
     this.vendor = cloneDeep(this.pristineVendor);
-    this.onAddAddress(this.vendor.addresses);
+    this.links = cloneDeep(this.pristineLinks);
+    this.vendor.addresses = cloneDeep(this.pristineVendor.addresses);
+  }
+
+  canNotBeSaved(): boolean {
+    return isEqual(this.vendor, this.pristineVendor) && isEqual(this.links, this.pristineLinks);
   }
 
   ngOnInit(): void {
@@ -175,14 +180,16 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {
           this.vendor = data;
-          this.pristineVendor = cloneDeep(this.vendor);
           this.onAddAddress(data.addresses);
-          if (_.size(data.links)) {
+          this.pristineVendor = cloneDeep(this.vendor);
+
+          if (size(data.links)) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
-                [_.toLower(link.type)]: link.url
+                [toLower(link.type)]: link.url
               };
             }));
+            this.pristineLinks = cloneDeep(this.links);
           }
         },
         () => {

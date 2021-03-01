@@ -3,11 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatMenuModule } from '@angular/material/menu';
 
 import { DiscountDetailsModalComponent } from './discount-details-modal.component';
 import { GeocodeService } from './geocode.service';
@@ -18,12 +17,13 @@ describe('DiscountDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientModule, MatMenuModule ],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientModule, MatDialogModule ],
       declarations: [ DiscountDetailsModalComponent ],
       providers: [ GeocodeService, MatSnackBar, Overlay,
         { provide: MapsAPILoader, useValue: { load: jasmine.createSpy('load').and.returnValue(new Promise(() => true)) }},
         { provide: GoogleMapsAPIWrapper },
         { provide: MAT_DIALOG_DATA, useValue: { }},
+        { provide: MatDialogRef, useValue: { }},
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })

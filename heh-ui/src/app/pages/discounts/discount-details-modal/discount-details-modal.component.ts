@@ -9,7 +9,7 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
-import * as _ from 'lodash';
+import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
 
 @Component({
   selector: 'app-discount-details',
@@ -30,6 +30,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   activeAddresses: Array<string>;
   userLocation: string;
   editingValue = this.data.favoriteNote;
+  pristineEditingValue = cloneDeep(this.editingValue);
   discountId: string = this.data.id;
   address = new FormControl();
 
@@ -40,7 +41,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private discountService: DiscountsService,
     private toaster: ToasterService,
     public mapsApiLoader: MapsAPILoader,
-    private userProfleService: UserProfileService,
+    private userProfileService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
     private matDialogRef: MatDialogRef<any>,
@@ -78,22 +79,26 @@ export class DiscountDetailsModalComponent implements OnInit {
     );
   }
 
+  canNotBeSaved(): boolean {
+    return isEqual(this.editingValue, this.pristineEditingValue);
+  }
+
   displayActiveMarkers(): void {
     this.markers = [];
 
-    _.forEach(this.activeAddresses, address => {
+    forEach(this.activeAddresses, address => {
       this.geocodeService.findLocation(address, (obj: Marker) => {
         this.markers.push(obj);
       });
     });
 
     setTimeout(() => {
-      if (_.isEqual(_.size(this.markers), 1)) {
+      if (isEqual(size(this.markers), 1)) {
         this.location = this.markers[0];
         this.zoom = 14;
-      } else if (_.size(this.markers) > 1) {
-        this.location.lat = _.reduce(this.markers, (sum, marker) => sum + marker.lat, 0) / _.size(this.markers);
-        this.location.lng = _.reduce(this.markers, (sum, marker) => sum + marker.lng, 0) / _.size(this.markers);
+      } else if (size(this.markers) > 1) {
+        this.location.lat = reduce(this.markers, (sum, marker) => sum + marker.lat, 0) / size(this.markers);
+        this.location.lng = reduce(this.markers, (sum, marker) => sum + marker.lng, 0) / size(this.markers);
         this.zoom = 5;
       }
     }, 1000);
@@ -104,11 +109,11 @@ export class DiscountDetailsModalComponent implements OnInit {
       (data) => {
         this.discountDetails = data;
 
-        _.forEach(data.addresses, (item: { cityId: string; street: string; }) => {
+        forEach(data.addresses, (item: { cityId: string; street: string; }) => {
           this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
         });
 
-        if (!_.isEqual(_.size(this.addresses), 0)) {
+        if (!isEqual(size(this.addresses), 0)) {
           this.geocodeService.findLocation(this.addresses[0], (obj: Marker) => {
             this.markers[0] = obj;
             this.location = obj;
@@ -125,7 +130,7 @@ export class DiscountDetailsModalComponent implements OnInit {
               };
             });
           } else {
-            this.userProfleService.getUser().subscribe(
+            this.userProfileService.getUser().subscribe(
               (user: { address: { cityId: string; street: string }; }) => {
                 this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
                 this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {
@@ -139,10 +144,10 @@ export class DiscountDetailsModalComponent implements OnInit {
           }
         }
 
-        if (_.size(data.links)) {
-          this.links = _.assign({}, ...data.links.map((link: any) => {
+        if (size(data.links)) {
+          this.links = assign({}, ...data.links.map((link: any) => {
             return {
-              [_.toLower(link.type)]: link.url
+              [toLower(link.type)]: link.url
             };
           }));
         }

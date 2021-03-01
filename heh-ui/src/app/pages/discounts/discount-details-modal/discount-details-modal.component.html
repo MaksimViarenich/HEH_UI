@@ -127,6 +127,7 @@
       <button *ngIf="data.isVisibleEditNote"
               class="btn-submit"
               mat-raised-button
+              [disabled]="canNotBeSaved()"
               (click)="submitEditNote()">
               {{ 'favorites.save' | translate }}</button>
     </div>

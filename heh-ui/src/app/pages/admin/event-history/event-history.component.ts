@@ -5,7 +5,8 @@ import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
-import * as _ from 'lodash';
+import { forEach, isEqual, size } from 'lodash';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-history',
@@ -27,7 +28,8 @@ export class EventHistoryComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
               private historyService: HistoryService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private router: Router) {
     this.searchData.historyLocation = '';
     this.filtersOptions = {
       locations: [],
@@ -48,7 +50,7 @@ export class EventHistoryComponent implements OnInit {
   getEventHistory(top: any, skip: any, searchData?: any): void {
     this.historyService.getSearchHistory(top, skip, searchData).subscribe(
       (data: any) => {
-        _.forEach(data.value, (event: any) => {
+        forEach(data.value, (event: any) => {
           this.eventData.push(event);
         });
 
@@ -69,10 +71,18 @@ export class EventHistoryComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.eventData), this.totalCountEvents)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.eventData), this.totalCountEvents)) {
       this.skipEvents += this.topEvents;
       this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
       this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  routeWithData(state: any): void {
+    if (state.userEmail === sessionStorage.getItem('userEmail')) {
+      this.router.navigateByUrl('/profile');
+    } else {
+      this.router.navigateByUrl('/admin/users', { state: {userEmail: state.userEmail }});
     }
   }
 }

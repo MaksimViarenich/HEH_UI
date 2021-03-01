@@ -5,7 +5,8 @@ import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
 import { HeaderService } from './header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
-import * as _ from 'lodash';
+import { includes, slice } from 'lodash';
+import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               private roleService: RoleService,
               private headerService: HeaderService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private globalEventsService: NgxGlobalEventsService) {
     this.tabs = [];
     this.menuIsActive = false;
     this.notificationsCount = 0;
@@ -37,22 +39,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const role = this.roleService.getRoles();
 
     switch (true) {
-      case (_.includes(role, 'administrator')):
+      case (includes(role, 'administrator')):
         return this.tabs = HEADER_TABS;
 
-      case (_.includes(role, 'moderator')):
-        return this.tabs = _.slice(HEADER_TABS, 0, 4);
+      case (includes(role, 'moderator')):
+        return this.tabs = slice(HEADER_TABS, 0, 4);
 
-      case (_.includes(role, 'employee')):
-        return this.tabs = _.slice(HEADER_TABS, 0, 3);
+      case (includes(role, 'employee')):
+        return this.tabs = slice(HEADER_TABS, 0, 3);
     }
   }
+
   ngOnInit(): void {
     this.tabs = this.getTabs();
     this.setNotificationsCount();
     this.timerId = setInterval(() => {
       this.setNotificationsCount();
     }, 1000 * 60);
+    this.globalEventsService.get('updateNotificationCount').subscribe(() => {
+      this.setNotificationsCount();
+    });
   }
 
   goToMain(): void {

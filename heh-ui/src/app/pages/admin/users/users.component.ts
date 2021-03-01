@@ -34,6 +34,9 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (history.state.userEmail) {
+      this.searchData.searchUserText = history.state.userEmail;
+    }
     this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
     this.filterService.queryParams = '';
     this.breakpoint = this.gridService.getUserGrid(window.innerWidth);

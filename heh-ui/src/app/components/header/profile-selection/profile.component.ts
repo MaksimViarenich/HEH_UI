@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit {
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
+        sessionStorage.setItem('userEmail', data.email);
         sessionStorage.setItem('location', data.address.cityId);
       },
       () => {
