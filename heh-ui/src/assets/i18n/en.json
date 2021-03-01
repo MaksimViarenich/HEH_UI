@@ -53,6 +53,7 @@
     "message": "Message",
     "type": "Type",
     "read": "Read",
+    "were-read": "Read",
     "read-all": "Read All"
   },
   "users": {
