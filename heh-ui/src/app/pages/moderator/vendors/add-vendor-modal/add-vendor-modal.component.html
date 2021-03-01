@@ -96,7 +96,8 @@
   </div>
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
-    <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
+    <button mat-button
+            (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
     <button mat-button
             (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
     <button mat-raised-button

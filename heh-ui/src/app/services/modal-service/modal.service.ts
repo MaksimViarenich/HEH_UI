@@ -23,6 +23,7 @@ export class ModalService {
       backdropClass: 'vendor-details-modal-backdrop',
       maxWidth: '66rem',
       autoFocus: false,
+      disableClose: true,
     });
   }
 
@@ -38,6 +39,7 @@ export class ModalService {
       backdropClass: 'add-discount-modal-backdrop',
       maxWidth: '33rem',
       autoFocus: false,
+      disableClose: true,
     });
   }
 
@@ -55,6 +57,7 @@ export class ModalService {
       panelClass: 'discount-details-modal',
       backdropClass: 'discount-details-modal-backdrop',
       autoFocus: false,
+      disableClose: true,
     });
   }
 
@@ -67,10 +70,13 @@ export class ModalService {
     });
   }
 
-  openConfirmModal(): any {
+  openConfirmModal(message?: string): any {
     return this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        message,
+      },
       width: '20rem',
-      height: '10rem',
+      height: '11rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
     });

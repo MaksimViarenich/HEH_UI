@@ -7,7 +7,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -44,7 +44,7 @@ export class AddVendorModalComponent implements OnInit {
       vkontakte: '',
     };
     this.vendorName = new FormControl('', [Validators.required]);
-    this.pristineVendor = {};
+    // this.pristineVendor = cloneDeep(this.vendor);
   }
 
   addressTitle = 'vendors.add-vendor.address';
@@ -62,6 +62,25 @@ export class AddVendorModalComponent implements OnInit {
         }
       }
     });
+  }
+
+  checkChanges(): any {
+    const isChanged = isEqual(this.pristineVendor, this.vendor);
+    console.log('backup', this.pristineVendor);
+    console.log('vendor', this.vendor);
+    console.log('changes', isChanged);
+    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(message);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
   }
 
   addUpdateNewVendor(): void {
@@ -170,12 +189,17 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     if (this.vendorId.id) {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {
           this.vendor = data;
-          this.pristineVendor = cloneDeep(this.vendor);
+          console.log(this.vendor);
           this.onAddAddress(data.addresses);
+          this.pristineVendor = cloneDeep(this.vendor);
+          console.log(this.pristineVendor);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {

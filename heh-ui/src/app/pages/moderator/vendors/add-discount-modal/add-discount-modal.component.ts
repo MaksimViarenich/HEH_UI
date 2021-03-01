@@ -1,11 +1,13 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
 import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import { isEqual, cloneDeep } from 'lodash';
+import { ModalService } from '../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -20,9 +22,12 @@ export class AddDiscountModalComponent implements OnInit {
   vendorPhones: Array<Phones>;
   categoriesAll: any;
   tagsByCategory: any;
+  pristineDiscount: any;
 
   constructor(private filtersService: FiltersService,
               private toaster: ToasterService,
+              private matDialogRef: MatDialogRef<any>,
+              private modalService: ModalService,
               @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.discountDetail = data.discount;
@@ -42,9 +47,31 @@ export class AddDiscountModalComponent implements OnInit {
     });
   }
 
+  checkChanges(): any {
+    console.log(this.discountDetail);
+    console.log(this.pristineDiscount);
+    const isChanged = isEqual(this.discountDetail, this.pristineDiscount);
+    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(message);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
+  }
+
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     this.getAllCategoriesAndTags();
     this.showTagList();
+    this.pristineDiscount = cloneDeep(this.discountDetail);
   }
 
   showTagList(): void {
@@ -62,7 +89,7 @@ export class AddDiscountModalComponent implements OnInit {
         this.categoriesAll = data;
         this.showTagList();
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get categories and tags');
       }
     );

@@ -9,6 +9,8 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
+import { isEqual } from 'lodash';
+import {ModalService} from '../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-discount-details',
@@ -42,6 +44,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private userProfleService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
+    private modalService: ModalService,
     private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -62,6 +65,22 @@ export class DiscountDetailsModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
+  }
+
+  checkChanges(): any {
+    const isChanged = isEqual(this.data.favoriteNote, this.editingValue);
+    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(message);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
   }
 
   submitEditNote(): void {
@@ -99,6 +118,9 @@ export class DiscountDetailsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     this.discountService.getDiscountDetails(this.discountId).subscribe(
       (data) => {
         this.discountDetails = data;
