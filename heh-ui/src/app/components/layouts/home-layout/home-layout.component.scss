@@ -18,8 +18,8 @@
 
     .selectors {
       display: flex;
-      justify-content: flex-end;
-      padding: 1rem .5rem;
+      justify-content: flex-start;
+      padding: 1rem 1rem;
     }
   }
 }
@@ -63,6 +63,10 @@
   }
 }
 
+.mat-nav-list .mat-list-item:nth-child(3){
+  position: relative;
+}
+
 @media (max-width: 950px) {
   .container {
     width: 90%;
@@ -78,21 +82,14 @@
 
 @media (min-width: 768px) {
   .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: 8.5rem;
+    left: 8rem;
     top: 0.3rem;
   }
+}
 
-  .mat-sidenav-container {
-    .selectors,
-    mat-divider {
-      display: none;
-
-      app-language-selection,
-      app-profile,
-      app-select-background {
-        display: none;
-      }
-    }
+@media (min-width: 768px) {
+  .mat-sidenav-container .mat-sidenav, .mat-drawer-backdrop.mat-drawer-shown {
+    display: none;
   }
 }
 

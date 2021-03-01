@@ -64,6 +64,11 @@
 
     .navigation .tabs .tab {
       padding: 0 0.9rem;
+
+      &:nth-child(3) {
+        position: relative;
+        padding-right: 1.2rem;
+      }
     }
   }
 }
