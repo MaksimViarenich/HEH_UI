@@ -51,7 +51,10 @@
     "date": "Date",
     "title": "Title",
     "message": "Message",
-    "type": "Type"
+    "type": "Type",
+    "read": "Read",
+    "were-read": "Read",
+    "read-all": "Read All"
   },
   "users": {
     "admin": "Administrator",
