@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { FormControl } from '@angular/forms';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-page-search',
@@ -50,10 +51,10 @@ export class PageSearchComponent implements OnInit {
   }
 
   transformPickerDate(objDate: any): string {
-    const pickerDateString = objDate.toString();
-    this.month = objDate.getMonth().length === 1 ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
+    const pickerDateString = _.toString(objDate);
+    this.month = _.isEqual(_.size(objDate.getMonth()), 1) ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
 
-    return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
+    return `${_.slice(pickerDateString, 11, 15)}-` + this.month + `-${_.slice(pickerDateString, 8, 10)}`;
   }
 
   changeDate(event: any): void {
@@ -66,7 +67,7 @@ export class PageSearchComponent implements OnInit {
     this.searchData.startDate = this.pickerDate[0];
     this.searchData.endDate = this.pickerDate[1];
 
-    if (this.pickerDate.length > 1) {
+    if (_.size(this.pickerDate) > 1) {
       this.pickerDate = [];
     }
   }
@@ -78,9 +79,9 @@ export class PageSearchComponent implements OnInit {
 
   changeTagsList(): void {
     this.filtersOptions.tags = [];
-    if (this.searchData.categories.length) {
+    if (_.size(this.searchData.categories)) {
       this.filtersOptions.tags = this.filtersService.getFilters().tags.filter((tag: any) => {
-        return this.searchData.categories.indexOf(tag.categoryId) !== -1;
+        return !_.isEqual(_.indexOf(this.searchData.categories, tag.categoryId), -1);
       });
     } else {
       this.filtersOptions.tags = this.filtersService.getFilters().tags;

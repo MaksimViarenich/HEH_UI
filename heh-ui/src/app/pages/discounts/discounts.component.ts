@@ -5,6 +5,7 @@ import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { GridService } from '../../services/grid-service/grid.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-discounts',
@@ -47,7 +48,7 @@ export class DiscountsComponent implements OnInit {
   getDiscounts(top: any, skip: any, filters?: any): void {
     this.discountService.getSearchDiscounts(filters, top, skip).subscribe(
       (data: any) => {
-        data.value.forEach((discount: any) => {
+        _.forEach(data.value, (discount: any) => {
           this.discounts.push(discount);
         });
         this.totalCount = data['@odata.count'];
@@ -71,7 +72,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.discounts.length === this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.discounts), this.totalCount)) {
       this.skipDiscounts += this.topDiscounts;
       this.getDiscounts(this.topDiscounts, this.skipDiscounts, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;

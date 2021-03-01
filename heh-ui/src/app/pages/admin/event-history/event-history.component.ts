@@ -5,6 +5,7 @@ import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-event-history',
@@ -47,7 +48,7 @@ export class EventHistoryComponent implements OnInit {
   getEventHistory(top: any, skip: any, searchData?: any): void {
     this.historyService.getSearchHistory(top, skip, searchData).subscribe(
       (data: any) => {
-        data.value.forEach((event: any) => {
+        _.forEach(data.value, (event: any) => {
           this.eventData.push(event);
         });
 
@@ -68,7 +69,7 @@ export class EventHistoryComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.eventData.length === this.totalCountEvents)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.eventData), this.totalCountEvents)) {
       this.skipEvents += this.topEvents;
       this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
       this.previousScrollPosition = event.currentScrollPosition;

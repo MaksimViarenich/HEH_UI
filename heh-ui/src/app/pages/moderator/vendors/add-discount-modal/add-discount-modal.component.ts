@@ -6,6 +6,7 @@ import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -49,8 +50,8 @@ export class AddDiscountModalComponent implements OnInit {
 
   showTagList(): void {
     this.tagsByCategory = [];
-    this.categoriesAll.forEach((category: any) => {
-      if (this.discountDetail.categoryId === category.id) {
+    _.forEach(this.categoriesAll, (category: any) => {
+      if (_.isEqual(this.discountDetail.categoryId, category.id)) {
         this.tagsByCategory = category.tags;
       }
     });

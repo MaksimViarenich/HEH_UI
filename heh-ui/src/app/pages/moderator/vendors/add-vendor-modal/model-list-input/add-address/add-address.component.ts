@@ -3,6 +3,7 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { customAlphabet } from 'nanoid/non-secure';
+import * as _ from 'lodash';
 
 export interface AddressData {
   country: any;
@@ -41,8 +42,8 @@ export class AddAddressComponent implements OnInit {
   }
 
   changeCitiesList(): void {
-    this.countries.forEach((country: any) => {
-      if (country.id === this.data.country.id) {
+    _.forEach(this.countries, (country: any) => {
+      if (_.isEqual(country.id, this.data.country.id)) {
         this.cities = country.cities;
       }
     });

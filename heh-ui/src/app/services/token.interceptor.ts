@@ -4,6 +4,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -22,7 +23,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(tap(() => {},
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status !== 401) {
+          if (!_.isEqual(err.status, 401)) {
             return;
           }
           this.router.navigate(['login']);

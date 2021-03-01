@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
 import { cloneDeep } from 'lodash';
+import * as _ from 'lodash';
 
 export const FILTERS_MAP = new Map([
   ['categories', 'categoryId'],
@@ -112,7 +113,7 @@ export class FiltersService {
     const promises = [this.getLocations(), this.getCategoriesTags(), this.getVendors()];
 
     return forkJoin(promises).toPromise().then((response) => {
-      response[0].forEach((address: any) => {
+      _.forEach(response[0], (address: any) => {
         address.cities.forEach((city: any) => {
           this.filterOptions.locations.push({
             id: city.id,
@@ -121,10 +122,10 @@ export class FiltersService {
         });
       });
 
-      response[1].forEach((category: any) => {
+      _.forEach(response[1], (category: any) => {
         addItemToFilters(this.filterOptions.categories, category);
 
-        category.tags.forEach((tag: any) => {
+        _.forEach(category.tags, (tag: any) => {
           this.filterOptions.tags.push({
             id: tag.id,
             viewValue: tag.name,
@@ -133,7 +134,7 @@ export class FiltersService {
         });
       });
 
-      response[2].forEach((vendor: any) => {
+      _.forEach(response[2], (vendor: any) => {
         addItemToFilters(this.filterOptions.vendors, vendor);
       });
     });
@@ -147,14 +148,14 @@ export class FiltersService {
   }
 
   getTagById(id: string): string {
-    return this.filterOptions.tags.find((tag: any) => {
-      return tag.id === id;
+    return _.find(this.filterOptions.tags, (tag: any) => {
+      return _.isEqual(tag.id, id);
     })?.viewValue;
   }
 
   getCategoryById(id: string): string {
-    return this.filterOptions.categories.find((category: any) => {
-      return category.id === id;
+    return _.find(this.filterOptions.categories, (category: any) => {
+      return _.isEqual(category.id, id);
     })?.viewValue;
   }
 
@@ -165,8 +166,8 @@ export class FiltersService {
   getAddressByCityId(cityId: string): string {
     let address = '';
 
-    this.filterOptions.locations.forEach((item: any) => {
-      if (cityId === item.id) {
+    _.forEach(this.filterOptions.locations, (item: any) => {
+      if (_.isEqual(cityId, item.id)) {
         address = item.viewValue;
       }
     });
@@ -258,10 +259,10 @@ export class FiltersService {
         }
       }
 
-    resultParams = resultParams.filter((item: string) => item.length);
-    resultParams.forEach((item: string, index: number) => {
+    resultParams = resultParams.filter((item: string) => _.size(item));
+    _.forEach(resultParams, (item: string, index: number) => {
         queryParams +=
-          resultParams.length - 1 === index ? item : `${item} and `;
+          _.isEqual(_.size(resultParams) - 1, index) ? item : `${item} and `;
       });
 
     return { queryParams, queryTextParam, queryStartDate, queryEndDate };
@@ -272,9 +273,9 @@ buildListQuery(filters: any, key: string): string {
 
     const mapped = (filters[key] || []).map((item: string) => `'${item}'` );
 
-    if (mapped.length >= 1) {
+    if (_.size(mapped) >= 1) {
       query +=
-      `${FILTERS_MAP.get(key)}` + (['vendorCategories', 'tags'].includes(key)
+      `${FILTERS_MAP.get(key)}` + (_.includes(['vendorCategories', 'tags'], key)
       ? `/any(t: t in [${mapped}])` : ` in [${mapped}]`);
     }
 

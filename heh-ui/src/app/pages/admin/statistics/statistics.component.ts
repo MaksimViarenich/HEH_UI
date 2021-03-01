@@ -6,6 +6,7 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 import { StatisticsService } from './statistics.service';
 import { DiscountCard } from '../../../models/discount-card';
 import { GridService } from '../../../services/grid-service/grid.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-statistics',
@@ -58,7 +59,7 @@ export class StatisticsComponent implements OnInit {
   getStatistics(top: any, skip: any, filters?: any): any {
     this.statisticsService.getDiscountsStatistics(filters, top, skip).subscribe(
       (data: any) => {
-        data.value.forEach((discount: any) => {
+        _.forEach(data.value, (discount: any) => {
           this.statistics.push(discount);
         });
         this.totalCount = data['@odata.count'];
@@ -70,7 +71,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.statistics.length === this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.statistics), this.totalCount)) {
       this.skipStatistics += this.topStatistics;
       this.getStatistics(this.topStatistics, this.skipStatistics, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;

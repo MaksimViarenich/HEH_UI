@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../global';
 import { FiltersService } from '../../services/filter-service/filters.service';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class FavoritesService {
       note
     };
 
-    if (type === 'add') {
+    if (_.isEqual(type, 'add')) {
       return this.http.post(`${BASE_API_URL}/api/favorites`, body, {headers});
     } else {
       return this.http.put(`${BASE_API_URL}/api/favorites`, body, {headers});

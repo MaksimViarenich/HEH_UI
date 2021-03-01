@@ -4,6 +4,7 @@ import { UsersService } from './users.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
 import { GridService } from '../../../services/grid-service/grid.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-users',
@@ -48,7 +49,7 @@ export class UsersComponent implements OnInit {
   getUsersList(searchData: any, top: any, skip: any): void {
     this.usersService.getUsers(searchData, top, skip).subscribe(
       (data) => {
-        data.value.forEach((user: any) => {
+        _.forEach(data.value, (user: any) => {
           this.users.push(user);
         });
         this.totalCount = data['@odata.count'];
@@ -60,7 +61,7 @@ export class UsersComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.users.length === this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !_.isEqual(_.size(this.users), this.totalCount)) {
       this.skipUsers += this.topUsers;
       this.getUsersList(this.searchData, this.topUsers, this.skipUsers);
       this.previousScrollPosition = event.currentScrollPosition;

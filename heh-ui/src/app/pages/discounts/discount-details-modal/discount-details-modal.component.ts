@@ -9,6 +9,7 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-discount-details',
@@ -80,19 +81,19 @@ export class DiscountDetailsModalComponent implements OnInit {
   displayActiveMarkers(): void {
     this.markers = [];
 
-    this.activeAddresses.forEach(address => {
+    _.forEach(this.activeAddresses, address => {
       this.geocodeService.findLocation(address, (obj: Marker) => {
         this.markers.push(obj);
       });
     });
 
     setTimeout(() => {
-      if (this.markers.length === 1) {
+      if (_.isEqual(_.size(this.markers), 1)) {
         this.location = this.markers[0];
         this.zoom = 14;
-      } else if (this.markers.length > 1) {
-        this.location.lat = this.markers.reduce((sum, marker) => sum + marker.lat, 0) / this.markers.length;
-        this.location.lng = this.markers.reduce((sum, marker) => sum + marker.lng, 0) / this.markers.length;
+      } else if (_.size(this.markers) > 1) {
+        this.location.lat = _.reduce(this.markers, (sum, marker) => sum + marker.lat, 0) / _.size(this.markers);
+        this.location.lng = _.reduce(this.markers, (sum, marker) => sum + marker.lng, 0) / _.size(this.markers);
         this.zoom = 5;
       }
     }, 1000);
@@ -103,11 +104,11 @@ export class DiscountDetailsModalComponent implements OnInit {
       (data) => {
         this.discountDetails = data;
 
-        data.addresses.forEach((item: { cityId: string; street: string; }) => {
+        _.forEach(data.addresses, (item: { cityId: string; street: string; }) => {
           this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
         });
 
-        if (this.addresses.length !== 0) {
+        if (!_.isEqual(_.size(this.addresses), 0)) {
           this.geocodeService.findLocation(this.addresses[0], (obj: Marker) => {
             this.markers[0] = obj;
             this.location = obj;
@@ -138,10 +139,10 @@ export class DiscountDetailsModalComponent implements OnInit {
           }
         }
 
-        if (data.links.length) {
+        if (_.size(data.links)) {
           this.links = Object.assign({}, ...data.links.map((link: any) => {
             return {
-              [link.type.toLowerCase()]: link.url
+              [_.toLower(link.type)]: link.url
             };
           }));
         }
