@@ -137,6 +137,11 @@
       .btn-submit {
         @extend .backgroundColor;
         color: $color-white;
+
+        &:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          color: rgba(0, 0, 0, .26);
+        }
       }
     }
   }
