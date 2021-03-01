@@ -4,13 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
 
 import { ToasterService } from './toaster.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ToasterService', () => {
   let service: ToasterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientModule ],
+      imports: [ HttpClientModule, BrowserAnimationsModule ],
       providers: [ ToasterService,
         { provide: MatSnackBar },
         { provide: Overlay}
@@ -21,5 +22,9 @@ describe('ToasterService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should be created', () => {
+   console.log(expect(service.open('Hello!', 'type')).toBeTruthy());
   });
 });
