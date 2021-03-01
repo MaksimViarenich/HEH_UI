@@ -9,6 +9,7 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
+import {cloneDeep, isEqual} from 'lodash';
 
 @Component({
   selector: 'app-discount-details',
@@ -29,6 +30,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   activeAddresses: Array<string>;
   userLocation: string;
   editingValue = this.data.favoriteNote;
+  pristineEditingValue = cloneDeep(this.editingValue);
   discountId: string = this.data.id;
   address = new FormControl();
 
@@ -39,7 +41,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private discountService: DiscountsService,
     private toaster: ToasterService,
     public mapsApiLoader: MapsAPILoader,
-    private userProfleService: UserProfileService,
+    private userProfileService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
     private matDialogRef: MatDialogRef<any>,
@@ -75,6 +77,10 @@ export class DiscountDetailsModalComponent implements OnInit {
         this.toaster.open(errorMessage);
       }
     );
+  }
+
+  canNotBeSaved(): boolean {
+    return isEqual(this.editingValue, this.pristineEditingValue);
   }
 
   displayActiveMarkers(): void {
@@ -124,7 +130,7 @@ export class DiscountDetailsModalComponent implements OnInit {
               };
             });
           } else {
-            this.userProfleService.getUser().subscribe(
+            this.userProfileService.getUser().subscribe(
               (user: { address: { cityId: string; street: string }; }) => {
                 this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
                 this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {

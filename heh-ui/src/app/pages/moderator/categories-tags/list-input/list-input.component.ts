@@ -54,7 +54,12 @@ export class ListInputComponent {
   }
 
   edit(item: any): void {
-    this.editElement(item, this.changeData);
+    if (item.name === this.previousName) {
+      item.isChanged = false;
+      this.previousName = '';
+    } else {
+      this.editElement(item, this.changeData);
+    }
   }
 
   remove(item: any): void {
