@@ -140,7 +140,7 @@ export class DiscountDetailsModalComponent implements OnInit {
         }
 
         if (_.size(data.links)) {
-          this.links = Object.assign({}, ...data.links.map((link: any) => {
+          this.links = _.assign({}, ...data.links.map((link: any) => {
             return {
               [_.toLower(link.type)]: link.url
             };
