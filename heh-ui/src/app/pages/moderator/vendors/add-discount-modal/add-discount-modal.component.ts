@@ -18,11 +18,11 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 export class AddDiscountModalComponent implements OnInit {
   form: FormGroup;
   discountDetail: Discount;
+  pristineDiscountDetail: Discount;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
   categoriesAll: any;
   tagsByCategory: any;
-  pristineDiscount: any;
 
   constructor(private filtersService: FiltersService,
               private toaster: ToasterService,
@@ -31,6 +31,7 @@ export class AddDiscountModalComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.discountDetail = data.discount;
+    this.pristineDiscountDetail = cloneDeep(this.discountDetail);
     this.vendorAddresses = data.addresses;
     this.vendorPhones = data.phones;
     this.categoriesAll = [];
@@ -71,7 +72,10 @@ export class AddDiscountModalComponent implements OnInit {
     });
     this.getAllCategoriesAndTags();
     this.showTagList();
-    this.pristineDiscount = cloneDeep(this.discountDetail);
+  }
+
+  canNotBeSaved(): boolean {
+    return isEqual(this.discountDetail, this.pristineDiscountDetail);
   }
 
   showTagList(): void {

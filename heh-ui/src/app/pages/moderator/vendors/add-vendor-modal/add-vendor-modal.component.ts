@@ -21,6 +21,7 @@ export class AddVendorModalComponent implements OnInit {
   countriesCities: any;
   vendorName: FormControl;
   pristineVendor: any;
+  pristineLinks: any;
 
   constructor(
     private filterService: FiltersService,
@@ -185,7 +186,12 @@ export class AddVendorModalComponent implements OnInit {
 
   restoreVendorData(): void{
     this.vendor = cloneDeep(this.pristineVendor);
-    this.onAddAddress(this.vendor.addresses);
+    this.links = cloneDeep(this.pristineLinks);
+    this.vendor.addresses = cloneDeep(this.pristineVendor.addresses);
+  }
+
+  canNotBeSaved(): boolean {
+    return isEqual(this.vendor, this.pristineVendor) && isEqual(this.links, this.pristineLinks);
   }
 
   ngOnInit(): void {
@@ -196,16 +202,15 @@ export class AddVendorModalComponent implements OnInit {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {
           this.vendor = data;
-          console.log(this.vendor);
           this.onAddAddress(data.addresses);
           this.pristineVendor = cloneDeep(this.vendor);
-          console.log(this.pristineVendor);
           if (data.links.length) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
                 [link.type.toLowerCase()]: link.url
               };
             }));
+            this.pristineLinks = cloneDeep(this.links);
           }
         },
         () => {

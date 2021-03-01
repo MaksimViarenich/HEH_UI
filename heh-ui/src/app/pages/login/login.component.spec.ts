@@ -38,11 +38,8 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should test pass and email', () => {
-    expect(component).toBeTruthy();
-    component.email = 'user.alexander@mail.com';
-    expect(component.email).toEqual('user.alexander@mail.com');
-    component.password = '0kash914t3';
-    expect(component.password).toEqual('0kash914t3');
+  it('needsLogin returns false when the user has been authenticated', () => {
+    localStorage.setItem('token', '12345');
+    console.log(expect(component.login()).toBeFalsy());
   });
 });

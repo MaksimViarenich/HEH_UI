@@ -9,7 +9,7 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
-import { isEqual } from 'lodash';
+import {cloneDeep, isEqual} from 'lodash';
 import {ModalService} from '../../../services/modal-service/modal.service';
 
 @Component({
@@ -31,6 +31,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   activeAddresses: Array<string>;
   userLocation: string;
   editingValue = this.data.favoriteNote;
+  pristineEditingValue = cloneDeep(this.editingValue);
   discountId: string = this.data.id;
   address = new FormControl();
 
@@ -41,7 +42,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private discountService: DiscountsService,
     private toaster: ToasterService,
     public mapsApiLoader: MapsAPILoader,
-    private userProfleService: UserProfileService,
+    private userProfileService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
     private modalService: ModalService,
@@ -96,6 +97,10 @@ export class DiscountDetailsModalComponent implements OnInit {
     );
   }
 
+  canNotBeSaved(): boolean {
+    return isEqual(this.editingValue, this.pristineEditingValue);
+  }
+
   displayActiveMarkers(): void {
     this.markers = [];
 
@@ -146,7 +151,7 @@ export class DiscountDetailsModalComponent implements OnInit {
               };
             });
           } else {
-            this.userProfleService.getUser().subscribe(
+            this.userProfileService.getUser().subscribe(
               (user: { address: { cityId: string; street: string }; }) => {
                 this.userLocation = `${this.filtersService.getAddressByCityId(user.address.cityId)} ${user.address.street}`;
                 this.geocodeService.findLocation(this.userLocation, (obj: Marker) => {

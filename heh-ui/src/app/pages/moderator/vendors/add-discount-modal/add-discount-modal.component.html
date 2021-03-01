@@ -102,7 +102,7 @@
       <button mat-button
               (click)="checkChanges()">{{ 'vendors.add-discount.cancel' | translate }}</button>
       <button mat-raised-button
-              [disabled]="form.invalid"
+              [disabled]="form.invalid || canNotBeSaved()"
               [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.save' | translate }}</button>
     </div>
   </form>

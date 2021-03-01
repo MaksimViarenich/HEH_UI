@@ -25,6 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -55,6 +56,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatGridListModule,
     MatProgressSpinnerModule,
     MatBadgeModule,
+    MatTooltipModule,
   ],
   imports: [],
   declarations: [],

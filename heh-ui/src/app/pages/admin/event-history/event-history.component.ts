@@ -5,6 +5,8 @@ import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
+import {AuthService} from '../../../services/auth-service/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-event-history',
@@ -26,7 +28,8 @@ export class EventHistoryComponent implements OnInit {
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
               private historyService: HistoryService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private router: Router) {
     this.searchData.historyLocation = '';
     this.filtersOptions = {
       locations: [],
@@ -72,6 +75,14 @@ export class EventHistoryComponent implements OnInit {
       this.skipEvents += this.topEvents;
       this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
       this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  routeWithData(state: any): void {
+    if (state.userEmail === sessionStorage.getItem('userEmail')) {
+      this.router.navigateByUrl('/profile');
+    } else {
+      this.router.navigateByUrl('/admin/users', { state: {userEmail: state.userEmail }});
     }
   }
 }
