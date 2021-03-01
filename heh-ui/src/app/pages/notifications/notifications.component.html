@@ -12,13 +12,23 @@
 
       <!-- Read notification ckeck-box -->
       <ng-container matColumnDef="read">
-        <th mat-header-cell *matHeaderCellDef>{{ 'event-notification.read' | translate }}</th>
+        <th mat-header-cell
+            *matHeaderCellDef>
+              <div class="read-cell">
+                <mat-checkbox [checked]="!notificationCount"
+                              [disabled]="notificationCount"
+                              matTooltip="Read All"
+                              (change)="readOneOrAllNotification('all')">
+                </mat-checkbox>
+                {{ 'event-notification.read' | translate }}
+              </div>
+            </th>
         <td mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead">
           <mat-checkbox [checked]="row.isRead"
                         [disabled]="row.isRead"
-                        (change)="readNotification(row.id)">
+                        (change)="readOneOrAllNotification('one', row.id)">
           </mat-checkbox>
         </td>
       </ng-container>
@@ -29,7 +39,7 @@
         <td mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
-            (click)="readNotification(row.id, row.isRead)"> {{row.date | date: 'dd MMM yyyy hh:mm'}} </td>
+            (click)="readOneOrAllNotification('one', row.id, row.isRead)"> {{row.date | date: 'dd MMM yyyy hh:mm'}} </td>
       </ng-container>
 
       <!-- Type Column -->
@@ -38,7 +48,7 @@
         <td mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
-            (click)="readNotification(row.id, row.isRead)">
+            (click)="readOneOrAllNotification('one', row.id, row.isRead)">
           <app-action-event [type]="row.type.toLowerCase()"></app-action-event>
         </td>
       </ng-container>
@@ -49,7 +59,7 @@
         <td mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
-            (click)="readNotification(row.id, row.isRead)">{{ row.title }}</td>
+            (click)="readOneOrAllNotification('one', row.id, row.isRead)">{{ row.title }}</td>
       </ng-container>
 
       <!-- Message Column -->
@@ -59,7 +69,7 @@
             mat-cell
             [class.is-read]="row.isRead"
             *matCellDef="let row"
-            (click)="readNotification(row.id, row.isRead)"> {{row.message}} </td>
+            (click)="readOneOrAllNotification('one', row.id, row.isRead)"> {{row.message}} </td>
       </ng-container>
       <tr class="table-sticky" mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
