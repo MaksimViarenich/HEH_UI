@@ -11,6 +11,13 @@ export class UsersService {
   constructor(public http: HttpClient,
               private filterService: FiltersService) {}
 
+  getUserPhotoAdmin(id: string): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+
+    return this.http.get(`${BASE_API_URL}/api/user/photo/${id}`, {headers, responseType: 'blob'});
+  }
+
   getUsers(filters: any, top: number, skip: number): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
