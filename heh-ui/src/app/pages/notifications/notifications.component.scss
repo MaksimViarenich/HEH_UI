@@ -48,9 +48,9 @@
       top: 3rem;
     }
 
-    td {
-      background: rgba(255, 255, 255, 0.8);
+    td, .cell-message{
       font-weight: bold;
+      background: rgba(255, 255, 255, 0.8);
       cursor: pointer;
     }
 

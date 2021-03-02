@@ -15,7 +15,7 @@ export class SpinnerHttpInterceptor implements HttpInterceptor {
   constructor(private spinnerService: SpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (isEqual(req.url, `${BASE_API_URL}/api/notification/count`)) {
+    if (!isEqual(req.url, `${BASE_API_URL}/api/notification/count`)) {
       this.spinnerService.show();
     }
 

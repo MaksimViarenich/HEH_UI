@@ -34,6 +34,7 @@ export class AddAddressComponent implements OnInit {
 
   changeCitiesList(): void {
       this.formAddress.get('country')?.valueChanges.subscribe((value) => {
+
       forEach(this.countries, (country: any) => {
         if (isEqual(country.id, value.id)) {
           this.cities = country.cities;
