@@ -32,7 +32,7 @@ export class GeocodeService {
     }
 
     this.geocoder.geocode({ address }, (results: any, status: any) => {
-      if (isEqual(status, 'OK' && results)) {
+      if (isEqual(status, 'OK') || isEqual(status, results)) {
         obj.lat = results[0].geometry.location.lat();
         obj.lng = results[0].geometry.location.lng();
         if (callback) {

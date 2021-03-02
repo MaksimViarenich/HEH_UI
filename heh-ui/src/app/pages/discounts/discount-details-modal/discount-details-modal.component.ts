@@ -54,7 +54,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
-    this.zoom = 10;
+    this.zoom = 12;
     this.userLocation = '';
     this.loading = false;
     this.markers = [];
@@ -95,7 +95,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     setTimeout(() => {
       if (isEqual(size(this.markers), 1)) {
         this.location = this.markers[0];
-        this.zoom = 14;
+        this.zoom = 12;
       } else if (size(this.markers) > 1) {
         this.location.lat = reduce(this.markers, (sum, marker) => sum + marker.lat, 0) / size(this.markers);
         this.location.lng = reduce(this.markers, (sum, marker) => sum + marker.lng, 0) / size(this.markers);
