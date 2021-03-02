@@ -75,7 +75,8 @@ export class StatisticsComponent implements OnInit {
     this.statisticsService.exportDiscountsStatistics(filters).subscribe(
       (response: any) => {
         const headers = response.headers.get('content-disposition');
-        this.downloadFile(response.body);
+        const filename = headers.split(';')[1].split('filename')[1].split('=')[1].trim();
+        this.downloadFile(response.body, filename);
       },
       (error) => {
         this.toaster.open('There is no possibility to export statistics');
@@ -83,10 +84,13 @@ export class StatisticsComponent implements OnInit {
     );
   }
 
-  downloadFile(data: any): void{
-    const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  downloadFile(data: any, filename: string): void{
+    const blob = new Blob ([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
     const url = window.URL.createObjectURL(blob);
-    window.open(url);
+    const anchor = document.createElement('a');
+    anchor.download = filename;
+    anchor.href = url;
+    anchor.click();
   }
 
   onScrollDown(event: any): void {
