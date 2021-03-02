@@ -63,7 +63,7 @@ export class ListInputComponent {
   }
 
   remove(item: any): void {
-    const dialogRef = this.modalService.openConfirmModal();
+    const dialogRef = this.modalService.openConfirmModal('Are you sure you want to delete?', 'Delete');
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.deleteElement(item.id, this.changeData);

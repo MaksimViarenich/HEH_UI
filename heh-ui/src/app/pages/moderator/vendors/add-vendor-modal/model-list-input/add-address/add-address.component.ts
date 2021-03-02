@@ -60,7 +60,7 @@ export class AddAddressComponent implements OnInit {
     const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
 
     if (!isChanged) {
-      const dialogRef = this.modalService.openConfirmModal(message);
+      const dialogRef = this.modalService.openConfirmModal(message, 'Close');
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {
