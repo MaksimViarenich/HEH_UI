@@ -25,10 +25,7 @@ export class AddAddressComponent implements OnInit {
       city: new FormControl(''),
       street: new FormControl('', [Validators.maxLength(50)]),
     });
-  }
-
-  changeCitiesList(): void {
-      this.formAddress.get('country')?.valueChanges.subscribe((value) => {
+    this.formAddress.get('country')?.valueChanges.subscribe((value) => {
       forEach(this.countries, (country: any) => {
         if (isEqual(country.id, value.id)) {
           this.cities = country.cities;
@@ -36,7 +33,6 @@ export class AddAddressComponent implements OnInit {
       });
     });
   }
-
 
   ngOnInit(): void {
     this.countries = this.filterService.countriesCities;
