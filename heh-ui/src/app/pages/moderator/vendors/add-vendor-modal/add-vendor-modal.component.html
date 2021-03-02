@@ -17,7 +17,6 @@
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
             <input [(ngModel)]="vendor.name"
-                   [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
 
@@ -100,7 +99,7 @@
     <button mat-button
             (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
     <button mat-raised-button
-            [disabled]="!vendor.name || canNotBeSaved()"
+            [disabled]="isSaveDisabled() || canNotBeSaved()"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.save' | translate }}</button>
   </mat-dialog-actions>
 </div>

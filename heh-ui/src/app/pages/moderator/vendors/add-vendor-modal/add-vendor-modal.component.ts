@@ -19,7 +19,6 @@ export class AddVendorModalComponent implements OnInit {
   vendor: any;
   links: any;
   countriesCities: any;
-  vendorName: FormControl;
   pristineVendor: any;
   pristineLinks: any;
 
@@ -44,12 +43,15 @@ export class AddVendorModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
-    this.vendorName = new FormControl('', [Validators.required]);
     this.pristineVendor = {};
   }
 
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
+
+  isSaveDisabled(): boolean {
+    return !(this.vendor.name && this.vendor.addresses.length);
+  }
 
   openDiscountModal(discount?: Discount, index?: any): void {
     const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);

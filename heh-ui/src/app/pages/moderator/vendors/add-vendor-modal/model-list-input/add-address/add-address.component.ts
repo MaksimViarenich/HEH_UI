@@ -4,13 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { customAlphabet } from 'nanoid/non-secure';
 
-export interface AddressData {
-  country: any;
-  city: any;
-  street: string;
-  id: number;
-}
-
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
@@ -21,30 +14,22 @@ export class AddAddressComponent implements OnInit {
   formAddress: FormGroup;
   countries: Array<any> = [];
   cities: Array<any> = [];
-  data: AddressData;
-
+  conditionStreetInput = true;
 
   constructor(
     private filterService: FiltersService,
     private matDialogRef: MatDialogRef<any>) {
-    this.data = {
-      country: {},
-      city: {},
-      street: '',
-      id: 0,
-    };
     this.formAddress = new FormGroup({
       country: new FormControl('', [Validators.required]),
-      city: new FormControl('', [Validators.required]),
-      street: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      city: new FormControl(''),
+      street: new FormControl('', [Validators.maxLength(50)]),
     });
-  }
-
-  changeCitiesList(): void {
-    this.countries.forEach((country: any) => {
-      if (country.id === this.data.country.id) {
-        this.cities = country.cities;
-      }
+    this.formAddress.get('country')?.valueChanges.subscribe((value) => {
+      this.countries.forEach((country: any) => {
+        if (country.id === value.id) {
+          this.cities = country.cities;
+        }
+      });
     });
   }
 
@@ -52,11 +37,17 @@ export class AddAddressComponent implements OnInit {
     this.countries = this.filterService.countriesCities;
   }
 
-  addAddress(): void {
-    const nodeid = customAlphabet('1234567890', 8);
-    const generatedId = Number(nodeid());
+  setCity(): void {
+    this.conditionStreetInput = false;
+  }
 
-    this.data.id = this.data.id || generatedId;
-    this.matDialogRef.close(this.data);
+  generayteId(): number {
+    const nodeid = customAlphabet('1234567890', 8);
+
+    return 0 || Number(nodeid());
+  }
+
+  addAddress(): void {
+    this.matDialogRef.close({...this.formAddress.value, id: this.generayteId()});
   }
 }
