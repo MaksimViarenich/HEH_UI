@@ -7,6 +7,7 @@ import { SpinnerService } from '../../../services/spinner-service/spinner.servic
 import { Background, SelectBackgroundService } from '../../select-background/select-background.service';
 import { HeaderService } from '../../header/header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
+import { slice, includes, now, find, isEqual } from 'lodash';
 
 interface PageTitles {
   localizationKey: string;
@@ -87,19 +88,19 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
     const role = this.roleService.getRoles();
 
     switch (true) {
-      case (role.includes('administrator')):
+      case (includes(role, 'administrator')):
         return this.tabs = HEADER_TABS;
 
-      case (role.includes('moderator')):
-        return this.tabs = HEADER_TABS.slice(0, 4);
+      case (includes(role, 'moderator')):
+        return this.tabs = slice(HEADER_TABS, 0, 4);
 
-      case (role.includes('employee')):
-        return this.tabs = HEADER_TABS.slice(0, 3);
+      case (includes(role, 'employee')):
+        return this.tabs = slice(HEADER_TABS, 0, 3);
     }
   }
 
   tokenExpirationLogout(): any {
-    const dateNow = Date.now();
+    const dateNow = now();
     const expDate = Number(localStorage.getItem('expDate'));
 
     setTimeout(() => {
@@ -122,7 +123,7 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
 
   getLocalizationKey(): string {
     this.route = this.router.url;
-    const titleOption = this.pageTitles.find(item => item.pagePath === this.route);
+    const titleOption = find(this.pageTitles, item => isEqual(item.pagePath, this.route));
 
     return (titleOption) ? titleOption?.localizationKey : 'Unknown Page';
   }

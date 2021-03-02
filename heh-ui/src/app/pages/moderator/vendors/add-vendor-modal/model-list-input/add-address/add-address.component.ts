@@ -3,6 +3,7 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { customAlphabet } from 'nanoid/non-secure';
+import { isEqual, forEach } from 'lodash';
 
 @Component({
   selector: 'app-add-address',
@@ -24,14 +25,18 @@ export class AddAddressComponent implements OnInit {
       city: new FormControl(''),
       street: new FormControl('', [Validators.maxLength(50)]),
     });
-    this.formAddress.get('country')?.valueChanges.subscribe((value) => {
-      this.countries.forEach((country: any) => {
-        if (country.id === value.id) {
+  }
+
+  changeCitiesList(): void {
+      this.formAddress.get('country')?.valueChanges.subscribe((value) => {
+      forEach(this.countries, (country: any) => {
+        if (isEqual(country.id, value.id)) {
           this.cities = country.cities;
         }
       });
     });
   }
+
 
   ngOnInit(): void {
     this.countries = this.filterService.countriesCities;
