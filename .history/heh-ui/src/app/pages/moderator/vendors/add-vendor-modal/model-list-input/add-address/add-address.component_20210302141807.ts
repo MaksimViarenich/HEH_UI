@@ -46,14 +46,12 @@ export class AddAddressComponent implements OnInit {
   }
 
   changeCitiesList(): void {
-    this.formAddress.get('country')?.valueChanges.subscribe((value) => {
-    forEach(this.countries, (country: any) => {
-      if (isEqual(country.id, value.id)) {
+    this.countries.forEach((country: any) => {
+      if (country.id === this.data.country.id) {
         this.cities = country.cities;
       }
     });
-  });
-}
+  }
 
   checkChanges(): any {
     const isChanged = isEqual(this.pristineAddress, this.data);
