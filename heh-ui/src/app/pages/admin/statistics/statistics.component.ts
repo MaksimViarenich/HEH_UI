@@ -6,6 +6,7 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 import { StatisticsService } from './statistics.service';
 import { DiscountCard } from '../../../models/discount-card';
 import { GridService } from '../../../services/grid-service/grid.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-statistics',
@@ -67,6 +68,24 @@ export class StatisticsComponent implements OnInit {
         this.toaster.open('There is no possibility to show statistics');
       }
     );
+  }
+
+  exportStatistics(filters?: any): any {
+    this.statisticsService.exportDiscountsStatistics(filters).subscribe(
+      (response: any) => {
+        const headers = response.headers.get('content-disposition');
+        this.downloadFile(response.body);
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to export statistics');
+      }
+    );
+  }
+
+  downloadFile(data: any): void{
+    const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url);
   }
 
   onScrollDown(event: any): void {

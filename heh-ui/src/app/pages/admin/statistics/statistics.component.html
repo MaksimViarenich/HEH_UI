@@ -1,5 +1,6 @@
 <app-page-search [isDateRangeSearchAvailable]="true"
-                 (applySearch)="getStatisticsWrapper($event)"></app-page-search>
+                 (applySearch)="getStatisticsWrapper($event)"
+                 (applyExport)="exportStatistics($event)"></app-page-search>
 
 <div infiniteScroll
      [infiniteScrollDistance]="1"

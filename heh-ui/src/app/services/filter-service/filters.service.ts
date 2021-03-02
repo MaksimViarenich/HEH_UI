@@ -281,33 +281,35 @@ buildListQuery(filters: any, key: string): string {
     return query;
   }
 
-getQueryParams(filters: any, top: number, skip: number): any {
-    let params = new HttpParams();
+getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean): any {
+  let params = new HttpParams();
 
-    const filtersParams = this.getFiltersParams(filters);
+  const filtersParams = this.getFiltersParams(filters);
 
+  if (!skipPagination) {
     params = params.append('$top', `${top}`);
     params = params.append('$skip', `${skip}`);
     params = params.append('$count', 'true');
+  }
 
-    if (filtersParams.queryTextParam) {
-      params = params.append('searchText', filtersParams.queryTextParam);
-    }
+  if (filtersParams.queryTextParam) {
+    params = params.append('searchText', filtersParams.queryTextParam);
+  }
 
-    if (filtersParams.queryStartDate && !filtersParams.queryEndDate) {
+  if (filtersParams.queryStartDate && !filtersParams.queryEndDate) {
       params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
       params = params.append('endDate', `${filtersParams.queryStartDate}T00:00:00Z`);
     }
 
-    if (filtersParams.queryEndDate && filtersParams.queryStartDate) {
+  if (filtersParams.queryEndDate && filtersParams.queryStartDate) {
       params = params.append('startDate', `${filtersParams.queryStartDate}T00:00:00Z`);
       params = params.append('endDate', `${filtersParams.queryEndDate}T00:00:00Z`);
     }
 
-    if (filtersParams.queryParams) {
+  if (filtersParams.queryParams) {
       params = params.append('$filter', filtersParams.queryParams);
     }
 
-    return params;
+  return params;
   }
 }
