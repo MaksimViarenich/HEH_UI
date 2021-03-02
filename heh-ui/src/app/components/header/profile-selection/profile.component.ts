@@ -67,6 +67,7 @@ export class ProfileComponent implements OnInit {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
           this.userPhoto = reader.result;
+          sessionStorage.setItem('userPhoto', this.userPhoto);
         }, false);
 
         if (data) {

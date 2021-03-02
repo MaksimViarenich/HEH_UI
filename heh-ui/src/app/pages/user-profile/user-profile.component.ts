@@ -113,7 +113,8 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.userPhoto = sessionStorage.getItem('userPhoto');
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.allOptions = {
@@ -131,22 +132,6 @@ export class UserProfileComponent implements OnInit {
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
-      }
-    );
-
-    this.userProfileService.getUserProfilePhoto().subscribe(
-      (data) => {
-        const reader = new FileReader();
-        reader.addEventListener('load', () => {
-          this.userPhoto = reader.result;
-        }, false);
-
-        if (data) {
-          reader.readAsDataURL(data);
-        }
-      },
-      (error) => {
-        this.toaster.open('Сan not get user photo');
       }
     );
   }
