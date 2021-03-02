@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from '../../../models/user-info';
-import { ProfileService } from './profile.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
+import { UserProfileService } from '../../../pages/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,10 +15,11 @@ import { FiltersService } from '../../../services/filter-service/filters.service
 export class ProfileComponent implements OnInit {
 
   user: UserInfo;
+  userPhoto: any;
   location: string;
 
   constructor(private router: Router,
-              private profileService: ProfileService,
+              private userProfileService: UserProfileService,
               private filtersService: FiltersService,
               private toaster: ToasterService) {
     this.user = {
@@ -49,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    this.profileService.getUser().subscribe(
+    this.userProfileService.getUser().subscribe(
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
@@ -58,6 +59,22 @@ export class ProfileComponent implements OnInit {
       },
       () => {
         this.toaster.open('Сan not get user profile');
+      }
+    );
+
+    this.userProfileService.getUserProfilePhoto().subscribe(
+      (data) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          this.userPhoto = reader.result;
+        }, false);
+
+        if (data) {
+          reader.readAsDataURL(data);
+        }
+      },
+      () => {
+        this.toaster.open('Сan not get user photo');
       }
     );
   }

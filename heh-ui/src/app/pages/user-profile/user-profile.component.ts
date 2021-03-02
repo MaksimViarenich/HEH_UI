@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   newslettersChecked: boolean;
   filtersOptions: any;
   user: UserInfo | any;
+  userPhoto: any;
   location: string;
   separatorKeysCodes: number[];
   allOptions: any;
@@ -33,18 +34,18 @@ export class UserProfileComponent implements OnInit {
   constructor(public translate: TranslateService,
               private usersService: UsersService,
               private filtersService: FiltersService,
-              private userProfleService: UserProfileService,
+              private userProfileService: UserProfileService,
               private toaster: ToasterService) {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
     this.allOptions = [];
     this.selectedOptions = [];
-    this.categoryNotifications = [],
-      this.tagNotifications = [],
-      this.vendorNotifications = [],
+    this.categoryNotifications = [];
+    this.tagNotifications = [];
+    this.vendorNotifications = [];
 
-      this.filtersOptions = {
+    this.filtersOptions = {
         locations: [],
         categories: [],
         tags: [],
@@ -102,7 +103,7 @@ export class UserProfileComponent implements OnInit {
       allNotificationsAreOn: this.user.allNotificationsAreOn
     };
 
-    this.userProfleService.editProfile(userNotification).subscribe(
+    this.userProfileService.editProfile(userNotification).subscribe(
       (data) => {
         this.toaster.open('Profile was updated', 'success');
       },
@@ -122,7 +123,7 @@ export class UserProfileComponent implements OnInit {
       };
     });
 
-    this.userProfleService.getUser().subscribe(
+    this.userProfileService.getUser().subscribe(
       (data) => {
         this.user = data;
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
@@ -130,6 +131,22 @@ export class UserProfileComponent implements OnInit {
       },
       (error) => {
         this.toaster.open('Сan not get user profile');
+      }
+    );
+
+    this.userProfileService.getUserProfilePhoto().subscribe(
+      (data) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          this.userPhoto = reader.result;
+        }, false);
+
+        if (data) {
+          reader.readAsDataURL(data);
+        }
+      },
+      (error) => {
+        this.toaster.open('Сan not get user photo');
       }
     );
   }
