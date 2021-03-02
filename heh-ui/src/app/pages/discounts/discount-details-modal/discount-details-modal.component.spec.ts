@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
