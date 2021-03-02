@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
@@ -46,6 +47,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
     private modalService: ModalService,
+    private translateService: TranslateService,
     private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -70,9 +72,14 @@ export class DiscountDetailsModalComponent implements OnInit {
 
   checkChanges(): any {
     const isChanged = isEqual(this.data.favoriteNote, this.editingValue);
-    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
+
     if (!isChanged) {
-      const dialogRef = this.modalService.openConfirmModal(message, 'Close');
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {

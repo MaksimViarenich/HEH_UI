@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -28,6 +29,7 @@ export class AddDiscountModalComponent implements OnInit {
               private toaster: ToasterService,
               private matDialogRef: MatDialogRef<any>,
               private modalService: ModalService,
+              private translateService: TranslateService,
               @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.discountDetail = data.discount;
@@ -62,9 +64,14 @@ export class AddDiscountModalComponent implements OnInit {
       };
     }
     const isChanged = isEqual(this.discountDetail, this.pristineDiscountDetail);
-    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
+
     if (!isChanged) {
-      const dialogRef = this.modalService.openConfirmModal(message, 'Close');
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { VendorCard } from '../../../../models/vendor-card';
@@ -29,6 +30,7 @@ export class AddVendorModalComponent implements OnInit {
     private modalService: ModalService,
     private toaster: ToasterService,
     private matDialogRef: MatDialogRef<any>,
+    private translateService: TranslateService,
     @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
   ) {
     this.vendor = {
@@ -70,10 +72,14 @@ export class AddVendorModalComponent implements OnInit {
 
   checkChanges(): any {
     const isChanged = isEqual(this.pristineVendor, this.vendor) && isEqual(this.pristineLinks, this.links);
-    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
 
     if (!isChanged) {
-      const dialogRef = this.modalService.openConfirmModal(message, 'Close');
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {

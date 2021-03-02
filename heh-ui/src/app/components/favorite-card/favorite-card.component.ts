@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,10 +20,17 @@ export class FavoriteCardComponent {
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
               private favoriteService: FavoritesService,
-              private toaster: ToasterService) {}
+              private toaster: ToasterService,
+              private translateService: TranslateService) {}
 
   deleteFavorite(): any {
-    const dialogRef = this.modalService.openConfirmModal('Are you sure you want to delete?', 'Delete');
+    const confirmData = {
+      message: this.translateService.instant('confirmation.delete.message'),
+      buttonPositive: this.translateService.instant('confirmation.delete.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.delete.button-negative'),
+    };
+    const dialogRef = this.modalService.openConfirmModal(confirmData);
+
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(

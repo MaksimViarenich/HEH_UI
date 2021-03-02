@@ -71,12 +71,9 @@ export class ModalService {
     });
   }
 
-  openConfirmModal(message?: string, buttonLabel?: string): any {
+  openConfirmModal(data?: any): any {
     return this.dialog.open(ConfirmationDialogComponent, {
-      data: {
-        message,
-        buttonLabel
-      },
+      data,
       width: '20rem',
       height: '11rem',
       panelClass: 'confirm-modal',

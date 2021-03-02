@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,6 +22,7 @@ export class AddAddressComponent implements OnInit {
   constructor(
     private filterService: FiltersService,
     private modalService: ModalService,
+    private translateService: TranslateService,
     private matDialogRef: MatDialogRef<any>) {
       this.formAddress = new FormGroup({
         country: new FormControl('', [Validators.required]),
@@ -42,10 +44,14 @@ export class AddAddressComponent implements OnInit {
 
   checkChanges(): any {
     const isChanged = isEqual(this.pristineAddress, this.formAddress.value);
-    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
 
     if (!isChanged) {
-      const dialogRef = this.modalService.openConfirmModal(message, 'Close');
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {

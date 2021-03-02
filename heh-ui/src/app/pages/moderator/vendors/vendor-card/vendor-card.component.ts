@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { VendorService } from '../vendor.service';
 import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
@@ -15,11 +16,18 @@ export class VendorCardComponent implements OnInit {
 
   constructor(public vendorService: VendorService,
               private modalService: ModalService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private translateService: TranslateService) {
   }
 
   deleteVendor(): any {
-    const dialogRef = this.modalService.openConfirmModal('Are you sure you want to delete?', 'Delete');
+    const confirmData = {
+      message: this.translateService.instant('confirmation.delete.message'),
+      buttonPositive: this.translateService.instant('confirmation.delete.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.delete.button-negative'),
+    };
+    const dialogRef = this.modalService.openConfirmModal(confirmData);
+
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.vendorService.deleteVendor(this.data.id).subscribe(
