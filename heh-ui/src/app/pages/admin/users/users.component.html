@@ -13,8 +13,8 @@
                  rowHeight="19rem"
                  gutterSize="1rem"
                  (window:resize)="onResize($event)">
-    <mat-grid-tile *ngFor="let item of users">
-      <app-user-card [user]="item">
+    <mat-grid-tile *ngFor="let user of users">
+      <app-user-card [user]="user">
       </app-user-card>
     </mat-grid-tile>
   </mat-grid-list>
