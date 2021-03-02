@@ -15,8 +15,18 @@
       width: 74.5%;
     }
 
+    .search-wrapper-statistics {
+      width: 49.5%
+    }
+
     .select-wrapper {
       width: 24%;
+    }
+
+    .button-export {
+      width: 24%;
+      @extend .backgroundColor;
+      color: $color-white;
     }
   }
 
@@ -77,12 +87,12 @@
       flex-direction: column;
       margin-bottom: 0;
 
-      .search-wrapper {
+      .search-wrapper, .search-wrapper-statistics {
         width: 100%;
         margin-bottom: .5rem;
       }
 
-      .select-wrapper {
+      .select-wrapper, .button-export {
         width: 100%;
         margin-bottom: .5rem;
       }

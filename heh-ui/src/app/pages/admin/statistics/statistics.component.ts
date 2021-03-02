@@ -6,6 +6,8 @@ import { ToasterService } from '../../../services/toaster-service/toaster.servic
 import { StatisticsService } from './statistics.service';
 import { DiscountCard } from '../../../models/discount-card';
 import { GridService } from '../../../services/grid-service/grid.service';
+import { HttpResponse } from '@angular/common/http';
+import { isEqual, forEach, size } from 'lodash';
 
 @Component({
   selector: 'app-statistics',
@@ -58,7 +60,7 @@ export class StatisticsComponent implements OnInit {
   getStatistics(top: any, skip: any, filters?: any): any {
     this.statisticsService.getDiscountsStatistics(filters, top, skip).subscribe(
       (data: any) => {
-        data.value.forEach((discount: any) => {
+        forEach(data.value, (discount: any) => {
           this.statistics.push(discount);
         });
         this.totalCount = data['@odata.count'];
@@ -69,8 +71,30 @@ export class StatisticsComponent implements OnInit {
     );
   }
 
+  exportStatistics(filters?: any): any {
+    this.statisticsService.exportDiscountsStatistics(filters).subscribe(
+      (response: any) => {
+        const headers = response.headers.get('content-disposition');
+        const filename = headers.split(';')[1].split('filename')[1].split('=')[1].trim();
+        this.downloadFile(response.body, filename);
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to export statistics');
+      }
+    );
+  }
+
+  downloadFile(data: any, filename: string): void{
+    const blob = new Blob ([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.download = filename;
+    anchor.href = url;
+    anchor.click();
+  }
+
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.statistics.length === this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.statistics), this.totalCount)) {
       this.skipStatistics += this.topStatistics;
       this.getStatistics(this.topStatistics, this.skipStatistics, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;

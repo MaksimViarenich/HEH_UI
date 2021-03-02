@@ -5,6 +5,7 @@ import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { GridService } from '../../../services/grid-service/grid.service';
+import { forEach, isEqual, size } from 'lodash';
 
 @Component({
   selector: 'app-vendors',
@@ -50,7 +51,7 @@ export class VendorsComponent implements OnInit {
   getAllVendors(top: any, skip: any, filters?: any): void {
     this.vendorService.getVendors(filters, top, skip).subscribe(
       (data) => {
-        data.value.forEach((vendor: any) => {
+        forEach(data.value, (vendor: any) => {
           this.vendors.push(vendor);
         });
         this.totalCount = data['@odata.count'];
@@ -84,7 +85,7 @@ export class VendorsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.vendors.length === this.totalCount)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.vendors), this.totalCount)) {
       this.skipVendors += this.topVendors;
       this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
       this.previousScrollPosition = event.currentScrollPosition;

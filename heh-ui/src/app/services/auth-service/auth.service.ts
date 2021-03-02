@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
+import { now } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class AuthService {
   }
 
   isAuthenticated(): any {
-    const dateNow = Date.now();
+    const dateNow = now();
     const expDate = Number(localStorage.getItem('expDate'));
 
     return !!((expDate > dateNow) && localStorage.getItem('isAuth'));
