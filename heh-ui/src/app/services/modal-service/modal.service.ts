@@ -71,10 +71,11 @@ export class ModalService {
     });
   }
 
-  openConfirmModal(message?: string): any {
+  openConfirmModal(message?: string, buttonLabel?: string): any {
     return this.dialog.open(ConfirmationDialogComponent, {
       data: {
         message,
+        buttonLabel
       },
       width: '20rem',
       height: '11rem',

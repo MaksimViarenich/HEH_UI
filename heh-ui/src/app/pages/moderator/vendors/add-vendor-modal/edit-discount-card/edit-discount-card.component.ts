@@ -17,7 +17,7 @@ export class EditDiscountCardComponent {
               private modalService: ModalService) {}
 
   deleteDiscount(): void{
-    const dialogRef = this.modalService.openConfirmModal();
+    const dialogRef = this.modalService.openConfirmModal('Are you sure you want to delete?', 'Delete');
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.removeDiscountFromVendor.emit();
