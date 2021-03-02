@@ -18,7 +18,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 export class AddDiscountModalComponent implements OnInit {
   form: FormGroup;
   discountDetail: Discount;
-  pristineDiscountDetail: Discount;
+  pristineDiscountDetail: any;
   vendorAddresses: Array<Address>;
   vendorPhones: Array<Phones>;
   categoriesAll: any;
@@ -49,16 +49,27 @@ export class AddDiscountModalComponent implements OnInit {
   }
 
   checkChanges(): any {
-    console.log(this.discountDetail);
-    console.log(this.pristineDiscount);
-    const isChanged = isEqual(this.discountDetail, this.pristineDiscount);
+    if (!this.data.discount.id) {
+      this.pristineDiscountDetail = {
+        addressesIds: undefined,
+        categoryId: undefined,
+        conditions: undefined,
+        endDate: undefined,
+        phonesIds: undefined,
+        promoCode: undefined,
+        startDate: undefined,
+        tagsIds: undefined,
+      };
+    }
+    const isChanged = isEqual(this.discountDetail, this.pristineDiscountDetail);
     const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
     if (!isChanged) {
       const dialogRef = this.modalService.openConfirmModal(message);
 
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result) {
-          this.matDialogRef.close('');
+          this.discountDetail = cloneDeep(this.pristineDiscountDetail);
+          this.matDialogRef.close(this.discountDetail);
         }
       });
     } else {

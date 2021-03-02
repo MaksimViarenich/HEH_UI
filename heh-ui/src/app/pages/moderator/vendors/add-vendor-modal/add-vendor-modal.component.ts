@@ -45,7 +45,8 @@ export class AddVendorModalComponent implements OnInit {
       vkontakte: '',
     };
     this.vendorName = new FormControl('', [Validators.required]);
-    // this.pristineVendor = cloneDeep(this.vendor);
+    this.pristineVendor = cloneDeep(this.vendor);
+    this.pristineLinks = cloneDeep(this.links);
   }
 
   addressTitle = 'vendors.add-vendor.address';
@@ -55,7 +56,7 @@ export class AddVendorModalComponent implements OnInit {
     const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);
 
     dialogRef.afterClosed().subscribe((data: any) => {
-      if (data) {
+      if (data.promoCode) {
         if (index !== undefined) {
           this.vendor.discounts[index] = data;
         } else {
@@ -66,11 +67,12 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   checkChanges(): any {
-    const isChanged = isEqual(this.pristineVendor, this.vendor);
-    console.log('backup', this.pristineVendor);
-    console.log('vendor', this.vendor);
-    console.log('changes', isChanged);
+    if (!this.vendorId.id) {
+      this.pristineVendor.name = undefined;
+    }
+    const isChanged = isEqual(this.pristineVendor, this.vendor) && isEqual(this.pristineLinks, this.links);
     const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+
     if (!isChanged) {
       const dialogRef = this.modalService.openConfirmModal(message);
 

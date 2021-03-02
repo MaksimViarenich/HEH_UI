@@ -67,6 +67,7 @@ export class ModalService {
       panelClass: 'add-address-modal',
       backdropClass: 'add-address-modal-backdrop',
       autoFocus: false,
+      disableClose: true,
     });
   }
 

@@ -3,6 +3,8 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { customAlphabet } from 'nanoid/non-secure';
+import { ModalService } from 'src/app/services/modal-service/modal.service';
+import { cloneDeep, isEqual } from 'lodash';
 
 export interface AddressData {
   country: any;
@@ -22,10 +24,12 @@ export class AddAddressComponent implements OnInit {
   countries: Array<any> = [];
   cities: Array<any> = [];
   data: AddressData;
+  pristineAddress: any;
 
 
   constructor(
     private filterService: FiltersService,
+    private modalService: ModalService,
     private matDialogRef: MatDialogRef<any>) {
     this.data = {
       country: {},
@@ -33,6 +37,7 @@ export class AddAddressComponent implements OnInit {
       street: '',
       id: 0,
     };
+    this.pristineAddress = cloneDeep(this.data);
     this.formAddress = new FormGroup({
       country: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
@@ -48,9 +53,30 @@ export class AddAddressComponent implements OnInit {
     });
   }
 
+  checkChanges(): any {
+    const isChanged = isEqual(this.pristineAddress, this.data);
+    const message = 'Are you sure you want to close the pop-up? Your changes will not be saved';
+
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(message);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
+  }
+
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     this.countries = this.filterService.countriesCities;
   }
+
 
   addAddress(): void {
     const nodeid = customAlphabet('1234567890', 8);
