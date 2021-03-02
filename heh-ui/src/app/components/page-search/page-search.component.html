@@ -1,6 +1,6 @@
 <div class="search-container">
   <div class="main-search-container">
-    <div class="search-wrapper">
+    <div [ngClass]="isDateRangeSearchAvailable ? 'search-wrapper-statistics' : 'search-wrapper'">
       <app-input-search [(ngModel)]="searchData.searchText"
                         (keydown.enter)="submitSearch()"></app-input-search>
     </div>
@@ -18,6 +18,12 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <button *ngIf=isDateRangeSearchAvailable
+            class="button-export"
+            mat-raised-button
+            (click)="exportStatistics()">
+      <div class="material-icons">download</div>
+      {{ 'search.btn_export' | translate }}</button>
   </div>
 
   <div class="filters-container">

@@ -31,6 +31,7 @@
   },
   "search": {
     "btn_search": "Search",
+    "btn_export": "Export",
     "input_search": "Search",
     "tag": "Tag",
     "category": "Category",

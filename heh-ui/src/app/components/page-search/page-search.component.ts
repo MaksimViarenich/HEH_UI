@@ -13,6 +13,7 @@ export class PageSearchComponent implements OnInit {
   @Input() isVendorSearchAvailable: boolean;
   @Input() isDateRangeSearchAvailable: boolean;
   @Output() applySearch = new EventEmitter<any>();
+  @Output() applyExport = new EventEmitter<any>();
   filtersOptions: any;
   searchData: any;
   pickerDate: any[];
@@ -86,5 +87,10 @@ export class PageSearchComponent implements OnInit {
     } else {
       this.filtersOptions.tags = this.filtersService.getFilters().tags;
     }
+  }
+
+  exportStatistics(): void {
+    this.applyExport.emit(this.searchData);
+    this.pickerDate = [];
   }
 }
