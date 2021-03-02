@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { customAlphabet } from 'nanoid/non-secure';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
-import { cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, isEqual, forEach } from 'lodash';
 
 export interface AddressData {
   country: any;
@@ -25,7 +25,7 @@ export class AddAddressComponent implements OnInit {
   cities: Array<any> = [];
   data: AddressData;
   pristineAddress: any;
-
+  conditionStreetInput = true;
 
   constructor(
     private filterService: FiltersService,
@@ -77,12 +77,17 @@ export class AddAddressComponent implements OnInit {
     this.countries = this.filterService.countriesCities;
   }
 
+  setCity(): void {
+    this.conditionStreetInput = false;
+  }
+
+  generayteId(): number {
+    const nodeid = customAlphabet('1234567890', 8);
+
+    return 0 || Number(nodeid());
+  }
 
   addAddress(): void {
-    const nodeid = customAlphabet('1234567890', 8);
-    const generatedId = Number(nodeid());
-
-    this.data.id = this.data.id || generatedId;
-    this.matDialogRef.close(this.data);
+    this.matDialogRef.close({...this.formAddress.value, id: this.generayteId()});
   }
 }

@@ -7,7 +7,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import { cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -52,12 +52,16 @@ export class AddVendorModalComponent implements OnInit {
   addressTitle = 'vendors.add-vendor.address';
   phoneTitle = 'vendors.add-vendor.phone';
 
+  isSaveDisabled(): boolean {
+    return !(this.vendor.name && this.vendor.addresses.length);
+  }
+
   openDiscountModal(discount?: Discount, index?: any): void {
     const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data.promoCode) {
-        if (index !== undefined) {
+        if (!isEqual(index, undefined)) {
           this.vendor.discounts[index] = data;
         } else {
           this.vendor.discounts.push(data);
@@ -145,7 +149,7 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   deleteDiscount(index: any): void {
-    if (this.vendor.discounts[index] !== undefined) {
+    if (!isEqual(this.vendor.discounts[index], undefined)) {
       this.vendor.discounts.splice(index, 1);
     }
 
@@ -158,11 +162,11 @@ export class AddVendorModalComponent implements OnInit {
 
   onAddAddress(address: any): void {
     const editAddresses: any[] = [];
-    address.map((addr: any) => {
-      this.countriesCities.forEach((item: any) => {
-          if (addr.countryId === item.id) {
+    map(address, (addr: any) => {
+      forEach(this.countriesCities, (item: any) => {
+          if (isEqual(addr.countryId, item.id)) {
             for (const city of item.cities) {
-              if (addr.cityId === city.id) {
+              if (isEqual(addr.cityId, city.id)) {
                 editAddresses.push({
                   country: {
                     country: item.country,
@@ -206,10 +210,11 @@ export class AddVendorModalComponent implements OnInit {
           this.vendor = data;
           this.onAddAddress(data.addresses);
           this.pristineVendor = cloneDeep(this.vendor);
-          if (data.links.length) {
+
+          if (size(data.links)) {
             this.links = Object.assign({}, ...data.links.map((link: any) => {
               return {
-                [link.type.toLowerCase()]: link.url
+                [toLower(link.type)]: link.url
               };
             }));
             this.pristineLinks = cloneDeep(this.links);
