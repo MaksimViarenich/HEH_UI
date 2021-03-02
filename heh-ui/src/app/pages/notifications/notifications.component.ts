@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationElement } from '../../models/notification-element';
+import { forEach, size, isEqual } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
 @Component({
   selector: 'app-notifications',
@@ -47,7 +48,7 @@ export class NotificationsComponent implements OnInit {
   getNotifications(searchData: any, top: any, skip: any): void {
     this.notificationService.getSearchNotifications(searchData, top, skip).subscribe(
       (data: any) => {
-        data.value.forEach((event: any) => {
+        forEach(data.value, (event: any) => {
           this.notificationData.push(event);
         });
 
@@ -75,7 +76,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   onScrollDown(event: any): void {
-    if (event.currentScrollPosition > this.previousScrollPosition && !(this.notificationData.length === this.totalCountEvents)) {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.notificationData), this.totalCountEvents)) {
       this.skipNotifications += this.topNotifications;
       this.getNotifications(this.searchData, this.topNotifications, this.skipNotifications);
       this.previousScrollPosition = event.currentScrollPosition;

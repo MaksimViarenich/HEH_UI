@@ -9,8 +9,8 @@ import { ToasterService } from 'src/app/services/toaster-service/toaster.service
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
-import {cloneDeep, isEqual} from 'lodash';
-import {ModalService} from '../../../services/modal-service/modal.service';
+import {ModalService} from '../../../services/modal-service/modal.service'
+import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
 
 @Component({
   selector: 'app-discount-details',
@@ -56,7 +56,7 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
-    this.zoom = 10;
+    this.zoom = 12;
     this.userLocation = '';
     this.loading = false;
     this.markers = [];
@@ -104,19 +104,19 @@ export class DiscountDetailsModalComponent implements OnInit {
   displayActiveMarkers(): void {
     this.markers = [];
 
-    this.activeAddresses.forEach(address => {
+    forEach(this.activeAddresses, address => {
       this.geocodeService.findLocation(address, (obj: Marker) => {
         this.markers.push(obj);
       });
     });
 
     setTimeout(() => {
-      if (this.markers.length === 1) {
+      if (isEqual(size(this.markers), 1)) {
         this.location = this.markers[0];
-        this.zoom = 14;
-      } else if (this.markers.length > 1) {
-        this.location.lat = this.markers.reduce((sum, marker) => sum + marker.lat, 0) / this.markers.length;
-        this.location.lng = this.markers.reduce((sum, marker) => sum + marker.lng, 0) / this.markers.length;
+        this.zoom = 12;
+      } else if (size(this.markers) > 1) {
+        this.location.lat = reduce(this.markers, (sum, marker) => sum + marker.lat, 0) / size(this.markers);
+        this.location.lng = reduce(this.markers, (sum, marker) => sum + marker.lng, 0) / size(this.markers);
         this.zoom = 5;
       }
     }, 1000);
@@ -130,13 +130,12 @@ export class DiscountDetailsModalComponent implements OnInit {
       (data) => {
         this.discountDetails = data;
 
-        data.addresses.forEach((item: { cityId: string; street: string; }) => {
+        forEach(data.addresses, (item: { cityId: string; street: string; }) => {
           this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
         });
 
-        if (this.addresses.length !== 0) {
+        if (!isEqual(size(this.addresses), 0)) {
           this.geocodeService.findLocation(this.addresses[0], (obj: Marker) => {
-            this.markers[0] = obj;
             this.location = obj;
           });
           this.activeAddresses[0] = this.addresses[0];
@@ -165,10 +164,10 @@ export class DiscountDetailsModalComponent implements OnInit {
           }
         }
 
-        if (data.links.length) {
-          this.links = Object.assign({}, ...data.links.map((link: any) => {
+        if (size(data.links)) {
+          this.links = assign({}, ...data.links.map((link: any) => {
             return {
-              [link.type.toLowerCase()]: link.url
+              [toLower(link.type)]: link.url
             };
           }));
         }

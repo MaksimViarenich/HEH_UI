@@ -39,7 +39,7 @@ export class VendorService {
     headers = headers.append('accept', '*/*');
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
 
-    return this.http.post(`${BASE_API_URL}/api/Vendor`, newVendor, {headers});
+    return this.http.post(`${BASE_API_URL}/api/vendor`, newVendor, {headers});
   }
 
   updateVendor(updatedVendor: any): Observable<any> {
