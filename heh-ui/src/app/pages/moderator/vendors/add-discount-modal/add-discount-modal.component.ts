@@ -5,7 +5,7 @@ import { Discount } from '../../../../models/discount';
 import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
-import { ToasterService } from '../../../../services/toaster-service/toaster.service';;
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 import { cloneDeep, isEqual, forEach } from 'lodash';
 
