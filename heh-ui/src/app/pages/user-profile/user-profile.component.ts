@@ -7,7 +7,6 @@ import { UserProfileService } from './user-profile.service';
 import { UserInfo } from '../../models/user-info';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { isEqual, indexOf, forEach } from 'lodash';
-import { ProfileService } from 'src/app/components/header/profile-selection/profile.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,14 +27,12 @@ export class UserProfileComponent implements OnInit {
   categoryNotifications: Array<any>;
   tagNotifications: Array<any>;
   vendorNotifications: Array<any>;
-  userPhoto: any;
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
   constructor(public translate: TranslateService,
               private filtersService: FiltersService,
-              private profileServise: ProfileService,
-              private userProfleService: UserProfileService,
+              private userProfileService: UserProfileService,
               private toaster: ToasterService) {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
