@@ -4,10 +4,10 @@ import { COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { UserProfileService } from './user-profile.service';
-import { UsersService } from '../admin/users/users.service';
 import { UserInfo } from '../../models/user-info';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { isEqual, indexOf, forEach } from 'lodash';
+import { ProfileService } from 'src/app/components/header/profile-selection/profile.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,12 +27,13 @@ export class UserProfileComponent implements OnInit {
   categoryNotifications: Array<any>;
   tagNotifications: Array<any>;
   vendorNotifications: Array<any>;
+  userPhoto: any;
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
   constructor(public translate: TranslateService,
-              private usersService: UsersService,
               private filtersService: FiltersService,
+              private profileServise: ProfileService,
               private userProfleService: UserProfileService,
               private toaster: ToasterService) {
     this.newslettersChecked = true;
@@ -112,7 +113,26 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
+  setProfilePhoto(): any {
+    this.profileServise.getUserPhoto().subscribe(
+      (data: any) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          this.userPhoto = reader.result;
+        }, false);
+
+        if (data) {
+          reader.readAsDataURL(data);
+        }
+      },
+      (error: any) => {
+        this.toaster.open('Сan not get user photo');
+      }
+    );
+  }
+
   ngOnInit(): void {
+    this.setProfilePhoto();
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.allOptions = {

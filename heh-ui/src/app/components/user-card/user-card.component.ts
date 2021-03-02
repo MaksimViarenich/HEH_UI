@@ -13,6 +13,7 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
 export class UserCardComponent implements OnInit {
 
   @Input() user: any;
+  userPhoto: any;
 
   color: ThemePalette = 'primary';
   isActive: boolean | undefined;
@@ -21,6 +22,23 @@ export class UserCardComponent implements OnInit {
   constructor(private usersService: UsersService,
               private toaster: ToasterService) {
     this.role = '';
+    this.userPhoto = '';
+  }
+
+  setUserPhotoAdmin(userId: string): void {
+    this.usersService.getUserPhotoAdmin(userId).subscribe((data: any) => {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        this.userPhoto = reader.result;
+      }, false);
+
+      if (data) {
+        reader.readAsDataURL(data);
+      }
+    },
+    (error: any) => {
+      this.toaster.open('Could not get user photo');
+    });
   }
 
   changeUserRole(value: string): void {
@@ -44,7 +62,9 @@ export class UserCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setUserPhotoAdmin(this.user.id);
     this.isActive = this.user?.isActive;
     this.role = this.user?.role;
   }
 }
+
