@@ -46,7 +46,7 @@ export class ModelListInputComponent {
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
-        if (data.street) {
+        if (data.country.hasOwnProperty('country')) {
           this.listData.push(data);
         }
       }
