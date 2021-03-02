@@ -115,7 +115,6 @@ export class DiscountDetailsModalComponent implements OnInit {
 
         if (!isEqual(size(this.addresses), 0)) {
           this.geocodeService.findLocation(this.addresses[0], (obj: Marker) => {
-            this.markers[0] = obj;
             this.location = obj;
           });
           this.activeAddresses[0] = this.addresses[0];
