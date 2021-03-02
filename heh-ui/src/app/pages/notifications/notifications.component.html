@@ -25,8 +25,8 @@
             [class.is-read]="row.isRead">
           <mat-checkbox [checked]="row.isRead"
                         [disabled]="row.isRead"
-                        matTooltip="{{ row.isRead ? ('event-notification.were-read' | translate) : 'event-notification.read'  | translate }}"
-                        matTooltipPosition="left"
+                        matTooltip="{{ row.isRead ? ('event-notification.were-read' | translate) :
+                        'event-notification.read'  | translate }}"
                         (change)="readOneOrAllNotification('one', row.id)">
           </mat-checkbox>
         </td>

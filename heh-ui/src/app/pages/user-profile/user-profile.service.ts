@@ -24,4 +24,11 @@ export class UserProfileService {
 
     return this.http.put(`${BASE_API_URL}/api/user/profile`, updatedProfile, {headers});
   }
+
+  getUserProfilePhoto(): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', '*/*');
+
+    return this.http.get(`${BASE_API_URL}/api/user/photo`, {headers,  responseType: 'blob' });
+  }
 }
