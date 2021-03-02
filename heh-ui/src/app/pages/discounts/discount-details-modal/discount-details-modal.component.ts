@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
@@ -10,6 +11,7 @@ import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
 import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
+import {ModalService} from '../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-discount-details',
@@ -44,6 +46,8 @@ export class DiscountDetailsModalComponent implements OnInit {
     private userProfileService: UserProfileService,
     private filtersService: FiltersService,
     private favoriteService: FavoritesService,
+    private modalService: ModalService,
+    private translateService: TranslateService,
     private matDialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -64,6 +68,27 @@ export class DiscountDetailsModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
+  }
+
+  checkChanges(): any {
+    const isChanged = isEqual(this.data.favoriteNote, this.editingValue);
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
+
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
   }
 
   submitEditNote(): void {
@@ -105,6 +130,9 @@ export class DiscountDetailsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     this.discountService.getDiscountDetails(this.discountId).subscribe(
       (data) => {
         this.discountDetails = data;
