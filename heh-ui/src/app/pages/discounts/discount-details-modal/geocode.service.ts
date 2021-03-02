@@ -1,5 +1,6 @@
 import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { Injectable, NgZone } from '@angular/core';
+import { isEqual } from 'lodash';
 
 declare var google: any;
 
@@ -31,7 +32,7 @@ export class GeocodeService {
     }
 
     this.geocoder.geocode({ address }, (results: any, status: any) => {
-      if (status === 'OK' && results) {
+      if (isEqual(status, 'OK' && results)) {
         obj.lat = results[0].geometry.location.lat();
         obj.lng = results[0].geometry.location.lng();
         if (callback) {

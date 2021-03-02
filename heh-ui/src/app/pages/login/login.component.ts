@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { toString } from 'lodash';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   getExpirationDate(token: string): any {
     this.decodedToken = jwt_decode(token);
-    const expirationDate = (this.decodedToken.exp * 1000).toString();
+    const expirationDate = toString((this.decodedToken.exp * 1000));
     localStorage.setItem('expDate', expirationDate);
   }
 

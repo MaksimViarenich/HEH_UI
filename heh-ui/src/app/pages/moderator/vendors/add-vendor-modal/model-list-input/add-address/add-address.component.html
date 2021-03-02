@@ -6,9 +6,7 @@
     <div class="add-address-group">
       <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
-        <mat-select [(ngModel)]="data.country"
-                    (ngModelChange)="changeCitiesList()"
-                    formControlName="country"
+        <mat-select formControlName="country"
                     required>
           <mat-option [value]="option"
                       *ngFor="let option of countries">
@@ -19,9 +17,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
-        <mat-select [(ngModel)]="data.city"
-                    formControlName="city"
-                    required>
+        <mat-select   formControlName="city"
+                      (ngModelChange)=setCity()>
           <mat-option [value]="option"
                       *ngFor="let option of cities">
             {{ option.name }}
@@ -33,9 +30,8 @@
         <mat-label>Street</mat-label>
         <input class="add-address-input"
                matInput
-               [(ngModel)]="data.street"
                formControlName="street"
-               required>
+               [readonly]="conditionStreetInput">
       </mat-form-field>
 
     </div>

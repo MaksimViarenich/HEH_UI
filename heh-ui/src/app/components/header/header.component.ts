@@ -5,6 +5,7 @@ import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
 import { HeaderService } from './header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
+import { includes, slice } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
@@ -38,26 +39,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const role = this.roleService.getRoles();
 
     switch (true) {
-      case (role.includes('administrator')):
+      case (includes(role, 'administrator')):
         return this.tabs = HEADER_TABS;
 
-      case (role.includes('moderator')):
-        return this.tabs = HEADER_TABS.slice(0, 4);
+      case (includes(role, 'moderator')):
+        return this.tabs = slice(HEADER_TABS, 0, 4);
 
-      case (role.includes('employee')):
-        return this.tabs = HEADER_TABS.slice(0, 3);
+      case (includes(role, 'employee')):
+        return this.tabs = slice(HEADER_TABS, 0, 3);
     }
   }
 
   ngOnInit(): void {
-      this.tabs = this.getTabs();
+    this.tabs = this.getTabs();
+    this.setNotificationsCount();
+    this.timerId = setInterval(() => {
       this.setNotificationsCount();
-      this.timerId = setInterval(() => {
-        this.setNotificationsCount();
-      }, 1000 * 60);
-      this.globalEventsService.get('updateNotificationCount').subscribe(() => {
-        this.setNotificationsCount();
-      });
+    }, 1000 * 60);
+    this.globalEventsService.get('updateNotificationCount').subscribe(() => {
+      this.setNotificationsCount();
+    });
   }
 
   goToMain(): void {
@@ -71,14 +72,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setNotificationsCount(): void {
-      this.headerService.getNotificationsCount().subscribe(
-        (data) => {
-          this.notificationsCount = data;
-        },
-        (error) => {
-          this.toaster.open('Сan not get notifivations count');
-        }
-      );
+    this.headerService.getNotificationsCount().subscribe(
+      (data) => {
+        this.notificationsCount = data;
+      },
+      () => {
+        this.toaster.open('Сan not get notifivations count');
+      }
+    );
   }
 
   ngOnDestroy(): void {

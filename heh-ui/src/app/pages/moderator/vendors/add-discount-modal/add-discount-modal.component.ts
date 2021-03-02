@@ -6,7 +6,7 @@ import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import {cloneDeep, isEqual} from 'lodash';
+import { cloneDeep, isEqual, forEach } from 'lodash';
 
 @Component({
   selector: 'app-add-discount-modal',
@@ -34,7 +34,7 @@ export class AddDiscountModalComponent implements OnInit {
     this.categoriesAll = [];
     this.tagsByCategory = [];
     this.form = new FormGroup({
-      address: new FormControl(),
+      address: new FormControl('', [Validators.required]),
       phone: new FormControl(),
       promoCode: new FormControl('', [Validators.required]),
       conditions: new FormControl('', [Validators.required]),
@@ -56,8 +56,8 @@ export class AddDiscountModalComponent implements OnInit {
 
   showTagList(): void {
     this.tagsByCategory = [];
-    this.categoriesAll.forEach((category: any) => {
-      if (this.discountDetail.categoryId === category.id) {
+    forEach(this.categoriesAll, (category: any) => {
+      if (isEqual(this.discountDetail.categoryId, category.id)) {
         this.tagsByCategory = category.tags;
       }
     });
