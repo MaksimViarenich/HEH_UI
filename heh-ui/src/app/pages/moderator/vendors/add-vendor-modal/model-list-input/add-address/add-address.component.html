@@ -1,8 +1,10 @@
-<form class="add-address-container"
-      [formGroup]="formAddress">
-  <div class="add-address-title">Vendor address</div>
+<div mat-dialog-content>
+  <div class="add-address-header">
+    <div class="add-address-title">Vendor address</div>
+  </div>
 
-  <div class="add-address-wrapper" mat-dialog-content>
+  <form class="add-address-container"
+        [formGroup]="formAddress">
     <div class="add-address-group">
       <mat-form-field appearance="outline">
         <mat-label>Country</mat-label>
@@ -29,19 +31,19 @@
       <mat-form-field appearance="outline">
         <mat-label>Street</mat-label>
         <input class="add-address-input"
-               matInput
-               formControlName="street"
-               [readonly]="conditionStreetInput">
+                matInput
+                formControlName="street"
+                [readonly]="conditionStreetInput">
       </mat-form-field>
 
     </div>
-  </div>
 
-  <div class="add-address-btns">
-    <button mat-button
-            (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
-    <button mat-button
-            (click)="addAddress()"
-            [disabled]="formAddress.invalid">{{ 'vendors.add-vendor.save' | translate }}</button>
-  </div>
-</form>
+    <div class="add-address-btns">
+      <button mat-button
+              (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
+      <button mat-button
+              (click)="addAddress()"
+              [disabled]="formAddress.invalid">{{ 'vendors.add-vendor.save' | translate }}</button>
+    </div>
+  </form>
+</div>
