@@ -16,8 +16,8 @@ describe('EventHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      // tslint:disable-next-line:max-line-length
-      imports: [ RouterTestingModule, TranslateModule.forRoot(), BrowserAnimationsModule, HttpClientTestingModule, MatDialogModule, MatSnackBarModule ],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), BrowserAnimationsModule, HttpClientTestingModule,
+        MatDialogModule, MatSnackBarModule ],
       declarations: [ EventHistoryComponent ],
       providers: [ ToasterService, Overlay ]
     })

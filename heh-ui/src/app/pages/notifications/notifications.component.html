@@ -20,7 +20,8 @@
                             (change)="readOneOrAllNotification('all')">
               </mat-checkbox>
             </th>
-        <td mat-cell
+        <td class="cell-message"
+            mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead">
           <mat-checkbox [checked]="row.isRead"
@@ -35,7 +36,8 @@
       <!-- Date Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-notification.date' | translate }}</th>
-        <td mat-cell
+        <td class="cell-message"
+            mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
             (click)="readOneOrAllNotification('one', row.id, row.isRead)"> {{row.date | date: 'dd MMM yyyy hh:mm'}} </td>
@@ -44,7 +46,8 @@
       <!-- Type Column -->
       <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-notification.type' | translate }}</th>
-        <td mat-cell
+        <td class="cell-message"
+            mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
             (click)="readOneOrAllNotification('one', row.id, row.isRead)">
@@ -55,7 +58,8 @@
       <!-- Title Column -->
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-notification.title' | translate }}</th>
-        <td mat-cell
+        <td class="cell-message"
+            mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
             (click)="readOneOrAllNotification('one', row.id, row.isRead)">{{ row.title }}</td>

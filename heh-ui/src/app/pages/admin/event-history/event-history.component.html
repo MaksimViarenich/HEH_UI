@@ -34,13 +34,13 @@
       <!-- Date Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef disableClear>{{ 'event-history.date' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.dateTime | date: 'dd MMM yyyy hh:mm'}} </td>
+        <td class="history-message" mat-cell *matCellDef="let row"> {{row.dateTime | date: 'dd MMM yyyy hh:mm'}} </td>
       </ng-container>
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.action' | translate }}</th>
-        <td mat-cell *matCellDef="let row">
+        <td class="history-message" mat-cell *matCellDef="let row">
           <app-action-event [type]="row.action.toLowerCase()"></app-action-event>
         </td>
       </ng-container>
@@ -48,7 +48,7 @@
       <!-- User Column -->
       <ng-container matColumnDef="user">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.user' | translate }}</th>
-        <td class="clickable-user" mat-cell *matCellDef="let row" (click)="routeWithData(row)">
+        <td class="clickable-user history-message" mat-cell *matCellDef="let row" (click)="routeWithData(row)">
           <span>{{row.userName}}</span>
         </td>
       </ng-container>
@@ -56,7 +56,7 @@
       <!-- Description Column -->
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.description' | translate }}</th>
-        <td mat-cell *matCellDef="let row" [style.description]="row.description"> {{row.description}} </td>
+        <td class="history-message" mat-cell *matCellDef="let row" [style.description]="row.description"> {{row.description}} </td>
       </ng-container>
 
       <tr class="table-sticky" mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
