@@ -52,10 +52,10 @@ export class PageSearchComponent implements OnInit {
   }
 
   transformPickerDate(objDate: any): string {
-    const pickerDateString = toString(objDate);
-    this.month = isEqual(size(objDate.getMonth()), 1) ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
+    const pickerDateString = objDate.toString();
+    this.month = objDate.getMonth().length === 1 ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
 
-    return `${slice(pickerDateString, 11, 15)}-` + this.month + `-${slice(pickerDateString, 8, 10)}`;
+    return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
   }
 
   changeDate(event: any): void {
