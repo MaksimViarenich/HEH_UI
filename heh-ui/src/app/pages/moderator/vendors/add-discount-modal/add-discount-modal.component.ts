@@ -2,13 +2,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { cloneDeep, isEqual, forEach } from 'lodash';
+
 import { Discount } from '../../../../models/discount';
 import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';
-import { cloneDeep, isEqual, forEach } from 'lodash';
 
 @Component({
   selector: 'app-add-discount-modal',

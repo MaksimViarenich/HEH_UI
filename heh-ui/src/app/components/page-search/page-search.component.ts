@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
-import { FiltersService } from '../../services/filter-service/filters.service';
 import { FormControl } from '@angular/forms';
 import { isEqual, slice, size, toString, indexOf } from 'lodash';
+
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-page-search',

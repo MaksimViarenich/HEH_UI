@@ -1,9 +1,10 @@
-import jwt_decode from 'jwt-decode';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { toString } from 'lodash';
+import jwt_decode from 'jwt-decode';
+
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
-import { toString } from 'lodash';
 
 @Component({
   selector: 'app-login',

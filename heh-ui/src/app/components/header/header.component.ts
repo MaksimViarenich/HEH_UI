@@ -1,12 +1,13 @@
 import { Component, ViewEncapsulation, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { includes, slice } from 'lodash';
+import { NgxGlobalEventsService } from 'ngx-global-events';
+
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
 import { HeaderService } from './header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
-import { includes, slice } from 'lodash';
-import { NgxGlobalEventsService } from 'ngx-global-events';
 
 @Component({
   selector: 'app-header',

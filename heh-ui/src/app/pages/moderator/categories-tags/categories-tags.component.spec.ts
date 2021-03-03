@@ -6,9 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatMenuModule } from '@angular/material/menu';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CategoriesTagsComponent } from './categories-tags.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CategoriesTagsComponent } from './categories-tags.component';
 import { FiltersService } from '../../../services/filter-service/filters.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 

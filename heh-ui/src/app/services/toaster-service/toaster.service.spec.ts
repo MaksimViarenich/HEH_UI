@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToasterService } from './toaster.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ToasterService', () => {
   let service: ToasterService;

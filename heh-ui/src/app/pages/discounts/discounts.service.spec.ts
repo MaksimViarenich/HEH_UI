@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
-import { DiscountsService } from './discounts.service';
 import { BrowserTestingModule } from '@angular/platform-browser/testing';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { DiscountsService } from './discounts.service';
 import { UserProfileService } from '../user-profile/user-profile.service';
 import { FavoritesService } from '../favorites/favorites.service';
 

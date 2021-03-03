@@ -1,17 +1,18 @@
 import { TranslateService } from '@ngx-translate/core';
-import { UserProfileService } from '../../user-profile/user-profile.service';
-import { GeocodeService } from './geocode.service';
-import { FiltersService } from '../../../services/filter-service/filters.service';
 import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
+
+import { UserProfileService } from '../../user-profile/user-profile.service';
+import { GeocodeService } from './geocode.service';
+import { FiltersService } from '../../../services/filter-service/filters.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { DiscountsService } from '../discounts.service';
 import { Marker } from 'src/app/models/marker';
 import { FavoritesService } from '../../favorites/favorites.service';
-import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
-import {ModalService} from '../../../services/modal-service/modal.service';
+import { ModalService } from '../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-discount-details',

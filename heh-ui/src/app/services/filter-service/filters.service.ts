@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
-import { BASE_API_URL } from 'src/app/global';
 import { cloneDeep } from 'lodash';
 import { forEach, isEqual, size, includes, find } from 'lodash';
+import { forkJoin, Observable } from 'rxjs';
+
+import { BASE_API_URL } from 'src/app/global';
 
 export const FILTERS_MAP = new Map([
   ['categories', 'categoryId'],
