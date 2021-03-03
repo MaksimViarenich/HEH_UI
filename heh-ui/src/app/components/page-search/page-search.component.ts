@@ -143,7 +143,6 @@ export class PageSearchComponent implements OnInit {
     if (!(size(this.currentLocation) < 30)) {
       this.searchData.location = this.currentLocation;
     }
-    console.log(this.searchData.location);
     this.applySearch.emit(this.searchData);
     this.pickerDate = [];
   }
