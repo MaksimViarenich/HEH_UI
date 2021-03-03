@@ -1,4 +1,4 @@
-export interface Marker{
+export interface Marker {
   lat: number;
   lng: number;
 }

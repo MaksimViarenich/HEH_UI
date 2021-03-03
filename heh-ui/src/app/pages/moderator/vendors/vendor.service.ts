@@ -1,7 +1,8 @@
-import { BASE_API_URL } from '../../../global';
-import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { BASE_API_URL } from '../../../global';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
 @Injectable({

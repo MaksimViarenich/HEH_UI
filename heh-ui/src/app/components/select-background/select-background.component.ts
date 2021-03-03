@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { Background, SelectBackgroundService } from './select-background.service';
 
 @Component({

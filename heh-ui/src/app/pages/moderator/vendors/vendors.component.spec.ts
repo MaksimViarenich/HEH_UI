@@ -4,13 +4,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatMenuModule } from '@angular/material/menu';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 import { VendorsComponent } from './vendors.component';
 import { GeocodeService } from '../../discounts/discount-details-modal/geocode.service';
 import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Overlay } from '@angular/cdk/overlay';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 describe('VendorsComponent', () => {
   let component: VendorsComponent;

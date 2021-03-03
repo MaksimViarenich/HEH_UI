@@ -6,9 +6,10 @@ import {
   RouterStateSnapshot,
   UrlTree
 } from '@angular/router';
-import { RoleService } from '../services/role-service/role.service';
 import { Observable } from 'rxjs';
 import { includes } from 'lodash';
+
+import { RoleService } from '../services/role-service/role.service';
 
 @Injectable({
   providedIn: 'root'

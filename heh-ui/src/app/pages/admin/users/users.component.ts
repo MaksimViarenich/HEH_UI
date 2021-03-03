@@ -1,10 +1,11 @@
-import { UserInfo } from '../../../models/user-info';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { forEach, isEqual, size } from 'lodash';
+
+import { UserInfo } from '../../../models/user-info';
 import { UsersService } from './users.service';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
 import { GridService } from '../../../services/grid-service/grid.service';
-import { forEach, isEqual, size } from 'lodash';
 
 @Component({
   selector: 'app-users',

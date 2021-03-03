@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+
 import { UsersService } from '../../pages/admin/users/users.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
-
 
 @Component({
   selector: 'app-user-card',
@@ -10,6 +10,7 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
   styleUrls: ['./user-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class UserCardComponent implements OnInit {
 
   @Input() user: any;

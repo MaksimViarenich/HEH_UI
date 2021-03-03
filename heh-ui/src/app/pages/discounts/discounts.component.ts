@@ -1,11 +1,12 @@
 import { DiscountsService } from './discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { isEqual, size, forEach } from 'lodash';
+
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { GridService } from '../../services/grid-service/grid.service';
-import { isEqual, size, forEach } from 'lodash';
 
 @Component({
   selector: 'app-discounts',

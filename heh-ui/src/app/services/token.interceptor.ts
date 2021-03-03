@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth-service/auth.service';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { isEqual } from 'lodash';
+
+import { AuthService } from './auth-service/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

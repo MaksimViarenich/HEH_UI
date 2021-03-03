@@ -1,9 +1,10 @@
 import { TranslateService } from '@ngx-translate/core';
-import { FavoritesService } from '../../pages/favorites/favorites.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalService } from '../../services/modal-service/modal.service';
 import { Output, EventEmitter } from '@angular/core';
+
+import { FavoritesService } from '../../pages/favorites/favorites.service';
+import { ModalService } from '../../services/modal-service/modal.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 
 @Component({

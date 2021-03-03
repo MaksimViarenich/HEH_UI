@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { Tab } from '../../models/tab';
 
 @Component({

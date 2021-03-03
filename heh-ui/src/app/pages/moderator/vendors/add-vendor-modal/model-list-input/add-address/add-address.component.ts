@@ -1,11 +1,13 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FiltersService } from 'src/app/services/filter-service/filters.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { customAlphabet } from 'nanoid/non-secure';
-import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { cloneDeep, isEqual, forEach } from 'lodash';
+
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
+import { ModalService } from 'src/app/services/modal-service/modal.service';
+
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
