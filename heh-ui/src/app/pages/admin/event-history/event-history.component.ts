@@ -24,6 +24,7 @@ export class EventHistoryComponent implements OnInit {
   skipEvents: any;
   previousScrollPosition: any;
   totalCountEvents: any;
+  filterStorage: any;
 
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
@@ -64,10 +65,11 @@ export class EventHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchData.historyLocation = sessionStorage.getItem('location');
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
     });
-    this.getEventHistory(this.topEvents, this.skipEvents);
+    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 
   onScrollDown(event: any): void {
