@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
@@ -31,7 +32,8 @@ export class ListInputComponent {
   constructor(
     private filtersService: FiltersService,
     private toaster: ToasterService,
-    private modalService: ModalService) {
+    private modalService: ModalService,
+    private translateService: TranslateService) {
     this.label = '';
     this.previousName = '';
     this.options = [];
@@ -63,7 +65,13 @@ export class ListInputComponent {
   }
 
   remove(item: any): void {
-    const dialogRef = this.modalService.openConfirmModal();
+    const confirmData = {
+      message: this.translateService.instant('confirmation.delete.message'),
+      buttonPositive: this.translateService.instant('confirmation.delete.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.delete.button-negative'),
+    };
+    const dialogRef = this.modalService.openConfirmModal(confirmData);
+
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.deleteElement(item.id, this.changeData);

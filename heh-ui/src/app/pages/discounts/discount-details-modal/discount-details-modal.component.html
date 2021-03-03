@@ -119,7 +119,7 @@
 
     <div class="discount-details-buttons">
       <button mat-button
-              mat-dialog-close
+              (click)="checkChanges()"
               [disabled]="!discountDetails">
         {{(data.isVisibleEditNote)
         ? ('discounts.cancel' | translate)

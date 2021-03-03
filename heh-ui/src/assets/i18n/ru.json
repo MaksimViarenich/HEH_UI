@@ -122,5 +122,17 @@
     "open": "Открыто",
     "close": "Закрыть",
     "cancel": "Отменить"
+  },
+  "confirmation": {
+    "delete": {
+      "message": "Вы уверены, что хотите удалить?",
+      "button-positive": "Удалить",
+      "button-negative": "Отменить"
+    },
+    "change": {
+      "message": "Вы уверены, что хотите закрыть всплывающее окно? Ваши изменения не будут сохранены",
+      "button-positive": "Да",
+      "button-negative": "Нет"
+    }
   }
 }

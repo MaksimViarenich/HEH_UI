@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalService } from '../../../../../services/modal-service/modal.service';
@@ -14,10 +15,17 @@ export class EditDiscountCardComponent {
   @Output() removeDiscountFromVendor: EventEmitter<any> = new EventEmitter();
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService) {}
+              private modalService: ModalService,
+              private translateService: TranslateService) {}
 
   deleteDiscount(): void{
-    const dialogRef = this.modalService.openConfirmModal();
+    const confirmData = {
+      message: this.translateService.instant('confirmation.delete.message'),
+      buttonPositive: this.translateService.instant('confirmation.delete.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.delete.button-negative'),
+    };
+    const dialogRef = this.modalService.openConfirmModal(confirmData);
+
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.removeDiscountFromVendor.emit();

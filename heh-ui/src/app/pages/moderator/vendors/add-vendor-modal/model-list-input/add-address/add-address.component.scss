@@ -7,36 +7,37 @@
 .add-address-modal.cdk-overlay-pane {
   width: 25rem;
 
-  .add-address-container {
-    height: calc(100% - 1rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .add-address-header {
+    height: $height-header;
+    padding: 0 1rem;
 
     .add-address-title {
       @include font-bold-vendor;
       line-height: $height-header;
-      padding: 0 1rem;
     }
+  }
 
-    .add-address-wrapper {
-      padding: 1rem;
+  .add-address-container {
+    height: calc(100% - 4.8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1rem;
 
-      .add-address-group {
-        padding: 1rem 1rem 0 1rem;
-        @include glass;
-        border-radius: $border-radius-small;
-        box-shadow: $shadow-violet;
+    .add-address-group {
+      padding: 1rem 1rem 0 1rem;
+      @include glass;
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-violet;
 
-        mat-form-field {
-          width: 100%;
+      mat-form-field {
+        width: 100%;
 
-          .mat-form-field-wrapper {
-            padding-bottom: 0;
-            margin: 0 0 1rem 0;
-            @include glass;
-            border-radius: 5px;
-          }
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
+          margin: 0 0 1rem 0;
+          @include glass;
+          border-radius: 5px;
         }
       }
     }
@@ -44,7 +45,6 @@
     .add-address-btns {
       text-align: right;
       font-weight: bold;
-      margin: 0 1rem;
 
       button:last-child {
         @extend .backgroundColor;

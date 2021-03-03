@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { VendorCard } from '../../../../models/vendor-card';
@@ -29,6 +30,7 @@ export class AddVendorModalComponent implements OnInit {
     private modalService: ModalService,
     private toaster: ToasterService,
     private matDialogRef: MatDialogRef<any>,
+    private translateService: TranslateService,
     @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
   ) {
     this.vendor = {
@@ -43,7 +45,8 @@ export class AddVendorModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
-    this.pristineVendor = {};
+    this.pristineVendor = cloneDeep(this.vendor);
+    this.pristineLinks = cloneDeep(this.links);
   }
 
   addressTitle = 'vendors.add-vendor.address';
@@ -57,7 +60,7 @@ export class AddVendorModalComponent implements OnInit {
     const dialogRef = this.modalService.openAddDiscountModal(discount, index, this.vendor);
 
     dialogRef.afterClosed().subscribe((data: any) => {
-      if (data) {
+      if (data.promoCode) {
         if (!isEqual(index, undefined)) {
           this.vendor.discounts[index] = data;
         } else {
@@ -65,6 +68,27 @@ export class AddVendorModalComponent implements OnInit {
         }
       }
     });
+  }
+
+  checkChanges(): any {
+    const isChanged = isEqual(this.pristineVendor, this.vendor) && isEqual(this.pristineLinks, this.links);
+    const confirmData = {
+      message: this.translateService.instant('confirmation.change.message'),
+      buttonPositive: this.translateService.instant('confirmation.change.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.change.button-negative'),
+    };
+
+    if (!isChanged) {
+      const dialogRef = this.modalService.openConfirmModal(confirmData);
+
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          this.matDialogRef.close('');
+        }
+      });
+    } else {
+      this.matDialogRef.close('');
+    }
   }
 
   addUpdateNewVendor(): void {
@@ -178,6 +202,9 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.matDialogRef.backdropClick().subscribe(() => {
+      this.checkChanges();
+    });
     if (this.vendorId.id) {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {

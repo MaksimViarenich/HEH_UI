@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -8,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ConfirmationDialogComponent implements OnInit {
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
   }

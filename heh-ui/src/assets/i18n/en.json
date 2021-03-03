@@ -122,5 +122,17 @@
     "open": "Open",
     "close": "Close",
     "cancel": "Cancel"
+  },
+  "confirmation": {
+    "delete": {
+      "message": "Are you sure you want to delete?",
+      "button-positive": "Delete",
+      "button-negative": "Cancel"
+    },
+    "change": {
+      "message": "Are you sure you want to close the pop-up? Your changes will not be saved",
+      "button-positive": "Yes",
+      "button-negative": "No"
+    }
   }
 }
