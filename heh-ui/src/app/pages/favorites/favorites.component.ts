@@ -1,9 +1,10 @@
-import { FavoritesService } from './favorites.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { forEach, isEqual, size } from 'lodash';
+
+import { FavoritesService } from './favorites.service';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
-import { forEach, isEqual, size } from 'lodash';
 
 @Component({
   selector: 'app-favorites',

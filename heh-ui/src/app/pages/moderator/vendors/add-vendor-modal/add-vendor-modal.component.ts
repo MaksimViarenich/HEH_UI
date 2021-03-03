@@ -1,6 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
+
 import { VendorCard } from '../../../../models/vendor-card';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
@@ -8,7 +9,6 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
 
 @Component({
   selector: 'app-vendor-modal',

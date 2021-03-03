@@ -1,5 +1,7 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { slice, includes, now, find, isEqual } from 'lodash';
+
 import { UserInfo } from 'src/app/models/user-info';
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
@@ -7,7 +9,6 @@ import { SpinnerService } from '../../../services/spinner-service/spinner.servic
 import { Background, SelectBackgroundService } from '../../select-background/select-background.service';
 import { HeaderService } from '../../header/header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
-import { slice, includes, now, find, isEqual } from 'lodash';
 
 interface PageTitles {
   localizationKey: string;

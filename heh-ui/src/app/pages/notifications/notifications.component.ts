@@ -1,12 +1,14 @@
-import { HeaderService } from './../../components/header/header.service';
-import { NotificationService } from './notification.service';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ToasterService } from '../../services/toaster-service/toaster.service';
-import { MatDialog } from '@angular/material/dialog';
-import { NotificationElement } from '../../models/notification-element';
 import { forEach, size, isEqual } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
+
+import { HeaderService } from './../../components/header/header.service';
+import { NotificationService } from './notification.service';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { NotificationElement } from '../../models/notification-element';
+
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',

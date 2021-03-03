@@ -2,11 +2,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatAutocomplete } from '@angular/material/autocomplete';
+import { isEqual, indexOf, forEach } from 'lodash';
+
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { UserProfileService } from './user-profile.service';
 import { UserInfo } from '../../models/user-info';
 import { FiltersService } from '../../services/filter-service/filters.service';
-import { isEqual, indexOf, forEach } from 'lodash';
 
 @Component({
   selector: 'app-user-profile',

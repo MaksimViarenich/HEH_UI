@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+
 import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({

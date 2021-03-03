@@ -2,12 +2,12 @@ import { ModalService } from 'src/app/services/modal-service/modal.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { isEqual, forEach, size } from 'lodash';
+
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { StatisticsService } from './statistics.service';
 import { DiscountCard } from '../../../models/discount-card';
 import { GridService } from '../../../services/grid-service/grid.service';
-import { HttpResponse } from '@angular/common/http';
-import { isEqual, forEach, size } from 'lodash';
 
 @Component({
   selector: 'app-statistics',

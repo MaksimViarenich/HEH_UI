@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FiltersService } from '../../services/filter-service/filters.service';
+
+import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isEqual, slice, size, toString, indexOf, forEach, includes, map, find } from 'lodash';
+import { isEqual, size, indexOf, forEach, includes, map, find } from 'lodash';
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-page-search',
@@ -47,10 +48,18 @@ export class PageSearchComponent implements OnInit {
     };
   }
 
-  async ngOnInit(): Promise<void> {
-    this.searchData.location = sessionStorage.getItem('location');
-    this.currentLocation = sessionStorage.getItem('location');
-    this.submitSearch();
+  ngOnInit(): void {
+    if (isEqual(sessionStorage.getItem('location'), null)) {
+      setTimeout(() => {
+        this.searchData.location = sessionStorage.getItem('location');
+        this.currentLocation = sessionStorage.getItem('location');
+        this.submitSearch();
+      }, 1000);
+    } else {
+      this.searchData.location = sessionStorage.getItem('location');
+      this.currentLocation = sessionStorage.getItem('location');
+      this.submitSearch();
+    }
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.locations = this.destructurizeLocations(this.filtersOptions.locations);
@@ -109,10 +118,10 @@ export class PageSearchComponent implements OnInit {
   }
 
   transformPickerDate(objDate: any): string {
-    const pickerDateString = toString(objDate);
-    this.month = isEqual(size(objDate.getMonth()), 1) ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
+    const pickerDateString = objDate.toString();
+    this.month = objDate.getMonth().length === 1 ? `0${(objDate.getMonth() + 1).toString()}` : (objDate.getMonth() + 1).toString();
 
-    return `${slice(pickerDateString, 11, 15)}-` + this.month + `-${slice(pickerDateString, 8, 10)}`;
+    return `${pickerDateString.slice(11, 15)}-` + this.month + `-${pickerDateString.slice(8, 10)}`;
   }
 
   changeDate(event: any): void {

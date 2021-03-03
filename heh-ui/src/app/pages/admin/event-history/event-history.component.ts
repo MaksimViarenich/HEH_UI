@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { forEach, isEqual, size } from 'lodash';
+import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+
 import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
-import { MatDialog } from '@angular/material/dialog';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
-import { forEach, isEqual, size } from 'lodash';
-import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-event-history',
@@ -24,6 +26,7 @@ export class EventHistoryComponent implements OnInit {
   skipEvents: any;
   previousScrollPosition: any;
   totalCountEvents: any;
+  filterStorage: any;
 
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
@@ -64,10 +67,11 @@ export class EventHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchData.historyLocation = sessionStorage.getItem('location');
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
     });
-    this.getEventHistory(this.topEvents, this.skipEvents);
+    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 
   onScrollDown(event: any): void {

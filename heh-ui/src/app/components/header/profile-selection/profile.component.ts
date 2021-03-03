@@ -47,6 +47,8 @@ export class ProfileComponent implements OnInit {
     localStorage.removeItem('isAuth');
     localStorage.removeItem('expDate');
     sessionStorage.removeItem('userPhoto');
+    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('location');
     this.router.navigate(['/login']);
   }
 

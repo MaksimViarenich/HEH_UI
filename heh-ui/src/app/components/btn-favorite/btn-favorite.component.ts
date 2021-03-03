@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 
