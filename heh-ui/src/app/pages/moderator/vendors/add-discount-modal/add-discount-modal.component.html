@@ -16,9 +16,10 @@
         <mat-select *ngIf="data.discount"
                     formControlName="address"
                     [(ngModel)]="data.discount.addressesIds"
-                    multiple>
+                    multiple
+                    required>
           <mat-option *ngFor="let address of data.addresses"
-                      [value]="address.id">{{address?.country?.country}} 
+                      [value]="address.id">{{address?.country?.country}}
                                            {{address?.city?.name}}
                                            {{address?.street}}</mat-option>
         </mat-select>
