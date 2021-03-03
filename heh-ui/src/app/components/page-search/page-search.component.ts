@@ -43,9 +43,16 @@ export class PageSearchComponent implements OnInit {
     };
   }
 
-  async ngOnInit(): Promise<void> {
-    this.searchData.location = sessionStorage.getItem('location');
-    this.submitSearch();
+  ngOnInit(): void {
+    if (isEqual(sessionStorage.getItem('location'), null)) {
+      setTimeout(() => {
+        this.searchData.location = sessionStorage.getItem('location');
+        this.submitSearch();
+      }, 300);
+    } else {
+      this.searchData.location = sessionStorage.getItem('location');
+      this.submitSearch();
+    }
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
     });
