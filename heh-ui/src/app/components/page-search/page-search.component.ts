@@ -49,7 +49,7 @@ export class PageSearchComponent implements OnInit {
       setTimeout(() => {
         this.searchData.location = sessionStorage.getItem('location');
         this.submitSearch();
-      }, 500);
+      }, 1000);
     } else {
       this.searchData.location = sessionStorage.getItem('location');
       this.submitSearch();
