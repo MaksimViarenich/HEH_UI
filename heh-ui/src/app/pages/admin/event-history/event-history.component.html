@@ -8,13 +8,12 @@
     <div class="search-filter">
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
-
-        <mat-select [(ngModel)]="searchData.historyLocation"
-                    (ngModelChange)="applyHistorySearch()">
-          <mat-option>{{ 'search.select' | translate }}</mat-option>
-          <mat-option [value]="option.id"
-                      *ngFor="let option of filtersOptions.locations">
-            {{ option.viewValue }}
+        <mat-select [(ngModel)]="searchData.historyLocation">
+          <mat-option>Location</mat-option>
+          <mat-option *ngFor="let location of locationsArrayForOptions"
+                      [value]="location.id"
+                      [class.city]="!location.country">
+                        {{ location.country ? location.country : location.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>

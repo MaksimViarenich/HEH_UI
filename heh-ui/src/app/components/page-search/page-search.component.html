@@ -8,13 +8,12 @@
     <div class="search-filter">
       <mat-form-field appearance="fill">
         <mat-label>{{ 'search.location' | translate }}</mat-label>
-        <mat-select [(ngModel)]="currentLocation">
+        <mat-select [(ngModel)]="searchData.location">
           <mat-option>Location</mat-option>
           <mat-option *ngFor="let location of locationsArrayForOptions"
-                      [value]="isString(location) ? location : location.id"
-                      [class.city]="!isString(location)"
-                      (click)="isString(location) ? allCitiesAddresses(location) : '' ">
-                        {{ isString(location) ? location : location.city }}
+                      [value]="location.id"
+                      [class.city]="!location.country">
+                        {{ location.country ? location.country : location.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
