@@ -3,30 +3,40 @@
     <div class="category-and-tag-title">{{ 'categories-and-tags.categories' | translate }}</div>
 
     <div class="category-and-tag-content">
-      <app-list-input [label]="categoryOptions.label | translate"
-                      [options]="categoryOptions.options"></app-list-input>
+      <app-list-input [label]="'categories-and-tags.category' | translate"
+                      [options]="categoriesAll"
+                      [addElement]="addCategory"
+                      [deleteElement]="deleteCategory"
+                      [editElement]="editCategory"
+                      [isDisabled]=false
+                      (changeData)="onChangeData($event)"></app-list-input>
     </div>
   </div>
 
   <div class="category-and-tag-wrapper">
     <div class="category-and-tag-title">{{ 'categories-and-tags.tags' | translate }}</div>
 
-    <mat-form-field appearance="outline" class="select-category">
-      <mat-label>{{categoryOptions.label | translate }}</mat-label>
-      <mat-select>
-        <mat-option></mat-option>
-        <mat-option [value]="option.value"
-                    *ngFor="let option of categoryOptions.options">
-          {{ option.viewValue }}
+    <mat-form-field appearance="fill" class="select-category">
+      <mat-label>{{'categories-and-tags.category' | translate }}</mat-label>
+      <mat-select [(ngModel)]="activeCategoryId"
+                  (ngModelChange)="showTagsList()">
+        <mat-option>{{ 'search.select' | translate }}</mat-option>
+        <mat-option [value]="option.id"
+                    *ngFor="let option of categoriesAll">
+          {{ option.name }}
         </mat-option>
-        <mat-option *ngFor="let option of categoryOptions.options"
-                    [value]="option.value">{{option.viewValue}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <div class="category-and-tag-content">
-      <app-list-input [label]="tagsOptions.label | translate"
-                      [options]="tagsOptions.options"></app-list-input>
+      <app-list-input [label]="'categories-and-tags.tag' | translate"
+                      [options]="tagsAll"
+                      [addElement]="addTag"
+                      [deleteElement]="deleteTag"
+                      [editElement]="editTag"
+                      [isDisabled]="isDisabled"
+                      [activeCategoryId]="activeCategoryId"
+                      (changeData)="onChangeData($event)"></app-list-input>
     </div>
   </div>
 </div>

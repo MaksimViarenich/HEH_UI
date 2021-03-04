@@ -18,35 +18,43 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { HeaderComponent } from './components/header/header.component';
-import { InputSearchComponent } from './components/search/input-search/input-search.component';
-import { MultiSelectComponent } from './components/search/multi-select/multi-select.component';
-import { PageSearchComponent } from './components/search/page-search/page-search.component';
-import { SelectComponent } from './components/search/select/select.component';
-import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { InputSearchComponent } from './components/page-search/input-search/input-search.component';
+import { PageSearchComponent } from './components/page-search/page-search.component';
+import { LanguageSelectionComponent } from './components/header/language-selection/language-selection.component';
 import { DiscountCardComponent } from './components/discount-card/discount-card.component';
 import { EditDiscountCardComponent } from './pages/moderator/vendors/add-vendor-modal/edit-discount-card/edit-discount-card.component';
 import { FavoriteCardComponent } from './components/favorite-card/favorite-card.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TagComponent } from './components/tag/tag.component';
 import { BtnFavoriteComponent } from './components/btn-favorite/btn-favorite.component';
-import { BtnSearchComponent } from './components/search/btn-search/btn-search.component';
 import { NavModeratorAdminComponent } from './components/nav-moderator-admin/nav-moderator-admin.component';
-import { EditNoteModalComponent } from './pages/favorites/edit-note-modal/edit-note-modal.component';
 import { DiscountDetailsModalComponent } from './pages/discounts/discount-details-modal/discount-details-modal.component';
 import { ListInputComponent } from './pages/moderator/categories-tags/list-input/list-input.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { AddDiscountModalComponent } from './pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
 import { AddVendorModalComponent } from './pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
-import { StateEventComponent } from './pages/admin/event-history/state-event/state-event.component';
+import { ActionEventComponent } from './pages/admin/event-history/action-event/action-event.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { DateSearchComponent } from './components/search/date-search/date-search.component';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ModelListInputComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/model-list-input.component';
 import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendor-card.component';
-import { ThemesToggleComponent } from './components/themes-toggle/themes-toggle.component';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
+import { SelectBackgroundComponent } from './components/select-background/select-background.component';
+import { AuthGuard } from './auth-guard/auth.guard';
+import { RoleGuard } from './role-guard/role.guard';
+import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
+import { ProfileComponent } from './components/header/profile-selection/profile.component';
+import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CommonModule } from '@angular/common';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { TokenInterceptor } from './services/token.interceptor';
+import { MyAutofocusDirective } from './pages/moderator/categories-tags/list-input/my-autofocus.directive';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -71,9 +79,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     LoginLayoutComponent,
     HeaderComponent,
     InputSearchComponent,
-    MultiSelectComponent,
     PageSearchComponent,
-    SelectComponent,
     DiscountCardComponent,
     FavoriteCardComponent,
     EditDiscountCardComponent,
@@ -81,42 +87,57 @@ export function HttpLoaderFactory(http: HttpClient): any {
     CategoryComponent,
     TagComponent,
     BtnFavoriteComponent,
-    BtnSearchComponent,
     NavModeratorAdminComponent,
     DiscountDetailsModalComponent,
-    EditNoteModalComponent,
     DiscountDetailsModalComponent,
     ListInputComponent,
     UserCardComponent,
     AddDiscountModalComponent,
     AddVendorModalComponent,
-    StateEventComponent,
-    DateSearchComponent,
+    ActionEventComponent,
     ModelListInputComponent,
     VendorCardComponent,
     AddVendorCardComponent,
-    ThemesToggleComponent,
+    SelectBackgroundComponent,
+    AddAddressComponent,
+    ProfileComponent,
+    ConfirmationDialogComponent,
+    NotificationsComponent,
+    MyAutofocusDirective,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
     AppMaterialModule,
     HttpClientModule,
+    InfiniteScrollModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'en'
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
-  providers: [],
+  providers: [AuthGuard, RoleGuard, HttpClient, MatDialog, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SpinnerHttpInterceptor,
+    multi: true,
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+  },
+  GoogleMapsAPIWrapper
+  ],
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-}
+export class AppModule {}

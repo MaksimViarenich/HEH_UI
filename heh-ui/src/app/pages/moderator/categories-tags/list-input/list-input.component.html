@@ -1,21 +1,38 @@
 <div class="list-input-container">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="fill">
     <mat-label>{{label}}</mat-label>
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
-           (matChipInputTokenEnd)="add($event)">
+           [(ngModel)]="newItem"
+           (keydown.enter)="add(newItem)"
+           [disabled]="isDisabled">
     <mat-chip-list #chipList>
     </mat-chip-list>
   </mat-form-field>
 
-  <button mat-raised-button color="primary">{{ 'categories-and-tags.add' | translate }}</button>
+  <button class="list-input-button"
+          mat-raised-button
+          [disabled]="isDisabled"
+          (click)="add(newItem)">{{ 'categories-and-tags.add' | translate }}</button>
 </div>
 
 <div class="chips-container">
-  <mat-chip *ngFor="let item of options" [selectable]="selectable"
-            [removable]="removable" (removed)="remove(item)">
-    {{item.viewValue}}
+  <mat-chip *ngFor="let item of options"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(item)"
+            (dblclick)="changeItem(item)">
+    <span *ngIf="!item.isChanged">{{item.name}}</span>
+
+    <input *ngIf="item.isChanged"
+           class="chips-input"
+           appMyAutofocus
+           [value]="item.name"
+           [(ngModel)]="item.name"
+           (keydown.escape)="cancelChange(item)"
+           (keydown.enter)="edit(item)"
+           (keydown)="$event.stopPropagation()"/>
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
 </div>

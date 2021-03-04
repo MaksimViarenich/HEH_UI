@@ -1,7 +1,13 @@
+import { ModalService } from 'src/app/services/modal-service/modal.service';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SearchOptions } from '../../../models/search-options';
-import { VendorCard } from '../../../models/vendor-card';
+import { isEqual, forEach, size } from 'lodash';
+
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { StatisticsService } from './statistics.service';
+import { DiscountCard } from '../../../models/discount-card';
+import { GridService } from '../../../services/grid-service/grid.service';
 
 @Component({
   selector: 'app-statistics',
@@ -9,127 +15,93 @@ import { VendorCard } from '../../../models/vendor-card';
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
-  searchFieldsOptions: SearchOptions;
 
-  constructor(public dialog: MatDialog) {
-    this.searchFieldsOptions = {
-      selectOptions: {
-        label: 'search.location',
-        options: [
-          {value: '1', viewValue: 'Belarus, Minsk'},
-          {value: '2', viewValue: 'Belarus, Grodno'},
-          {value: '3', viewValue: 'Ukraine, Vinnitsa'}
-        ]
-      },
-      multiSelectOptions: [
-        {
-          label: 'search.category',
-          options: [
-            {value: '4', viewValue: 'Food'},
-            {value: '5', viewValue: 'Sport'},
-            {value: '6', viewValue: 'Beauty'}
-          ]
-        },
-        {
-          label: 'search.tag',
-          options: [
-            {value: '7', viewValue: 'Pizza'},
-            {value: '8', viewValue: 'Sushi'},
-            {value: '9', viewValue: 'Barbershop'},
-            {value: '10', viewValue: 'Swimming pool'},
-          ]
-        },
-      ],
-      dateOptions: {
-        label: 'search.date-range' || ' ',
-      }
-    };
+  topStatistics: any;
+  skipStatistics: any;
+  previousScrollPosition: any;
+  totalCount: any;
+  breakpoint: number;
+  filterStorage: any;
+
+  constructor(public dialog: MatDialog,
+              private filterService: FiltersService,
+              private statisticsService: StatisticsService,
+              private toaster: ToasterService,
+              private modalService: ModalService,
+              private gridService: GridService) {
+    this.filterService.queryParams = '';
+    this.topStatistics = 16;
+    this.skipStatistics = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
+    this.breakpoint = 0;
+    this.filterStorage = {};
   }
 
-  list: Array<VendorCard> = [
-    {
-      background: '90deg, #f598a8, #f6edb2',
-      vendor: {
-        name: 'Domino\'s Pizza',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.dominos.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        instagram: 'Inst',
-        facebook: 'Facebook',
-        vk: 'VK',
-        isReceiveNotificationsAllowed: true,
-        views: 450,
-      },
-    },
-    {
-      background: '90deg, #cfecd0, #a0cea7, #9ec0db',
-      vendor: {
-        name: 'Tera Mare',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.dominos.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        instagram: 'Inst',
-        facebook: 'Facebook',
-        vk: 'VK',
-        isReceiveNotificationsAllowed: true,
-        views: 398,
-      },
-    },
-    {
-      background: '90deg, #faf0cd, #fab397',
-      vendor: {
-        name: 'Continental Barbershop',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.dominos.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        instagram: 'Inst',
-        facebook: 'Facebook',
-        vk: 'VK',
-        isReceiveNotificationsAllowed: true,
-        views: 123,
-      },
-    },
-    {
-      background: '90deg, #cfecd0, #ffc5ca',
-      vendor: {
-        name: 'West Coast Customs',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.dominos.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        instagram: 'Inst',
-        facebook: 'Facebook',
-        vk: 'VK',
-        isReceiveNotificationsAllowed: true,
-        views: 76,
-      },
-    },
-  ];
+  statistics: Array<DiscountCard> = [];
 
   ngOnInit(): void {
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 
+  getStatisticsWrapper(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
+    this.statistics = [];
+    this.skipStatistics = 0;
+    this.previousScrollPosition = 0;
+    this.getStatistics(this.topStatistics, this.skipStatistics, filters);
+  }
+
+  openDiscountDetails(discount: any): void {
+    this.modalService.openDiscountDetailsModal(discount.id, false, '', true, discount.viewsAmount);
+  }
+
+  getStatistics(top: any, skip: any, filters?: any): any {
+    this.statisticsService.getDiscountsStatistics(filters, top, skip).subscribe(
+      (data: any) => {
+        forEach(data.value, (discount: any) => {
+          this.statistics.push(discount);
+        });
+        this.totalCount = data['@odata.count'];
+      },
+      () => {
+        this.toaster.open('There is no possibility to show statistics');
+      }
+    );
+  }
+
+  exportStatistics(filters?: any): any {
+    this.statisticsService.exportDiscountsStatistics(filters).subscribe(
+      (response: any) => {
+        const headers = response.headers.get('content-disposition');
+        const filename = headers.split(';')[1].split('filename')[1].split('=')[1].trim();
+        this.downloadFile(response.body, filename);
+      },
+      (error) => {
+        this.toaster.open('There is no possibility to export statistics');
+      }
+    );
+  }
+
+  downloadFile(data: any, filename: string): void{
+    const blob = new Blob ([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.download = filename;
+    anchor.href = url;
+    anchor.click();
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.statistics), this.totalCount)) {
+      this.skipStatistics += this.topStatistics;
+      this.getStatistics(this.topStatistics, this.skipStatistics, this.filterStorage);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  onResize(event: any): void {
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
+  }
 }

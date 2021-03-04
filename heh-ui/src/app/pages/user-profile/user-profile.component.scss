@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .profile-header {
   font-size: 1.8rem;
   font-weight: bold;
@@ -7,6 +9,12 @@
 .profile-wrapper {
   display: flex;
   flex-direction: row;
+  width: 30rem;
+  @include glass;
+  border-radius: $border-radius-small;
+  box-shadow: $shadow-violet;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
 
   img {
     width: 10rem;
@@ -15,8 +23,29 @@
   }
 
   .profile-content {
-    margin-top: 3.2rem;
-    margin-left: 1.6rem;
+    margin-left: 1rem;
+    width: 100%;
+
+    .form-selection {
+      text-align: right;
+    }
+
+    .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,
+    .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
+      background: $color-gray;
+    }
+
+    .mat-pseudo-checkbox-checked {
+      @extend .backgroundColor;
+    }
+
+    .add-profile-button {
+      margin-top: $margin-1;
+      height: 3rem;
+      width: 45%;
+      color: $color-white;
+      @extend .backgroundColor;
+    }
 
     .profile-info {
       margin-bottom: 0.5rem;
@@ -35,6 +64,17 @@
           margin-bottom: 0.4rem;
         }
       }
+    }
+
+    .profile-scheme{
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-gray;
+      padding: 0.5rem;
+      width: 12.3rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin: 1.5rem 0;
     }
 
     .mat-list-base .mat-list-item .mat-list-item-content-reverse {
@@ -59,6 +99,11 @@
       width: 13rem;
       padding: 0;
       margin-bottom: 0.8rem;
+      outline: none;
+
+      mat-list-option {
+        background: none;
+      }
 
       mat-list-option:not(:first-child) {
         margin-left: 0.8rem;
@@ -72,11 +117,114 @@
     }
 
     mat-form-field {
-      width: 24rem;
-      padding: 0.8rem 0.8rem 0 0.8rem;
-      background: #FFFFFF;
-      box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08);
+      width: 100%;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: $shadow-gray;
       border-radius: 4px;
+
+      .mat-form-field-wrapper {
+        padding: 0;
+      }
     }
   }
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: transparent;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  @extend .backgroundColor;
+}
+
+@media screen and (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 25.5rem;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+      margin-left: 0;
+
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .profile-wrapper {
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .profile-wrapper {
+    max-width: 15rem;
+    max-height: 100%;
+
+    img {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile-wrapper {
+    max-width: 13.5rem;
+
+    .profile-photo {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: $margin-half;
+    }
+
+    .profile-content {
+      max-width: 25rem;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile-wrapper {
+    max-width: 13rem;
+    padding: 1.25rem;
+
+    .profile-content .add-profile-button {
+      height: 2.5rem;
+      margin-top: $margin-half;
+    }
+
+    .profile-content .mat-list-base .mat-list-item .mat-list-item-content-reverse {
+      font-size: .8rem;
+    }
+
+    .profile-content .profile-info .profile-username {
+      margin-bottom: .8rem;
+      font-size: 1.4rem;
+    }
+
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:first-child {
+  width: 13rem;
+}
+
+.profile-wrapper .profile-content mat-selection-list mat-list-option:not(:first-child) {
+  width: 12.2rem;
 }

@@ -2,7 +2,7 @@
 
 .user-card {
   width: 100%;
-  background-color: white;
+  @include glass;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -17,7 +17,7 @@
     padding-top: 1rem;
 
     img {
-      width: 40%;
+      width: 7rem;
       border-radius: 50%;
     }
   }
@@ -34,26 +34,55 @@
       font-size: 0.825rem;
     }
 
+    .mat-button-toggle-group-appearance-standard,
+    .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+      @extend .borderColor;
+    }
+
     .btn-toggle {
       display: flex;
       margin-right: 1%;
 
       mat-button-toggle {
         font-size: 0.9rem;
-        height: 1.4rem;
-        padding: 0;
         margin: 0;
+        background: transparent;
+      }
+
+      mat-button-toggle.mat-button-toggle-checked {
+        @extend .backgroundColor;
+        color: white;
       }
 
       span {
-        padding: 0 0.2rem;
-        height: 1.4rem;
-        line-height: 1.4rem;
+        padding: 0 0.3rem;
+        line-height: 2rem
       }
     }
 
     mat-slide-toggle {
       margin-top: 0.5rem;
     }
+  }
+}
+
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
+  @extend .backgroundColor;
+}
+
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(51, 51, 51, .2);
+}
+
+@media (max-width: 800px) {
+  .user-card .user-card__avatar img {
+    width: 6.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .user-card .user-card__info .btn-toggle span {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
   }
 }

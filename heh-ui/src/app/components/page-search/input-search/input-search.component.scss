@@ -1,0 +1,32 @@
+@import "../../../../styles.scss";
+
+.input-search-container {
+  display: flex;
+  width: 100%;
+  box-shadow: $shadow-gray;
+  border-radius: $border-radius-small;
+  @include glass;
+
+  .search-input {
+    border: none;
+    font-size: $font-content;
+    font-family: Montserrat;
+    background: transparent;
+    line-height: 3.2rem;
+    color: rgba(17, 17, 17);
+    width: calc(100% - 30px);
+  }
+
+  .search-input:active,
+  .search-input:hover,
+  .search-input:focus {
+    outline: 0;
+    outline-offset: 0;
+  }
+
+  .search-img {
+    color: rgba(17, 17, 17, 0.48);
+    padding: 0 .3rem;
+    align-self: center;
+  }
+}

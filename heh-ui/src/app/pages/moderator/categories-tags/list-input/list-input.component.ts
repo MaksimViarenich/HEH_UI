@@ -1,48 +1,82 @@
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, Input} from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Option} from '../../../../models/option';
+import { TranslateService } from '@ngx-translate/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+
+import { ToasterService } from '../../../../services/toaster-service/toaster.service';
+import { FiltersService } from '../../../../services/filter-service/filters.service';
+import { ModalService } from '../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-list-input',
   templateUrl: './list-input.component.html',
-  styleUrls: ['./list-input.component.scss']
+  styleUrls: ['./list-input.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ListInputComponent {
   @Input() label: string;
-  @Input() options: Option[];
+  @Input() options: any;
+  @Input() addElement: any;
+  @Input() editElement: any;
+  @Input() deleteElement: any;
+  @Input() isDisabled?: any;
+  @Input() activeCategoryId?: any;
+  @Output() changeData = new EventEmitter<string>();
+
+  newItem: any;
   selectable = true;
   removable = true;
   addOnBlur = true;
+  previousName: any;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor() {
+  constructor(
+    private filtersService: FiltersService,
+    private toaster: ToasterService,
+    private modalService: ModalService,
+    private translateService: TranslateService) {
     this.label = '';
+    this.previousName = '';
     this.options = [];
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
+  add(item: any): void {
+    this.addElement(item, this.changeData);
+    this.newItem = '';
+  }
 
-    if ((value || '').trim()) {
-      this.options.push({
-        viewValue: value.trim(),
-        value: value.trim(),
-      });
-    }
+  changeItem(item: any): void {
+    this.previousName = item.name;
+    item.isChanged = true;
+  }
 
-    if (input) {
-      input.value = '';
+  cancelChange(item: any): void {
+    item.name = this.previousName;
+    item.isChanged = false;
+    this.previousName = '';
+  }
+
+  edit(item: any): void {
+    if (item.name === this.previousName) {
+      item.isChanged = false;
+      this.previousName = '';
+    } else {
+      this.editElement(item, this.changeData);
     }
   }
 
-  remove(item: Option): void {
-    const index = this.options.indexOf(item);
+  remove(item: any): void {
+    const confirmData = {
+      message: this.translateService.instant('confirmation.delete.message'),
+      buttonPositive: this.translateService.instant('confirmation.delete.button-positive'),
+      buttonNegative: this.translateService.instant('confirmation.delete.button-negative'),
+    };
+    const dialogRef = this.modalService.openConfirmModal(confirmData);
 
-    if (index >= 0) {
-      this.options.splice(index, 1);
-    }
+    dialogRef.afterClosed().subscribe((isDelete: any) => {
+      if (isDelete) {
+        this.deleteElement(item.id, this.changeData);
+      }
+    });
   }
 }

@@ -1,17 +1,21 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss']
+  styleUrls: ['./tag.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class TagComponent implements OnInit {
-  @Input() discountTag: string | undefined;
+export class TagComponent {
+  @Input() tagId: string | undefined;
+  tagName: string | undefined;
 
-  constructor() {
+  constructor(private filtersService: FiltersService) {
   }
 
-  ngOnInit(): void {
+  getTagName(): string {
+    return this.tagName = this.filtersService.getTagById(this.tagId || '');
   }
-
 }

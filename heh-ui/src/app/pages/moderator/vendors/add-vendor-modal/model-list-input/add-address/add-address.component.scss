@@ -1,0 +1,60 @@
+@import '../../../../../../../styles.scss';
+
+.add-address-modal-backdrop.cdk-overlay-backdrop {
+  width: calc(100% - 25rem);
+}
+
+.add-address-modal.cdk-overlay-pane {
+  width: 25rem;
+
+  .add-address-header {
+    height: $height-header;
+    padding: 0 1rem;
+
+    .add-address-title {
+      @include font-bold-vendor;
+      line-height: $height-header;
+    }
+  }
+
+  .add-address-container {
+    height: calc(100% - 4.8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    .add-address-group {
+      padding: 1rem 1rem 0 1rem;
+      @include glass;
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-violet;
+
+      mat-form-field {
+        width: 100%;
+
+        .mat-form-field-wrapper {
+          padding-bottom: 0;
+          margin: 0 0 1rem 0;
+          @include glass;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .add-address-btns {
+      text-align: right;
+      font-weight: bold;
+
+      button:last-child {
+        @extend .backgroundColor;
+        color: $color-white;
+
+        &:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          color: rgba(0, 0, 0, .26);
+        }
+      }
+    }
+  }
+}

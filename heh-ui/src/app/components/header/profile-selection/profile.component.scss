@@ -1,0 +1,56 @@
+@import "../../../../styles.scss";
+
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  margin: 0 $margin-half 0 1.5rem;
+
+  .person-pic {
+    display: flex;
+
+    img {
+      @include img-profile-language;
+    }
+
+    .profile-menu {
+      margin-top: .2rem;
+    }
+  }
+
+  .profile-icon {
+    border-radius: 50%;
+  }
+
+  .profile-icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+button.mat-menu-item {
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+
+  img {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: .5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .person {
+    margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 375px) {
+  .person {
+    width: 2.5rem;
+  }
+}

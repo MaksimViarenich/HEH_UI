@@ -1,24 +1,30 @@
-<div class="card"
-     [style.background]="'linear-gradient('+ discountInfo.background +')'">
-  <div class="card-header">
-    <div class="card-title">{{discountInfo.discount.vendorName}}</div>
-    <app-btn-favorite [isFavorite]="discountInfo.isFavorite"
-                      class="btn" ></app-btn-favorite>
+<div class="discount-card" *ngIf="discount">
+  <div class="discount-card-header">
+    <div class="discount-card-title">{{discount.vendorName}}</div>
+    <app-btn-favorite *ngIf="!isViewCountsVisible"
+                      [isFavorite]="discount.isFavorite"
+                      [id]="discount.id"
+                      class="btn"></app-btn-favorite>
+    <div *ngIf="isViewCountsVisible"
+         class="btn-view">
+      <span class="material-icons">visibility</span>
+      {{ discount.viewsAmount }}
+    </div>
   </div>
 
-  <div class="card-content">
+  <div class="discount-card-content">
     <div class="category-and-tags">
-      <app-category [discountCategory]="discountInfo.discount.category"></app-category>
-      <app-tag *ngIf="discountInfo.discount.tags.length" [discountTag]="discountInfo.discount.tags[0]"></app-tag>
-      <div *ngIf="discountInfo.discount.tags.length - 1 > 0"
+      <app-category [categoryId]="discount.categoryId"></app-category>
+      <app-tag *ngIf="discount.tagsIds.length" [tagId]="discount.tagsIds[0]"></app-tag>
+      <div *ngIf="discount.tagsIds.length - 1 > 0"
            class="additional-tags">
         <span class="material-icons">add_circle</span>
-        {{ discountInfo.discount.tags.length - 1 }}
+        {{ discount.tagsIds.length - 1 }}
       </div>
     </div>
 
-    <div class="card-content-description">
-      {{discountInfo.discount.title}}
+    <div class="discount-card-content-description">
+      {{discount.conditions}}
     </div>
   </div>
 </div>

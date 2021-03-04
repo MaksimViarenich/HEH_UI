@@ -1,5 +1,13 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
+<app-page-search [isVendorSearchAvailable]="true"
+                 (applySearch)="getFavoritesWrapper($event)"></app-page-search>
 
-<div class="favorites-container">
-  <app-favorite-card *ngFor="let card of favoriteCards" [favoriteInfo]="card"></app-favorite-card>
+<div class="favorites-container"
+     infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+  <app-favorite-card *ngFor="let card of favoriteCards"
+                     [favoriteInfo]="card"
+                     (click)="openDiscountDetailModal(card)"
+                     (updateCardsAfterDelete)="getFavoritesAfterDelete()"></app-favorite-card>
 </div>

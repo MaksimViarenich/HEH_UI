@@ -17,7 +17,7 @@
       flex-direction: column;
       max-width: 90%;
 
-      .category-and-tags {
+      .edit-discount-category-and-tags, .edit-discount-tags {
         display: flex;
         justify-content: flex-start;
       }
@@ -61,7 +61,7 @@
       align-items: center;
 
       .mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-thumb {
-        background-color: $color-violet;
+        @extend .backgroundColor;
       }
 
       .mat-slide-toggle-thumb {
@@ -74,8 +74,24 @@
 
         &:hover {
           opacity: 1;
+          cursor: pointer;
         }
       }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 930px) {
+  .edit-discount-category-and-tags {
+    flex-direction: column;
+
+    .edit-discount-category {
+      width: fit-content;
+      margin-bottom: -0.5rem;
     }
   }
 }

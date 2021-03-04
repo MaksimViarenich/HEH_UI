@@ -1,6 +1,11 @@
 <div class="user-card">
   <div class="user-card__avatar">
-    <img src="{{ user?.avatar }}">
+    <img *ngIf="!userPhoto; else photo"
+         src="assets/images/no-photo.png">
+    <ng-template #photo>
+      <img src="{{ userPhoto }}">
+    </ng-template>
+      
   </div>
 
   <div class="user-card__info">
@@ -8,19 +13,22 @@
     <p class="email">{{ user?.email }}</p>
 
     <mat-button-toggle-group class="btn-toggle"
-      name="userRole"
-      aria-label="Role"
-      value="{{ user?.role }}">
-      <mat-button-toggle value="user">{{ 'users.user' | translate }}</mat-button-toggle>
-      <mat-button-toggle value="moderator">{{ 'users.moderator' | translate }}</mat-button-toggle>
-      <mat-button-toggle value="admin">{{ 'users.admin' | translate }}</mat-button-toggle>
+                             name="userRole"
+                             aria-label="Role"
+                             value="{{role}}">
+      <mat-button-toggle value="Employee"
+                         (change)="changeUserRole($event.value)">{{ 'users.user' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="Moderator"
+                         (change)="changeUserRole($event.value)">{{ 'users.moderator' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="Administrator"
+                         (change)="changeUserRole($event.value)">{{ 'users.admin' | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
 
-    <mat-slide-toggle class="example-margin"
-      [color]="color"
-      [checked]="checked"
-      [disabled]="false">
-        {{ 'users.active' | translate }}
+    <mat-slide-toggle class="active-toggle"
+                      [color]="color"
+                      [(ngModel)]="isActive"
+                      (ngModelChange)="changeUserState()">
+      {{isActive ? ('users.active' | translate) : ('users.inactive' | translate)}}
     </mat-slide-toggle>
   </div>
 </div>

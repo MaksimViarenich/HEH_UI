@@ -1,9 +1,21 @@
 <div class="search">
-  <app-input-search ></app-input-search>
+  <app-input-search [(ngModel)]="searchData.searchUserText"
+                    (keydown.enter)="applyUserSearch()"></app-input-search>
 </div>
 
-<div class="users-list">
-  <app-user-card *ngFor="let item of users"
-                  [user]="item">
-  </app-user-card>
+<div class="users-list"
+     infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+
+  <mat-grid-list [cols]="breakpoint"
+                 rowHeight="19rem"
+                 gutterSize="1rem"
+                 (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let user of users">
+      <app-user-card [user]="user">
+      </app-user-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

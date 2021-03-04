@@ -1,0 +1,10 @@
+<div class="confirm-container">
+  <div mat-dialog-title>{{ data.message }}</div>
+  <div class="confirm-buttons">
+    <button mat-button mat-dialog-close>{{ data.buttonNegative }}</button>
+    <button mat-button
+            [mat-dialog-close]="true"
+            cdkFocusInitial>{{ data.buttonPositive }}</button>
+  </div>
+</div>
+

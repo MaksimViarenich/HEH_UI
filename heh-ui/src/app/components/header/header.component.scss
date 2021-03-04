@@ -1,24 +1,35 @@
 @import "../../../styles.scss";
+@import '~hamburgers/_sass/hamburgers/hamburgers.scss';
 
 .header {
-  background: linear-gradient(90.1deg, #8579FF 15.04%, #D1E6F1 71.85%);
+  @include glass;
   opacity: 1;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
 
-  .container {
+  .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 1rem;
 
+    .hamburger {
+      display: none;
+    }
+
     .header-title {
       font-size: 1.3rem;
       font-weight: bold;
-      color: #F3F3F3;
       text-transform: uppercase;
+      color: $color-black;
+    }
+
+    .header-title-adaptive {
+      font-weight: bold;
+      display: none;
+      color: $color-black;
     }
 
     .header-title:hover {
@@ -30,77 +41,80 @@
 .navigation {
   display: flex;
 
+  .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+
   .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none;
   }
 
-  .person {
+  .person-content {
     display: flex;
     align-items: center;
-    margin-left: 2rem;
+  }
+}
 
-    .person-info a {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: #303030;
+@media screen and (max-width: 1160px) {
+  .header .header-container {
+    .header-title {
+      font-size: 1rem;
+    }
 
-      .person-name, .person-place {
-        font-size: 1.6rem;
-        font-weight: normal;
+    .navigation .tabs .tab {
+      padding: 0 0.9rem;
+
+      &:nth-child(3) {
+        position: relative;
+        padding-right: 1.2rem;
       }
-    }
-
-    .person-pic {
-      display: flex;
-
-      img {
-        @include img-profile-language;
-        margin-right: 0.5rem;
-      }
-    }
-
-    .profile-icon {
-      margin-left: 1.5rem;
-      border-radius: 50%;
-    }
-
-    .profile-icon:hover {
-      transform: scale(1.1);
-      cursor: pointer;
     }
   }
 }
 
-.mat-tab-links .tab {
-  min-width: 1.5rem;
-  color: #303030;
+@media screen and (max-width: 1000px) {
+  .header .header-container .navigation .tabs .tab {
+    font-size: 0.7rem;
+    padding: 0 0.7rem;
+  }
 }
 
-.mat-menu-content {
-  display: flex;
-  flex-direction: column;
-  width: 16rem;
-  color: #333333;
+@media screen and (max-width: 768px) {
+  .header {
+    .navigation .person-content {
+      app-language-selection,
+      app-select-background,
+      app-profile {
+        display: none;
+      }
+    }
+
+    .header-container {
+      .hamburger {
+        display: flex;
+        outline: none;
+      }
+
+      .hamburger:active,
+      .hamburger:focus {
+        outline: none;
+      }
+    }
+
+    .navigation a {
+      display: none;
+    }
+  }
 }
 
-.profile-menu {
-  margin-top: .2rem;
-}
+@media screen and (max-width: 375px) {
+  .header .header-container .header-title {
+    display: none;
+  }
 
-button.mat-menu-item {
-  display: flex;
-  align-items: center;
-}
-
-.mat-menu-item {
-  display: flex;
-  align-items: center;
-  font-size: .8rem;
-
-  img {
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-right: .5rem;
+  .header .header-container .header-title-adaptive {
+    display: flex;
+    font-size: 1.3rem;
   }
 }

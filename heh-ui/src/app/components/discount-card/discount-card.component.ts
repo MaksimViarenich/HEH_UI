@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-discount-card',
@@ -6,11 +6,9 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./discount-card.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class DiscountCardComponent implements OnInit {
-  @Input() discountInfo: any | undefined;
+export class DiscountCardComponent{
+  @Input() discount: any | undefined;
+  @Input() isViewCountsVisible: boolean | undefined;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 }

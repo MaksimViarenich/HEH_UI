@@ -3,6 +3,17 @@
 .chips-container {
   .mat-chip.mat-standard-chip {
     margin: 0.5rem 0.5rem 0.5rem 0;
+    @include glass;
+  }
+
+  .chips-input {
+    width: 7rem;
+    font: 400 14px/20px Montserrat;
+    letter-spacing: normal;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -13,12 +24,27 @@
     width: calc(100% - 8rem);
   }
 
-  button {
+  .list-input-button {
     line-height: 3.25rem;
     font-size: 1rem;
-    background-color: $color-violet;
+    @extend .backgroundColor;
+    color: $color-white;
     vertical-align: top;
     float: right;
     width: 7rem;
+
+    &:disabled {
+      @extend .backgroundDisabled;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .list-input-container mat-form-field {
+    width: calc(100% - 5.5rem);
+  }
+
+  .list-input-container button {
+    width: 5rem;
   }
 }

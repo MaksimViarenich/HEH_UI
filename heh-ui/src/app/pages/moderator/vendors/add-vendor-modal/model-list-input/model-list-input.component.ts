@@ -1,4 +1,9 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormControl, Validators } from '@angular/forms';
+import { isEqual, size } from 'lodash';
+
+import { ModalService } from '../../../../../services/modal-service/modal.service';
 
 @Component({
   selector: 'app-model-list-input',
@@ -9,21 +14,43 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 export class ModelListInputComponent {
   @Input() label: string;
-  @Input() listData: string[] = [];
+  @Input() listData: any[];
+  @Input() type: string;
+  @Output() deleteData = new EventEmitter<number>();
   inputValue = '';
+  phonesVendor: FormControl;
 
-  constructor() {
+  constructor(public dialog: MatDialog, private modalService: ModalService) {
     this.label = '';
     this.listData = [];
+    this.type = '';
+    this.phonesVendor = new FormControl(null, [Validators.pattern('^[+]?\\d*[(]?\\d*[)]?[0-9]*$')]);
+  }
+
+  validatePhone(event: any): any{
+    let k;
+    k = event.charCode;
+    return(isEqual(k, 43) || isEqual(k, 40) || isEqual(k, 41) || (k >= 48 && k <= 57));
   }
 
 
-  addData(data: string): void {
-    this.listData.push(data);
+  addPhone(): void {
+    this.listData.push({
+      id: size(this.listData) + 1,
+      number: this.inputValue
+    });
     this.inputValue = '';
   }
 
-  deleteData(idx: number): void {
-    this.listData.splice(idx, 1);
+  openAddAddressModal(): void {
+    const dialogRef = this.modalService.openAddAddressModal();
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data) {
+        if (data.country.hasOwnProperty('country')) {
+          this.listData.push(data);
+        }
+      }
+    });
   }
 }

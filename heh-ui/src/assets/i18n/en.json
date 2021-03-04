@@ -4,6 +4,7 @@
     "logout": "Logout",
     "discounts": "Discounts",
     "favorites": "Favorites",
+    "notifications": "Notifications",
     "moderator": "Moderator",
     "admin": "Admin"
   },
@@ -19,14 +20,18 @@
   "profile": {
     "subscription": "Subscriptions",
     "tag": "New tag...",
-    "newsletters": "Reseive a newsletters",
+    "newsletters": "Receive a newsletters",
     "service": "New services",
     "vendors": "New vendors",
     "city": "On city",
-    "hot_sales": "Hot sales"
+    "hot_sales": "Hot sales",
+    "color-theme": "Color theme",
+    "light-mode": "Light mode",
+    "dark-mode": "Dark mode"
   },
   "search": {
     "btn_search": "Search",
+    "btn_export": "Export",
     "input_search": "Search",
     "tag": "Tag",
     "category": "Category",
@@ -34,22 +39,37 @@
     "vendor": "Vendor",
     "date-search-start": "Start date",
     "date-search-end": "End date",
-    "date-range": "Date range"
+    "date-range": "Date range",
+    "select": "Select"
   },
   "event-history": {
     "date": "Date",
-    "state": "State",
+    "action": "Action",
     "user": "User",
     "description": "Description"
   },
-  "users" : {
-    "admin": "administrator",
-    "user": "user",
-    "moderator": "moderator",
-    "active": "active"
+  "event-notification": {
+    "date": "Date",
+    "title": "Title",
+    "message": "Message",
+    "type": "Type",
+    "read": "Read",
+    "were-read": "Read",
+    "read-all": "Read All"
+  },
+  "users": {
+    "admin": "Administrator",
+    "user": "User",
+    "moderator": "Moderator",
+    "active": "Active",
+    "inactive": "Inactive",
+    "add-profile": {
+      "save": "Save"
+    }
   },
   "vendors": {
     "add": "Add vendor",
+    "edit": "Edit vendor",
     "add-vendor": {
       "info": "Vendor's info",
       "name": "Vendor's name",
@@ -60,23 +80,27 @@
       "inst": "Instagram",
       "vk": "Vkontakte",
       "fb": "Facebook",
-      "permission": "Vendor gave permission to receive newsletters",
+      "email": "E-mail",
       "cancel": "Cancel",
-      "subm": "Submit",
+      "restore": "Restore",
+      "save": "Save",
       "dsk": "Discounts",
       "add-dsk": "Add discount"
     },
     "add-discount": {
+      "add": "Add discount",
+      "edit": "Edit discount",
       "name": "Discount name",
       "address": "Address",
-      "phone": "Telephone",
-      "description": "Discount description",
+      "phone": "Phone",
+      "conditions": "Discount conditions",
       "tag": "Tag",
       "category": "Category",
       "start": "Start date",
       "end": "Expiration date",
       "cancel": "Cancel",
-      "subm": "Submit"
+      "save": "Save",
+      "promo": "Promocode"
     }
   },
   "categories-and-tags": {
@@ -89,17 +113,25 @@
   "favorites": {
     "notes": "Note",
     "cancel": "Cancel",
-    "subm": "Submit"
+    "save": "Save"
   },
   "discounts": {
     "address": "Address",
-    "availible": "Availible to",
+    "available": "Available to",
     "open": "Open",
+    "close": "Close",
     "cancel": "Cancel"
   },
-  "notfound": {
-    "ops": "Oops!",
-    "find": "We can't seem to find the page you're looking for.",
-    "err": "Error code:"
+  "confirmation": {
+    "delete": {
+      "message": "Are you sure you want to delete?",
+      "button-positive": "Delete",
+      "button-negative": "Cancel"
+    },
+    "change": {
+      "message": "Are you sure you want to close the pop-up? Your changes will not be saved",
+      "button-positive": "Yes",
+      "button-negative": "No"
+    }
   }
 }

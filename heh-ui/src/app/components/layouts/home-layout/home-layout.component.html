@@ -1,11 +1,44 @@
-<div class="background-image"
-  [ngStyle]="{'background-image': getBackgroundImage() }">
-  <app-header></app-header>
+<app-header (sidenavToggle)="sidenav.toggle()"
+            (closeSidenav)="sidenav.close()"
+            [menuIsActive]="sidenav.opened"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav
+               autoFocus="false">
+
+    <div class="selectors">
+      <app-profile></app-profile>
+      <app-language-selection></app-language-selection>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <a *ngFor="let tab of tabs"
+          class='tab'
+          [matBadge]="tab.name==='Notifications' && notificationsCount ? notificationsCount : undefined"
+          matBadgeSize="small"
+          matBadgeColor="warn"
+          mat-list-item
+          (click)="sidenav.close()"
+          [routerLink]="tab.path"
+          routerLinkActive="active">{{ tab.localizationKey | translate }}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
     <div class="container">
       <div class="title">
         {{ getLocalizationKey() | translate }}
+      </div>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
+<div *ngIf="spinnerService.visibility | async"
+        class="spinner-overlay">
+  <mat-spinner mode="indeterminate"
+              [diameter]="70"
+              class="mat-progress-spinner">
+  </mat-spinner>
+</div>

@@ -1,4 +1,6 @@
-<div class="btn-favorite" (click)="isFavorite = !isFavorite; $event.stopPropagation()">
+<div class="btn-favorite"
+     (click)="isFavorite = !isFavorite; $event.stopPropagation()"
+     (click)="addOrDeleteFavorite()">
   <span class="material-icons">
     {{isFavorite ? 'favorite' : 'favorite_border'}}
   </span>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { now } from 'lodash';
 import { Observable } from 'rxjs';
+
 import { BASE_API_URL } from 'src/app/global';
 
 @Injectable({
@@ -24,11 +26,14 @@ export class AuthService {
     return this.http.post(`${BASE_API_URL}/connect/token`, params, {headers});
   }
 
-  isAuthenticated(): any {
-    if (localStorage.getItem('isAuth')){
-      return true;
-    }
+  getToken(): any {
+    return localStorage.getItem('isAuth');
+  }
 
-    return false;
+  isAuthenticated(): any {
+    const dateNow = now();
+    const expDate = Number(localStorage.getItem('expDate'));
+
+    return !!((expDate > dateNow) && localStorage.getItem('isAuth'));
   }
 }

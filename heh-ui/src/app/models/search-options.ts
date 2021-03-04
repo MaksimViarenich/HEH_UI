@@ -1,4 +1,4 @@
-import {SelectOption} from './select-option';
+import { SelectOption } from './select-option';
 
 export interface SearchOptions {
     btnLabel?: string;
