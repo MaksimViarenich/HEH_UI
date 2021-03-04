@@ -27,6 +27,8 @@ export class EventHistoryComponent implements OnInit {
   previousScrollPosition: any;
   totalCountEvents: any;
   filterStorage: any;
+  locations: any;
+  locationsArrayForOptions: any;
 
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
@@ -72,6 +74,25 @@ export class EventHistoryComponent implements OnInit {
       this.filtersOptions = this.filtersService.getFilters();
     });
     this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+      this.filtersService.getLocations().subscribe(
+        (data) => {
+          this.locations = data;
+          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
+        }
+      );
+    });
+  }
+
+  fillLocationOptionArray(locations: any): any {
+    let array: any = [];
+    forEach(locations, (location) => {
+      array = isEqual(size(array), 0) ? [{country: location.country, id: location.id}, ...location.cities] :
+      [...array, {country: location.country, id: location.id}, ...location.cities];
+    });
+
+    return array;
   }
 
   onScrollDown(event: any): void {

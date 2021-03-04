@@ -1,7 +1,8 @@
+
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isEqual, slice, size, toString, indexOf } from 'lodash';
-
+import { MatOption } from '@angular/material/core';
+import { isEqual, size, indexOf, forEach, includes, map, find } from 'lodash';
 import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
@@ -20,6 +21,10 @@ export class PageSearchComponent implements OnInit {
   pickerDate: any[];
   maxDate: Date;
   month = '';
+  locations: any;
+  locationsArrayForOptions: any;
+  viewLocation: any;
+  currentLocation: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -56,7 +61,23 @@ export class PageSearchComponent implements OnInit {
     }
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
+      this.filtersService.getLocations().subscribe(
+        (data) => {
+          this.locations = data;
+          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
+        }
+      );
     });
+  }
+
+  fillLocationOptionArray(locations: any): any {
+    let array: any = [];
+    forEach(locations, (location) => {
+      array = isEqual(size(array), 0) ? [{country: location.country, id: location.id}, ...location.cities] :
+      [...array, {country: location.country, id: location.id}, ...location.cities];
+    });
+
+    return array;
   }
 
   transformPickerDate(objDate: any): string {
