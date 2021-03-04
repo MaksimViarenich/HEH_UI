@@ -7,12 +7,12 @@ import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
 
 export const FILTERS_MAP = new Map([
-  ['categories', 'categoryId'],
-  ['vendors', 'vendorId'],
-  ['tags', 'tagsIds'],
-  ['location', 'addresses'],
-  ['vendorCategories', 'categoriesIds'],
-  ['idForVendor', 'id']
+    ['categories', 'categoryId'],
+    ['vendors', 'vendorId'],
+    ['tags', 'tagsIds'],
+    ['location', 'addresses'],
+    ['vendorCategories', 'categoriesIds'],
+    ['idForVendor', 'id']
   ]);
 
 @Injectable({
@@ -211,7 +211,7 @@ export class FiltersService {
         case 'location':
           if (filters[key]) {
             resultParams.push(
-              `${FILTERS_MAP.get(key)}/any(a: a/cityId eq ${filters[key]})`
+              `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key]} or a/cityId eq ${filters[key]})`
             );
           }
           break;
