@@ -49,27 +49,32 @@
       </mat-form-field>
 
       <div class="modal-contacts">
-        <div *ngIf="links.website"
-             class="sidenav-website">
+        <div *ngIf="links.website">
           <a href="{{links.website}}" target="_blank">
             <span class="material-icons">language</span>
             <span>{{links.website}}</span>
           </a>
         </div>
 
-        <div *ngFor="let phone of discountDetails.phones"
-             class="sidenav-phone">
-          <span class="material-icons">phone</span>
-          <span>{{phone.number}}</span>
+        <div *ngIf="discountDetails.phones.length">
+          <div *ngFor="let phone of discountDetails.phones">
+            <span class="material-icons">phone</span>
+            <span>{{phone.number}}</span>
+          </div>
         </div>
 
-        <div class="sidenav-time">
+        <div *ngIf="discountDetails.workingHours">
           <span class="material-icons">query_builder</span>
           <span>{{ 'discounts.open' | translate }}: {{discountDetails.workingHours}}</span>
         </div>
 
-        <div class="sidenav-validity">
+        <div>
           <span class="material-icons">calendar_today</span>
+          <span>{{ 'discounts.start' | translate }} {{discountDetails.startDate  | date: 'dd/MM/yyyy'}}</span>
+        </div>
+
+        <div *ngIf="discountDetails.endDate">
+          <span class="material-icons">outlined_flag</span>
           <span>{{ 'discounts.available' | translate }} {{discountDetails.endDate  | date: 'dd/MM/yyyy'}}</span>
         </div>
       </div>
