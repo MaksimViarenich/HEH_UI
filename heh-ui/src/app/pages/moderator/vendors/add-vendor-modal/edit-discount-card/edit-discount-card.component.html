@@ -1,21 +1,25 @@
 <div class="edit-discount-card-container">
   <div class="card-content">
     <div class="discount-info">
-      <div class="category-and-tags">
-        <app-category [discountCategory]="discountInfo.category"></app-category>
-        <app-tag *ngFor="let tag of discountInfo.tags"
-                 [discountTag]="tag"></app-tag>
+      <div class="edit-discount-category-and-tags">
+        <div class="edit-discount-category">
+          <app-category [categoryId]="discountInfo.categoryId"></app-category>
+        </div>
+        <div class="edit-discount-tags">
+          <app-tag *ngFor="let tag of discountInfo.tagsIds"
+                   [tagId]="tag"></app-tag>
+        </div>
       </div>
 
       <div class="card-content-description">
         <div class="discount-name line-clamp">
-          {{ discountInfo.title }}
+          {{ discountInfo.conditions }}
         </div>
       </div>
     </div>
 
-    <div class="card-actions">
-      <span class="material-icons warn-color">delete</span>
+    <div class="card-actions" (click)="$event.stopPropagation()">
+      <span class="material-icons warn-color" (click)="deleteDiscount()">delete</span>
     </div>
   </div>
 </div>

@@ -1,26 +1,25 @@
 @import "../../../styles.scss";
 
-.card:hover {
+.discount-card:hover {
   cursor: pointer;
 }
 
-.card {
+.discount-card {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background: $color-white;
   box-shadow: $shadow-gray;
   border-radius: $border-radius-small;
+  @include glass;
 
-  .card-header {
+  .discount-card-header {
     height: 40%;
-    @include glass;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: .5rem;
 
-    .card-title {
+    .discount-card-title {
       position: relative;
       max-height: fit-content;
       align-self: center;
@@ -28,19 +27,37 @@
       font-size: #{$font-vendor * 0.9};
       font-weight: 500;
     }
+
     .btn {
       position: relative;
       align-self: flex-start;
       margin-left: .3rem;
     }
+
+    .btn-view {
+      @include btn-icon;
+      display: flex;
+      flex-direction: row;
+      align-self: flex-start;
+      align-items: center;
+      color: $color-dark-gray;
+
+      span {
+        font-size: 1rem;
+        color: $color-dark-gray;
+
+        &:hover {
+          cursor: auto;
+        }
+      }
+    }
   }
 
-  .card-content {
+  .discount-card-content {
     padding: 0 .5rem .5rem .5rem;
-    background: $color-white;
     height: calc(60% - 1.5rem);
 
-    .card-content-description {
+    .discount-card-content-description {
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -52,6 +69,11 @@
     .category-and-tags {
       display: flex;
       justify-content: flex-start;
+      width: 100%;
+
+      app-category, app-tag {
+        max-width: calc(50% - 1rem);
+      }
     }
 
     .additional-tags {
@@ -60,7 +82,7 @@
       align-items: center;
       font-size: 1rem;
       line-height: 1rem;
-      color: $color-blue-green;
+      @extend .textColor;
 
       span {
         font-size: 1.1rem;

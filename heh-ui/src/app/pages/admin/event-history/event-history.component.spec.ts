@@ -1,6 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { EventHistoryComponent } from './event-history.component';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
 
 describe('EventHistoryComponent', () => {
   let component: EventHistoryComponent;
@@ -8,7 +16,10 @@ describe('EventHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventHistoryComponent ]
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), BrowserAnimationsModule, HttpClientTestingModule,
+        MatDialogModule, MatSnackBarModule ],
+      declarations: [ EventHistoryComponent ],
+      providers: [ ToasterService, Overlay ]
     })
     .compileComponents();
   });

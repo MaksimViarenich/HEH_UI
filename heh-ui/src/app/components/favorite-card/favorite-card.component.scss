@@ -5,63 +5,73 @@
   display: flex;
   justify-content: space-between;
   height: 5.7rem;
-  background: $color-white;
   box-shadow: $shadow-gray;
   border-radius: 5px;
   margin-bottom: 1rem;
+  @include glass;
 
-  div {
+  .favorite-vendor {
     display: flex;
+    box-sizing: border-box;
+    min-width: 14rem;
+    padding: 1rem;
 
-    .favorite-vendor {
-      box-sizing: border-box;
-      min-width: 14rem;
-      padding: 0.5rem;
-      @include glass;
-
-      .card-title {
-        max-width: fit-content;
-        align-self: center;
-        @include font-bold-vendor;
-      }
+    .favorite-card-title {
+      max-width: fit-content;
+      align-self: center;
+      @include font-bold-vendor;
     }
   }
 
-  .card-content {
+  .favorite-card-content {
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
     padding: 0.1rem 0.5rem 0.3rem 0.5rem;
-    background-color: $color-white;
 
-    .discount-info {
+    .favorite-info {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      .category-and-tags {
+      .favorites-category-and-tags {
         display: flex;
         justify-content: flex-start;
         margin-bottom: -0.5rem;
+
+        .favorites-tags {
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .discount-detail-promo-code {
+          @include font-bold-discount;
+          margin-top: $margin-half;
+
+          &::before {
+            content: 'Promocode: ';
+            font-weight: 400;
+          }
+        }
       }
 
       .discount-name {
         @include font-bold-discount;
         line-height: 1.5rem;
-      }
+        margin-top: 0.3rem;
 
-      .discount-note {
-        display: flex;
-        flex-direction: row;
-        font-size: $font-content;
-
-        i {
-          font-size: $font-title;
-          vertical-align: text-bottom;
+        :before {
+          content: 'Promocode';
         }
       }
 
-      .discount-note::before {
+      .favorite-note {
+        display: flex;
+        flex-direction: row;
+        font-size: $font-content;
+      }
+
+      .favorite-note::before {
         content: 'Note:';
         margin-right: 0.2rem;
       }
@@ -76,25 +86,62 @@
     }
   }
 
-  .card-actions {
+  .favorite-card-actions {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 0.5rem;
-    background-color: $color-white;
 
-    i {
+    .material-icons {
       color: $color-black;
       user-select: none;
 
       &:hover {
         cursor: pointer;
-        color: $color-violet;
+        @extend .textColor;
+      }
+
+      &:last-child {
+        opacity: .5;
+        color: $color-red;
 
         &:last-child:hover {
+          opacity: 1;
           color: $color-red;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .favorite-card {
+    flex-direction: column;
+    height: max-content;
+
+    .favorite-card-actions {
+      order: 1;
+      align-self: flex-end;
+    }
+
+    .favorite-vendor {
+      order: 2;
+      padding: 0 0.5rem;
+    }
+
+    .favorite-card-content {
+      order: 3;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .favorites-category-and-tags {
+    flex-direction: column;
+
+    .favorites-category {
+      width: fit-content;
+      margin-bottom: -0.5rem;
     }
   }
 }

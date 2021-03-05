@@ -1,16 +1,10 @@
-<div class="card"
-     [style.background]="'linear-gradient('+ data.background +')'">
-  <div class="card-header">
-    <div class="card-title">{{data.vendor.name}}</div>
-    <div *ngIf="!isViewCountsVisible"
-         class="btn btn-delete"
+<div class="vendor-card" *ngIf="data">
+  <div class="vendor-card-header">
+    <div class="vendor-card-title">{{data.name}}</div>
+    <div class="btn btn-delete"
          (click)="$event.stopPropagation()">
-      <span class="material-icons">delete_outline</span>
-    </div>
-    <div *ngIf="isViewCountsVisible"
-         class="btn btn-view">
-      <span class="material-icons">visibility</span>
-      {{ data.vendor.views }}
+      <span class="material-icons"
+            (click)="deleteVendor()">delete_outline</span>
     </div>
   </div>
 </div>

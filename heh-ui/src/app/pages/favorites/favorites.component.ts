@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { DiscountCard } from '../../models/discount-card';
-import { SearchOptions } from '../../models/search-options';
+import { Component, Input, OnInit } from '@angular/core';
+import { forEach, isEqual, size } from 'lodash';
+
+import { FavoritesService } from './favorites.service';
+import { Discount } from '../../models/discount';
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { ModalService } from 'src/app/services/modal-service/modal.service';
 
 @Component({
   selector: 'app-favorites',
@@ -8,200 +12,75 @@ import { SearchOptions } from '../../models/search-options';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  searchFieldsOptions: SearchOptions;
+  @Input() favoriteInfo: any | undefined;
+  favoriteCards: Array<Discount> = [];
+  topFavorites: any;
+  skipFavorites: any;
+  previousScrollPosition: any;
+  totalCount: any;
+  isVisibleEditNote = true;
+  filterStorage: any;
 
-  constructor() {
-    this.searchFieldsOptions = {
-      selectOptions: {
-        label: 'search.location',
-        options: [
-          {value: '1', viewValue: 'Belarus, Minsk'},
-          {value: '2', viewValue: 'Belarus, Grodno'},
-          {value: '3', viewValue: 'Ukraine, Vinnitsa'},
-          {value: '4', viewValue: 'Ukraine, Kiev'},
-        ]
+  constructor(private favoritesService: FavoritesService,
+              private modalService: ModalService,
+              private toaster: ToasterService) {
+    this.topFavorites = 8;
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
+    this.filterStorage = {};
+  }
+
+  openDiscountDetailModal(favoriteCard: any): void {
+    const dialogRef = this.modalService.openDiscountDetailsModal(favoriteCard.id, this.isVisibleEditNote, favoriteCard.note);
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.favoriteCards = [];
+        this.skipFavorites = 0;
+        this.previousScrollPosition = 0;
+        this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
+      }
+    });
+  }
+
+  getFavoritesWrapper(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
+    this.favoriteCards = [];
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.getFavorites(this.topFavorites, this.skipFavorites, filters);
+  }
+
+  getFavorites(top: any, skip: any, filters?: any): void {
+    this.favoritesService.getFavorites(filters, top, skip).subscribe(
+      (data: any) => {
+        forEach(data.value, (favorite: any) => {
+          this.favoriteCards.push(favorite);
+        });
+        this.totalCount = data['@odata.count'];
       },
-      multiSelectOptions: [
-        {
-          label: 'search.category',
-          options: [
-            {value: '5', viewValue: 'Food'},
-            {value: '6', viewValue: 'Sport'},
-            {value: '7', viewValue: 'Beauty'},
-            {value: '8', viewValue: 'Clothes'}
-          ]
-        },
-        {
-          label: 'search.tag',
-          options: [
-            {value: '9', viewValue: 'Pizza'},
-            {value: '10', viewValue: 'Sushi'},
-            {value: '11', viewValue: 'Barbershop'},
-            {value: '12', viewValue: 'Swimming pool'},
-          ]
-        },
-        {
-          label: 'search.vendor',
-          options: [
-            {value: '13', viewValue: 'Garage'},
-            {value: '14', viewValue: 'Best Beauty Center'},
-            {value: '15', viewValue: 'GYM24'}
-          ]
-        },
-      ]
-    };
+      () => {
+        this.toaster.open('Сan not get favorites');
+      }
+    );
   }
 
-  favoriteCards: Array<DiscountCard> = [
-    {
-      background: '90deg, #f598a8, #f6edb2',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Domino\'s pizza',
-        title: 'Buy our tasty pizza with 10% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
-        feedback: 'Pepperoni pizza  is tastier with double cheese',
-        category: 'Food',
-        tags: ['Pizza'],
-      }
-    },
-    {
-      background: '90deg, #cfecd0, #a0cea7, #9ec0db',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Ronin',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Food',
-        tags: ['Sushi'],
-      }
-    },
-    {
-      background: '90deg, #faf0cd, #fab397',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Pizza Tempo',
-        title: 'Feel our love',
-        feedback: 'coca',
-        category: 'Food',
-        tags: ['Pizza', 'Sushi', 'Drinks'],
-      }
-    },
-    {
-      background: '90deg, #cfecd0, #ffc5ca',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Mango',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Clothes',
-      }
-    },
-    {
-      background: '90deg, #aea4e3, #d3ffe8',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Papa Johns',
-        title: 'Buy our tasty pizza with 20% discount loafsdfasdf asdfasdfa sdfas fasdf asdfasdf asdfa sdfasdfasdf asdf asd f',
-        feedback: 'Chicken Ranch',
-        category: 'Food',
-        tags: ['Pizza'],
-      }
-    },
-    {
-      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Mango',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Clothes',
-      }
-    },
-    {
-      background: '90deg, #aea4e3, #d3ffe8',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Zara rgergher ergerger fff',
-        title: 'Feel the taste of the holiday with Coca-Cola!',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Clothes',
-      }
-    },
-    {
-      background: '90deg, #cfecd0, #ffc5ca',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'KFC',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Food',
-        tags: ['Pizza', 'Drinks', ],
-      }
-    },
-    {
-      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Pizza Tempo',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Food',
-        tags: ['Pizza'],
-      }
-    },
-    {
-      background: '90deg, #69b7eb, #b3dbd3, #f4d6db',
-      discount: {
-        description: 'buy',
-        addressList: ['blabla', 'blabla'],
-        phones: ['blabla', 'blabla'],
-        workingHours: 'string',
-        validity: new Date(2011, 11, 11),
-        vendorName: 'Papa Johns',
-        title: 'Feel the taste of the holiday with Coca-Cola! sdfasdfasdf asdf asd f',
-        feedback: 'Vegeterian tofu roll is the best roll',
-        category: 'Food',
-        tags: ['Pizza'],
-      }
-    },
-  ];
-
-  ngOnInit(): void {
+  getFavoritesAfterDelete(): void {
+    this.favoriteCards = [];
+    this.skipFavorites = 0;
+    this.previousScrollPosition = 0;
+    this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
   }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.favoriteCards), this.totalCount)) {
+      this.skipFavorites += this.topFavorites;
+      this.getFavorites(this.topFavorites, this.skipFavorites, this.filterStorage);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  ngOnInit(): void {}
 }

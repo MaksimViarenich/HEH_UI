@@ -1,27 +1,14 @@
-import {AfterViewInit, Component, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { forEach, isEqual, size } from 'lodash';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 
-export interface EventDataElement {
-  date: Date;
-  state: string;
-  user: string;
-  description: string;
-}
+import { HistoryService } from './history.service';
+import { EventHistoryElement } from '../../../models/event-history-element';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
-const EVENT_DATA: EventDataElement[] = [
-  {date: new Date(2021, 1, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 1, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 2, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'delete', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'add', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 3, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-  {date: new Date(2021, 4, 28, 11, 34), state: 'edit', user: 'Michael Browk', description: 'Added a new discount Domino’s pizza'},
-];
 
 @Component({
   selector: 'app-event-history',
@@ -29,27 +16,98 @@ const EVENT_DATA: EventDataElement[] = [
   styleUrls: ['./event-history.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventHistoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['date', 'state', 'user', 'description'];
-  dataSource = new MatTableDataSource(EVENT_DATA);
+export class EventHistoryComponent implements OnInit {
+  displayedColumns: string[] = ['date', 'action', 'user', 'description'];
+  eventData: EventHistoryElement[] = [];
+  searchData: any = {};
+  filtersOptions: any;
+  dataSource: any;
+  topEvents: any;
+  skipEvents: any;
+  previousScrollPosition: any;
+  totalCountEvents: any;
+  filterStorage: any;
+  locations: any;
+  locationsArrayForOptions: any;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  @ViewChild(MatSort) sort: MatSort | any;
-
-  constructor() {
+  constructor(public dialog: MatDialog,
+              private filtersService: FiltersService,
+              private historyService: HistoryService,
+              private toaster: ToasterService,
+              private router: Router) {
+    this.searchData.historyLocation = '';
+    this.filtersOptions = {
+      locations: [],
+    };
+    this.topEvents = 20;
+    this.skipEvents = 0;
+    this.previousScrollPosition = 0;
+    this.totalCountEvents = 0;
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  applyHistorySearch(): void {
+    this.eventData = [];
+    this.skipEvents = 0;
+    this.previousScrollPosition = 0;
+    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  getEventHistory(top: any, skip: any, searchData?: any): void {
+    this.historyService.getSearchHistory(top, skip, searchData).subscribe(
+      (data: any) => {
+        forEach(data.value, (event: any) => {
+          this.eventData.push(event);
+        });
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+        this.dataSource = new MatTableDataSource(this.eventData);
+        this.totalCountEvents = data['@odata.count'];
+      },
+      () => {
+        this.toaster.open('Сan not get history');
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.searchData.historyLocation = sessionStorage.getItem('location');
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+    });
+    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+      this.filtersService.getLocations().subscribe(
+        (data) => {
+          this.locations = data;
+          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
+        }
+      );
+    });
+  }
+
+  fillLocationOptionArray(locations: any): any {
+    let array: any = [];
+    forEach(locations, (location) => {
+      array = isEqual(size(array), 0) ? [{country: location.country, id: location.id}, ...location.cities] :
+      [...array, {country: location.country, id: location.id}, ...location.cities];
+    });
+
+    return array;
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.eventData), this.totalCountEvents)) {
+      this.skipEvents += this.topEvents;
+      this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
+  }
+
+  routeWithData(state: any): void {
+    if (state.userEmail === sessionStorage.getItem('userEmail')) {
+      this.router.navigateByUrl('/profile');
+    } else {
+      this.router.navigateByUrl('/admin/users', { state: {userEmail: state.userEmail }});
     }
   }
 }

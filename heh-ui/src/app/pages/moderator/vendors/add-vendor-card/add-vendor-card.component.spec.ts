@@ -1,19 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { VendorCardComponent } from './add-vendor-card.component';
+import { HttpClientModule} from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { AddVendorCardComponent } from './add-vendor-card.component';
 
 describe('VendorCardComponent', () => {
-  let component: VendorCardComponent;
-  let fixture: ComponentFixture<VendorCardComponent>;
+  let component: AddVendorCardComponent;
+  let fixture: ComponentFixture<AddVendorCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VendorCardComponent ]
+      imports: [ HttpClientModule, HttpClientTestingModule ],
+      declarations: [ AddVendorCardComponent ],
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VendorCardComponent);
+    fixture = TestBed.createComponent(AddVendorCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

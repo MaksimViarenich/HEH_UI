@@ -1,12 +1,13 @@
 import { TranslateService } from '@ngx-translate/core';
-import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {NotificationPreferences} from 'src/app/models/notification-preferences';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { COMMA, ENTER} from '@angular/cdk/keycodes';
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { isEqual, indexOf, forEach } from 'lodash';
+
+import { ToasterService } from '../../services/toaster-service/toaster.service';
+import { UserProfileService } from './user-profile.service';
+import { UserInfo } from '../../models/user-info';
+import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,72 +15,123 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./user-profile.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class UserProfileComponent implements OnInit {
+  newslettersChecked: boolean;
+  filtersOptions: any;
+  user: UserInfo | any;
+  userPhoto: any;
+  location: string;
+  separatorKeysCodes: number[];
+  allOptions: any;
+  selectedOptions: Array<any>;
+  categoryNotifications: Array<any>;
+  tagNotifications: Array<any>;
+  vendorNotifications: Array<any>;
 
-  user: NotificationPreferences = {
-    username: 'Michael Browk',
-    userphoto: '../../../assets/images/user.jpg',
-    location: 'Belarus, Minsk',
-    address: 'Naturalistov, 3',
-  };
-
-  typesOfSubscription: string[] = ['profile.newsletters', 'profile.service', 'profile.vendors', 'profile.city', 'profile.hot_sales'];
-  visible = true;
-  selectable = true;
-  removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  tagCtrl = new FormControl();
-  filteredTags: Observable<string[]>;
-  tags: string[] = ['Food'];
-  allTags: string[] = ['Food', 'Beauty', 'Domino\'s Pizza', 'Sushi', 'Sport', 'H&M'];
-
-  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement> | undefined;
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
-  constructor(public translate: TranslateService) {
-    this.filteredTags = this.tagCtrl.valueChanges.pipe(
-      startWith(null),
-      map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+  constructor(public translate: TranslateService,
+              private filtersService: FiltersService,
+              private userProfileService: UserProfileService,
+              private toaster: ToasterService) {
+    this.newslettersChecked = true;
+    this.separatorKeysCodes = [ENTER, COMMA];
+    this.location = '';
+    this.allOptions = [];
+    this.selectedOptions = [];
+    this.categoryNotifications = [];
+    this.tagNotifications = [];
+    this.vendorNotifications = [];
+
+    this.filtersOptions = {
+        locations: [],
+        categories: [],
+        tags: [],
+        vendors: []
+      };
+    this.user = {
+      id: '',
+      role: '',
+      name: '',
+      email: '',
+      address: {
+        id: '',
+        countryId: '',
+        cityId: '',
+        street: '',
+      },
+      isActive: false,
+    };
   }
 
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    // Add our tag
-    if ((value || '').trim()) {
-      this.tags.push(value.trim());
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-
-    this.tagCtrl.setValue(null);
+  getNotifications(): void {
+    forEach(this.allOptions.categories, (allCategories: any) => {
+      if (indexOf(this.categoryNotifications, isEqual((allCategories.id), -1))) {
+        if (!isEqual(indexOf(this.selectedOptions, allCategories.id), -1)) {
+          this.categoryNotifications.push(allCategories.id);
+        }
+      }
+    });
+    forEach(this.allOptions.tags, (allTags: any) => {
+      if (isEqual(indexOf(this.tagNotifications, allTags.id), -1)) {
+        if (!isEqual(indexOf(this.selectedOptions, allTags.id), -1)) {
+          this.tagNotifications.push(allTags.id);
+        }
+      }
+    });
+    forEach(this.allOptions.vendors, (allVendors: any) => {
+      if (isEqual(indexOf(this.vendorNotifications, allVendors.id), -1)) {
+        if (!isEqual(indexOf(this.selectedOptions, allVendors.id), -1)) {
+          this.vendorNotifications.push(allVendors.id);
+        }
+      }
+    });
   }
 
-  remove(tag: string): void {
-    const index = this.tags.indexOf(tag);
+  saveProfile(): void {
+    this.getNotifications();
 
-    if (index >= 0) {
-      this.tags.splice(index, 1);
-    }
+    const userNotification = {
+      categoryNotifications: this.categoryNotifications,
+      tagNotifications: this.tagNotifications,
+      vendorNotifications: this.vendorNotifications,
+      newVendorNotificationIsOn: this.user.newVendorNotificationIsOn,
+      newDiscountNotificationIsOn: this.user.newDiscountNotificationIsOn,
+      hotDiscountsNotificationIsOn: this.user.hotDiscountsNotificationIsOn,
+      allNotificationsAreOn: this.user.allNotificationsAreOn
+    };
+
+    this.userProfileService.editProfile(userNotification).subscribe(
+      (data) => {
+        this.toaster.open('Profile was updated', 'success');
+      },
+      (error) => {
+        this.toaster.open('Update issue was occurred');
+      }
+    );
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
-    // @ts-ignore
-    this.tagInput.nativeElement.value = '';
-    this.tagCtrl.setValue(null);
-  }
+  async ngOnInit(): Promise<void> {
+    this.userPhoto = sessionStorage.getItem('userPhoto');
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+      this.allOptions = {
+        categories: [...this.filtersOptions.categories],
+        tags: [...this.filtersOptions.tags],
+        vendors: [...this.filtersOptions.vendors],
+      };
+    });
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-  ngOnInit(): void {
+    this.userProfileService.getUser().subscribe(
+      (data) => {
+        this.user = data;
+        this.location = this.filtersService.getAddressByCityId(data.address.cityId);
+        this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
+      },
+      (error) => {
+        this.toaster.open('Сan not get user profile');
+      }
+    );
   }
 }

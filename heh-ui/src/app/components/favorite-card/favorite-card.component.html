@@ -1,26 +1,31 @@
-<div class="favorite-card">
-  <div [style.background]="'linear-gradient('+ favoriteInfo.background +')'">
-    <div class="favorite-vendor">
-      <div class="card-title">
-        {{ favoriteInfo.discount.vendorName}}
-      </div>
+<div *ngIf="favoriteInfo"
+      class="favorite-card">
+  <div class="favorite-vendor">
+    <div class="favorite-card-title">
+      {{ favoriteInfo.vendorName}}
     </div>
   </div>
 
-  <div class="card-content">
-    <div class="discount-info">
-      <div class="category-and-tags">
-        <app-category [discountCategory]="favoriteInfo.discount.category"></app-category>
-        <app-tag *ngFor="let tag of favoriteInfo.discount.tags"
-                 [discountTag]="tag"></app-tag>
+  <div class="favorite-card-content">
+    <div class="favorite-info">
+      <div class="favorites-category-and-tags">
+        <app-category class="favorites-category"
+                      [categoryId]="favoriteInfo.categoryId"></app-category>
+        <div class="favorites-tags">
+          <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
+                   [tagId]="tag"></app-tag>
+        </div>
       </div>
-      <div class="discount-name line-clamp">{{ favoriteInfo.discount.title }}</div>
-      <div class="discount-note line-clamp">{{ favoriteInfo.discount.feedback }}</div>
+
+      <div class="discount-name line-clamp">{{ favoriteInfo.conditions }}</div>
+      <div class="favorite-note line-clamp">{{ favoriteInfo.note }}</div>
     </div>
   </div>
 
-  <div class="card-actions">
-    <i class="material-icons" (click)="openEditNoteModal()">edit</i>
-    <i class="material-icons">clear</i>
+  <div class="favorite-card-actions"
+       (click)="$event.stopPropagation()">
+    <div class="material-icons"
+        (click)="deleteFavorite()">delete_outline
+    </div>
   </div>
 </div>

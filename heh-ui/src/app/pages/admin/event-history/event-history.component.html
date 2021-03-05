@@ -1,37 +1,64 @@
-<app-input-search></app-input-search>
+<div class="search-container-history">
+  <div class="main-search-container">
+    <div class="search-wrapper">
+      <app-input-search [(ngModel)]="searchData.searchHistoryText"
+                        (keydown.enter)="applyHistorySearch()"></app-input-search>
+    </div>
 
-<div class="table-container">
+    <div class="search-filter">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'search.location' | translate }}</mat-label>
+        <mat-select [(ngModel)]="searchData.historyLocation">
+          <mat-option>Location</mat-option>
+          <mat-option *ngFor="let location of locationsArrayForOptions"
+                      [value]="location.id"
+                      [class.city]="!location.country">
+                        {{ location.country ? location.country : location.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="table-container"
+     infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource"
            matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
 
       <!-- Date Column -->
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'event-history.date' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.date | date: 'dd MMMM yyyy hh:mm'}} </td>
+        <th mat-header-cell *matHeaderCellDef disableClear>{{ 'event-history.date' | translate }}</th>
+        <td class="history-message" mat-cell *matCellDef="let row"> {{row.dateTime | date: 'dd MMM yyyy hh:mm'}} </td>
       </ng-container>
 
-      <!-- State Column -->
-      <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef>{{ 'event-history.state' | translate }}</th>
-        <td mat-cell *matCellDef="let row">
-          <app-state-event [type]="row.state"></app-state-event>
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>{{ 'event-history.action' | translate }}</th>
+        <td class="history-message" mat-cell *matCellDef="let row">
+          <app-action-event [type]="row.action.toLowerCase()"></app-action-event>
         </td>
       </ng-container>
 
       <!-- User Column -->
       <ng-container matColumnDef="user">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.user' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.user}} </td>
+        <td class="clickable-user history-message" mat-cell *matCellDef="let row" (click)="routeWithData(row)">
+          <span>{{row.userName}}</span>
+        </td>
       </ng-container>
 
       <!-- Description Column -->
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef>{{ 'event-history.description' | translate }}</th>
-        <td mat-cell *matCellDef="let row" [style.description]="row.description"> {{row.description}} </td>
+        <td class="history-message" mat-cell *matCellDef="let row" [style.description]="row.description"> {{row.description}} </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+      <tr class="table-sticky" mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>

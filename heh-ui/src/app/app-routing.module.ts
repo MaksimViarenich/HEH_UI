@@ -1,20 +1,22 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {LoginComponent} from './pages/login/login.component';
-import {DiscountsComponent} from './pages/discounts/discounts.component';
-import {FavoritesComponent} from './pages/favorites/favorites.component';
-import {UserProfileComponent} from './pages/user-profile/user-profile.component';
-import {NotFoundComponent} from './pages/not-found/not-found.component';
-import {UsersComponent} from './pages/admin/users/users.component';
-import {StatisticsComponent} from './pages/admin/statistics/statistics.component';
-import {EventHistoryComponent} from './pages/admin/event-history/event-history.component';
-import {VendorsComponent} from './pages/moderator/vendors/vendors.component';
-import {CategoriesTagsComponent} from './pages/moderator/categories-tags/categories-tags.component';
-import {HomeLayoutComponent} from './components/layouts/home-layout/home-layout.component';
-import {LoginLayoutComponent} from './components/layouts/login-layout/login-layout.component';
-import {AdminComponent} from './pages/admin/admin.component';
-import {ModeratorComponent} from './pages/moderator/moderator.component';
-import {AuthGuard} from '../app/auth/auth.guard';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { DiscountsComponent } from './pages/discounts/discounts.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { UsersComponent } from './pages/admin/users/users.component';
+import { StatisticsComponent } from './pages/admin/statistics/statistics.component';
+import { EventHistoryComponent } from './pages/admin/event-history/event-history.component';
+import { VendorsComponent } from './pages/moderator/vendors/vendors.component';
+import { CategoriesTagsComponent } from './pages/moderator/categories-tags/categories-tags.component';
+import { HomeLayoutComponent } from './components/layouts/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ModeratorComponent } from './pages/moderator/moderator.component';
+import { AuthGuard } from './auth-guard/auth.guard';
+import { RoleGuard } from './role-guard/role.guard';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -25,19 +27,27 @@ const routes: Routes = [
       {path: '', redirectTo: '/discounts', pathMatch: 'full'},
       {path: 'discounts', component: DiscountsComponent},
       {path: 'favorites', component: FavoritesComponent},
+      {path: 'notifications', component: NotificationsComponent},
       {path: 'profile', component: UserProfileComponent},
       {
         path: 'moderator',
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'moderator',
+        },
         component: ModeratorComponent,
         children: [
           {path: '', redirectTo: '/moderator/vendors', pathMatch: 'full'},
           {path: 'vendors', component: VendorsComponent},
           {path: 'categories_tags', component: CategoriesTagsComponent}
         ],
-        canActivate: [AuthGuard]
-         },
+      },
       {
         path: 'admin',
+        canActivate: [AuthGuard, RoleGuard],
+        data: {
+          role: 'administrator',
+        },
         component: AdminComponent,
         children: [
           {path: '', redirectTo: '/admin/users', pathMatch: 'full'},
@@ -45,7 +55,6 @@ const routes: Routes = [
           {path: 'statistics', component: StatisticsComponent},
           {path: 'history', component: EventHistoryComponent},
         ],
-        canActivate: [AuthGuard]
       }
     ],
   },

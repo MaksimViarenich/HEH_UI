@@ -2,7 +2,11 @@
   <div mat-dialog-content class="mat-dialog-content">
 
     <div class="add-vendor-background">
-      <div class="add-vendor-title">{{ 'vendors.add' | translate }}</div>
+      <div class="add-vendor-title">
+        {{(vendorId.id)
+        ? ('vendors.edit' | translate)
+        : ('vendors.add' | translate)}}
+      </div>
     </div>
 
     <div class="add-vendor-content">
@@ -13,54 +17,49 @@
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
             <input [(ngModel)]="vendor.name"
-                   [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.workingHours" matInput>
+            <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
+            <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="addressTitle | translate"
-                                [listData]="vendor.addressList"></app-model-list-input>
+                                [listData]="vendor.addresses"
+                                (deleteData)="onDeleteAddress($event)"
+                                [type]="'address'"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <app-model-list-input [label]="phoneTitle | translate"
-                                [listData]="vendor.phones"></app-model-list-input>
+                                [listData]="vendor.phones"
+                                (deleteData)="onDeletePhone($event)"></app-model-list-input>
         </div>
 
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.website" matInput>
+            <input [(ngModel)]="links.website" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.instagram" matInput>
+            <input [(ngModel)]="links.instagram" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
-              <input [(ngModel)]="vendor.vk" matInput>
+            <input [(ngModel)]="links.vkontakte" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
-             <input [(ngModel)]="vendor.facebook" matInput>
+            <input [(ngModel)]="links.facebook" matInput>
           </mat-form-field>
         </div>
-
-        <section>
-          <mat-checkbox [color]="'primary'"
-                        [(ngModel)]="vendor.isReceiveNotificationsAllowed">
-                        {{ 'vendors.add-vendor.permission' | translate }}
-          </mat-checkbox>
-        </section>
       </div>
 
       <div class="add-vendor-discounts">
@@ -69,20 +68,26 @@
         <button (click)="openDiscountModal()"
                 class="add-discount-button"
                 mat-raised-button>
-                {{ 'vendors.add-vendor.add-dsk' | translate }}
+          {{ 'vendors.add-vendor.add-dsk' | translate }}
         </button>
 
         <div class="vendors-component">
-          <app-edit-discout-card *ngFor="let discount of vendor.discounts"
-                                 (click)="openDiscountModal(discount)"
-                                 [discountInfo]="discount"></app-edit-discout-card>
+          <app-edit-discount-card *ngFor="let discount of vendor.discounts, let i = index"
+                                  (click)="openDiscountModal(discount, i)"
+                                  [discountInfo]="discount"
+                                  (removeDiscountFromVendor)="deleteDiscount(i)"></app-edit-discount-card>
         </div>
       </div>
     </div>
   </div>
 
   <mat-dialog-actions align="end" class="add-vendor-buttons">
-    <button mat-button mat-dialog-close>{{ 'vendors.add-vendor.cancel' | translate }}</button>
-    <button mat-raised-button>{{ 'vendors.add-vendor.subm' | translate }}</button>
+    <button mat-button
+            (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
+    <button mat-button
+            (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
+    <button mat-raised-button
+            [disabled]="isSaveDisabled() || canNotBeSaved()"
+            (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.save' | translate }}</button>
   </mat-dialog-actions>
 </div>

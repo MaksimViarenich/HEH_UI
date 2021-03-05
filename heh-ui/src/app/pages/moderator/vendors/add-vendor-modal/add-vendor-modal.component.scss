@@ -1,7 +1,7 @@
 @import "../../../../../styles.scss";
 
 .mat-icon {
-  color: $color-violet;
+  @extend .textColor;
 }
 
 .vendor-details-modal-backdrop.cdk-overlay-backdrop {
@@ -64,7 +64,7 @@
 
     .add-discount-button {
       min-height: 3rem;
-      background: $color-violet;
+      @extend .backgroundColor;
       color: $color-white;
     }
   }
@@ -85,6 +85,10 @@
     @include glass;
     border-radius: $border-radius-small;
     box-shadow: $shadow-violet;
+
+    section {
+      padding-bottom: 1rem;
+    }
   }
 }
 
@@ -95,8 +99,33 @@
   padding: 0;
 
   button:last-child {
-    background: $color-violet;
+    @extend .backgroundColor;
     color: $color-white;
     margin-left: $margin-1;
+
+    &:disabled {
+      background-color: rgba(0, 0, 0, .12);
+      color: rgba(0, 0, 0, .26);
+    }
   }
 }
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  @extend .backgroundColor;
+}
+
+.mat-ripple-element {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .add-vendor-content {
+    flex-direction: column;
+  }
+
+  .vendor-details-modal.cdk-overlay-pane .add-vendor-info, .vendor-details-modal.cdk-overlay-pane .add-vendor-discounts {
+    width: 100%;
+  }
+}
+

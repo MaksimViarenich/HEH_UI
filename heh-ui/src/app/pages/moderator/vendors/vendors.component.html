@@ -1,9 +1,20 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<mat-grid-list cols="4" rowHeight="8.82rem" gutterSize="1rem">
-  <mat-grid-tile>
-    <app-add-vendor-card (click)="openVendorModal()"></app-add-vendor-card>
-  </mat-grid-tile>
-  <mat-grid-tile *ngFor="let item of list">
-    <app-vendor-card [data]="item" (click)="openVendorModal(item)"></app-vendor-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<app-page-search [isVendorSearchAvailable]="true"
+                (applySearch)="getVendorSearch($event)"></app-page-search>
+  <div infiniteScroll
+      [infiniteScrollDistance]="1"
+      [infiniteScrollThrottle]="100"
+      (scrolled)="onScrollDown($event)">
+    <mat-grid-list [cols]="breakpoint"
+                   rowHeight="8.82rem"
+                   gutterSize="1rem"
+                   (window:resize)="onResize($event)">
+      <mat-grid-tile>
+        <app-add-vendor-card (click)="openVendorModal()"></app-add-vendor-card>
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let item of vendors">
+        <app-vendor-card [data]="item"
+                        (click)="openVendorModal(item)"
+                        (updateCardsAfterDelete)="getAllVendorsAfterDelete()"></app-vendor-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>

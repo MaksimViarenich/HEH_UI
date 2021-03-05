@@ -1,0 +1,32 @@
+@import "../../../../styles";
+
+.lang-select-button img {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 1.125rem;
+  display: flex;
+  margin-right: $margin-half;
+}
+
+.lang-select-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.menu-items {
+  margin-top: .2rem;
+
+  .lang-item {
+    display: flex;
+
+    img {
+      @include img-profile-language;
+      border-radius: 1.125rem;
+      margin-right: $margin-half;
+    }
+  }
+}
+
+.mat-menu-panel .mat-menu-content {
+  width: 9.375rem;
+}

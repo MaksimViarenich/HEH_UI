@@ -1,8 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {SearchOptions} from '../../../models/search-options';
-import {VendorCard} from '../../../models/vendor-card';
-import {ModalService} from '../../../services/modal-service/modal.service';
+import { VendorService } from './vendor.service';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { forEach, isEqual, size } from 'lodash';
+
+import { ModalService } from '../../../services/modal-service/modal.service';
+import { Vendor } from 'src/app/models/vendor';
+import { ToasterService } from '../../../services/toaster-service/toaster.service';
+import { GridService } from '../../../services/grid-service/grid.service';
+
 
 @Component({
   selector: 'app-vendors',
@@ -11,95 +16,85 @@ import {ModalService} from '../../../services/modal-service/modal.service';
 })
 
 export class VendorsComponent implements OnInit {
-  searchFieldsOptions: SearchOptions;
+  vendors: any = [];
+  filterStorage: any;
+  topVendors: number;
+  skipVendors: number;
+  previousScrollPosition: number;
+  totalCount: number;
+  breakpoint: number;
 
   constructor(public dialog: MatDialog,
-              private modalService: ModalService) {
-    this.searchFieldsOptions = {
-      selectOptions: {
-        label: 'search.location',
-        options: [
-          {value: '1', viewValue: 'Belarus, Minsk'},
-          {value: '2', viewValue: 'Belarus, Grodno'},
-          {value: '3', viewValue: 'Ukraine, Vinnitsa'}
-        ]
-      },
-      multiSelectOptions: [
-        {
-          label: 'search.category',
-          options: [
-            {value: '4', viewValue: 'Food'},
-            {value: '5', viewValue: 'Sport'},
-            {value: '6', viewValue: 'Beauty'}
-          ]
-        },
-        {
-          label: 'search.tag',
-          options: [
-            {value: '7', viewValue: 'Pizza'},
-            {value: '8', viewValue: 'Sushi'},
-            {value: '9', viewValue: 'Barbershop'},
-            {value: '10', viewValue: 'Swimming pool'},
-          ]
-        },
-        {
-          label: 'search.vendor',
-          options: [
-            {value: '11', viewValue: 'Garage'},
-            {value: '12', viewValue: 'Best Beauty Center'},
-            {value: '13', viewValue: 'GYM24'}
-          ]
-        },
-      ]
-    };
+              private modalService: ModalService,
+              private vendorService: VendorService,
+              private toaster: ToasterService,
+              private gridService: GridService) {
+    this.topVendors = 16;
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    this.totalCount = 0;
+    this.breakpoint = 0;
+    this.filterStorage = {};
   }
 
-  list: Array<VendorCard> = [
-    {
-      background: '90deg, #f598a8, #f6edb2',
-      vendor: {
-        name: 'Dominos Pizza',
-        addressList: ['Belarus, Minsk, Komsomolskaya street, 3',
-          'Belarus, Minsk, Lenina street, 25',
-          'Belarus, Minsk, Sverdlova street, 1a',
-          'Belarus, Minsk, Skryganova street, 48',
-          'Belarus, Minsk, Molodezhnaya street, 11',
-          'Belarus, Minsk, Esenina street, 5'],
-        website: 'https://www.dominos.by',
-        phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-        workingHours: '06:00 - 23:00',
-        instagram: 'Inst',
-        facebook: 'Facebook',
-        vk: 'VK',
-        isReceiveNotificationsAllowed: true,
-        discounts: [
-          {
-            vendorName: 'Domino\'s Pizza',
-            title: 'Buy our tasty pizza with 10% discount sdfsd fsd fsdfsd fsdfsdfsdf sdf sdfsdfsdfsd sd fsdfsdf sdf sdfsdfsdf sd',
-            category: 'Food',
-            tags: ['Pizza'],
-            description: 'Discount available 24/7 for all our pizzas. 10% for weekdays 15% for weekends',
-            addressList: [
-              'Belarus, Minsk, Komsomolskaya street, 3',
-              'Belarus, Minsk, Lenina street, 25'],
-            website: 'https://www.dominos.by',
-            phones: ['7717', '(029) 750-37-16', '(044) 750-37-16'],
-            workingHours: '06:00 - 23:00',
-            validity: new Date(2021, 11, 31),
-            instagram: 'https://www.instagram.com/',
-            facebook: 'https://www.facebook.com/',
-            vk: 'https://vk.com/',
-            startDate: new Date(),
-          },
-        ]
-      }
-    }
-  ];
+  openVendorModal(data?: Vendor): void {
+    const dialogRef = this.modalService.openVendorModal(data);
 
-  openVendorModal(data?: VendorCard): void {
-    this.modalService.openVendorModal(data);
+    dialogRef.afterClosed().subscribe((dataVendor: any) => {
+      if (dataVendor) {
+        this.vendors = [];
+        this.skipVendors = 0;
+        this.previousScrollPosition = 0;
+        this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
+      }
+    });
+  }
+
+  getAllVendors(top: any, skip: any, filters?: any): void {
+    this.vendorService.getVendors(filters, top, skip).subscribe(
+      (data) => {
+        forEach(data.value, (vendor: any) => {
+          this.vendors.push(vendor);
+        });
+        this.totalCount = data['@odata.count'];
+      },
+      () => {
+        this.toaster.open('Information about vendors hasn\'t been received');
+      }
+    );
+  }
+
+  getVendorSearch(filters: any): void {
+    this.filterStorage = {};
+    this.filterStorage = filters;
+    this.vendors = [];
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    filters.vendorCategories = filters.categories;
+    filters.idForVendor = filters.vendors;
+    this.getAllVendors(this.topVendors, this.skipVendors, filters);
+  }
+
+  getAllVendorsAfterDelete(): void {
+    this.vendors = [];
+    this.skipVendors = 0;
+    this.previousScrollPosition = 0;
+    this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
+  }
+
+  onResize(event: any): void {
+    this.breakpoint = this.gridService.getDiscountGrid(event.target.innerWidth);
+  }
+
+  onScrollDown(event: any): void {
+    if (event.currentScrollPosition > this.previousScrollPosition && !isEqual(size(this.vendors), this.totalCount)) {
+      this.skipVendors += this.topVendors;
+      this.getAllVendors(this.topVendors, this.skipVendors, this.filterStorage);
+      this.previousScrollPosition = event.currentScrollPosition;
+    }
   }
 
   ngOnInit(): void {
+    this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
   }
 }

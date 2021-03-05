@@ -1,20 +1,157 @@
-.background-image {
-  min-height: 100vh;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-attachment: fixed;
-  background-size: 25%;
+@import "../../../../styles";
+
+.mat-sidenav-content, .mat-sidenav-container {
+  overflow: initial !important;
+}
+
+.mat-sidenav-container {
+  background:rgba(0, 0, 0, 0);
+
+  .mat-drawer {
+    right: 0;
+    height: 100%;
+    width: 35vw;
+    @include glass;
+  }
+
+  .mat-sidenav {
+    height: 100vh;
+    transform: translate3d(100%, 0, 0);
+    margin-top: 3.1875rem;
+    position: fixed;
+
+    .selectors {
+      display: flex;
+      justify-content: flex-start;
+      padding: 1rem 1rem;
+    }
+  }
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.226);
 }
 
 .container {
   width: 65.625%;
   margin: auto;
-  padding-top: 6.0625rem;
 
   .title {
+    @extend .textTitleColor;
+    padding-top: 5.0625rem;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 3rem;
   }
 }
 
+.spinner-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.286);
+  z-index: 1010;
+  top: 0;
+  left: 0;
+
+  .mat-progress-spinner {
+    position: absolute;
+    z-index: 1020;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+  }
+
+  .mat-progress-spinner circle, .mat-spinner circle{
+    stroke: #baeafa;
+  }
+}
+
+.mat-nav-list .mat-list-item:nth-child(3){
+  position: relative;
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container .title {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    left: 8rem;
+    top: 0.3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mat-sidenav-container .mat-sidenav, .mat-drawer-backdrop.mat-drawer-shown {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3.5rem;
+    top: 0.3rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 4rem;
+    top: 0.3rem;
+  }
+
+  .mat-sidenav-container .mat-drawer {
+    width: 50vw;
+  }
+
+  .mat-sidenav-container {
+    .selectors > app-profile {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3.8rem;
+    top: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 3rem;
+    top: 0.2rem;
+  }
+
+  .mat-sidenav-container .mat-drawer {
+    width: 50vw;
+  }
+
+  .container .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container .title {
+    font-size: 1.4rem;
+    margin-bottom: .8rem;
+  }
+
+  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: 1.8rem;
+    top: 0.3rem;
+  }
+}

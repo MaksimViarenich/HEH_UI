@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { MODERATOR_TABS } from '../../models/tab';
 
 @Component({

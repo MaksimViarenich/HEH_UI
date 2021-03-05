@@ -11,9 +11,9 @@ $shadow-gray: 0 4px 30px rgba(34, 35, 38, 0.15);
 $shadow-violet: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 $border-radius-small: .33rem;
 
-$color-violet: #9A90FE;
 $color-red: #DB0404;
-$color-black: #333;
+$color-green: #008000;
+$color-black: #333333;
 $color-white: #fff;
 $color-white-dim: #f3f3f3;
 $color-gray: #B0B4B6;
@@ -21,41 +21,42 @@ $color-dark-gray: #747474;
 $color-blue-green: #628C97;
 $color-table-header: #F4F2FF;
 
+$color-theme-light-blue: #227cac;
+$color-theme-pink-yellow: #db5a5a;
+$color-theme-green-blue: #628C97;
+$color-theme-purple-blue: #726297;
+$color-theme-green-orange: #498d63;
+$color-theme-dark-blue: #165986;
+$color-theme-dark-violet: #6b2686;
+$color-theme-dark-grey: #606b77;
+$color-theme-dark-green: #20693e;
+$color-theme-dark-pink: #9b2f62;
+
 $margin-category-tag: .5rem .5rem .5rem 0;
 
 $padding-category-tag: 0 0.3rem;
 $padding-last: 1.5rem;
 
 @mixin glass {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
 }
 
 @mixin category-tags {
-  min-width: fit-content;
-  display: flex;
   align-items: center;
-  height: 1.5rem;
+  line-height: 1.5rem;
   border-radius: 0.3rem;
   padding: $padding-category-tag;
   margin: $margin-category-tag;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @mixin img-profile-language {
   height: 2.2rem;
   width: 2.2rem;
   align-self: center;
-}
-
-@mixin mat-grid-tile {
-  box-shadow: $shadow-gray;
-  border-radius: $border-radius-small;
-
-  app-discount-card {
-    user-select: none;
-    height: 100%;
-    width: 100%;
-  }
 }
 
 @mixin mat-grid-tile {
@@ -96,8 +97,212 @@ $padding-last: 1.5rem;
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   color: $color-black;
+  background-blend-mode: screen;
+}
+
+.light {
+  .backgroundDisabled {
+    background-color: rgba(0, 0, 0, .12);
+    color: rgba(0, 0, 0, .26);
+  }
+
+  .textTitleColor {
+    color: $color-black;
+  }
+}
+
+.dark {
+  .backgroundDisabled {
+    background-color: rgba(255, 255, 255, .12);
+    color: rgba(255, 255, 255, .26);
+  }
+
+  .textTitleColor {
+    color: $color-white;
+  }
+}
+
+.light-blue {
+  .backgroundColor {
+    background-color: $color-theme-light-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-light-blue;
+  }
+
+  .textColor {
+    color: $color-theme-light-blue;
+  }
+
+  .borderColor {
+    border-color: $color-theme-light-blue;
+  }
+}
+
+.pink-yellow {
+  .backgroundColor {
+    background-color: $color-theme-pink-yellow;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-pink-yellow;
+  }
+
+  .textColor {
+    color: $color-theme-pink-yellow;
+  }
+
+  .borderColor {
+    border-color: $color-theme-pink-yellow;
+  }
+}
+
+.green-blue {
+  .backgroundColor {
+    background-color: $color-theme-green-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-blue;
+  }
+
+  .textColor {
+    color: $color-theme-green-blue;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-blue;
+  }
+}
+
+.purple-blue {
+  .backgroundColor {
+    background-color: $color-theme-purple-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-purple-blue;
+  }
+
+  .textColor {
+    color: $color-theme-purple-blue;
+  }
+
+  .borderColor {
+    border-color: $color-theme-purple-blue;
+  }
+}
+
+.green-orange {
+  .backgroundColor {
+    background-color: $color-theme-green-orange;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-green-orange;
+  }
+
+  .textColor {
+    color: $color-theme-green-orange;
+  }
+
+  .borderColor {
+    border-color: $color-theme-green-orange;
+  }
+}
+
+.dark-blue {
+  .backgroundColor {
+    background-color: $color-theme-dark-blue;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-blue;
+  }
+
+  .textColor {
+    color: $color-theme-dark-blue;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-blue;
+  }
+}
+
+.dark-violet {
+  .backgroundColor {
+    background-color: $color-theme-dark-violet;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-violet;
+  }
+
+  .textColor {
+    color: $color-theme-dark-violet;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-violet;
+  }
+}
+
+.dark-grey {
+  .backgroundColor {
+    background-color: $color-theme-dark-grey;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-grey;
+  }
+
+  .textColor {
+    color: $color-theme-dark-grey;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-grey;
+  }
+}
+
+.dark-green {
+  .backgroundColor {
+    background-color: $color-theme-dark-green;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-green;
+  }
+
+  .textColor {
+    color: $color-theme-dark-green;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-green;
+  }
+}
+
+.dark-pink {
+  .backgroundColor {
+    background-color: $color-theme-dark-pink;
+  }
+
+  .borderSolidColor {
+    border: 1px solid $color-theme-dark-pink;
+  }
+
+  .textColor {
+    color: $color-theme-dark-pink;
+  }
+
+  .borderColor {
+    border-color: $color-theme-dark-pink;
+  }
 }
 
 .mat-form-field-underline {
@@ -114,6 +319,20 @@ body {
   .cdk-overlay-pane {
     height: 100%;
     margin-top: 0;
+
+    .mat-snack-bar-container {
+      background-color: $color-red;
+      color: $color-white;
+      height: max-content;
+
+      .mat-simple-snackbar-action button {
+        color: $color-white;
+      }
+    }
+
+    .mat-snack-bar-container.success {
+      background-color: $color-green;
+    }
 
     .mat-dialog {
       overflow-y: hidden;
@@ -135,7 +354,62 @@ body {
     }
   }
 }
-.mat-snack-bar-container {
-  background-color: $color-red;
-  color: $color-white;
+
+//changes for default mat-tab behaviour
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: none;
+}
+
+.mat-tab-links .tab {
+  min-width: 1.5rem;
+}
+
+.mat-menu-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-tab-links .tab,
+.mat-tab-link {
+  color: $color-black;
+  opacity: 1;
+}
+
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  @extend .backgroundColor;
+}
+
+.mat-menu-panel .mat-menu-content {
+  padding: 0;
+}
+
+.mat-select-panel {
+  @include glass;
+}
+
+.mat-calendar-body-selected {
+  @extend .backgroundColor;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  @extend .textColor;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow,
+.mat-datepicker-toggle-active {
+  color: rgba(0, 0, 0, .6);
+}
+
+.mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  @extend .backgroundColor;
+}
+
+.mat-input-element {
+  caret-color: rgba(0, 0, 0, .6);
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+.mat-form-field-appearance-outline:not(.mat-form-field-disabled) .mat-form-field-flex:hover .mat-form-field-outline {
+  color: $color-gray;
 }

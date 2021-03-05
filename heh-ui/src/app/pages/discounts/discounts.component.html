@@ -1,7 +1,17 @@
-<app-page-search [searchOptions]="searchFieldsOptions"></app-page-search>
-<mat-grid-list cols="4" rowHeight="11rem" gutterSize="1rem">
-  <mat-grid-tile *ngFor="let discount of discounts" >
-   <app-discount-card [discountInfo]="discount"
-                      (click)="openDiscountDetails(discount)"></app-discount-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<app-page-search [isVendorSearchAvailable]="true"
+                 (applySearch)="getDiscountsWrapper($event)"></app-page-search>
+<div infiniteScroll
+     [infiniteScrollDistance]="1"
+     [infiniteScrollThrottle]="100"
+     (scrolled)="onScrollDown($event)">
+  <mat-grid-list [cols]="breakpoint"
+                 rowHeight="11rem"
+                 gutterSize="1rem"
+                 (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let discount of discounts">
+     <app-discount-card [discount]="discount"
+                        [isViewCountsVisible]="false"
+                        (click)="openDiscountDetails(discount)"></app-discount-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
