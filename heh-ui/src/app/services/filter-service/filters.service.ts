@@ -175,6 +175,17 @@ export class FiltersService {
     return address;
   }
 
+  getCountryById(countryId: string): string {
+    let country = '';
+
+    forEach(this.countriesCities, (item: any) => {
+      if (isEqual(countryId, item.id)) {
+        country = item.country;
+      }
+    });
+    return country;
+  }
+
   getFiltersParams(filters: any): any {
     const objDate = new Date(Date.now());
     const objDateString = new Date(Date.now()).toString();
