@@ -1,1 +1,4 @@
-<div class="category">{{getCategoryName()}}</div>
+<div class="category"
+     (click)="searchCategory(categoryId); $event.stopPropagation()">
+  {{getCategoryName()}}
+</div>
