@@ -9,7 +9,7 @@
 
   .mat-drawer {
     right: 0;
-    height: 100%;
+    height: 100vh;
     width: 35vw;
     @include glass;
   }
@@ -84,14 +84,14 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
     left: 8rem;
     top: 0.3rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .mat-sidenav-container .mat-sidenav, .mat-drawer-backdrop.mat-drawer-shown {
     display: none;
   }

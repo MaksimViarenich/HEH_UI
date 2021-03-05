@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from '../../../models/user-info';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
@@ -13,6 +13,8 @@ import { UserProfileService } from '../../../pages/user-profile/user-profile.ser
 })
 
 export class ProfileComponent implements OnInit {
+
+  @Output() closeSidenavMenu: EventEmitter<any> = new EventEmitter();
 
   user: UserInfo;
   userPhoto: any;
@@ -41,6 +43,10 @@ export class ProfileComponent implements OnInit {
 
   goToPerson(): void {
     this.router.navigate(['/profile']);
+  }
+
+  closeSidenav(): any {
+    this.closeSidenavMenu.emit();
   }
 
   logout(): void {
