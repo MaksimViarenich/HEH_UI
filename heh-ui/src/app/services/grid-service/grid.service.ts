@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class GridService {
 
-  constructor() {
-  }
-
   getDiscountGrid(screenWidth: any): any {
     let breakpoint = 0;
     switch (true) {

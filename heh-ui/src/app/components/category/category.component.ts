@@ -1,5 +1,4 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-
 import { FiltersService } from '../../services/filter-service/filters.service';
 
 @Component({
@@ -13,8 +12,8 @@ export class CategoryComponent {
   @Input() categoryId: string | undefined;
   categoryName: string | undefined;
 
-  constructor(private filtersService: FiltersService) {
-  }
+  constructor(private filtersService: FiltersService) {}
+
   getCategoryName(): string {
     return this.filtersService.getCategoryById(this.categoryId || '');
   }

@@ -40,6 +40,7 @@ export class DiscountsComponent implements OnInit {
   getDiscountsWrapper(filters: any): void {
     this.filterStorage = {};
     this.filterStorage = filters;
+    filters.experationDate = true;
     this.discounts = [];
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;

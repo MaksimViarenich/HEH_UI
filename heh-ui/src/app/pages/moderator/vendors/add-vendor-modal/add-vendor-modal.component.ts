@@ -1,7 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
-
 import { VendorCard } from '../../../../models/vendor-card';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
@@ -166,18 +165,31 @@ export class AddVendorModalComponent implements OnInit {
     map(address, (addr: any) => {
       forEach(this.countriesCities, (item: any) => {
           if (isEqual(addr.countryId, item.id)) {
-            for (const city of item.cities) {
-              if (isEqual(addr.cityId, city.id)) {
+            if (isEqual(addr.cityId, null)) {
                 editAddresses.push({
                   country: {
                     country: item.country,
                     id: item.id,
                     cities: item.cities,
                   },
-                  city,
-                  street: addr.street,
+                  city: '',
+                  street: '',
                   id: addr.id,
                 });
+            } else {
+              for (const city of item.cities) {
+                if (isEqual(addr.cityId, city.id)) {
+                  editAddresses.push({
+                    country: {
+                      country: item.country,
+                      id: item.id,
+                      cities: item.cities,
+                    },
+                    city,
+                    street: addr.street,
+                    id: addr.id,
+                  });
+                }
               }
             }
           }

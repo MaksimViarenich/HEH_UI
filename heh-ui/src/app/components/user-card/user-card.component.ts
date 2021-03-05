@@ -29,13 +29,10 @@ export class UserCardComponent implements OnInit {
   setUserPhotoAdmin(userId: string): void {
     this.usersService.getUserPhotoAdmin(userId).subscribe((data: any) => {
       const reader = new FileReader();
-      reader.addEventListener('load', () => {
+      reader.readAsDataURL(data);
+      reader.onloadend = () => {
         this.userPhoto = reader.result;
-      }, false);
-
-      if (data) {
-        reader.readAsDataURL(data);
-      }
+      };
     },
     (error: any) => {
       this.toaster.open('Could not get user photo');
