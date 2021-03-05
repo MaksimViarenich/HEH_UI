@@ -10,7 +10,8 @@
     <div class="favorite-info">
       <div class="favorites-category-and-tags">
         <app-category class="favorites-category"
-                      [categoryId]="favoriteInfo.categoryId"></app-category>
+                      [categoryId]="favoriteInfo.categoryId"
+                      (click)="searchByCategory(favoriteInfo.categoryId); $event.stopPropagation()"></app-category>
         <div class="favorites-tags">
           <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
                    [tagId]="tag"></app-tag>

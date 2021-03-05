@@ -1,9 +1,8 @@
-
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatOption } from '@angular/material/core';
-import { isEqual, size, indexOf, forEach, includes, map, find } from 'lodash';
+import { isEqual, size, indexOf, forEach } from 'lodash';
 import { FiltersService } from '../../services/filter-service/filters.service';
+import { ObservableService } from '../category/observable.service';
 
 @Component({
   selector: 'app-page-search',
@@ -23,14 +22,13 @@ export class PageSearchComponent implements OnInit {
   month = '';
   locations: any;
   locationsArrayForOptions: any;
-  viewLocation: any;
-  currentLocation: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
   vendorsFormControl = new FormControl();
 
-  constructor(private filtersService: FiltersService) {
+  constructor(private filtersService: FiltersService,
+              private observableService: ObservableService) {
     this.maxDate = new Date();
     this.isVendorSearchAvailable = false;
     this.isDateRangeSearchAvailable = false;
@@ -50,6 +48,7 @@ export class PageSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.observableService.addToStorage('');
     if (isEqual(sessionStorage.getItem('location'), null)) {
       setTimeout(() => {
         this.searchData.location = sessionStorage.getItem('location');
@@ -67,6 +66,15 @@ export class PageSearchComponent implements OnInit {
           this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
         }
       );
+    });
+    this.observableService.storageChanged.subscribe( (id: string) => {
+      if (id === '') {
+        this.searchData.categories = [];
+      } else {
+        this.searchData.categories = [];
+        this.searchData.categories.push(id);
+        this.submitSearch();
+      }
     });
   }
 
