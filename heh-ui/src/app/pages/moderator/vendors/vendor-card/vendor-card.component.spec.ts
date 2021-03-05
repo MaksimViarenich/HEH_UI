@@ -3,6 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { VendorCardComponent } from './vendor-card.component';
 import { VendorService } from '../vendor.service';
@@ -15,11 +18,12 @@ describe('VendorCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientModule, MatDialogModule ],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientModule, MatDialogModule ],
       declarations: [ VendorCardComponent ],
       providers: [ VendorService, ModalService, ToasterService,
         { provide: MatSnackBar },
-        { provide: Overlay }]
+        { provide: Overlay }],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   });

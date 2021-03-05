@@ -14,6 +14,9 @@ import { GeocodeService } from './geocode.service';
 describe('DiscountDetailsComponent', () => {
   let component: DiscountDetailsModalComponent;
   let fixture: ComponentFixture<DiscountDetailsModalComponent>;
+  const dialogMock = {
+    backdropClick: () => { }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +26,7 @@ describe('DiscountDetailsComponent', () => {
         { provide: MapsAPILoader, useValue: { load: jasmine.createSpy('load').and.returnValue(new Promise(() => true)) }},
         { provide: GoogleMapsAPIWrapper },
         { provide: MAT_DIALOG_DATA, useValue: { }},
-        { provide: MatDialogRef, useValue: { }},
+        { provide: MatDialogRef, useValue: dialogMock },
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
