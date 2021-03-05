@@ -20,8 +20,8 @@
   <div class="text-wrapper"
        *ngFor="let value of listData; let idx = index">
     <span *ngIf="type !== 'address'">{{value.number}}</span>
-    <span *ngIf="type === 'address'">{{value?.country?.country}} 
-                                     {{value?.city?.name }} 
+    <span *ngIf="type === 'address'">{{value?.country?.country}}
+                                     {{value?.city?.name }}
                                      {{value?.street}}</span>
 
     <div class="submit-div"
