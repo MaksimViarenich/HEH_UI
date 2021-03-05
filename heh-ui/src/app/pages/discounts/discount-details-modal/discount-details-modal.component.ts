@@ -4,7 +4,6 @@ import { MapsAPILoader, AgmMap } from '@agm/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
-
 import { UserProfileService } from '../../user-profile/user-profile.service';
 import { GeocodeService } from './geocode.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
@@ -54,6 +53,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   ) {
     this.discountDetails = {
       tagsIds: [],
+      phones: [],
     };
     this.isViewCountsVisible = true;
     this.addresses = [];
@@ -137,9 +137,12 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.discountService.getDiscountDetails(this.discountId).subscribe(
       (data) => {
         this.discountDetails = data;
-
-        forEach(data.addresses, (item: { cityId: string; street: string; }) => {
-          this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
+        forEach(data.addresses, (item: { countryId: string; cityId: string; street: string; }) => {
+          if (isEqual(item.cityId, null)) {
+            this.addresses.push(`${this.filtersService.getCountryById(item.countryId)}`);
+          } else {
+            this.addresses.push(`${this.filtersService.getAddressByCityId(item.cityId)} ${item.street}`);
+          }
         });
 
         if (!isEqual(size(this.addresses), 0)) {

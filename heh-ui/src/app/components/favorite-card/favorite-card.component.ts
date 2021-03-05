@@ -2,10 +2,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Output, EventEmitter } from '@angular/core';
-
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 import { ModalService } from '../../services/modal-service/modal.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
+import { ObservableService } from '../category/observable.service';
 
 @Component({
   selector: 'app-favorite-card',
@@ -22,7 +22,8 @@ export class FavoriteCardComponent {
               private modalService: ModalService,
               private favoriteService: FavoritesService,
               private toaster: ToasterService,
-              private translateService: TranslateService) {}
+              private translateService: TranslateService,
+              private observableService: ObservableService) {}
 
   deleteFavorite(): any {
     const confirmData = {
@@ -45,5 +46,9 @@ export class FavoriteCardComponent {
         );
       }
     });
+  }
+
+  searchByCategory(id: any): void {
+    this.observableService.addToStorage(id);
   }
 }

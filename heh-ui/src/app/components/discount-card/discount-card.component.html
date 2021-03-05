@@ -14,7 +14,8 @@
 
   <div class="discount-card-content">
     <div class="category-and-tags">
-      <app-category [categoryId]="discount.categoryId"></app-category>
+      <app-category [categoryId]="discount.categoryId"
+                    (click)="searchByCategory(discount.categoryId); $event.stopPropagation()"></app-category>
       <app-tag *ngIf="discount.tagsIds.length" [tagId]="discount.tagsIds[0]"></app-tag>
       <div *ngIf="discount.tagsIds.length - 1 > 0"
            class="additional-tags">

@@ -74,13 +74,17 @@
         font-size: .7rem;
       }
 
+      th.mat-header-cell:first-of-type {
+        padding: 0 0.3rem;
+      }
+
       td.mat-cell {
         font-size: .7rem;
         line-height: .8rem;
       }
 
       td.mat-cell:first-of-type {
-        padding: .2rem .2rem .2rem 2rem;
+        padding-left: .2rem;
       }
 
       td.mat-cell:last-of-type {

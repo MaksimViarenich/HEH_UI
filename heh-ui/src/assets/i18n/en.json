@@ -117,6 +117,7 @@
   },
   "discounts": {
     "address": "Address",
+    "start": "Starts at",
     "available": "Available to",
     "open": "Open",
     "close": "Close",
