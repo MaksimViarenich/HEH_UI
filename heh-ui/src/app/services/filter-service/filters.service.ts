@@ -105,7 +105,7 @@ export class FiltersService {
   }
 
   loadFilters(): any {
-    this.getLocations().subscribe(data => {
+    this.getLocations().subscribe((data) => {
       this.countriesCities = data;
     });
 
@@ -176,8 +176,21 @@ export class FiltersService {
   }
 
   getFiltersParams(filters: any): any {
-    let resultParams: any = [];
+    const objDate = new Date(Date.now());
+    const objDateString = new Date(Date.now()).toString();
+
+    const dueMonth = (objDate.getMonth() + 1).toString().length === 1 ?
+                      `0${(objDate.getMonth() + 1).toString()}` :
+                      (objDate.getMonth() + 1).toString();
+
     let queryParams = '';
+
+    if (filters.experationDate) {
+      queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z and `;
+    }
+
+    let resultParams: any = [];
     let queryTextParam = '';
     let queryStartDate = '';
     let queryEndDate = '';
@@ -311,6 +324,10 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
   if (filtersParams.queryParams) {
       params = params.append('$filter', filtersParams.queryParams);
     }
+
+  if (filters.experationDate) {
+    params = params.append('$orderby', 'startDate asc');
+  }
 
   return params;
   }

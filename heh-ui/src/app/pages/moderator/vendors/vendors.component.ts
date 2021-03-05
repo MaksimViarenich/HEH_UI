@@ -51,6 +51,7 @@ export class VendorsComponent implements OnInit {
   }
 
   getAllVendors(top: any, skip: any, filters?: any): void {
+
     this.vendorService.getVendors(filters, top, skip).subscribe(
       (data) => {
         forEach(data.value, (vendor: any) => {

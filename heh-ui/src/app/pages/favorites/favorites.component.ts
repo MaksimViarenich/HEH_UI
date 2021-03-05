@@ -47,6 +47,7 @@ export class FavoritesComponent implements OnInit {
   getFavoritesWrapper(filters: any): void {
     this.filterStorage = {};
     this.filterStorage = filters;
+    filters.experationDate = true;
     this.favoriteCards = [];
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
