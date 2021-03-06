@@ -52,9 +52,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TokenInterceptor } from './services/token.interceptor';
 import { MyAutofocusDirective } from './pages/moderator/categories-tags/list-input/my-autofocus.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http);
@@ -111,7 +111,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule,
+    BrowserAnimationsModule,
     AppMaterialModule,
     HttpClientModule,
     InfiniteScrollModule,
@@ -126,7 +126,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
       apiKey: 'AIzaSyC7OkW7Uy3uUaYUVE3Aoh5j-P6fLATgmhA'
     })
   ],
-  providers: [AuthGuard, RoleGuard, HttpClient, MatDialog, {
+  providers: [AuthGuard, RoleGuard, HttpClient, {
     provide: HTTP_INTERCEPTORS,
     useClass: SpinnerHttpInterceptor,
     multi: true,
