@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isEqual, size, indexOf, forEach, includes, toString } from 'lodash';
+import { isEqual, size, indexOf, forEach, includes, toString, find } from 'lodash';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { ObservableService } from '../category/observable.service';
 
@@ -22,6 +22,7 @@ export class PageSearchComponent implements OnInit {
   month = '';
   locations: any;
   locationsArrayForOptions: any;
+  currentLocation: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -75,6 +76,7 @@ export class PageSearchComponent implements OnInit {
           this.locations = data;
           this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
           this.searchData.location = sessionStorage.getItem('location');
+          this.currentLocation = sessionStorage.getItem('location');
           this.submitSearch();
         }
       );
@@ -114,21 +116,22 @@ export class PageSearchComponent implements OnInit {
   }
 
   checkCountryOrCity(id: string): any {
-    id = toString(id);
-    let ids: string[] = [];
-    forEach(this.locations, country => {
-      if (isEqual(country.id, id)) {
-        ids = [country.id];
-      } else if (includes(country.cities, id)) {
-        ids = [country.id, id];
-      }
-    });
+    let ids: any[] = [];
+    if (find(this.locations, country => isEqual(country.id, id))) {
+      ids = [id];
+    } else {
+      forEach(this.locations, country => {
+        if (find(country.cities, {id})) {
+          ids = [country.id, id];
+        }
+      });
+    }
 
     return ids;
   }
 
   submitSearch(): void {
-    this.searchData.location = this.checkCountryOrCity(this.searchData.location);
+    this.searchData.location = this.checkCountryOrCity(this.currentLocation);
     console.log(this.searchData.location);
     this.applySearch.emit(this.searchData);
     this.pickerDate = [];
