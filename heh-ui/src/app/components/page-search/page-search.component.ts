@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } fro
 import { FormControl } from '@angular/forms';
 import { isEqual, size, indexOf, forEach } from 'lodash';
 import { FiltersService } from '../../services/filter-service/filters.service';
-import { ObservableService } from '../category/observable.service';
+import { CategoryService } from '../category/category.service';
 
 @Component({
   selector: 'app-page-search',
@@ -10,11 +10,13 @@ import { ObservableService } from '../category/observable.service';
   styleUrls: ['./page-search.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class PageSearchComponent implements OnInit {
   @Input() isVendorSearchAvailable: boolean;
   @Input() isDateRangeSearchAvailable: boolean;
   @Output() applySearch = new EventEmitter<any>();
   @Output() applyExport = new EventEmitter<any>();
+
   filtersOptions: any;
   searchData: any;
   pickerDate: any[];
@@ -27,8 +29,10 @@ export class PageSearchComponent implements OnInit {
   tagsFormControl = new FormControl();
   vendorsFormControl = new FormControl();
 
-  constructor(private filtersService: FiltersService,
-              private observableService: ObservableService) {
+  constructor(
+    private filtersService: FiltersService,
+    private categoryService: CategoryService
+  ) {
     this.maxDate = new Date();
     this.isVendorSearchAvailable = false;
     this.isDateRangeSearchAvailable = false;
@@ -48,7 +52,8 @@ export class PageSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.observableService.addToStorage('');
+    this.categoryService.addToStorage('');
+
     if (isEqual(sessionStorage.getItem('location'), null)) {
       setTimeout(() => {
         this.searchData.location = sessionStorage.getItem('location');
@@ -58,6 +63,7 @@ export class PageSearchComponent implements OnInit {
       this.searchData.location = sessionStorage.getItem('location');
       this.submitSearch();
     }
+
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.filtersService.getLocations().subscribe(
@@ -67,7 +73,8 @@ export class PageSearchComponent implements OnInit {
         }
       );
     });
-    this.observableService.storageChanged.subscribe( (id: string) => {
+
+    this.categoryService.storageChanged.subscribe((id: string) => {
       if (id === '') {
         this.searchData.categories = [];
       } else {
@@ -80,9 +87,10 @@ export class PageSearchComponent implements OnInit {
 
   fillLocationOptionArray(locations: any): any {
     let array: any = [];
+
     forEach(locations, (location) => {
       array = isEqual(size(array), 0) ? [{country: location.country, id: location.id}, ...location.cities] :
-      [...array, {country: location.country, id: location.id}, ...location.cities];
+        [...array, {country: location.country, id: location.id}, ...location.cities];
     });
 
     return array;
@@ -117,6 +125,7 @@ export class PageSearchComponent implements OnInit {
 
   changeTagsList(): void {
     this.filtersOptions.tags = [];
+
     if (size(this.searchData.categories)) {
       this.filtersOptions.tags = this.filtersService.getFilters().tags.filter((tag: any) => {
         return !isEqual(indexOf(this.searchData.categories, tag.categoryId), -1);

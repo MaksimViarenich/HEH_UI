@@ -1,12 +1,10 @@
 <header class='header'>
   <div class='header-container'>
     <div class='header-title'
-         (click)='goToMain()'> happy exadel hours
-    </div>
+         (click)='goToMain()'>happy exadel hours</div>
 
     <div class='header-title-adaptive'
-         (click)='goToMain()'> HEH
-    </div>
+         (click)='goToMain()'>HEH</div>
 
     <nav class='navigation'>
       <nav mat-tab-nav-bar
@@ -26,10 +24,11 @@
       <div class="person-content">
         <app-profile></app-profile>
         <app-language-selection></app-language-selection>
+
         <button class="hamburger hamburger--spin"
                 [class.is-active]="menuIsActive"
-            type="button"
-            (click)="onSidenavToggle()">
+                type="button"
+                (click)="onSidenavToggle()">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
           </span>

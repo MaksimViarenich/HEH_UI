@@ -14,8 +14,8 @@ import { HomeLayoutComponent } from './components/layouts/home-layout/home-layou
 import { LoginLayoutComponent } from './components/layouts/login-layout/login-layout.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ModeratorComponent } from './pages/moderator/moderator.component';
-import { AuthGuard } from './auth-guard/auth.guard';
-import { RoleGuard } from './role-guard/role.guard';
+import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { RoleGuard } from './guards/role-guard/role.guard';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [

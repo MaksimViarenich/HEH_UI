@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { ObservableService } from '../category/observable.service';
+import { CategoryService } from '../category/category.service';
 
 @Component({
   selector: 'app-discount-card',
@@ -7,13 +7,14 @@ import { ObservableService } from '../category/observable.service';
   styleUrls: ['./discount-card.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class DiscountCardComponent{
   @Input() discount: any | undefined;
   @Input() isViewCountsVisible: boolean | undefined;
 
-  constructor(private observableService: ObservableService) {}
+  constructor(private categoryService: CategoryService) {}
 
   searchByCategory(id: any): void {
-    this.observableService.addToStorage(id);
+    this.categoryService.addToStorage(id);
   }
 }

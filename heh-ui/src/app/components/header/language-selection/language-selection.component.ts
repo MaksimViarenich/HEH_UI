@@ -1,13 +1,8 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { forEach, isEqual } from 'lodash';
-
-interface Language {
-  lang: string;
-  path: string;
-  langId: number;
-  langCode: string;
-}
+import { Language } from '../../../models/language';
+import { LanguageService } from './language-selection.service';
 
 @Component({
   selector: 'app-language-selection',
@@ -15,17 +10,18 @@ interface Language {
   styleUrls: ['./language-selection.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LanguageSelectionComponent implements OnInit {
 
+export class LanguageSelectionComponent implements OnInit {
   currentLang = '';
   imagePath = '';
 
-  languages: Language[] = [
-    {lang: 'English', path: '../../../assets/images/header/header_menu_uk.svg', langId: 0, langCode: 'en'},
-    {lang: 'Русский', path: '../../../assets/images/header/header_menu_ru.svg', langId: 1, langCode: 'ru'}
-  ];
+  languages: Language[] = [];
 
-  constructor(public translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) {
+    this.languages = languageService.getLanguages();
   }
 
   selectLang(path: string, langCode: string): void {
