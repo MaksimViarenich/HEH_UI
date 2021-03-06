@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isEqual, size, indexOf, forEach } from 'lodash';
+import { isEqual, size, indexOf, forEach, includes, toString, find } from 'lodash';
 import { FiltersService } from '../../services/filter-service/filters.service';
 import { CategoryService } from '../category/category.service';
 
@@ -24,6 +24,7 @@ export class PageSearchComponent implements OnInit {
   month = '';
   locations: any;
   locationsArrayForOptions: any;
+  currentLocation: any;
 
   categoriesFormControl = new FormControl();
   tagsFormControl = new FormControl();
@@ -56,24 +57,11 @@ export class PageSearchComponent implements OnInit {
 
     if (isEqual(sessionStorage.getItem('location'), null)) {
       setTimeout(() => {
-        this.searchData.location = sessionStorage.getItem('location');
-        this.submitSearch();
+        this.loadFilters();
       }, 1000);
     } else {
-      this.searchData.location = sessionStorage.getItem('location');
-      this.submitSearch();
+      this.loadFilters();
     }
-
-    this.filtersService.loadFilters().then(() => {
-      this.filtersOptions = this.filtersService.getFilters();
-      this.filtersService.getLocations().subscribe(
-        (data) => {
-          this.locations = data;
-          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
-        }
-      );
-    });
-
     this.categoryService.storageChanged.subscribe((id: string) => {
       if (id === '') {
         this.searchData.categories = [];
@@ -82,6 +70,21 @@ export class PageSearchComponent implements OnInit {
         this.searchData.categories.push(id);
         this.submitSearch();
       }
+    });
+  }
+
+  loadFilters(): any {
+    this.filtersService.loadFilters().then(() => {
+      this.filtersOptions = this.filtersService.getFilters();
+      this.filtersService.getLocations().subscribe(
+        (data) => {
+          this.locations = data;
+          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
+          this.searchData.location = sessionStorage.getItem('location');
+          this.currentLocation = sessionStorage.getItem('location');
+          this.submitSearch();
+        }
+      );
     });
   }
 
@@ -118,7 +121,24 @@ export class PageSearchComponent implements OnInit {
     }
   }
 
+  checkCountryOrCity(id: string): any {
+    let ids: any[] = [];
+    if (find(this.locations, country => isEqual(country.id, id))) {
+      ids = [id];
+    } else {
+      forEach(this.locations, country => {
+        if (find(country.cities, {id})) {
+          ids = [country.id, id];
+        }
+      });
+    }
+
+    return ids;
+  }
+
   submitSearch(): void {
+    this.searchData.location = this.checkCountryOrCity(this.currentLocation);
+    console.log(this.searchData.location);
     this.applySearch.emit(this.searchData);
     this.pickerDate = [];
   }
