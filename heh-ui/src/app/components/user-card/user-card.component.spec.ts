@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserCardComponent } from './user-card.component';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 
-
 describe('UserCardComponent', () => {
   let component: UserCardComponent;
   let fixture: ComponentFixture<UserCardComponent>;
@@ -29,6 +28,7 @@ describe('UserCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserCardComponent);
     component = fixture.componentInstance;
+    component.user = 'argh';
     fixture.detectChanges();
   });
 

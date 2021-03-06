@@ -47,7 +47,7 @@ export class StatisticsComponent implements OnInit {
   getStatisticsWrapper(filters: any): void {
     this.filterStorage = {};
     this.filterStorage = filters;
-    filters.experationDate = true;
+    filters.statisticsOrderby = true;
     this.statistics = [];
     this.skipStatistics = 0;
     this.previousScrollPosition = 0;

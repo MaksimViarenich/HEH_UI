@@ -1,19 +1,16 @@
 import { AfterViewChecked, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { slice, includes, now, find, isEqual } from 'lodash';
-
 import { UserInfo } from 'src/app/models/user-info';
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
 import { SpinnerService } from '../../../services/spinner-service/spinner.service';
-import { Background, SelectBackgroundService } from '../../select-background/select-background.service';
+import { SelectBackgroundService } from '../../select-background/select-background.service';
 import { HeaderService } from '../../header/header.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
-
-interface PageTitles {
-  localizationKey: string;
-  pagePath: string;
-}
+import { PageTitle } from '../../../models/page-title';
+import { HomeLayoutService } from './home-layout.service';
+import { Background } from '../../../models/background';
 
 @Component({
   selector: 'app-home-layout',
@@ -21,10 +18,10 @@ interface PageTitles {
   styleUrls: ['./home-layout.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked {
   tabs: any;
   user: UserInfo | undefined;
-  showSpinner: boolean | undefined;
   notificationsCount: number;
   timerId: any;
   route: string;
@@ -33,25 +30,18 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
   token: any;
   backgrounds: Array<Background>;
   activeBackground: Background;
-  pageTitles: PageTitles[] = [
-    {localizationKey: 'header.discounts', pagePath: '/discounts'},
-    {localizationKey: 'header.favorites', pagePath: '/favorites'},
-    {localizationKey: 'header.notifications', pagePath: '/notifications'},
-    {localizationKey: 'header.profile', pagePath: '/profile'},
-    {localizationKey: 'header.moderator', pagePath: '/moderator/vendors'},
-    {localizationKey: 'header.moderator', pagePath: '/moderator/categories_tags'},
-    {localizationKey: 'header.admin', pagePath: '/admin/users'},
-    {localizationKey: 'header.admin', pagePath: '/admin/statistics'},
-    {localizationKey: 'header.admin', pagePath: '/admin/history'}
-  ];
+  pageTitles: PageTitle[] = [];
 
-  constructor(private router: Router,
-              public spinnerService: SpinnerService,
-              private cdRef: ChangeDetectorRef,
-              private roleService: RoleService,
-              private selectBackgroundServer: SelectBackgroundService,
-              private headerService: HeaderService,
-              private toaster: ToasterService) {
+  constructor(
+    private router: Router,
+    public spinnerService: SpinnerService,
+    private cdRef: ChangeDetectorRef,
+    private roleService: RoleService,
+    private selectBackgroundServer: SelectBackgroundService,
+    private headerService: HeaderService,
+    private toaster: ToasterService,
+    private homeLayoutService: HomeLayoutService,
+  ) {
     this.route = this.router.url;
     this.imagePath = '';
     this.pageTitle = '';
@@ -61,6 +51,7 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
     this.getLocalizationKey();
     this.tabs = [];
     this.notificationsCount = 0;
+    this.pageTitles = homeLayoutService.getPageTitles();
   }
 
   ngOnInit(): void {
@@ -68,6 +59,7 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
     this.tabs = this.getTabs();
     document.body.style.background = (this.activeBackground?.background as string);
     this.selectBackgroundServer.changeColorTheme(this.activeBackground);
+
     this.setNotificationsCount();
     this.timerId = setInterval(() => {
       this.setNotificationsCount();
@@ -79,8 +71,8 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
       (data) => {
         this.notificationsCount = data;
       },
-      (error) => {
-        this.toaster.open('Сan not get notifivations count');
+      () => {
+        this.toaster.open('Сan not get notifications count');
       }
     );
   }
@@ -117,7 +109,7 @@ export class HomeLayoutComponent implements OnInit, OnDestroy, AfterViewChecked 
   }
 
   spinnerInit(): void {
-    this.spinnerService.getSpinner().subscribe((status) => {
+    this.spinnerService.getSpinner().subscribe(() => {
       this.cdRef.detectChanges();
     });
   }

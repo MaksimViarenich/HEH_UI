@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Overlay } from '@angular/cdk/overlay';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { FavoriteCardComponent } from './favorite-card.component';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
@@ -14,12 +17,13 @@ describe('FavoriteCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ MatDialogModule, MatSnackBarModule, HttpClientTestingModule ],
+      imports: [ RouterTestingModule, TranslateModule.forRoot(), HttpClientTestingModule, MatDialogModule, MatSnackBarModule ],
       declarations: [ FavoriteCardComponent ],
       providers: [ MatDialog, Overlay, FavoritesService, ToasterService,
         { provide: MAT_DIALOG_DATA, useValue: { }},
         { provide: MatDialogRef, useValue: { }}
-      ]
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   });

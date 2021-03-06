@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserInfo } from '../../../models/user-info';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
@@ -14,14 +14,18 @@ import { UserProfileService } from '../../../pages/user-profile/user-profile.ser
 
 export class ProfileComponent implements OnInit {
 
+  @Output() closeSidenavMenu: EventEmitter<any> = new EventEmitter();
+
   user: UserInfo;
   userPhoto: any;
   location: string;
 
-  constructor(private router: Router,
-              private userProfileService: UserProfileService,
-              private filtersService: FiltersService,
-              private toaster: ToasterService) {
+  constructor(
+    private router: Router,
+    private userProfileService: UserProfileService,
+    private filtersService: FiltersService,
+    private toaster: ToasterService
+  ) {
     this.user = {
       id: '',
       role: '',
@@ -41,6 +45,7 @@ export class ProfileComponent implements OnInit {
 
   goToPerson(): void {
     this.router.navigate(['/profile']);
+    this.closeSidenavMenu.emit();
   }
 
   logout(): void {
@@ -68,6 +73,7 @@ export class ProfileComponent implements OnInit {
     this.userProfileService.getUserProfilePhoto().subscribe(
       (data) => {
         const reader = new FileReader();
+
         reader.addEventListener('load', () => {
           this.userPhoto = reader.result;
           sessionStorage.setItem('userPhoto', this.userPhoto);

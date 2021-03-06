@@ -340,6 +340,10 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
     params = params.append('$orderby', 'startDate asc');
   }
 
+  if (filters.statisticsOrderby) {
+    params = params.append('$orderby', 'viewsAmount desc');
+  }
+
   return params;
   }
 }

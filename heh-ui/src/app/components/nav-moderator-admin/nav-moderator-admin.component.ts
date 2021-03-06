@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Tab } from '../../models/tab';
 
 @Component({
@@ -8,12 +7,7 @@ import { Tab } from '../../models/tab';
   styleUrls: ['./nav-moderator-admin.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NavModeratorAdminComponent implements OnInit {
+
+export class NavModeratorAdminComponent {
   @Input() tabs: Array<Tab> | undefined;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }

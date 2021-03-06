@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-
-export interface Background {
-  background: string;
-  colorClass: string;
-  isDark?: boolean;
-}
+import { Background } from '../../models/background';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SelectBackgroundService {
-  backgrounds: Array<Background>;
+  backgrounds: Array<Background> = [];
 
   constructor() {
     this.backgrounds = [

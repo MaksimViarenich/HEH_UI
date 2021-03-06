@@ -1,23 +1,26 @@
 <div class="person">
-  <div class='person-pic'>
-    <img class='profile-icon'
-         [src]='userPhoto'
-         alt='profile-icon'
-         mat-button
-         [matMenuTriggerFor]='beforeMenuProfile'>
-    <mat-menu class='profile-menu'
-              #beforeMenuProfile='matMenu'
-              xPosition='before'>
-      <button class='btn-person btn-primary'
-              (click)='goToPerson()'
+  <div class="person-pic">
+    <img [src]="userPhoto"
+         [matMenuTriggerFor]="beforeMenuProfile"
+         class="profile-icon"
+         alt="">
+
+    <mat-menu class="profile-menu"
+              #beforeMenuProfile="matMenu"
+              xPosition="before">
+      <button class="btn-primary"
+              (click)="goToPerson()"
               mat-menu-item>
-        <img src='../../../assets/images/header/header_menu_profile.svg'
-             alt='btn-person'>{{ 'header.profile' | translate }}</button>
-      <button class='btn-person btn-primary'
-              (click)='logout()'
+        <img src="../../../assets/images/header/header_menu_profile.svg" alt="">
+        {{ 'header.profile' | translate }}
+      </button>
+
+      <button class="btn-primary"
+              (click)="logout()"
               mat-menu-item>
-        <img src='../../../assets/images/header/header_menu_logout.svg'
-             alt='btn-person'>{{ 'header.logout' | translate }}</button>
+        <span class="material-icons">logout</span>
+        {{ 'header.logout' | translate }}
+      </button>
     </mat-menu>
   </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-
 import { UsersService } from '../../pages/admin/users/users.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 
@@ -20,8 +19,10 @@ export class UserCardComponent implements OnInit {
   isActive: boolean | undefined;
   role: string | undefined;
 
-  constructor(private usersService: UsersService,
-              private toaster: ToasterService) {
+  constructor(
+    private usersService: UsersService,
+    private toaster: ToasterService
+  ) {
     this.role = '';
     this.userPhoto = '';
   }
@@ -34,28 +35,28 @@ export class UserCardComponent implements OnInit {
         this.userPhoto = reader.result;
       };
     },
-    (error: any) => {
-      this.toaster.open('Could not get user photo');
+    () => {
+      this.toaster.open('Can not get user photo');
     });
   }
 
   changeUserRole(value: string): void {
     this.usersService.changeRole(this.user.id, value).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('User role was changed', 'success');
       },
-      (error) => {
-        this.toaster.open('Couldn\'t change role');
+      () => {
+        this.toaster.open('Can not change role');
       });
   }
 
   changeUserState(): void {
     this.usersService.changeState(this.user.id, this.isActive).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('User state was changed', 'success');
       },
-      (error) => {
-        this.toaster.open('Couldn\'t change state');
+      () => {
+        this.toaster.open('Can not change state');
       });
   }
 
