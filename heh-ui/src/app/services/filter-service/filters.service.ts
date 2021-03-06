@@ -53,9 +53,9 @@ export class FiltersService {
 
   getVendors(): Observable<any> {
     let headers = new HttpHeaders();
-    headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
+    headers = headers.append('accept', '*/*');
 
-    return this.http.get(`${BASE_API_URL}/api/vendor/location`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/Vendor`, {headers});
   }
 
   addNewCategory(newCategory: string): Observable<any> {
@@ -135,8 +135,12 @@ export class FiltersService {
         });
       });
 
-      forEach(response[2], (vendor: any) => {
-        addItemToFilters(this.filterOptions.vendors, vendor);
+      forEach(response[2].value, (vendor: any) => {
+        this.filterOptions.vendors.push({
+          id: vendor.id,
+          viewValue: vendor.name,
+          addresses: vendor.addresses
+        });
       });
     });
 
@@ -196,9 +200,14 @@ export class FiltersService {
 
     let queryParams = '';
 
-    if (filters.experationDate) {
+    if (filters.experationDate && filters.location.length) {
       queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
                     `-${objDateString.slice(8, 10)}T00:00:00Z and `;
+    }
+
+    if (filters.experationDate && !filters.location.length) {
+      queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+        `-${objDateString.slice(8, 10)}T00:00:00Z`;
     }
 
     let resultParams: any = [];
@@ -233,7 +242,7 @@ export class FiltersService {
           break;
 
         case 'location':
-          if (filters[key]) {
+          if (filters[key].length) {
             resultParams.push(
               `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
