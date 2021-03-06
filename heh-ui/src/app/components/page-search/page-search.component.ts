@@ -62,16 +62,6 @@ export class PageSearchComponent implements OnInit {
     } else {
       this.loadFilters();
     }
-    this.filtersService.loadFilters().then(() => {
-      this.filtersOptions = this.filtersService.getFilters();
-      this.filtersService.getLocations().subscribe(
-        (data) => {
-          this.locations = data;
-          this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
-        }
-      );
-    });
-
     this.categoryService.storageChanged.subscribe((id: string) => {
       if (id === '') {
         this.searchData.categories = [];
