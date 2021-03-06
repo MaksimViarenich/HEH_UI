@@ -187,6 +187,7 @@ export class FiltersService {
   }
 
   getFiltersParams(filters: any): any {
+    console.log(filters);
     const objDate = new Date(Date.now());
     const objDateString = new Date(Date.now()).toString();
 
@@ -196,9 +197,14 @@ export class FiltersService {
 
     let queryParams = '';
 
-    if (filters.experationDate) {
+    if (filters.experationDate && filters.location.length) {
       queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
                     `-${objDateString.slice(8, 10)}T00:00:00Z and `;
+    }
+
+    if (filters.experationDate && !filters.location.length) {
+      queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z`;
     }
 
     let resultParams: any = [];
@@ -233,7 +239,7 @@ export class FiltersService {
           break;
 
         case 'location':
-          if (filters[key]) {
+          if (filters[key].length) {
             resultParams.push(
               `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
