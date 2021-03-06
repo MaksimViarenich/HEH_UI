@@ -56,8 +56,8 @@
           </a>
         </div>
 
-        <div *ngIf="discountDetails.phones.length">
-          <div *ngFor="let phone of discountDetails.phones">
+        <div *ngFor="let phone of discountDetails.phones">
+          <div *ngIf="phone">
             <span class="material-icons">phone</span>
             <span>{{phone.number}}</span>
           </div>
