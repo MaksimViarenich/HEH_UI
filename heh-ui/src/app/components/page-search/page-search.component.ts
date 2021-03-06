@@ -138,7 +138,6 @@ export class PageSearchComponent implements OnInit {
 
   submitSearch(): void {
     this.searchData.location = this.checkCountryOrCity(this.currentLocation);
-    console.log(this.searchData.location);
     this.applySearch.emit(this.searchData);
     this.pickerDate = [];
   }
