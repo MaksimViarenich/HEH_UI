@@ -3,12 +3,10 @@ import { forEach, isEqual, size } from 'lodash';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-
 import { HistoryService } from './history.service';
 import { EventHistoryElement } from '../../../models/event-history-element';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
-
 
 @Component({
   selector: 'app-event-history',
@@ -16,6 +14,7 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
   styleUrls: ['./event-history.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class EventHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'action', 'user', 'description'];
   eventData: EventHistoryElement[] = [];

@@ -235,7 +235,7 @@ export class FiltersService {
         case 'location':
           if (filters[key]) {
             resultParams.push(
-              `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key]} or a/cityId eq ${filters[key]})`
+              `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
           }
           break;

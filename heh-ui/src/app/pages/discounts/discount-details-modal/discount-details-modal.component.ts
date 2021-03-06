@@ -19,6 +19,7 @@ import { ModalService } from '../../../services/modal-service/modal.service';
   styleUrls: ['./discount-details-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class DiscountDetailsModalComponent implements OnInit {
   [x: string]: any;
   discountDetails: any;
@@ -53,7 +54,6 @@ export class DiscountDetailsModalComponent implements OnInit {
   ) {
     this.discountDetails = {
       tagsIds: [],
-      phones: [],
     };
     this.isViewCountsVisible = true;
     this.addresses = [];

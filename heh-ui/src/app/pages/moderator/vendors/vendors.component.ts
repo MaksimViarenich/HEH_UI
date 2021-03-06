@@ -2,12 +2,10 @@ import { VendorService } from './vendor.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { forEach, isEqual, size } from 'lodash';
-
 import { ModalService } from '../../../services/modal-service/modal.service';
 import { Vendor } from 'src/app/models/vendor';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { GridService } from '../../../services/grid-service/grid.service';
-
 
 @Component({
   selector: 'app-vendors',
