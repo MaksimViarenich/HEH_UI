@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { cloneDeep } from 'lodash';
 import { forEach, isEqual, find } from 'lodash';
-
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../services/filter-service/filters.service';
 import { Category } from '../../../models/category';
