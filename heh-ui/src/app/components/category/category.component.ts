@@ -10,7 +10,6 @@ import { FiltersService } from '../../services/filter-service/filters.service';
 
 export class CategoryComponent {
   @Input() categoryId: string | undefined;
-  categoryName: string | undefined;
 
   constructor(private filtersService: FiltersService) {}
 

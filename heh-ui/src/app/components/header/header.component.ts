@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation, OnInit, Output, EventEmitter, Input, OnDe
 import { Router } from '@angular/router';
 import { includes, slice } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
-
 import { HEADER_TABS } from 'src/app/models/tab';
 import { RoleService } from 'src/app/services/role-service/role.service';
 import { UserInfo } from 'src/app/models/user-info';
@@ -24,11 +23,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   notificationsCount: number;
   timerId: any;
 
-  constructor(private router: Router,
-              private roleService: RoleService,
-              private headerService: HeaderService,
-              private toaster: ToasterService,
-              private globalEventsService: NgxGlobalEventsService) {
+  constructor(
+    private router: Router,
+    private roleService: RoleService,
+    private headerService: HeaderService,
+    private toaster: ToasterService,
+    private globalEventsService: NgxGlobalEventsService
+  ) {
     this.tabs = [];
     this.menuIsActive = false;
     this.notificationsCount = 0;
@@ -78,7 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.notificationsCount = data;
       },
       () => {
-        this.toaster.open('Сan not get notifivations count');
+        this.toaster.open('Сan not get notifications count');
       }
     );
   }

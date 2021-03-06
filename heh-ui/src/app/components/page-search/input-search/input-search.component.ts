@@ -6,8 +6,8 @@ import { ControlValueAccessor, NgControl, FormControl } from '@angular/forms';
   templateUrl: './input-search.component.html',
   styleUrls: ['./input-search.component.scss']
 })
-export class InputSearchComponent implements ControlValueAccessor{
 
+export class InputSearchComponent implements ControlValueAccessor{
   searchControl = new FormControl();
 
   constructor(

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 
@@ -8,6 +7,7 @@ import { FavoritesService } from '../../pages/favorites/favorites.service';
   templateUrl: './btn-favorite.component.html',
   styleUrls: ['./btn-favorite.component.scss']
 })
+
 export class BtnFavoriteComponent implements OnInit {
   @Input() isFavorite: boolean | undefined;
   @Input() id: string;
@@ -22,10 +22,10 @@ export class BtnFavoriteComponent implements OnInit {
 
   addFavorite(): any {
     this.favoriteService.addUpdateFavorite(this.id, '', 'add').subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Discount has been added to favorites', 'success');
       },
-      (error) => {
+      () => {
         this.toaster.open('Discount can not be added to favorites');
       }
     );
@@ -33,16 +33,18 @@ export class BtnFavoriteComponent implements OnInit {
 
   deleteFavorite(): any {
     this.favoriteService.deleteFavoriteCard(this.id).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Discount has been removed from favorites', 'success');
       },
-      (error) => {
+      () => {
         this.toaster.open('Discount can not be removed from favorites');
       }
     );
   }
 
-  addOrDeleteFavorite(): any {
+  changeFavorite(event: Event): any {
+    this.isFavorite = !this.isFavorite;
+    event.stopPropagation();
     this.isFavorite ? this.addFavorite() : this.deleteFavorite();
   }
 }

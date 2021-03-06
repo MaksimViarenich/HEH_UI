@@ -5,7 +5,7 @@ import { Output, EventEmitter } from '@angular/core';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 import { ModalService } from '../../services/modal-service/modal.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
-import { ObservableService } from '../category/observable.service';
+import { CategoryService } from '../category/category.service';
 
 @Component({
   selector: 'app-favorite-card',
@@ -23,7 +23,7 @@ export class FavoriteCardComponent {
               private favoriteService: FavoritesService,
               private toaster: ToasterService,
               private translateService: TranslateService,
-              private observableService: ObservableService) {}
+              private categoryService: CategoryService) {}
 
   deleteFavorite(): any {
     const confirmData = {
@@ -36,11 +36,11 @@ export class FavoriteCardComponent {
     dialogRef.afterClosed().subscribe((isDelete: any) => {
       if (isDelete) {
         this.favoriteService.deleteFavoriteCard(this.favoriteInfo.id).subscribe(
-          (data) => {
+          () => {
             this.updateCardsAfterDelete.emit();
             this.toaster.open('Discount has been removed from favorites', 'success');
           },
-          (error) => {
+          () => {
             this.toaster.open('Discount can not be removed from favorites');
           }
         );
@@ -49,6 +49,6 @@ export class FavoriteCardComponent {
   }
 
   searchByCategory(id: any): void {
-    this.observableService.addToStorage(id);
+    this.categoryService.addToStorage(id);
   }
 }

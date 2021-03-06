@@ -1,10 +1,13 @@
-<div class="discount-card" *ngIf="discount">
+<div *ngIf="discount"
+     class="discount-card">
   <div class="discount-card-header">
-    <div class="discount-card-title">{{discount.vendorName}}</div>
+    <div class="discount-card-title">{{ discount.vendorName }}</div>
+
     <app-btn-favorite *ngIf="!isViewCountsVisible"
                       [isFavorite]="discount.isFavorite"
                       [id]="discount.id"
                       class="btn"></app-btn-favorite>
+
     <div *ngIf="isViewCountsVisible"
          class="btn-view">
       <span class="material-icons">visibility</span>
@@ -16,7 +19,10 @@
     <div class="category-and-tags">
       <app-category [categoryId]="discount.categoryId"
                     (click)="searchByCategory(discount.categoryId); $event.stopPropagation()"></app-category>
-      <app-tag *ngIf="discount.tagsIds.length" [tagId]="discount.tagsIds[0]"></app-tag>
+
+      <app-tag *ngIf="discount.tagsIds.length"
+               [tagId]="discount.tagsIds[0]"></app-tag>
+
       <div *ngIf="discount.tagsIds.length - 1 > 0"
            class="additional-tags">
         <span class="material-icons">add_circle</span>
@@ -25,7 +31,7 @@
     </div>
 
     <div class="discount-card-content-description">
-      {{discount.conditions}}
+      {{ discount.conditions }}
     </div>
   </div>
 </div>
