@@ -3,17 +3,17 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { isEqual, forEach, size } from 'lodash';
-
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 import { StatisticsService } from './statistics.service';
-import { DiscountCard } from '../../../models/discount-card';
 import { GridService } from '../../../services/grid-service/grid.service';
+import { Discount } from 'src/app/models/discount';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']
 })
+
 export class StatisticsComponent implements OnInit {
 
   topStatistics: any;
@@ -38,7 +38,7 @@ export class StatisticsComponent implements OnInit {
     this.filterStorage = {};
   }
 
-  statistics: Array<DiscountCard> = [];
+  statistics: Array<Discount> = [];
 
   ngOnInit(): void {
     this.breakpoint = this.gridService.getDiscountGrid(window.innerWidth);
@@ -79,7 +79,7 @@ export class StatisticsComponent implements OnInit {
         const filename = headers.split(';')[1].split('filename')[1].split('=')[1].trim();
         this.downloadFile(response.body, filename);
       },
-      (error) => {
+      () => {
         this.toaster.open('There is no possibility to export statistics');
       }
     );
