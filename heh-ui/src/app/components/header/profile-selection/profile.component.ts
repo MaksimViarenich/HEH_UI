@@ -20,10 +20,12 @@ export class ProfileComponent implements OnInit {
   userPhoto: any;
   location: string;
 
-  constructor(private router: Router,
-              private userProfileService: UserProfileService,
-              private filtersService: FiltersService,
-              private toaster: ToasterService) {
+  constructor(
+    private router: Router,
+    private userProfileService: UserProfileService,
+    private filtersService: FiltersService,
+    private toaster: ToasterService
+  ) {
     this.user = {
       id: '',
       role: '',
@@ -43,9 +45,6 @@ export class ProfileComponent implements OnInit {
 
   goToPerson(): void {
     this.router.navigate(['/profile']);
-  }
-
-  closeSidenav(): any {
     this.closeSidenavMenu.emit();
   }
 
@@ -74,6 +73,7 @@ export class ProfileComponent implements OnInit {
     this.userProfileService.getUserProfilePhoto().subscribe(
       (data) => {
         const reader = new FileReader();
+
         reader.addEventListener('load', () => {
           this.userPhoto = reader.result;
           sessionStorage.setItem('userPhoto', this.userPhoto);

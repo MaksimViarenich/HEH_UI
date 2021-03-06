@@ -42,8 +42,8 @@ import { VendorCardComponent } from './pages/moderator/vendors/vendor-card/vendo
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AddVendorCardComponent } from './pages/moderator/vendors/add-vendor-card/add-vendor-card.component';
 import { SelectBackgroundComponent } from './components/select-background/select-background.component';
-import { AuthGuard } from './auth-guard/auth.guard';
-import { RoleGuard } from './role-guard/role.guard';
+import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { RoleGuard } from './guards/role-guard/role.guard';
 import { AddAddressComponent } from './pages/moderator/vendors/add-vendor-modal/model-list-input/add-address/add-address.component';
 import { ProfileComponent } from './components/header/profile-selection/profile.component';
 import { SpinnerHttpInterceptor } from './services/spinner-service/spinner-interceptor';

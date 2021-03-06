@@ -1,9 +1,7 @@
 <div *ngIf="favoriteInfo"
       class="favorite-card">
   <div class="favorite-vendor">
-    <div class="favorite-card-title">
-      {{ favoriteInfo.vendorName}}
-    </div>
+    <div class="favorite-card-title">{{ favoriteInfo.vendorName }}</div>
   </div>
 
   <div class="favorite-card-content">
@@ -12,6 +10,7 @@
         <app-category class="favorites-category"
                       [categoryId]="favoriteInfo.categoryId"
                       (click)="searchByCategory(favoriteInfo.categoryId); $event.stopPropagation()"></app-category>
+
         <div class="favorites-tags">
           <app-tag *ngFor="let tag of favoriteInfo.tagsIds"
                    [tagId]="tag"></app-tag>
@@ -23,10 +22,8 @@
     </div>
   </div>
 
-  <div class="favorite-card-actions"
-       (click)="$event.stopPropagation()">
+  <div class="favorite-card-actions">
     <div class="material-icons"
-        (click)="deleteFavorite()">delete_outline
-    </div>
+        (click)="deleteFavorite(); $event.stopPropagation()">delete_outline</div>
   </div>
 </div>

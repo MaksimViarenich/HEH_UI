@@ -4,7 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ObservableService {
+
+export class CategoryService {
   category: string;
 
   storageSubject = new BehaviorSubject<string>('');
