@@ -76,7 +76,7 @@ export class ModalService {
     return this.dialog.open(ConfirmationDialogComponent, {
       data,
       width: '20rem',
-      height: '11rem',
+      height: '13rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
     });

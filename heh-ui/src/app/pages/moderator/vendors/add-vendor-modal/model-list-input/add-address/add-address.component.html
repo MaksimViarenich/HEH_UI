@@ -1,13 +1,13 @@
 <div mat-dialog-content>
   <div class="add-address-header">
-    <div class="add-address-title">Vendor address</div>
+    <div class="add-address-title">{{ 'vendors.add-address' | translate }}</div>
   </div>
 
   <form class="add-address-container"
         [formGroup]="formAddress">
     <div class="add-address-group">
       <mat-form-field appearance="outline">
-        <mat-label>Country</mat-label>
+        <mat-label>{{ 'vendors.add-address-modal.country' | translate }}</mat-label>
         <mat-select formControlName="country"
                     required>
           <mat-option [value]="option"
@@ -16,9 +16,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-error *ngIf="formAddress.get('country')?.touched && formAddress.get('country')?.hasError('required')" class="helper-error-text">
+        {{ 'errors.add-address-country-error' | translate }}
+      </mat-error>
 
       <mat-form-field appearance="outline">
-        <mat-label>City</mat-label>
+        <mat-label>{{ 'vendors.add-address-modal.city' | translate }}</mat-label>
         <mat-select   formControlName="city"
                       (ngModelChange)=setCity()>
           <mat-option [value]="option"
@@ -29,13 +32,15 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Street</mat-label>
+        <mat-label>{{ 'vendors.add-address-modal.street' | translate }}</mat-label>
         <input class="add-address-input"
                 matInput
                 formControlName="street"
                 [readonly]="conditionStreetInput">
       </mat-form-field>
-
+      <mat-error *ngIf="formAddress.get('street')?.hasError('maxlength')" class="helper-error-text">
+        {{ 'errors.add-address-street-error' | translate }}
+      </mat-error>
     </div>
 
     <div class="add-address-btns">

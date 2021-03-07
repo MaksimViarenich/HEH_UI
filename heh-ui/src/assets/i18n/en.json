@@ -70,6 +70,12 @@
   "vendors": {
     "add": "Add vendor",
     "edit": "Edit vendor",
+    "add-address": "Add address",
+    "add-address-modal": {
+      "country": "Country",
+      "city": "City",
+      "street": "Street"
+    },
     "add-vendor": {
       "info": "Vendor's info",
       "name": "Vendor's name",
@@ -134,5 +140,20 @@
       "button-positive": "Yes",
       "button-negative": "No"
     }
+  },
+  "errors": {
+    "add-address-street-error": "Street should not be longer than 50 characters",
+    "add-address-country-error": "Country should not be empty",
+    "discount-note-error": "Note should not be longer than 255 characters",
+    "discount-address-error": "Address should not be empty",
+    "vendor-name-maxlength-error": "Vendor's name should not be longer than 50 characters",
+    "vendor-name-required-error": "Vendor's name should not be empty",
+    "promocode-error": "Promocode should not be longer than 50 characters",
+    "promocode-required-error": "Promocode should not be empty",
+    "conditions-error": "Conditions should not be longer than 255 characters",
+    "conditions-required-error": "Conditions should not be empty",
+    "phone-error": "Phone should contain only numbers, only one or no + and only one () or no ()",
+    "date-start-required-error": "Start date should not be empty",
+    "category-required-error": "Category should not be empty"
   }
 }

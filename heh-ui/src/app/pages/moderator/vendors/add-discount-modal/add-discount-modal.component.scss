@@ -35,6 +35,10 @@
       }
     }
 
+    mat-error {
+      margin-top: -0.7rem;
+    }
+
     .add-discount-fields {
       padding: 1rem;
       @include glass;

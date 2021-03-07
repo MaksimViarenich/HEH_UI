@@ -305,6 +305,11 @@ body {
   }
 }
 
+.helper-error-text{
+  color: $color-red;
+  font-size: 0.8rem;
+}
+
 .mat-form-field-underline {
   display: none;
 }
