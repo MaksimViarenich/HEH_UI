@@ -76,6 +76,11 @@
   position: relative;
 }
 
+.mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  left: 8rem;
+  top: 0.3rem;
+}
+
 @media (max-width: 950px) {
   .container {
     width: 90%;
@@ -89,12 +94,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    left: 8rem;
-    top: 0.3rem;
-  }
-}
 
 @media (min-width: 769px) {
   .mat-sidenav-container .mat-sidenav, .mat-drawer-backdrop.mat-drawer-shown {
@@ -110,11 +109,6 @@
 }
 
 @media (max-width: 425px) {
-  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: 4rem;
-    top: 0.3rem;
-  }
-
   .mat-sidenav-container .mat-drawer {
     width: 50vw;
   }
@@ -126,23 +120,7 @@
   }
 }
 
-@media (max-width: 400px) {
-  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: 3.8rem;
-    top: 0.3rem;
-  }
-}
-
 @media screen and (max-width: 360px) {
-  .mat-sidenav-container .mat-sidenav .mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: 3rem;
-    top: 0.2rem;
-  }
-
-  .mat-sidenav-container .mat-drawer {
-    width: 50vw;
-  }
-
   .container .title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
