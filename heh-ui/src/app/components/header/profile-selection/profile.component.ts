@@ -51,7 +51,6 @@ export class ProfileComponent implements OnInit {
   logout(): void {
     localStorage.removeItem('isAuth');
     localStorage.removeItem('expDate');
-    sessionStorage.removeItem('userPhoto');
     sessionStorage.removeItem('userEmail');
     sessionStorage.removeItem('location');
     this.router.navigate(['/login']);
@@ -73,15 +72,10 @@ export class ProfileComponent implements OnInit {
     this.userProfileService.getUserProfilePhoto().subscribe(
       (data) => {
         const reader = new FileReader();
-
-        reader.addEventListener('load', () => {
+        reader.readAsDataURL(data);
+        reader.onloadend = () => {
           this.userPhoto = reader.result;
-          sessionStorage.setItem('userPhoto', this.userPhoto);
-        }, false);
-
-        if (data) {
-          reader.readAsDataURL(data);
-        }
+        };
       },
       () => {
         this.toaster.open('Сan not get user photo');

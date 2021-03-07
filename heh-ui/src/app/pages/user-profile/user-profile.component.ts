@@ -112,8 +112,20 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  async ngOnInit(): Promise<void> {
-    this.userPhoto = sessionStorage.getItem('userPhoto');
+  ngOnInit(): void {
+    this.userProfileService.getUserProfilePhoto().subscribe(
+      (data) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(data);
+        reader.onloadend = () => {
+          this.userPhoto = reader.result;
+        };
+      },
+      () => {
+        this.toaster.open('Сan not get user photo');
+      }
+    );
+
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.allOptions = {
