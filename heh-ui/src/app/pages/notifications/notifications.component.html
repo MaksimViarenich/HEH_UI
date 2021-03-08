@@ -7,8 +7,7 @@
      [infiniteScrollThrottle]="100"
      (scrolled)="onScrollDown($event)">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource"
-           matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+    <table mat-table [dataSource]="dataSource">
 
       <!-- Read notification ckeck-box -->
       <ng-container matColumnDef="read">
@@ -40,7 +39,7 @@
             mat-cell
             *matCellDef="let row"
             [class.is-read]="row.isRead"
-            (click)="readOneOrAllNotification('one', row.id, row.isRead)"> {{row.date | date: 'dd MMM yyyy hh:mm'}} </td>
+            (click)="readOneOrAllNotification('one', row.id, row.isRead)"> {{row.date | date: 'dd MMM yyyy HH:mm'}} </td>
       </ng-container>
 
       <!-- Type Column -->
