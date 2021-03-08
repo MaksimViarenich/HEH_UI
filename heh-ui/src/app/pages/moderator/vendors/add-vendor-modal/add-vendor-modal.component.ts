@@ -8,7 +8,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
 import { VendorService } from '../vendor.service';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vendor-modal',
@@ -73,6 +73,10 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   checkChanges(): any {
+    if (isEqual(this.vendor.id, undefined)) {
+      this.pristineVendor.name = undefined;
+    }
+
     const isChanged = isEqual(this.pristineVendor, this.vendor) && isEqual(this.pristineLinks, this.links);
     const confirmData = {
       message: this.translateService.instant('confirmation.change.message'),

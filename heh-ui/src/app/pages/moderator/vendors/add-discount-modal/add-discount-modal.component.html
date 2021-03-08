@@ -2,16 +2,16 @@
 
   <div class="add-discount-header">
     <div class="add-discount-title">
-      {{(data.indexForLabel)
+      {{ (data.indexForLabel)
       ? ('vendors.add-discount.edit' | translate)
-      : ('vendors.add-discount.add' | translate)}}
+      : ('vendors.add-discount.add' | translate) }}
     </div>
   </div>
 
   <form class="add-discount-info"
         [formGroup]="form">
     <div class="add-discount-fields">
-      <mat-form-field appearance="outline" class="add-discount-address" *ngIf="data ">
+      <mat-form-field appearance="outline" class="add-discount-address" *ngIf="data">
         <mat-label>{{ 'vendors.add-discount.address' | translate }}</mat-label>
 
         <mat-select *ngIf="data.discount"
@@ -20,9 +20,9 @@
                     multiple
                     required>
           <mat-option *ngFor="let address of data.addresses"
-                      [value]="address.id">{{address?.country?.country}}
-                                           {{address?.city?.name}}
-                                           {{address?.street}}</mat-option>
+                      [value]="address.id">{{ address?.country?.country }}
+                                           {{ address?.city?.name }}
+                                           {{ address?.street }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-error *ngIf="form.get('address')?.touched && form.get('address')?.hasError('required')" class="helper-error-text">
@@ -37,11 +37,11 @@
                     [(ngModel)]="data.discount.phonesIds"
                     multiple>
           <mat-option *ngFor="let phone of data.phones"
-                      [value]="phone.id">{{phone.number}}</mat-option>
+                      [value]="phone.id">{{ phone.number }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="add-discount-name" appearance="outline" *ngIf="discountDetail">
+      <mat-form-field class="add-discount-name" appearance="outline">
         <mat-label>{{ 'vendors.add-discount.promo' | translate }}</mat-label>
 
         <input matInput
@@ -52,11 +52,12 @@
       <mat-error *ngIf="form.get('promoCode')?.hasError('maxlength')" class="helper-error-text">
         {{ 'errors.promocode-error' | translate }}
       </mat-error>
-      <mat-error *ngIf="form.get('promoCode')?.touched && form.get('promoCode')?.hasError('required')" class="helper-error-text">
+      <mat-error *ngIf="form.get('promoCode')?.touched && form.get('promoCode')?.hasError('required')"
+                 class="helper-error-text">
         {{ 'errors.promocode-required-error' | translate }}
       </mat-error>
 
-      <mat-form-field class="add-discount-conditions" appearance="outline" *ngIf="discountDetail">
+      <mat-form-field class="add-discount-conditions" appearance="outline">
         <mat-label>{{ 'vendors.add-discount.conditions' | translate }}</mat-label>
 
         <input matInput
@@ -67,11 +68,12 @@
       <mat-error *ngIf="form.get('conditions')?.hasError('maxlength')" class="helper-error-text">
         {{ 'errors.conditions-error' | translate }}
       </mat-error>
-      <mat-error *ngIf="form.get('conditions')?.touched && form.get('conditions')?.hasError('required')" class="helper-error-text">
+      <mat-error *ngIf="form.get('conditions')?.touched && form.get('conditions')?.hasError('required')"
+                 class="helper-error-text">
         {{ 'errors.conditions-required-error' | translate }}
       </mat-error>
 
-      <mat-form-field appearance="outline" *ngIf="discountDetail">
+      <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-discount.start' | translate }}</mat-label>
 
         <input matInput
@@ -105,7 +107,7 @@
         <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="add-discount-category" *ngIf="discountDetail">
+      <mat-form-field appearance="outline" class="add-discount-category">
         <mat-label>{{ 'vendors.add-discount.category' | translate }}</mat-label>
 
         <mat-select formControlName="category"
@@ -113,7 +115,7 @@
                     (ngModelChange)="showTagList()"
                     required>
           <mat-option *ngFor="let category of categoriesAll"
-                      [value]="category.id">{{category.name}}</mat-option>
+                      [value]="category.id">{{ category.name }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-error *ngIf="form.get('category')?.touched && form.get('category')?.hasError('required')" class="helper-error-text">
@@ -128,7 +130,7 @@
                     [disabled]="!discountDetail.categoryId"
                     multiple>
           <mat-option *ngFor="let tag of tagsByCategory"
-                      [value]="tag.id">{{tag.name}}</mat-option>
+                      [value]="tag.id">{{ tag.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -136,7 +138,7 @@
     <div class="add-discount-button" *ngIf="discountDetail">
       <button mat-button
               (click)="checkChanges()">{{ 'vendors.add-discount.cancel' | translate }}</button>
-              
+
       <button mat-raised-button
               [disabled]="form.invalid || canNotBeSaved()"
               [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.save' | translate }}</button>
