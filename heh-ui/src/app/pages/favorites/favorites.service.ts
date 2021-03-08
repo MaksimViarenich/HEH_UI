@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { isEqual } from 'lodash';
-
 import { BASE_API_URL } from '../../global';
 import { FiltersService } from '../../services/filter-service/filters.service';
 
@@ -12,7 +11,7 @@ import { FiltersService } from '../../services/filter-service/filters.service';
 export class FavoritesService {
 
   constructor(public http: HttpClient,
-              private filterService: FiltersService) { }
+              private filterService: FiltersService) {}
 
   getFavorites(filters: any, top: number, skip: number): Observable<any> {
     let headers = new HttpHeaders();
