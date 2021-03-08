@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToasterService } from './toaster.service';
 
 describe('ToasterService', () => {

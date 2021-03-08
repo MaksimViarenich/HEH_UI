@@ -70,6 +70,12 @@
   "vendors": {
     "add": "Добавить вендора",
     "edit": "Редактировать вендора",
+    "add-address": "Добавить адрес",
+    "add-address-modal": {
+      "country": "Страна",
+      "city": "Город",
+      "street": "Улица"
+    },
     "add-vendor": {
       "info": "Информация о вендоре",
       "name": "Имя вендора",
@@ -134,5 +140,20 @@
       "button-positive": "Да",
       "button-negative": "Нет"
     }
+  },
+  "errors": {
+    "add-address-street-error": "Улица не должна быть длиннее 50 символов",
+    "add-address-country-error": "Вы не выбрали страну",
+    "discount-note-error": "Заметка не должна быть длиннее 255 символов",
+    "discount-address-error": "Вы не ввели адрес",
+    "vendor-name-maxlength-error": "Имя вендора не должно быть длиннее 50 символов",
+    "vendor-name-required-error": "Вы не ввели имя вендора",
+    "promocode-error": "Промокод не должен быть длиннее 50 символов",
+    "promocode-required-error": "Вы не ввели промокод",
+    "conditions-error": "Описание скидки не должно быть длиннее 255 символов",
+    "conditions-required-error": "Вы не ввели описание скидки",
+    "phone-error": "Телефон может начинаться с +, содержать только цифры и одну группу ()",
+    "date-start-required-error": "Вы не ввели дату начала",
+    "category-required-error": "Вы не выбрали категорию"
   }
 }

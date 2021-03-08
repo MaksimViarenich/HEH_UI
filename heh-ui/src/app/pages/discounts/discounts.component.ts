@@ -2,7 +2,6 @@ import { DiscountsService } from './discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { isEqual, size, forEach } from 'lodash';
-
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
@@ -13,8 +12,8 @@ import { GridService } from '../../services/grid-service/grid.service';
   templateUrl: './discounts.component.html',
   styleUrls: ['./discounts.component.scss']
 })
-export class DiscountsComponent implements OnInit {
 
+export class DiscountsComponent implements OnInit {
   discounts: Array<Discount> = [];
   topDiscounts: any;
   skipDiscounts: any;
@@ -23,6 +22,7 @@ export class DiscountsComponent implements OnInit {
   breakpoint: number;
   isVisibleEditNote = false;
   filterStorage: any;
+  doubleFilters: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -41,6 +41,7 @@ export class DiscountsComponent implements OnInit {
     this.filterStorage = {};
     this.filterStorage = filters;
     filters.experationDate = true;
+    this.doubleFilters = filters;
     this.discounts = [];
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
@@ -62,7 +63,11 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount.id);
+    const dialogRef = this.modalService.openDiscountDetailsModal(discount.id);
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.discounts = [];
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts, this.doubleFilters);
+    });
   }
 
   ngOnInit(): void {

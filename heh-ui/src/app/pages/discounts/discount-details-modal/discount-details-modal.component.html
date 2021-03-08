@@ -1,7 +1,7 @@
 <div mat-dialog-content class="mat-dialog-content">
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
-      <div class="discount-detail-title">{{discountDetails.vendorName}}</div>
+      <div class="discount-detail-title">{{ discountDetails.vendorName }}</div>
       <app-btn-favorite *ngIf="!data.countsVisible"
                         [isFavorite]="discountDetails.isFavorite"
                         [id]="discountDetails.id"
@@ -15,7 +15,7 @@
     </div>
 
     <div class="discount-details-info">
-      <div class="discount-detail-promo-code">{{discountDetails.promoCode}}</div>
+      <div class="discount-detail-promo-code">{{ discountDetails.promoCode }}</div>
 
       <div class="category-and-tags">
         <app-category [categoryId]="discountDetails.categoryId"></app-category>
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="discount-detail-description">{{discountDetails.conditions}}</div>
+      <div class="discount-detail-description">{{ discountDetails.conditions }}</div>
 
       <mat-form-field *ngIf="addresses.length"
                       appearance="outline">
@@ -39,61 +39,61 @@
           <mat-select-trigger>
             {{address.value ? address.value[0] : ''}}
             <span *ngIf="address.value?.length > 1" class="example-additional-selection">
-              (+{{address.value.length - 1}}
-              {{address.value?.length === 2 ? 'other' : 'others'}})
+              (+{{ address.value.length - 1 }}
+              {{ address.value?.length === 2 ? 'other' : 'others' }})
             </span>
           </mat-select-trigger>
           <mat-option *ngFor="let address of addresses"
-                      [value]="address">{{address}}</mat-option>
+                      [value]="address">{{ address }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <div class="modal-contacts">
         <div *ngIf="links.website">
-          <a href="{{links.website}}" target="_blank">
+          <a href="{{ links.website }}" target="_blank">
             <span class="material-icons">language</span>
-            <span>{{links.website}}</span>
+            <span>{{ links.website }}</span>
           </a>
         </div>
 
         <div *ngFor="let phone of discountDetails.phones">
           <div *ngIf="phone">
             <span class="material-icons">phone</span>
-            <span>{{phone.number}}</span>
+            <span>{{ phone.number }}</span>
           </div>
         </div>
 
         <div *ngIf="discountDetails.workingHours">
           <span class="material-icons">query_builder</span>
-          <span>{{ 'discounts.open' | translate }}: {{discountDetails.workingHours}}</span>
+          <span>{{ 'discounts.open' | translate }}: {{ discountDetails.workingHours }}</span>
         </div>
 
         <div>
           <span class="material-icons">calendar_today</span>
-          <span>{{ 'discounts.start' | translate }} {{discountDetails.startDate  | date: 'dd/MM/yyyy'}}</span>
+          <span>{{ 'discounts.start' | translate }} {{ discountDetails.startDate  | date: 'dd/MM/yyyy' }}</span>
         </div>
 
         <div *ngIf="discountDetails.endDate">
           <span class="material-icons">outlined_flag</span>
-          <span>{{ 'discounts.available' | translate }} {{discountDetails.endDate  | date: 'dd/MM/yyyy'}}</span>
+          <span>{{ 'discounts.available' | translate }} {{ discountDetails.endDate  | date: 'dd/MM/yyyy' }}</span>
         </div>
       </div>
 
       <div class="social-network">
         <a *ngIf="links.instagram"
-           href="{{links.instagram}}"
+           href="{{ links.instagram }}"
            target="_blank">
           <img src="assets/images/icons/instagram-icon.svg">
         </a>
 
         <a *ngIf="links.facebook"
-           href="{{links.facebook}}"
+           href="{{ links.facebook }}"
            target="_blank">
           <img src="assets/images/icons/facebook-icon.svg">
         </a>
 
         <a *ngIf="links.vkontakte"
-           href="{{links.vkontakte}}"
+           href="{{ links.vkontakte }}"
            target="_blank">
           <img src="assets/images/icons/vk-icon.svg">
         </a>
@@ -107,8 +107,12 @@
           <textarea matInput
                     type="text"
                     [(ngModel)]="editingValue"
+                    [formControl]="editingValueControl"
                     (keydown.enter)="submitEditNote()"></textarea>
       </mat-form-field>
+      <mat-error *ngIf="editingValueControl.hasError('maxlength')" class="helper-error-text">
+        {{ 'errors.discount-note-error' | translate }}
+      </mat-error>
     </div>
 
     <div *ngIf="addresses.length"
@@ -126,13 +130,13 @@
       <button mat-button
               (click)="checkChanges()"
               [disabled]="!discountDetails">
-        {{(data.isVisibleEditNote)
+        {{ (data.isVisibleEditNote)
         ? ('discounts.cancel' | translate)
-        : ('discounts.close' | translate)}}</button>
+        : ('discounts.close' | translate) }}</button>
       <button *ngIf="data.isVisibleEditNote"
               class="btn-submit"
               mat-raised-button
-              [disabled]="canNotBeSaved()"
+              [disabled]="canNotBeSaved() || editingValueControl.invalid"
               (click)="submitEditNote()">
               {{ 'favorites.save' | translate }}</button>
     </div>

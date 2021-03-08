@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NotificationService } from './notification.service';
 
 describe('NotificationService', () => {

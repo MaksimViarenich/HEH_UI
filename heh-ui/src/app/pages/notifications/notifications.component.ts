@@ -3,8 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { forEach, size, isEqual } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
-
-import { HeaderService } from './../../components/header/header.service';
+import { HeaderService } from '../../components/header/header.service';
 import { NotificationService } from './notification.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { NotificationElement } from '../../models/notification-element';
@@ -15,6 +14,7 @@ import { NotificationElement } from '../../models/notification-element';
   styleUrls: ['./notifications.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class NotificationsComponent implements OnInit {
   displayedColumns: string[] = ['read', 'date', 'type', 'title', 'message'];
   notificationData: NotificationElement[];
@@ -26,16 +26,17 @@ export class NotificationsComponent implements OnInit {
   totalCountEvents: any;
   notificationCount: any;
 
-  constructor(public dialog: MatDialog,
-              private toaster: ToasterService,
-              private notificationService: NotificationService,
-              private globalEventsService: NgxGlobalEventsService,
-              private headerService: HeaderService) {
+  constructor(
+    public dialog: MatDialog,
+    private toaster: ToasterService,
+    private notificationService: NotificationService,
+    private globalEventsService: NgxGlobalEventsService,
+    private headerService: HeaderService
+  ) {
     this.topNotifications = 20;
     this.skipNotifications = 0;
     this.previousScrollPosition = 0;
     this.totalCountEvents = 0;
-
     this.notificationData = [];
     this.notificationCount = 0;
   }

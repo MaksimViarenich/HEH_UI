@@ -5,6 +5,7 @@ import { isString, toLower, forEach } from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RoleService {
   roles: any;
   decoded: any;

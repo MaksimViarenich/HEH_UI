@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
@@ -25,5 +24,4 @@ describe('AuthService', () => {
     localStorage.getItem('isAuth');
     expect(service.getToken()).toBeNull();
   });
-
 });

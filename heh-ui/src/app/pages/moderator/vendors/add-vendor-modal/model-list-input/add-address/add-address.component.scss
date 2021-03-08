@@ -40,6 +40,10 @@
           border-radius: 5px;
         }
       }
+
+      mat-error {
+        margin-top: -1rem;
+      }
     }
 
     .add-address-btns {

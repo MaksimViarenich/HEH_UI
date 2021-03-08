@@ -18,8 +18,15 @@
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
             
             <input [(ngModel)]="vendor.name"
+                   [formControl]="vendorName"
                    matInput required>
           </mat-form-field>
+          <mat-error *ngIf="vendorName.hasError('maxlength')" class="helper-error-text">
+            {{ 'errors.vendor-name-maxlength-error' | translate }}
+          </mat-error>
+          <mat-error *ngIf="vendorName.touched && vendorName.hasError('required')" class="helper-error-text">
+            {{ 'errors.vendor-name-required-error' | translate }}
+          </mat-error>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>

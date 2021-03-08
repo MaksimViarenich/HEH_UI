@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import { Discount } from '../../models/discount';
 import { AddVendorModalComponent } from '../../pages/moderator/vendors/add-vendor-modal/add-vendor-modal.component';
 import { AddDiscountModalComponent } from '../../pages/moderator/vendors/add-discount-modal/add-discount-modal.component';
@@ -14,7 +13,6 @@ import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dia
 })
 
 export class ModalService {
-
   constructor(public dialog: MatDialog) {}
 
   openVendorModal(data?: Vendor): any {
@@ -76,7 +74,7 @@ export class ModalService {
     return this.dialog.open(ConfirmationDialogComponent, {
       data,
       width: '20rem',
-      height: '11rem',
+      height: '13rem',
       panelClass: 'confirm-modal',
       backdropClass: 'confirm-modal-backdrop',
     });

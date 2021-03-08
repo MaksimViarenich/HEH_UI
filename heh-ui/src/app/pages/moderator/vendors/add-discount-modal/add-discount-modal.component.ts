@@ -42,8 +42,8 @@ export class AddDiscountModalComponent implements OnInit {
     this.form = new FormGroup({
       address: new FormControl('', [Validators.required]),
       phone: new FormControl(),
-      promoCode: new FormControl('', [Validators.required]),
-      conditions: new FormControl('', [Validators.required]),
+      promoCode: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      conditions: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       dateStart: new FormControl('', [Validators.required]),
       dateEnd: new FormControl(),
       category: new FormControl('', [Validators.required]),

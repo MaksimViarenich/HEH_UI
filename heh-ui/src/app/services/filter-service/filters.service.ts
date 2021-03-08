@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { cloneDeep } from 'lodash';
 import { forEach, isEqual, size, includes, find } from 'lodash';
 import { forkJoin, Observable } from 'rxjs';
-
 import { BASE_API_URL } from 'src/app/global';
 
 export const FILTERS_MAP = new Map([
@@ -18,6 +17,7 @@ export const FILTERS_MAP = new Map([
 @Injectable({
   providedIn: 'root'
 })
+
 export class FiltersService {
   filterOptions: any;
   countriesCities: any;
@@ -53,9 +53,9 @@ export class FiltersService {
 
   getVendors(): Observable<any> {
     let headers = new HttpHeaders();
-    headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
+    headers = headers.append('accept', '*/*');
 
-    return this.http.get(`${BASE_API_URL}/api/vendor/location`, {headers});
+    return this.http.get(`${BASE_API_URL}/odata/Vendor`, {headers});
   }
 
   addNewCategory(newCategory: string): Observable<any> {
@@ -135,8 +135,12 @@ export class FiltersService {
         });
       });
 
-      forEach(response[2], (vendor: any) => {
-        addItemToFilters(this.filterOptions.vendors, vendor);
+      forEach(response[2].value, (vendor: any) => {
+        this.filterOptions.vendors.push({
+          id: vendor.id,
+          viewValue: vendor.name,
+          addresses: vendor.addresses
+        });
       });
     });
 
@@ -172,6 +176,7 @@ export class FiltersService {
         address = item.viewValue;
       }
     });
+
     return address;
   }
 
@@ -183,22 +188,32 @@ export class FiltersService {
         country = item.country;
       }
     });
+
     return country;
   }
 
   getFiltersParams(filters: any): any {
     const objDate = new Date(Date.now());
     const objDateString = new Date(Date.now()).toString();
-
     const dueMonth = (objDate.getMonth() + 1).toString().length === 1 ?
                       `0${(objDate.getMonth() + 1).toString()}` :
                       (objDate.getMonth() + 1).toString();
 
     let queryParams = '';
 
-    if (filters.experationDate) {
+    if (filters.experationDate && filters.location.length) {
+      queryParams = `(endDate eq null or endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z) and `;
+    }
+
+    if (filters.experationDate && !filters.location.length) {
+      queryParams = `(endDate eq null orendDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z)`;
+    }
+
+    if (filters.experationDate && !filters.location.length) {
       queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
-                    `-${objDateString.slice(8, 10)}T00:00:00Z and `;
+        `-${objDateString.slice(8, 10)}T00:00:00Z`;
     }
 
     let resultParams: any = [];
@@ -233,7 +248,7 @@ export class FiltersService {
           break;
 
         case 'location':
-          if (filters[key]) {
+          if (filters[key].length) {
             resultParams.push(
               `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
@@ -336,11 +351,11 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
       params = params.append('$filter', filtersParams.queryParams);
     }
 
-  if (filters.experationDate) {
+  if (filters.experationDate && !filters.searchText) {
     params = params.append('$orderby', 'startDate asc');
   }
 
-  if (filters.statisticsOrderby) {
+  if (filters.statisticsOrderby && !filters.searchText) {
     params = params.append('$orderby', 'viewsAmount desc');
   }
 

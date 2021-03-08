@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 
@@ -8,16 +8,13 @@ import { FavoritesService } from '../../pages/favorites/favorites.service';
   styleUrls: ['./btn-favorite.component.scss']
 })
 
-export class BtnFavoriteComponent implements OnInit {
+export class BtnFavoriteComponent {
   @Input() isFavorite: boolean | undefined;
   @Input() id: string;
 
   constructor(public favoriteService: FavoritesService,
               private toaster: ToasterService) {
     this.id = '';
-  }
-
-  ngOnInit(): void {
   }
 
   addFavorite(): any {

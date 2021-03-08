@@ -1,7 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { OnInit, Component, Inject, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
-import { FormControl } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { forEach, isEqual, size, cloneDeep, reduce, toLower, assign } from 'lodash';
 import { UserProfileService } from '../../user-profile/user-profile.service';
@@ -35,6 +35,7 @@ export class DiscountDetailsModalComponent implements OnInit {
   editingValue = this.data.favoriteNote;
   pristineEditingValue = cloneDeep(this.editingValue);
   discountId: string = this.data.id;
+  editingValueControl = new FormControl();
   address = new FormControl();
 
   @ViewChild(AgmMap) map!: AgmMap;
@@ -69,6 +70,7 @@ export class DiscountDetailsModalComponent implements OnInit {
       facebook: '',
       vkontakte: '',
     };
+    this.editingValueControl = new FormControl('', [Validators.maxLength(255)]);
   }
 
   checkChanges(): any {

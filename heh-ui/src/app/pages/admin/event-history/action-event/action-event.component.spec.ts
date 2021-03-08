@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ActionEventComponent } from './action-event.component';
 
 describe('StateEventComponent', () => {

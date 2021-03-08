@@ -14,10 +14,13 @@
               matSuffix
               (click)="addPhone()">add</mat-icon>
   </mat-form-field>
+  <mat-error *ngIf="phonesVendor.hasError('pattern')" class="helper-error-text">
+    {{ 'errors.phone-error' | translate }}
+  </mat-error>
 
   <button *ngIf="type === 'address'"
           class="btn-add"
-          mat-button (click)="openAddAddressModal()">Add address</button>
+          mat-button (click)="openAddAddressModal()">{{ 'vendors.add-address' | translate }}</button>
 
   <div class="text-wrapper"
        *ngFor="let value of listData; let idx = index">

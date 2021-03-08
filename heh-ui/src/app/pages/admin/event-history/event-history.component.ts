@@ -87,8 +87,8 @@ export class EventHistoryComponent implements OnInit {
   fillLocationOptionArray(locations: any): any {
     let array: any = [];
     forEach(locations, (location) => {
-      array = isEqual(size(array), 0) ? [{country: location.country, id: location.id}, ...location.cities] :
-      [...array, {country: location.country, id: location.id}, ...location.cities];
+      array = isEqual(size(array), 0) ? [{ country: location.country, id: location.id }, ...location.cities] :
+      [...array, { country: location.country, id: location.id }, ...location.cities];
     });
 
     return array;
@@ -106,7 +106,9 @@ export class EventHistoryComponent implements OnInit {
     if (state.userEmail === sessionStorage.getItem('userEmail')) {
       this.router.navigateByUrl('/profile');
     } else {
-      this.router.navigateByUrl('/admin/users', { state: {userEmail: state.userEmail }});
+      this.router.navigateByUrl('/admin/users', { state: {
+        userEmail: state.userEmail }
+      });
     }
   }
 }
