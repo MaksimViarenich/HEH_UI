@@ -2,6 +2,10 @@
   <div class="discount-details-wrapper">
     <div class="discount-details-header">
       <div class="discount-detail-title">{{ discountDetails.vendorName }}</div>
+
+      <div *ngIf="isFutureDiscount && !data.countsVisible"
+           class="discount-details-badge">{{ 'discounts.soon' | translate }}</div>
+
       <app-btn-favorite *ngIf="!data.countsVisible"
                         [isFavorite]="discountDetails.isFavorite"
                         [id]="discountDetails.id"

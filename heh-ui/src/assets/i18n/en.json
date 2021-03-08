@@ -127,7 +127,8 @@
     "available": "Available to",
     "open": "Open",
     "close": "Close",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "soon": "soon"
   },
   "confirmation": {
     "delete": {
