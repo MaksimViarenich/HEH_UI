@@ -15,6 +15,7 @@ import { ToasterService } from '../../../../services/toaster-service/toaster.ser
   styleUrls: ['./add-vendor-modal.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class AddVendorModalComponent implements OnInit {
   vendor: any;
   links: any;
@@ -217,6 +218,7 @@ export class AddVendorModalComponent implements OnInit {
     this.matDialogRef.backdropClick().subscribe(() => {
       this.checkChanges();
     });
+
     if (this.vendorId.id) {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {

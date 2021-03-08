@@ -1,7 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-
 import { ToasterService } from '../../../../services/toaster-service/toaster.service';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';
@@ -30,11 +29,8 @@ export class ListInputComponent {
   previousName: any;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(
-    private filtersService: FiltersService,
-    private toaster: ToasterService,
-    private modalService: ModalService,
-    private translateService: TranslateService) {
+  constructor(private modalService: ModalService,
+              private translateService: TranslateService) {
     this.label = '';
     this.previousName = '';
     this.options = [];

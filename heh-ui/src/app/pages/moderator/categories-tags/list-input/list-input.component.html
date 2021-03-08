@@ -1,12 +1,14 @@
 <div class="list-input-container">
   <mat-form-field appearance="fill">
     <mat-label>{{label}}</mat-label>
+
     <input [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
            [(ngModel)]="newItem"
            (keydown.enter)="add(newItem)"
            [disabled]="isDisabled">
+
     <mat-chip-list #chipList>
     </mat-chip-list>
   </mat-form-field>
@@ -33,6 +35,7 @@
            (keydown.escape)="cancelChange(item)"
            (keydown.enter)="edit(item)"
            (keydown)="$event.stopPropagation()"/>
+           
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
 </div>

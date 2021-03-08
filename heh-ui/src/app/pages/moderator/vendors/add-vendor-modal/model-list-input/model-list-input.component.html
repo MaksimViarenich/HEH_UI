@@ -3,11 +3,13 @@
                   appearance="outline"
                   class="model-list-input-phone">
     <mat-label>{{label}}</mat-label>
+    
     <input matInput
            (keydown.enter)="addPhone()"
            (keypress)="validatePhone($event)"
            [formControl]="phonesVendor"
            [(ngModel)]="inputValue">
+
     <mat-icon *ngIf="!phonesVendor.invalid && inputValue"
               matSuffix
               (click)="addPhone()">add</mat-icon>
@@ -20,6 +22,7 @@
   <div class="text-wrapper"
        *ngFor="let value of listData; let idx = index">
     <span *ngIf="type !== 'address'">{{value.number}}</span>
+
     <span *ngIf="type === 'address'">{{value?.country?.country}}
                                      {{value?.city?.name }}
                                      {{value?.street}}</span>

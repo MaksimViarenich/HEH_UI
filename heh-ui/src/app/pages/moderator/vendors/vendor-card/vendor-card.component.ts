@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { VendorService } from '../vendor.service';
-import { Component, Input, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';
 
@@ -10,7 +10,8 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
   styleUrls: ['./vendor-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class VendorCardComponent implements OnInit {
+
+export class VendorCardComponent {
   @Input() data: any | undefined;
   @Output() updateCardsAfterDelete: EventEmitter<any> = new EventEmitter();
 
@@ -41,8 +42,5 @@ export class VendorCardComponent implements OnInit {
         );
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 }

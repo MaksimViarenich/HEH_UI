@@ -4,7 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { customAlphabet } from 'nanoid/non-secure';
 import { cloneDeep, isEqual, forEach } from 'lodash';
-
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
 
@@ -14,6 +13,7 @@ import { ModalService } from 'src/app/services/modal-service/modal.service';
   styleUrls: ['./add-address.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class AddAddressComponent implements OnInit {
   formAddress: FormGroup;
   countries: Array<any> = [];
@@ -21,11 +21,10 @@ export class AddAddressComponent implements OnInit {
   pristineAddress: any;
   conditionStreetInput = true;
 
-  constructor(
-    private filterService: FiltersService,
-    private modalService: ModalService,
-    private translateService: TranslateService,
-    private matDialogRef: MatDialogRef<any>) {
+  constructor(private filterService: FiltersService,
+              private modalService: ModalService,
+              private translateService: TranslateService,
+              private matDialogRef: MatDialogRef<any>) {
     this.formAddress = new FormGroup({
       country: new FormControl('', [Validators.required]),
       city: new FormControl(''),
@@ -36,7 +35,6 @@ export class AddAddressComponent implements OnInit {
 
   changeCitiesList(): void {
     this.formAddress.get('country')?.valueChanges.subscribe((value) => {
-
       forEach(this.countries, (country: any) => {
         if (isEqual(country.id, value.id)) {
           this.cities = country.cities;

@@ -3,7 +3,6 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { cloneDeep, isEqual, forEach } from 'lodash';
-
 import { Discount } from '../../../../models/discount';
 import { Address } from '../../../../models/address';
 import { Phones } from '../../../../models/phones';
@@ -17,6 +16,7 @@ import { ModalService } from '../../../../services/modal-service/modal.service';
   styleUrls: ['./add-discount-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class AddDiscountModalComponent implements OnInit {
   form: FormGroup;
   discountDetail: Discount;
@@ -65,6 +65,7 @@ export class AddDiscountModalComponent implements OnInit {
       };
     }
     const isChanged = isEqual(this.discountDetail, this.pristineDiscountDetail);
+
     const confirmData = {
       message: this.translateService.instant('confirmation.change.message'),
       buttonPositive: this.translateService.instant('confirmation.change.button-positive'),

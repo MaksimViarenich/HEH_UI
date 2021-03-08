@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EditDiscountCardComponent } from './edit-discount-card.component';
 
 describe('FavoriteCardComponent', () => {

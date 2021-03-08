@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddVendorModalComponent } from '../add-vendor-modal/add-vendor-modal.component';
 
 describe('AddDiscountModalComponent', () => {
