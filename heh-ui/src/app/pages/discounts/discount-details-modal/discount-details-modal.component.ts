@@ -35,6 +35,8 @@ export class DiscountDetailsModalComponent implements OnInit {
   editingValue = this.data.favoriteNote;
   pristineEditingValue = cloneDeep(this.editingValue);
   discountId: string = this.data.id;
+  isFutureDiscount: boolean;
+  dateNow: Date;
   editingValueControl = new FormControl();
   address = new FormControl();
 
@@ -57,6 +59,8 @@ export class DiscountDetailsModalComponent implements OnInit {
       tagsIds: [],
     };
     this.isViewCountsVisible = true;
+    this.isFutureDiscount = false;
+    this.dateNow = new Date();
     this.addresses = [];
     this.activeAddresses = [];
     this.location = {};
@@ -139,6 +143,9 @@ export class DiscountDetailsModalComponent implements OnInit {
     this.discountService.getDiscountDetails(this.discountId).subscribe(
       (data) => {
         this.discountDetails = data;
+        if (new Date(this.discountDetails.startDate) > this.dateNow) {
+          this.isFutureDiscount = true;
+        }
         forEach(data.addresses, (item: { countryId: string; cityId: string; street: string; }) => {
           if (isEqual(item.cityId, null)) {
             this.addresses.push(`${this.filtersService.getCountryById(item.countryId)}`);

@@ -3,6 +3,9 @@
   <div class="discount-card-header">
     <div class="discount-card-title">{{ discount.vendorName }}</div>
 
+    <div *ngIf="isFutureDiscount && !isViewCountsVisible"
+         class="discount-card-badge">{{ 'discounts.soon' | translate }}</div>
+
     <app-btn-favorite *ngIf="!isViewCountsVisible"
                       [isFavorite]="discount.isFavorite"
                       [id]="discount.id"
