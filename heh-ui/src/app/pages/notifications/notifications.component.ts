@@ -3,8 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { forEach, size, isEqual } from 'lodash';
 import { NgxGlobalEventsService } from 'ngx-global-events';
-
-import { HeaderService } from './../../components/header/header.service';
+import { HeaderService } from '../../components/header/header.service';
 import { NotificationService } from './notification.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { NotificationElement } from '../../models/notification-element';
@@ -35,7 +34,6 @@ export class NotificationsComponent implements OnInit {
     this.skipNotifications = 0;
     this.previousScrollPosition = 0;
     this.totalCountEvents = 0;
-
     this.notificationData = [];
     this.notificationCount = 0;
   }
