@@ -6,7 +6,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-
 import { EventHistoryComponent } from './event-history.component';
 import { ToasterService } from '../../../services/toaster-service/toaster.service';
 

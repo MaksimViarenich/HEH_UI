@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { toString } from 'lodash';
-import jwt_decode from 'jwt-decode';
-
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import { ToasterService } from '../../services/toaster-service/toaster.service';
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   hide = true;
   email = '';
   password = '';
@@ -41,8 +40,5 @@ export class LoginComponent implements OnInit {
         this.toaster.open('The username and password you entered did not match our records. Please double-check and try again.');
       }
     );
-  }
-
-  ngOnInit(): void {
   }
 }
