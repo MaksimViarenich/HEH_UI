@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { cloneDeep } from 'lodash';
 import { forEach, isEqual, size, includes, find } from 'lodash';
 import { forkJoin, Observable } from 'rxjs';
-
 import { BASE_API_URL } from 'src/app/global';
 
 export const FILTERS_MAP = new Map([
@@ -18,6 +17,7 @@ export const FILTERS_MAP = new Map([
 @Injectable({
   providedIn: 'root'
 })
+
 export class FiltersService {
   filterOptions: any;
   countriesCities: any;
@@ -176,6 +176,7 @@ export class FiltersService {
         address = item.viewValue;
       }
     });
+
     return address;
   }
 
@@ -187,13 +188,13 @@ export class FiltersService {
         country = item.country;
       }
     });
+
     return country;
   }
 
   getFiltersParams(filters: any): any {
     const objDate = new Date(Date.now());
     const objDateString = new Date(Date.now()).toString();
-
     const dueMonth = (objDate.getMonth() + 1).toString().length === 1 ?
                       `0${(objDate.getMonth() + 1).toString()}` :
                       (objDate.getMonth() + 1).toString();

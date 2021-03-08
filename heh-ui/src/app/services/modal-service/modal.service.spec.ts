@@ -7,11 +7,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from '@angular/common/http';
-
 import { GeocodeService } from '../../pages/discounts/discount-details-modal/geocode.service';
 import { ModalService } from './modal.service';
 import { HttpLoaderFactory } from '../../app.module';
-
 
 describe('ModalService', () => {
   let service: ModalService;

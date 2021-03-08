@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GridService {
 
+export class GridService {
   getDiscountGrid(screenWidth: any): any {
     let breakpoint = 0;
     switch (true) {

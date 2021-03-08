@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-
 import { SpinnerService } from './spinner.service';
 
 describe('SpinnerService', () => {

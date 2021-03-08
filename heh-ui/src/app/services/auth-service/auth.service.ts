@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { now } from 'lodash';
 import { Observable } from 'rxjs';
-
 import { BASE_API_URL } from 'src/app/global';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
 
+export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(login: string, password: string): Observable<any> {
