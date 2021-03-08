@@ -30,6 +30,8 @@ export class ListInputComponent {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(private modalService: ModalService,
+              private filtersService: FiltersService,
+              private toaster: ToasterService,
               private translateService: TranslateService) {
     this.label = '';
     this.previousName = '';
