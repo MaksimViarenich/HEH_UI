@@ -6,7 +6,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay } from '@angular/cdk/overlay';
-
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
