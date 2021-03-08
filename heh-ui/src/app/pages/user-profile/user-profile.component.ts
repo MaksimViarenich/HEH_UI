@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { isEqual, indexOf, forEach } from 'lodash';
-
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { UserProfileService } from './user-profile.service';
 import { UserInfo } from '../../models/user-info';
@@ -31,10 +30,12 @@ export class UserProfileComponent implements OnInit {
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete | undefined;
 
-  constructor(public translate: TranslateService,
-              private filtersService: FiltersService,
-              private userProfileService: UserProfileService,
-              private toaster: ToasterService) {
+  constructor(
+    public translate: TranslateService,
+    private filtersService: FiltersService,
+    private userProfileService: UserProfileService,
+    private toaster: ToasterService
+  ) {
     this.newslettersChecked = true;
     this.separatorKeysCodes = [ENTER, COMMA];
     this.location = '';
@@ -73,6 +74,7 @@ export class UserProfileComponent implements OnInit {
         }
       }
     });
+
     forEach(this.allOptions.tags, (allTags: any) => {
       if (isEqual(indexOf(this.tagNotifications, allTags.id), -1)) {
         if (!isEqual(indexOf(this.selectedOptions, allTags.id), -1)) {
@@ -80,6 +82,7 @@ export class UserProfileComponent implements OnInit {
         }
       }
     });
+
     forEach(this.allOptions.vendors, (allVendors: any) => {
       if (isEqual(indexOf(this.vendorNotifications, allVendors.id), -1)) {
         if (!isEqual(indexOf(this.selectedOptions, allVendors.id), -1)) {
@@ -103,10 +106,10 @@ export class UserProfileComponent implements OnInit {
     };
 
     this.userProfileService.editProfile(userNotification).subscribe(
-      (data) => {
+      () => {
         this.toaster.open('Profile was updated', 'success');
       },
-      (error) => {
+      () => {
         this.toaster.open('Update issue was occurred');
       }
     );
@@ -141,7 +144,7 @@ export class UserProfileComponent implements OnInit {
         this.location = this.filtersService.getAddressByCityId(data.address.cityId);
         this.selectedOptions = [...data.categoryNotifications, ...data.tagNotifications, ...data.vendorNotifications];
       },
-      (error) => {
+      () => {
         this.toaster.open('Сan not get user profile');
       }
     );
