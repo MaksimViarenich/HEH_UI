@@ -4,7 +4,6 @@ import { Overlay } from '@angular/cdk/overlay';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NotificationsComponent } from './notifications.component';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 

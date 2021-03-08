@@ -14,6 +14,7 @@ import { NotificationElement } from '../../models/notification-element';
   styleUrls: ['./notifications.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class NotificationsComponent implements OnInit {
   displayedColumns: string[] = ['read', 'date', 'type', 'title', 'message'];
   notificationData: NotificationElement[];
@@ -25,11 +26,13 @@ export class NotificationsComponent implements OnInit {
   totalCountEvents: any;
   notificationCount: any;
 
-  constructor(public dialog: MatDialog,
-              private toaster: ToasterService,
-              private notificationService: NotificationService,
-              private globalEventsService: NgxGlobalEventsService,
-              private headerService: HeaderService) {
+  constructor(
+    public dialog: MatDialog,
+    private toaster: ToasterService,
+    private notificationService: NotificationService,
+    private globalEventsService: NgxGlobalEventsService,
+    private headerService: HeaderService
+  ) {
     this.topNotifications = 20;
     this.skipNotifications = 0;
     this.previousScrollPosition = 0;

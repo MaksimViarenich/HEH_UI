@@ -7,10 +7,12 @@ import { FiltersService } from 'src/app/services/filter-service/filters.service'
 @Injectable({
   providedIn: 'root'
 })
+
 export class NotificationService {
-  constructor(public http: HttpClient,
-              private filterService: FiltersService) {
-  }
+  constructor(
+    public http: HttpClient,
+    private filterService: FiltersService
+  ) {}
 
   readNotifications(type?: string, id?: string): Observable<any> {
     let headers = new HttpHeaders();
