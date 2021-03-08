@@ -63,14 +63,7 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    const dialogRef = this.modalService.openDiscountDetailsModal(discount.id);
-
-    dialogRef.afterClosed().subscribe((data: any) => {
-      this.discounts = [];
-      this.skipDiscounts = 0;
-      this.previousScrollPosition = 0;
-      this.getDiscounts(this.topDiscounts, this.skipDiscounts, this.doubleFilters);
-    });
+    this.modalService.openDiscountDetailsModal(discount.id);
   }
 
   ngOnInit(): void {

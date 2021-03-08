@@ -1,5 +1,6 @@
 import { OnInit } from '@angular/core';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { BtnFavoriteService } from 'src/app/services/btn-favorite/btn.favorite.service';
 import { CategoryService } from '../category/category.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class DiscountCardComponent implements OnInit {
   dateNow: Date;
   isFutureDiscount: boolean;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService,
+              private btnFavotiteService: BtnFavoriteService) {
     this.dateNow = new Date();
     this.isFutureDiscount = false;
   }
@@ -24,9 +26,18 @@ export class DiscountCardComponent implements OnInit {
     this.categoryService.addToStorage(id);
   }
 
+  changeIsFavorite(data: any): void {
+    if (data.id === this.discount.id) {
+      this.discount.isFavorite = data.isFavorite;
+    }
+  }
+
   ngOnInit(): void {
     if (new Date(this.discount.startDate) > this.dateNow) {
       this.isFutureDiscount = true;
     }
+    this.btnFavotiteService.currentData.subscribe(data => {
+      this.changeIsFavorite(data);
+    });
   }
 }
