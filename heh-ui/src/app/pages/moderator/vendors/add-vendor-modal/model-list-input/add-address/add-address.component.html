@@ -7,7 +7,9 @@
         [formGroup]="formAddress">
     <div class="add-address-group">
       <mat-form-field appearance="outline">
+
         <mat-label>{{ 'vendors.add-address-modal.country' | translate }}</mat-label>
+
         <mat-select formControlName="country"
                     required>
           <mat-option [value]="option"
@@ -33,6 +35,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'vendors.add-address-modal.street' | translate }}</mat-label>
+
         <input class="add-address-input"
                 matInput
                 formControlName="street"
@@ -46,6 +49,7 @@
     <div class="add-address-btns">
       <button mat-button
               (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
+
       <button mat-button
               (click)="addAddress()"
               [disabled]="formAddress.invalid">{{ 'vendors.add-vendor.save' | translate }}</button>

@@ -2,7 +2,6 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { isEqual, size } from 'lodash';
-
 import { ModalService } from '../../../../../services/modal-service/modal.service';
 
 @Component({
@@ -20,7 +19,8 @@ export class ModelListInputComponent {
   inputValue = '';
   phonesVendor: FormControl;
 
-  constructor(public dialog: MatDialog, private modalService: ModalService) {
+  constructor(public dialog: MatDialog,
+              private modalService: ModalService) {
     this.label = '';
     this.listData = [];
     this.type = '';
@@ -32,7 +32,6 @@ export class ModelListInputComponent {
     k = event.charCode;
     return(isEqual(k, 43) || isEqual(k, 40) || isEqual(k, 41) || (k >= 48 && k <= 57));
   }
-
 
   addPhone(): void {
     this.listData.push({

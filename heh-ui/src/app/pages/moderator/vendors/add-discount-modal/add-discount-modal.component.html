@@ -13,6 +13,7 @@
     <div class="add-discount-fields">
       <mat-form-field appearance="outline" class="add-discount-address" *ngIf="data ">
         <mat-label>{{ 'vendors.add-discount.address' | translate }}</mat-label>
+
         <mat-select *ngIf="data.discount"
                     formControlName="address"
                     [(ngModel)]="data.discount.addressesIds"
@@ -30,6 +31,7 @@
 
       <mat-form-field appearance="outline" class="add-discount-phone" *ngIf="data || data.discount">
         <mat-label>{{ 'vendors.add-discount.phone' | translate }}</mat-label>
+
         <mat-select formControlName="phone"
                     *ngIf="data.discount"
                     [(ngModel)]="data.discount.phonesIds"
@@ -41,6 +43,7 @@
 
       <mat-form-field class="add-discount-name" appearance="outline" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.promo' | translate }}</mat-label>
+
         <input matInput
                [(ngModel)]="discountDetail.promoCode"
                formControlName="promoCode"
@@ -55,6 +58,7 @@
 
       <mat-form-field class="add-discount-conditions" appearance="outline" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.conditions' | translate }}</mat-label>
+
         <input matInput
                [(ngModel)]="discountDetail.conditions"
                formControlName="conditions"
@@ -69,6 +73,7 @@
 
       <mat-form-field appearance="outline" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.start' | translate }}</mat-label>
+
         <input matInput
                readonly
                [max]="discountDetail.endDate"
@@ -76,7 +81,9 @@
                [matDatepicker]="pickerStart"
                formControlName="dateStart"
                required>
+
         <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+
         <mat-datepicker #pickerStart></mat-datepicker>
       </mat-form-field>
       <mat-error *ngIf="form.get('dateStart')?.touched && form.get('dateStart')?.hasError('required')" class="helper-error-text">
@@ -85,18 +92,22 @@
 
       <mat-form-field appearance="outline" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.end' | translate }}</mat-label>
+
         <input matInput
                readonly
                [min]="discountDetail.startDate"
                [(ngModel)]="discountDetail.endDate"
                [matDatepicker]="pickerEnd"
                formControlName="dateEnd">
+
         <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+
         <mat-datepicker #pickerEnd></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="add-discount-category" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.category' | translate }}</mat-label>
+
         <mat-select formControlName="category"
                     [(ngModel)]="discountDetail.categoryId"
                     (ngModelChange)="showTagList()"
@@ -111,6 +122,7 @@
 
       <mat-form-field appearance="outline" class="add-discount-tag" *ngIf="discountDetail">
         <mat-label>{{ 'vendors.add-discount.tag' | translate }}</mat-label>
+
         <mat-select formControlName="tag"
                     [(ngModel)]="discountDetail.tagsIds"
                     [disabled]="!discountDetail.categoryId"
@@ -124,6 +136,7 @@
     <div class="add-discount-button" *ngIf="discountDetail">
       <button mat-button
               (click)="checkChanges()">{{ 'vendors.add-discount.cancel' | translate }}</button>
+              
       <button mat-raised-button
               [disabled]="form.invalid || canNotBeSaved()"
               [mat-dialog-close]="discountDetail">{{ 'vendors.add-discount.save' | translate }}</button>

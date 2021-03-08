@@ -21,6 +21,7 @@
       <mat-select [(ngModel)]="activeCategoryId"
                   (ngModelChange)="showTagsList()">
         <mat-option>{{ 'search.select' | translate }}</mat-option>
+        
         <mat-option [value]="option.id"
                     *ngFor="let option of categoriesAll">
           {{ option.name }}

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ModeratorComponent } from './moderator.component';
 
 describe('ModeratorComponent', () => {

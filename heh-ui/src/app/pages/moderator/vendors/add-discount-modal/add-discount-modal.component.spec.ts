@@ -6,13 +6,13 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 import { AddDiscountModalComponent } from './add-discount-modal.component';
 import { FiltersService } from '../../../../services/filter-service/filters.service';
 
 describe('AddDiscountModalComponent', () => {
   let component: AddDiscountModalComponent;
   let fixture: ComponentFixture<AddDiscountModalComponent>;
+
   const dialogMock = {
     backdropClick: () => { }
   };

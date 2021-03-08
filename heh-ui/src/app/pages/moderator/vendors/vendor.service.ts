@@ -1,16 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { BASE_API_URL } from '../../../global';
 import { FiltersService } from 'src/app/services/filter-service/filters.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VendorService {
 
-  constructor(public http: HttpClient, private filterService: FiltersService) {}
+export class VendorService {
+  constructor(public http: HttpClient,
+              private filterService: FiltersService) {}
 
   getVendors(filters: any, top: number, skip: number): Observable<any> {
     let headers = new HttpHeaders();

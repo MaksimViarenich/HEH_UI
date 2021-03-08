@@ -6,7 +6,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { VendorCardComponent } from './vendor-card.component';
 import { VendorService } from '../vendor.service';
 import { ModalService } from '../../../../services/modal-service/modal.service';

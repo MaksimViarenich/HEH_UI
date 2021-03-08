@@ -16,6 +16,7 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.name' | translate }}</mat-label>
+            
             <input [(ngModel)]="vendor.name"
                    [formControl]="vendorName"
                    matInput required>
@@ -29,6 +30,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.hours' | translate }}</mat-label>
+
             <input [(ngModel)]="vendor.workingHours" matInput>
           </mat-form-field>
         </div>
@@ -49,21 +51,25 @@
         <div class="add-vendor-group">
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.web-site' | translate }}</mat-label>
+
             <input [(ngModel)]="links.website" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.inst' | translate }}</mat-label>
+
             <input [(ngModel)]="links.instagram" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.vk' | translate }}</mat-label>
+
             <input [(ngModel)]="links.vkontakte" matInput>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>{{ 'vendors.add-vendor.fb' | translate }}</mat-label>
+
             <input [(ngModel)]="links.facebook" matInput>
           </mat-form-field>
         </div>
@@ -91,8 +97,10 @@
   <mat-dialog-actions align="end" class="add-vendor-buttons">
     <button mat-button
             (click)="checkChanges()">{{ 'vendors.add-vendor.cancel' | translate }}</button>
+
     <button mat-button
             (click)="restoreVendorData()">{{ 'vendors.add-vendor.restore' | translate }}</button>
+
     <button mat-raised-button
             [disabled]="isSaveDisabled() || canNotBeSaved()"
             (click)=addUpdateNewVendor()>{{ 'vendors.add-vendor.save' | translate }}</button>

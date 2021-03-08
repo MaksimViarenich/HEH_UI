@@ -6,6 +6,7 @@ import { MODERATOR_TABS } from '../../models/tab';
   templateUrl: './moderator.component.html',
   styleUrls: ['./moderator.component.scss']
 })
+
 export class ModeratorComponent {
 
   tabsModerator = MODERATOR_TABS;

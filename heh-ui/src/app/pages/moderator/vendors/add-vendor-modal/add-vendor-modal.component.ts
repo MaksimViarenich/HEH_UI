@@ -16,6 +16,7 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./add-vendor-modal.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class AddVendorModalComponent implements OnInit {
   vendor: any;
   links: any;
@@ -24,15 +25,14 @@ export class AddVendorModalComponent implements OnInit {
   pristineLinks: any;
   vendorName = new FormControl();
 
-  constructor(
-    private filterService: FiltersService,
-    public vendorService: VendorService,
-    public dialog: MatDialog,
-    private modalService: ModalService,
-    private toaster: ToasterService,
-    private matDialogRef: MatDialogRef<any>,
-    private translateService: TranslateService,
-    @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
+  constructor(private filterService: FiltersService,
+              public vendorService: VendorService,
+              public dialog: MatDialog,
+              private modalService: ModalService,
+              private toaster: ToasterService,
+              private matDialogRef: MatDialogRef<any>,
+              private translateService: TranslateService,
+              @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
   ) {
     this.vendor = {
       phones: [],
@@ -220,6 +220,7 @@ export class AddVendorModalComponent implements OnInit {
     this.matDialogRef.backdropClick().subscribe(() => {
       this.checkChanges();
     });
+
     if (this.vendorId.id) {
       this.vendorService.getVendorDetail(this.vendorId.id).subscribe(
         (data) => {

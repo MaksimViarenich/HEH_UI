@@ -5,6 +5,7 @@
         <div class="edit-discount-category">
           <app-category [categoryId]="discountInfo.categoryId"></app-category>
         </div>
+        
         <div class="edit-discount-tags">
           <app-tag *ngFor="let tag of discountInfo.tagsIds"
                    [tagId]="tag"></app-tag>
