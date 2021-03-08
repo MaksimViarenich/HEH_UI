@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { forEach, isEqual, size } from 'lodash';
-
 import { FavoritesService } from './favorites.service';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
@@ -11,7 +10,8 @@ import { ModalService } from 'src/app/services/modal-service/modal.service';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss']
 })
-export class FavoritesComponent implements OnInit {
+
+export class FavoritesComponent {
   @Input() favoriteInfo: any | undefined;
   favoriteCards: Array<Discount> = [];
   topFavorites: any;
@@ -82,6 +82,4 @@ export class FavoritesComponent implements OnInit {
       this.previousScrollPosition = event.currentScrollPosition;
     }
   }
-
-  ngOnInit(): void {}
 }
