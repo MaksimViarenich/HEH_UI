@@ -10,6 +10,7 @@
            [disabled]="isDisabled">
 
     <mat-chip-list #chipList>
+      
     </mat-chip-list>
   </mat-form-field>
 
@@ -35,7 +36,7 @@
            (keydown.escape)="cancelChange(item)"
            (keydown.enter)="edit(item)"
            (keydown)="$event.stopPropagation()"/>
-           
+
     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
   </mat-chip>
 </div>
