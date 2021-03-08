@@ -23,6 +23,7 @@ export class DiscountsComponent implements OnInit {
   breakpoint: number;
   isVisibleEditNote = false;
   filterStorage: any;
+  doubleFilters: any;
 
   constructor(public dialog: MatDialog,
               private modalService: ModalService,
@@ -41,6 +42,7 @@ export class DiscountsComponent implements OnInit {
     this.filterStorage = {};
     this.filterStorage = filters;
     filters.experationDate = true;
+    this.doubleFilters = filters;
     this.discounts = [];
     this.skipDiscounts = 0;
     this.previousScrollPosition = 0;
@@ -62,7 +64,11 @@ export class DiscountsComponent implements OnInit {
   }
 
   openDiscountDetails(discount: Discount): void {
-    this.modalService.openDiscountDetailsModal(discount.id);
+    const dialogRef = this.modalService.openDiscountDetailsModal(discount.id);
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.discounts = [];
+      this.getDiscounts(this.topDiscounts, this.skipDiscounts, this.doubleFilters);
+    });
   }
 
   ngOnInit(): void {

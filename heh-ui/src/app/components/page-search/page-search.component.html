@@ -10,6 +10,7 @@
         <mat-label>{{ 'search.location' | translate }}</mat-label>
         <mat-select [(ngModel)]="currentLocation"
                     (ngModelChange)="changeVendorsList()">
+
           <mat-option>Location</mat-option>
           <mat-option *ngFor="let location of locationsArrayForOptions"
                       [value]="location.id"

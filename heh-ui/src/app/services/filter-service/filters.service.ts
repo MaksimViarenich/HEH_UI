@@ -201,8 +201,13 @@ export class FiltersService {
     let queryParams = '';
 
     if (filters.experationDate && filters.location.length) {
-      queryParams = `endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
-                    `-${objDateString.slice(8, 10)}T00:00:00Z and `;
+      queryParams = `(endDate eq null or endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z) and `;
+    }
+
+    if (filters.experationDate && !filters.location.length) {
+      queryParams = `(endDate eq null orendDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
+                    `-${objDateString.slice(8, 10)}T00:00:00Z)`;
     }
 
     if (filters.experationDate && !filters.location.length) {
@@ -345,11 +350,11 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
       params = params.append('$filter', filtersParams.queryParams);
     }
 
-  if (filters.experationDate) {
+  if (filters.experationDate && !filters.searchText) {
     params = params.append('$orderby', 'startDate asc');
   }
 
-  if (filters.statisticsOrderby) {
+  if (filters.statisticsOrderby && !filters.searchText) {
     params = params.append('$orderby', 'viewsAmount desc');
   }
 
