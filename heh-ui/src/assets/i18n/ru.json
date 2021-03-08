@@ -127,7 +127,8 @@
     "available": "Доступно до",
     "open": "Открыто",
     "close": "Закрыть",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "soon": "скоро"
   },
   "confirmation": {
     "delete": {

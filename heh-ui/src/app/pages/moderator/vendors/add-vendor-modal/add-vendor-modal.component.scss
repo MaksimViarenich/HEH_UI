@@ -11,105 +11,113 @@
 .vendor-details-modal.cdk-overlay-pane {
   width: 66rem;
 
-  .add-vendor-content {
-    display: flex;
-    justify-content: space-between;
-    padding: $margin-1;
-
-    .add-vendor-info-title {
-      margin-bottom: $margin-1;
-      font-size: $font-title;
-      font-weight: bold;
-    }
-  }
-
-  .add-vendor-info,
-  .add-vendor-discounts {
-    width: calc(50% - 1.5rem);
+  .mat-dialog-vendor {
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
 
-    .mat-form-field {
-      display: block;
+    .add-vendor-content {
+      display: flex;
+      justify-content: space-between;
+      padding: $margin-1;
+
+      .add-vendor-info-title {
+        margin-bottom: $margin-1;
+        font-size: $font-title;
+        font-weight: bold;
+      }
     }
-  }
 
-  .add-vendor-info {
-    .mat-form-field-appearance-outline .mat-form-field-wrapper {
-      padding-bottom: 0;
-      margin: 0 0 $margin-1 0;
-      @include glass;
-      border-radius: 5px;
+    .add-vendor-info,
+    .add-vendor-discounts {
+      width: calc(50% - 1.5rem);
+      display: flex;
+      flex-direction: column;
+
+      .mat-form-field {
+        display: block;
+      }
     }
 
-    .mat-select-arrow {
-      border-top: 0;
-    }
-  }
-
-  mat-error {
-    margin-top: -1rem;
-  }
-
-  .add-vendor-discounts {
-    .vendors-component {
-      margin-top: $margin-1;
-
-      .edit-discount-card-container {
+    .add-vendor-info {
+      .mat-form-field-appearance-outline .mat-form-field-wrapper {
+        padding-bottom: 0;
+        margin: 0 0 $margin-1 0;
         @include glass;
-        box-shadow: $shadow-violet;
-        border-radius: $border-radius-small;
+        border-radius: 5px;
       }
 
-      app-edit-discout-card:hover {
-        cursor: pointer;
+      .mat-select-arrow {
+        border-top: 0;
       }
     }
 
-    .add-discount-button {
-      min-height: 3rem;
+    mat-error {
+      margin-top: -1rem;
+    }
+
+    .add-vendor-discounts {
+      .vendors-component {
+        margin-top: $margin-1;
+
+        .edit-discount-card-container {
+          @include glass;
+          box-shadow: $shadow-violet;
+          border-radius: $border-radius-small;
+        }
+
+        app-edit-discout-card:hover {
+          cursor: pointer;
+        }
+      }
+
+      .add-discount-button {
+        min-height: 3rem;
+        @extend .backgroundColor;
+        color: $color-white;
+      }
+    }
+
+    .add-vendor-background {
+      height: $height-header;
+      padding: 0 $margin-1;
+
+      .add-vendor-title {
+        @include font-bold-vendor;
+        line-height: $height-header;
+      }
+    }
+
+    .add-vendor-group {
+      padding: 1rem 1rem 0 1rem;
+      margin-bottom: $margin-1;
+      @include glass;
+      border-radius: $border-radius-small;
+      box-shadow: $shadow-violet;
+
+      section {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  .add-vendor-buttons {
+    text-align: right;
+    font-weight: bold;
+    margin: auto $margin-1 0 0;
+    padding: 0;
+
+    button:last-child {
       @extend .backgroundColor;
       color: $color-white;
-    }
-  }
+      margin-left: $margin-1;
 
-  .add-vendor-background {
-    height: $height-header;
-    padding: 0 $margin-1;
-
-    .add-vendor-title {
-      @include font-bold-vendor;
-      line-height: $height-header;
-    }
-  }
-
-  .add-vendor-group {
-    padding: 1rem 1rem 0 1rem;
-    margin-bottom: $margin-1;
-    @include glass;
-    border-radius: $border-radius-small;
-    box-shadow: $shadow-violet;
-
-    section {
-      padding-bottom: 1rem;
-    }
-  }
-}
-
-.add-vendor-buttons {
-  text-align: right;
-  font-weight: bold;
-  margin: 0 $margin-1 0 0;
-  padding: 0;
-
-  button:last-child {
-    @extend .backgroundColor;
-    color: $color-white;
-    margin-left: $margin-1;
-
-    &:disabled {
-      background-color: rgba(0, 0, 0, .12);
-      color: rgba(0, 0, 0, .26);
+      &:disabled {
+        background-color: rgba(0, 0, 0, .12);
+        color: rgba(0, 0, 0, .26);
+      }
     }
   }
 }
