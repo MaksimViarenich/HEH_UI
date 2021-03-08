@@ -83,6 +83,7 @@ export class PageSearchComponent implements OnInit {
           this.searchData.location = sessionStorage.getItem('location');
           this.currentLocation = sessionStorage.getItem('location');
           this.submitSearch();
+          this.changeVendorsList();
         }
       );
     });
@@ -151,6 +152,33 @@ export class PageSearchComponent implements OnInit {
       });
     } else {
       this.filtersOptions.tags = this.filtersService.getFilters().tags;
+    }
+  }
+
+  changeVendorsList(): void {
+    this.searchData.location = this.checkCountryOrCity(this.currentLocation);
+    this.filtersOptions.vendors = [];
+
+    if (this.searchData.location.length === 1) {
+      this.filtersService.getFilters().vendors.forEach((vendor: any) => {
+        vendor.addresses.forEach((address: any) => {
+          if (address.countryId === this.searchData.location[0] && this.filtersOptions.vendors.indexOf(vendor) === -1) {
+            this.filtersOptions.vendors.push(vendor);
+          }
+        });
+      });
+    } else if (this.searchData.location.length === 2)  {
+      this.filtersService.getFilters().vendors.forEach((vendor: any) => {
+        vendor.addresses.forEach((address: any) => {
+          if (!address.cityId && address.countryId === this.searchData.location[0] && this.filtersOptions.vendors.indexOf(vendor) === -1) {
+            this.filtersOptions.vendors.push(vendor);
+          } else if (address.cityId === this.searchData.location[1]  && this.filtersOptions.vendors.indexOf(vendor) === -1) {
+            this.filtersOptions.vendors.push(vendor);
+          }
+        });
+      });
+    } else {
+      this.filtersOptions.vendors = this.filtersService.getFilters().vendors;
     }
   }
 
