@@ -25,15 +25,14 @@ export class AddVendorModalComponent implements OnInit {
   pristineLinks: any;
   vendorName = new FormControl();
 
-  constructor(
-    private filterService: FiltersService,
-    public vendorService: VendorService,
-    public dialog: MatDialog,
-    private modalService: ModalService,
-    private toaster: ToasterService,
-    private matDialogRef: MatDialogRef<any>,
-    private translateService: TranslateService,
-    @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
+  constructor(private filterService: FiltersService,
+              public vendorService: VendorService,
+              public dialog: MatDialog,
+              private modalService: ModalService,
+              private toaster: ToasterService,
+              private matDialogRef: MatDialogRef<any>,
+              private translateService: TranslateService,
+              @Inject(MAT_DIALOG_DATA) public vendorId: VendorCard
   ) {
     this.vendor = {
       phones: [],
