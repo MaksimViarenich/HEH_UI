@@ -107,8 +107,12 @@
           <textarea matInput
                     type="text"
                     [(ngModel)]="editingValue"
+                    [formControl]="editingValueControl"
                     (keydown.enter)="submitEditNote()"></textarea>
       </mat-form-field>
+      <mat-error *ngIf="editingValueControl.hasError('maxlength')" class="helper-error-text">
+        {{ 'errors.discount-note-error' | translate }}
+      </mat-error>
     </div>
 
     <div *ngIf="addresses.length"
@@ -132,7 +136,7 @@
       <button *ngIf="data.isVisibleEditNote"
               class="btn-submit"
               mat-raised-button
-              [disabled]="canNotBeSaved()"
+              [disabled]="canNotBeSaved() || editingValueControl.invalid"
               (click)="submitEditNote()">
               {{ 'favorites.save' | translate }}</button>
     </div>

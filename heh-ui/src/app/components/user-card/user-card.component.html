@@ -20,7 +20,7 @@
                       [color]="color"
                       [(ngModel)]="isActive"
                       (ngModelChange)="changeUserState()">
-      {{isActive ? 'users.active' : 'users.inactive' | translate}}
+      {{isActive ? ('users.active' | translate) : ('users.inactive' | translate)}}
     </mat-slide-toggle>
   </div>
 </div>
