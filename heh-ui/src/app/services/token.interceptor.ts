@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { isEqual } from 'lodash';
-
 import { AuthService } from './auth-service/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService,
+              private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.auth.isAuthenticated()) {

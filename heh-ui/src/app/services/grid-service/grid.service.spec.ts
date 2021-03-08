@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-
 import { GridService } from './grid.service';
 
 describe('GridService', () => {
