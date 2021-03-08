@@ -5,7 +5,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { DiscountsComponent } from './discounts.component';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 

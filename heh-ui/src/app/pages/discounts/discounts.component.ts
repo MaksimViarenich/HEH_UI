@@ -2,7 +2,6 @@ import { DiscountsService } from './discounts.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { isEqual, size, forEach } from 'lodash';
-
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
@@ -13,8 +12,8 @@ import { GridService } from '../../services/grid-service/grid.service';
   templateUrl: './discounts.component.html',
   styleUrls: ['./discounts.component.scss']
 })
-export class DiscountsComponent implements OnInit {
 
+export class DiscountsComponent implements OnInit {
   discounts: Array<Discount> = [];
   topDiscounts: any;
   skipDiscounts: any;
