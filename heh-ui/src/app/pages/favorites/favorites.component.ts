@@ -4,6 +4,7 @@ import { FavoritesService } from './favorites.service';
 import { Discount } from '../../models/discount';
 import { ToasterService } from '../../services/toaster-service/toaster.service';
 import { ModalService } from 'src/app/services/modal-service/modal.service';
+import { BtnFavoriteService } from 'src/app/services/btn-favorite/btn.favorite.service';
 
 @Component({
   selector: 'app-favorites',
@@ -23,12 +24,24 @@ export class FavoritesComponent {
 
   constructor(private favoritesService: FavoritesService,
               private modalService: ModalService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private btnFavotiteService: BtnFavoriteService) {
     this.topFavorites = 8;
     this.skipFavorites = 0;
     this.previousScrollPosition = 0;
     this.totalCount = 0;
     this.filterStorage = {};
+    this.btnFavotiteService.currentData.subscribe(data => {
+      this.changeFavoriteCurrentList(data);
+    });
+  }
+
+  changeFavoriteCurrentList(data: any): void {
+    forEach(this.favoriteCards, (card) => {
+      if (isEqual(data.id, card.id)) {
+        card.isFavorite = data.isFavorite;
+      }
+    });
   }
 
   openDiscountDetailModal(favoriteCard: any): void {

@@ -6,8 +6,11 @@
      [infiniteScrollDistance]="1"
      [infiniteScrollThrottle]="100"
      (scrolled)="onScrollDown($event)">
-  <app-favorite-card *ngFor="let card of favoriteCards"
+   <div *ngFor="let card of favoriteCards">
+      <app-favorite-card *ngIf="card.isFavorite"
                      [favoriteInfo]="card"
                      (click)="openDiscountDetailModal(card)"
                      (updateCardsAfterDelete)="getFavoritesAfterDelete()"></app-favorite-card>
+   </div>
+  
 </div>
