@@ -50,7 +50,6 @@ export class EventHistoryComponent implements OnInit {
     this.skipEvents = 0;
     this.previousScrollPosition = 0;
     this.searchData.historyLocation = this.checkCountryOrCity(this.currentLocation);
-    console.log(this.searchData);
     this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 

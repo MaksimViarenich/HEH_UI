@@ -110,8 +110,12 @@ export class AddVendorModalComponent implements OnInit {
     const vendorCopy = cloneDeep(this.vendor);
 
     forEach(vendorCopy.discounts, item => {
-      item.startDate = this.changeDates(item.startDate);
-      item.endDate = this.changeDates(item.endDate);
+      if (isEqual(item.startDate, undefined)) {
+        item.startDate = this.changeDates(item.startDate);
+      }
+      if (isEqual(item.endDate, undefined)) {
+        item.endDate = this.changeDates(item.endDate);
+      }
     });
 
     vendorCopy.links = [];
