@@ -37,8 +37,8 @@ export class FavoritesComponent {
   }
 
   changeFavoriteCurrentList(data: any): void {
-    this.favoriteCards.forEach((card) => {
-      if (data.id === card.id) {
+    forEach(this.favoriteCards, (card) => {
+      if (isEqual(data.id, card.id)) {
         card.isFavorite = data.isFavorite;
       }
     });

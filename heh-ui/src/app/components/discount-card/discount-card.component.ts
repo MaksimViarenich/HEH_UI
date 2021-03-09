@@ -2,6 +2,7 @@ import { OnInit } from '@angular/core';
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { BtnFavoriteService } from 'src/app/services/btn-favorite/btn.favorite.service';
 import { CategoryService } from '../category/category.service';
+import { isEqual } from 'lodash';
 
 @Component({
   selector: 'app-discount-card',
@@ -27,7 +28,7 @@ export class DiscountCardComponent implements OnInit {
   }
 
   changeIsFavorite(data: any): void {
-    if (data.id === this.discount.id) {
+    if (isEqual(data.id, this.discount.id)) {
       this.discount.isFavorite = data.isFavorite;
     }
   }
