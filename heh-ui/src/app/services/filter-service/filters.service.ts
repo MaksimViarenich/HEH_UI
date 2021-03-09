@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, indexOf } from 'lodash';
 import { forEach, isEqual, size, includes, find } from 'lodash';
 import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
@@ -257,7 +257,8 @@ export class FiltersService {
         case 'location':
           if (size(filters[key])) {
             resultParams.push(
-              ` and ${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
+              ` and ${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ?
+              `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
           }
           break;
@@ -357,6 +358,9 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
     }
 
   if (filtersParams.queryParams) {
+      if (isEqual(filtersParams.queryParams.indexOf(' and '), 0)) {
+        filtersParams.queryParams = filtersParams.queryParams.slice(5, size(filtersParams.queryParams));
+      }
       params = params.append('$filter', filtersParams.queryParams);
     }
 

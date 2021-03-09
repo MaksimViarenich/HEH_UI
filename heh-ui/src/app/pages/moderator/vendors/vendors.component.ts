@@ -65,6 +65,7 @@ export class VendorsComponent implements OnInit {
   getVendorSearch(filters: any): void {
     this.filterStorage = {};
     this.filterStorage = filters;
+    filters.isVendors = true;
     this.vendors = [];
     this.skipVendors = 0;
     this.previousScrollPosition = 0;
