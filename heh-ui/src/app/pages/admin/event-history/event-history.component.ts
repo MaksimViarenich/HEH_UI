@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { forEach, isEqual, size } from 'lodash';
+import { forEach, isEqual, size, find } from 'lodash';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -28,6 +28,7 @@ export class EventHistoryComponent implements OnInit {
   filterStorage: any;
   locations: any;
   locationsArrayForOptions: any;
+  currentLocation: any;
 
   constructor(public dialog: MatDialog,
               private filtersService: FiltersService,
@@ -48,6 +49,8 @@ export class EventHistoryComponent implements OnInit {
     this.eventData = [];
     this.skipEvents = 0;
     this.previousScrollPosition = 0;
+    this.searchData.historyLocation = this.checkCountryOrCity(this.currentLocation);
+    console.log(this.searchData);
     this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
   }
 
@@ -68,17 +71,14 @@ export class EventHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchData.historyLocation = sessionStorage.getItem('location');
-    this.filtersService.loadFilters().then(() => {
-      this.filtersOptions = this.filtersService.getFilters();
-    });
-    this.getEventHistory(this.topEvents, this.skipEvents, this.searchData);
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.filtersService.getLocations().subscribe(
         (data) => {
           this.locations = data;
           this.locationsArrayForOptions = this.fillLocationOptionArray(this.locations);
+          this.currentLocation = sessionStorage.getItem('location');
+          this.applyHistorySearch();
         }
       );
     });
@@ -92,6 +92,21 @@ export class EventHistoryComponent implements OnInit {
     });
 
     return array;
+  }
+
+  checkCountryOrCity(id: string): any {
+    let ids: any[] = [];
+    if (find(this.locations, country => isEqual(country.id, id))) {
+      ids = [id];
+    } else {
+      forEach(this.locations, country => {
+        if (find(country.cities, {id})) {
+          ids = [country.id, id];
+        }
+      });
+    }
+
+    return ids;
   }
 
   onScrollDown(event: any): void {
