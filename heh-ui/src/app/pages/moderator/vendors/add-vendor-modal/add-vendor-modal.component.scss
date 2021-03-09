@@ -136,7 +136,8 @@
     flex-direction: column;
   }
 
-  .vendor-details-modal.cdk-overlay-pane .add-vendor-info, .vendor-details-modal.cdk-overlay-pane .add-vendor-discounts {
+  .vendor-details-modal.cdk-overlay-pane .mat-dialog-vendor .add-vendor-info,
+  .vendor-details-modal.cdk-overlay-pane .mat-dialog-vendor .add-vendor-discounts {
     width: 100%;
   }
 }
