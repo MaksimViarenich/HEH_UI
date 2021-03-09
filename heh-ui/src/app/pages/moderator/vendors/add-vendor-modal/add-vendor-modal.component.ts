@@ -97,8 +97,22 @@ export class AddVendorModalComponent implements OnInit {
     }
   }
 
+  changeDates(date: any): any {
+    const objDateString = date.toString();
+    const month = (date.getMonth() + 1).toString().length === 1 ?
+                      `0${(date.getMonth() + 1).toString()}` :
+                      (date.getMonth() + 1).toString();
+
+    return `${objDateString.slice(11, 15)}-` + month + `-${objDateString.slice(8, 10)}T00:00:00Z`;
+  }
+
   addUpdateNewVendor(): void {
     const vendorCopy = cloneDeep(this.vendor);
+
+    forEach(vendorCopy.discounts, item => {
+      item.startDate = this.changeDates(item.startDate);
+      item.endDate = this.changeDates(item.endDate);
+    });
 
     vendorCopy.links = [];
     vendorCopy.links.push(

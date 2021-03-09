@@ -35,7 +35,7 @@ export class VendorService {
     return this.http.delete(`${BASE_API_URL}/api/vendor?id=${id}`, {headers});
   }
 
-  addVendor(newVendor: string): Observable<any> {
+  addVendor(newVendor: any): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('accept', '*/*');
     headers = headers.append('Content-Type', 'application/json;odata.metadata=minimal;odata.streaming=true');
