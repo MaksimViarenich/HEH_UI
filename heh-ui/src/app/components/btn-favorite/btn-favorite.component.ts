@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BtnFavoriteService } from 'src/app/services/btn-favorite/btn.favorite.service';
 import { ToasterService } from 'src/app/services/toaster-service/toaster.service';
 import { FavoritesService } from '../../pages/favorites/favorites.service';
 
@@ -12,11 +11,9 @@ import { FavoritesService } from '../../pages/favorites/favorites.service';
 export class BtnFavoriteComponent {
   @Input() isFavorite: boolean | undefined;
   @Input() id: string;
-  data: any = {};
 
   constructor(public favoriteService: FavoritesService,
-              private toaster: ToasterService,
-              private btnFavotiteService: BtnFavoriteService) {
+              private toaster: ToasterService) {
     this.id = '';
   }
 
@@ -42,16 +39,9 @@ export class BtnFavoriteComponent {
     );
   }
 
-  sendIsfavorite(): void {
-    this.data.id = this.id;
-    this.data.isFavorite = this.isFavorite;
-    this.btnFavotiteService.updateIsFavorite(this.data);
-  }
-
   changeFavorite(event: Event): any {
     this.isFavorite = !this.isFavorite;
     event.stopPropagation();
     this.isFavorite ? this.addFavorite() : this.deleteFavorite();
-    this.sendIsfavorite();
   }
 }
