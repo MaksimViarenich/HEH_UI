@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit {
   user: UserInfo | any;
   userPhoto: any;
   location: string;
+  vendorsByLocation: any;
   separatorKeysCodes: number[];
   allOptions: any;
   selectedOptions: Array<any>;
@@ -44,6 +45,7 @@ export class UserProfileComponent implements OnInit {
     this.categoryNotifications = [];
     this.tagNotifications = [];
     this.vendorNotifications = [];
+    this.vendorsByLocation = [];
 
     this.filtersOptions = {
         locations: [],
@@ -129,12 +131,25 @@ export class UserProfileComponent implements OnInit {
       }
     );
 
+    this.filtersService.getVendorsByLocation().subscribe(
+      (data) => {
+        data.forEach((vendor: any) => {
+          this.vendorsByLocation.push({
+            id: vendor.id,
+            viewValue: vendor.name,
+          });
+        });
+      },
+      () => {
+        this.toaster.open('Сan not get vendors');
+      });
+
     this.filtersService.loadFilters().then(() => {
       this.filtersOptions = this.filtersService.getFilters();
       this.allOptions = {
         categories: [...this.filtersOptions.categories],
         tags: [...this.filtersOptions.tags],
-        vendors: [...this.filtersOptions.vendors],
+        vendors: [...this.vendorsByLocation],
       };
     });
 

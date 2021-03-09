@@ -58,6 +58,13 @@ export class FiltersService {
     return this.http.get(`${BASE_API_URL}/odata/Vendor`, {headers});
   }
 
+  getVendorsByLocation(): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('accept', 'application/json;odata.metadata=minimal;odata.streaming=true');
+
+    return this.http.get(`${BASE_API_URL}/api/vendor/location`, {headers});
+  }
+
   addNewCategory(newCategory: string): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', `application/json;odata.metadata=minimal;odata.streaming=true`);
