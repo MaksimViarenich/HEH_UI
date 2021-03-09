@@ -98,7 +98,6 @@ export class AddVendorModalComponent implements OnInit {
   }
 
   changeDates(date: any): any {
-    console.log(date);
     const objDateString = date.toString();
     const month = (date.getMonth() + 1).toString().length === 1 ?
                       `0${(date.getMonth() + 1).toString()}` :
@@ -109,7 +108,6 @@ export class AddVendorModalComponent implements OnInit {
 
   addUpdateNewVendor(): void {
     const vendorCopy = cloneDeep(this.vendor);
-    console.log(vendorCopy.discounts);
 
     forEach(vendorCopy.discounts, item => {
       if (isEmpty(item.startDate)) {
