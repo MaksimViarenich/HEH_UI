@@ -248,7 +248,7 @@ export class FiltersService {
           break;
 
         case 'location':
-          if (filters[key].length) {
+          if (size(filters[key])) {
             resultParams.push(
               `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
@@ -263,13 +263,15 @@ export class FiltersService {
 
         case 'searchHistoryText':
           if (filters[key]) {
-              resultParams.push(`contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}')`);
+              resultParams.push(`(contains(userName, '${filters[key]}') or contains(userEmail, '${filters[key]}') or contains(description, '${filters[key]}'))`);
           }
           break;
 
         case 'historyLocation':
-          if (filters[key]) {
-              resultParams.push(`UserAddress/CityId eq ${filters[key]}`);
+          if (size(filters[key])) {
+              resultParams.push(
+                `(UserAddress/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (UserAddress/cityId eq null or UserAddress/cityId eq ${filters[key][1]}))` : `)`}`
+              );
           }
           break;
 
