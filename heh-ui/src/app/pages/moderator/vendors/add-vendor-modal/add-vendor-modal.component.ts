@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { cloneDeep, isEqual, map, forEach, size, toLower } from 'lodash';
+import { cloneDeep, isEqual, map, forEach, size, toLower, isEmpty } from 'lodash';
 import { VendorCard } from '../../../../models/vendor-card';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Discount } from '../../../../models/discount';
@@ -110,10 +110,10 @@ export class AddVendorModalComponent implements OnInit {
     const vendorCopy = cloneDeep(this.vendor);
 
     forEach(vendorCopy.discounts, item => {
-      if (isEqual(item.startDate, undefined)) {
+      if (isEmpty(item.startDate)) {
         item.startDate = this.changeDates(item.startDate);
       }
-      if (isEqual(item.endDate, undefined)) {
+      if (isEmpty(item.endDate)) {
         item.endDate = this.changeDates(item.endDate);
       }
     });
