@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, indexOf } from 'lodash';
 import { forEach, isEqual, size, includes, find } from 'lodash';
 import { forkJoin, Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/app/global';
@@ -210,7 +210,7 @@ export class FiltersService {
 
     if (filters.experationDate && filters.location.length) {
       queryParams = `(endDate eq null or endDate ge ${objDateString.slice(11, 15)}-` + dueMonth +
-                    `-${objDateString.slice(8, 10)}T00:00:00Z) and `;
+                    `-${objDateString.slice(8, 10)}T00:00:00Z)`;
     }
 
     if (filters.experationDate && !filters.location.length) {
@@ -257,7 +257,8 @@ export class FiltersService {
         case 'location':
           if (size(filters[key])) {
             resultParams.push(
-              `${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ? `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
+              ` and ${FILTERS_MAP.get(key)}/any(a: a/countryId eq ${filters[key][0]} ${filters[key][1] ?
+              `and (a/cityId eq null or a/cityId eq ${filters[key][1]}))` : `)`}`
             );
           }
           break;
@@ -311,7 +312,7 @@ export class FiltersService {
     resultParams = resultParams.filter((item: string) => size(item));
     forEach(resultParams, (item: string, index: number) => {
         queryParams +=
-          isEqual(size(resultParams) - 1, index) ? item : `${item} and `;
+          isEqual(size(resultParams) - 1, index) ? item : `${item}`;
       });
 
     return { queryParams, queryTextParam, queryStartDate, queryEndDate };
@@ -324,7 +325,7 @@ buildListQuery(filters: any, key: string): string {
 
     if (size(mapped) >= 1) {
       query +=
-      `${FILTERS_MAP.get(key)}` + (includes(['vendorCategories', 'tags'], key)
+      ` and ${FILTERS_MAP.get(key)}` + (includes(['vendorCategories', 'tags'], key)
       ? `/any(t: t in [${mapped}])` : ` in [${mapped}]`);
     }
 
@@ -357,6 +358,9 @@ getQueryParams(filters: any, top: number, skip: number, skipPagination?: boolean
     }
 
   if (filtersParams.queryParams) {
+      if (isEqual(filtersParams.queryParams.indexOf(' and '), 0)) {
+        filtersParams.queryParams = filtersParams.queryParams.slice(5, size(filtersParams.queryParams));
+      }
       params = params.append('$filter', filtersParams.queryParams);
     }
 
