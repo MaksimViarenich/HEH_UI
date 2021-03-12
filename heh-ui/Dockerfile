@@ -6,6 +6,8 @@ COPY package.json /app
 RUN npm install
 COPY . /app
 RUN npm run build --prod
+RUN ng test --watch=false
+RUN ng e2e --port 4202
 # Stage 2
 FROM nginx:1.17.1-alpine
 COPY --from=build-step /app/dist/heh-ui /usr/share/nginx/html
